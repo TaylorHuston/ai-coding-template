@@ -20,7 +20,7 @@ AI coding tools are simultaneously very powerful and very dumb. Sometimes it can
 This template includes an advanced AI orchestration system in the `.claude/` directory that provides:
 
 ### 🤖 Specialized AI Agents
-- **10 domain-specific agents** for complex tasks (full-stack-developer, security-auditor, code-reviewer, etc.)
+- **17 domain-specific agents** for complex tasks (frontend-specialist, backend-specialist, security-auditor, code-reviewer, etc.)
 - **Intelligent agent coordination** with handoff procedures and quality gates
 - **Context-aware agent selection** based on task complexity and domain
 
@@ -162,7 +162,7 @@ node scripts/docs-health.js
 ./scripts/docs-manager.sh validate
 ```
 
-See [script-architecture.md](./docs/script-architecture.md) for implementation details.
+See [architecture.md](./docs/architecture.md) for implementation details.
 
 ### Additional Tools
 

@@ -277,7 +277,7 @@ task_type_mapping:
 #### **Development Pipeline**
 
 1. project-manager (planning)
-2. full-stack-developer (implementation)
+2. frontend-specialist + backend-specialist (implementation)
 3. code-reviewer (quality check)
 4. security-auditor (security review)
 5. devops-engineer (deployment)

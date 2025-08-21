@@ -14,7 +14,7 @@ Comprehensive catalog of available commands, workflows, and automation patterns.
 #### **Development & Implementation**
 - **[implement-feature](./implement-feature)** - Feature implementation workflow
   - *Purpose*: End-to-end feature development with quality gates
-  - *Agents*: full-stack-developer, code-reviewer, technical-writer
+  - *Agents*: frontend-specialist, backend-specialist, code-reviewer, technical-writer
   - *Complexity*: Medium to High
 
 - **[code-review](./code-review)** - Comprehensive code review process
@@ -24,7 +24,7 @@ Comprehensive catalog of available commands, workflows, and automation patterns.
 
 - **[refactor-code](./refactor-code)** - Systematic code refactoring
   - *Purpose*: Improve code quality while maintaining functionality
-  - *Agents*: code-reviewer, full-stack-developer
+  - *Agents*: code-reviewer, refactoring-specialist
   - *Complexity*: Medium
 
 #### **Quality & Security**
