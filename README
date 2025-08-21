@@ -1,0 +1,11 @@
+# AI Coding Template
+
+This repo serves as a starter template for new projects working with AI coding tools. This is based on my own experiences and will be constantly evolving based on that. Designed for working with Claude Code and VSCode, but should be easily adaptable to other tools.
+
+## Quick Context
+
+AI coding tools are simultaneously very powerful and very dumb. Sometimes it can feel like working with the world's dumbest toddler. A lot of that comes down to the fact that, somewhat counterintuitively, they don't have a very good memory. We tend to to think of computers of having amazing memories. Able to store terabytes of data with perfect recall. Much more than our fallable human brains ever could. But that just isn't the case when working with LLMs. LLMs have something called a "context window" that's actually fairly limited. What this means in the real world is that your tool will eventually start "forgetting" what it's already implemented. It will write duplicate code. It will write code that breaks other code. It will write code that doesn't follow your established best practices. It will forget rules and instructions that you give it. Etc. Having a good framework and established patterns can go a long way to mitigating that.
+
+## File Structure
+
+## General Best practices
