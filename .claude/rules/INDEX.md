@@ -35,6 +35,36 @@ Comprehensive catalog of quality enforcement rules, standards, and automated com
   - *Enforcement*: Progressive testing standards adapting to project maturity
   - *Key Features*: TDD/BDD enforcement, risk-based testing, automated maintenance
 
+#### **Logging and Observability**
+- **[logging-observability-rules](./logging-observability-rules.md)** - Structured logging and observability standards
+  - *Scope*: OpenTelemetry integration, structured logging, PII protection
+  - *Enforcement*: Automated data protection with intelligent correlation
+  - *Key Features*: Three pillars observability, context correlation, security by default
+
+#### **AI-Human Collaboration**
+- **[ai-collaboration-rules](./ai-collaboration-rules.md)** - AI-human collaboration patterns
+  - *Scope*: Context engineering, session management, prompt security
+  - *Enforcement*: Structured collaboration with transparency requirements
+  - *Key Features*: Context preservation, attribution standards, cognitive optimization
+
+#### **AI Code Validation**
+- **[ai-validation-rules](./ai-validation-rules.md)** - AI-generated code validation requirements
+  - *Scope*: Multi-layer validation, security scanning, pattern detection
+  - *Enforcement*: ACCA framework with 93% accuracy alignment
+  - *Key Features*: Vulnerability detection, comprehension gap management, review tiers
+
+#### **Context Preservation**
+- **[context-preservation-rules](./context-preservation-rules.md)** - Context window and memory management
+  - *Scope*: Context optimization, RAG patterns, memory preservation
+  - *Enforcement*: Adaptive compression with quality metrics
+  - *Key Features*: Intelligent compression, AST-based chunking, performance monitoring
+
+#### **Error Handling**
+- **[error-handling-rules](./error-handling-rules.md)** - Comprehensive error management patterns
+  - *Scope*: AI-specific errors, audit trails, recovery strategies
+  - *Enforcement*: Fail-safe patterns with graceful degradation
+  - *Key Features*: Context preservation, incident response, continuous learning
+
 ## Rule Enforcement Levels
 
 ### Enforcement Hierarchy
@@ -289,6 +319,76 @@ auto_triggers:
     - Missing test categories → Coverage enhancement
 ```
 
+#### **Logging and Observability Rules**
+```yaml
+auto_triggers:
+  data_protection_violations:
+    - PII detected in logs → Immediate redaction
+    - Sensitive data exposure → Security team alert
+    - Compliance violation → Audit workflow
+    
+  performance_degradation:
+    - Log ingestion latency > 100ms → Optimization workflow
+    - Storage growth anomaly → Cost management review
+    - Query performance < 1s → Infrastructure scaling
+```
+
+#### **AI Collaboration Rules**
+```yaml
+auto_triggers:
+  context_management:
+    - Context utilization > 75% → Compression activation
+    - Session duration > 2 hours → Context refresh
+    - Quality degradation detected → Optimization workflow
+    
+  security_events:
+    - Prompt injection detected → Security review
+    - Sensitive data in prompt → Immediate sanitization
+    - Attribution missing → Compliance enforcement
+```
+
+#### **AI Validation Rules**
+```yaml
+auto_triggers:
+  code_generation_validation:
+    - AI code submitted → Multi-layer validation
+    - Security vulnerability detected → Immediate block
+    - Comprehension gap identified → Documentation requirement
+    
+  quality_assurance:
+    - Test coverage < 90% AI code → Enhanced testing
+    - Review tier violation → Escalation workflow
+    - Pattern recognition failure → Process improvement
+```
+
+#### **Context Preservation Rules**
+```yaml
+auto_triggers:
+  memory_management:
+    - Context window > 80% → Compression strategies
+    - Performance degradation → Optimization activation
+    - Context corruption detected → Recovery procedures
+    
+  efficiency_optimization:
+    - RAG retrieval latency > 100ms → Performance tuning
+    - Memory utilization excessive → Resource optimization
+    - Quality metrics decline → Pattern refinement
+```
+
+#### **Error Handling Rules**
+```yaml
+auto_triggers:
+  error_detection:
+    - AI service interruption → Fallback activation
+    - Context overflow → Emergency compression
+    - Security audit event missing → Logging enhancement
+    
+  incident_response:
+    - Critical error rate > 1% → Escalation procedure
+    - Recovery time > SLA → Process improvement
+    - Pattern recurrence → Prevention strategy activation
+```
+
 ## Rule Customization and Configuration
 
 ### Project-Specific Adaptations
@@ -349,6 +449,34 @@ python_adaptations:
     - Bandit security scanning
     - pip-audit integration
     - SQL injection prevention
+```
+
+## Rule Categories Summary
+
+### Traditional Development Rules
+- **Documentation Quality**: Project documentation and knowledge management
+- **Security Compliance**: OWASP standards, authentication, data protection
+- **Code Quality Standards**: Complexity management, style, maintainability
+- **Testing Requirements**: Coverage standards, TDD/BDD enforcement
+
+### AI-Enhanced Development Rules
+- **Logging and Observability**: OpenTelemetry integration, structured logging, PII protection
+- **AI-Human Collaboration**: Context engineering, session management, prompt security
+- **AI Code Validation**: Multi-layer validation, security scanning, review processes
+- **Context Preservation**: Memory management, RAG patterns, compression strategies
+- **Error Handling**: AI-specific errors, audit trails, recovery patterns
+
+### Rule Integration Matrix
+```yaml
+rule_coverage:
+  traditional_development: "4_rule_domains"
+  ai_enhanced_development: "5_rule_domains"
+  total_coverage: "9_comprehensive_domains"
+  
+  enforcement_levels: "critical|high|medium|low"
+  auto_activation: "context_aware_triggering"
+  technology_adaptation: "framework_specific_implementations"
+  maturity_scaling: "startup|growth|mature_phases"
 ```
 
 ## Rule Monitoring and Analytics
