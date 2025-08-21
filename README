@@ -74,7 +74,12 @@ project-root/
 │   ├── utils/                # Utility functions and helpers
 │   ├── config/               # Configuration files
 │   └── tests/                # Test files (or __tests__ directories alongside code)
-├── scripts/                  # Build, deployment, and utility scripts
+├── scripts/                  # Professional build, deployment, and utility scripts
+│   ├── lib/                  # Shared utilities (colors.sh, logging.sh)
+│   ├── ai-status.sh          # AI-friendly project status dashboard
+│   ├── docs-health.js        # Documentation health monitoring
+│   ├── setup-manager.sh      # Unified project setup
+│   └── docs-manager.sh       # Documentation operations
 ├── templates/                # Documentation templates
 ├── config/                   # Project configuration files
 └── examples/                 # Usage examples and sample code
@@ -125,14 +130,39 @@ Using AI-generated code has legal and ethical implications. See [legal.md](./leg
 
 This template includes several automation tools to help maintain quality:
 
-### Documentation Tools
+### Professional Script Infrastructure
 
-- **Health Check**: `node scripts/docs-health.js` - Analyze documentation quality and completeness
-- **Link Validation**: `node scripts/check-docs-links.js` - Validate all internal and external links
-- **Template Generator**: `node scripts/generate-doc.js` - Create new documentation from templates
-- **Change Tracking**: `node scripts/docs-changelog.js` - Track documentation changes over time
+The template includes a professional script infrastructure adapted from production systems:
 
-See [visual-guide.md](./docs/visual-guide.md) for advanced documentation patterns.
+#### Shared Utilities
+- **colors.sh**: Standardized color output with emoji support and fallback ASCII
+- **logging.sh**: Professional logging with levels, spinners, and progress bars
+
+#### AI-Friendly Tools
+- **AI Status Dashboard**: `./scripts/ai-status.sh` - Multi-format project status for AI context recovery
+- **Documentation Health**: `node scripts/docs-health.js` - Comprehensive docs quality analysis
+- **Setup Manager**: `./scripts/setup-manager.sh` - Unified project setup with quick/full modes
+- **Docs Manager**: `./scripts/docs-manager.sh` - Centralized documentation operations
+
+#### Usage Examples
+```bash
+# Quick project status for AI
+./scripts/ai-status.sh --ai-format
+
+# Complete project setup
+./scripts/setup-manager.sh full --verbose
+
+# Check documentation health
+node scripts/docs-health.js
+
+# Initialize docs structure
+./scripts/docs-manager.sh init
+
+# Validate docs before commit
+./scripts/docs-manager.sh validate
+```
+
+See [script-architecture.md](./docs/script-architecture.md) for implementation details.
 
 ### Additional Tools
 

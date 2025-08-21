@@ -1,32 +1,24 @@
 #!/usr/bin/env node
 
 /**
- * Documentation Health Dashboard
+ * Documentation Health Dashboard for AI Coding Template
+ * Analyzes documentation quality, coverage, and maintenance status
+ * Run from project root: node scripts/docs-health.js
  * 
- * Analyzes documentation quality, freshness, and completeness
- * Generates detailed health report with actionable recommendations
- * 
- * Usage: node scripts/docs-health.js [options]
- * Options:
- *   --format json|markdown  Output format (default: markdown)
- *   --output FILE          Write to file (default: stdout)
- *   --quiet                Minimal output
+ * Features:
+ * - Scans all documentation files in /docs/
+ * - Calculates metrics: files, lines, code blocks, links
+ * - Checks file freshness using git history
+ * - Identifies TODOs and maintenance needs
+ * - Generates visual progress reports
+ * - Outputs both console summary and markdown report
  */
 
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-// Configuration
-const CONFIG = {
-  docsDir: 'docs',
-  excludeDirs: ['node_modules', '.git', '.next', 'dist', 'build'],
-  fileExtensions: ['.md', '.mdx'],
-  maxAge: 60, // days
-  minScore: 80, // target health score
-};
-
-// Colors for console output
+// Colors for output
 const colors = {
   reset: '\x1b[0m',
   red: '\x1b[31m',
@@ -39,361 +31,428 @@ const colors = {
 };
 
 function log(message, color = colors.reset) {
-  if (!process.argv.includes('--quiet')) {
-    console.log(`${color}${message}${colors.reset}`);
-  }
+  console.log(`${color}${message}${colors.reset}`);
 }
 
-function parseArgs() {
-  const args = process.argv.slice(2);
-  const options = {
-    format: 'markdown',
-    output: null,
-    quiet: false
-  };
-
-  for (let i = 0; i < args.length; i++) {
-    switch (args[i]) {
-      case '--format':
-        options.format = args[++i] || 'markdown';
-        break;
-      case '--output':
-        options.output = args[++i];
-        break;
-      case '--quiet':
-        options.quiet = true;
-        break;
-    }
-  }
-
-  return options;
-}
-
-function findDocFiles(dir = '.') {
-  const files = [];
-  
-  function traverse(currentDir) {
-    if (CONFIG.excludeDirs.some(excluded => currentDir.includes(excluded))) {
-      return;
-    }
-
-    try {
-      const entries = fs.readdirSync(currentDir, { withFileTypes: true });
-      
-      for (const entry of entries) {
-        const fullPath = path.join(currentDir, entry.name);
-        
-        if (entry.isDirectory()) {
-          traverse(fullPath);
-        } else if (CONFIG.fileExtensions.some(ext => entry.name.endsWith(ext))) {
-          files.push(fullPath);
-        }
-      }
-    } catch (error) {
-      // Skip directories we can't read
-    }
-  }
-  
-  traverse(dir);
-  return files;
-}
-
-function analyzeFile(filePath) {
-  const content = fs.readFileSync(filePath, 'utf8');
-  const stats = fs.statSync(filePath);
-  const lines = content.split('\n');
-  
-  // Check for metadata headers
-  const hasCreatedDate = /\*\*Created\*\*:\s*\d{4}-\d{2}-\d{2}/.test(content);
-  const hasLastEdited = /\*\*Last (?:Updated|Edited)\*\*:\s*\d{4}-\d{2}-\d{2}/.test(content);
-  const hasTargetAudience = /\*\*Target Audience\*\*:/.test(content);
-  const hasStatus = /\*\*Status\*\*:/.test(content);
-  
-  // Count different elements
-  const headingCount = (content.match(/^#+\s/gm) || []).length;
-  const codeBlockCount = (content.match(/```/g) || []).length / 2;
-  const linkCount = (content.match(/\[.*?\]\(.*?\)/g) || []).length;
-  const todoCount = (content.match(/TODO|FIXME|XXX/g) || []).length;
-  const exampleCount = (content.match(/###?\s+Example|```\w+/g) || []).length;
-  
-  // Check freshness
-  const lastModified = stats.mtime;
-  const daysSinceModified = Math.floor((Date.now() - lastModified.getTime()) / (1000 * 60 * 60 * 24));
-  const isStale = daysSinceModified > CONFIG.maxAge;
-  
-  // Calculate scores
-  const metadataScore = [hasCreatedDate, hasLastEdited, hasTargetAudience, hasStatus].filter(Boolean).length * 25;
-  const contentScore = Math.min(100, (headingCount * 10) + (codeBlockCount * 5) + (exampleCount * 15));
-  const freshnessScore = isStale ? 0 : Math.max(0, 100 - (daysSinceModified * 2));
-  const overallScore = Math.round((metadataScore + contentScore + freshnessScore) / 3);
-  
-  return {
-    path: filePath,
-    size: stats.size,
-    lines: lines.length,
-    lastModified,
-    daysSinceModified,
-    isStale,
-    metadata: {
-      hasCreatedDate,
-      hasLastEdited,
-      hasTargetAudience,
-      hasStatus,
-      score: metadataScore
-    },
-    content: {
-      headings: headingCount,
-      codeBlocks: codeBlockCount,
-      links: linkCount,
-      examples: exampleCount,
-      todos: todoCount,
-      score: contentScore
-    },
-    scores: {
-      metadata: metadataScore,
-      content: contentScore,
-      freshness: freshnessScore,
-      overall: overallScore
-    }
-  };
-}
-
-function generateProgressBar(percentage, width = 20) {
+function generateProgressBar(percentage, width = 10) {
   const filled = Math.round((percentage / 100) * width);
   const empty = width - filled;
-  return '[' + '█'.repeat(filled) + '░'.repeat(empty) + ']';
+  const bar = '█'.repeat(filled) + '░'.repeat(empty);
+  return `[${bar}] ${percentage}%`;
 }
 
-function analyzeDocumentation() {
-  log('🔍 Scanning documentation files...', colors.blue);
+function findMarkdownFiles(dir) {
+  const results = [];
   
-  const files = findDocFiles();
-  const analysis = files.map(analyzeFile);
+  try {
+    const files = fs.readdirSync(dir, { withFileTypes: true });
+    
+    for (const file of files) {
+      const fullPath = path.join(dir, file.name);
+      
+      if (file.isDirectory() && !file.name.startsWith('.') && !file.name.includes('node_modules')) {
+        results.push(...findMarkdownFiles(fullPath));
+      } else if (file.isFile() && file.name.endsWith('.md')) {
+        results.push(fullPath);
+      }
+    }
+  } catch (err) {
+    // Directory might not exist
+  }
   
-  // Calculate summary statistics
-  const totalFiles = analysis.length;
-  const totalLines = analysis.reduce((sum, file) => sum + file.lines, 0);
-  const totalSize = analysis.reduce((sum, file) => sum + file.size, 0);
-  const averageScore = Math.round(analysis.reduce((sum, file) => sum + file.scores.overall, 0) / totalFiles);
-  
-  const staleFiles = analysis.filter(file => file.isStale);
-  const missingMetadata = analysis.filter(file => file.metadata.score < 100);
-  const lowContentScore = analysis.filter(file => file.content.score < 50);
-  const highTodoCount = analysis.filter(file => file.content.todos > 5);
-  
-  const healthMetrics = {
-    totalFiles,
-    totalLines,
-    totalSize: Math.round(totalSize / 1024), // KB
-    averageScore,
-    staleFiles: staleFiles.length,
-    missingMetadata: missingMetadata.length,
-    lowContent: lowContentScore.length,
-    highTodos: highTodoCount.length,
-    healthGrade: averageScore >= 90 ? 'A' : averageScore >= 80 ? 'B' : averageScore >= 70 ? 'C' : averageScore >= 60 ? 'D' : 'F'
+  return results;
+}
+
+function analyzeMarkdownFile(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const lines = content.split('\n');
+    
+    // Count various elements
+    const codeBlocks = content.match(/```[\s\S]*?```/g) || [];
+    const internalLinks = content.match(/\[([^\]]+)\]\(\.\/[^)]+\)/g) || [];
+    const externalLinks = content.match(/\[([^\]]+)\]\(https?:\/\/[^)]+\)/g) || [];
+    const todos = content.match(/- \[ \]/g) || [];
+    const completed = content.match(/- \[x\]/g) || [];
+    const fixmes = content.match(/FIXME|TODO:|NOTE:/gi) || [];
+    const headers = content.match(/^#+\s/gm) || [];
+    
+    // Get file modification date
+    let lastModified = null;
+    try {
+      const gitCmd = `git log -1 --format="%cd" --date=short -- "${filePath}"`;
+      lastModified = execSync(gitCmd, { encoding: 'utf-8', cwd: path.dirname(filePath) }).trim();
+    } catch (err) {
+      // File might not be in git
+      const stats = fs.statSync(filePath);
+      lastModified = stats.mtime.toISOString().split('T')[0];
+    }
+    
+    // Calculate days since last update
+    const daysSinceUpdate = Math.floor((new Date() - new Date(lastModified)) / (1000 * 60 * 60 * 24));
+    
+    return {
+      path: filePath,
+      lines: lines.length,
+      codeBlocks: codeBlocks.length,
+      internalLinks: internalLinks.length,
+      externalLinks: externalLinks.length,
+      todos: todos.length,
+      completed: completed.length,
+      fixmes: fixmes.length,
+      headers: headers.length,
+      lastModified: lastModified,
+      daysSinceUpdate: daysSinceUpdate,
+      freshness: daysSinceUpdate <= 7 ? 'fresh' : daysSinceUpdate <= 30 ? 'moderate' : 'stale'
+    };
+  } catch (err) {
+    return {
+      path: filePath,
+      error: err.message
+    };
+  }
+}
+
+function categorizeFiles(files) {
+  const categories = {
+    root: [],
+    docs: [],
+    examples: [],
+    api: [],
+    guides: [],
+    reference: [],
+    other: []
   };
   
-  return {
-    files: analysis,
-    summary: healthMetrics,
-    recommendations: generateRecommendations(analysis, healthMetrics)
-  };
+  const projectRoot = path.dirname(__dirname);
+  
+  for (const file of files) {
+    const relativePath = path.relative(projectRoot, file.path);
+    
+    if (relativePath === 'README.md' || relativePath === 'CLAUDE.md' || !relativePath.includes('/')) {
+      categories.root.push(file);
+    } else if (relativePath.startsWith('docs/')) {
+      const subPath = relativePath.substring(5); // Remove 'docs/'
+      
+      if (subPath.startsWith('api/')) {
+        categories.api.push(file);
+      } else if (subPath.startsWith('examples/')) {
+        categories.examples.push(file);
+      } else if (subPath.startsWith('guides/')) {
+        categories.guides.push(file);
+      } else if (subPath.startsWith('reference/')) {
+        categories.reference.push(file);
+      } else {
+        categories.docs.push(file);
+      }
+    } else {
+      categories.other.push(file);
+    }
+  }
+  
+  return categories;
 }
 
-function generateRecommendations(analysis, metrics) {
-  const recommendations = [];
+function generateHealthScore(metrics) {
+  let score = 100;
   
-  if (metrics.staleFiles > 0) {
-    recommendations.push({
-      type: 'freshness',
-      priority: 'high',
-      message: `${metrics.staleFiles} files haven't been updated in ${CONFIG.maxAge}+ days`,
-      action: 'Review and update stale documentation'
-    });
-  }
+  // Deduct for staleness
+  if (metrics.daysSinceUpdate > 30) score -= 20;
+  else if (metrics.daysSinceUpdate > 7) score -= 10;
   
-  if (metrics.missingMetadata > 0) {
-    recommendations.push({
-      type: 'metadata',
-      priority: 'medium',
-      message: `${metrics.missingMetadata} files missing complete metadata headers`,
-      action: 'Add Created/Last Updated/Target Audience/Status fields'
-    });
-  }
+  // Deduct for FIXMEs/TODOs
+  if (metrics.fixmes > 3) score -= 15;
+  else if (metrics.fixmes > 0) score -= 5;
   
-  if (metrics.lowContent > 0) {
-    recommendations.push({
-      type: 'content',
-      priority: 'medium',
-      message: `${metrics.lowContent} files have low content scores`,
-      action: 'Add more examples, code blocks, and detailed explanations'
-    });
-  }
+  // Add points for content richness
+  if (metrics.codeBlocks > 0) score += 5;
+  if (metrics.headers >= 3) score += 5;
+  if (metrics.externalLinks > 0) score += 3;
   
-  if (metrics.averageScore < CONFIG.minScore) {
-    recommendations.push({
-      type: 'overall',
-      priority: 'high',
-      message: `Overall documentation health score (${metrics.averageScore}) below target (${CONFIG.minScore})`,
-      action: 'Focus on top recommendations to improve overall quality'
-    });
-  }
+  // Deduct for too many TODOs vs completed
+  const todoRatio = metrics.todos / (metrics.completed + metrics.todos);
+  if (todoRatio > 0.5) score -= 10;
   
-  return recommendations;
+  // Deduct for very short files
+  if (metrics.lines < 10) score -= 15;
+  
+  return Math.max(0, Math.min(100, score));
 }
 
-function formatMarkdownReport(data) {
-  const { files, summary, recommendations } = data;
+function generateMarkdownReport(categories, summary) {
+  const today = new Date().toISOString().split('T')[0];
+  const projectRoot = path.dirname(__dirname);
   
   let report = `# Documentation Health Dashboard
 
-**Generated**: ${new Date().toISOString().split('T')[0]}
-**Files Analyzed**: ${summary.totalFiles}
-**Overall Health**: ${generateProgressBar(summary.averageScore)} ${summary.averageScore}% (Grade ${summary.healthGrade})
+**Generated**: ${today}  
+**Script**: \`scripts/docs-health.js\`  
 
-## Summary Statistics
+## Executive Summary
 
-| Metric | Value | Status |
-|--------|-------|--------|
-| Total Files | ${summary.totalFiles} | ℹ️ |
-| Total Lines | ${summary.totalLines.toLocaleString()} | ℹ️ |
-| Total Size | ${summary.totalSize} KB | ℹ️ |
-| Average Score | ${summary.averageScore}% | ${summary.averageScore >= 80 ? '✅' : summary.averageScore >= 60 ? '⚠️' : '❌'} |
-| Stale Files | ${summary.staleFiles} | ${summary.staleFiles === 0 ? '✅' : '⚠️'} |
-| Missing Metadata | ${summary.missingMetadata} | ${summary.missingMetadata === 0 ? '✅' : '⚠️'} |
-| Low Content Score | ${summary.lowContent} | ${summary.lowContent === 0 ? '✅' : '⚠️'} |
-
-## Health Breakdown
-
-### Metadata Compliance
+### Overall Health Score
 \`\`\`
-Complete Metadata    ${generateProgressBar((summary.totalFiles - summary.missingMetadata) / summary.totalFiles * 100)} ${Math.round((summary.totalFiles - summary.missingMetadata) / summary.totalFiles * 100)}%
+${generateProgressBar(summary.overallScore)} ${summary.overallScore}/100
 \`\`\`
 
-### Content Quality
-\`\`\`
-High Content Score   ${generateProgressBar((summary.totalFiles - summary.lowContent) / summary.totalFiles * 100)} ${Math.round((summary.totalFiles - summary.lowContent) / summary.totalFiles * 100)}%
-\`\`\`
+### Key Metrics
+- **Total Files**: ${summary.totalFiles} documentation files
+- **Total Lines**: ${summary.totalLines.toLocaleString()} lines
+- **Code Examples**: ${summary.totalCodeBlocks} code blocks
+- **Maintenance**: ${summary.totalTodos} TODOs, ${summary.totalFixmes} FIXMEs
+- **Freshness**: ${summary.freshFiles} fresh, ${summary.moderateFiles} moderate, ${summary.staleFiles} stale
 
-### Freshness
-\`\`\`
-Recently Updated     ${generateProgressBar((summary.totalFiles - summary.staleFiles) / summary.totalFiles * 100)} ${Math.round((summary.totalFiles - summary.staleFiles) / summary.totalFiles * 100)}%
-\`\`\`
+## File Health Breakdown
 
+| Category | Files | Health Score | Last Updated |
+|----------|-------|--------------|--------------|
 `;
 
-  if (recommendations.length > 0) {
-    report += `## Recommendations
-
-`;
+  for (const [category, files] of Object.entries(categories)) {
+    if (files.length === 0) continue;
     
-    recommendations.forEach((rec, index) => {
-      const priority = rec.priority === 'high' ? '🚨' : rec.priority === 'medium' ? '⚠️' : 'ℹ️';
-      report += `### ${priority} ${rec.type.charAt(0).toUpperCase() + rec.type.slice(1)}
-
-**Issue**: ${rec.message}
-**Action**: ${rec.action}
-
-`;
-    });
-  }
-
-  // Top issues
-  const topIssues = files
-    .filter(f => f.scores.overall < 70)
-    .sort((a, b) => a.scores.overall - b.scores.overall)
-    .slice(0, 10);
-
-  if (topIssues.length > 0) {
-    report += `## Files Needing Attention
-
-| File | Score | Issues |
-|------|-------|---------|
-`;
+    const categoryMetrics = files.map(f => f.analysis).filter(a => !a.error);
+    const avgScore = categoryMetrics.length > 0 
+      ? Math.round(categoryMetrics.reduce((sum, m) => sum + generateHealthScore(m), 0) / categoryMetrics.length)
+      : 0;
     
-    topIssues.forEach(file => {
-      const issues = [];
-      if (file.metadata.score < 100) issues.push('Missing metadata');
-      if (file.content.score < 50) issues.push('Low content');
-      if (file.isStale) issues.push('Stale');
-      if (file.content.todos > 0) issues.push(`${file.content.todos} TODOs`);
-      
-      report += `| ${file.path} | ${file.scores.overall}% | ${issues.join(', ') || 'General quality'} |\n`;
-    });
+    const mostRecent = categoryMetrics.length > 0 
+      ? categoryMetrics.sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified))[0].lastModified
+      : 'Unknown';
+    
+    report += `| ${category} | ${files.length} | ${generateProgressBar(avgScore, 5)} ${avgScore}/100 | ${mostRecent} |\n`;
   }
-
-  report += `\n## File Details
-
-<details>
-<summary>Complete File Analysis (${files.length} files)</summary>
-
-| File | Score | Lines | Age (days) | Metadata | Content | Freshness |
-|------|-------|-------|------------|----------|---------|-----------|
-`;
-
-  files.sort((a, b) => b.scores.overall - a.scores.overall).forEach(file => {
-    report += `| ${file.path} | ${file.scores.overall}% | ${file.lines} | ${file.daysSinceModified} | ${file.scores.metadata}% | ${file.scores.content}% | ${file.scores.freshness}% |\n`;
-  });
 
   report += `
-</details>
 
----
-*Generated by Documentation Health Dashboard*
+## Recommendations
+
+### Immediate Actions Required
+`;
+
+  const staleFiles = Object.values(categories).flat()
+    .filter(f => f.analysis && !f.analysis.error && f.analysis.daysSinceUpdate > 30);
+  
+  if (staleFiles.length > 0) {
+    report += `- 🚨 **${staleFiles.length} stale files** need review (>30 days old)\n`;
+  }
+
+  const fixmeFiles = Object.values(categories).flat()
+    .filter(f => f.analysis && !f.analysis.error && f.analysis.fixmes > 0);
+  
+  if (fixmeFiles.length > 0) {
+    report += `- ⚠️ **${fixmeFiles.length} files** contain FIXMEs/TODOs needing attention\n`;
+  }
+
+  if (staleFiles.length === 0 && fixmeFiles.length === 0) {
+    report += `- ✅ **No immediate actions required** - documentation is in good health\n`;
+  }
+
+  report += `
+
+### Quality Improvements
+- Add code examples to ${summary.totalFiles - summary.totalCodeBlocks} files without code blocks
+- Convert ${summary.totalTodos} open TODOs to completed tasks or remove if obsolete
+- Update ${staleFiles.length} stale documentation files
+
+## Detailed File Analysis
+
+`;
+
+  // Add per-file details
+  for (const [category, files] of Object.entries(categories)) {
+    if (files.length === 0) continue;
+    
+    report += `### ${category.charAt(0).toUpperCase() + category.slice(1)} Files\n\n`;
+    
+    for (const file of files) {
+      if (file.analysis && !file.analysis.error) {
+        const relativePath = path.relative(projectRoot, file.path);
+        const score = generateHealthScore(file.analysis);
+        const scoreBar = generateProgressBar(score, 5);
+        
+        report += `#### ${relativePath}
+- **Health**: ${scoreBar} ${score}/100
+- **Size**: ${file.analysis.lines} lines, ${file.analysis.headers} headers
+- **Elements**: ${file.analysis.codeBlocks} code blocks
+- **Links**: ${file.analysis.internalLinks} internal, ${file.analysis.externalLinks} external
+- **Tasks**: ${file.analysis.completed} completed, ${file.analysis.todos} pending
+- **Last Updated**: ${file.analysis.lastModified} (${file.analysis.daysSinceUpdate} days ago)
+- **Freshness**: ${file.analysis.freshness}
+
+`;
+      }
+    }
+  }
+
+  report += `---
+*Generated by \`scripts/docs-health.js\` on ${today}*
 `;
 
   return report;
 }
 
-function formatJsonReport(data) {
-  return JSON.stringify({
-    timestamp: new Date().toISOString(),
-    ...data
-  }, null, 2);
-}
-
+// Main execution
 function main() {
-  const options = parseArgs();
+  log('\n📊 Documentation Health Dashboard', colors.bright + colors.cyan);
+  log('=====================================\n', colors.cyan);
+
+  const projectRoot = path.dirname(__dirname);
+  const docsDir = path.join(projectRoot, 'docs');
   
-  try {
-    log('📊 Documentation Health Dashboard', colors.bright);
-    log('================================', colors.bright);
-    
-    const analysisData = analyzeDocumentation();
-    
-    // Format report
-    let report;
-    if (options.format === 'json') {
-      report = formatJsonReport(analysisData);
-    } else {
-      report = formatMarkdownReport(analysisData);
-    }
-    
-    // Output report
-    if (options.output) {
-      fs.writeFileSync(options.output, report);
-      log(`📄 Report written to ${options.output}`, colors.green);
-    } else {
-      console.log(report);
-    }
-    
-    // Log summary to stderr so it doesn't interfere with output
-    if (!options.quiet) {
-      console.error(`\n${colors.green}✅ Analysis complete: ${analysisData.summary.totalFiles} files, ${analysisData.summary.averageScore}% average score${colors.reset}`);
-      
-      if (analysisData.recommendations.length > 0) {
-        console.error(`${colors.yellow}⚠️  ${analysisData.recommendations.length} recommendations for improvement${colors.reset}`);
-      }
-    }
-    
-  } catch (error) {
-    console.error(`${colors.red}❌ Error: ${error.message}${colors.reset}`);
+  log('🔍 Scanning documentation files...', colors.yellow);
+  
+  // Find markdown files in docs directory and project root
+  const markdownFiles = [
+    ...findMarkdownFiles(docsDir),
+    ...findMarkdownFiles(projectRoot).filter(file => {
+      const relativePath = path.relative(projectRoot, file);
+      return !relativePath.includes('/') || relativePath.startsWith('docs/');
+    })
+  ];
+  
+  log(`Found ${markdownFiles.length} markdown files\n`, colors.green);
+
+  if (markdownFiles.length === 0) {
+    log('❌ No documentation files found!', colors.red);
+    log('   Create some .md files in your project and docs/ directory.', colors.yellow);
     process.exit(1);
   }
+
+  log('📈 Analyzing file contents...', colors.yellow);
+  
+  const analyzedFiles = markdownFiles.map(file => ({
+    path: file,
+    analysis: analyzeMarkdownFile(file)
+  }));
+
+  const categories = categorizeFiles(analyzedFiles);
+
+  // Calculate summary metrics
+  const validAnalyses = analyzedFiles
+    .map(f => f.analysis)
+    .filter(a => !a.error);
+
+  const summary = {
+    totalFiles: markdownFiles.length,
+    validFiles: validAnalyses.length,
+    totalLines: validAnalyses.reduce((sum, a) => sum + a.lines, 0),
+    totalCodeBlocks: validAnalyses.reduce((sum, a) => sum + a.codeBlocks, 0),
+    totalInternalLinks: validAnalyses.reduce((sum, a) => sum + a.internalLinks, 0),
+    totalExternalLinks: validAnalyses.reduce((sum, a) => sum + a.externalLinks, 0),
+    totalTodos: validAnalyses.reduce((sum, a) => sum + a.todos, 0),
+    totalCompleted: validAnalyses.reduce((sum, a) => sum + a.completed, 0),
+    totalFixmes: validAnalyses.reduce((sum, a) => sum + a.fixmes, 0),
+    freshFiles: validAnalyses.filter(a => a.daysSinceUpdate <= 7).length,
+    moderateFiles: validAnalyses.filter(a => a.daysSinceUpdate > 7 && a.daysSinceUpdate <= 30).length,
+    staleFiles: validAnalyses.filter(a => a.daysSinceUpdate > 30).length
+  };
+
+  // Calculate overall health score
+  const avgHealthScore = validAnalyses.length > 0 
+    ? Math.round(validAnalyses.reduce((sum, a) => sum + generateHealthScore(a), 0) / validAnalyses.length)
+    : 0;
+  summary.overallScore = avgHealthScore;
+
+  // Display console summary
+  log('📊 Documentation Metrics:', colors.blue);
+  log(`  Total Files:       ${summary.totalFiles}`);
+  log(`  Total Lines:       ${summary.totalLines.toLocaleString()}`);
+  log(`  Code Examples:     ${summary.totalCodeBlocks}`);
+  log(`  Internal Links:    ${summary.totalInternalLinks}`);
+  log(`  External Links:    ${summary.totalExternalLinks}`);
+
+  log('\n📋 Maintenance Status:', colors.magenta);
+  log(`  TODOs:             ${summary.totalTodos}`);
+  log(`  Completed Items:   ${summary.totalCompleted}`);
+  log(`  FIXMEs/NOTEs:      ${summary.totalFixmes}`);
+
+  log('\n🕒 Freshness Analysis:', colors.yellow);
+  log(`  Fresh (≤7 days):   ${summary.freshFiles} files`);
+  log(`  Moderate (≤30):    ${summary.moderateFiles} files`);
+  log(`  Stale (>30 days):  ${summary.staleFiles} files`);
+
+  log('\n🎯 Overall Health Score:', colors.bright + colors.green);
+  log(`  ${generateProgressBar(summary.overallScore)} ${summary.overallScore}/100`);
+
+  // Category breakdown
+  log('\n📁 Category Breakdown:', colors.cyan);
+  for (const [category, files] of Object.entries(categories)) {
+    if (files.length === 0) continue;
+    
+    const categoryMetrics = files.map(f => f.analysis).filter(a => !a.error);
+    const avgScore = categoryMetrics.length > 0 
+      ? Math.round(categoryMetrics.reduce((sum, m) => sum + generateHealthScore(m), 0) / categoryMetrics.length)
+      : 0;
+    
+    const scoreColor = avgScore >= 80 ? colors.green : avgScore >= 60 ? colors.yellow : colors.red;
+    log(`  ${category.padEnd(12)} ${files.length.toString().padStart(2)} files  ${generateProgressBar(avgScore, 5)} ${avgScore}/100`, scoreColor);
+  }
+
+  // Identify issues
+  log('\n⚠️  Issues Requiring Attention:', colors.red);
+  
+  const staleFilesList = validAnalyses.filter(a => a.daysSinceUpdate > 30);
+  if (staleFilesList.length > 0) {
+    log(`\n  🚨 Stale Files (${staleFilesList.length}):`);
+    staleFilesList.slice(0, 5).forEach(a => {
+      const relativePath = path.relative(projectRoot, a.path);
+      log(`     - ${relativePath} (${a.daysSinceUpdate} days old)`);
+    });
+    if (staleFilesList.length > 5) {
+      log(`     ... and ${staleFilesList.length - 5} more`);
+    }
+  }
+
+  const fixmeFilesList = validAnalyses.filter(a => a.fixmes > 0);
+  if (fixmeFilesList.length > 0) {
+    log(`\n  📝 Files with FIXMEs/TODOs (${fixmeFilesList.length}):`);
+    fixmeFilesList.slice(0, 5).forEach(a => {
+      const relativePath = path.relative(projectRoot, a.path);
+      log(`     - ${relativePath} (${a.fixmes} items)`);
+    });
+    if (fixmeFilesList.length > 5) {
+      log(`     ... and ${fixmeFilesList.length - 5} more`);
+    }
+  }
+
+  if (staleFilesList.length === 0 && fixmeFilesList.length === 0) {
+    log('\n  ✅ No issues found - documentation is healthy!', colors.green);
+  }
+
+  // Generate markdown report
+  log('\n📄 Generating detailed report...', colors.yellow);
+  
+  const reportsDir = path.join(projectRoot, 'docs', 'reports');
+  if (!fs.existsSync(reportsDir)) {
+    fs.mkdirSync(reportsDir, { recursive: true });
+  }
+
+  const reportPath = path.join(reportsDir, 'documentation-health.md');
+  const markdownReport = generateMarkdownReport(categories, summary);
+  fs.writeFileSync(reportPath, markdownReport);
+
+  log(`✅ Report saved: ${path.relative(process.cwd(), reportPath)}`, colors.green);
+
+  // Exit with appropriate code
+  const hasIssues = summary.staleFiles > 0 || summary.totalFixmes > 5;
+  if (hasIssues) {
+    log('\n⚠️  Documentation needs attention!', colors.yellow);
+    log('   Run this script regularly to monitor health.', colors.yellow);
+  } else {
+    log('\n✨ Documentation is in excellent health!', colors.green);
+  }
+
+  log('\n📊 Dashboard complete!\n', colors.cyan);
 }
 
 if (require.main === module) {
   main();
 }
 
-module.exports = { analyzeDocumentation, generateProgressBar };
+module.exports = {
+  analyzeMarkdownFile,
+  generateProgressBar,
+  generateHealthScore,
+  findMarkdownFiles
+};
