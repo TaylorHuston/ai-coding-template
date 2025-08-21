@@ -1,11 +1,97 @@
 # AI Coding Template
 
-This repo serves as a starter template for new projects working with AI coding tools. This is based on my own experiences and will be constantly evolving based on that. Designed for working with Claude Code and VSCode, but should be easily adaptable to other tools.
+This repo serves as a starter template for new projects working with AI coding tools. This is based on my own experiences and will be constantly evolving based on that. Designed primarily for working with Claude Code and VSCode, but should be easily adaptable to other tools.
 
 ## Quick Context
 
 AI coding tools are simultaneously very powerful and very dumb. Sometimes it can feel like working with the world's dumbest toddler. A lot of that comes down to the fact that, somewhat counterintuitively, they don't have a very good memory. We tend to to think of computers of having amazing memories. Able to store terabytes of data with perfect recall. Much more than our fallable human brains ever could. But that just isn't the case when working with LLMs. LLMs have something called a "context window" that's actually fairly limited. What this means in the real world is that your tool will eventually start "forgetting" what it's already implemented. It will write duplicate code. It will write code that breaks other code. It will write code that doesn't follow your established best practices. It will forget rules and instructions that you give it. Etc. Having a good framework and established patterns can go a long way to mitigating that.
 
+## The AI-Assisted Development Lifecycle
+
+Integrating AI into your workflow is not just about generating code. It's about leveraging AI at every stage of the development process, from design to documentation.
+
+- **Design and Architecture:** Use AI to brainstorm ideas, explore architectural patterns, and generate diagrams.
+- **Code Generation:** Generate boilerplate code, functions, and even entire components.
+- **Debugging:** Paste error messages and code snippets to get explanations and suggestions for fixes.
+- **Testing:** Generate unit tests, integration tests, and end-to-end tests.
+- **Documentation:** Generate documentation for functions, classes, and APIs.
+- **Refactoring:** Improve code quality, readability, and performance.
+
 ## File Structure
 
-## General Best practices
+A well-organized file structure is crucial for providing context to AI tools. A logical structure helps the AI understand your project's architecture and locate relevant files.
+
+Here's a recommended approach:
+
+```text
+project-root/
+├── README.md                 # Project overview and setup instructions
+├── PROMPTING.md              # Best practices for prompting AI coding assistants
+├── LEGAL.md                  # Legal and ethical considerations
+├── CLAUDE.md                 # Instructions for Claude Code (or similar AI tools)
+├── .gitignore                # Standard gitignore for your tech stack
+├── docs/                     # Documentation and guides
+│   ├── ARCHITECTURE.md       # High-level system design
+│   ├── API.md                # API documentation (if applicable)
+│   └── CONTRIBUTING.md       # Development guidelines
+├── src/                      # Main source code
+│   ├── components/           # Reusable components/modules
+│   ├── utils/                # Utility functions and helpers
+│   ├── config/               # Configuration files
+│   └── tests/                # Test files (or __tests__ directories alongside code)
+├── scripts/                  # Build, deployment, and utility scripts
+├── config/                   # Project configuration files
+└── examples/                 # Usage examples and sample code
+```
+
+## Best Practices for AI-Assisted Development
+
+### 1. Prompt Engineering
+
+The quality of your prompts determines the quality of the AI's output. See [PROMPTING.md](./PROMPTING.md) for a detailed guide on how to write effective prompts.
+
+### 2. Code Quality and Review
+
+- **Treat AI Code as a Draft:** Always review and refine AI-generated code. It's a starting point, not a finished product.
+- **Scrutinize for Common Flaws:** Pay close attention to logical inconsistencies, security vulnerabilities, and missed edge cases.
+- **Focus on the "Why":** Ensure the code aligns with the project's goals and architecture.
+
+### 3. Testing and Validation
+
+- **Test Rigorously:** Write comprehensive unit, integration, and acceptance tests for all code, especially AI-generated code.
+- **Cover Edge Cases:** AI models may not always consider edge cases. It's your job to ensure they are handled correctly.
+
+### 4. Security
+
+- **Scan for Vulnerabilities:** Use static analysis security testing (SAST) tools to scan for vulnerabilities in both human- and AI-written code.
+- **Never Trust, Always Verify:** Be especially cautious with security-critical code, such as authentication and encryption. Meticulously review and test any AI-generated code in these areas.
+
+### 5. Version Control
+
+- **Atomic Commits:** Generate code for a single, focused feature at a time and commit it with a clear message.
+- **Tag AI-Assisted Commits:** Add a tag like `(AI-assisted)` to your commit messages to create a clear audit trail.
+- **Use Branches:** Isolate AI-generated features in separate branches for testing before merging.
+
+### 6. Legal and Ethical Considerations
+
+Using AI-generated code has legal and ethical implications. See [LEGAL.md](./LEGAL.md) for a guide on how to navigate these issues.
+
+## Tooling and Automation
+
+Certain tools can help you get the most out of your AI coding assistant:
+
+- **Static Analysis and Linters:** These tools help enforce coding standards and catch common errors in both human- and AI-written code.
+- **Dependency Management:** Keep your dependency files (e.g., `package.json`, `requirements.txt`) clean and up-to-date to provide the AI with accurate context.
+- **Version Control:** Use Git to track changes, experiment with AI-generated code, and collaborate with your team.
+
+## Getting Started with this Template
+
+1.  **Clone the repository**
+2.  **Choose your tech stack**
+3.  **Adapt the file structure**
+4.  **Update documentation**
+5.  **Start coding!**
+
+## Contributing
+
+This template is a living document. Contributions and suggestions are welcome! Please open an issue or submit a pull request with your ideas.

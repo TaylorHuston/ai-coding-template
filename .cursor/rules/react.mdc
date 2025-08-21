@@ -1,0 +1,187 @@
+# React Development Rules
+
+## Component Structure
+
+- Use functional components with hooks over class components
+- Keep components small and focused on a single responsibility
+- Extract custom hooks for reusable logic
+- Use TypeScript for all React components with proper prop types
+- Organize imports: external libraries first, then internal components
+
+## Component Naming
+
+- Use PascalCase for component names (e.g., `UserProfile`, `NavigationMenu`)
+- Use descriptive names that clearly indicate the component's purpose
+- Prefix custom hooks with `use` (e.g., `useUserData`, `useLocalStorage`)
+- Use camelCase for props and state variables
+
+## State Management
+
+- Use `useState` for local component state
+- Use `useReducer` for complex state logic
+- Keep state as close to where it's used as possible
+- Lift state up only when multiple components need it
+- Use context sparingly - prefer prop drilling for 2-3 levels
+
+## Props and TypeScript
+
+```typescript
+// Define clear prop interfaces
+interface UserCardProps {
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
+  onEdit?: (userId: string) => void;
+  isLoading?: boolean;
+}
+
+// Use default parameters for optional props
+const UserCard: React.FC<UserCardProps> = ({ 
+  user, 
+  onEdit, 
+  isLoading = false 
+}) => {
+  // Component implementation
+};
+```
+
+## Event Handlers
+
+- Prefix event handler props with `on` (e.g., `onClick`, `onSubmit`)
+- Prefix event handler functions with `handle` (e.g., `handleClick`, `handleSubmit`)
+- Use arrow functions for event handlers to maintain `this` context
+- Avoid creating functions in render - define them outside or use useCallback
+
+## Effect Hooks
+
+- Use `useEffect` for side effects only
+- Include all dependencies in the dependency array
+- Clean up subscriptions and timeouts in the effect return function
+- Separate concerns - use multiple useEffect hooks for different purposes
+- Use custom hooks to share effect logic between components
+
+## Conditional Rendering
+
+```typescript
+// Prefer explicit conditions over ternary for complex logic
+if (isLoading) {
+  return <LoadingSpinner />;
+}
+
+if (error) {
+  return <ErrorMessage error={error} />;
+}
+
+// Use logical AND for simple conditional rendering
+return (
+  <div>
+    {user && <UserProfile user={user} />}
+    {notifications.length > 0 && (
+      <NotificationList notifications={notifications} />
+    )}
+  </div>
+);
+```
+
+## Styling Approaches
+
+- Use CSS modules or styled-components for component-scoped styles
+- Keep inline styles to a minimum - use for dynamic values only
+- Use semantic class names that describe purpose, not appearance
+- Consider using CSS-in-JS libraries for theme support
+- Make components responsive by default
+
+## Performance Optimization
+
+- Use `React.memo` for components that render frequently with same props
+- Use `useMemo` for expensive calculations
+- Use `useCallback` for event handlers passed to child components
+- Avoid creating objects and arrays in render
+- Use lazy loading for routes and heavy components
+
+## Error Handling
+
+```typescript
+// Use error boundaries for component tree error handling
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Component error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <ErrorFallback />;
+    }
+    return this.props.children;
+  }
+}
+
+// Handle async errors in components
+const DataComponent = () => {
+  const [error, setError] = useState<string | null>(null);
+  
+  const fetchData = async () => {
+    try {
+      const data = await api.getData();
+      // Handle success
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+    }
+  };
+  
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
+  
+  // Rest of component
+};
+```
+
+## Testing
+
+- Write unit tests for components with complex logic
+- Use React Testing Library over Enzyme
+- Test user interactions, not implementation details
+- Mock external dependencies and API calls
+- Use data-testid for elements that need testing selectors
+
+## Accessibility
+
+- Use semantic HTML elements (button, nav, main, etc.)
+- Add proper ARIA labels and roles where needed
+- Ensure keyboard navigation works properly
+- Use sufficient color contrast
+- Include alt text for images
+- Make forms accessible with proper labels
+
+## File Organization
+
+```
+src/
+├── components/
+│   ├── common/          # Reusable UI components
+│   │   ├── Button/
+│   │   ├── Modal/
+│   │   └── Input/
+│   └── features/        # Feature-specific components
+│       ├── UserManagement/
+│       └── Dashboard/
+├── hooks/              # Custom hooks
+├── services/           # API calls and external services
+├── utils/             # Helper functions
+├── types/             # TypeScript type definitions
+└── __tests__/         # Test files
+```
+
+Follow these patterns to create maintainable, performant React applications that are easy for both humans and AI assistants to understand and extend.

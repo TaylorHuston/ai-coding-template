@@ -1,0 +1,360 @@
+# Python Development Rules
+
+## Code Style and Formatting
+
+- Follow PEP 8 guidelines for Python code style
+- Use Black for automatic code formatting
+- Use isort for import organization
+- Line length: 88 characters (Black's default)
+- Use double quotes for strings unless single quotes avoid escaping
+
+## Type Annotations
+
+```python
+from typing import Dict, List, Optional, Union, Any
+from datetime import datetime
+
+# Always use type hints for function parameters and return values
+def process_user_data(
+    user_id: str,
+    data: Dict[str, Any],
+    options: Optional[List[str]] = None
+) -> Dict[str, Union[str, int, bool]]:
+    """Process user data and return formatted result."""
+    # Implementation here
+    pass
+
+# Use type hints for class attributes
+class User:
+    def __init__(self, name: str, email: str, age: int) -> None:
+        self.name: str = name
+        self.email: str = email
+        self.age: int = age
+        self.created_at: datetime = datetime.now()
+```
+
+## Function and Class Design
+
+- Keep functions small and focused on a single task
+- Use descriptive function and variable names
+- Prefer composition over inheritance
+- Use dataclasses for simple data containers
+- Document complex functions with docstrings
+
+```python
+from dataclasses import dataclass
+from typing import Optional
+
+@dataclass
+class UserProfile:
+    """User profile data container."""
+    user_id: str
+    username: str
+    email: str
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    
+    @property
+    def full_name(self) -> str:
+        """Return full name or username if names not available."""
+        if self.first_name and self.last_name:
+            return f"{self.first_name} {self.last_name}"
+        return self.username
+```
+
+## Error Handling
+
+```python
+# Use specific exception types
+class ValidationError(ValueError):
+    """Raised when input validation fails."""
+    pass
+
+class UserNotFoundError(Exception):
+    """Raised when user cannot be found."""
+    pass
+
+# Handle exceptions explicitly
+def get_user_by_id(user_id: str) -> UserProfile:
+    """Get user profile by ID."""
+    if not user_id:
+        raise ValidationError("User ID is required")
+    
+    try:
+        user_data = database.fetch_user(user_id)
+    except DatabaseError as e:
+        logger.error(f"Database error while fetching user {user_id}: {e}")
+        raise
+    
+    if not user_data:
+        raise UserNotFoundError(f"User not found: {user_id}")
+    
+    return UserProfile(**user_data)
+```
+
+## Logging
+
+```python
+import logging
+
+# Use structured logging
+logger = logging.getLogger(__name__)
+
+def process_order(order_id: str) -> None:
+    """Process customer order."""
+    logger.info("Processing order", extra={"order_id": order_id})
+    
+    try:
+        # Process order logic
+        logger.info("Order processed successfully", extra={"order_id": order_id})
+    except Exception as e:
+        logger.error(
+            "Failed to process order",
+            extra={"order_id": order_id, "error": str(e)},
+            exc_info=True
+        )
+        raise
+```
+
+## Import Organization
+
+```python
+# Standard library imports first
+import os
+import sys
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+
+# Third-party imports second
+import requests
+from sqlalchemy import create_engine
+from pydantic import BaseModel
+
+# Local imports last
+from myapp.models import User, Order
+from myapp.services import email_service
+from myapp.utils import validation_utils
+```
+
+## String Formatting
+
+```python
+# Prefer f-strings for string formatting
+name = "Alice"
+age = 30
+message = f"Hello, {name}! You are {age} years old."
+
+# For complex formatting or when building strings programmatically
+template = "User {name} (ID: {user_id}) has {count} items"
+result = template.format(name=user.name, user_id=user.id, count=len(items))
+
+# For logging and when you need lazy evaluation
+logger.info("Processing user %s with %d items", user.name, len(items))
+```
+
+## List and Dictionary Operations
+
+```python
+# Use list comprehensions for simple transformations
+squared_numbers = [x**2 for x in numbers if x > 0]
+
+# Use generator expressions for memory efficiency with large datasets
+sum_of_squares = sum(x**2 for x in large_dataset if x > 0)
+
+# Use dict comprehensions for dictionary transformations
+uppercase_dict = {key.upper(): value for key, value in original_dict.items()}
+
+# Use get() with defaults for dictionary access
+user_name = user_data.get('name', 'Unknown')
+user_age = user_data.get('age', 0)
+```
+
+## Context Managers
+
+```python
+# Always use context managers for resource management
+def read_config_file(file_path: str) -> Dict[str, Any]:
+    """Read configuration from file."""
+    try:
+        with open(file_path, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        logger.warning(f"Config file not found: {file_path}")
+        return {}
+    except json.JSONDecodeError as e:
+        logger.error(f"Invalid JSON in config file {file_path}: {e}")
+        raise
+
+# Create custom context managers for resource cleanup
+from contextlib import contextmanager
+
+@contextmanager
+def database_transaction():
+    """Provide database transaction context."""
+    transaction = db.begin_transaction()
+    try:
+        yield transaction
+        transaction.commit()
+    except Exception:
+        transaction.rollback()
+        raise
+    finally:
+        transaction.close()
+```
+
+## Testing
+
+```python
+import pytest
+from unittest.mock import Mock, patch
+
+class TestUserService:
+    """Test cases for UserService."""
+    
+    @pytest.fixture
+    def user_service(self):
+        """Create UserService instance for testing."""
+        mock_db = Mock()
+        return UserService(database=mock_db)
+    
+    @pytest.fixture
+    def sample_user_data(self):
+        """Sample user data for testing."""
+        return {
+            "user_id": "123",
+            "username": "testuser",
+            "email": "test@example.com"
+        }
+    
+    def test_create_user_success(self, user_service, sample_user_data):
+        """Test successful user creation."""
+        # Arrange
+        user_service.database.save_user.return_value = "123"
+        
+        # Act
+        result = user_service.create_user(sample_user_data)
+        
+        # Assert
+        assert result == "123"
+        user_service.database.save_user.assert_called_once_with(sample_user_data)
+    
+    def test_create_user_validation_error(self, user_service):
+        """Test user creation with invalid data."""
+        # Arrange
+        invalid_data = {"username": ""}
+        
+        # Act & Assert
+        with pytest.raises(ValidationError) as exc_info:
+            user_service.create_user(invalid_data)
+        
+        assert "Username is required" in str(exc_info.value)
+    
+    @patch('myapp.services.user_service.send_welcome_email')
+    def test_create_user_sends_email(self, mock_send_email, user_service, sample_user_data):
+        """Test that welcome email is sent after user creation."""
+        # Arrange
+        user_service.database.save_user.return_value = "123"
+        
+        # Act
+        user_service.create_user(sample_user_data)
+        
+        # Assert
+        mock_send_email.assert_called_once_with(sample_user_data['email'])
+```
+
+## Async Programming
+
+```python
+import asyncio
+import aiohttp
+from typing import List
+
+async def fetch_user_data(session: aiohttp.ClientSession, user_id: str) -> Dict[str, Any]:
+    """Fetch user data from external API."""
+    try:
+        async with session.get(f"/api/users/{user_id}") as response:
+            response.raise_for_status()
+            return await response.json()
+    except aiohttp.ClientError as e:
+        logger.error(f"Failed to fetch user {user_id}: {e}")
+        raise
+
+async def fetch_multiple_users(user_ids: List[str]) -> List[Dict[str, Any]]:
+    """Fetch multiple users concurrently."""
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_user_data(session, user_id) for user_id in user_ids]
+        return await asyncio.gather(*tasks, return_exceptions=True)
+```
+
+## File Organization
+
+```
+project/
+├── src/
+│   ├── myapp/
+│   │   ├── __init__.py
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   ├── user.py
+│   │   │   └── order.py
+│   │   ├── services/
+│   │   │   ├── __init__.py
+│   │   │   ├── user_service.py
+│   │   │   └── order_service.py
+│   │   ├── utils/
+│   │   │   ├── __init__.py
+│   │   │   ├── validation.py
+│   │   │   └── formatting.py
+│   │   └── config/
+│   │       ├── __init__.py
+│   │       └── settings.py
+│   └── tests/
+│       ├── unit/
+│       ├── integration/
+│       └── conftest.py
+├── requirements.txt
+├── setup.py
+└── README.md
+```
+
+## Configuration Management
+
+```python
+import os
+from dataclasses import dataclass
+from typing import Optional
+
+@dataclass
+class DatabaseConfig:
+    """Database configuration."""
+    host: str
+    port: int
+    database: str
+    username: str
+    password: str
+
+@dataclass
+class AppConfig:
+    """Application configuration."""
+    debug: bool
+    secret_key: str
+    database: DatabaseConfig
+    log_level: str = "INFO"
+
+def load_config() -> AppConfig:
+    """Load configuration from environment variables."""
+    return AppConfig(
+        debug=os.getenv("DEBUG", "false").lower() == "true",
+        secret_key=os.getenv("SECRET_KEY", "dev-secret-key"),
+        database=DatabaseConfig(
+            host=os.getenv("DB_HOST", "localhost"),
+            port=int(os.getenv("DB_PORT", "5432")),
+            database=os.getenv("DB_NAME", "myapp"),
+            username=os.getenv("DB_USER", "user"),
+            password=os.getenv("DB_PASSWORD", "password"),
+        ),
+        log_level=os.getenv("LOG_LEVEL", "INFO"),
+    )
+```
+
+Follow these patterns to write clean, maintainable Python code that is easy to test, debug, and extend.

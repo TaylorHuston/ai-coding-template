@@ -1,0 +1,96 @@
+# .cursorignore - Files and directories to exclude from Cursor's context
+
+# Dependencies and package managers
+node_modules/
+venv/
+env/
+__pycache__/
+.pip-cache/
+*.egg-info/
+vendor/
+
+# Build outputs and generated files
+dist/
+build/
+.next/
+.nuxt/
+out/
+target/
+*.min.js
+*.min.css
+*.map
+
+# Logs and temporary files
+*.log
+.tmp/
+.temp/
+.cache/
+.DS_Store
+Thumbs.db
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# Environment and secrets
+.env
+.env.local
+.env.production
+.env.test
+*.pem
+*.key
+*.crt
+
+# Editor and IDE files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing artifacts
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+test-results/
+screenshots/
+videos/
+
+# Large media files
+*.mp4
+*.avi
+*.mov
+*.pdf
+*.zip
+*.tar.gz
+*.rar
+
+# Generated documentation
+docs/_build/
+site/
+_site/
+
+# Version control
+.git/
+.svn/
+.hg/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large data files
+*.csv
+*.json.large
+data/*.json
+fixtures/large/
+
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
