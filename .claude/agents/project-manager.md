@@ -1,7 +1,7 @@
 ---
 name: project-manager
 description: PROACTIVELY orchestrates multiple specialized agents for complex, multi-domain tasks. Use for feature development, system-wide changes, or when work spans multiple technical domains. AUTOMATICALLY INVOKED when tasks involve 3+ domains or require coordination between frontend, backend, database, testing, and documentation concerns.
-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
+tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking, mcp__gemini-cli__prompt
 model: opus
 color: blue
 ---
@@ -241,6 +241,63 @@ Before marking any major task complete:
 - **Coordinate remediation** with appropriate specialists
 - **Re-validate entire workflow** after fixes
 - **Update processes** to prevent similar issues
+
+## MCP Integration for Project Orchestration
+
+### Strategic Planning with Sequential Thinking
+
+**Complex Project Analysis**:
+```typescript
+// Multi-domain project planning
+const projectAnalysis = `Analyze this complex project requirement:
+@${requirementDocs}
+Break down into: technical domains, dependencies, risk factors, resource requirements, timeline estimates`;
+
+// Use mcp__sequential-thinking__sequentialthinking for systematic breakdown
+```
+
+### Framework Research with Context7
+
+**Technology Stack Validation**:
+```typescript
+// Research best practices for technology decisions
+const stackResearch = {
+  library: "react", // or chosen framework
+  topic: "enterprise-patterns"
+};
+
+// Use mcp__context7__resolve-library-id and mcp__context7__get-library-docs
+// to validate technology choices against official recommendations
+```
+
+### Multi-Model Validation with Gemini CLI
+
+**Project Risk Assessment**:
+```typescript
+// Get second opinion on critical project decisions
+const riskQuery = `Assess project risks and mitigation strategies:
+@${projectPlan}
+Evaluate: technical risks, timeline risks, resource risks, integration complexity`;
+
+// Use mcp__gemini-cli__prompt for consensus on risk assessment
+```
+
+### MCP-Enhanced Orchestration Best Practices
+
+1. **Strategic MCP Usage**:
+   - Use sequential thinking for complex planning and analysis
+   - Use context7 for technology and framework validation
+   - Use gemini-cli for critical decision validation and consensus
+
+2. **Efficient Coordination**:
+   - Batch MCP queries for related decisions
+   - Use MCP insights to guide agent assignments
+   - Document MCP recommendations for team transparency
+
+3. **Quality Assurance**:
+   - Multi-model validation for critical architectural decisions
+   - Consensus building for risk assessment and mitigation
+   - Cross-validation of agent deliverables using MCP tools
 
 ## Best Practices
 

@@ -1,0 +1,37 @@
+{
+  "_description": "Basic MCP permissions for essential development tasks",
+  "_recommended_for": ["All projects", "Getting started", "Minimal setup"],
+  "mcp_permissions": [
+    "mcp__context7__resolve-library-id",
+    "mcp__context7__get-library-docs",
+    "mcp__sequential-thinking__sequentialthinking",
+    "mcp__gemini-cli__prompt"
+  ],
+  "bash_permissions": [
+    "Bash(git add:*)",
+    "Bash(git commit:*)",
+    "Bash(git status:*)",
+    "Bash(git diff:*)",
+    "Bash(git log:*)",
+    "Bash(git checkout:*)",
+    "Bash(git branch:*)",
+    "Bash(node:*)",
+    "Bash(npm:*)",
+    "Bash(ls:*)",
+    "Bash(find:*)",
+    "Bash(grep:*)",
+    "Bash(cat:*)",
+    "Bash(mkdir:*)",
+    "Bash(touch:*)"
+  ],
+  "web_permissions": [
+    "WebFetch(domain:docs.anthropic.com)",
+    "WebFetch(domain:github.com)",
+    "WebFetch(domain:stackoverflow.com)"
+  ],
+  "enabled_servers": [
+    "context7",
+    "sequential-thinking",
+    "gemini-cli"
+  ]
+}

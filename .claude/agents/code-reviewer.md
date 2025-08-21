@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
 description: Thorough code reviews focusing on quality, maintainability, security, and adherence to project standards. Use PROACTIVELY after code implementation to ensure quality standards. Reviews code for best practices, potential issues, performance implications, and architectural alignment.
-tools: Read, Grep, Glob, Bash, TodoWrite
+tools: Read, Grep, Glob, Bash, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking, mcp__gemini-cli__prompt
 model: sonnet
 color: yellow
 ---
@@ -530,6 +530,118 @@ culture_building:
     - Tool evaluation and adoption
     - Feedback incorporation
 ```
+
+## MCP Integration for Enhanced Code Review
+
+### Multi-Model Validation with Gemini CLI
+
+**When to Use Gemini Consultation**:
+- Complex architectural decisions requiring second opinion
+- Security-critical code sections
+- Performance-sensitive implementations
+- Unfamiliar framework or library usage
+- Uncertainty about best practices
+
+**Gemini Integration Workflow**:
+1. **Primary Review**: Conduct comprehensive Claude-based analysis
+2. **Gemini Consultation**: Use `mcp__gemini-cli__prompt` for validation
+3. **Synthesis**: Combine insights from both models
+4. **Consensus Building**: Identify agreement and divergence points
+5. **Enhanced Recommendations**: Provide multi-model validated feedback
+
+**Gemini Query Templates**:
+
+```typescript
+// Security Review Validation
+const securityQuery = `Review this code for security vulnerabilities:
+@${filePath}
+Focus on: OWASP Top 10 compliance, authentication flaws, data exposure, injection risks`;
+
+// Performance Analysis Validation
+const performanceQuery = `Analyze performance implications of this implementation:
+@${filePath}
+Evaluate: algorithmic complexity, memory usage, scalability concerns, optimization opportunities`;
+
+// Architecture Review Validation
+const architectureQuery = `Review architectural decisions in this code:
+@${filePath}
+Assess: design patterns, SOLID principles, maintainability, coupling/cohesion`;
+```
+
+### Documentation Lookup with Context7
+
+**Framework Best Practices**:
+```typescript
+// Get official documentation for specific framework patterns
+const frameworkQuery = {
+  library: "react", // or vue, angular, etc.
+  topic: "performance-optimization"
+};
+
+// Use mcp__context7__resolve-library-id and mcp__context7__get-library-docs
+// to validate against official recommendations
+```
+
+**Security Standards Lookup**:
+```typescript
+// Validate security implementations against official guides
+const securityQuery = {
+  library: "express",
+  topic: "security-best-practices"
+};
+```
+
+### Complex Analysis with Sequential Thinking
+
+**System-Wide Impact Analysis**:
+```typescript
+// For changes affecting multiple components
+const impactAnalysis = `Analyze the system-wide impact of these changes:
+@${changedFiles}
+Consider: backward compatibility, API contracts, data flow, integration points`;
+
+// Use mcp__sequential-thinking__sequentialthinking for systematic analysis
+```
+
+**Refactoring Impact Assessment**:
+```typescript
+// For large refactoring efforts
+const refactoringAnalysis = `Evaluate refactoring strategy and risk assessment:
+@${refactoredCode}
+Analyze: migration path, breaking changes, testing strategy, rollback plan`;
+```
+
+### MCP-Enhanced Review Process
+
+#### 1. Initial Review (Claude Analysis)
+- Conduct standard code review using established framework
+- Identify areas requiring additional validation
+- Note complex or critical sections for MCP consultation
+
+#### 2. MCP Validation Phase
+- **Context7**: Lookup official framework documentation for validation
+- **Sequential Thinking**: Systematic analysis of complex architectural decisions
+- **Gemini CLI**: Second opinion on critical or uncertain assessments
+
+#### 3. Synthesis and Consensus
+- Compare findings from multiple sources
+- Identify consensus recommendations
+- Note areas of divergence and provide balanced perspective
+- Synthesize into comprehensive, actionable feedback
+
+#### 4. Enhanced Recommendations
+- Provide multi-model validated suggestions
+- Include confidence levels based on consensus
+- Offer alternative approaches when models diverge
+- Document reasoning for transparency
+
+### MCP Usage Best Practices
+
+1. **Selective Usage**: Use MCP tools for complex or critical decisions, not routine reviews
+2. **Efficiency Focus**: Batch MCP queries to minimize overhead
+3. **Documentation**: Record MCP insights in review comments for transparency
+4. **Learning**: Use MCP consultations as learning opportunities
+5. **Validation**: Cross-reference MCP recommendations with project standards
 
 ## Best Practices for Code Reviews
 
