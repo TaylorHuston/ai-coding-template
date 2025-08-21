@@ -1,34 +1,75 @@
 # Project Status
 
+**Created**: [Date when project status was initialized]
+**Last Updated**: [Date when you last worked on the project]
+**Status**: Active
+**Target Audience**: Development Team, AI Assistants
+
 *This file serves as the project's memory - use it to quickly restore context when AI tools hit their context limits.*
 
 ## Current Project State
 
-**Last Updated**: [Date when you last worked on the project]
-
 **Current Focus**: [What you're currently working on]
 
-**Status**: [Planning/Development/Testing/Production/Maintenance]
+**Overall Status**: [Planning/Development/Testing/Production/Maintenance]
+
+**Overall Progress**: ████████▒▒ 80% Complete
+
+### Current Initiative
+**[Initiative Name]** - [Brief description]
+- **Priority**: P0/P1/P2
+- **Target Date**: [Date]
+- **Progress**: ██████▒▒▒▒ 60% Complete
+- **Status**: On Track/At Risk/Blocked
+- **Next Milestone**: [Milestone name and date]
 
 ## Sprint/Milestone Progress
 
-### Current Sprint Goals
-- [ ] [Goal 1 - brief description]
-- [ ] [Goal 2 - brief description]  
-- [ ] [Goal 3 - brief description]
+### Active Sprint: [Sprint Name] ([Start Date] - [End Date])
 
-### Recently Completed
-- [x] [Recently completed task]
-- [x] [Another completed task]
+**Sprint Goal**: [Clear, measurable sprint goal]
+
+**Sprint Progress**: █████████▒ 90% Complete (Day 8 of 10)
+
+#### Sprint Backlog
+| Priority | Issue | Status | Progress | Assignee |
+|----------|-------|---------|----------|----------|
+| P0 | [Critical Issue] | In Progress | ██████▒▒▒▒ 60% | [Name] |
+| P1 | [High Priority] | To Do | ▒▒▒▒▒▒▒▒▒▒ 0% | [Name] |
+| P2 | [Medium Priority] | Done | ██████████ 100% | [Name] |
+
+#### Sprint Goals
+- [x] ~~[Completed goal with strikethrough]~~
+- [ ] [Goal 2 - brief description and current status]  
+- [ ] [Goal 3 - brief description and current status]
+
+### Recently Completed (Last 7 Days)
+- [x] [Recently completed task] - [Date completed]
+- [x] [Another completed task] - [Date completed]
+
+### Upcoming Milestones
+| Milestone | Target Date | Progress | Status |
+|-----------|-------------|----------|---------|
+| [Milestone 1] | [Date] | ████████▒▒ 80% | On Track |
+| [Milestone 2] | [Date] | ████▒▒▒▒▒▒ 40% | At Risk |
 
 ## Active Development Areas
 
-### In Progress
-- **[Feature/Component Name]**: [Brief status and next steps]
-- **[Another Feature]**: [Brief status and next steps]
+### In Progress (2 active)
+| Feature/Component | Progress | Priority | Owner | Next Steps |
+|-------------------|----------|----------|--------|------------|
+| [Feature Name] | ████████▒▒ 80% | P0 | [Name] | [Specific next action] |
+| [Component Name] | ███▒▒▒▒▒▒▒ 30% | P1 | [Name] | [Specific next action] |
 
-### Blocked/Waiting
-- **[Blocked Item]**: [What it's blocked on and by when it needs resolution]
+### Blocked/Waiting (1 blocked)
+| Item | Blocked On | Blocking Since | Resolution ETA | Impact |
+|------|------------|----------------|----------------|--------|
+| [Blocked Feature] | [External dependency] | [Date] | [Expected date] | High/Medium/Low |
+
+### Ready to Start (3 ready)
+- **P0**: [High priority item ready to begin] - [Brief scope]
+- **P1**: [Medium priority item] - [Brief scope]
+- **P2**: [Low priority item] - [Brief scope]
 
 ## Technical Context
 
@@ -48,15 +89,37 @@
 
 ## Known Issues and Technical Debt
 
-### Critical Issues
-- [Issue that needs immediate attention]
+### Issue Summary
+- 🚨 **Critical**: 1 issue requiring immediate attention
+- ⚠️ **High**: 2 issues to address this sprint
+- ℹ️ **Medium**: 3 issues for future sprints
+- 📊 **Technical Debt**: 4 items tracked
 
-### Technical Debt
-- [Item that should be addressed soon]
-- [Another debt item with priority level]
+### Critical Issues (P0) 🚨
+| Issue | Impact | Created | Owner | ETA |
+|-------|--------|---------|--------|-----|
+| [Critical Issue] | Production/Security/Data Loss | [Date] | [Name] | [Date] |
 
-### Performance Concerns
-- [Performance issue if any]
+### High Priority Issues (P1) ⚠️
+| Issue | Impact | Created | Owner | Target Sprint |
+|-------|--------|---------|--------|---------------|
+| [High Priority Issue] | User Experience/Performance | [Date] | [Name] | [Sprint] |
+| [Another High Issue] | Feature Blocking | [Date] | [Name] | [Sprint] |
+
+### Technical Debt Items
+| Item | Type | Effort | Priority | Target |
+|------|------|--------|----------|--------|
+| [Debt Item 1] | Code Quality | Medium | P1 | Next Sprint |
+| [Debt Item 2] | Architecture | Large | P2 | Next Quarter |
+| [Debt Item 3] | Documentation | Small | P2 | Ongoing |
+| [Debt Item 4] | Testing | Medium | P1 | Next Sprint |
+
+### Performance Metrics
+| Metric | Current | Target | Status |
+|--------|---------|--------|---------|
+| Page Load Time | [X]ms | <3000ms | ✅ Passing / ⚠️ Warning / 🚨 Failing |
+| API Response | [X]ms | <200ms | ✅ Passing / ⚠️ Warning / 🚨 Failing |
+| Bundle Size | [X]KB | <500KB | ✅ Passing / ⚠️ Warning / 🚨 Failing |
 
 ## Team Context
 
@@ -121,21 +184,52 @@ npm run build  # or appropriate build command
 - `[VAR_NAME]`: [Description of what it's for]
 - `[ANOTHER_VAR]`: [Description]
 
+## Issue Tracking Integration
+
+### Current Issue Tracking System
+**System**: [Jira/Linear/GitHub Issues/Custom]
+**Base URL**: [https://yourcompany.atlassian.net/browse/ or similar]
+
+### Active Issues by Priority
+| Priority | Issue Key | Title | Status | Assignee | Sprint |
+|----------|-----------|-------|---------|----------|---------|
+| P0 | [PROJ-123] | [Critical Issue Title] | In Progress | [Name] | [Current] |
+| P1 | [PROJ-124] | [High Priority Title] | To Do | [Name] | [Current] |
+| P2 | [PROJ-125] | [Medium Priority Title] | Done | [Name] | [Previous] |
+
+### Issue Tracking Workflow
+- **New Issues**: [Process for creating and triaging new issues]
+- **Status Updates**: [How and when to update issue status]
+- **Workbench Integration**: Issues with active workbench directories: [List any PROJ-XXX directories]
+
 ## Context for AI Assistants
 
 ### Project Patterns to Follow
-- [Key pattern or convention to maintain]
-- [Another important pattern]
+- **File Naming**: [snake_case for .md files except README and CLAUDE]
+- **Documentation**: Use metadata headers (Created, Last Updated, Status, Target Audience)
+- **Issue Tracking**: [Key pattern or convention to maintain]
+- **Code Organization**: [File structure conventions]
+- **Git Workflow**: [Branching strategy and commit conventions]
 
 ### Current Code Style
-- [Language-specific style guidelines being followed]
-- [Naming conventions]
-- [File organization pattern]
+- **Language**: [Primary language and version]
+- **Framework**: [Framework and version being used]
+- **Linting**: [ESLint, Prettier, or other linting tools]
+- **Naming Conventions**: [camelCase, kebab-case, PascalCase patterns]
+- **File Organization**: [Directory structure and module patterns]
 
 ### Testing Approach
-- [Testing framework being used]
-- [Coverage goals]
-- [Test organization pattern]
+- **Framework**: [Jest, Mocha, PyTest, etc.]
+- **Coverage Goals**: [Target percentage and types of tests]
+- **Test Organization**: [Test file locations and naming]
+- **CI/CD**: [Automated testing pipeline status]
+
+### AI Assistant Guidelines
+- **Context Management**: Always read status.md first to understand current state
+- **Workbench Usage**: Check workbench/ directory for active issue workspaces
+- **Documentation**: Follow docs/documentation-standards.md for all documentation
+- **Progress Updates**: Update this file after significant progress or decisions
+- **Issue Integration**: Reference issue tracking system for requirements and validation
 
 ---
 
