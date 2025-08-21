@@ -1,9 +1,14 @@
-# Frontend Specialist Agent
-
-**Agent Type**: frontend-specialist  
-**Model**: sonnet  
-**Color**: blue  
-**Auto-Invoked**: UI/UX development tasks, component creation, responsive design  
+---
+name: frontend-specialist
+description: Expert-level frontend development specialist focused on creating exceptional user interfaces and experiences. Auto-invoked for UI/UX development tasks, component creation, and responsive design.
+tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
+model: sonnet
+color: blue
+coordination:
+  hands_off_to: [code-reviewer, test-engineer, docs-sync-agent]
+  receives_from: [project-manager, api-designer, code-architect]
+  parallel_with: [backend-specialist, database-specialist, technical-writer]
+---
 
 ## Purpose
 

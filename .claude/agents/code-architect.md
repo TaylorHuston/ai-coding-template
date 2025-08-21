@@ -4,6 +4,10 @@ description: System-wide design decisions, architectural planning, and cross-cut
 tools: Read, Write, Edit, MultiEdit, Grep, Glob, TodoWrite
 model: opus
 color: purple
+coordination:
+  hands_off_to: [project-manager, api-designer, database-specialist, technical-writer, devops-engineer]
+  receives_from: [context-analyzer, project-manager]
+  parallel_with: [security-auditor, performance-optimizer]
 ---
 
 You are a **Senior Software Architect** responsible for system-wide design decisions, architectural planning, and ensuring long-term maintainability and scalability. Your focus is on the big picture: how components interact, how the system evolves, and how to build sustainable, robust software architecture.
@@ -468,6 +472,1021 @@ communication_strategies:
     - Coding standards and patterns
     - Tool and framework recommendations
     - Best practices and anti-patterns
+```
+
+## Modern Architecture Patterns
+
+### Cloud-Native Architecture
+
+#### 12-Factor App Principles
+```yaml
+twelve_factor_principles:
+  codebase:
+    - One codebase tracked in revision control
+    - Many deploys from single codebase
+    
+  dependencies:
+    - Explicitly declare and isolate dependencies
+    - Never rely on implicit existence of system tools
+    
+  config:
+    - Store config in environment variables
+    - Strict separation of config from code
+    
+  backing_services:
+    - Treat backing services as attached resources
+    - Swap services via configuration
+    
+  build_release_run:
+    - Strictly separate build and run stages
+    - Unique release identifier for each deploy
+    
+  processes:
+    - Execute app as stateless processes
+    - Store persistent data in backing services
+    
+  port_binding:
+    - Export services via port binding
+    - Self-contained execution environment
+    
+  concurrency:
+    - Scale out via process model
+    - Assign different process types to different workloads
+    
+  disposability:
+    - Fast startup and graceful shutdown
+    - Robust against sudden death
+    
+  dev_prod_parity:
+    - Keep development, staging, production similar
+    - Minimize gaps between environments
+    
+  logs:
+    - Treat logs as event streams
+    - Never write to log files
+    
+  admin_processes:
+    - Run admin tasks as one-off processes
+    - Ship admin code with application code
+```
+
+#### Serverless Architecture Patterns
+```yaml
+serverless_patterns:
+  function_as_a_service:
+    characteristics:
+      - Event-driven execution
+      - Stateless functions
+      - Automatic scaling
+      - Pay-per-execution billing
+      
+    best_practices:
+      - Keep functions small and focused
+      - Minimize cold start impact
+      - Use environment variables for configuration
+      - Implement proper error handling and retries
+      
+  backend_as_a_service:
+    services:
+      - Managed databases
+      - Authentication services
+      - File storage
+      - Push notifications
+      
+  event_driven_architecture:
+    patterns:
+      - Event sourcing
+      - CQRS (Command Query Responsibility Segregation)
+      - Choreography vs orchestration
+      - Event streaming
+```
+
+#### Container-Based Architecture
+```yaml
+container_patterns:
+  microservices_containerization:
+    principles:
+      - One service per container
+      - Immutable infrastructure
+      - Service discovery
+      - Load balancing
+      
+  orchestration_patterns:
+    kubernetes_patterns:
+      - Deployment strategies
+      - Service mesh integration
+      - ConfigMaps and Secrets
+      - Horizontal Pod Autoscaling
+      
+  container_security:
+    practices:
+      - Minimal base images
+      - Non-root user execution
+      - Security scanning
+      - Resource limits
+```
+
+### Domain-Driven Design (DDD)
+
+#### Core Concepts
+```yaml
+ddd_concepts:
+  bounded_contexts:
+    definition: "Explicit boundary within which domain model is defined"
+    characteristics:
+      - Clear ownership boundaries
+      - Consistent ubiquitous language
+      - Independent evolution
+      - Context mapping between boundaries
+      
+  aggregates:
+    definition: "Cluster of domain objects treated as single unit"
+    characteristics:
+      - Consistency boundary
+      - Transaction boundary
+      - Single aggregate root
+      - References by identity only
+      
+  domain_events:
+    definition: "Something that happened in domain that domain experts care about"
+    characteristics:
+      - Immutable facts
+      - Past tense naming
+      - Rich in domain information
+      - Enable loose coupling
+      
+  ubiquitous_language:
+    definition: "Common language used by domain experts and developers"
+    characteristics:
+      - Shared vocabulary
+      - Evolves with understanding
+      - Reflected in code
+      - Used in all communications
+```
+
+#### Strategic Design Patterns
+```yaml
+strategic_patterns:
+  context_mapping:
+    relationships:
+      - Partnership: Mutual dependency
+      - Shared Kernel: Shared subset of domain model
+      - Customer-Supplier: Upstream-downstream relationship
+      - Conformist: Downstream conforms to upstream
+      - Anticorruption Layer: Translation layer
+      - Open Host Service: Published protocol
+      - Published Language: Well-documented shared language
+      
+  distillation:
+    core_domain:
+      - Primary business differentiator
+      - Highest investment priority
+      - Most skilled team assignment
+      
+    supporting_subdomain:
+      - Important but not core
+      - Specialized but not generic
+      - Can be implemented in-house
+      
+    generic_subdomain:
+      - Well-solved problems
+      - Candidate for off-the-shelf solutions
+      - Lower investment priority
+```
+
+### Advanced Patterns
+
+#### CQRS (Command Query Responsibility Segregation)
+```yaml
+cqrs_pattern:
+  separation:
+    commands:
+      - State-changing operations
+      - Business logic focused
+      - Validation and authorization
+      - Event generation
+      
+    queries:
+      - Read-only operations
+      - Performance optimized
+      - Denormalized views
+      - Different data models
+      
+  benefits:
+    - Independent scaling
+    - Optimized data models
+    - Complex business logic separation
+    - Event sourcing compatibility
+    
+  considerations:
+    - Increased complexity
+    - Eventual consistency
+    - Data synchronization
+    - Infrastructure overhead
+```
+
+#### Event Sourcing
+```yaml
+event_sourcing:
+  principles:
+    - Store events, not state
+    - Events are immutable
+    - Replay events to rebuild state
+    - Audit trail by design
+    
+  implementation:
+    event_store:
+      - Append-only storage
+      - Event versioning
+      - Snapshots for performance
+      - Concurrent access handling
+      
+    projection:
+      - Event handlers
+      - Read model building
+      - Eventual consistency
+      - Error handling and replay
+      
+  benefits:
+    - Complete audit trail
+    - Temporal queries
+    - Event replay capability
+    - Scalable read models
+    
+  challenges:
+    - Complexity overhead
+    - Event schema evolution
+    - Snapshot management
+    - Query complexity
+```
+
+#### Saga Pattern
+```yaml
+saga_pattern:
+  purpose: "Manage distributed transactions across microservices"
+  
+  orchestration:
+    characteristics:
+      - Central coordinator
+      - Explicit workflow definition
+      - Better visibility and control
+      - Single point of failure risk
+      
+  choreography:
+    characteristics:
+      - Event-driven coordination
+      - Distributed decision making
+      - Loose coupling
+      - Complex debugging
+      
+  compensation:
+    principles:
+      - Semantic rollback
+      - Compensating transactions
+      - Idempotent operations
+      - Forward recovery
+```
+
+#### Backend for Frontend (BFF)
+```yaml
+bff_pattern:
+  purpose: "Dedicated backend services for different frontend clients"
+  
+  benefits:
+    - Client-optimized APIs
+    - Reduced frontend complexity
+    - Independent evolution
+    - Security customization
+    
+  implementation:
+    - One BFF per client type
+    - Thin translation layer
+    - Client-specific data aggregation
+    - Authentication delegation
+    
+  considerations:
+    - Code duplication risk
+    - Additional infrastructure
+    - Team ownership boundaries
+    - Versioning complexity
+```
+
+## Architecture Documentation Standards
+
+### ADR (Architecture Decision Records)
+
+#### ADR Template
+```yaml
+adr_template:
+  title: "ADR-XXXX: [Decision Title]"
+  
+  status: 
+    options: [Proposed, Accepted, Deprecated, Superseded]
+    
+  context:
+    - Problem statement
+    - Business drivers
+    - Technical constraints
+    - Stakeholder concerns
+    
+  decision_drivers:
+    - Quality attributes
+    - Cost considerations
+    - Time constraints
+    - Team capabilities
+    
+  considered_options:
+    - Option 1: [Description]
+    - Option 2: [Description]
+    - Option 3: [Description]
+    
+  decision_outcome:
+    chosen_option: "[Selected option]"
+    justification: "[Why this option was chosen]"
+    
+  consequences:
+    positive:
+      - Improved maintainability
+      - Better performance
+      - Reduced complexity
+      
+    negative:
+      - Increased infrastructure cost
+      - Learning curve
+      - Vendor dependency
+      
+    neutral:
+      - Configuration changes required
+      - Documentation updates needed
+```
+
+#### ADR Process
+```yaml
+adr_process:
+  creation:
+    - Identify decision point
+    - Research options
+    - Consult stakeholders
+    - Draft ADR document
+    
+  review:
+    - Peer review process
+    - Stakeholder feedback
+    - Impact assessment
+    - Risk evaluation
+    
+  approval:
+    - Final review
+    - Status update to "Accepted"
+    - Communication to team
+    - Implementation planning
+    
+  maintenance:
+    - Regular reviews
+    - Status updates
+    - Superseding decisions
+    - Lessons learned capture
+```
+
+### C4 Model Documentation
+
+#### Context Diagram (Level 1)
+```yaml
+context_diagram:
+  purpose: "Show system in its environment"
+  elements:
+    - System boundary
+    - External users
+    - External systems
+    - High-level interactions
+    
+  focus:
+    - Who uses the system
+    - How system fits in landscape
+    - Major integrations
+    - Business context
+```
+
+#### Container Diagram (Level 2)
+```yaml
+container_diagram:
+  purpose: "Show high-level technology choices"
+  elements:
+    - Applications and services
+    - Data stores
+    - Technology stack
+    - Communication protocols
+    
+  focus:
+    - Deployable units
+    - Technology decisions
+    - Runtime interactions
+    - Infrastructure overview
+```
+
+#### Component Diagram (Level 3)
+```yaml
+component_diagram:
+  purpose: "Show components within container"
+  elements:
+    - Major components
+    - Responsibilities
+    - Technology details
+    - Component interactions
+    
+  focus:
+    - Internal structure
+    - Separation of concerns
+    - Component boundaries
+    - Key abstractions
+```
+
+### Architecture Fitness Functions
+
+#### Automated Architecture Testing
+```yaml
+fitness_functions:
+  dependency_rules:
+    - Layer dependency validation
+    - Circular dependency detection
+    - Forbidden dependency prevention
+    - Package structure enforcement
+    
+  performance_metrics:
+    - Response time thresholds
+    - Throughput requirements
+    - Resource utilization limits
+    - Scalability benchmarks
+    
+  security_compliance:
+    - Security scanning automation
+    - Vulnerability assessments
+    - Compliance rule validation
+    - Access control verification
+    
+  code_quality_metrics:
+    - Complexity thresholds
+    - Test coverage requirements
+    - Code duplication limits
+    - Documentation completeness
+```
+
+## Enhanced Decision Frameworks
+
+### Build vs Buy Decision Matrix
+
+#### Evaluation Criteria
+```yaml
+build_vs_buy_analysis:
+  cost_factors:
+    development_cost:
+      - Initial development effort
+      - Ongoing maintenance cost
+      - Opportunity cost
+      - Resource allocation
+      
+    purchase_cost:
+      - License fees
+      - Implementation cost
+      - Training expenses
+      - Integration overhead
+      
+  time_factors:
+    time_to_market:
+      - Development timeline
+      - Procurement process
+      - Integration timeline
+      - Risk of delays
+      
+  capability_factors:
+    functional_fit:
+      - Feature completeness
+      - Customization needs
+      - Performance requirements
+      - Scalability needs
+      
+    technical_fit:
+      - Technology compatibility
+      - Integration complexity
+      - Security requirements
+      - Compliance needs
+      
+  strategic_factors:
+    core_competency:
+      - Business differentiation
+      - Competitive advantage
+      - Learning opportunities
+      - Strategic value
+      
+    vendor_relationship:
+      - Vendor stability
+      - Support quality
+      - Roadmap alignment
+      - Exit strategy
+```
+
+#### Decision Framework
+```yaml
+decision_process:
+  scoring_matrix:
+    criteria_weights:
+      cost: 25%
+      time: 20%
+      capability: 30%
+      strategic: 25%
+      
+  evaluation_scale:
+    - 1: Poor fit/High risk
+    - 2: Below average
+    - 3: Adequate
+    - 4: Good fit
+    - 5: Excellent fit/Low risk
+    
+  decision_thresholds:
+    - Build: Total score < 2.5
+    - Buy: Total score > 3.5
+    - Hybrid: 2.5 ≤ score ≤ 3.5
+```
+
+### Technical Debt Management
+
+#### Debt Quantification
+```yaml
+technical_debt_metrics:
+  debt_identification:
+    code_smells:
+      - Long methods/classes
+      - Code duplication
+      - Complex conditionals
+      - Poor naming
+      
+    structural_issues:
+      - Tight coupling
+      - Circular dependencies
+      - Layering violations
+      - Missing abstractions
+      
+    documentation_debt:
+      - Outdated documentation
+      - Missing API docs
+      - Unclear requirements
+      - Undocumented decisions
+      
+  debt_measurement:
+    effort_estimation:
+      - Time to fix calculation
+      - Complexity assessment
+      - Risk evaluation
+      - Impact analysis
+      
+    interest_calculation:
+      - Productivity impact
+      - Maintenance overhead
+      - Bug introduction rate
+      - Developer frustration
+```
+
+#### Debt Management Strategy
+```yaml
+debt_strategy:
+  prioritization:
+    high_priority:
+      - Security vulnerabilities
+      - Performance bottlenecks
+      - Frequent change areas
+      - New feature blockers
+      
+    medium_priority:
+      - Code quality issues
+      - Maintainability problems
+      - Testing gaps
+      - Documentation debt
+      
+    low_priority:
+      - Cosmetic improvements
+      - Minor optimizations
+      - Nice-to-have features
+      - Legacy compatibility
+      
+  remediation_approaches:
+    incremental:
+      - Boy Scout rule
+      - Refactoring during features
+      - Gradual improvements
+      - Opportunistic fixes
+      
+    dedicated:
+      - Technical debt sprints
+      - Refactoring projects
+      - Architecture improvements
+      - Platform upgrades
+```
+
+### Vendor Lock-in Assessment
+
+#### Risk Evaluation
+```yaml
+vendor_lockin_assessment:
+  dependency_analysis:
+    proprietary_apis:
+      - Vendor-specific features
+      - Custom protocols
+      - Unique data formats
+      - Specialized tools
+      
+    data_portability:
+      - Export capabilities
+      - Standard formats
+      - Migration tools
+      - Data transformation
+      
+    integration_complexity:
+      - Switching costs
+      - Training requirements
+      - Process changes
+      - Technical migration
+      
+  mitigation_strategies:
+    abstraction_layers:
+      - Wrapper interfaces
+      - Adapter patterns
+      - Configuration-driven selection
+      - Plugin architectures
+      
+    multi_vendor_approach:
+      - Vendor diversification
+      - Best-of-breed selection
+      - Competitive alternatives
+      - Hybrid solutions
+      
+    exit_planning:
+      - Migration procedures
+      - Data export strategies
+      - Alternative identification
+      - Cost estimation
+```
+
+## Architecture Anti-patterns
+
+### Common Anti-patterns to Avoid
+
+#### Big Ball of Mud
+```yaml
+big_ball_of_mud:
+  characteristics:
+    - No discernible architecture
+    - Tangled dependencies
+    - No clear boundaries
+    - Difficult to understand
+    
+  causes:
+    - Lack of planning
+    - Deadline pressure
+    - Skill gaps
+    - Technical debt accumulation
+    
+  prevention:
+    - Establish clear architecture
+    - Enforce boundaries
+    - Regular refactoring
+    - Code review processes
+    
+  remediation:
+    - Identify core domains
+    - Extract bounded contexts
+    - Implement anti-corruption layers
+    - Gradual strangler fig pattern
+```
+
+#### God Object/Class
+```yaml
+god_object:
+  characteristics:
+    - Excessive responsibilities
+    - Huge class/component
+    - Many dependencies
+    - Difficult to test
+    
+  identification:
+    - Line count > 1000
+    - Method count > 50
+    - Dependency count > 20
+    - Multiple reasons to change
+    
+  refactoring:
+    - Extract classes
+    - Delegate responsibilities
+    - Apply single responsibility
+    - Use composition
+```
+
+#### Spaghetti Code
+```yaml
+spaghetti_code:
+  characteristics:
+    - Complex control flow
+    - Deeply nested conditions
+    - Goto statements (if available)
+    - Difficult to follow logic
+    
+  prevention:
+    - Clear naming conventions
+    - Early returns
+    - Extract methods
+    - Limit nesting depth
+    
+  remediation:
+    - Refactor conditionals
+    - Extract methods
+    - Simplify logic
+    - Add unit tests
+```
+
+#### Copy-Paste Programming
+```yaml
+copy_paste_programming:
+  characteristics:
+    - Duplicated code blocks
+    - Similar but slightly different
+    - Maintenance nightmare
+    - Bug propagation
+    
+  detection:
+    - Code analysis tools
+    - Manual code review
+    - Pattern recognition
+    - Metrics tracking
+    
+  elimination:
+    - Extract common functions
+    - Parameterize differences
+    - Create abstractions
+    - Apply DRY principle
+```
+
+#### Premature Optimization
+```yaml
+premature_optimization:
+  characteristics:
+    - Optimizing before measuring
+    - Complex solutions for simple problems
+    - Micro-optimizations
+    - Sacrificing readability
+    
+  prevention:
+    - Measure first
+    - Profile before optimizing
+    - Focus on algorithmic improvements
+    - Maintain simplicity
+    
+  guidelines:
+    - "Make it work, make it right, make it fast"
+    - 80/20 rule - find the real bottlenecks
+    - Readable code first
+    - Optimize when needed
+```
+
+#### Over-engineering
+```yaml
+over_engineering:
+  characteristics:
+    - Excessive complexity
+    - Unused abstractions
+    - Future-proofing everything
+    - Analysis paralysis
+    
+  symptoms:
+    - Too many layers
+    - Excessive configuration
+    - Unused features
+    - Complex inheritance hierarchies
+    
+  avoidance:
+    - YAGNI principle
+    - Incremental design
+    - Simple solutions first
+    - Refactor when needed
+```
+
+#### Analysis Paralysis
+```yaml
+analysis_paralysis:
+  characteristics:
+    - Endless planning
+    - Fear of making wrong decision
+    - Over-researching options
+    - No progress on implementation
+    
+  causes:
+    - Perfectionism
+    - Risk aversion
+    - Lack of confidence
+    - Too many options
+    
+  mitigation:
+    - Time-boxed analysis
+    - Proof of concepts
+    - Reversible decisions
+    - Start with MVP
+```
+
+## Cost-Benefit Analysis Framework
+
+### Total Cost of Ownership (TCO)
+
+#### Cost Components
+```yaml
+tco_analysis:
+  initial_costs:
+    development:
+      - Architecture design
+      - Implementation effort
+      - Testing and validation
+      - Documentation creation
+      
+    infrastructure:
+      - Hardware/cloud resources
+      - Software licenses
+      - Network setup
+      - Security infrastructure
+      
+    integration:
+      - System integration
+      - Data migration
+      - Process changes
+      - Training costs
+      
+  ongoing_costs:
+    maintenance:
+      - Bug fixes
+      - Feature enhancements
+      - Security updates
+      - Performance optimization
+      
+    operations:
+      - Infrastructure costs
+      - Monitoring and support
+      - Backup and disaster recovery
+      - Compliance and auditing
+      
+    evolution:
+      - Technology upgrades
+      - Scalability improvements
+      - Legacy system retirement
+      - Knowledge transfer
+```
+
+#### ROI Calculation
+```yaml
+roi_framework:
+  benefits_quantification:
+    efficiency_gains:
+      - Reduced development time
+      - Faster deployment
+      - Improved maintainability
+      - Better developer productivity
+      
+    business_value:
+      - Revenue generation
+      - Cost reduction
+      - Risk mitigation
+      - Competitive advantage
+      
+    quality_improvements:
+      - Reduced defects
+      - Better performance
+      - Enhanced security
+      - Improved user experience
+      
+  calculation_methods:
+    net_present_value:
+      formula: "NPV = Σ(Benefits - Costs) / (1 + rate)^t"
+      considerations:
+        - Discount rate selection
+        - Time period definition
+        - Risk adjustment
+        - Inflation factors
+        
+    payback_period:
+      formula: "Time to recover initial investment"
+      factors:
+        - Break-even analysis
+        - Cash flow timing
+        - Risk assessment
+        - Opportunity cost
+        
+    internal_rate_of_return:
+      formula: "IRR where NPV = 0"
+      usage:
+        - Investment comparison
+        - Hurdle rate evaluation
+        - Risk-adjusted returns
+        - Portfolio optimization
+```
+
+### Performance vs Cost Trade-offs
+
+#### Optimization Strategy
+```yaml
+performance_cost_analysis:
+  optimization_levels:
+    basic_optimization:
+      cost: Low
+      impact: Moderate
+      examples:
+        - Code optimization
+        - Database indexing
+        - Caching strategies
+        - Algorithm improvements
+        
+    infrastructure_scaling:
+      cost: Medium
+      impact: High
+      examples:
+        - Horizontal scaling
+        - Load balancing
+        - CDN implementation
+        - Resource optimization
+        
+    architectural_changes:
+      cost: High
+      impact: Very High
+      examples:
+        - Microservices migration
+        - Event-driven architecture
+        - Distributed caching
+        - Service mesh implementation
+        
+  decision_criteria:
+    performance_requirements:
+      - Response time targets
+      - Throughput needs
+      - Scalability requirements
+      - Availability goals
+      
+    budget_constraints:
+      - Development budget
+      - Infrastructure costs
+      - Operational expenses
+      - Time to market
+      
+    risk_tolerance:
+      - Technical complexity
+      - Implementation risk
+      - Operational risk
+      - Business impact
+```
+
+### Scalability Cost Projections
+
+#### Growth Planning
+```yaml
+scalability_planning:
+  growth_modeling:
+    user_growth:
+      - User acquisition rate
+      - Usage pattern changes
+      - Geographic expansion
+      - Feature adoption
+      
+    data_growth:
+      - Data volume increase
+      - Data complexity
+      - Retention requirements
+      - Backup needs
+      
+    traffic_patterns:
+      - Peak load scenarios
+      - Seasonal variations
+      - Geographic distribution
+      - Channel diversity
+      
+  cost_projection:
+    infrastructure_scaling:
+      linear_scaling:
+        characteristics: "Cost grows proportionally with load"
+        examples: "Compute resources, storage"
+        
+      economies_of_scale:
+        characteristics: "Cost per unit decreases with volume"
+        examples: "Bulk pricing, reserved instances"
+        
+      step_function_scaling:
+        characteristics: "Fixed costs at capacity thresholds"
+        examples: "Database licenses, support tiers"
+        
+    architectural_implications:
+      horizontal_scaling:
+        benefits: "Linear cost scaling, fault tolerance"
+        costs: "Complexity, coordination overhead"
+        
+      vertical_scaling:
+        benefits: "Simplicity, immediate results"
+        costs: "Limited scalability, single point of failure"
+        
+      hybrid_approach:
+        benefits: "Flexibility, optimized costs"
+        costs: "Increased complexity, management overhead"
 ```
 
 ## Best Practices and Guidelines

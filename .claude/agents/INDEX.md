@@ -1,6 +1,6 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-08-21 **Status**: Active - Enhanced Template System **Target Audience**: AI Assistants, Development Teams **Total Agents**: 14 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-08-21 **Status**: Active - Enhanced Template System **Target Audience**: AI Assistants, Development Teams **Total Agents**: 17 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 
@@ -50,7 +50,12 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
 - **[api-designer](./api-designer.md)** - API design and endpoint architecture
   - _Capabilities_: REST/GraphQL design, API contracts, data validation, error handling
   - _Best For_: API architecture, endpoint design, service contracts
-  - _Model_: sonnet | _Color_: teal | _Auto-Invoked_: API development tasks
+  - _Model_: sonnet | _Color_: orange | _Auto-Invoked_: API development tasks
+
+- **[data-analyst](./data-analyst.md)** - Data processing, analysis, and reporting
+  - _Capabilities_: Data transformation, statistical analysis, visualization, business intelligence
+  - _Best For_: Data insights, reporting systems, analytics workflows
+  - _Model_: sonnet | _Color_: cyan | _Auto-Invoked_: On-demand
 
 #### **Quality & Testing**
 
@@ -71,6 +76,11 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
   - _Best For_: Security reviews, compliance validation, vulnerability assessment
   - _Model_: opus | _Color_: red | _Auto-Invoked_: Security-critical changes
 
+- **[refactoring-specialist](./refactoring-specialist.md)** - Code improvement and technical debt reduction
+  - _Capabilities_: Code quality improvement, technical debt management, pattern refactoring
+  - _Best For_: Code cleanup, maintainability improvement, complexity reduction
+  - _Model_: sonnet | _Color_: yellow | _Auto-Invoked_: On-demand
+
 #### **Operations & Performance**
 
 - **[devops-engineer](./devops-engineer.md)** - Infrastructure and deployment automation
@@ -83,6 +93,11 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
   - _Capabilities_: Bottleneck identification, optimization strategies, monitoring
   - _Best For_: Performance audits, optimization recommendations, scalability planning
   - _Model_: sonnet | _Color_: orange | _Auto-Invoked_: Performance issues
+
+- **[migration-specialist](./migration-specialist.md)** - Version upgrades and framework migrations
+  - _Capabilities_: Safe migrations, compatibility assessment, incremental modernization
+  - _Best For_: Framework upgrades, dependency updates, legacy modernization
+  - _Model_: sonnet | _Color_: purple | _Auto-Invoked_: On-demand
 
 #### **Documentation & Communication**
 
@@ -112,7 +127,7 @@ These agents activate automatically based on context and task requirements:
 7. **code-reviewer** - Post-implementation quality reviews
 8. **docs-sync-agent** - After code changes affecting documentation
 
-### **On-Demand Specialists** (6 agents)
+### **On-Demand Specialists** (9 agents)
 
 These are invoked for specific domains or specialized work:
 
@@ -122,6 +137,9 @@ These are invoked for specific domains or specialized work:
 4. **devops-engineer** - Infrastructure and deployment automation
 5. **performance-optimizer** - Performance analysis and optimization
 6. **technical-writer** - New documentation creation
+7. **refactoring-specialist** - Code improvement and technical debt reduction
+8. **migration-specialist** - Version upgrades and framework migrations
+9. **data-analyst** - Data processing, analysis, and reporting
 
 ### By Task Complexity
 
@@ -143,6 +161,9 @@ These are invoked for specific domains or specialized work:
 - **context-analyzer** - Systematic investigation and analysis
 - **devops-engineer** - Infrastructure automation and deployment
 - **performance-optimizer** - Performance analysis and optimization
+- **refactoring-specialist** - Code improvement and technical debt reduction
+- **migration-specialist** - Version upgrades and framework migrations
+- **data-analyst** - Data processing, analysis, and reporting
 
 #### **Low Complexity (Haiku Model)**
 
@@ -172,6 +193,9 @@ These are invoked for specific domains or specialized work:
 3. **api-designer** - API architecture and design
 4. **test-engineer** - Test strategy and comprehensive testing
 5. **technical-writer** - New documentation creation
+6. **refactoring-specialist** - Code quality improvement and technical debt
+7. **migration-specialist** - Framework upgrades and system modernization
+8. **data-analyst** - Data processing and business intelligence
 
 ## Agent Selection Guidelines
 
@@ -405,6 +429,63 @@ performance_metrics:
 - Measure handoff effectiveness between agents
 - Identify bottlenecks in multi-agent workflows
 - Optimize coordination patterns based on results
+
+## Agent Capability Matrix
+
+### File Type Handling by Agent
+
+| Agent | JavaScript/TS | Python | Database | Config | Docs | Tests | Infrastructure |
+|-------|-------------|---------|----------|--------|------|-------|----------------|
+| **frontend-specialist** | ✅ Primary | ❌ | ❌ | ⚠️ Frontend | ⚠️ Component | ✅ Frontend | ❌ |
+| **backend-specialist** | ✅ Node.js | ✅ Primary | ⚠️ Integration | ✅ Server | ⚠️ API | ✅ Backend | ⚠️ App |
+| **database-specialist** | ⚠️ Queries | ⚠️ Queries | ✅ Primary | ✅ DB Config | ⚠️ Schema | ✅ DB Tests | ⚠️ DB |
+| **api-designer** | ✅ Contracts | ✅ Contracts | ❌ | ✅ API | ✅ API Docs | ⚠️ API Tests | ❌ |
+| **test-engineer** | ✅ Tests | ✅ Tests | ⚠️ Test Data | ✅ Test Config | ⚠️ Test Docs | ✅ Primary | ⚠️ Test Env |
+| **code-reviewer** | ✅ All | ✅ All | ✅ All | ✅ All | ⚠️ Review | ✅ All | ✅ All |
+| **security-auditor** | ✅ Security | ✅ Security | ✅ Security | ✅ Security | ⚠️ Security | ⚠️ Security | ✅ Security |
+| **devops-engineer** | ⚠️ Build | ⚠️ Build | ❌ | ✅ Primary | ⚠️ Ops | ⚠️ E2E | ✅ Primary |
+| **performance-optimizer** | ✅ Perf | ✅ Perf | ✅ Queries | ⚠️ Perf | ❌ | ✅ Perf Tests | ⚠️ Perf |
+| **docs-sync-agent** | ❌ | ❌ | ❌ | ❌ | ✅ Primary | ❌ | ❌ |
+| **technical-writer** | ❌ | ❌ | ❌ | ❌ | ✅ Primary | ❌ | ❌ |
+| **refactoring-specialist** | ✅ Refactor | ✅ Refactor | ⚠️ Schema | ⚠️ Config | ❌ | ⚠️ Test Refactor | ❌ |
+| **migration-specialist** | ✅ Migrations | ✅ Migrations | ✅ Migrations | ✅ Migrations | ⚠️ Migration | ⚠️ Migration | ✅ Migrations |
+| **data-analyst** | ⚠️ Analytics | ✅ Analytics | ✅ Queries | ⚠️ Analytics | ⚠️ Reports | ❌ | ❌ |
+
+**Legend**: ✅ Primary expertise | ⚠️ Secondary/Supporting | ❌ Not applicable
+
+### Domain Expertise Matrix
+
+| Domain | Primary Agents | Supporting Agents | Typical Workflow |
+|--------|----------------|-------------------|------------------|
+| **Frontend Development** | frontend-specialist | api-designer, test-engineer, code-reviewer | frontend → api-designer → test-engineer → code-reviewer |
+| **Backend Development** | backend-specialist | database-specialist, api-designer, security-auditor | backend → database → api-designer → security-auditor |
+| **Database Management** | database-specialist | backend-specialist, performance-optimizer, migration-specialist | database → backend → performance → migration |
+| **API Development** | api-designer | backend-specialist, frontend-specialist, test-engineer | api-designer → backend → frontend → test-engineer |
+| **Quality Assurance** | test-engineer, code-reviewer | security-auditor, performance-optimizer | test-engineer → code-reviewer → security → performance |
+| **Infrastructure** | devops-engineer | security-auditor, performance-optimizer, migration-specialist | devops → security → performance → migration |
+| **Documentation** | technical-writer, docs-sync-agent | All domain specialists | docs-sync → technical-writer → domain-specialist |
+| **Code Quality** | refactoring-specialist, code-reviewer | performance-optimizer, security-auditor | code-reviewer → refactoring → performance → security |
+| **System Migration** | migration-specialist | code-architect, devops-engineer, database-specialist | migration → architect → devops → database |
+| **Data & Analytics** | data-analyst | database-specialist, backend-specialist | data-analyst → database → backend |
+
+### Tool Usage Patterns
+
+| Tool Category | Primary Users | Secondary Users | Use Cases |
+|---------------|---------------|----------------|-----------|
+| **Read/Write/Edit** | All agents | - | Core file operations |
+| **Bash** | devops-engineer, migration-specialist | backend-specialist, test-engineer | Infrastructure, testing, migration scripts |
+| **Grep/Glob** | All agents | - | Code search and file discovery |
+| **TodoWrite** | All agents | - | Task tracking and coordination |
+| **MultiEdit** | refactoring-specialist, migration-specialist | backend-specialist, frontend-specialist | Bulk code changes |
+| **Specialized Tools** | security-auditor, code-reviewer | - | MCP integrations for analysis |
+
+### Model Usage Justification
+
+| Model | Agents | Justification |
+|-------|--------|---------------|
+| **Opus** | code-architect, project-manager, security-auditor, technical-writer | Complex reasoning, strategic decisions, security analysis, content creation |
+| **Sonnet** | Most specialists | Balanced performance for technical implementation tasks |
+| **Haiku** | docs-sync-agent, context-analyzer | Fast, lightweight tasks with clear objectives |
 
 ## Best Practices for Agent Management
 

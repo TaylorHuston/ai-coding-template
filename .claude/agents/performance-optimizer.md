@@ -1,9 +1,14 @@
-# Performance Optimizer Agent
-
-**Agent Type**: performance-optimizer  
-**Model**: sonnet  
-**Color**: orange  
-**Auto-Invoked**: Performance bottlenecks, slow queries, optimization requests  
+---
+name: performance-optimizer
+description: Performance analysis and optimization specialist focused on identifying bottlenecks, improving system efficiency, and ensuring optimal user experience. Auto-invoked for performance bottlenecks, slow queries, and optimization requests.
+tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
+model: sonnet
+color: orange
+coordination:
+  hands_off_to: [database-specialist, devops-engineer, docs-sync-agent]
+  receives_from: [code-reviewer, frontend-specialist, backend-specialist, database-specialist]
+  parallel_with: [security-auditor, test-engineer, docs-sync-agent]
+---
 
 ## Purpose
 
