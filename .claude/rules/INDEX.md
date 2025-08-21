@@ -65,6 +65,12 @@ Comprehensive catalog of quality enforcement rules, standards, and automated com
   - *Enforcement*: Fail-safe patterns with graceful degradation
   - *Key Features*: Context preservation, incident response, continuous learning
 
+#### **Git and Version Control**
+- **[git-version-control-rules](./git-version-control-rules.md)** - Git workflows and AI attribution standards
+  - *Scope*: Version control, commit attribution, collaboration workflows
+  - *Enforcement*: Transparent attribution with automated quality gates
+  - *Key Features*: AI attribution standards, commit message formats, collaborative patterns
+
 ## Rule Enforcement Levels
 
 ### Enforcement Hierarchy
@@ -389,6 +395,20 @@ auto_triggers:
     - Pattern recurrence → Prevention strategy activation
 ```
 
+#### **Git and Version Control Rules**
+```yaml
+auto_triggers:
+  ai_attribution_enforcement:
+    - AI-generated code committed → Attribution validation
+    - Missing co-author attribution → Compliance check
+    - Commit message format violation → Standardization enforcement
+    
+  quality_gates:
+    - Pre-commit AI code detection → Enhanced security scanning
+    - Large AI contribution → Additional review requirements
+    - Production deployment → AI traceability documentation
+```
+
 ## Rule Customization and Configuration
 
 ### Project-Specific Adaptations
@@ -465,13 +485,14 @@ python_adaptations:
 - **AI Code Validation**: Multi-layer validation, security scanning, review processes
 - **Context Preservation**: Memory management, RAG patterns, compression strategies
 - **Error Handling**: AI-specific errors, audit trails, recovery patterns
+- **Git and Version Control**: AI attribution standards, collaborative workflows, quality gates
 
 ### Rule Integration Matrix
 ```yaml
 rule_coverage:
   traditional_development: "4_rule_domains"
-  ai_enhanced_development: "5_rule_domains"
-  total_coverage: "9_comprehensive_domains"
+  ai_enhanced_development: "6_rule_domains"
+  total_coverage: "10_comprehensive_domains"
   
   enforcement_levels: "critical|high|medium|low"
   auto_activation: "context_aware_triggering"
