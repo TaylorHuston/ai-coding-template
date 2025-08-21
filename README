@@ -15,9 +15,37 @@ AI coding tools are simultaneously very powerful and very dumb. Sometimes it can
 - **Documentation:** Generate documentation for functions, classes, and APIs.
 - **Refactoring:** Improve code quality, readability, and performance.
 
+## Advanced AI Orchestration
+
+This template includes an advanced AI orchestration system in the `.claude/` directory that provides:
+
+### 🤖 Specialized AI Agents
+- **10 domain-specific agents** for complex tasks (full-stack-developer, security-auditor, code-reviewer, etc.)
+- **Intelligent agent coordination** with handoff procedures and quality gates
+- **Context-aware agent selection** based on task complexity and domain
+
+### ⚡ Command Workflows
+- **7 pre-built command sequences** for common development operations
+- **Reusable workflow patterns** for feature development, security audits, and performance optimization
+- **Automated quality gates** integrated into development workflows
+
+### 📊 Quality Enforcement
+- **Automated rule enforcement** for documentation, security, testing, and code quality
+- **Graduated enforcement levels** that adapt to project maturity
+- **Continuous quality monitoring** with improvement recommendations
+
+### 🔄 Memory Management
+- **Enhanced context preservation** across AI sessions
+- **Project status tracking** in `status.md` with visual progress indicators
+- **Issue-based development** workflow in `workbench/` directory
+
+See [.claude/integration.md](./.claude/integration.md) for comprehensive integration guidance.
+
 ## File Structure
 
 A well-organized file structure is crucial for providing context to AI tools. A logical structure helps the AI understand your project's architecture and locate relevant files without having to burn too much time and context searching around.
+
+All documentation files should be named using `lowercase-kebab-case`.
 
 Here's a recommended approach:
 
@@ -27,17 +55,27 @@ project-root/
 ├── prompting.md              # Best practices for prompting AI coding assistants
 ├── legal.md                  # Legal and ethical considerations
 ├── CLAUDE.md                 # Instructions for Claude Code (or similar AI tools)
+├── .claude/                  # Advanced AI orchestration system
+│   ├── agents/               # Specialized AI agents for complex tasks
+│   ├── commands/             # Reusable command workflows
+│   ├── rules/                # Quality enforcement rules
+│   └── integration.md        # Integration guide
 ├── .gitignore                # Standard gitignore for your tech stack
 ├── docs/                     # Documentation and guides
 │   ├── architecture.md       # High-level system design
-│   ├── API.md                # API documentation (if applicable)
-│   └── CONTRIBUTING.md       # Development guidelines
+│   ├── api-reference.md      # API documentation (if applicable)
+│   └── contributing-guide.md # Development guidelines
+├── workbench/                # Issue-based development workflow
+├── status.md                 # Project memory and status tracking
+├── technical.md              # Technical specifications
+├── instructions.md           # Current task instructions
 ├── src/                      # Main source code
 │   ├── components/           # Reusable components/modules
 │   ├── utils/                # Utility functions and helpers
 │   ├── config/               # Configuration files
 │   └── tests/                # Test files (or __tests__ directories alongside code)
 ├── scripts/                  # Build, deployment, and utility scripts
+├── templates/                # Documentation templates
 ├── config/                   # Project configuration files
 └── examples/                 # Usage examples and sample code
 ```
@@ -46,7 +84,7 @@ project-root/
 
 ### 1. Documentation Standards
 
-Follow comprehensive documentation standards to maintain consistency and quality. See [Documentation Standards](./docs/documentation-standards.md) for complete guidelines on:
+Follow comprehensive documentation standards to maintain consistency and quality. See [documentation-standards.md](./docs/documentation-standards.md) for complete guidelines on:
 - Metadata requirements and formatting standards
 - JSDoc standards for code documentation  
 - Visual documentation with progress bars and diagrams
@@ -94,7 +132,7 @@ This template includes several automation tools to help maintain quality:
 - **Template Generator**: `node scripts/generate-doc.js` - Create new documentation from templates
 - **Change Tracking**: `node scripts/docs-changelog.js` - Track documentation changes over time
 
-See [Visual Documentation Guide](./docs/visual-guide.md) for advanced documentation patterns.
+See [visual-guide.md](./docs/visual-guide.md) for advanced documentation patterns.
 
 ### Additional Tools
 

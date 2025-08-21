@@ -27,6 +27,38 @@ This document establishes documentation standards to prevent conflicts, redundan
 
 ## Core Standards
 
+### File Naming Conventions
+
+To ensure consistency and readability, all documentation files MUST follow these naming conventions:
+
+-   **Case:** All filenames must be in `lowercase`.
+-   **Separators:** Use hyphens (`-`) to separate words (i.e., `kebab-case`).
+-   **Content:** Filenames should be descriptive and reflect the content of the file.
+
+**✅ Good Examples:**
+
+-   `authentication-guide.md`
+-   `api-reference.md`
+-   `deployment-instructions.md`
+
+**❌ Bad Examples:**
+
+-   `AuthenticationGuide.md` (uses PascalCase)
+-   `api_reference.md` (uses snake_case)
+-   `Deployment Instructions.md` (uses spaces)
+
+#### Common Exceptions
+
+While the `lowercase-kebab-case` standard should be used for all documentation files you create, there are several important exceptions for root-level and tool-specific files. These files have their own established conventions.
+
+-   **`README.md`**: Always in uppercase to ensure it's easily identifiable.
+-   **`LICENSE`**: Also typically in uppercase.
+-   **`CONTRIBUTING.md`**, **`CHANGELOG.md`**, **`CODE_OF_CONDUCT.md`**: These files have established community conventions.
+-   **Tool-Specific Files**: Always follow the naming conventions of the tool or platform (e.g., `Makefile`, `Dockerfile`, `Vagrantfile`, `Gemfile`, `Procfile`).
+-   **Framework-Specific Files**: Follow the naming conventions of the framework (e.g., `vercel.json`, `netlify.toml`, `next.config.js`).
+
+**Guiding Principle:** Use `lowercase-kebab-case` for your project's documentation files. For all other files, defer to the established conventions of the tool, platform, or community.
+
 ### Version & Date Management
 
 Every documentation file MUST include at the top:

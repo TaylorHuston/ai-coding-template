@@ -1,5 +1,10 @@
 # Task Instructions
 
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-21
+**Status**: Active
+**Target Audience**: AI Assistants, Development Team
+
 *Clear instructions for current tasks and workflows. AI assistants should always check this file and ask for confirmation of understanding before starting work.*
 
 ## Current Task Context

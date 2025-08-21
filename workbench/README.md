@@ -25,14 +25,14 @@ workbench/
 │   ├── <key>_plan.md           # Issue planning template
 │   └── docs/
 │       ├── requirements.md      # Requirements documentation template
-│       └── decision_log.md      # Decision tracking template
+│       └── decision-log.md      # Decision tracking template
 └── <ISSUE-KEY>/                # Individual issue workspaces
     ├── README.md               # Issue overview and status
     ├── <key>_plan.md          # Implementation plan
     ├── analysis/               # Research and analysis files
     ├── docs/                   # Issue-specific documentation
     │   ├── requirements.md     # Detailed requirements
-    │   └── decision_log.md     # Technical decisions made
+    │   └── decision-log.md     # Technical decisions made
     └── temp/                   # Temporary files and scratch work
 ```
 
@@ -112,7 +112,7 @@ Adapt the naming convention to match your issue tracking system:
 5. **Begin development** with AI assistant
 
 ### During Development
-1. **Track decisions** in `docs/decision_log.md`
+1. **Track decisions** in `docs/decision-log.md`
 2. **Store analysis** in `analysis/` directory
 3. **Create temp files** for exploration and debugging
 4. **Update plan** as work progresses
@@ -177,7 +177,7 @@ The `docs/requirements.md` template covers:
 - Risk assessment and mitigation
 
 ### Decision Log Template
-The `docs/decision_log.md` template tracks:
+The `docs/decision-log.md` template tracks:
 - Technical architecture decisions
 - UX/UI design choices
 - Process and workflow decisions

@@ -10,20 +10,20 @@ This is an AI coding template repository designed as a starter template for proj
 
 This template addresses key challenges when working with AI coding tools. For a deep dive into best practices, please see:
 
--   [**prompting.md**](./prompting.md): For detailed guidance on how to write effective prompts.
--   [**legal.md**](./legal.md): For information on legal and ethical considerations.
+- [**prompting.md**](./prompting.md): For detailed guidance on how to write effective prompts.
+- [**legal.md**](./legal.md): For information on legal and ethical considerations.
 
 ### Context Window Limitations
 
--   LLMs have limited "context windows" and will eventually "forget" previous implementations.
--   This leads to duplicate code, broken integrations, and inconsistent patterns.
--   Having established frameworks and patterns helps mitigate these issues.
+- LLMs have limited "context windows" and will eventually "forget" previous implementations.
+- This leads to duplicate code, broken integrations, and inconsistent patterns.
+- Having established frameworks and patterns helps mitigate these issues.
 
 ### Template Philosophy
 
--   Designed to be technology-agnostic and adaptable.
--   Focus on patterns and structures that help AI tools maintain consistency.
--   Emphasis on clear documentation and context preservation.
+- Designed to be technology-agnostic and adaptable.
+- Focus on patterns and structures that help AI tools maintain consistency.
+- Emphasis on clear documentation and context preservation.
 
 ## Development Setup
 
@@ -45,22 +45,30 @@ When using this template:
 5.  Implement the suggested patterns for working with AI tools.
 6.  Update this `CLAUDE.md` file with project-specific details as you develop.
 
+## File Conventions
+
+-   **Documentation:** All documentation files MUST be in `lowercase-kebab-case`. For example, `authentication-guide.md`.
+-   **Code:** Follow the naming conventions for the specific programming language being used.
+
 ## Context Management
 
 This template includes advanced context management strategies to help AI assistants work effectively:
 
 ### Status Management Files
+
 - **status.md**: Project's memory - quickly restore context when hitting context limits
 - **technical.md**: Technical specifications and system architecture details
 - **instructions.md**: Current task instructions and workflows
 
 ### Context Engineering
+
 - **Context Pruning**: Regular cleanup of outdated information
 - **Structured Boundaries**: Clear separation between different types of context
 - **Progressive Refinement**: Building context incrementally as needed
 - **Session Handoffs**: Smooth transitions between AI sessions
 
 ### Memory Management Strategies
+
 - Use status.md to summarize progress and current state
 - Reference technical.md for system architecture and patterns
 - Check instructions.md before starting any new work
@@ -69,18 +77,21 @@ This template includes advanced context management strategies to help AI assista
 ## Common Workflows
 
 ### Starting a New Session
+
 1. Read status.md for current project state
 2. Check instructions.md for active tasks
 3. Review technical.md for relevant technical context
 4. Confirm understanding before beginning work
 
 ### Context Window Management
+
 - Use the status management files to maintain context efficiently
 - Prune outdated information from conversations
 - Reference files by name rather than including full content
 - Focus on current task context rather than entire project history
 
 ### Ending a Session
+
 1. Update status.md with current progress
 2. Update instructions.md with next steps
 3. Note any important decisions or changes made
@@ -89,20 +100,22 @@ This template includes advanced context management strategies to help AI assista
 ## Best Practices for AI Collaboration
 
 ### Code Generation
+
 - Follow patterns established in examples/ directory
 - Reference .cursor/rules/ for language-specific guidelines
 - Use existing project patterns and conventions
 - Validate against technical specifications in technical.md
 
 ### Problem Solving
-- Use context engineering techniques from docs/context_engineering.md
+
+- Use context engineering techniques from docs/context-engineering.md
 - Apply RAG strategies when working with large codebases
 - Reference prompting.md for effective interaction patterns
 
 ### Legal and Security
+
 - Follow guidelines in legal.md for AI-generated code
-- Apply security patterns from .cursor/rules/security.mdc
-- Document AI assistance level in commit messages
+- Apply security patterns from .cursor/rules/security.mdc y - Document AI assistance level in commit messages
 
 ## Architecture Notes
 

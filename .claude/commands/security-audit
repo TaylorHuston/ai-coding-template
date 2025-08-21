@@ -1,0 +1,29 @@
+# Security Audit Command
+
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-21
+**Status**: Active
+**Target Audience**: AI Assistants, Development Team
+
+Comprehensive security assessment workflow:
+1. Scan for common security vulnerabilities (OWASP Top 10)
+2. Analyze authentication and authorization implementation
+3. Review data protection and privacy compliance
+4. Assess infrastructure and deployment security
+5. Generate detailed security report with remediation guidance
+
+Process:
+- Use context-analyzer to understand system architecture
+- Use security-auditor for comprehensive vulnerability assessment
+- Use code-reviewer for security-focused code review
+- Use database-specialist for data security review (if applicable)
+- Run automated security scanning tools
+- Generate prioritized vulnerability report
+- Provide specific remediation recommendations
+- Update security documentation and procedures
+
+Parameters:
+- --scope: Audit scope (code, infrastructure, data, all)
+- --depth: Audit depth (basic, standard, comprehensive)
+- --compliance: Compliance framework (GDPR, PCI-DSS, HIPAA, SOC2)
+- --output: Report format (summary, detailed, checklist)

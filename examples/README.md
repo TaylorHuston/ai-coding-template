@@ -1,5 +1,10 @@
 # Code Examples
 
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-21
+**Status**: Active
+**Target Audience**: AI Assistants, Development Team
+
 This directory contains code pattern examples that AI assistants can reference when generating code for your project.
 
 ## Purpose
