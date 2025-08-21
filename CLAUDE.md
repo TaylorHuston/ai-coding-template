@@ -10,8 +10,8 @@ This is an AI coding template repository designed as a starter template for proj
 
 This template addresses key challenges when working with AI coding tools. For a deep dive into best practices, please see:
 
--   [**PROMPTING.md**](./PROMPTING.md): For detailed guidance on how to write effective prompts.
--   [**LEGAL.md**](./LEGAL.md): For information on legal and ethical considerations.
+-   [**prompting.md**](./prompting.md): For detailed guidance on how to write effective prompts.
+-   [**legal.md**](./legal.md): For information on legal and ethical considerations.
 
 ### Context Window Limitations
 
@@ -39,8 +39,8 @@ Since this is a template repository, setup depends on your specific use case:
 When using this template:
 
 1.  Review the [README](./README.md) for AI coding best practices.
-2.  Read [PROMPTING.md](./PROMPTING.md) to learn how to write effective prompts.
-3.  Familiarize yourself with the considerations in [LEGAL.md](./LEGAL.md).
+2.  Read [prompting.md](./prompting.md) to learn how to write effective prompts.
+3.  Familiarize yourself with the considerations in [legal.md](./legal.md).
 4.  Adapt the file structure recommendations to your tech stack.
 5.  Implement the suggested patterns for working with AI tools.
 6.  Update this `CLAUDE.md` file with project-specific details as you develop.
@@ -95,12 +95,12 @@ This template includes advanced context management strategies to help AI assista
 - Validate against technical specifications in technical.md
 
 ### Problem Solving
-- Use context engineering techniques from docs/CONTEXT_ENGINEERING.md
+- Use context engineering techniques from docs/context_engineering.md
 - Apply RAG strategies when working with large codebases
-- Reference PROMPTING.md for effective interaction patterns
+- Reference prompting.md for effective interaction patterns
 
 ### Legal and Security
-- Follow guidelines in LEGAL.md for AI-generated code
+- Follow guidelines in legal.md for AI-generated code
 - Apply security patterns from .cursor/rules/security.mdc
 - Document AI assistance level in commit messages
 

@@ -1,4 +1,4 @@
-# PROMPTING.md
+# Prompting Guide
 
 A comprehensive guide to writing effective prompts for AI coding assistants.
 

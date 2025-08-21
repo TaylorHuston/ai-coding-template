@@ -26,12 +26,12 @@ Here's a recommended approach:
 ```text
 project-root/
 ├── README.md                 # Project overview and setup instructions
-├── PROMPTING.md              # Best practices for prompting AI coding assistants
-├── LEGAL.md                  # Legal and ethical considerations
+├── prompting.md              # Best practices for prompting AI coding assistants
+├── legal.md                  # Legal and ethical considerations
 ├── CLAUDE.md                 # Instructions for Claude Code (or similar AI tools)
 ├── .gitignore                # Standard gitignore for your tech stack
 ├── docs/                     # Documentation and guides
-│   ├── ARCHITECTURE.md       # High-level system design
+│   ├── architecture.md       # High-level system design
 │   ├── API.md                # API documentation (if applicable)
 │   └── CONTRIBUTING.md       # Development guidelines
 ├── src/                      # Main source code
@@ -48,7 +48,7 @@ project-root/
 
 ### 1. Prompt Engineering
 
-The quality of your prompts determines the quality of the AI's output. See [PROMPTING.md](./PROMPTING.md) for a detailed guide on how to write effective prompts.
+The quality of your prompts determines the quality of the AI's output. See [prompting.md](./prompting.md) for a detailed guide on how to write effective prompts.
 
 ### 2. Code Quality and Review
 
@@ -74,7 +74,7 @@ The quality of your prompts determines the quality of the AI's output. See [PROM
 
 ### 6. Legal and Ethical Considerations
 
-Using AI-generated code has legal and ethical implications. See [LEGAL.md](./LEGAL.md) for a guide on how to navigate these issues.
+Using AI-generated code has legal and ethical implications. See [legal.md](./legal.md) for a guide on how to navigate these issues.
 
 ## Tooling and Automation
 

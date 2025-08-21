@@ -1,4 +1,4 @@
-# LEGAL.md
+# Legal Considerations
 
 Legal and ethical considerations when using AI-generated code in software development.
 
