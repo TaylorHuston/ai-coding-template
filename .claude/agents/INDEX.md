@@ -2,105 +2,158 @@
 
 **Created**: 2025-08-21
 **Last Updated**: 2025-08-21
-**Status**: Active
-**Target Audience**: AI Assistants, Development Team
+**Status**: Active - Enhanced Template System
+**Target Audience**: AI Assistants, Development Teams
+**Total Agents**: 14 | **Coverage**: Complete development workflow
 
-Comprehensive catalog of available AI agents, their capabilities, and usage patterns.
+Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 
 ## Agent Classification System
 
 ### By Domain Expertise
 
-#### **Development & Implementation**
-- **[full-stack-developer](./full-stack-developer.md)** - Complete application development
-  - *Capabilities*: Frontend, backend, database, API integration
-  - *Best For*: Feature implementation, bug fixes, architecture decisions
-  - *Model*: opus | *Color*: purple
+#### **Architecture & Planning**
+- **[code-architect](./code-architect.md)** - System design and long-term architecture
+  - *Capabilities*: System architecture, technology decisions, API design
+  - *Best For*: Large-scale design decisions, technology selection, architectural reviews
+  - *Model*: opus | *Color*: purple | *Auto-Invoked*: Complex architectural tasks
 
+- **[project-manager](./project-manager.md)** - Project coordination and orchestration  
+  - *Capabilities*: Multi-agent coordination, task orchestration, resource allocation
+  - *Best For*: Complex project coordination, multi-phase implementations, team coordination
+  - *Model*: opus | *Color*: blue | *Auto-Invoked*: Multi-domain tasks
+
+- **[context-analyzer](./context-analyzer.md)** - Project context analysis and investigation
+  - *Capabilities*: Root cause analysis, systematic investigation, evidence-based reasoning
+  - *Best For*: Bug investigation, system analysis, problem diagnosis
+  - *Model*: sonnet | *Color*: yellow | *Auto-Invoked*: Investigation tasks
+
+#### **Development & Implementation**  
 - **[frontend-specialist](./frontend-specialist.md)** - UI/UX focused development
-  - *Capabilities*: React/Vue/Angular, responsive design, accessibility
-  - *Best For*: Component development, user interface optimization
-  - *Model*: sonnet | *Color*: blue
+  - *Capabilities*: React/Vue/Angular, responsive design, accessibility, Core Web Vitals
+  - *Best For*: Component development, user interface optimization, performance
+  - *Model*: sonnet | *Color*: blue | *Auto-Invoked*: UI/UX development tasks
 
-- **[backend-engineer](./backend-engineer.md)** - Server-side development
-  - *Capabilities*: APIs, databases, microservices, performance optimization
-  - *Best For*: Server logic, data modeling, API design
-  - *Model*: sonnet | *Color*: green
+- **[backend-specialist](./backend-specialist.md)** - Server-side implementation and business logic
+  - *Capabilities*: Server frameworks, business logic, authentication, real-time features
+  - *Best For*: API implementation, business logic, authentication, background processing
+  - *Model*: sonnet | *Color*: green | *Auto-Invoked*: Server-side implementation tasks
 
-#### **Quality & Analysis**
-- **[security-auditor](./security-auditor.md)** - Security assessment and hardening
-  - *Capabilities*: Vulnerability scanning, OWASP compliance, threat modeling
-  - *Best For*: Security reviews, penetration testing, compliance audits
-  - *Model*: opus | *Color*: red
+- **[database-specialist](./database-specialist.md)** - Database design and optimization
+  - *Capabilities*: Schema design, query optimization, performance tuning, migrations
+  - *Best For*: Database architecture, query performance, data modeling
+  - *Model*: sonnet | *Color*: magenta | *Auto-Invoked*: All database work
 
-- **[code-reviewer](./code-reviewer.md)** - Code quality assessment
-  - *Capabilities*: Static analysis, best practices, pattern recognition
-  - *Best For*: Code reviews, quality improvement, refactoring guidance
-  - *Model*: sonnet | *Color*: yellow
+- **[api-designer](./api-designer.md)** - API design and endpoint architecture
+  - *Capabilities*: REST/GraphQL design, API contracts, data validation, error handling
+  - *Best For*: API architecture, endpoint design, service contracts
+  - *Model*: sonnet | *Color*: teal | *Auto-Invoked*: API development tasks
 
-- **[performance-optimizer](./performance-optimizer.md)** - Performance analysis and tuning
-  - *Capabilities*: Profiling, bottleneck identification, optimization strategies
-  - *Best For*: Performance audits, load testing, optimization recommendations
-  - *Model*: sonnet | *Color*: orange
+#### **Quality & Testing**
+- **[test-engineer](./test-engineer.md)** - Comprehensive test creation and strategy
+  - *Capabilities*: TDD/BDD workflows, unit/integration/E2E tests, test automation
+  - *Best For*: Test strategy development, test creation, quality assurance
+  - *Model*: sonnet | *Color*: green | *Auto-Invoked*: Test creation requests
 
-#### **Infrastructure & DevOps**
-- **[devops-engineer](./devops-engineer.md)** - Infrastructure and deployment
+- **[code-reviewer](./code-reviewer.md)** - Code quality assessment and reviews
+  - *Capabilities*: Quality analysis, best practices, maintainability assessment  
+  - *Best For*: Post-implementation reviews, refactoring guidance, quality improvement
+  - *Model*: sonnet | *Color*: yellow | *Auto-Invoked*: After code implementation
+
+- **[security-auditor](./security-auditor.md)** - Security assessment and compliance
+  - *Capabilities*: Vulnerability detection, OWASP compliance, threat modeling
+  - *Best For*: Security reviews, compliance validation, vulnerability assessment
+  - *Model*: opus | *Color*: red | *Auto-Invoked*: Security-critical changes
+
+#### **Operations & Performance**
+- **[devops-engineer](./devops-engineer.md)** - Infrastructure and deployment automation
   - *Capabilities*: CI/CD, containerization, cloud platforms, monitoring
-  - *Best For*: Deployment automation, infrastructure setup, monitoring
-  - *Model*: sonnet | *Color*: cyan
+  - *Best For*: Deployment automation, infrastructure setup, environment management
+  - *Model*: sonnet | *Color*: cyan | *Auto-Invoked*: Infrastructure tasks
 
-- **[database-specialist](./database-specialist.md)** - Data management and optimization
-  - *Capabilities*: Schema design, query optimization, data migration
-  - *Best For*: Database design, performance tuning, data analysis
-  - *Model*: sonnet | *Color*: magenta
+- **[performance-optimizer](./performance-optimizer.md)** - Performance analysis and optimization
+  - *Capabilities*: Bottleneck identification, optimization strategies, monitoring
+  - *Best For*: Performance audits, optimization recommendations, scalability planning
+  - *Model*: sonnet | *Color*: orange | *Auto-Invoked*: Performance issues
 
 #### **Documentation & Communication**
-- **[technical-writer](./technical-writer.md)** - Documentation and communication
-  - *Capabilities*: Technical writing, API docs, user guides, tutorials
-  - *Best For*: Documentation creation, knowledge transfer, content strategy
-  - *Model*: haiku | *Color*: teal
+- **[docs-sync-agent](./docs-sync-agent.md)** - Documentation synchronization and maintenance
+  - *Capabilities*: Documentation updates, consistency maintenance, link validation
+  - *Best For*: Keeping docs current with code changes, maintaining accuracy
+  - *Model*: haiku | *Color*: blue | *Auto-Invoked*: After code changes
 
-#### **Project Management**
-- **[project-manager](./project-manager.md)** - Project coordination and planning
-  - *Capabilities*: Task orchestration, resource allocation, timeline management
-  - *Best For*: Complex project coordination, multi-agent task distribution
-  - *Model*: opus | *Color*: blue
+- **[technical-writer](./technical-writer.md)** - New documentation creation
+  - *Capabilities*: Technical writing, API docs, user guides, tutorials
+  - *Best For*: Creating new documentation, comprehensive guides, content strategy
+  - *Model*: haiku | *Color*: teal | *Auto-Invoked*: Documentation creation requests
+
+## Agent Usage Patterns
+
+### **Automatic Invocation Agents** (8 agents)
+These agents activate automatically based on context and task requirements:
+
+1. **project-manager** - Complex/multi-domain tasks requiring coordination
+2. **context-analyzer** - Investigation and root cause analysis tasks  
+3. **frontend-specialist** - UI/UX development and component work
+4. **backend-specialist** - Server-side implementation and business logic
+5. **database-specialist** - All database-related operations
+6. **test-engineer** - Test creation and strategy development
+7. **code-reviewer** - Post-implementation quality reviews
+8. **docs-sync-agent** - After code changes affecting documentation
+
+### **On-Demand Specialists** (6 agents)  
+These are invoked for specific domains or specialized work:
+
+1. **code-architect** - Architectural decisions and system design
+2. **api-designer** - API architecture and endpoint design  
+3. **security-auditor** - Security audits and compliance validation
+4. **devops-engineer** - Infrastructure and deployment automation
+5. **performance-optimizer** - Performance analysis and optimization
+6. **technical-writer** - New documentation creation
 
 ### By Task Complexity
 
 #### **High Complexity (Opus Model)**
-- project-manager - Multi-agent orchestration
-- security-auditor - Critical security analysis
-- full-stack-developer - Complex system architecture
+- **code-architect** - System architecture and technology decisions
+- **project-manager** - Multi-agent orchestration and complex coordination
+- **security-auditor** - Critical security analysis and compliance
 
-#### **Medium Complexity (Sonnet Model)**
-- frontend-specialist - Component development
-- backend-engineer - API implementation
-- code-reviewer - Quality analysis
-- performance-optimizer - Performance tuning
-- devops-engineer - Infrastructure automation
-- database-specialist - Data optimization
+#### **Medium Complexity (Sonnet Model)**  
+- **frontend-specialist** - Modern frontend development and optimization
+- **backend-specialist** - Server-side implementation and business logic
+- **database-specialist** - Database design and performance optimization
+- **api-designer** - API architecture and service design
+- **test-engineer** - Comprehensive testing strategies
+- **code-reviewer** - Quality analysis and best practices
+- **context-analyzer** - Systematic investigation and analysis
+- **devops-engineer** - Infrastructure automation and deployment
+- **performance-optimizer** - Performance analysis and optimization
 
 #### **Low Complexity (Haiku Model)**
-- technical-writer - Documentation tasks
+- **docs-sync-agent** - Documentation maintenance and synchronization
+- **technical-writer** - Content creation and technical writing
 
 ### By Usage Frequency
 
-#### **Primary Agents** (Most commonly used)
-1. full-stack-developer - General development tasks
-2. code-reviewer - Code quality assurance
-3. technical-writer - Documentation needs
-4. security-auditor - Security requirements
+#### **Core Development Agents** (Daily use)
+1. **frontend-specialist** - UI development and user experience
+2. **backend-specialist** - Server-side implementation and business logic
+3. **database-specialist** - Data modeling and query optimization  
+4. **code-reviewer** - Quality assurance and best practices
+5. **docs-sync-agent** - Documentation maintenance
 
-#### **Specialist Agents** (Domain-specific needs)
-1. frontend-specialist - UI/UX focused projects
-2. backend-engineer - Server-side heavy projects
-3. performance-optimizer - Performance-critical applications
-4. database-specialist - Data-intensive applications
+#### **Strategic Agents** (Weekly/project milestones)
+1. **code-architect** - System design and architectural decisions
+2. **security-auditor** - Security reviews and compliance
+3. **performance-optimizer** - Performance analysis and optimization
+4. **devops-engineer** - Infrastructure and deployment automation
 
-#### **Orchestration Agents** (Complex coordination)
-1. project-manager - Multi-phase projects
-2. devops-engineer - Infrastructure projects
+#### **Specialized Agents** (As-needed basis)
+1. **project-manager** - Complex multi-domain coordination
+2. **context-analyzer** - Investigation and troubleshooting
+3. **api-designer** - API architecture and design
+4. **test-engineer** - Test strategy and comprehensive testing
+5. **technical-writer** - New documentation creation
 
 ## Agent Selection Guidelines
 
@@ -109,54 +162,68 @@ Comprehensive catalog of available AI agents, their capabilities, and usage patt
 ```yaml
 task_type_mapping:
   feature_development:
-    simple: [frontend-specialist, backend-engineer]
-    complex: [full-stack-developer]
+    frontend_work: [frontend-specialist]
+    backend_work: [backend-specialist, database-specialist]
+    api_development: [api-designer, backend-specialist]
+    full_stack: [frontend-specialist + backend-specialist + database-specialist]
+    complex_features: [project-manager → coordinates specialists]
     
   bug_fixing:
     ui_bugs: [frontend-specialist]
-    logic_bugs: [backend-engineer, full-stack-developer]
+    backend_bugs: [backend-specialist, database-specialist]
+    api_bugs: [api-designer, backend-specialist]  
     performance_bugs: [performance-optimizer]
     security_bugs: [security-auditor]
+    investigation_needed: [context-analyzer]
     
   code_quality:
-    review: [code-reviewer]
-    refactoring: [code-reviewer, full-stack-developer]
+    post_implementation: [code-reviewer]
+    architecture_review: [code-architect]
+    refactoring: [code-reviewer + relevant specialists]
     optimization: [performance-optimizer]
     
   infrastructure:
     deployment: [devops-engineer]
+    ci_cd_setup: [devops-engineer]
     monitoring: [devops-engineer, performance-optimizer]
-    security: [security-auditor, devops-engineer]
+    security_hardening: [security-auditor, devops-engineer]
     
   documentation:
-    api_docs: [technical-writer, backend-engineer]
-    user_guides: [technical-writer]
-    technical_specs: [technical-writer, full-stack-developer]
+    sync_with_code: [docs-sync-agent] # auto-invoked
+    new_documentation: [technical-writer]
+    api_docs: [technical-writer, api-designer]
+    architecture_docs: [technical-writer, code-architect]
     
   data_management:
     schema_design: [database-specialist]
-    query_optimization: [database-specialist, performance-optimizer]
-    migration: [database-specialist, backend-engineer]
+    query_optimization: [database-specialist, performance-optimizer]  
+    migrations: [database-specialist]
+    performance_tuning: [performance-optimizer, database-specialist]
+    
+  testing:
+    test_strategy: [test-engineer]
+    test_creation: [test-engineer]
+    test_automation: [test-engineer, devops-engineer]
 ```
 
 ### Selection Criteria
 
 #### **By Project Phase**
-- **Planning**: project-manager, full-stack-developer
-- **Development**: domain-specific specialists
-- **Testing**: code-reviewer, security-auditor
+- **Architecture/Planning**: code-architect, project-manager
+- **Development**: frontend-specialist, api-designer, database-specialist
+- **Quality Assurance**: code-reviewer, test-engineer, security-auditor
 - **Deployment**: devops-engineer
-- **Maintenance**: performance-optimizer, security-auditor
+- **Maintenance**: performance-optimizer, docs-sync-agent, security-auditor
 
 #### **By Team Size**
-- **Solo Developer**: full-stack-developer, technical-writer
-- **Small Team**: specialists + code-reviewer
-- **Large Team**: project-manager + domain specialists
+- **Solo Developer**: Use 3-4 core agents (frontend-specialist, database-specialist, code-reviewer, docs-sync-agent)
+- **Small Team (2-5)**: Add specialists as needed (devops-engineer, security-auditor, performance-optimizer)
+- **Large Team (5+)**: Full agent suite with project-manager for coordination
 
 #### **By Risk Profile**
-- **High Risk**: security-auditor, project-manager
-- **Medium Risk**: code-reviewer, performance-optimizer
-- **Low Risk**: domain specialists
+- **High Risk**: security-auditor, code-architect, project-manager (coordination)
+- **Medium Risk**: code-reviewer, performance-optimizer, test-engineer
+- **Low Risk**: Domain specialists with standard quality review
 
 ## Multi-Agent Coordination Patterns
 
