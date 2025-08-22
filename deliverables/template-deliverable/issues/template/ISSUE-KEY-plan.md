@@ -79,6 +79,12 @@ As a [user type], I want [functionality] so that [benefit/value]
 - [Risk 1]: [Mitigation strategy]
 - [Risk 2]: [Mitigation strategy]
 
+## Changelog Entry
+
+**Type**: Added/Changed/Deprecated  
+**Description**: [One-line description for changelog]  
+**Breaking Change**: No/Yes (if yes, describe migration)  
+
 ## Definition of Done
 
 - [ ] All acceptance criteria met (see requirements.md)
@@ -88,3 +94,4 @@ As a [user type], I want [functionality] so that [benefit/value]
 - [ ] Code reviewed and approved
 - [ ] Deployed successfully
 - [ ] Stakeholders notified of completion
+- [ ] Changelog updated with feature description

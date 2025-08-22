@@ -180,12 +180,25 @@ The previous `/workbench` directory structure is being migrated to this new orga
 - Work items are grouped by business objective
 - Technical tasks are linked to business outcomes
 
+## Changelog Maintenance
+
+When completing work items, remember to update the project [CHANGELOG.md](../CHANGELOG.md):
+
+1. **Add entries to `[Unreleased]` section** as work is completed
+2. **Use the format**: `- [KEY] Brief description`
+3. **Categorize properly**: Added, Changed, Fixed, Removed, Deprecated, Security
+4. **Mark breaking changes**: Use **BREAKING** prefix with migration notes
+
+See the [Changelog Guide](../docs/guides/changelog-guide.md) for detailed instructions.
+
 ## Quick Links
 
 - [Deliverable Template](./template-deliverable/template-deliverable.md)
 - [Issue Template](./template-deliverable/issues/template/)
 - [Documentation Standards](../docs/documentation-standards.md)
 - [Architecture Documentation](../docs/architecture/)
+- [Changelog Guide](../docs/guides/changelog-guide.md)
+- [Project Changelog](../CHANGELOG.md)
 
 ---
 

@@ -50,6 +50,12 @@
 
 [Any technical context, related code areas, or implementation considerations the AI needs to know]
 
+## Changelog Entry
+
+**Type**: Fixed  
+**Description**: [One-line description for changelog]  
+**Breaking Change**: No/Yes (if yes, describe migration)  
+
 ## Definition of Done
 
 - [ ] Bug fixed and cannot be reproduced
@@ -58,3 +64,4 @@
 - [ ] Documentation updated if needed
 - [ ] Deployed to production
 - [ ] Monitoring confirms fix is working
+- [ ] Changelog updated with fix description

@@ -51,6 +51,12 @@
 
 [Any technical details, approach considerations, or important context the AI needs to know]
 
+## Changelog Entry
+
+**Type**: Added/Changed/Deprecated/Removed  
+**Description**: [One-line description for changelog]  
+**Breaking Change**: No/Yes (if yes, describe migration)  
+
 ## Definition of Done
 
 - [ ] All success criteria met
@@ -59,3 +65,4 @@
 - [ ] Documentation updated
 - [ ] Code reviewed and approved
 - [ ] No technical debt introduced (or documented if unavoidable)
+- [ ] Changelog updated with task description
