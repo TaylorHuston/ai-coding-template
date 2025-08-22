@@ -1,5 +1,11 @@
 # Legal Considerations
 
+**Version**: 1.0.0
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-21
+**Status**: Active
+**Target Audience**: Developers, Legal Teams, Technical Writers
+
 Legal and ethical considerations when using AI-generated code in software development.
 
 ## Table of Contents

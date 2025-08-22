@@ -1,6 +1,10 @@
 # CLAUDE.md - AI Agent Instructions
 
-**Version**: 1.0 | **Updated**: 2025-08-21 | **Project**: AI Coding Template
+**Version**: 1.0.0
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-21
+**Status**: Active
+**Target Audience**: AI Assistants
 
 You are working with an AI coding template repository designed to optimize AI-assisted development workflows. Follow these instructions precisely when operating in this codebase.
 

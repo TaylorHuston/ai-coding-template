@@ -1,5 +1,11 @@
 # Architecture Guide
 
+**Version**: 1.0.0
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-21
+**Status**: Active
+**Target Audience**: Developers, Architects, AI Assistants
+
 High-level system design principles and patterns for AI-assisted development.
 
 ## Overview

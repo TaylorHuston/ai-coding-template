@@ -1,5 +1,6 @@
 # {{FEATURE_NAME}}
 
+**Version**: {{VERSION}}
 **Created**: {{CREATED}}
 **Last Updated**: {{LAST_UPDATED}}
 **Status**: {{STATUS}}

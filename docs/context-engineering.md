@@ -1,5 +1,11 @@
 # Context Engineering for AI Coding
 
+**Version**: 1.0.0
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-21
+**Status**: Active
+**Target Audience**: Developers, AI Assistants
+
 Advanced techniques for managing context and memory in AI-assisted development.
 
 ## Table of Contents

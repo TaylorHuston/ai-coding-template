@@ -1,5 +1,11 @@
 # Prompting Guide
 
+**Version**: 1.0.0
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-21
+**Status**: Active
+**Target Audience**: Developers, Technical Writers, AI Assistants
+
 A comprehensive guide to writing effective prompts for AI coding assistants.
 
 ## Table of Contents

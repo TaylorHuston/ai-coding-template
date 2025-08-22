@@ -1,5 +1,11 @@
 # AI Coding Template
 
+**Version**: 1.0.0
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-21
+**Status**: Active
+**Target Audience**: Developers, Technical Writers, AI Assistants
+
 This repo serves as a starter template for new projects working with AI coding tools. This is based on my own experiences and will be constantly evolving based on that. Designed primarily for working with Claude Code and VSCode, but should be easily adaptable to other tools. Also based off my discoveries, trials, headaches and dead ends from building a NextJS app, but I will try and keep this framework as tech-stack agnostic as possible.
 
 ## Quick Context

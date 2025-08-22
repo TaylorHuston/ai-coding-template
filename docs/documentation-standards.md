@@ -1,8 +1,9 @@
 # Documentation Standards
 
+**Version**: 1.1.0
 **Created**: 2025-08-21
 **Last Updated**: 2025-08-21
-**Purpose**: Ensure consistency and prevent conflicts across all project documentation
+**Status**: Active
 **Target Audience**: Developers, Technical Writers, AI Assistants
 
 ## Overview
@@ -12,16 +13,19 @@ This document establishes documentation standards to prevent conflicts, redundan
 ## Documentation Hierarchy
 
 ### 1. Primary Sources (The Source of Truth)
+
 - **`docs/`**: The single source of truth for all technical specifications and guides
 - **Core documentation files**: `README`, `CLAUDE.md`, technical specifications
 - **Note**: Always reference primary sources rather than duplicating information
 
-### 2. Secondary Sources (Guides & Overviews)  
+### 2. Secondary Sources (Guides & Overviews)
+
 - **`status.md`**: Current implementation state and priorities
 - **`instructions.md`**: Current task instructions and workflows
 - **`technical.md`**: Technical specifications and system details
 
 ### 3. Tertiary Sources (Entry Points & Quick References)
+
 - **`README`**: Project overview (keep minimal, link to detailed docs)
 - **Quick reference guides**: Should link to detailed docs, not duplicate content
 
@@ -31,31 +35,31 @@ This document establishes documentation standards to prevent conflicts, redundan
 
 To ensure consistency and readability, all documentation files MUST follow these naming conventions:
 
--   **Case:** All filenames must be in `lowercase`.
--   **Separators:** Use hyphens (`-`) to separate words (i.e., `kebab-case`).
--   **Content:** Filenames should be descriptive and reflect the content of the file.
+- **Case:** All filenames must be in `lowercase`.
+- **Separators:** Use hyphens (`-`) to separate words (i.e., `kebab-case`).
+- **Content:** Filenames should be descriptive and reflect the content of the file.
 
 **✅ Good Examples:**
 
--   `authentication-guide.md`
--   `api-reference.md`
--   `deployment-instructions.md`
+- `authentication-guide.md`
+- `api-reference.md`
+- `deployment-instructions.md`
 
 **❌ Bad Examples:**
 
--   `AuthenticationGuide.md` (uses PascalCase)
--   `api_reference.md` (uses snake_case)
--   `Deployment Instructions.md` (uses spaces)
+- `AuthenticationGuide.md` (uses PascalCase)
+- `api_reference.md` (uses snake_case)
+- `Deployment Instructions.md` (uses spaces)
 
 #### Common Exceptions
 
 While the `lowercase-kebab-case` standard should be used for all documentation files you create, there are several important exceptions for root-level and tool-specific files. These files have their own established conventions.
 
--   **`README.md`**: Always in uppercase to ensure it's easily identifiable.
--   **`LICENSE`**: Also typically in uppercase.
--   **`CONTRIBUTING.md`**, **`CHANGELOG.md`**, **`CODE_OF_CONDUCT.md`**: These files have established community conventions.
--   **Tool-Specific Files**: Always follow the naming conventions of the tool or platform (e.g., `Makefile`, `Dockerfile`, `Vagrantfile`, `Gemfile`, `Procfile`).
--   **Framework-Specific Files**: Follow the naming conventions of the framework (e.g., `vercel.json`, `netlify.toml`, `next.config.js`).
+- **`README.md`**: Always in uppercase to ensure it's easily identifiable.
+- **`LICENSE`**: Also typically in uppercase.
+- **`CONTRIBUTING.md`**, **`CHANGELOG.md`**, **`CODE_OF_CONDUCT.md`**: These files have established community conventions.
+- **Tool-Specific Files**: Always follow the naming conventions of the tool or platform (e.g., `Makefile`, `Dockerfile`, `Vagrantfile`, `Gemfile`, `Procfile`).
+- **Framework-Specific Files**: Follow the naming conventions of the framework (e.g., `vercel.json`, `netlify.toml`, `next.config.js`).
 
 **Guiding Principle:** Use `lowercase-kebab-case` for your project's documentation files. For all other files, defer to the established conventions of the tool, platform, or community.
 
@@ -64,11 +68,27 @@ While the `lowercase-kebab-case` standard should be used for all documentation f
 Every documentation file MUST include at the top:
 
 ```markdown
+**Version**: X.Y.Z
 **Created**: YYYY-MM-DD
 **Last Updated**: YYYY-MM-DD
 **Status**: Active/Archived/Deprecated
 **Target Audience**: [Primary audience for this document]
 ```
+
+#### Versioning System
+
+Use semantic versioning for documentation:
+
+- **Major (X.0.0)**: Breaking changes, complete rewrites, major restructuring
+- **Minor (X.Y.0)**: New sections, significant additions, structural changes
+- **Patch (X.Y.Z)**: Corrections, clarifications, small updates, typo fixes
+
+**Examples:**
+
+- `1.0.0`: Initial version
+- `1.1.0`: Added new major section
+- `1.1.1`: Fixed typos and updated examples
+- `2.0.0`: Complete rewrite or major structural change
 
 ### Status Reporting
 
@@ -104,6 +124,7 @@ Every documentation file should clearly define its intended audience:
 ```markdown
 # Feature Name
 
+**Version**: X.Y.Z
 **Created**: YYYY-MM-DD
 **Last Updated**: YYYY-MM-DD
 **Status**: Planning/In Progress/Complete/Deprecated
@@ -149,14 +170,14 @@ When finding conflicting information:
 
 ## Common Pitfalls to Avoid
 
-### ❌ Don't Do This:
+### ❌ Don't Do This
 
 - Copy/paste the same information to multiple files
 - Document assumptions as facts
 - Update one doc without checking for others
 - Use vague terms like "mostly complete" without specifics
 
-### ✅ Do This Instead:
+### ✅ Do This Instead
 
 - Link to the authoritative source
 - Verify everything before documenting
@@ -167,6 +188,7 @@ When finding conflicting information:
 
 Before committing documentation updates:
 
+- [ ] Version number updated appropriately (major/minor/patch)
 - [ ] All created and last edited dates are present and accurate
 - [ ] No duplicate information (use references instead)
 - [ ] Links to other docs are valid
@@ -398,12 +420,24 @@ See the `scripts/` directory for detailed information about each tool.
 
 ### Quality Assurance
 
-- Always include metadata headers in new files
+- Always include metadata headers with version numbers in new files
+- Update version numbers appropriately when making changes
 - Use appropriate target audience designation
 - Verify all examples are functional
 - Check links before committing
 - Follow single-source-of-truth principle
 
+### Version Management Guidelines
+
+When updating documentation:
+
+1. **Patch (X.Y.Z+1)**: For typos, small clarifications, example updates
+2. **Minor (X.Y+1.0)**: For new sections, additional content, structural improvements
+3. **Major (X+1.0.0)**: For complete rewrites, breaking changes, major restructuring
+
+Always update the "Last Updated" date when incrementing any version number.
+
 ---
 
 By following these comprehensive documentation standards, we ensure that all project documentation remains clear, accurate, and maintainable for team members and AI assistants alike.
+
