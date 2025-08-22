@@ -1,8 +1,8 @@
 # Documentation Standards
 
-**Version**: 1.1.0
+**Version**: 1.2.0
 **Created**: 2025-08-21
-**Last Updated**: 2025-08-21
+**Last Updated**: 2025-08-22
 **Status**: Active
 **Target Audience**: Developers, Technical Writers, AI Assistants
 
@@ -10,21 +10,52 @@
 
 This document establishes documentation standards to prevent conflicts, redundancies, and inconsistencies that can accumulate over time in projects using AI-assisted development.
 
-## Documentation Hierarchy
+## Documentation Types & Hierarchy
 
-### 1. Primary Sources (The Source of Truth)
+### Documentation Type Separation
 
-- **`docs/`**: The single source of truth for all technical specifications and guides
+This project maintains two distinct documentation types to serve different audiences and purposes:
+
+#### Technical Documentation (Developer-Focused)
+- **Location**: `docs/architecture/` and `docs/templates/feature.template.md`
+- **Purpose**: Implementation details, system design, code patterns
+- **Audience**: Developers, AI assistants, technical contributors
+- **Focus**: HOW to build and maintain the system
+- **Template**: Use `feature.template.md` for technical architecture documents
+- **Volume**: Multiple technical documents per product deliverable
+
+#### Product Documentation (Business-Focused)  
+- **Location**: `docs/deliverables/` and `docs/templates/deliverable.template.md`
+- **Purpose**: Business requirements, user impact, product specifications
+- **Audience**: Product managers, stakeholders, business teams
+- **Focus**: WHAT to build and WHY it matters to users/business
+- **Template**: Use `deliverable.template.md` for product deliverable documents
+- **Volume**: One deliverable document may encompass multiple technical components
+
+### Documentation Relationship
+
+**Important**: This is **not a 1:1 mapping**. Typically:
+
+- **One product deliverable** (e.g., "User Management System") may require **multiple technical architecture documents** (e.g., authentication, user profiles, permissions, audit logging)
+- **One technical component** may serve **multiple product deliverables** (e.g., a shared authentication service used across different product features)
+- **Technical documents** are created as needed for implementation, while **product documents** are created for major user-facing features or business initiatives
+
+### Documentation Hierarchy
+
+#### 1. Primary Sources (The Source of Truth)
+
+- **`docs/architecture/`**: Technical specifications and system design
+- **`docs/deliverables/`**: Product specifications and business requirements
 - **Core documentation files**: `README`, `CLAUDE.md`, technical specifications
 - **Note**: Always reference primary sources rather than duplicating information
 
-### 2. Secondary Sources (Guides & Overviews)
+#### 2. Secondary Sources (Guides & Overviews)
 
 - **`status.md`**: Current implementation state and priorities
 - **`workbench/[ISSUE]/PLAN.md`**: Active task instructions and workflows
 - **`technical.md`**: Technical specifications and system details
 
-### 3. Tertiary Sources (Entry Points & Quick References)
+#### 3. Tertiary Sources (Entry Points & Quick References)
 
 - **`README`**: Project overview (keep minimal, link to detailed docs)
 - **Quick reference guides**: Should link to detailed docs, not duplicate content
@@ -119,10 +150,27 @@ Every documentation file should clearly define its intended audience:
 
 ## Documentation Patterns
 
-### Feature Documentation Template
+### Template Selection Guide
 
+Choose the appropriate template based on your documentation purpose:
+
+#### Technical Documentation Template
+- **Use For**: System architecture, implementation details, code patterns
+- **Template**: `docs/templates/feature.template.md`
+- **Example**: Authentication system architecture, API implementation details
+- **Audience**: Developers, AI assistants, technical teams
+
+#### Product Documentation Template  
+- **Use For**: Business requirements, user stories, product specifications
+- **Template**: `docs/templates/deliverable.template.md`
+- **Example**: User authentication feature requirements, product launch plans
+- **Audience**: Product managers, stakeholders, business teams
+
+### Quick Reference Documentation Structure
+
+#### Technical Document Structure
 ```markdown
-# Feature Name
+# Feature Name - Technical Architecture
 
 **Version**: X.Y.Z
 **Created**: YYYY-MM-DD
@@ -131,32 +179,55 @@ Every documentation file should clearly define its intended audience:
 **Target Audience**: Developers
 
 ## Summary
-
-Brief overview of the feature
+Brief technical overview
 
 ## Current Status
-
 - ✅ Implemented: What's done
 - 🚧 In Progress: What's being worked on
 - ❌ Not Implemented: What's planned
 
 ## Technical Details
-
 Architecture decisions and implementation notes
 
 ## API/Schema
-
 Current implementation details
 
 ## Testing
-
 - Current Coverage: X%
 - Test Files: List key test files
 - Known Issues: Any failing tests
 
 ## Next Steps
-
 Prioritized list of remaining work
+```
+
+#### Product Document Structure
+```markdown
+# Feature Name - Product Deliverable
+
+**Version**: X.Y.Z
+**Created**: YYYY-MM-DD
+**Last Updated**: YYYY-MM-DD
+**Status**: Draft/In Progress/Complete/Delivered
+**Target Audience**: Product Managers
+
+## Executive Summary
+Business value and user impact
+
+## User Stories
+Key user scenarios and workflows
+
+## Success Criteria
+Measurable outcomes that define success
+
+## Implementation Plan
+High-level phases and timeline
+
+## Risk Assessment
+Business and technical risks
+
+## Success Metrics
+KPIs and acceptance criteria
 ```
 
 ### Conflict Resolution Process
@@ -409,7 +480,8 @@ See the `scripts/` directory for detailed information about each tool.
 1. **Read Current Content**: Always read existing files before updating
 2. **Check for Conflicts**: Search for related information that might need updating
 3. **Verify Information**: Confirm all facts against actual implementation
-4. **Follow Templates**: Use the appropriate template for new documentation
+4. **Choose Correct Template**: Select technical (`feature.template.md`) or product (`deliverable.template.md`) template based on audience and purpose
+5. **Follow Templates**: Use the appropriate template for new documentation
 
 ### During Documentation Updates
 
