@@ -201,7 +201,7 @@ npm run build  # or appropriate build command
 ### Issue Tracking Workflow
 - **New Issues**: [Process for creating and triaging new issues]
 - **Status Updates**: [How and when to update issue status]
-- **Workbench Integration**: Issues with active workbench directories: [List any PROJ-XXX directories]
+- **Deliverables Integration**: Issues tracked under deliverables/[DELIVERABLE]/issues/[ISSUE-KEY]
 
 ## Context for AI Assistants
 
@@ -227,7 +227,7 @@ npm run build  # or appropriate build command
 
 ### AI Assistant Guidelines
 - **Context Management**: Always read status.md first to understand current state
-- **Workbench Usage**: Check workbench/ directory for active issue workspaces
+- **Deliverables Usage**: Check deliverables/[DELIVERABLE]/issues/ for active issue workspaces
 - **Documentation**: Follow docs/documentation-standards.md for all documentation
 - **Progress Updates**: Update this file after significant progress or decisions
 - **Issue Integration**: Reference issue tracking system for requirements and validation

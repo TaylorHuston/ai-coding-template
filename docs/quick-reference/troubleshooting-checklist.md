@@ -26,7 +26,7 @@ Systematic troubleshooting guide for common development issues.
 
 ### 3. Systematic Investigation (15-30 minutes)
 - [ ] Follow specific troubleshooting tree below
-- [ ] Document findings in workbench/{ISSUE-KEY}/analysis/
+- [ ] Document findings in deliverables/[DELIVERABLE]/issues/{ISSUE-KEY}/analysis/
 - [ ] Update decision log with investigation results
 
 ## Application Not Starting

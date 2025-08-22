@@ -347,4 +347,4 @@ When creating or updating documentation:
 
 - [Documentation Standards](documentation-standards.md) - Overall documentation guidelines
 - [Architecture Documentation](architecture.md) - System architecture patterns
-- [Status Management](../status.md) - Project status tracking
+- [Status Management](../deliverables/status.md) - Project status tracking

@@ -63,11 +63,11 @@ These guides integrate with:
 - **docs/visual-guide.md**: Visual documentation patterns
 - **docs/templates/**: Documentation templates
 
-### Workbench System
-Related to issue management:
-- **workbench/README.md**: Issue-based development workflow
-- **workbench/template/**: Planning and documentation templates
-- **status.md**: Project status with visual progress tracking
+### Deliverables System
+Related to deliverables and issue management:
+- **deliverables/README.md**: Deliverables and issue management
+- **deliverables/template-deliverable/**: Deliverable and issue templates
+- **deliverables/status.md**: Project status with visual progress tracking
 
 ### Automation Scripts
 Referenced commands:
@@ -79,13 +79,13 @@ Referenced commands:
 ## Usage Patterns
 
 ### Daily Development
-1. Check **status.md** for current priorities
+1. Check **deliverables/status.md** for current priorities
 2. Use **development-commands.md** for common tasks
 3. Follow **ai-assistant-guide.md** workflows
 4. Update documentation following standards
 
 ### Issue Resolution
-1. Create workbench directory for issue
+1. Create issue directory under appropriate deliverable
 2. Use **troubleshooting-checklist.md** for investigation
 3. Document findings in decision log
 4. Update status with resolution
@@ -134,5 +134,5 @@ Use these guides as templates for:
 - [AI Branching Strategy](../guides/ai-branching-strategy.md)
 - [Documentation Standards](../documentation-standards.md)
 - [Visual Guide](../visual-guide.md) 
-- [Workbench System](../../workbench/README.md)
-- [Project Status](../../status.md)
+- [Deliverables System](../../deliverables/README.md)
+- [Project Status](../../deliverables/status.md)

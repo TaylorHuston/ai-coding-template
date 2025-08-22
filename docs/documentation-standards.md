@@ -25,7 +25,7 @@ This project maintains two distinct documentation types to serve different audie
 - **Volume**: Multiple technical documents per product deliverable
 
 #### Product Documentation (Business-Focused)  
-- **Location**: `docs/deliverables/` and `docs/templates/standard/deliverable.template.md`
+- **Location**: `deliverables/` and `docs/templates/standard/deliverable.template.md`
 - **Purpose**: Business requirements, user impact, product specifications
 - **Audience**: Product managers, stakeholders, business teams
 - **Focus**: WHAT to build and WHY it matters to users/business
@@ -45,14 +45,14 @@ This project maintains two distinct documentation types to serve different audie
 #### 1. Primary Sources (The Source of Truth)
 
 - **`docs/architecture/`**: Technical specifications and system design
-- **`docs/deliverables/`**: Product specifications and business requirements
+- **`deliverables/`**: Product specifications and business requirements (moved to root)
 - **Core documentation files**: `README`, `CLAUDE.md`, technical specifications
 - **Note**: Always reference primary sources rather than duplicating information
 
 #### 2. Secondary Sources (Guides & Overviews)
 
-- **`status.md`**: Current implementation state and priorities
-- **`workbench/[ISSUE]/PLAN.md`**: Active task instructions and workflows
+- **`deliverables/status.md`**: Current implementation state and priorities
+- **`deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md`**: Active task instructions and workflows
 - **`technical.md`**: Technical specifications and system details
 
 #### 3. Tertiary Sources (Entry Points & Quick References)
@@ -274,7 +274,7 @@ Before committing documentation updates:
 ```markdown
 ## Testing Status
 
-See [Project Status](../status.md) for current test metrics.
+See [Project Status](../deliverables/status.md) for current test metrics.
 ```
 
 ### Bad: Duplicated Information
@@ -446,7 +446,7 @@ When reviewing or creating code documentation, ensure:
 ## Maintenance Schedule
 
 - **Daily**: Update documentation when making code changes
-- **Weekly**: Review status.md and active workbench PLAN.md files for accuracy
+- **Weekly**: Review deliverables/status.md and deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md files for accuracy
 - **Per Feature**: Update feature docs with implementation details
 - **Per Release**: Archive outdated documentation
 - **Monthly**: Audit for conflicts and redundancies

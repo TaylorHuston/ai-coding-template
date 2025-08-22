@@ -222,19 +222,19 @@ Before marking any major task complete:
 ## Integration with Project Management
 
 ### Issue Tracking Integration
-- **Create workbench directories** for complex features
-- **Update status.md** with progress tracking
-- **Maintain decision logs** in workbench documentation
+- **Create issue directories** in deliverables for complex features
+- **Update deliverables/status.md** with progress tracking
+- **Maintain decision logs** in deliverables issues documentation
 - **Link to external tickets** (Jira, Linear, GitHub Issues)
 
 ### Workflow Patterns
 ```bash
 # Example workflow coordination
-1. Create workbench/{ISSUE-KEY}/ directory
+1. Create deliverables/{feature,bug,task}/{ISSUE-KEY}/ directory
 2. Copy planning templates and customize
 3. Coordinate agent execution based on plan
-4. Track progress in status.md
-5. Update workbench documentation as work proceeds
+4. Track progress in deliverables/status.md
+5. Update deliverables issues documentation as work proceeds
 6. Final integration and validation
 ```
 

@@ -26,9 +26,10 @@ Project Root
 │   ├── precedence.md          # Configuration precedence rules
 │   ├── integration.md         # This file
 │   └── agent-best-practices.md # Agent usage guidelines
-├── workbench/                  # Issue-based development
+├── deliverables/               # Product deliverables and issues
+│   ├── status.md               # Project status and progress
+│   └── [deliverable]/          # Individual deliverables with issues
 ├── docs/                       # Project documentation
-├── status.md                   # Project status and progress
 ├── technical.md               # Technical specifications
 └── CLAUDE.md                  # Main AI assistant instructions
 ```
@@ -41,7 +42,7 @@ User Request
     ↓
 context-analyzer (auto-invoked)
     ↓
-Gathers: status.md, technical.md, workbench/, docs/
+Gathers: deliverables/status.md, technical.md, deliverables/{features,bugs,tasks}/, docs/
     ↓
 Provides enriched context to specialist agents
 ```
@@ -67,13 +68,13 @@ If critical: security-auditor
     ↓
 docs-maintainer (auto-invoked for existing docs)
     ↓
-Update status.md and workbench/
+Update deliverables/status.md and deliverables/{features,bugs,tasks}/issues/
 ```
 
 ## Workflow Integration Patterns
 
 ### Feature Development Workflow
-1. **Issue Creation**: Create workbench/{ISSUE-KEY}/ directory
+1. **Issue Creation**: Create deliverables/[DELIVERABLE]/issues/{ISSUE-KEY}/ directory
 2. **Context Gathering**: context-analyzer reads project patterns
 3. **Architecture**: code-architect designs approach (if complex)
 4. **Implementation**: Specialist agents handle domain-specific work
@@ -256,5 +257,5 @@ agents:
 ### Support Resources
 - [Agent Best Practices](agent-best-practices.md)
 - [Quick Reference Guides](../docs/quick-reference/)
-- [Project Status](../status.md)
+- [Project Status](../deliverables/status.md)
 - [Technical Specifications](../technical.md)

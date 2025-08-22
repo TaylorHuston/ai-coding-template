@@ -779,7 +779,7 @@ This template includes an advanced AI orchestration system in the `.claude/` dir
 #### 🔄 Memory Management
 
 - **Enhanced context preservation** across AI sessions
-- **Project status tracking** in `status.md` with visual progress indicators
+- **Project status tracking** in `deliverables/status.md` with visual progress indicators
 - **Issue-based development** workflow in `workbench/` directory
 
 See [.claude/integration.md](./.claude/integration.md) for comprehensive integration guidance.
@@ -836,9 +836,10 @@ my-project/
 ├── 📚 Documentation & Context
 │   ├── README.md                 # This file - project overview and setup
 │   ├── CLAUDE.md                 # Instructions for Claude Code (or similar AI tools)
-│   ├── status.md                 # Project state and progress tracking
 │   ├── technical.md              # Technical specifications and architecture
-│   ├── workbench/                # Issue-based development workflow
+│   ├── deliverables/             # Product deliverables and project status
+│   │   ├── status.md             # Project state and progress tracking
+│   │   └── [deliverable]/        # Individual deliverables with their issues
 │   ├── prompting.md              # Best practices for prompting AI coding assistants
 │   └── legal.md                  # Legal and ethical considerations
 │
@@ -858,7 +859,6 @@ my-project/
 │   │   ├── architecture.md       # High-level system design
 │   │   ├── api-reference.md      # API documentation (if applicable)
 │   │   └── contributing-guide.md # Development guidelines
-│   └── workbench/                # Issue-based development workflow
 │
 ├── 🛠️ Automation (scripts/)
 │   ├── lib/                      # Shared utilities (colors.sh, logging.sh)
@@ -897,9 +897,9 @@ git push origin feature/FEATURE-001-user-authentication
 ### Starting a New Feature
 
 ```bash
-# 1. Create a workbench for your feature
-mkdir -p workbench/FEATURE-001
-echo "# Feature: User Authentication" > workbench/FEATURE-001/README.md
+# 1. Create a feature issue for your deliverable
+mkdir -p deliverables/features/issues/FEATURE-001
+echo "# Feature: User Authentication" > deliverables/features/issues/FEATURE-001/README.md
 
 # 2. Update project status
 echo "## Current Focus: User Authentication" >> status.md
@@ -913,8 +913,8 @@ following the patterns in our technical.md file"
 
 ```bash
 # 1. Create issue tracking
-mkdir -p workbench/BUG-001
-echo "# Bug: Login fails on mobile" > workbench/BUG-001/README.md
+mkdir -p deliverables/bugs/BUG-001
+echo "# Bug: Login fails on mobile" > deliverables/bugs/BUG-001/README.md
 
 # 2. Use the context-analyzer agent:
 "Using the context-analyzer agent, investigate why login fails on mobile devices"
