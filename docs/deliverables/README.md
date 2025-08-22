@@ -122,7 +122,11 @@ Each deliverable document should contain:
 ```
 docs/deliverables/
 ├── README.md                    # This file
-├── deliverable.template.md      # Template for new deliverables
+├── ../templates/
+│   ├── simple/
+│   │   └── deliverable-simple.template.md  # Quick-start template
+│   └── standard/
+│       └── deliverable.template.md         # Comprehensive template
 ├── active/                      # Current sprint/iteration deliverables
 ├── completed/                   # Delivered and signed-off features
 ├── backlog/                     # Planned future deliverables
@@ -240,7 +244,7 @@ Document escalation paths:
 
 To create new deliverable documentation:
 
-1. **Copy Template**: Use `deliverable.template.md` as starting point
+1. **Copy Template**: Use simple or standard template as starting point
 2. **Customize Headers**: Update project-specific information
 3. **Define Success Criteria**: Establish measurable outcomes
 4. **Identify Stakeholders**: List all relevant business stakeholders
@@ -404,7 +408,7 @@ Reference these patterns:
 
 1. Review this README thoroughly
 2. Examine existing deliverable documentation in `completed/`
-3. Use `deliverable.template.md` for new projects
+3. Use appropriate template (simple or standard) for new projects
 4. Establish stakeholder communication cadence
 5. Link business objectives to technical implementation
 
@@ -427,4 +431,4 @@ For questions about deliverable documentation:
 
 ---
 
-**Next Steps**: Review the `deliverable.template.md` file for practical implementation guidance and begin documenting your first deliverable using these guidelines.
+**Next Steps**: Choose the appropriate template (simple for quick start, standard for comprehensive) and begin documenting your first deliverable using these guidelines.

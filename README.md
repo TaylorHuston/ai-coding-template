@@ -1186,7 +1186,8 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
 - 📖 **[Prompting Guide](./prompting.md)** - Master the art of AI prompting
 - ⚖️ **[Legal Considerations](./legal.md)** - Understand legal implications
 - 🏗️ **[Architecture Guide](./docs/architecture.md)** - System design patterns
-- 📚 **[Documentation Standards](./docs/documentation-standards.md)** - Writing guidelines
+- 📚 **[Documentation Hub](./docs/README.md)** - Central documentation portal
+- 📋 **[Documentation Standards](./docs/documentation-standards.md)** - Writing guidelines
 
 ### Quick References
 

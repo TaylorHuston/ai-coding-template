@@ -17,7 +17,7 @@ This document establishes documentation standards to prevent conflicts, redundan
 This project maintains two distinct documentation types to serve different audiences and purposes:
 
 #### Technical Documentation (Developer-Focused)
-- **Location**: `docs/architecture/` and `docs/templates/feature.template.md`
+- **Location**: `docs/architecture/` and `docs/templates/standard/feature.template.md`
 - **Purpose**: Implementation details, system design, code patterns
 - **Audience**: Developers, AI assistants, technical contributors
 - **Focus**: HOW to build and maintain the system
@@ -25,7 +25,7 @@ This project maintains two distinct documentation types to serve different audie
 - **Volume**: Multiple technical documents per product deliverable
 
 #### Product Documentation (Business-Focused)  
-- **Location**: `docs/deliverables/` and `docs/templates/deliverable.template.md`
+- **Location**: `docs/deliverables/` and `docs/templates/standard/deliverable.template.md`
 - **Purpose**: Business requirements, user impact, product specifications
 - **Audience**: Product managers, stakeholders, business teams
 - **Focus**: WHAT to build and WHY it matters to users/business
@@ -156,13 +156,13 @@ Choose the appropriate template based on your documentation purpose:
 
 #### Technical Documentation Template
 - **Use For**: System architecture, implementation details, code patterns
-- **Template**: `docs/templates/feature.template.md`
+- **Template**: `docs/templates/standard/feature.template.md`
 - **Example**: Authentication system architecture, API implementation details
 - **Audience**: Developers, AI assistants, technical teams
 
 #### Product Documentation Template  
 - **Use For**: Business requirements, user stories, product specifications
-- **Template**: `docs/templates/deliverable.template.md`
+- **Template**: `docs/templates/standard/deliverable.template.md`
 - **Example**: User authentication feature requirements, product launch plans
 - **Audience**: Product managers, stakeholders, business teams
 

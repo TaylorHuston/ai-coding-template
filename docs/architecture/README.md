@@ -95,7 +95,7 @@ docs/architecture/
 
 **Content Guidelines**:
 
-- Follow the [Feature Template](../templates/feature.template.md) as a starting point
+- Follow the [Feature Template](../templates/standard/feature.template.md) as a starting point
 - Include both current state and planned future state
 - Document integration points with other system components
 - Include relevant diagrams, code examples, and configuration samples
@@ -103,7 +103,7 @@ docs/architecture/
 
 ### Using the Feature Template
 
-The [Feature Template](../templates/feature.template.md) provides a comprehensive structure for documenting any feature area. Key sections include:
+The [Feature Template](../templates/standard/feature.template.md) provides a comprehensive structure for documenting any feature area. Key sections include:
 
 - **Summary & Status**: Current implementation state and progress
 - **Requirements**: Functional and non-functional requirements
@@ -268,7 +268,7 @@ Architecture documentation should align with the [AI Branching Strategy](../guid
 
 ### Feature Template Usage
 
-The [Feature Template](../templates/feature.template.md) provides a comprehensive starting point for any architecture document. Key customization points:
+The [Feature Template](../templates/standard/feature.template.md) provides a comprehensive starting point for any architecture document. Key customization points:
 
 1. **Replace all placeholder text** ({{FEATURE_NAME}}, {{VERSION}}, etc.)
 2. **Adapt sections to your feature area** - not all sections may be relevant
@@ -282,7 +282,7 @@ For rapid architecture document creation:
 
 ```bash
 # Copy the template
-cp docs/templates/feature.template.md docs/architecture/[feature-name]-architecture.md
+cp docs/templates/standard/feature.template.md docs/architecture/[feature-name]-architecture.md
 
 # Replace placeholders with actual values
 # Update metadata (version, dates, status)
@@ -304,7 +304,7 @@ Reference these examples for different types of architectural documentation:
 
 - [Main Architecture Guide](../architecture.md) - High-level design principles
 - [Documentation Standards](../documentation-standards.md) - Writing and formatting guidelines
-- [Feature Template](../templates/feature.template.md) - Template for new architecture docs
+- [Feature Template](../templates/standard/feature.template.md) - Template for new architecture docs
 - [AI Branching Strategy](../guides/ai-branching-strategy.md) - Version control integration
 
 ## Maintenance Guidelines
