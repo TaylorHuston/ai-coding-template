@@ -1,0 +1,90 @@
+{
+  "config": {
+    "version": "1.0.0",
+    "description": "AI Coding Template Git Hooks Configuration"
+  },
+  "pre-commit": {
+    "enabled": true,
+    "checks": {
+      "branch-protection": {
+        "enabled": true,
+        "protected-branches": ["main", "master", "develop", "production"],
+        "allow-emergency-bypass": false
+      },
+      "ai-documentation": {
+        "enabled": true,
+        "require-ai-indicator": false,
+        "warning-only": true,
+        "accepted-indicators": [
+          "🤖 Generated with",
+          "Co-Authored-By: Claude",
+          "AI-Assisted:",
+          "Human-Only:"
+        ]
+      },
+      "documentation-updates": {
+        "enabled": true,
+        "check-status-md": true,
+        "warning-only": true,
+        "code-file-patterns": [
+          "\\.(js|ts|jsx|tsx)$",
+          "\\.(py|java|cpp|c|go|rs|php)$",
+          "\\.(html|css|scss|sass)$"
+        ]
+      },
+      "security-scan": {
+        "enabled": true,
+        "patterns": [
+          "api[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]",
+          "secret[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]",
+          "password[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]",
+          "token[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]",
+          "private[_-]?key[[:space:]]*[:=]",
+          "-----BEGIN (RSA |DSA )?PRIVATE KEY-----",
+          "sk_live_[0-9a-zA-Z]{24,}",
+          "pk_live_[0-9a-zA-Z]{24,}"
+        ],
+        "sensitive-files": [
+          ".env",
+          "secrets.json", 
+          "credentials.json",
+          "private.key",
+          "id_rsa",
+          "id_dsa"
+        ]
+      },
+      "file-naming": {
+        "enabled": true,
+        "documentation-pattern": "^[a-z0-9-]+$",
+        "exceptions": [
+          "README",
+          "CONTRIBUTING", 
+          "CHANGELOG",
+          "CODE_OF_CONDUCT",
+          "LICENSE"
+        ]
+      }
+    }
+  },
+  "commit-msg": {
+    "enabled": true,
+    "checks": {
+      "length": {
+        "max-subject-length": 50,
+        "max-body-line-length": 72
+      },
+      "format": {
+        "require-issue-reference": false,
+        "conventional-commits": false
+      }
+    }
+  },
+  "pre-push": {
+    "enabled": false,
+    "checks": {
+      "run-tests": false,
+      "lint-check": false,
+      "documentation-links": false
+    }
+  }
+}

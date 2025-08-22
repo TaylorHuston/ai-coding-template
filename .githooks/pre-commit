@@ -1,0 +1,228 @@
+#!/bin/bash
+
+# AI Coding Template - Pre-Commit Hook
+# Protects against common AI-assisted development mistakes
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Configuration
+PROTECTED_BRANCHES=("main" "master" "develop" "production")
+AI_INDICATOR_REQUIRED=true
+DOCUMENTATION_CHECK=true
+SECURITY_SCAN=true
+
+echo -e "${BLUE}🤖 AI Coding Template Pre-Commit Hook${NC}"
+echo "Running automated checks..."
+
+# Function to check if current branch is protected
+check_protected_branch() {
+    local current_branch=$(git rev-parse --abbrev-ref HEAD)
+    
+    for protected in "${PROTECTED_BRANCHES[@]}"; do
+        if [[ "$current_branch" == "$protected" ]]; then
+            echo -e "${RED}❌ ERROR: Direct commits to '$current_branch' are not allowed${NC}"
+            echo -e "${YELLOW}💡 Please create a feature branch:${NC}"
+            echo "   git checkout -b feature/your-feature-name"
+            echo "   git checkout -b fix/your-fix-name"
+            echo "   git checkout -b docs/your-doc-change"
+            return 1
+        fi
+    done
+    
+    echo -e "${GREEN}✅ Branch check passed${NC}"
+    return 0
+}
+
+# Function to validate AI assistance documentation
+check_ai_documentation() {
+    if ! $AI_INDICATOR_REQUIRED; then
+        return 0
+    fi
+    
+    # Check if commit message contains AI assistance indicator
+    local commit_msg_file=".git/COMMIT_EDITMSG"
+    if [[ -f "$commit_msg_file" ]]; then
+        if ! grep -q "🤖 Generated with" "$commit_msg_file" && 
+           ! grep -q "Co-Authored-By: Claude" "$commit_msg_file" &&
+           ! grep -q "AI-Assisted:" "$commit_msg_file"; then
+            echo -e "${YELLOW}⚠️  WARNING: No AI assistance indicator found in commit message${NC}"
+            echo -e "${BLUE}💡 Consider adding one of these if AI was used:${NC}"
+            echo "   🤖 Generated with [Claude Code](https://claude.ai/code)"
+            echo "   Co-Authored-By: Claude <noreply@anthropic.com>"
+            echo "   AI-Assisted: [Brief description of AI help]"
+            echo ""
+            echo -e "${YELLOW}Continue anyway? (y/N)${NC}"
+            read -r response
+            if [[ ! "$response" =~ ^[Yy]$ ]]; then
+                return 1
+            fi
+        fi
+    fi
+    
+    echo -e "${GREEN}✅ AI documentation check passed${NC}"
+    return 0
+}
+
+# Function to check documentation updates
+check_documentation_updates() {
+    if ! $DOCUMENTATION_CHECK; then
+        return 0
+    fi
+    
+    # Check if code files changed but status.md wasn't updated
+    local code_changed=false
+    local status_updated=false
+    
+    # Check for changed code files
+    while IFS= read -r file; do
+        if [[ "$file" =~ \.(js|ts|jsx|tsx|py|java|cpp|c|go|rs|php)$ ]]; then
+            code_changed=true
+            break
+        fi
+    done < <(git diff --cached --name-only)
+    
+    # Check if status.md was updated
+    if git diff --cached --name-only | grep -q "status.md"; then
+        status_updated=true
+    fi
+    
+    # Warn if significant code changes without status update
+    if $code_changed && ! $status_updated; then
+        echo -e "${YELLOW}⚠️  WARNING: Code files changed but status.md not updated${NC}"
+        echo -e "${BLUE}💡 Consider updating status.md if this represents significant progress${NC}"
+        echo ""
+        echo -e "${YELLOW}Continue without updating status.md? (y/N)${NC}"
+        read -r response
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            echo -e "${BLUE}💡 Edit status.md and run 'git add status.md' then commit again${NC}"
+            return 1
+        fi
+    fi
+    
+    echo -e "${GREEN}✅ Documentation check passed${NC}"
+    return 0
+}
+
+# Function to scan for security issues
+check_security() {
+    if ! $SECURITY_SCAN; then
+        return 0
+    fi
+    
+    local security_issues=false
+    
+    # Patterns to look for (secrets, keys, etc.)
+    local patterns=(
+        "api[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
+        "secret[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
+        "password[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
+        "token[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
+        "private[_-]?key[[:space:]]*[:=]"
+        "-----BEGIN (RSA |DSA )?PRIVATE KEY-----"
+        "sk_live_[0-9a-zA-Z]{24,}"
+        "pk_live_[0-9a-zA-Z]{24,}"
+    )
+    
+    echo "🔍 Scanning for security issues..."
+    
+    # Check staged files for security patterns
+    while IFS= read -r file; do
+        if [[ -f "$file" ]]; then
+            for pattern in "${patterns[@]}"; do
+                if git show ":$file" | grep -iE "$pattern" > /dev/null; then
+                    echo -e "${RED}❌ SECURITY: Potential secret found in $file${NC}"
+                    echo -e "${RED}   Pattern: $pattern${NC}"
+                    security_issues=true
+                fi
+            done
+        fi
+    done < <(git diff --cached --name-only)
+    
+    # Check for common filename patterns that might contain secrets
+    local sensitive_files=(
+        ".env"
+        "secrets.json"
+        "credentials.json"
+        "private.key"
+        "id_rsa"
+        "id_dsa"
+    )
+    
+    for file in "${sensitive_files[@]}"; do
+        if git diff --cached --name-only | grep -q "$file"; then
+            echo -e "${RED}❌ SECURITY: Sensitive file '$file' being committed${NC}"
+            security_issues=true
+        fi
+    done
+    
+    if $security_issues; then
+        echo -e "${RED}❌ Security scan failed${NC}"
+        echo -e "${YELLOW}💡 Please remove sensitive information before committing${NC}"
+        return 1
+    fi
+    
+    echo -e "${GREEN}✅ Security scan passed${NC}"
+    return 0
+}
+
+# Function to validate file naming conventions
+check_file_naming() {
+    local naming_issues=false
+    
+    echo "📝 Checking file naming conventions..."
+    
+    # Check documentation files for kebab-case
+    while IFS= read -r file; do
+        if [[ "$file" =~ docs/.*\.md$ ]]; then
+            local basename=$(basename "$file" .md)
+            # Allow exceptions for standard files
+            if [[ ! "$basename" =~ ^(README|CONTRIBUTING|CHANGELOG|CODE_OF_CONDUCT|LICENSE)$ ]]; then
+                if [[ ! "$basename" =~ ^[a-z0-9-]+$ ]]; then
+                    echo -e "${RED}❌ NAMING: Documentation file '$file' should use lowercase-kebab-case${NC}"
+                    naming_issues=true
+                fi
+            fi
+        fi
+    done < <(git diff --cached --name-only)
+    
+    if $naming_issues; then
+        echo -e "${RED}❌ File naming check failed${NC}"
+        echo -e "${YELLOW}💡 See docs/documentation-standards.md for naming conventions${NC}"
+        return 1
+    fi
+    
+    echo -e "${GREEN}✅ File naming check passed${NC}"
+    return 0
+}
+
+# Main execution
+main() {
+    local exit_code=0
+    
+    # Run all checks
+    check_protected_branch || exit_code=1
+    check_ai_documentation || exit_code=1
+    check_documentation_updates || exit_code=1
+    check_security || exit_code=1
+    check_file_naming || exit_code=1
+    
+    if [[ $exit_code -eq 0 ]]; then
+        echo -e "${GREEN}🎉 All pre-commit checks passed!${NC}"
+        echo -e "${BLUE}💡 Remember: With great AI power comes great responsibility${NC}"
+    else
+        echo -e "${RED}❌ Pre-commit checks failed${NC}"
+        echo -e "${YELLOW}💡 Fix the issues above and try committing again${NC}"
+    fi
+    
+    return $exit_code
+}
+
+# Run the main function
+main "$@"
