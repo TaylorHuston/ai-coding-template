@@ -1,7 +1,8 @@
 # MCP Quick Start Guide
 
+**Version**: 1.0.0
 **Created**: 2025-08-21
-**Last Updated**: 2025-08-21
+**Last Updated**: 2025-08-22
 **Status**: Active
 **Target Audience**: Developers, AI Assistants
 

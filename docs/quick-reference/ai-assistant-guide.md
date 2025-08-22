@@ -1,7 +1,8 @@
 # AI Assistant Quick Reference Guide
 
+**Version**: 1.0.0
 **Created**: 2025-08-21
-**Last Updated**: 2025-08-21
+**Last Updated**: 2025-08-22
 **Status**: Active
 **Target Audience**: AI Assistants, Development Team
 
@@ -22,6 +23,7 @@ Quick reference for AI assistants working with this repository.
 - [ ] Technology stack and patterns recognized
 - [ ] Any blocking issues or dependencies noted
 - [ ] Issue tracking system integration confirmed
+- [ ] **AI Branching Strategy** reviewed ([docs/guides/ai-branching-strategy.md](../guides/ai-branching-strategy.md))
 
 ## Common Workflows
 
@@ -33,6 +35,16 @@ Quick reference for AI assistants working with this repository.
 4. Copy templates from workbench/template/
 5. Update issue planning files with specifics
 ```
+
+### Git Workflow for AI Assistants
+```
+1. NEVER commit directly to main or develop branches
+2. Ask permission before creating feature branches
+3. Show changes before committing
+4. Follow naming: feature/ISSUE-KEY-description
+5. Tag commits with (AI-assisted)
+```
+See [AI Branching Strategy](../guides/ai-branching-strategy.md) for complete guidelines.
 
 ### Implementing Features
 ```

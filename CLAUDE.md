@@ -2,7 +2,7 @@
 
 **Version**: 1.0.0
 **Created**: 2025-08-21
-**Last Updated**: 2025-08-21
+**Last Updated**: 2025-08-22
 **Status**: Active
 **Target Audience**: AI Assistants
 
@@ -14,7 +14,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 2. **Comment Approval:** Never comment on <Jira/Linear/etc> without explicit user approval first
 3. **No Assumptions**: Always check existing patterns and code, run tests, ask user if any ambiguity
 4. **Test First:** Follow strict TDD guidelines
-5. **Branch First:** Never work directly on main branches
+5. **Branch First:** Never work directly on main branches (see [AI Branching Strategy](./docs/guides/ai-branching-strategy.md))
 6. **Atomic Commits:** Keep commits small and focused
 7. **Ask Questions Often and Early**: Clarify ambiguity before implementation
 8. **Reindex Documentation**: Reindex all md files after each major action

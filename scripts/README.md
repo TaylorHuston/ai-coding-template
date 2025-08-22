@@ -1,5 +1,11 @@
 # Scripts Directory
 
+**Version**: 1.0.0
+**Created**: 2025-08-21
+**Last Updated**: 2025-08-22
+**Status**: Active
+**Target Audience**: Developers, DevOps, AI Assistants
+
 This directory contains automation scripts for the AI Coding Template project. These scripts help with documentation management, project health monitoring, setup automation, and development workflow optimization.
 
 ## Scripts Overview

@@ -1,7 +1,8 @@
 # Quick Reference Guides
 
+**Version**: 1.0.0
 **Created**: 2025-08-21
-**Last Updated**: 2025-08-21
+**Last Updated**: 2025-08-22
 **Status**: Active
 **Target Audience**: Development Team, AI Assistants
 
@@ -45,7 +46,7 @@ Systematic troubleshooting guide for common development issues.
 **Most Common**: [Development Commands](./development-commands.md)
 - Documentation health: `node scripts/docs-health.js`
 - Generate docs: `node scripts/generate-doc.js`
-- Standard git workflow with AI attribution
+- Git workflow with AI attribution and [AI Branching Strategy](../guides/ai-branching-strategy.md)
 
 ### For Troubleshooting
 **When Things Break**: [Troubleshooting Checklist](./troubleshooting-checklist.md)
@@ -130,6 +131,7 @@ Use these guides as templates for:
 
 ## Related Documentation
 
+- [AI Branching Strategy](../guides/ai-branching-strategy.md)
 - [Documentation Standards](../documentation-standards.md)
 - [Visual Guide](../visual-guide.md) 
 - [Workbench System](../../workbench/README.md)

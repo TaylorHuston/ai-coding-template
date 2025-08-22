@@ -2,7 +2,7 @@
 
 **Version**: 1.0.0
 **Created**: 2025-08-21
-**Last Updated**: 2025-08-21
+**Last Updated**: 2025-08-22
 **Status**: Active
 **Target Audience**: Developers, Technical Writers, AI Assistants
 
@@ -392,7 +392,7 @@ fi
 
 **Update Documentation Naming**
 ```bash
-# Convert existing docs to kebab-case if needed
+# Convert existing docs to lowercase-kebab-case if needed
 find docs/ -name "*.md" | while read file; do
   newname=$(echo "$file" | sed 's/\([A-Z]\)/-\L\1/g' | sed 's/^-//')
   if [ "$file" != "$newname" ]; then
@@ -681,7 +681,7 @@ cat > docs/migration-notes.md << 'EOF'
 [Document your current standards here]
 
 ## Template Standards  
-- Use lowercase-kebab-case for filenames
+- Use `lowercase-kebab-case` for filenames
 - Include metadata headers
 - Use consistent formatting
 
@@ -879,6 +879,21 @@ my-project/
 
 ## Common Workflows
 
+### AI-Safe Git Workflow
+
+**Important**: Follow the [AI Branching Strategy](./docs/guides/ai-branching-strategy.md) for safe AI-assisted development.
+
+```bash
+# 1. Create a feature branch (AI should ask permission)
+git checkout -b feature/FEATURE-001-user-authentication
+
+# 2. AI implements changes with human oversight
+# (AI shows changes before committing)
+
+# 3. Human reviews and approves before merge
+git push origin feature/FEATURE-001-user-authentication
+```
+
 ### Starting a New Feature
 
 ```bash
@@ -939,7 +954,7 @@ Follow comprehensive documentation standards to maintain consistency and quality
 
 ### 2. Prompt Engineering
 
-The quality of your prompts determines the quality of the AI's output. See [prompting.md](./prompting.md) for a detailed guide on how to write effective prompts.
+The quality of your prompts determines the quality of the AI's output. See [prompting.md](./docs/guides/prompting.md) for a detailed guide on how to write effective prompts.
 
 ### 3. Working with AI Assistants
 
@@ -971,9 +986,12 @@ The quality of your prompts determines the quality of the AI's output. See [prom
 
 ### 7. Version Control
 
+**Follow the [AI Branching Strategy](./docs/guides/ai-branching-strategy.md)** for safe AI-assisted development.
+
 - **Atomic Commits:** Generate code for a single, focused feature at a time and commit it with a clear message
 - **Tag AI-Assisted Commits:** Add a tag like `(AI-assisted)` to your commit messages to create a clear audit trail
 - **Use Branches:** Isolate AI-generated features in separate branches for testing before merging
+- **Branch Protection:** Never allow AI to commit directly to `main` or `develop` branches
 
 ### 8. Context Management
 
