@@ -838,7 +838,7 @@ my-project/
 │   ├── CLAUDE.md                 # Instructions for Claude Code (or similar AI tools)
 │   ├── status.md                 # Project state and progress tracking
 │   ├── technical.md              # Technical specifications and architecture
-│   ├── instructions.md           # Current task instructions
+│   ├── workbench/                # Issue-based development workflow
 │   ├── prompting.md              # Best practices for prompting AI coding assistants
 │   └── legal.md                  # Legal and ethical considerations
 │

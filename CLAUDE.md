@@ -35,7 +35,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 **ALWAYS** read the following files BEFORE beginning any work:
 
 1. `status.md` - Current project state and progress
-2. `instructions.md` - Active task instructions and workflows
+2. `workbench/[ISSUE]/PLAN.md` - Active task instructions and workflows (if working on a specific issue)
 3. `technical.md` - System architecture and technical specifications
 
 **NEVER** begin work without understanding the current project context.
@@ -63,7 +63,7 @@ You MUST follow these naming conventions:
 ### Session Startup Checklist
 
 1. Read `status.md` to understand current project state
-2. Check `instructions.md` for active tasks and workflows
+2. Check `workbench/[ISSUE]/PLAN.md` for active task instructions (if working on a specific issue)
 3. Review `technical.md` for relevant technical context
 4. Confirm understanding of current context before proceeding
 5. Update your understanding based on these context files
@@ -79,7 +79,7 @@ You MUST follow these naming conventions:
 ### Session Completion Protocol
 
 1. Update `status.md` with current progress and achievements
-2. Update `instructions.md` with next steps and pending tasks
+2. Update `workbench/[ISSUE]/PLAN.md` with task progress and next steps (if working on a specific issue)
 3. Document any important decisions or changes made
 4. Prepare clear context for the next session handoff
 5. Ensure all context files accurately reflect current state
@@ -90,7 +90,7 @@ You MUST follow these naming conventions:
 
 Before beginning any work session:
 
-1. **Check for blockers**: Scan `status.md` and `instructions.md` for urgent issues
+1. **Check for blockers**: Scan `status.md` and active workbench PLAN.md for urgent issues
 2. **Assess current work**: Review active tasks and progress
 3. **Check next priorities**: Identify upcoming work if no active tasks
 4. **Ask for direction**: Request user instruction if status is unclear

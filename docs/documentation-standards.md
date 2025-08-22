@@ -21,7 +21,7 @@ This document establishes documentation standards to prevent conflicts, redundan
 ### 2. Secondary Sources (Guides & Overviews)
 
 - **`status.md`**: Current implementation state and priorities
-- **`instructions.md`**: Current task instructions and workflows
+- **`workbench/[ISSUE]/PLAN.md`**: Active task instructions and workflows
 - **`technical.md`**: Technical specifications and system details
 
 ### 3. Tertiary Sources (Entry Points & Quick References)
@@ -375,7 +375,7 @@ When reviewing or creating code documentation, ensure:
 ## Maintenance Schedule
 
 - **Daily**: Update documentation when making code changes
-- **Weekly**: Review status.md and instructions.md for accuracy
+- **Weekly**: Review status.md and active workbench PLAN.md files for accuracy
 - **Per Feature**: Update feature docs with implementation details
 - **Per Release**: Archive outdated documentation
 - **Monthly**: Audit for conflicts and redundancies
