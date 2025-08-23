@@ -2,14 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Added
+
+- `templates/CHANGELOG.template.md` - Blank CHANGELOG template for new projects
+- `docs/guides/changelog-complete-guide.md` - Comprehensive CHANGELOG system documentation
+- `scripts/release.sh` - Automated release script for version management
 
 ## [0.1.1] - 2025-08-22
 
 ### Added
+
 - AI-powered CHANGELOG maintenance system with automated tools and workflows
 - `scripts/check-changelog.sh` - Git hook integration for changelog reminders
 - `scripts/ai-update-changelog.sh` - Interactive changelog update assistant for AI
@@ -18,12 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CHANGELOG update requirements in session completion protocol (CLAUDE.md)
 - Git hook configuration for automated changelog validation
 - `docs/integration-guide.md` - Comprehensive guide for integrating into existing projects
-- `docs/troubleshooting.md` - Detailed troubleshooting guide for common issues  
+- `docs/troubleshooting.md` - Detailed troubleshooting guide for common issues
 - `docs/ai-agents-guide.md` - Complete guide to the 17-agent system
 - `docs/workflows/README.md` - Step-by-step common development workflows
 - `docs/faq.md` - Frequently asked questions and answers
 
 ### Changed
+
 - Enhanced CLAUDE.md with mandatory CHANGELOG updates in session completion protocol
 - Updated .githooks.json with changelog-reminder configuration
 - Improved quality requirements to include CHANGELOG maintenance
@@ -33,11 +40,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Extracted extensive content to specialized documentation files
 
 ### Removed
+
 - Old workbench directory structure (replaced by deliverables system)
 
-## [0.1.0] - YYYY-MM-DD
+## [0.1.0] - 2025-08-21
 
 ### Added
+
 - Initial project setup with AI coding template
 - Deliverables management system for tracking work
 - Bug and task tracking templates
@@ -45,9 +54,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Example deliverable: User Authentication
 
 ### Changed
+
 - Replaced workbench system with deliverables structure
 
 ### Fixed
+
 - N/A - Initial release
 
 ---
@@ -57,21 +68,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 When completing work items, add entries here using this format:
 
 **For Features/Issues:**
+
 ```
 - [ISSUE-XXX] Brief description of what was added/changed
 ```
 
 **For Bugs:**
+
 ```
 - [BUG-XXX] Fixed: Brief description of what was broken
 ```
 
 **For Tasks:**
+
 ```
 - [TASK-XXX] Brief description of the task completed
 ```
 
 **For Breaking Changes:**
+
 ```
 - **BREAKING**: [ISSUE-XXX] Description of the breaking change
   - Migration: How to update existing code

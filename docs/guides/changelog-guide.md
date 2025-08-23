@@ -226,6 +226,8 @@ Only include major documentation additions:
 
 ## Related Documentation
 
+- [Complete CHANGELOG System Guide](./changelog-complete-guide.md) - Comprehensive guide with all tools
+- [AI Changelog Maintenance](./ai-changelog-maintenance.md) - AI-specific workflows  
 - [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - [Semantic Versioning](https://semver.org/)
 - [Deliverables Guide](../deliverables/README.md)
