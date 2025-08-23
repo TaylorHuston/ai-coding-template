@@ -53,7 +53,7 @@ This project maintains two distinct documentation types to serve different audie
 
 - **`deliverables/status.md`**: Current implementation state and priorities
 - **`deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md`**: Active task instructions and workflows
-- **`technical.md`**: Technical specifications and system details
+- **`docs/technical.md`**: Technical specifications and system details
 
 #### 3. Tertiary Sources (Entry Points & Quick References)
 

@@ -13,7 +13,7 @@ Quick reference for AI assistants working with this repository.
 ### 1. Context Loading Priority (Read in Order)
 1. **deliverables/status.md** - Current project state and active work
 2. **CLAUDE.md** - Project-specific instructions and patterns
-3. **technical.md** - System architecture and specifications
+3. **docs/technical.md** - System architecture and specifications
 4. **deliverables/README.md** - Deliverables and issue management workflow
 5. **docs/documentation-standards.md** - Documentation conventions
 
@@ -49,7 +49,7 @@ See [AI Branching Strategy](../guides/ai-branching-strategy.md) for complete gui
 ### Implementing Features
 ```
 1. Read requirements from deliverables/[DELIVERABLE]/issues/{ISSUE-KEY}/docs/requirements.md
-2. Follow patterns in technical.md
+2. Follow patterns in docs/technical.md
 3. Check docs/documentation-standards.md for conventions
 4. Update decision log as you make choices
 5. Test against acceptance criteria
@@ -68,7 +68,7 @@ See [AI Branching Strategy](../guides/ai-branching-strategy.md) for complete gui
 
 ### Naming Rules
 - **Documentation**: snake_case.md (except README.md and CLAUDE.md)
-- **Code**: Follow language-specific conventions in technical.md
+- **Code**: Follow language-specific conventions in docs/technical.md
 - **Templates**: Use {{VARIABLE}} syntax for substitution
 - **Issues**: Use issue tracking key format (PROJ-123, ENG-456, issue-789)
 
@@ -170,7 +170,7 @@ Use these Unicode characters for progress visualization:
 - Progress is tracked in visual format where applicable
 - Decision logs are updated with rationale
 - External issue tracking system is kept in sync
-- Code follows established patterns in technical.md
+- Code follows established patterns in docs/technical.md
 
 ## Emergency Procedures
 
@@ -184,7 +184,7 @@ Use these Unicode characters for progress visualization:
 ### Conflicting Information
 1. External issue tracking system = source of truth for requirements
 2. deliverables/status.md = source of truth for current progress
-3. technical.md = source of truth for technical patterns
+3. docs/technical.md = source of truth for technical patterns
 4. When in doubt, ask user for clarification
 
 ## Best Practices
@@ -197,6 +197,6 @@ Use these Unicode characters for progress visualization:
 
 ### Code Generation
 - Always follow existing patterns in codebase
-- Check technical.md for architecture guidance
+- Check docs/technical.md for architecture guidance
 - Validate against requirements in workbench
 - Update documentation as you implement

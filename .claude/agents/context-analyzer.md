@@ -28,7 +28,7 @@ Systematically discover and catalog:
 Priority 1 (Always Read):
 - deliverables/status.md - Current project state and priorities
 - CLAUDE.md - AI assistant instructions and patterns
-- technical.md - System architecture and specifications
+- docs/technical.md - System architecture and specifications
 - README.md - Project overview and setup
 
 Priority 2 (Conditional):
@@ -165,7 +165,7 @@ enriched_context:
 - **Deployment Architecture**: [How the system is deployed]
 
 ### Existing Architecture Decisions
-- [Key architectural decisions from technical.md]
+- [Key architectural decisions from docs/technical.md]
 - [Pattern choices and their rationale]
 - [Technology selection reasoning]
 

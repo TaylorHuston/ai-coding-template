@@ -63,6 +63,12 @@
           "CODE_OF_CONDUCT",
           "LICENSE"
         ]
+      },
+      "changelog-reminder": {
+        "enabled": true,
+        "script": "scripts/check-changelog.sh",
+        "warning-only": true,
+        "ai-assistant-mode": true
       }
     }
   },

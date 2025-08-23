@@ -1,10 +1,6 @@
 # CLAUDE.md - AI Agent Instructions
 
-**Version**: 1.0.0
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-22
-**Status**: Active
-**Target Audience**: AI Assistants
+**Version**: 1.0.0 **Created**: 2025-08-21 **Last Updated**: 2025-08-22 **Status**: Active **Target Audience**: AI Assistants
 
 You are working with an AI coding template repository designed to optimize AI-assisted development workflows. Follow these instructions precisely when operating in this codebase.
 
@@ -17,7 +13,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 5. **Branch First:** Never work directly on main branches (see [AI Branching Strategy](./docs/guides/ai-branching-strategy.md))
 6. **Atomic Commits:** Keep commits small and focused
 7. **Ask Questions Often and Early**: Clarify ambiguity before implementation
-8. **Reindex Documentation**: Reindex all md files after each major action
+8. **Reindex Documentation**: Reindex all /docs/\* files after each major action
 9. **Keep Knowledge Current**: Before starting a new batch of work read all feature files and any relevant Context7 documentation
 
 ## AI Autonomy Matrix
@@ -36,7 +32,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 1. `deliverables/status.md` - Current project state and progress
 2. `deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md` - Active task instructions and workflows (if working on a specific issue)
-3. `technical.md` - System architecture and technical specifications
+3. `docs/technical.md` - System architecture and technical specifications
 
 **NEVER** begin work without understanding the current project context.
 
@@ -64,7 +60,7 @@ You MUST follow these naming conventions:
 
 1. Read `deliverables/status.md` to understand current project state
 2. Check `deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md` for active task instructions (if working on a specific issue)
-3. Review `technical.md` for relevant technical context
+3. Review `docs/technical.md` for relevant technical context
 4. Confirm understanding of current context before proceeding
 5. Update your understanding based on these context files
 
@@ -80,9 +76,10 @@ You MUST follow these naming conventions:
 
 1. Update `deliverables/status.md` with current progress and achievements
 2. Update `deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md` with task progress and next steps (if working on a specific issue)
-3. Document any important decisions or changes made
-4. Prepare clear context for the next session handoff
-5. Ensure all context files accurately reflect current state
+3. **Update CHANGELOG.md**: Add entries for completed features, fixes, or changes under `[Unreleased]` section
+4. Document any important decisions or changes made
+5. Prepare clear context for the next session handoff
+6. Ensure all context files accurately reflect current state
 
 ## Session Initialization Protocol
 
@@ -146,24 +143,24 @@ Invoke these for specific needs:
 Use these tools appropriately for different tasks:
 
 ```yaml
-Search: 
+Search:
   - Grep: For specific patterns and content
   - Glob: For file patterns and discovery
-  
+
 Code Operations:
   - Read: Always read before editing existing files
   - Edit/MultiEdit: For existing file modifications
   - Write: Only for new files
-  
+
 Testing:
   - Bash: Run test commands and validation
   - Read: Review test files and results
-  
+
 Documentation:
   - Read: Check existing documentation
   - Edit: Update existing documentation
   - Write: Create new documentation (when explicitly requested)
-  
+
 Project Management:
   - TodoWrite: Track progress and tasks
   - Task: Delegate to specialized agents
@@ -176,7 +173,7 @@ You MUST adhere to these standards:
 - Follow patterns established in the `examples/` directory
 - Reference `.cursor/rules/` for language-specific guidelines
 - Use existing project patterns and conventions consistently
-- Validate against technical specifications in `technical.md`
+- Validate against technical specifications in `docs/technical.md`
 - Never duplicate existing functionality without explicit justification
 
 ## Quality Requirements
@@ -188,6 +185,7 @@ You MUST adhere to these standards:
 3. Apply guidelines from `legal.md` for AI-generated code
 4. Document AI assistance level in all commit messages
 5. Ensure comprehensive test coverage for new functionality
+6. **Update CHANGELOG.md** for user-facing changes (features, fixes, breaking changes)
 
 ### Code Quality Gates
 
@@ -284,7 +282,7 @@ Your performance will be evaluated on:
 
 ### Context Management Issues
 
-1. **AI forgets previous context**: Update and reference `status.md` and `technical.md`
+1. **AI forgets previous context**: Update and reference `status.md` and `docs/technical.md`
 2. **Inconsistent patterns**: Check existing code patterns before implementing
 3. **Lost session context**: Follow session completion protocol properly
 

@@ -123,7 +123,7 @@ When starting a new Claude Code or Cursor session:
 
    - `CLAUDE.md` - Main instructions for AI assistants
    - `status.md` - Current project state
-   - `technical.md` - Technical specifications
+   - `docs/technical.md` - Technical specifications
 
 2. **Use your first AI agent**:
 
@@ -211,7 +211,8 @@ tar -xzf agents.tar.gz
 # 4. Add core context files
 curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/CLAUDE.md
 curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/status.md
-curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/technical.md
+mkdir -p docs
+curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/docs/technical.md
 
 # 5. Create a minimal scripts directory
 mkdir -p scripts
@@ -225,7 +226,7 @@ Ideal for teams that want to slowly adopt AI-assisted development practices.
 
 **Phase 1: Core AI Context (Week 1)**
 - Add `.claude/` directory with essential agents
-- Create `CLAUDE.md`, `status.md`, `technical.md`
+- Create `CLAUDE.md`, `status.md`, `docs/technical.md`
 - Start using AI agents for code review and documentation
 
 **Phase 2: Workflow Integration (Week 2-3)**  
@@ -255,7 +256,8 @@ cp -r /tmp/ai-template/templates/ ./
 # 3. Copy essential files
 cp /tmp/ai-template/CLAUDE.md ./
 cp /tmp/ai-template/status.md ./
-cp /tmp/ai-template/technical.md ./
+mkdir -p docs
+cp /tmp/ai-template/docs/technical.md ./docs/
 cp /tmp/ai-template/.env.example ./
 
 # 4. Make scripts executable
@@ -334,7 +336,7 @@ cat > CLAUDE.md << 'EOF'
 ## Getting Started
 When starting a new session:
 1. Read status.md for current project state
-2. Review technical.md for architecture details  
+2. Review docs/technical.md for architecture details  
 3. Check recent commits for context
 
 EOF
@@ -357,7 +359,8 @@ cat > status.md << 'EOF'
 
 EOF
 
-# Create technical.md based on your project
+# Create docs/technical.md based on your project
+mkdir -p docs
 echo "# Technical Specifications
 
 ## Architecture Overview
@@ -368,7 +371,7 @@ echo "# Technical Specifications
 
 ## Development Patterns
 [Important patterns and conventions]
-" > technical.md
+" > docs/technical.md
 ```
 
 #### Step 4: Migrate Existing Documentation
@@ -467,11 +470,11 @@ curl -o .claude/agents/test-engineer.md [URL]
 npm pkg set scripts.ai-review="echo 'Use: Ask AI to use code-reviewer agent for this commit'"
 npm pkg set scripts.ai-test="echo 'Use: Ask AI to use test-engineer agent to write tests'"
 
-# Update technical.md with your frontend stack
+# Update docs/technical.md with your frontend stack
 echo "## Frontend Stack
 - Framework: $(grep -o '"react"\|"vue"\|"@angular"' package.json | head -1)  
 - Styling: $(grep -o '"styled-components"\|"tailwind"\|"sass"' package.json | head -1)
-- Testing: $(grep -o '"jest"\|"vitest"\|"cypress"' package.json | head -1)" >> technical.md
+- Testing: $(grep -o '"jest"\|"vitest"\|"cypress"' package.json | head -1)" >> docs/technical.md
 ```
 
 #### Node.js/Express Backend Projects  
@@ -486,7 +489,7 @@ curl -o .claude/agents/security-auditor.md [URL]
 echo "## API Structure
 - Routes: $(find . -name "*route*" -o -name "*controller*" | wc -l) route files
 - Middleware: $(find . -name "*middleware*" | wc -l) middleware files  
-- Database: $(grep -o 'mongoose\|sequelize\|prisma\|typeorm' package.json | head -1)" >> technical.md
+- Database: $(grep -o 'mongoose\|sequelize\|prisma\|typeorm' package.json | head -1)" >> docs/technical.md
 ```
 
 #### Python/Django Projects
@@ -500,7 +503,7 @@ curl -o .claude/agents/database-specialist.md [URL]
 echo "## Python Environment
 - Python Version: $(python --version)
 - Framework: $(grep -o 'Django\|Flask\|FastAPI' requirements.txt | head -1)
-- Database: $(grep -o 'psycopg2\|pymongo\|sqlalchemy' requirements.txt | head -1)" >> technical.md
+- Database: $(grep -o 'psycopg2\|pymongo\|sqlalchemy' requirements.txt | head -1)" >> docs/technical.md
 
 # Add Python-specific scripts
 cat > scripts/python-setup.sh << 'EOF'
@@ -582,7 +585,7 @@ if [ -d "__tests__" ]; then
   echo "## Testing Strategy
 - Existing tests: Preserved in current structure  
 - AI-generated tests: Follow existing patterns
-- Test agent: Configured for $(find . -name "*.test.*" -o -name "*.spec.*" | head -1 | sed 's/.*\.\([^.]*\)\.test\..*/\1/')" >> technical.md
+- Test agent: Configured for $(find . -name "*.test.*" -o -name "*.spec.*" | head -1 | sed 's/.*\.\([^.]*\)\.test\..*/\1/')" >> docs/technical.md
 fi
 ```
 
@@ -614,7 +617,7 @@ source scripts/lib/colors.sh
 echo "🔍 Validating AI template integration..."
 
 # Check essential files
-files=("CLAUDE.md" "status.md" "technical.md" ".claude/agents/INDEX.md")
+files=("CLAUDE.md" "status.md" "docs/technical.md" ".claude/agents/INDEX.md")
 for file in "${files[@]}"; do
   if [ -f "$file" ]; then
     echo "${GREEN}✅ $file exists${NC}"
@@ -704,16 +707,16 @@ echo "✅ All scripts made executable"
 # Solution: Enhance context files
 echo "🔧 Updating context files for better AI recognition..."
 
-# Add project-specific patterns to technical.md
+# Add project-specific patterns to docs/technical.md
 echo "## Current Code Patterns
-$(find src/ -name "*.js" -o -name "*.ts" -o -name "*.py" | head -5 | xargs grep -l "export\|class\|function" | head -3)" >> technical.md
+$(find src/ -name "*.js" -o -name "*.ts" -o -name "*.py" | head -5 | xargs grep -l "export\|class\|function" | head -3)" >> docs/technical.md
 
 # Update CLAUDE.md with specific instructions
 echo "
 ## Project-Specific AI Instructions
 - Always check existing patterns in src/ directory
 - Follow the established naming conventions
-- Respect the current architecture documented in technical.md" >> CLAUDE.md
+- Respect the current architecture documented in docs/technical.md" >> CLAUDE.md
 ```
 
 ### Success Metrics
@@ -836,7 +839,8 @@ my-project/
 ├── 📚 Documentation & Context
 │   ├── README.md                 # This file - project overview and setup
 │   ├── CLAUDE.md                 # Instructions for Claude Code (or similar AI tools)
-│   ├── technical.md              # Technical specifications and architecture
+│   ├── docs/
+│   │   └── technical.md          # Technical specifications and architecture
 │   ├── deliverables/             # Product deliverables and project status
 │   │   ├── status.md             # Project state and progress tracking
 │   │   └── [deliverable]/        # Individual deliverables with their issues
@@ -906,7 +910,7 @@ echo "## Current Focus: User Authentication" >> status.md
 
 # 3. In your AI session, request:
 "Using the project-manager agent, help me implement user authentication
-following the patterns in our technical.md file"
+following the patterns in our docs/technical.md file"
 ```
 
 ### Debugging an Issue
@@ -1131,7 +1135,7 @@ node scripts/docs-health.js
 **Solution**:
 
 1. Be explicit: "Please use the frontend-specialist agent for this task"
-2. Provide context: Share relevant technical.md sections
+2. Provide context: Share relevant docs/technical.md sections
 3. Check agent documentation: `.claude/agents/[agent-name].md`
 
 ### Getting Help
@@ -1215,7 +1219,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
 
 Now that you're set up:
 
-1. **Customize for Your Project**: Update `technical.md` with your tech stack
+1. **Customize for Your Project**: Update `docs/technical.md` with your tech stack
 2. **Try the Agents**: Experiment with different agents for your tasks
 3. **Build Something**: Start with a small feature to get familiar
 4. **Share Feedback**: Let us know what works and what doesn't

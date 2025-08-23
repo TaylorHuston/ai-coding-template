@@ -8,22 +8,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features that have been added
+- Add a lightweight CHANGELOG template
+- Test feature for demonstrating workflow
+- AI-powered CHANGELOG maintenance system with automated tools and workflows
+- `scripts/check-changelog.sh` - Git hook integration for changelog reminders
+- `scripts/ai-update-changelog.sh` - Interactive changelog update assistant for AI
+- `scripts/ai-changelog-audit.sh` - Comprehensive audit tool with statistics and recommendations
+- `docs/guides/ai-changelog-maintenance.md` - Complete guide for AI assistants
+- CHANGELOG update requirements in session completion protocol (CLAUDE.md)
+- Git hook configuration for automated changelog validation
 
 ### Changed
-- Changes in existing functionality
-
-### Deprecated
-- Soon-to-be removed features
-
-### Removed
-- Removed features
-
-### Fixed
-- Bug fixes
-
-### Security
-- Security vulnerability fixes
+- Enhanced CLAUDE.md with mandatory CHANGELOG updates in session completion protocol
+- Updated .githooks.json with changelog-reminder configuration
+- Improved quality requirements to include CHANGELOG maintenance
+- Moved `technical.md` to `docs/technical.md` for better organization
+- Updated all references throughout the codebase to point to new location
 
 ## [0.1.0] - YYYY-MM-DD
 
@@ -79,4 +79,3 @@ When completing work items, add entries here using this format:
 
 - [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - [Semantic Versioning](https://semver.org/)
-- [Deliverables Documentation](./deliverables/README.md)

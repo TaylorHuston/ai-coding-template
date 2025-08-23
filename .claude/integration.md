@@ -30,7 +30,7 @@ Project Root
 │   ├── status.md               # Project status and progress
 │   └── [deliverable]/          # Individual deliverables with issues
 ├── docs/                       # Project documentation
-├── technical.md               # Technical specifications
+│   └── technical.md           # Technical specifications
 └── CLAUDE.md                  # Main AI assistant instructions
 ```
 
@@ -42,7 +42,7 @@ User Request
     ↓
 context-analyzer (auto-invoked)
     ↓
-Gathers: deliverables/status.md, technical.md, deliverables/{features,bugs,tasks}/, docs/
+Gathers: deliverables/status.md, docs/technical.md, deliverables/{features,bugs,tasks}/, docs/
     ↓
 Provides enriched context to specialist agents
 ```
@@ -258,4 +258,4 @@ agents:
 - [Agent Best Practices](agent-best-practices.md)
 - [Quick Reference Guides](../docs/quick-reference/)
 - [Project Status](../deliverables/status.md)
-- [Technical Specifications](../technical.md)
+- [Technical Specifications](../docs/technical.md)
