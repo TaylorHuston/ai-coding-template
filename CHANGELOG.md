@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2025-08-22
+
 ### Added
-- Add a lightweight CHANGELOG template
-- Test feature for demonstrating workflow
 - AI-powered CHANGELOG maintenance system with automated tools and workflows
 - `scripts/check-changelog.sh` - Git hook integration for changelog reminders
 - `scripts/ai-update-changelog.sh` - Interactive changelog update assistant for AI
@@ -17,6 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `docs/guides/ai-changelog-maintenance.md` - Complete guide for AI assistants
 - CHANGELOG update requirements in session completion protocol (CLAUDE.md)
 - Git hook configuration for automated changelog validation
+- `docs/integration-guide.md` - Comprehensive guide for integrating into existing projects
+- `docs/troubleshooting.md` - Detailed troubleshooting guide for common issues  
+- `docs/ai-agents-guide.md` - Complete guide to the 17-agent system
+- `docs/workflows/README.md` - Step-by-step common development workflows
+- `docs/faq.md` - Frequently asked questions and answers
 
 ### Changed
 - Enhanced CLAUDE.md with mandatory CHANGELOG updates in session completion protocol
@@ -24,6 +29,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved quality requirements to include CHANGELOG maintenance
 - Moved `technical.md` to `docs/technical.md` for better organization
 - Updated all references throughout the codebase to point to new location
+- **MAJOR**: Restructured README.md from 1,231 lines to 163 lines for better usability
+- Extracted extensive content to specialized documentation files
+
+### Removed
+- Old workbench directory structure (replaced by deliverables system)
 
 ## [0.1.0] - YYYY-MM-DD
 
