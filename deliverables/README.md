@@ -54,13 +54,33 @@ deliverables/
 │       │   └── decision-log.md
 │       ├── reports/                    # Task reports and metrics
 │       └── scripts/                    # Automation and helper scripts
-├── user-authentication/                # Example deliverable
+├── 001-initial-setup/                  # EXAMPLE deliverable (USE, MODIFY, or DELETE)
+│   ├── 001-initial-setup.md            # Example: Complete project setup guide
+│   ├── README.md                       # Quick overview with instructions
+│   └── issues/                         # 9 real setup tasks you can actually use
+│       ├── SETUP-001/                  # Repository initialization
+│       ├── SETUP-002/                  # Development environment
+│       ├── SETUP-003/                  # Testing framework
+│       └── ...                          # (6 more practical setup tasks)
+├── user-authentication/                # Example deliverable structure
 │   ├── user-authentication.md          # Main deliverable documentation
 │   └── issues/                         # Authentication-related issues
 │       └── EXAMPLE-AUTH-001-login-implementation/  # Example issue
 │           └── AUTH-001-plan.md
 └── [other-deliverables]/               # Additional deliverables as needed
 ```
+
+## About the Example Deliverable (001-initial-setup)
+
+The `001-initial-setup` directory is a **fully functional example deliverable** that serves two purposes:
+
+1. **Template Demonstration**: Shows how to structure deliverables with proper documentation, issues, and plans
+2. **Practical Value**: Contains 9 real setup tasks based on 2025 best practices that you can actually use
+
+**Your Options:**
+- ✅ **USE IT**: If starting a new project, these setup tasks provide excellent foundation
+- ✏️ **MODIFY IT**: Remove or adapt issues based on your specific needs  
+- 🗑️ **DELETE IT**: Simply run `rm -rf deliverables/001-initial-setup` if you don't need it
 
 ## Creating a New Deliverable
 
