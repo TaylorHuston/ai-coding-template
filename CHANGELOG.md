@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.1.3] - 2025-08-26
+
 ### Added
 
 - `docs/documentation-guidelines.md` - Clear guidelines for what documentation goes where
