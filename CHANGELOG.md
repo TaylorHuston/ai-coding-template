@@ -11,6 +11,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `templates/CHANGELOG.template.md` - Blank CHANGELOG template for new projects
 - `docs/guides/changelog-complete-guide.md` - Comprehensive CHANGELOG system documentation
 - `scripts/release.sh` - Automated release script for version management
+- `deliverables/001-initial-setup/` - Example deliverable with 9 practical project setup issues
+  - SETUP-001: Initialize Repository & Core Structure
+  - SETUP-002: Establish Development Environment
+  - SETUP-003: Configure Testing Framework
+  - SETUP-004: Set Up Linting & Code Quality
+  - SETUP-005: Implement Observability & Logging (OpenTelemetry)
+  - SETUP-006: Security & Dependency Management (SBOM, vulnerability scanning)
+  - SETUP-007: Configure CI/CD Pipeline
+  - SETUP-008: Create Documentation Foundation
+  - SETUP-009: Establish Development Processes
 
 ## [0.1.1] - 2025-08-22
 
