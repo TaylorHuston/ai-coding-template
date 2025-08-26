@@ -1,518 +1,262 @@
-# SETUP-004: Set Up Linting & Code Quality
+# SETUP-004: Linting & Code Quality Implementation
 
-**Status**: 📋 Not Started  
-**Type**: Setup Task  
-**Priority**: P0 - Critical Foundation  
-**Estimated Time**: 1-2 hours  
-**Assignee**: Unassigned
+## Quick Start
 
-## Overview
+1. Install dependencies:
+   ```bash
+   npm run lint:setup
+   # or manually install ESLint, Prettier, Husky
+   ```
 
-Implement automated code quality tools including linters, formatters, and pre-commit hooks to maintain consistent code style and catch issues early. This ensures all team members follow the same standards and reduces code review friction.
+2. Run linting:
+   ```bash
+   npm run lint
+   npm run format
+   ```
 
-## Objectives
+## Implementation
 
-- ✅ Configure ESLint/Prettier (or language equivalents)
-- ✅ Set up pre-commit hooks with Husky
-- ✅ Configure lint-staged for performance
-- ✅ Establish code review standards
-- ✅ Set up commit message validation
-- ✅ Create code quality scripts
+### JavaScript/TypeScript Setup
 
-## Acceptance Criteria
-
-- [ ] Linter configured for all file types
-- [ ] Formatter configured and working
-- [ ] Pre-commit hooks prevent bad commits
-- [ ] Commit messages follow conventional format
-- [ ] Code quality scripts in package.json
-- [ ] Editor integration documented
-- [ ] All existing code passes linting
-- [ ] Team agreed on rule set
-
-## Implementation Guide
-
-### Step 1: Install Linting Dependencies
-
-For **JavaScript/TypeScript**:
-
+Install dependencies:
 ```bash
-# ESLint and Prettier
-npm install --save-dev \
-  eslint \
-  prettier \
-  eslint-config-prettier \
-  eslint-plugin-prettier \
-  @typescript-eslint/parser \
-  @typescript-eslint/eslint-plugin
-
-# Additional plugins
-npm install --save-dev \
-  eslint-plugin-import \
-  eslint-plugin-node \
-  eslint-plugin-promise \
-  eslint-plugin-react \
-  eslint-plugin-react-hooks
-
-# Husky and lint-staged
-npm install --save-dev \
-  husky \
-  lint-staged \
-  @commitlint/cli \
-  @commitlint/config-conventional
+npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin husky lint-staged @commitlint/cli @commitlint/config-conventional
 ```
 
-### Step 2: Configure ESLint
-
 Create `.eslintrc.js`:
-
 ```javascript
 module.exports = {
   root: true,
-  env: {
-    node: true,
-    es2021: true,
-    jest: true,
-  },
+  env: { node: true, es2021: true, jest: true },
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
-    'plugin:promise/recommended',
-    'prettier',
+    '@typescript-eslint/recommended',
+    'prettier'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2021,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
+    sourceType: 'module'
   },
-  plugins: [
-    '@typescript-eslint',
-    'react',
-    'react-hooks',
-    'import',
-    'promise',
-  ],
   rules: {
-    // Error prevention
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-debugger': 'error',
-    'no-alert': 'error',
-    
-    // Best practices
     'eqeqeq': ['error', 'always'],
-    'curly': ['error', 'all'],
-    'no-var': 'error',
     'prefer-const': 'error',
-    'prefer-template': 'error',
-    'prefer-arrow-callback': 'error',
-    
-    // TypeScript
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-unused-vars': ['error', { 
-      argsIgnorePattern: '^_',
-      varsIgnorePattern: '^_'
-    }],
-    
-    // React
-    'react/prop-types': 'off',
-    'react/react-in-jsx-scope': 'off',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    
-    // Import
-    'import/order': ['error', {
-      groups: [
-        'builtin',
-        'external',
-        'internal',
-        'parent',
-        'sibling',
-        'index'
-      ],
-      'newlines-between': 'always',
-      alphabetize: { order: 'asc' }
-    }],
-    'import/no-duplicates': 'error',
-    'import/no-unresolved': 'error',
-    'import/no-cycle': 'error',
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-    'import/resolver': {
-      typescript: {},
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
-  },
-  overrides: [
-    {
-      files: ['*.test.{js,ts}', '*.spec.{js,ts}'],
-      env: {
-        jest: true,
-      },
-      rules: {
-        '@typescript-eslint/no-explicit-any': 'off',
-      },
-    },
-  ],
+      argsIgnorePattern: '^_'
+    }]
+  }
 };
 ```
 
-Create `.eslintignore`:
-
-```
-node_modules/
-dist/
-build/
-coverage/
-*.config.js
-.eslintrc.js
-public/
-```
-
-### Step 3: Configure Prettier
-
-Create `.prettierrc.js`:
-
-```javascript
-module.exports = {
-  // Line length
-  printWidth: 80,
-  tabWidth: 2,
-  useTabs: false,
-  
-  // Quotes
-  singleQuote: true,
-  quoteProps: 'as-needed',
-  jsxSingleQuote: false,
-  
-  // Punctuation
-  semi: true,
-  trailingComma: 'es5',
-  bracketSpacing: true,
-  bracketSameLine: false,
-  
-  // Arrow functions
-  arrowParens: 'always',
-  
-  // Format
-  proseWrap: 'preserve',
-  htmlWhitespaceSensitivity: 'css',
-  endOfLine: 'lf',
-  
-  // Framework specific
-  vueIndentScriptAndStyle: false,
-  embeddedLanguageFormatting: 'auto',
-  singleAttributePerLine: false,
-};
-```
-
-Create `.prettierignore`:
-
-```
-# Dependencies
-node_modules/
-package-lock.json
-yarn.lock
-
-# Build outputs
-dist/
-build/
-coverage/
-
-# Generated files
-*.min.js
-*.min.css
-
-# Data files
-*.json
-*.yml
-*.yaml
-
-# Documentation
-*.md
-```
-
-### Step 4: Configure Pre-commit Hooks
-
-Initialize Husky:
-
-```bash
-# Initialize husky
-npx husky-init && npm install
-
-# Add pre-commit hook
-npx husky add .husky/pre-commit "npx lint-staged"
-
-# Add commit-msg hook for conventional commits
-npx husky add .husky/commit-msg "npx --no -- commitlint --edit $1"
-```
-
-Create `.lintstagedrc.js`:
-
-```javascript
-module.exports = {
-  // JavaScript/TypeScript files
-  '*.{js,jsx,ts,tsx}': [
-    'eslint --fix',
-    'prettier --write',
-    'jest --bail --findRelatedTests',
-  ],
-  
-  // Style files
-  '*.{css,scss,sass,less}': [
-    'stylelint --fix',
-    'prettier --write',
-  ],
-  
-  // JSON files
-  '*.json': [
-    'prettier --write',
-  ],
-  
-  // Markdown files
-  '*.md': [
-    'prettier --write',
-    'markdownlint',
-  ],
-  
-  // YAML files
-  '*.{yml,yaml}': [
-    'prettier --write',
-  ],
-  
-  // Check types
-  '**/*.ts?(x)': () => 'tsc --noEmit',
-};
-```
-
-### Step 5: Configure Commit Message Validation
-
-Create `commitlint.config.js`:
-
-```javascript
-module.exports = {
-  extends: ['@commitlint/config-conventional'],
-  rules: {
-    // Type rules
-    'type-enum': [
-      2,
-      'always',
-      [
-        'feat',     // New feature
-        'fix',      // Bug fix
-        'docs',     // Documentation
-        'style',    // Formatting
-        'refactor', // Code restructuring
-        'perf',     // Performance
-        'test',     // Tests
-        'build',    // Build system
-        'ci',       // CI/CD
-        'chore',    // Maintenance
-        'revert',   // Revert commit
-      ],
-    ],
-    'type-case': [2, 'always', 'lower-case'],
-    'type-empty': [2, 'never'],
-    
-    // Scope rules
-    'scope-case': [2, 'always', 'lower-case'],
-    
-    // Subject rules
-    'subject-case': [2, 'never', ['sentence-case', 'start-case', 'pascal-case', 'upper-case']],
-    'subject-empty': [2, 'never'],
-    'subject-full-stop': [2, 'never', '.'],
-    'subject-max-length': [2, 'always', 72],
-    
-    // Body rules
-    'body-leading-blank': [2, 'always'],
-    'body-max-line-length': [2, 'always', 100],
-    
-    // Footer rules
-    'footer-leading-blank': [2, 'always'],
-    'footer-max-line-length': [2, 'always', 100],
-  },
-};
-```
-
-### Step 6: Add Quality Scripts
-
-Update `package.json`:
-
+Create `.prettierrc`:
 ```json
 {
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 80,
+  "tabWidth": 2,
+  "endOfLine": "lf"
+}
+```
+
+### Python Setup
+
+Install dependencies:
+```bash
+pip install black flake8 isort pre-commit
+```
+
+Create `.flake8`:
+```ini
+[flake8]
+max-line-length = 88
+ignore = E203, W503
+exclude = .git,__pycache__,docs/,build/,dist/
+```
+
+Create `pyproject.toml`:
+```toml
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+```
+
+### Pre-commit Hooks Setup
+
+Initialize Husky:
+```bash
+npx husky-init && npm install
+```
+
+Create `.husky/pre-commit`:
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx lint-staged
+```
+
+Update `package.json`:
+```json
+{
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
   "scripts": {
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "type-check": "tsc --noEmit",
-    "quality": "npm run lint && npm run format:check && npm run type-check",
-    "quality:fix": "npm run lint:fix && npm run format",
-    "prepare": "husky install"
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,md}\""
   }
 }
 ```
 
-### Step 7: Create Code Quality Documentation
+### Commit Message Validation
 
-Create `docs/code-quality.md`:
+Create `commitlint.config.js`:
+```javascript
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        'feat',
+        'fix',
+        'docs',
+        'style',
+        'refactor',
+        'test',
+        'chore',
+        'revert'
+      ]
+    ],
+    'subject-case': [2, 'never', ['start-case', 'pascal-case', 'upper-case']],
+    'subject-max-length': [2, 'always', 72]
+  }
+};
+```
 
-```markdown
-# Code Quality Standards
+Add commit hook `.husky/commit-msg`:
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-## Overview
+npx --no-install commitlint --edit "$1"
+```
 
-We use automated tools to maintain consistent code quality across the project.
+## Testing
 
-## Tools
-
-- **ESLint**: JavaScript/TypeScript linting
-- **Prettier**: Code formatting
-- **Husky**: Git hooks
-- **lint-staged**: Pre-commit checks
-- **commitlint**: Commit message validation
-
-## Running Quality Checks
+### Verify Setup
 
 ```bash
-# Check all files
-npm run quality
+# Run linter
+npm run lint
 
-# Fix all auto-fixable issues
-npm run quality:fix
+# Fix linting issues
+npm run lint:fix
 
-# Run specific tools
-npm run lint        # ESLint only
-npm run format      # Prettier only
-npm run type-check  # TypeScript only
-```
-
-## Commit Message Format
-
-We follow [Conventional Commits](https://www.conventionalcommits.org/):
-
-```
-<type>(<scope>): <subject>
-
-<body>
-
-<footer>
-```
-
-Examples:
-- `feat(auth): add login functionality`
-- `fix(api): handle null response`
-- `docs(readme): update installation steps`
-
-## Editor Integration
-
-### VS Code
-
-1. Install extensions:
-   - ESLint
-   - Prettier
-   - EditorConfig
-
-2. Settings already configured in `.vscode/settings.json`
-
-### Other Editors
-
-See documentation for your specific editor:
-- [WebStorm](https://www.jetbrains.com/help/webstorm/eslint.html)
-- [Sublime Text](https://github.com/SublimeLinter/SublimeLinter-eslint)
-- [Vim](https://github.com/dense-analysis/ale)
-
-## Bypassing Checks (Emergency Only)
-
-```bash
-# Skip pre-commit hooks (use sparingly!)
-git commit --no-verify
-
-# Disable ESLint for a line
-// eslint-disable-next-line
-
-# Disable Prettier for a block
-// prettier-ignore
-```
-
-## Custom Rules
-
-To propose changes to linting rules:
-1. Discuss with team
-2. Test impact on codebase
-3. Update `.eslintrc.js`
-4. Document reasoning
-```
-
-## Verification Steps
-
-```bash
-# Test linting
-echo "var x = 1" > test.js
-npm run lint  # Should show errors
-rm test.js
-
-# Test formatting
-echo "const x={a:1,b:2}" > test.js
+# Format code
 npm run format
-cat test.js  # Should be formatted
-rm test.js
+
+# Check formatting
+npm run format:check
 
 # Test pre-commit hook
 git add .
-git commit -m "test"  # Should fail with wrong format
-git commit -m "test: verify hooks"  # Should pass
+git commit -m "test: verify pre-commit hook"
 
-# Verify all files pass
-npm run quality
+# Test commit message validation
+git commit -m "invalid commit message" # Should fail
+git commit -m "feat: add new feature" # Should pass
 ```
 
-## AI Agent Instructions
+### Editor Integration
 
-When completing this task:
+**VS Code**: Install extensions:
+- ESLint
+- Prettier - Code formatter
+- Prettier ESLint
 
-1. Adapt linting rules to project's tech stack
-2. Ensure rules match team preferences
-3. Fix all existing linting errors
-4. Test hooks work correctly
-5. Document any custom rules
-6. Verify editor integrations
+**VS Code settings** in `.vscode/settings.json`:
+```json
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
+}
+```
 
-## Definition of Done
+## Troubleshooting
 
-- [ ] ESLint configured and working
-- [ ] Prettier configured and working
-- [ ] Husky hooks installed and tested
-- [ ] lint-staged configured
-- [ ] Commit message validation working
-- [ ] All existing code passes checks
-- [ ] Scripts added to package.json
-- [ ] Documentation complete
-- [ ] Team reviewed and approved rules
+### Linting Errors
 
-## Related Issues
+```bash
+# See all linting errors
+npm run lint
 
-- Previous: [SETUP-003](../SETUP-003/README.md) - Testing Framework
-- Next: [SETUP-005](../SETUP-005/README.md) - Observability & Logging
-- Related: [SETUP-007](../SETUP-007/README.md) - CI/CD Pipeline
+# Auto-fix what can be fixed
+npm run lint:fix
 
-## Resources
+# Check specific file
+npx eslint src/components/MyComponent.tsx
+```
 
-- [ESLint Documentation](https://eslint.org/docs/)
-- [Prettier Documentation](https://prettier.io/docs/)
-- [Husky Documentation](https://typicode.github.io/husky/)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [lint-staged](https://github.com/okonet/lint-staged)
+### Formatting Issues
+
+```bash
+# Format specific files
+npx prettier --write src/components/MyComponent.tsx
+
+# Check formatting without changing
+npx prettier --check src/
+```
+
+### Pre-commit Hook Issues
+
+```bash
+# Skip pre-commit hooks (emergency only)
+git commit --no-verify -m "emergency fix"
+
+# Re-run pre-commit hook
+npx lint-staged
+
+# Update hooks
+npx husky add .husky/pre-commit "npx lint-staged"
+```
+
+### Bypass Emergency
+
+```bash
+# Disable ESLint for specific line
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const data: any = response;
+
+# Disable ESLint for entire file
+/* eslint-disable */
+
+# Skip commit message validation
+git commit --no-verify -m "emergency: fix critical issue"
+```

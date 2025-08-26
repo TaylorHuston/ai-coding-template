@@ -1,45 +1,29 @@
-# SETUP-002: Establish Development Environment
+# SETUP-002: Development Environment Implementation
 
-**Status**: 📋 Not Started  
-**Type**: Setup Task  
-**Priority**: P0 - Critical Foundation  
-**Estimated Time**: 2-3 hours  
-**Assignee**: Unassigned
+## Quick Start
 
-## Overview
+1. Run setup script:
+   ```bash
+   make setup
+   # or
+   ./scripts/dev/setup.sh
+   ```
 
-Create a consistent, reproducible development environment that ensures all team members work with the same configurations, tools, and settings. This eliminates "works on my machine" problems and accelerates onboarding.
+2. Start development:
+   ```bash
+   make dev
+   # or
+   npm run dev
+   ```
 
-## Objectives
+## Implementation
 
-- ✅ Configure EditorConfig for code consistency
-- ✅ Set up development containers (Docker/Dev Containers)
-- ✅ Configure IDE/editor settings and extensions
-- ✅ Create local development scripts
-- ✅ Set up database and service dependencies
-- ✅ Document environment setup process
-
-## Acceptance Criteria
-
-- [ ] EditorConfig file covers all file types
-- [ ] Docker Compose configured for local services
-- [ ] VS Code settings and extensions documented
-- [ ] Development scripts for common tasks
-- [ ] Database migrations/seeds configured
-- [ ] Environment can be set up in <30 minutes
-- [ ] README includes setup instructions
-- [ ] Works on Windows, Mac, and Linux
-
-## Implementation Guide
-
-### Step 1: Create EditorConfig
+### EditorConfig Setup
 
 Create `.editorconfig` in project root:
 
 ```ini
 # EditorConfig is awesome: https://EditorConfig.org
-
-# Top-most EditorConfig file
 root = true
 
 # Default settings for all files
@@ -99,7 +83,7 @@ indent_size = 2
 indent_size = 2
 ```
 
-### Step 2: Set Up Docker Development Environment
+### Docker Configuration
 
 Create `docker-compose.yml`:
 
@@ -114,7 +98,7 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - .:/app
-      - node_modules:/app/node_modules  # For Node.js
+      - node_modules:/app/node_modules
     ports:
       - "3000:3000"
     environment:
@@ -147,14 +131,6 @@ services:
     volumes:
       - redis_data:/data
 
-  # Admin tools (optional)
-  adminer:
-    image: adminer
-    ports:
-      - "8080:8080"
-    depends_on:
-      - postgres
-
 volumes:
   postgres_data:
   redis_data:
@@ -164,7 +140,6 @@ volumes:
 Create `Dockerfile.dev`:
 
 ```dockerfile
-# Development Dockerfile
 FROM node:18-alpine
 
 # Install development tools
@@ -189,7 +164,7 @@ EXPOSE 3000
 CMD ["npm", "run", "dev"]
 ```
 
-### Step 3: Configure VS Code Settings
+### VS Code Configuration
 
 Create `.vscode/settings.json`:
 
@@ -232,72 +207,30 @@ Create `.vscode/extensions.json`:
 ```json
 {
   "recommendations": [
-    // General
     "editorconfig.editorconfig",
     "ms-vscode-remote.remote-containers",
     "ms-azuretools.vscode-docker",
-    
-    // JavaScript/TypeScript
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "dsznajder.es7-react-js-snippets",
-    
-    // Python
     "ms-python.python",
     "ms-python.vscode-pylance",
     "ms-python.black-formatter",
-    
-    // Git
     "eamodio.gitlens",
     "mhutchie.git-graph",
-    
-    // Database
     "mtxr.sqltools",
     "mtxr.sqltools-driver-pg",
-    
-    // Testing
     "orta.vscode-jest",
     "hbenl.vscode-test-explorer",
-    
-    // Documentation
     "yzhang.markdown-all-in-one",
     "bierner.markdown-mermaid",
-    
-    // AI Assistance
     "github.copilot",
     "continue.continue"
   ]
 }
 ```
 
-Create `.vscode/launch.json`:
-
-```json
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Debug Application",
-      "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/src/index.js",
-      "envFile": "${workspaceFolder}/.env",
-      "console": "integratedTerminal"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Debug Tests",
-      "program": "${workspaceFolder}/node_modules/.bin/jest",
-      "args": ["--runInBand", "--watchAll=false"],
-      "console": "integratedTerminal"
-    }
-  ]
-}
-```
-
-### Step 4: Create Development Scripts
+### Development Scripts
 
 Create `scripts/dev/setup.sh`:
 
@@ -342,34 +275,7 @@ echo "✅ Development environment ready!"
 echo "Run 'npm run dev' to start the application"
 ```
 
-Create `scripts/dev/reset.sh`:
-
-```bash
-#!/bin/bash
-set -e
-
-echo "🔄 Resetting development environment..."
-
-# Stop services
-docker-compose down -v
-
-# Clean dependencies
-rm -rf node_modules
-rm -f package-lock.json
-
-# Clean build artifacts
-rm -rf dist/ build/ coverage/
-
-# Reinstall
-npm install
-
-# Restart services
-docker-compose up -d
-
-echo "✅ Environment reset complete"
-```
-
-Create `Makefile` for common tasks:
+Create `Makefile`:
 
 ```makefile
 .PHONY: help setup dev test clean
@@ -407,168 +313,22 @@ format: ## Format code
 build: ## Build for production
 	@npm run build
 
-docker-build: ## Build Docker images
-	@docker-compose build
-
 docker-up: ## Start Docker services
 	@docker-compose up -d
 
 docker-down: ## Stop Docker services
 	@docker-compose down
 
-docker-logs: ## View Docker logs
-	@docker-compose logs -f
-
 shell: ## Open shell in app container
 	@docker-compose exec app sh
 ```
 
-### Step 5: Configure Dev Containers (VS Code)
+## Testing
 
-Create `.devcontainer/devcontainer.json`:
-
-```json
-{
-  "name": "Project Dev Container",
-  "dockerComposeFile": "../docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/app",
-  
-  "customizations": {
-    "vscode": {
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
-      },
-      "extensions": [
-        "editorconfig.editorconfig",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "eamodio.gitlens"
-      ]
-    }
-  },
-  
-  "forwardPorts": [3000, 5432, 6379],
-  
-  "postCreateCommand": "npm install",
-  
-  "remoteUser": "node"
-}
-```
-
-### Step 6: Create Development Documentation
-
-Create `docs/development-setup.md`:
-
-```markdown
-# Development Environment Setup
-
-## Prerequisites
-
-- Docker Desktop (v20+)
-- Node.js (v18+)
-- VS Code (recommended)
-- Git
-
-## Quick Start
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd <project-name>
-   ```
-
-2. Run setup script:
-   ```bash
-   make setup
-   # or
-   ./scripts/dev/setup.sh
-   ```
-
-3. Start development:
-   ```bash
-   make dev
-   # or
-   npm run dev
-   ```
-
-## Manual Setup
-
-If automated setup fails:
-
-1. Copy environment file:
-   ```bash
-   cp .env.example .env
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start services:
-   ```bash
-   docker-compose up -d
-   ```
-
-4. Run migrations:
-   ```bash
-   npm run db:migrate
-   ```
-
-## VS Code Setup
-
-1. Install recommended extensions:
-   - Open VS Code
-   - Go to Extensions (Cmd/Ctrl+Shift+X)
-   - Search "@recommended"
-   - Install all workspace recommendations
-
-2. Use Dev Container (optional):
-   - Install "Remote - Containers" extension
-   - Cmd/Ctrl+Shift+P → "Reopen in Container"
-
-## Common Commands
-
-| Command | Description |
-|---------|-------------|
-| `make dev` | Start development server |
-| `make test` | Run tests |
-| `make lint` | Run linters |
-| `make format` | Format code |
-| `make clean` | Reset environment |
-| `make shell` | Open container shell |
-
-## Troubleshooting
-
-### Port already in use
-```bash
-# Find process using port
-lsof -i :3000
-# Kill process
-kill -9 <PID>
-```
-
-### Docker issues
-```bash
-# Reset Docker
-docker-compose down -v
-docker system prune -a
-```
-
-### Database connection issues
-```bash
-# Check if database is running
-docker-compose ps
-# View logs
-docker-compose logs postgres
-```
-```
-
-## Verification Steps
+### Verify Setup
 
 ```bash
-# Verify EditorConfig
+# Check EditorConfig
 cat .editorconfig
 
 # Check Docker services
@@ -591,39 +351,46 @@ npm run dev
 curl http://localhost:3000
 ```
 
-## AI Agent Instructions
+### Platform Testing
 
-When completing this task:
+Test on:
+- Windows (WSL2)
+- macOS (Intel/Apple Silicon)
+- Linux (Ubuntu/Debian)
 
-1. Adapt configurations to project's tech stack
-2. Ensure cross-platform compatibility
-3. Test setup on fresh environment
-4. Document any customizations
-5. Verify all services start correctly
-6. Update README with setup instructions
+## Troubleshooting
 
-## Definition of Done
+### Port Already in Use
 
-- [ ] EditorConfig file created and working
-- [ ] Docker Compose configuration complete
-- [ ] VS Code settings and extensions configured
-- [ ] Development scripts created and tested
-- [ ] Dev Container configuration (if applicable)
-- [ ] Documentation complete and accurate
-- [ ] Setup tested on clean environment
-- [ ] Works on all major OS platforms
-- [ ] Team reviewed and approved
+```bash
+# Find process using port
+lsof -i :3000
+# Kill process
+kill -9 <PID>
+```
 
-## Related Issues
+### Docker Issues
 
-- Previous: [SETUP-001](../SETUP-001/README.md) - Initialize Repository
-- Next: [SETUP-003](../SETUP-003/README.md) - Configure Testing Framework
-- Related: [SETUP-007](../SETUP-007/README.md) - Configure CI/CD Pipeline
+```bash
+# Reset Docker
+docker-compose down -v
+docker system prune -a
+```
 
-## Resources
+### Database Connection Issues
 
-- [EditorConfig](https://editorconfig.org/)
-- [Docker Documentation](https://docs.docker.com/)
-- [VS Code Dev Containers](https://code.visualstudio.com/docs/remote/containers)
-- [Docker Compose](https://docs.docker.com/compose/)
-- [12 Factor App - Dev/Prod Parity](https://12factor.net/dev-prod-parity)
+```bash
+# Check if database is running
+docker-compose ps
+# View logs
+docker-compose logs postgres
+```
+
+### Permission Issues
+
+```bash
+# Fix script permissions
+chmod +x scripts/dev/*.sh
+# Fix Docker permissions (Linux)
+sudo usermod -aG docker $USER
+```

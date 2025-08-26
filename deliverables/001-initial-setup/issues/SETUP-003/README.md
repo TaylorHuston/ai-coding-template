@@ -1,43 +1,25 @@
-# SETUP-003: Configure Testing Framework
+# SETUP-003: Testing Framework Implementation
 
-**Status**: 📋 Not Started  
-**Type**: Setup Task  
-**Priority**: P0 - Critical Foundation  
-**Estimated Time**: 2-4 hours  
-**Assignee**: Unassigned
+## Quick Start
 
-## Overview
+1. Install dependencies:
+   ```bash
+   npm run test:setup
+   # or manually: npm install --save-dev jest @types/jest ts-jest
+   ```
 
-Establish a comprehensive testing framework that supports unit, integration, and end-to-end testing. This ensures code quality, prevents regressions, and enables confident refactoring throughout the project lifecycle.
+2. Run tests:
+   ```bash
+   npm test
+   npm run test:coverage
+   ```
 
-## Objectives
+## Implementation
 
-- ✅ Install and configure testing framework
-- ✅ Set up test directory structure
-- ✅ Configure code coverage tools
-- ✅ Create test utilities and helpers
-- ✅ Establish testing patterns (TDD/BDD)
-- ✅ Set up continuous testing workflow
+### JavaScript/TypeScript Setup
 
-## Acceptance Criteria
-
-- [ ] Testing framework installed and configured
-- [ ] Test directory structure follows best practices
-- [ ] Code coverage reporting configured (target: 80%)
-- [ ] Sample tests for each test type created
-- [ ] Test utilities and fixtures available
-- [ ] Tests run in CI/CD pipeline
-- [ ] Testing documentation complete
-- [ ] Test commands in package.json/Makefile
-
-## Implementation Guide
-
-### Step 1: Install Testing Dependencies
-
-For **JavaScript/TypeScript** (Jest):
-
+Install dependencies:
 ```bash
-# Install Jest and related packages
 npm install --save-dev \
   jest \
   @types/jest \
@@ -48,37 +30,11 @@ npm install --save-dev \
   jest-environment-jsdom \
   supertest \
   msw
-
-# For coverage
-npm install --save-dev \
-  @vitest/coverage-c8 \
-  @vitest/ui
 ```
-
-For **Python** (pytest):
-
-```bash
-# Install pytest and plugins
-pip install pytest \
-  pytest-cov \
-  pytest-mock \
-  pytest-asyncio \
-  pytest-env \
-  pytest-xdist \
-  factory-boy \
-  faker
-
-# Save to requirements-dev.txt
-pip freeze > requirements-dev.txt
-```
-
-### Step 2: Configure Testing Framework
 
 Create `jest.config.js`:
-
 ```javascript
 module.exports = {
-  // Test environment
   testEnvironment: 'node', // or 'jsdom' for frontend
   
   // File patterns
@@ -124,9 +80,6 @@ module.exports = {
   // Setup files
   setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
   
-  // Ignore patterns
-  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/build/'],
-  
   // Performance
   maxWorkers: '50%',
   
@@ -139,8 +92,21 @@ module.exports = {
 };
 ```
 
-Create `pytest.ini` for Python:
+### Python Setup
 
+Install dependencies:
+```bash
+pip install pytest \
+  pytest-cov \
+  pytest-mock \
+  pytest-asyncio \
+  pytest-env \
+  pytest-xdist \
+  factory-boy \
+  faker
+```
+
+Create `pytest.ini`:
 ```ini
 [tool.pytest.ini_options]
 minversion = "7.0"
@@ -173,13 +139,15 @@ env = [
 ]
 ```
 
-### Step 3: Create Test Directory Structure
+### Test Directory Structure
 
+Create directories:
 ```bash
-# Create test directories
 mkdir -p tests/{unit,integration,e2e,fixtures,helpers,mocks}
+```
 
-# Create structure
+Structure:
+```
 tests/
 ├── unit/              # Unit tests
 │   ├── components/    # Component tests
@@ -192,22 +160,14 @@ tests/
 │   ├── flows/       # User flow tests
 │   └── smoke/       # Smoke tests
 ├── fixtures/        # Test data
-│   ├── users.json
-│   └── products.json
 ├── helpers/         # Test utilities
-│   ├── setup.js
-│   └── teardown.js
 └── mocks/          # Mock implementations
-    ├── api.js
-    └── database.js
 ```
 
-### Step 4: Create Test Setup Files
+### Test Setup Files
 
 Create `tests/setup.js`:
-
 ```javascript
-// Global test setup
 import '@testing-library/jest-dom';
 
 // Set test environment variables
@@ -224,7 +184,6 @@ global.console = {
 
 // Global test utilities
 global.testUtils = {
-  // Create test user
   createUser: (overrides = {}) => ({
     id: '123',
     name: 'Test User',
@@ -232,12 +191,10 @@ global.testUtils = {
     ...overrides
   }),
   
-  // Create test database connection
   setupDatabase: async () => {
     // Setup test database
   },
   
-  // Clean up after tests
   cleanup: async () => {
     // Cleanup logic
   }
@@ -259,12 +216,10 @@ afterEach(() => {
 });
 ```
 
-### Step 5: Create Sample Tests
+### Sample Tests
 
-Create `tests/unit/utils/validation.test.js`:
-
+**Unit Test** - `tests/unit/utils/validation.test.js`:
 ```javascript
-// Unit test example
 import { validateEmail, validatePassword } from '@/utils/validation';
 
 describe('Validation Utils', () => {
@@ -286,24 +241,11 @@ describe('Validation Utils', () => {
       expect(validateEmail(undefined)).toBe(false);
     });
   });
-
-  describe('validatePassword', () => {
-    it('should validate strong passwords', () => {
-      expect(validatePassword('StrongP@ss123')).toBe(true);
-    });
-
-    it('should reject weak passwords', () => {
-      expect(validatePassword('weak')).toBe(false);
-      expect(validatePassword('12345678')).toBe(false);
-    });
-  });
 });
 ```
 
-Create `tests/integration/api/users.test.js`:
-
+**Integration Test** - `tests/integration/api/users.test.js`:
 ```javascript
-// Integration test example
 import request from 'supertest';
 import app from '@/app';
 import { setupDatabase, teardownDatabase } from '../../helpers/database';
@@ -326,14 +268,6 @@ describe('Users API Integration', () => {
       expect(response.body).toHaveProperty('users');
       expect(Array.isArray(response.body.users)).toBe(true);
     });
-
-    it('should support pagination', async () => {
-      const response = await request(app)
-        .get('/api/users?page=1&limit=10')
-        .expect(200);
-
-      expect(response.body.users.length).toBeLessThanOrEqual(10);
-    });
   });
 
   describe('POST /api/users', () => {
@@ -354,23 +288,12 @@ describe('Users API Integration', () => {
         email: userData.email
       });
     });
-
-    it('should validate required fields', async () => {
-      const response = await request(app)
-        .post('/api/users')
-        .send({})
-        .expect(400);
-
-      expect(response.body).toHaveProperty('errors');
-    });
   });
 });
 ```
 
-Create `tests/e2e/flows/authentication.test.js`:
-
+**E2E Test** - `tests/e2e/flows/authentication.test.js`:
 ```javascript
-// E2E test example
 import puppeteer from 'puppeteer';
 
 describe('Authentication Flow E2E', () => {
@@ -410,30 +333,13 @@ describe('Authentication Flow E2E', () => {
     const userName = await page.$eval('.user-name', el => el.textContent);
     expect(userName).toBe('Test User');
   });
-
-  it('should handle login errors', async () => {
-    await page.goto('http://localhost:3000/login');
-    
-    // Submit with invalid credentials
-    await page.type('#email', 'wrong@example.com');
-    await page.type('#password', 'wrongpass');
-    await page.click('#login-button');
-    
-    // Wait for error message
-    await page.waitForSelector('.error-message');
-    
-    const errorText = await page.$eval('.error-message', el => el.textContent);
-    expect(errorText).toContain('Invalid credentials');
-  });
 });
 ```
 
-### Step 6: Create Test Utilities
+### Test Factories
 
 Create `tests/helpers/factories.js`:
-
 ```javascript
-// Test data factories
 import { faker } from '@faker-js/faker';
 
 export const userFactory = (overrides = {}) => ({
@@ -451,45 +357,11 @@ export const productFactory = (overrides = {}) => ({
   description: faker.commerce.productDescription(),
   ...overrides
 });
-
-export const orderFactory = (overrides = {}) => ({
-  id: faker.datatype.uuid(),
-  userId: faker.datatype.uuid(),
-  items: [],
-  total: faker.commerce.price(),
-  status: faker.helpers.arrayElement(['pending', 'processing', 'completed']),
-  ...overrides
-});
 ```
 
-### Step 7: Configure Coverage Reporting
+### Package Scripts
 
-Create `.nycrc.json` for coverage:
-
-```json
-{
-  "all": true,
-  "include": ["src/**/*.js"],
-  "exclude": [
-    "**/*.test.js",
-    "**/*.spec.js",
-    "**/node_modules/**",
-    "**/coverage/**",
-    "**/dist/**"
-  ],
-  "reporter": ["text", "lcov", "html"],
-  "check-coverage": true,
-  "branches": 80,
-  "lines": 80,
-  "functions": 80,
-  "statements": 80
-}
-```
-
-### Step 8: Add Test Scripts
-
-Update `package.json`:
-
+Add to `package.json`:
 ```json
 {
   "scripts": {
@@ -505,7 +377,9 @@ Update `package.json`:
 }
 ```
 
-## Verification Steps
+## Testing
+
+### Verify Setup
 
 ```bash
 # Run all tests
@@ -529,9 +403,10 @@ open coverage/lcov-report/index.html
 npm run test:ci
 ```
 
-## Common Issues & Solutions
+## Troubleshooting
 
-### Issue: Tests timing out
+### Tests Timing Out
+
 ```javascript
 // Increase timeout for slow tests
 jest.setTimeout(10000); // 10 seconds
@@ -542,7 +417,8 @@ it('slow test', async () => {
 }, 10000);
 ```
 
-### Issue: Module resolution errors
+### Module Resolution Errors
+
 ```javascript
 // Update jest.config.js moduleNameMapper
 moduleNameMapper: {
@@ -550,47 +426,24 @@ moduleNameMapper: {
 }
 ```
 
-### Issue: Coverage not meeting threshold
+### Coverage Not Meeting Threshold
+
 ```bash
 # Find uncovered code
 npm run test:coverage
 # Check coverage/lcov-report/index.html for details
 ```
 
-## AI Agent Instructions
+### Database Test Issues
 
-When completing this task:
+```javascript
+// Setup test database in beforeAll
+beforeAll(async () => {
+  await testUtils.setupDatabase();
+});
 
-1. Choose appropriate testing framework for tech stack
-2. Ensure all test types are configured
-3. Create meaningful sample tests
-4. Set realistic coverage thresholds
-5. Document testing patterns used
-6. Verify tests run in CI environment
-
-## Definition of Done
-
-- [ ] Testing framework installed and configured
-- [ ] Test directory structure created
-- [ ] Coverage reporting configured
-- [ ] Sample tests for unit/integration/e2e created
-- [ ] Test utilities and helpers implemented
-- [ ] Test scripts added to package.json
-- [ ] Coverage threshold set (minimum 80%)
-- [ ] Tests passing locally
-- [ ] Documentation complete
-- [ ] Team reviewed testing approach
-
-## Related Issues
-
-- Previous: [SETUP-002](../SETUP-002/README.md) - Development Environment
-- Next: [SETUP-004](../SETUP-004/README.md) - Linting & Code Quality
-- Related: [SETUP-007](../SETUP-007/README.md) - CI/CD Pipeline
-
-## Resources
-
-- [Jest Documentation](https://jestjs.io/docs/getting-started)
-- [Testing Library](https://testing-library.com/)
-- [Pytest Documentation](https://docs.pytest.org/)
-- [Test Driven Development](https://martinfowler.com/bliki/TestDrivenDevelopment.html)
-- [Testing Best Practices](https://github.com/goldbergyoni/javascript-testing-best-practices)
+// Clean up in afterAll
+afterAll(async () => {
+  await testUtils.cleanup();
+});
+```

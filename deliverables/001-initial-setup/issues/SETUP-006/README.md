@@ -1,322 +1,281 @@
-# SETUP-006: Establish Security & Dependency Management
+# SETUP-006: Security Scanning & SBOM Implementation
 
-**Status**: 📋 Not Started  
-**Type**: Setup Task  
-**Priority**: P0 - Critical  
-**Estimated Time**: 2-3 hours  
-**Assignee**: Unassigned
+## Quick Start
 
-## Overview
+1. Install security tools:
+   ```bash
+   npm run security:setup
+   ```
 
-Implement comprehensive security scanning and dependency management including SBOM (Software Bill of Materials) generation, vulnerability scanning, and supply chain security measures following 2025 best practices.
+2. Run security scan:
+   ```bash
+   npm run security:scan
+   ```
 
-## Objectives
+## Implementation
 
-- ✅ Generate and maintain SBOM
-- ✅ Set up dependency vulnerability scanning  
-- ✅ Configure security linting (SAST)
-- ✅ Implement secrets scanning
-- ✅ Set up dependency update automation
-- ✅ Establish security policies
+### SBOM Generation
 
-## Acceptance Criteria
-
-- [ ] SBOM generated in standard format (SPDX/CycloneDX)
-- [ ] Vulnerability scanning integrated in CI/CD
-- [ ] No high/critical vulnerabilities in dependencies
-- [ ] Secrets scanning preventing commits
-- [ ] Dependency updates automated
-- [ ] Security policy documented
-- [ ] License compliance verified
-- [ ] Supply chain attestations configured
-
-## Implementation Guide
-
-### Step 1: Install Security Tools
-
+Install Syft:
 ```bash
-# SBOM and vulnerability scanning
-npm install --save-dev \
-  @cyclonedx/cyclonedx-npm \
-  audit-ci \
-  better-npm-audit \
-  snyk
+# macOS
+brew install syft
 
-# Security linting
-npm install --save-dev \
-  eslint-plugin-security \
-  eslint-plugin-no-secrets
+# Linux
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
 
-# Additional tools (global)
-npm install -g \
-  npm-check-updates \
-  license-checker \
-  dependency-cruiser
+# Generate SBOM
+syft packages dir:. -o spdx-json=sbom.spdx.json
+syft packages dir:. -o cyclonedx-json=sbom.cyclonedx.json
 ```
 
-### Step 2: Configure SBOM Generation
+Create `scripts/generate-sbom.sh`:
+```bash
+#!/bin/bash
+set -e
 
-Create `scripts/generate-sbom.js`:
+echo "Generating Software Bill of Materials (SBOM)..."
 
-```javascript
-#!/usr/bin/env node
-const { execSync } = require('child_process');
-const fs = require('fs');
+# Create SBOM directory
+mkdir -p security/sbom
 
-// Generate SBOM in CycloneDX format
-const generateCycloneDX = () => {
-  console.log('Generating CycloneDX SBOM...');
-  execSync('npx @cyclonedx/cyclonedx-npm --output-format json --output-file sbom-cyclonedx.json');
-  execSync('npx @cyclonedx/cyclonedx-npm --output-format xml --output-file sbom-cyclonedx.xml');
-};
+# Generate SPDX format
+syft packages dir:. -o spdx-json=security/sbom/sbom.spdx.json
 
-// Generate SBOM in SPDX format
-const generateSPDX = () => {
-  console.log('Generating SPDX SBOM...');
-  // Using syft for SPDX generation
-  try {
-    execSync('syft packages . -o spdx-json > sbom-spdx.json');
-  } catch (e) {
-    console.log('Syft not installed, skipping SPDX generation');
-  }
-};
+# Generate CycloneDX format
+syft packages dir:. -o cyclonedx-json=security/sbom/sbom.cyclonedx.json
 
-// Add metadata
-const enrichSBOM = () => {
-  const sbom = JSON.parse(fs.readFileSync('sbom-cyclonedx.json', 'utf8'));
-  
-  sbom.metadata = {
-    ...sbom.metadata,
-    timestamp: new Date().toISOString(),
-    component: {
-      name: process.env.npm_package_name,
-      version: process.env.npm_package_version,
-      description: process.env.npm_package_description,
-    },
-    properties: [
-      { name: 'build_number', value: process.env.BUILD_NUMBER || 'local' },
-      { name: 'git_commit', value: execSync('git rev-parse HEAD').toString().trim() },
-    ],
-  };
-  
-  fs.writeFileSync('sbom-cyclonedx.json', JSON.stringify(sbom, null, 2));
-};
+# Generate human-readable format
+syft packages dir:. -o table=security/sbom/sbom.txt
 
-// Main execution
-generateCycloneDX();
-generateSPDX();
-enrichSBOM();
-
-console.log('✅ SBOM generation complete');
+echo "SBOM generated successfully in security/sbom/"
 ```
 
-### Step 3: Set Up Vulnerability Scanning
+### Vulnerability Scanning
 
-Create `.snyk`:
+Install Grype:
+```bash
+# macOS
+brew install grype
 
-```yaml
-version: v1.0.0
-language-settings:
-  javascript:
-    enableLinters: true
-patch:
-  # Patches for known vulnerabilities
-ignore:
-  # Ignore specific vulnerabilities with justification
-  SNYK-JS-EXAMPLE-123456:
-    - '*':
-        reason: False positive, not applicable
-        expires: '2025-12-31T23:59:59.999Z'
+# Linux
+curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 ```
 
-Create `audit-ci.json`:
+Create `scripts/security-scan.sh`:
+```bash
+#!/bin/bash
+set -e
 
-```json
-{
-  "low": true,
-  "moderate": true,
-  "high": true,
-  "critical": true,
-  "allowlist": [],
-  "report-type": "full",
-  "show-not-found": true,
-  "show-found": true,
-  "registry": "https://registry.npmjs.org",
-  "output-format": "json",
-  "pass-enoaudit": true
-}
+echo "Running security vulnerability scan..."
+
+# Scan current directory
+grype dir:. -o json --file security/vulnerability-report.json
+
+# Scan with different severity levels
+grype dir:. --fail-on medium
+
+# Generate human-readable report
+grype dir:. -o table --file security/vulnerability-report.txt
+
+echo "Vulnerability scan completed. Check security/ directory for reports."
 ```
 
-### Step 4: Configure Security Linting
+### Secrets Scanning
 
-Update `.eslintrc.js`:
+Install GitLeaks:
+```bash
+# macOS
+brew install gitleaks
 
-```javascript
-module.exports = {
-  // ... existing config
-  plugins: [
-    // ... existing plugins
-    'security',
-    'no-secrets'
-  ],
-  extends: [
-    // ... existing extends
-    'plugin:security/recommended'
-  ],
-  rules: {
-    // Security rules
-    'security/detect-object-injection': 'warn',
-    'security/detect-non-literal-regexp': 'warn',
-    'security/detect-unsafe-regex': 'error',
-    'security/detect-buffer-noassert': 'error',
-    'security/detect-child-process': 'warn',
-    'security/detect-disable-mustache-escape': 'error',
-    'security/detect-eval-with-expression': 'error',
-    'security/detect-no-csrf-before-method-override': 'error',
-    'security/detect-non-literal-fs-filename': 'warn',
-    'security/detect-non-literal-require': 'warn',
-    'security/detect-possible-timing-attacks': 'warn',
-    'security/detect-pseudoRandomBytes': 'error',
-    'no-secrets/no-secrets': 'error',
-  }
-};
+# Linux
+curl -sSfL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks_linux_x64.tar.gz | tar -xz -C /usr/local/bin
 ```
-
-### Step 5: Implement Secrets Scanning
 
 Create `.gitleaks.toml`:
-
 ```toml
-title = "Gitleaks Configuration"
+[extend]
+useDefault = true
 
 [[rules]]
-description = "AWS Access Key"
-regex = '''AKIA[0-9A-Z]{16}'''
-tags = ["aws", "credentials"]
-
-[[rules]]
-description = "AWS Secret Key"
-regex = '''(?i)aws_secret_access_key\s*=\s*['\"]?[A-Za-z0-9/+=]{40}['\"]?'''
-tags = ["aws", "credentials"]
-
-[[rules]]
-description = "GitHub Token"
-regex = '''ghp_[0-9a-zA-Z]{36}'''
-tags = ["github", "token"]
-
-[[rules]]
-description = "Private Key"
-regex = '''-----BEGIN (RSA|DSA|EC|PGP) PRIVATE KEY-----'''
-tags = ["key", "private"]
-
-[[rules]]
-description = "Generic API Key"
-regex = '''(?i)(api_key|apikey|api-key)\s*[:=]\s*['\"]?[A-Za-z0-9]{32,}['\"]?'''
-tags = ["api", "key"]
+id = "custom-api-key"
+description = "Custom API key pattern"
+regex = '''(?i)api[_-]?key[s]?['"=:\s]{1,6}[0-9a-zA-Z]{16,}'''
+keywords = ["api_key", "apikey", "api-key"]
 
 [allowlist]
-description = "Allowlisted files"
+description = "Allowlist for test files"
 files = [
-  ".env.example",
-  "README.md",
-  "docs/*"
+  '''.*test.*''',
+  '''.*example.*'''
 ]
 ```
 
-Install and configure pre-commit hook:
+### Dependency Scanning
 
-```bash
-# Install gitleaks
-brew install gitleaks  # macOS
-# or
-docker pull zricethezav/gitleaks
-
-# Add to pre-commit
-echo '#!/bin/sh
-gitleaks detect --source . --verbose' > .git/hooks/pre-commit
-chmod +x .git/hooks/pre-commit
-```
-
-### Step 6: Configure Dependency Updates
-
-Create `.github/dependabot.yml`:
-
-```yaml
-version: 2
-updates:
-  # JavaScript dependencies
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "04:00"
-    open-pull-requests-limit: 10
-    reviewers:
-      - "security-team"
-    labels:
-      - "dependencies"
-      - "security"
-    commit-message:
-      prefix: "deps"
-      prefix-development: "deps-dev"
-    ignore:
-      # Major version updates for critical packages
-      - dependency-name: "express"
-        update-types: ["version-update:semver-major"]
-
-  # Docker dependencies
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    
-  # GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-```
-
-Create `renovate.json` (alternative to Dependabot):
-
+Configure npm audit:
 ```json
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    ":dependencyDashboard",
-    ":pinVersions",
-    "group:allNonMajor"
-  ],
-  "schedule": ["after 9pm on sunday"],
-  "packageRules": [
-    {
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true,
-      "automergeType": "pr"
-    },
-    {
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["patch"],
-      "automerge": true
-    },
-    {
-      "matchPackageNames": ["node"],
-      "enabled": false
-    }
-  ],
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "labels": ["security"]
+  "scripts": {
+    "security:audit": "npm audit --audit-level moderate",
+    "security:fix": "npm audit fix",
+    "security:check": "npm audit --production --audit-level high"
   }
 }
 ```
 
-### Step 7: Create Security Policy
+Install additional security tools:
+```bash
+npm install --save-dev eslint-plugin-security retire
+```
+
+Add to `.eslintrc.js`:
+```javascript
+module.exports = {
+  plugins: ['security'],
+  extends: ['plugin:security/recommended'],
+  rules: {
+    'security/detect-object-injection': 'warn',
+    'security/detect-non-literal-regexp': 'warn',
+    'security/detect-unsafe-regex': 'error'
+  }
+};
+```
+
+### Pre-commit Security Hooks
+
+Update `.husky/pre-commit`:
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run linting
+npx lint-staged
+
+# Run secrets scanning
+gitleaks detect --verbose --no-git
+
+# Run dependency audit
+npm audit --audit-level high --production
+```
+
+### GitHub Actions Security Workflow
+
+Create `.github/workflows/security.yml`:
+```yaml
+name: Security Scanning
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly on Monday at 2 AM
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run npm audit
+      run: npm audit --audit-level high --production
+      
+    - name: Install Syft
+      run: |
+        curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+        
+    - name: Generate SBOM
+      run: |
+        mkdir -p security/sbom
+        syft packages dir:. -o spdx-json=security/sbom/sbom.spdx.json
+        syft packages dir:. -o cyclonedx-json=security/sbom/sbom.cyclonedx.json
+        
+    - name: Install Grype
+      run: |
+        curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+        
+    - name: Run vulnerability scan
+      run: |
+        mkdir -p security
+        grype dir:. --fail-on medium -o json --file security/vulnerability-report.json
+        
+    - name: Run GitLeaks
+      uses: gitleaks/gitleaks-action@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Upload security reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: security-reports
+        path: security/
+```
+
+### License Compliance
+
+Install license checker:
+```bash
+npm install --save-dev license-checker
+```
+
+Create `scripts/check-licenses.sh`:
+```bash
+#!/bin/bash
+set -e
+
+echo "Checking license compliance..."
+
+# Generate license report
+npx license-checker --json --out security/licenses.json
+
+# Check for forbidden licenses
+npx license-checker --failOn "GPL-3.0;AGPL-3.0;LGPL-3.0" --excludePrivatePackages
+
+echo "License compliance check completed."
+```
+
+## Testing
+
+### Verify Setup
+
+```bash
+# Generate SBOM
+./scripts/generate-sbom.sh
+
+# Run vulnerability scan
+./scripts/security-scan.sh
+
+# Run secrets scan
+gitleaks detect --verbose
+
+# Check dependencies
+npm audit
+
+# Check licenses
+./scripts/check-licenses.sh
+
+# Run security linting
+npm run lint
+```
+
+### Security Policy
 
 Create `SECURITY.md`:
-
 ```markdown
 # Security Policy
 
@@ -325,111 +284,54 @@ Create `SECURITY.md`:
 | Version | Supported          |
 | ------- | ------------------ |
 | 1.x.x   | :white_check_mark: |
-| < 1.0   | :x:                |
 
 ## Reporting a Vulnerability
 
-Please report security vulnerabilities to security@example.com
-
-**Do not** create public issues for security vulnerabilities.
-
-### What to Include
-
-- Type of vulnerability
-- Full paths of affected files
-- Proof-of-concept or exploit code
-- Impact of the issue
-
-### Response Timeline
-
-- Initial response: 24 hours
-- Status update: 72 hours
-- Resolution: Based on severity
+Please report security vulnerabilities to security@company.com
 
 ## Security Measures
 
-### Dependency Management
-- Automated vulnerability scanning via Snyk
-- Weekly dependency updates via Dependabot
-- SBOM generated for each release
-
-### Code Security
-- SAST scanning on all commits
-- Secret scanning preventing credential leaks
-- Security linting in development
-
-### Supply Chain Security
-- All dependencies verified
-- SBOM included in releases
-- Signed commits required
-
-## Security Checklist
-
-Before each release:
-- [ ] Run `npm audit` and fix vulnerabilities
-- [ ] Update dependencies
-- [ ] Generate new SBOM
-- [ ] Run security scans
-- [ ] Review security advisories
+- Automated dependency scanning
+- SBOM generation and tracking  
+- Secrets scanning in commits
+- Regular security audits
+- License compliance checking
 ```
 
-### Step 8: Add Security Scripts
+## Troubleshooting
 
-Update `package.json`:
-
-```json
-{
-  "scripts": {
-    "security": "npm audit && snyk test",
-    "security:fix": "npm audit fix && snyk wizard",
-    "sbom": "node scripts/generate-sbom.js",
-    "deps:check": "ncu",
-    "deps:update": "ncu -u && npm install",
-    "license:check": "license-checker --summary",
-    "secrets:scan": "gitleaks detect --source .",
-    "security:all": "npm run security && npm run secrets:scan && npm run license:check"
-  }
-}
-```
-
-## Verification Steps
+### SBOM Generation Issues
 
 ```bash
-# Generate SBOM
-npm run sbom
-ls -la sbom-*.json
+# Check Syft installation
+syft version
 
-# Run security scans
-npm run security
+# Debug SBOM generation
+syft packages dir:. -v
 
-# Check for secrets
-npm run secrets:scan
-
-# Check licenses
-npm run license:check
-
-# Check for updates
-npm run deps:check
-
-# Full security check
-npm run security:all
+# Validate SBOM format
+syft packages dir:. -o spdx-json | jq .
 ```
 
-## Definition of Done
+### Vulnerability Scan Issues
 
-- [ ] SBOM generation automated
-- [ ] Vulnerability scanning integrated
-- [ ] Security linting configured
-- [ ] Secrets scanning active
-- [ ] Dependency updates automated
-- [ ] Security policy documented
-- [ ] No high/critical vulnerabilities
-- [ ] All licenses compatible
-- [ ] Team trained on security tools
+```bash
+# Update vulnerability database
+grype db update
 
-## Resources
+# Check specific package
+grype package:npm:express@4.17.1
 
-- [SBOM Standards](https://www.cisa.gov/sbom)
-- [OWASP Dependency Check](https://owasp.org/www-project-dependency-check/)
-- [Snyk Documentation](https://docs.snyk.io/)
-- [Supply Chain Security](https://slsa.dev/)
+# Ignore specific vulnerabilities (use with caution)
+grype dir:. --config .grype.yaml
+```
+
+### Secrets Scanning Issues
+
+```bash
+# Test GitLeaks rules
+gitleaks detect --verbose --log-level debug
+
+# Check specific file
+gitleaks detect --source . --verbose --log-level debug
+```

@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- `docs/documentation-guidelines.md` - Clear guidelines for what documentation goes where
+- `deliverables/template-deliverable/README.md` - Template overview and usage instructions
+
+### Changed
+
+- **MAJOR**: Restructured all issue documentation from 3-file to 2-file structure
+  - Replaced 3 files (README, plan, requirements) with 2 files (PLAN.md, README.md)
+  - PLAN.md (~50 lines): Task checklist and acceptance criteria
+  - README.md (~200 lines): Implementation guide with code examples
+  - 83% reduction in documentation volume per issue
+  - Removed project management bloat to focus on developer needs
+- Restructured all 9 SETUP example issues (SETUP-001 through SETUP-009) to new format
+- Updated template-deliverable to reflect new 2-file pattern
+- Removed redundant `001-initial-setup.md` file from example deliverable (keeping only README.md)
+
 ## [0.1.2] - 2025-08-26
 
 ### Added
@@ -17,7 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [0.1.1] - 2025-08-22
 
-### Added
+### Added[text](about:blank#blocked)
 
 - AI-powered CHANGELOG maintenance system with automated tools and workflows
 - `scripts/check-changelog.sh` - Git hook integration for changelog reminders
