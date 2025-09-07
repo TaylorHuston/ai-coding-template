@@ -1,12 +1,12 @@
 # Troubleshooting Guide
 
-**Version**: 1.0.0  
+**Version**: 1.1.0  
 **Created**: 2025-08-22  
-**Last Updated**: 2025-08-22  
+**Last Updated**: 2025-08-26  
 **Status**: Active  
 **Target Audience**: Developers, AI Assistants
 
-This guide helps resolve common issues when using the AI Coding Template.
+This guide helps resolve common issues and answers frequently asked questions about the AI Coding Template.
 
 ## Common Issues and Solutions
 
@@ -427,6 +427,100 @@ rm -rf scripts/
 ./scripts/setup-manager.sh scripts-only
 ```
 
+## Frequently Asked Questions
+
+### General Questions
+
+#### Q: Do I need to use all 17 agents?
+
+**A**: No! Agents activate automatically based on your needs. Start simple and discover agents as you work. Most developers regularly use 5-6 agents.
+
+#### Q: Can I use this with tools other than Claude Code?
+
+**A**: Yes! While optimized for Claude Code, the patterns work with:
+- Cursor
+- GitHub Copilot
+- Continue.dev
+- Any AI coding assistant that supports custom instructions
+
+#### Q: What if my project uses Python/Ruby/Go instead of JavaScript?
+
+**A**: The template is language-agnostic. Simply:
+1. Adapt the examples to your language
+2. Update `docs/technical.md` with your stack
+3. Use appropriate specialist agents
+4. Follow your language's conventions
+
+### Setup Questions
+
+#### Q: Can I integrate this into an existing large project?
+
+**A**: Yes! Use the gradual integration approach:
+1. Start with just `.claude/` directory
+2. Add context files (CLAUDE.md, status.md)
+3. Gradually adopt agents and workflows
+4. See the integration guide for details
+
+#### Q: What are the minimum requirements?
+
+**A**: Minimal setup needs:
+- Git
+- Node.js 16+ (for scripts)
+- A code editor
+- An AI coding assistant (Claude Code, Cursor, etc.)
+
+### Workflow Questions
+
+#### Q: How do I handle merge conflicts with AI changes?
+
+**A**: Follow these steps:
+1. Always create feature branches for AI work
+2. Review AI changes before committing
+3. Use small, atomic commits
+4. Have AI explain complex changes in commit messages
+
+#### Q: Should AI assistants commit directly?
+
+**A**: No, always review first:
+1. Have AI show proposed changes
+2. Review for correctness and style
+3. Test the changes
+4. Then approve the commit
+
+#### Q: Can multiple developers use AI on the same project?
+
+**A**: Yes! Best practices include:
+1. Share `status.md` updates regularly
+2. Use consistent agent patterns
+3. Document AI usage in commit messages
+4. Coordinate through the deliverables system
+
+### Technical Questions
+
+#### Q: How do I customize agents for my project?
+
+**A**: Edit agent definitions in `.claude/agents/`:
+1. Modify existing agent instructions
+2. Add project-specific context
+3. Create custom agents if needed
+4. Test with specific scenarios
+
+#### Q: Can I disable certain agents?
+
+**A**: Yes, several ways:
+1. Remove agent file from `.claude/agents/`
+2. Mark agent as inactive in its metadata
+3. Simply don't invoke that agent
+4. Use custom CLAUDE.md instructions
+
+#### Q: How much context should I share with AI?
+
+**A**: Follow the minimal effective context principle:
+1. Start with high-level files (README, CLAUDE.md)
+2. Add specific files as needed
+3. Use agents to analyze context automatically
+4. Avoid overwhelming with unnecessary files
+
 ---
 
-Still having issues? Check our [FAQ](./faq.md) or open a GitHub issue for support.
+Still having issues? Open a GitHub issue for support or contribute improvements to this guide.
