@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Reorganized documentation structure for better clarity and reduced redundancy
+  - Merged documentation-standards.md into documentation-guidelines.md (v2.0.0)
+  - Consolidated FAQ into troubleshooting guide
+  - Moved technical.md to architecture/system-design.md
+  - Moved architecture guide to guides/ai-architecture-patterns.md
+  - Consolidated changelog guides into single changelog-maintenance.md
+
+### Added
+
+- `docs/api/` directory with README for future API documentation
+
 ## [0.1.3] - 2025-08-26
 
 ### Added
