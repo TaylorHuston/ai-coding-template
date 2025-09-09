@@ -1,0 +1,27 @@
+---
+command: "/test-fix"
+description: Automatic test failure detection and resolution
+category: "Testing & Quality"
+purpose: "Automated test failure detection, analysis, and resolution"
+wave-enabled: false
+performance-profile: "standard"
+argument-hint: Optional test pattern or files to focus on
+allowed-tools: Bash(npm run *), Bash(pnpm *), Bash(yarn *), Read, Edit, MultiEdit, Grep, Glob, TodoWrite, Task
+model: sonnet
+---
+
+Automatically detect and resolve test failures by:
+1. Analyzing test failure patterns and error messages
+2. Identifying root causes of test failures
+3. Implementing appropriate fixes for failing tests
+4. Validating fixes don't break other tests
+
+Process:
+- Run test suite and capture failure details
+- Use test-engineer agent to analyze failure patterns
+- Use appropriate domain agents to implement fixes
+- Re-run tests to validate resolution
+- Update test documentation if needed
+- Report summary of fixes applied
+
+Arguments: $ARGUMENTS (optional test pattern or files to focus on)

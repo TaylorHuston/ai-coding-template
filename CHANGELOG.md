@@ -6,6 +6,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.2.0] - 2025-09-09
+
+### Added
+
+- **Claude Code Slash Commands**: Complete set of 11 professional slash commands for AI-assisted development
+  - `/commit` - Git commit with quality checks and conventional messages
+  - `/feature-development` - End-to-end feature implementation with TDD
+  - `/feature-plan` - Comprehensive feature planning workflow
+  - `/health-check` - Project health assessment and reporting
+  - `/iterate` - Progressive iterative improvement workflow
+  - `/review` - Multi-dimensional code review with analysis
+  - `/security-audit` - OWASP-compliant security assessment
+  - `/test-fix` - Automatic test failure detection and resolution
+  - `/update-progress` - Project progress tracking and status updates
+  - `/merge-branch` - Safe branch merging with validation
+  - `/refresh` - AI assistant context refresh
+- **Command Documentation**: Comprehensive INDEX.md with usage patterns, best practices, and decision matrices
+- **YAML Frontmatter**: All commands include proper Claude Code metadata with tool restrictions and model specifications
+- **Argument Handling**: Support for `$ARGUMENTS` variable and parameter parsing
+- **Agent Integration**: Commands specify which specialized AI agents they leverage
+
+### Changed
+
+- **Command Structure**: Converted all commands to use `.md` extension for proper Claude Code recognition
+- **Tool Agnostic**: Made all commands generalized and tool-agnostic (supporting npm/pnpm/yarn, generic issue tracking, etc.)
+- **Documentation**: Enhanced command documentation with comprehensive usage examples and workflow patterns
+
+### Removed
+
+- Old command files without `.md` extension (replaced with proper Claude Code format)
+
 ## [0.1.4] - 2025-09-07
 
 ### Changed

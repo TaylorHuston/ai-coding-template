@@ -1,9 +1,14 @@
-# Iterate Command
-
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-21
-**Status**: Active
-**Target Audience**: AI Assistants, Development Team
+---
+command: "/iterate"
+description: Progressive iterative improvement workflow
+category: "Quality & Enhancement"
+purpose: "Systematic refinement through multiple improvement cycles"
+wave-enabled: true
+performance-profile: "standard"
+argument-hint: --target TARGET --iterations N --threshold LEVEL --scope SCOPE
+allowed-tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
+model: sonnet
+---
 
 Iterative improvement workflow for progressive refinement:
 1. Analyze current state and identify improvement opportunities
@@ -21,7 +26,7 @@ Process:
 - Update progress tracking and metrics
 - Continue until improvement goals are achieved
 
-Parameters:
+Parameters from $ARGUMENTS:
 - --target: Specific improvement target (performance, quality, security)
 - --iterations: Maximum number of iterations (default: 3)
 - --threshold: Quality threshold to achieve
