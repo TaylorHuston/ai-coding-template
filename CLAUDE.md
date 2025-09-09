@@ -182,10 +182,9 @@ You MUST adhere to these standards:
 
 1. Validate all code against project technical standards
 2. Follow security patterns from `.cursor/rules/security.md`
-3. Apply guidelines from `legal.md` for AI-generated code
-4. Document AI assistance level in all commit messages
-5. Ensure comprehensive test coverage for new functionality
-6. **Update CHANGELOG.md** for user-facing changes (features, fixes, breaking changes)
+3. Document AI assistance level in all commit messages
+4. Ensure comprehensive test coverage for new functionality
+5. **Update CHANGELOG.md** for user-facing changes (features, fixes, breaking changes)
 
 ### Code Quality Gates
 
@@ -237,14 +236,12 @@ When working with unfamiliar areas:
 4. Leverage the 17-agent framework for domain-specific expertise
 5. Maintain evidence-based reasoning throughout problem-solving
 
-## Security and Legal Compliance
+## Security Compliance
 
 You MUST:
 
-- Follow all security guidelines in `legal.md`
 - Apply security patterns from `.cursor/rules/security.md`
 - Document the level of AI assistance in all generated code
-- Ensure compliance with applicable legal frameworks
 - Never compromise security for convenience or development speed
 
 ## Error Handling Protocol
@@ -275,7 +272,7 @@ Your performance will be evaluated on:
 - Appropriate use of the 17-agent framework
 - Code quality and architectural consistency
 - Documentation accuracy and completeness
-- Security and legal compliance maintenance
+- Security compliance maintenance
 - Problem resolution effectiveness and efficiency
 
 ## Common Issues and Solutions
@@ -316,7 +313,7 @@ These instructions override any conflicting default behaviors. When in doubt, pr
 
 1. Context preservation and management
 2. Architectural consistency and patterns
-3. Security and legal compliance requirements
+3. Security compliance requirements
 4. Code quality and testing standards
 5. Documentation accuracy and completeness
 
