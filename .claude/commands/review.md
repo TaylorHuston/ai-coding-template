@@ -1,9 +1,14 @@
-# Review Command
-
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-21
-**Status**: Active
-**Target Audience**: AI Assistants, Development Team
+---
+command: "/review"
+description: Comprehensive code review with multi-dimensional analysis
+category: "Quality & Security"
+purpose: "Multi-dimensional code quality assessment with detailed feedback"
+wave-enabled: true
+performance-profile: "standard"
+argument-hint: --scope SCOPE --focus FOCUS --depth DEPTH --output FORMAT
+allowed-tools: Read, Bash, Grep, Glob, TodoWrite, Task
+model: sonnet
+---
 
 Comprehensive code review workflow:
 1. Analyze changes for quality, security, and maintainability
@@ -22,7 +27,7 @@ Process:
 - Provide recommendations for improvement
 - Update review tracking in project status
 
-Parameters:
+Parameters from $ARGUMENTS:
 - --scope: Review scope (changes, file, module, full)
 - --focus: Review focus (security, performance, quality, all)
 - --depth: Review depth (quick, standard, comprehensive)

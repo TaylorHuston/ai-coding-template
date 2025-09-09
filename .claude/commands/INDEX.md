@@ -1,59 +1,74 @@
-# Command Index and Reference
+# Claude Code Command Reference
 
 **Created**: 2025-08-21
-**Last Updated**: 2025-08-21
-**Status**: Active
+**Last Updated**: 2025-09-09
+**Status**: Active - Claude Code Compatible
 **Target Audience**: AI Assistants, Development Team
 
-Comprehensive catalog of available commands, workflows, and automation patterns.
+Comprehensive catalog of Claude Code slash commands with proper YAML frontmatter, argument handling, and tool specifications.
 
 ## Command Classification System
 
 ### By Domain
 
 #### **Development & Implementation**
-- **[implement-feature](./implement-feature)** - Feature implementation workflow
-  - *Purpose*: End-to-end feature development with quality gates
-  - *Agents*: frontend-specialist, backend-specialist, code-reviewer, technical-writer
-  - *Complexity*: Medium to High
+- **[/commit](./commit.md)** - Git commit with quality checks and conventional messages
+  - *Purpose*: Create proper commits with pre-commit validation  
+  - *Usage*: `/commit [scope or files]`
+  - *Model*: sonnet | *Tools*: Bash(git), npm/pnpm/yarn, Read, Grep, Glob
 
-- **[code-review](./code-review)** - Comprehensive code review process
-  - *Purpose*: Multi-dimensional code quality assessment
-  - *Agents*: code-reviewer, security-auditor, performance-optimizer
-  - *Complexity*: Medium
+- **[/feature-development](./feature-development.md)** - End-to-end feature implementation with TDD
+  - *Purpose*: Complete feature development workflow with quality gates
+  - *Usage*: `/feature-development --issue KEY --type TYPE --complexity LEVEL --testing APPROACH`
+  - *Model*: opus | *Tools*: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
-- **[refactor-code](./refactor-code)** - Systematic code refactoring
-  - *Purpose*: Improve code quality while maintaining functionality
-  - *Agents*: code-reviewer, refactoring-specialist
-  - *Complexity*: Medium
+- **[/iterate](./iterate.md)** - Progressive iterative improvement workflow
+  - *Purpose*: Systematic refinement through multiple improvement cycles
+  - *Usage*: `/iterate --target TARGET --iterations N --threshold LEVEL --scope SCOPE`  
+  - *Model*: sonnet | *Tools*: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
 #### **Quality & Security**
-- **[security-audit](./security-audit)** - Comprehensive security assessment
-  - *Purpose*: OWASP compliance and vulnerability detection
-  - *Agents*: security-auditor, devops-engineer, database-specialist
-  - *Complexity*: High
+- **[/review](./review.md)** - Comprehensive code review with multi-dimensional analysis
+  - *Purpose*: Multi-dimensional code quality assessment with detailed feedback
+  - *Usage*: `/review --scope SCOPE --focus FOCUS --depth DEPTH --output FORMAT`
+  - *Model*: sonnet | *Tools*: Read, Bash, Grep, Glob, TodoWrite, Task
 
-- **[performance-audit](./performance-audit)** - Performance analysis and optimization
-  - *Purpose*: Identify and resolve performance bottlenecks
-  - *Agents*: performance-optimizer, database-specialist, devops-engineer
-  - *Complexity*: Medium to High
+- **[/security-audit](./security-audit.md)** - OWASP-compliant security assessment  
+  - *Purpose*: OWASP-compliant security assessment with vulnerability remediation
+  - *Usage*: `/security-audit --scope SCOPE --depth DEPTH --compliance FRAMEWORK --output FORMAT`
+  - *Model*: opus | *Tools*: Read, Bash, Grep, Glob, TodoWrite, Task
 
-#### **Infrastructure & Deployment**
-- **[setup-cicd](./setup-cicd)** - CI/CD pipeline configuration
-  - *Purpose*: Automated build, test, and deployment pipeline
-  - *Agents*: devops-engineer, security-auditor
-  - *Complexity*: High
+- **[/test-fix](./test-fix.md)** - Automatic test failure detection and resolution
+  - *Purpose*: Automated test failure detection, analysis, and resolution
+  - *Usage*: `/test-fix [test pattern or files]`
+  - *Model*: sonnet | *Tools*: Bash(npm/pnpm/yarn), Read, Edit, MultiEdit, Grep, Glob, TodoWrite, Task
 
-- **[deploy-application](./deploy-application)** - Application deployment workflow
-  - *Purpose*: Safe and reliable application deployment
-  - *Agents*: devops-engineer, security-auditor, performance-optimizer
-  - *Complexity*: Medium
+- **[/health-check](./health-check.md)** - Comprehensive project health assessment
+  - *Purpose*: Multi-dimensional project health evaluation and reporting
+  - *Usage*: `/health-check [scope]`
+  - *Model*: sonnet | *Tools*: Read, Bash, Grep, Glob, TodoWrite, Task
 
-#### **Documentation & Analysis**
-- **[analyze-codebase](./analyze-codebase)** - Comprehensive codebase analysis
-  - *Purpose*: System-wide analysis for insights and improvements
-  - *Agents*: project-manager, code-reviewer, security-auditor
-  - *Complexity*: High
+#### **Planning & Architecture**
+- **[/feature-plan](./feature-plan.md)** - Comprehensive feature planning workflow
+  - *Purpose*: Create detailed feature plans with deliverable setup and architectural analysis
+  - *Usage*: `/feature-plan --issue ISSUE-KEY --deliverable DELIVERABLE-NAME --complexity LEVEL --research DEPTH`
+  - *Model*: opus | *Tools*: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
+
+#### **Project Management**
+- **[/update-progress](./update-progress.md)** - Project progress tracking and status updates
+  - *Purpose*: Synchronize local status with project tracking systems
+  - *Usage*: `/update-progress [issue key or progress details]`  
+  - *Model*: haiku | *Tools*: Read, Write, Edit
+
+- **[/merge-branch](./merge-branch.md)** - Safe branch merging with validation
+  - *Purpose*: Safe branch merging with automated testing and validation
+  - *Usage*: `/merge-branch [target branch or merge options]`
+  - *Model*: sonnet | *Tools*: Bash(git), Bash(npm/pnpm/yarn), Read, Edit, Grep, Glob, TodoWrite
+
+- **[/refresh](./refresh.md)** - AI assistant context refresh
+  - *Purpose*: Quick context refresh for AI assistants on project state and conventions
+  - *Usage*: `/refresh [specific area]`
+  - *Model*: haiku | *Tools*: Read
 
 ## Command Usage Patterns
 
@@ -62,9 +77,9 @@ Comprehensive catalog of available commands, workflows, and automation patterns.
 #### **Planning Phase**
 ```yaml
 recommended_commands:
-  - analyze-codebase: "Understand current system state"
+  - feature-plan: "Comprehensive feature planning and architecture"
+  - health-check: "Assess current system state"
   - security-audit: "Identify security requirements"
-  - performance-audit: "Establish performance baselines"
 
 workflow_pattern: "analysis → planning → validation"
 typical_duration: "1-3 days"
@@ -73,11 +88,11 @@ typical_duration: "1-3 days"
 #### **Development Phase**
 ```yaml
 recommended_commands:
-  - implement-feature: "Core development workflow"
-  - code-review: "Quality assurance during development"
-  - refactor-code: "Continuous improvement"
+  - feature-development: "Core development workflow"
+  - review: "Quality assurance during development"
+  - iterate: "Continuous improvement"
 
-workflow_pattern: "implement → review → refactor → test"
+workflow_pattern: "implement → review → iterate → test"
 typical_duration: "1-4 weeks"
 ```
 
@@ -85,21 +100,21 @@ typical_duration: "1-4 weeks"
 ```yaml
 recommended_commands:
   - security-audit: "Security validation"
-  - performance-audit: "Performance validation"
-  - code-review: "Final quality review"
+  - health-check: "Project health validation"
+  - review: "Final quality review"
 
-workflow_pattern: "security → performance → quality → approval"
+workflow_pattern: "security → health → quality → approval"
 typical_duration: "3-7 days"
 ```
 
 #### **Deployment Phase**
 ```yaml
 recommended_commands:
-  - setup-cicd: "Pipeline preparation"
-  - deploy-application: "Production deployment"
-  - performance-audit: "Post-deployment validation"
+  - commit: "Quality commit preparation"
+  - merge-branch: "Safe branch merging"
+  - health-check: "Post-deployment validation"
 
-workflow_pattern: "prepare → deploy → validate → monitor"
+workflow_pattern: "commit → merge → validate → monitor"
 typical_duration: "1-2 days"
 ```
 
@@ -107,19 +122,20 @@ typical_duration: "1-2 days"
 
 #### **High Complexity Commands**
 - security-audit - Comprehensive security assessment
-- analyze-codebase - System-wide analysis
-- setup-cicd - Complete pipeline setup
-- implement-feature (complex) - Multi-system feature development
+- feature-plan - System-wide planning
+- feature-development (complex) - Multi-system feature development
 
 #### **Medium Complexity Commands**
-- implement-feature (standard) - Single-system feature development
-- performance-audit - Performance analysis
-- code-review - Quality assessment
-- deploy-application - Standard deployment
-- refactor-code - Code improvement
+- feature-development (standard) - Single-system feature development
+- health-check - Project health analysis
+- review - Quality assessment
+- iterate - Code improvement
 
 #### **Low Complexity Commands**
-- *Note: Most commands are medium to high complexity due to their comprehensive nature*
+- commit - Git commit workflow
+- refresh - Context refresh
+- update-progress - Status updates
+- test-fix - Test failure resolution
 
 ## Command Selection Guide
 
@@ -128,291 +144,61 @@ typical_duration: "1-2 days"
 ```yaml
 task_requirements:
   new_feature:
-    simple: [implement-feature]
-    complex: [analyze-codebase, implement-feature, security-audit]
+    simple: [feature-development]
+    complex: [feature-plan, feature-development, security-audit]
     
   code_quality:
-    review: [code-review]
-    improvement: [refactor-code, code-review]
-    analysis: [analyze-codebase, code-review]
+    review: [review]
+    improvement: [iterate, review]
+    analysis: [health-check, review]
     
   security_focus:
     assessment: [security-audit]
-    compliance: [security-audit, code-review]
-    hardening: [security-audit, implement-feature]
+    compliance: [security-audit, review]
+    hardening: [security-audit, feature-development]
     
-  performance_focus:
-    analysis: [performance-audit]
-    optimization: [performance-audit, refactor-code]
-    monitoring: [performance-audit, setup-cicd]
-    
-  infrastructure:
-    deployment: [deploy-application]
-    automation: [setup-cicd]
-    optimization: [performance-audit, setup-cicd]
-    
-  project_oversight:
-    analysis: [analyze-codebase]
-    planning: [analyze-codebase, security-audit]
-    coordination: [analyze-codebase, implement-feature]
+  project_management:
+    planning: [feature-plan]
+    progress: [update-progress]
+    context: [refresh]
+    merging: [merge-branch]
 ```
 
-### Selection Criteria
+## Claude Code Best Practices Applied
 
-#### **By Team Experience**
-- **Experienced Team**: Focus on complex commands with minimal guidance
-- **Mixed Experience**: Use standard commands with detailed documentation
-- **New Team**: Start with simpler commands and detailed explanations
+All commands now follow Claude Code standards:
 
-#### **By Project Maturity**
-- **New Project**: setup-cicd, implement-feature, security-audit
-- **Established Project**: performance-audit, refactor-code, code-review
-- **Legacy Project**: analyze-codebase, security-audit, refactor-code
+### ✅ **Proper File Structure**
+- **File Extensions**: All commands use `.md` extension for proper Claude Code recognition
+- **YAML Frontmatter**: Complete metadata with description, argument hints, allowed tools, and model specifications
+- **Argument Handling**: Support for `$ARGUMENTS` and positional parameters
 
-#### **By Time Constraints**
-- **Tight Deadlines**: implement-feature, deploy-application
-- **Normal Timeline**: Full command workflow with all quality gates
-- **Extended Timeline**: Comprehensive analysis and optimization
+### ✅ **Command Features**  
+- **Tool Restrictions**: Specific allowed-tools to ensure security and proper functionality
+- **Model Selection**: Appropriate model complexity (haiku/sonnet/opus) for each command's requirements
+- **Agent Integration**: Clear specification of which specialized agents each command leverages
 
-## Command Orchestration Patterns
+### ✅ **Usage Patterns**
+- **Slash Command Syntax**: All commands accessible via `/command-name arguments` format
+- **Parameter Support**: Flexible argument parsing for different command contexts
+- **Project Integration**: Commands work within project structure and conventions
 
-### Sequential Workflows
+## Available Commands Summary
 
-#### **Complete Development Cycle**
-```yaml
-phases:
-  1_analysis:
-    - analyze-codebase
-    - security-audit
-    - performance-audit
-    
-  2_development:
-    - implement-feature
-    - code-review
-    - refactor-code
-    
-  3_deployment:
-    - setup-cicd
-    - deploy-application
-    - performance-audit
-```
-
-#### **Quality-First Workflow**
-```yaml
-phases:
-  1_assessment:
-    - code-review
-    - security-audit
-    - performance-audit
-    
-  2_improvement:
-    - refactor-code
-    - implement-feature (fixes)
-    - security-audit (validation)
-    
-  3_validation:
-    - code-review (final)
-    - deploy-application
-```
-
-### Parallel Workflows
-
-#### **Comprehensive Analysis**
-```yaml
-parallel_execution:
-  security_track:
-    - security-audit
-  performance_track:
-    - performance-audit
-  quality_track:
-    - code-review
-  infrastructure_track:
-    - analyze-codebase (infrastructure focus)
-
-consolidation:
-  - project-manager coordination
-  - unified recommendations
-  - prioritized action plan
-```
-
-#### **Development Streams**
-```yaml
-parallel_execution:
-  feature_track:
-    - implement-feature
-  quality_track:
-    - refactor-code
-  infrastructure_track:
-    - setup-cicd
-
-coordination_points:
-  - code-review (all tracks)
-  - security-audit (final validation)
-  - deploy-application (integration)
-```
-
-## Command Customization
-
-### Parameter Options
-
-```yaml
-common_parameters:
-  scope:
-    - file: "Single file analysis"
-    - module: "Module-level operations"
-    - project: "Project-wide operations"
-    - system: "System-wide analysis"
-    
-  depth:
-    - basic: "Standard analysis depth"
-    - comprehensive: "Deep analysis with all checks"
-    - targeted: "Focused on specific areas"
-    
-  output:
-    - summary: "High-level overview"
-    - detailed: "Comprehensive report"
-    - actionable: "Task-oriented recommendations"
-    
-  priority:
-    - critical: "Security/safety critical issues"
-    - high: "Important improvements"
-    - medium: "Standard improvements"
-    - low: "Nice-to-have enhancements"
-```
-
-### Environment Adaptations
-
-#### **Technology Stack Adaptations**
-- JavaScript/TypeScript: Enhanced linting, bundle analysis, React/Vue patterns
-- Python: PEP compliance, Django/Flask patterns, data analysis focus
-- Java: Spring Boot patterns, enterprise architecture, JVM optimization
-- .NET: C# conventions, Entity Framework, Azure integrations
-
-#### **Project Size Adaptations**
-- **Small Projects** (< 10K LOC): Simplified workflows, essential checks only
-- **Medium Projects** (10K - 100K LOC): Standard workflows, balanced quality gates
-- **Large Projects** (> 100K LOC): Enhanced analysis, comprehensive quality gates
-
-## Integration Patterns
-
-### IDE Integration
-
-```yaml
-vscode_integration:
-  command_palette: "Access commands via Claude Code command palette"
-  context_menu: "Right-click file/folder for contextual commands"
-  status_bar: "Quick access to frequently used commands"
-  
-workspace_integration:
-  file_watchers: "Automatic command suggestions based on file changes"
-  git_hooks: "Trigger commands on commit/push events"
-  task_runners: "Integration with VS Code tasks"
-```
-
-### CI/CD Integration
-
-```yaml
-github_actions:
-  automated_triggers:
-    - "code-review on pull request"
-    - "security-audit on merge to main"
-    - "performance-audit on release preparation"
-    
-  custom_workflows:
-    - "Multi-command pipelines"
-    - "Conditional command execution"
-    - "Result aggregation and reporting"
-```
-
-## Command Performance Metrics
-
-### Success Indicators
-
-```yaml
-effectiveness_metrics:
-  completion_rate:
-    excellent: ">95%"
-    good: "90-95%"
-    needs_improvement: "<90%"
-    
-  quality_improvement:
-    code_quality_score: "+10% minimum improvement"
-    security_compliance: "+15% minimum improvement"
-    performance_metrics: "+20% minimum improvement"
-    
-  time_efficiency:
-    automation_ratio: ">80% automated vs manual"
-    feedback_loop_time: "<24 hours for most commands"
-    end_to_end_duration: "Within expected timeframes"
-```
-
-### Optimization Opportunities
-
-#### **Command Efficiency**
-- Monitor command execution times
-- Identify bottlenecks in multi-agent workflows
-- Optimize agent selection for specific contexts
-
-#### **Quality Outcomes**
-- Track quality improvements from command usage
-- Measure defect reduction rates
-- Monitor compliance improvement trends
-
-## Usage Examples
-
-### Example 1: New Feature Development
-```yaml
-scenario: "Implement user profile management"
-command_sequence:
-  1. analyze-codebase --scope=module --focus=user-management
-  2. implement-feature --type=user-profile --include-tests
-  3. code-review --focus=quality,security
-  4. security-audit --scope=authentication,data-access
-  5. deploy-application --environment=staging
-```
-
-### Example 2: Performance Optimization
-```yaml
-scenario: "Optimize application performance"
-command_sequence:
-  1. performance-audit --comprehensive --baseline
-  2. analyze-codebase --focus=performance,bottlenecks
-  3. refactor-code --priority=critical,high
-  4. performance-audit --validation --compare-baseline
-  5. deploy-application --performance-monitoring
-```
-
-### Example 3: Security Hardening
-```yaml
-scenario: "Enhance application security"
-command_sequence:
-  1. security-audit --comprehensive --compliance=owasp
-  2. analyze-codebase --focus=security,vulnerabilities
-  3. implement-feature --type=security-fixes
-  4. code-review --focus=security
-  5. security-audit --validation --compare-baseline
-```
-
-## Best Practices
-
-### Command Selection
-1. **Start with Analysis**: Use analyze-codebase to understand current state
-2. **Match Command to Goal**: Select commands that align with project objectives
-3. **Consider Dependencies**: Plan command sequences to avoid conflicts
-4. **Monitor Progress**: Track command effectiveness and adjust as needed
-
-### Quality Assurance
-1. **Validate Results**: Review command outputs for accuracy and completeness
-2. **Document Decisions**: Record why specific commands were chosen
-3. **Measure Impact**: Track improvements from command execution
-4. **Iterate and Improve**: Refine command usage based on results
-
-### Resource Management
-1. **Plan Resource Usage**: Consider time and computational requirements
-2. **Optimize Sequences**: Design efficient command workflows
-3. **Monitor Performance**: Track command execution efficiency
-4. **Balance Quality and Speed**: Choose appropriate depth levels
+| Command | Model | Usage | Primary Purpose |
+|---------|--------|--------|-----------------|
+| `/commit` | sonnet | `/commit [scope/files]` | Git commit with quality checks |
+| `/feature-development` | opus | `/feature-development --issue KEY --type TYPE` | End-to-end feature implementation |
+| `/feature-plan` | opus | `/feature-plan --issue KEY --deliverable NAME` | Comprehensive feature planning |
+| `/health-check` | sonnet | `/health-check [scope]` | Project health assessment |
+| `/iterate` | sonnet | `/iterate --target TARGET --iterations N` | Progressive improvement cycles |
+| `/review` | sonnet | `/review --scope SCOPE --focus FOCUS` | Comprehensive code review |
+| `/security-audit` | opus | `/security-audit --scope SCOPE --depth DEPTH` | OWASP security assessment |
+| `/test-fix` | sonnet | `/test-fix [pattern]` | Automatic test failure resolution |
+| `/update-progress` | haiku | `/update-progress [issue]` | Project progress tracking |
+| `/merge-branch` | sonnet | `/merge-branch [target]` | Safe branch merging with validation |
+| `/refresh` | haiku | `/refresh [area]` | AI assistant context refresh |
 
 ---
 
-*This command index provides comprehensive guidance for selecting, sequencing, and optimizing command usage across development workflows.*
+*Claude Code slash commands provide structured, reusable workflows with proper argument handling, tool restrictions, and agent coordination for AI-assisted development.*

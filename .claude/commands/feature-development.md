@@ -1,9 +1,14 @@
-# Feature Development Command
-
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-21
-**Status**: Active
-**Target Audience**: AI Assistants, Development Team
+---
+command: "/feature-development"
+description: End-to-end feature implementation with TDD and quality gates
+category: "Development & Implementation"
+purpose: "Complete feature development workflow with quality gates"
+wave-enabled: true
+performance-profile: "standard"
+argument-hint: --issue KEY --type TYPE --complexity LEVEL --testing APPROACH
+allowed-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
+model: opus
+---
 
 End-to-end feature development workflow:
 1. Analyze requirements and gather project context
@@ -19,11 +24,11 @@ Process:
 - Use appropriate domain specialists for implementation
 - Use code-reviewer for quality validation
 - Use security-auditor for security review (if sensitive)
-- Use docs-maintainer to update existing documentation
-- Update project status and workbench documentation
+- Use docs-sync-agent to update existing documentation
+- Update project status and documentation
 
-Parameters:
-- --issue: Issue key for workbench integration
+Parameters from $ARGUMENTS:
+- --issue: Issue key for tracking integration
 - --type: Feature type (component, api, service, integration)
 - --complexity: Complexity level (simple, moderate, complex)
 - --testing: Testing approach (unit, integration, e2e, all)

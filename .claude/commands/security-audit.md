@@ -1,9 +1,14 @@
-# Security Audit Command
-
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-21
-**Status**: Active
-**Target Audience**: AI Assistants, Development Team
+---
+command: "/security-audit"
+description: OWASP-compliant security assessment with vulnerability remediation
+category: "Security & Compliance"
+purpose: "OWASP-compliant security assessment with vulnerability remediation"
+wave-enabled: true
+performance-profile: "complex"
+argument-hint: --scope SCOPE --depth DEPTH --compliance FRAMEWORK --output FORMAT
+allowed-tools: Read, Bash, Grep, Glob, TodoWrite, Task
+model: opus
+---
 
 Comprehensive security assessment workflow:
 1. Scan for common security vulnerabilities (OWASP Top 10)
@@ -22,7 +27,7 @@ Process:
 - Provide specific remediation recommendations
 - Update security documentation and procedures
 
-Parameters:
+Parameters from $ARGUMENTS:
 - --scope: Audit scope (code, infrastructure, data, all)
 - --depth: Audit depth (basic, standard, comprehensive)
 - --compliance: Compliance framework (GDPR, PCI-DSS, HIPAA, SOC2)
