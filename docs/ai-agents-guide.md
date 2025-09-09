@@ -231,7 +231,7 @@ finally implement with appropriate specialists"
 ### Do's ✅
 
 - **Be specific** when requesting agents
-- **Provide context** files (status.md, technical.md)
+- **Provide context** files (STATUS.md, technical.md)
 - **Let agents coordinate** naturally
 - **Trust agent expertise** in their domains
 - **Review agent output** before applying
@@ -307,7 +307,7 @@ You are a [Role]. Your expertise includes...
 
 - Share only relevant files
 - Use context-analyzer first
-- Keep status.md updated
+- Keep STATUS.md updated
 - Reference specific sections
 
 ### Efficient Requests

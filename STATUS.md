@@ -226,7 +226,7 @@ npm run build  # or appropriate build command
 - **CI/CD**: [Automated testing pipeline status]
 
 ### AI Assistant Guidelines
-- **Context Management**: Always read status.md first to understand current state
+- **Context Management**: Always read STATUS.md first to understand current state
 - **Deliverables Usage**: Check deliverables/[DELIVERABLE]/issues/ for active issue workspaces
 - **Documentation**: Follow docs/documentation-standards.md for all documentation
 - **Progress Updates**: Update this file after significant progress or decisions

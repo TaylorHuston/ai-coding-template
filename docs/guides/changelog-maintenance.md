@@ -1159,7 +1159,7 @@ Co-Authored-By: Claude"
 ./scripts/ai-changelog-audit.sh --report
 
 # Update status files
-echo "Changelog updated for: ISSUE-001, ISSUE-002" >> deliverables/status.md
+echo "Changelog updated for: ISSUE-001, ISSUE-002" >> STATUS.md
 ```
 
 #### AI-Specific Best Practices

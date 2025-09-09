@@ -28,7 +28,7 @@ tar -xzf agents.tar.gz
 
 # 4. Add context files
 curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/CLAUDE.md
-curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/status.md
+curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/STATUS.md
 mkdir -p docs
 curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/docs/technical.md
 
@@ -44,7 +44,7 @@ For teams wanting to slowly adopt AI-assisted development:
 
 #### Phase 1: Core AI Context (Week 1)
 - Add `.claude/` directory with essential agents
-- Create `CLAUDE.md`, `status.md`, `docs/technical.md`
+- Create `CLAUDE.md`, `STATUS.md`, `docs/technical.md`
 - Start using AI agents for code review
 
 #### Phase 2: Workflow Integration (Week 2-3)
@@ -116,15 +116,15 @@ cat > CLAUDE.md << 'EOF'
 [Important patterns to follow]
 
 ## Getting Started
-1. Read status.md for current state
+1. Read STATUS.md for current state
 2. Review docs/technical.md for architecture
 3. Check recent commits for context
 EOF
 ```
 
-#### status.md
+#### STATUS.md
 ```bash
-cat > status.md << 'EOF'
+cat > STATUS.md << 'EOF'
 # Project Status
 
 ## Current State
@@ -244,7 +244,7 @@ cat > scripts/validate-integration.sh << 'EOF'
 echo "🔍 Validating AI template integration..."
 
 # Check essential files
-files=("CLAUDE.md" "status.md" "docs/technical.md" ".claude/agents/INDEX.md")
+files=("CLAUDE.md" "STATUS.md" "docs/technical.md" ".claude/agents/INDEX.md")
 for file in "${files[@]}"; do
   if [ -f "$file" ]; then
     echo "✅ $file exists"
@@ -289,7 +289,7 @@ find scripts/ -name "*.sh" -exec chmod +x {} \;
 #### AI Not Recognizing Context
 - Enhance docs/technical.md with patterns
 - Update CLAUDE.md with specific instructions
-- Add more project details to status.md
+- Add more project details to STATUS.md
 
 ## Success Metrics
 
@@ -310,7 +310,7 @@ find scripts/ -name "*.sh" -exec chmod +x {} \;
 - [ ] Backup existing project
 - [ ] Create integration branch
 - [ ] Add .claude/ directory
-- [ ] Create context files (CLAUDE.md, status.md)
+- [ ] Create context files (CLAUDE.md, STATUS.md)
 - [ ] Add essential scripts
 - [ ] Update .gitignore
 - [ ] Test AI agent recognition

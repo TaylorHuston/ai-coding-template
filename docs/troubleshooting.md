@@ -18,7 +18,7 @@ This guide helps resolve common issues and answers frequently asked questions ab
 
 **Solutions**:
 
-1. Update and share `status.md` at session start
+1. Update and share `STATUS.md` at session start
 2. Reference specific files: "Check the existing auth implementation in src/auth/"
 3. Use context-analyzer agent: "Please analyze the current project state first"
 4. Share `docs/technical.md` for architecture context
@@ -89,14 +89,14 @@ which git node npm
 
 ```bash
 # Check required files exist
-ls -la CLAUDE.md status.md docs/technical.md
+ls -la CLAUDE.md STATUS.md docs/technical.md
 
 # Run diagnostics
 ./scripts/ai-status.sh --check
 
 # Create missing files
-touch status.md
-echo "# Project Status" > status.md
+touch STATUS.md
+echo "# Project Status" > STATUS.md
 ```
 
 ### Documentation Issues
@@ -373,7 +373,7 @@ tail -f scripts/logs/ai-status.log
 
 1. **Regular Updates**:
 
-   - Keep `status.md` current
+   - Keep `STATUS.md` current
    - Update `docs/technical.md` with changes
    - Run health checks weekly
 
@@ -457,7 +457,7 @@ rm -rf scripts/
 
 **A**: Yes! Use the gradual integration approach:
 1. Start with just `.claude/` directory
-2. Add context files (CLAUDE.md, status.md)
+2. Add context files (CLAUDE.md, STATUS.md)
 3. Gradually adopt agents and workflows
 4. See the integration guide for details
 
@@ -490,7 +490,7 @@ rm -rf scripts/
 #### Q: Can multiple developers use AI on the same project?
 
 **A**: Yes! Best practices include:
-1. Share `status.md` updates regularly
+1. Share `STATUS.md` updates regularly
 2. Use consistent agent patterns
 3. Document AI usage in commit messages
 4. Coordinate through the deliverables system

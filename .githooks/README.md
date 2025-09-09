@@ -18,7 +18,7 @@ Comprehensive validation before each commit:
 
 - **🛡️ Branch Protection**: Prevents direct commits to protected branches
 - **🤖 AI Documentation**: Validates AI assistance indicators in commit messages  
-- **📚 Documentation**: Warns when code changes without status.md updates
+- **📚 Documentation**: Warns when code changes without STATUS.md updates
 - **🔒 Security Scan**: Detects potential secrets, API keys, and sensitive files
 - **📝 File Naming**: Enforces kebab-case for documentation files
 

@@ -67,7 +67,7 @@ mkdir -p deliverables/features/issues/FEATURE-001
 echo "# Feature: User Authentication" > deliverables/features/issues/FEATURE-001/README.md
 
 # 2. Update project status
-echo "## Current Focus: User Authentication" >> status.md
+echo "## Current Focus: User Authentication" >> STATUS.md
 
 # 3. Request implementation
 "Using the project-manager agent, help me implement user authentication
@@ -328,7 +328,7 @@ Example: Migrating to React 18
 ```markdown
 1. Share context files:
    - CLAUDE.md
-   - status.md
+   - STATUS.md
    - docs/technical.md
 
 2. "Using context-analyzer, explain project structure to new developer"
@@ -378,7 +378,7 @@ SECURITY RESPONSE:
 
 1. **Batch similar tasks** - Group related work
 2. **Use parallel agents** - Multiple agents simultaneously
-3. **Maintain context** - Keep status.md updated
+3. **Maintain context** - Keep STATUS.md updated
 4. **Document decisions** - Record in deliverables
 5. **Review regularly** - Weekly code reviews
 

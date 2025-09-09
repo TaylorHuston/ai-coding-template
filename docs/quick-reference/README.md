@@ -67,7 +67,7 @@ These guides integrate with:
 Related to deliverables and issue management:
 - **deliverables/README.md**: Deliverables and issue management
 - **deliverables/template-deliverable/**: Deliverable and issue templates
-- **deliverables/status.md**: Project status with visual progress tracking
+- **STATUS.md**: Project status with visual progress tracking
 
 ### Automation Scripts
 Referenced commands:
@@ -79,7 +79,7 @@ Referenced commands:
 ## Usage Patterns
 
 ### Daily Development
-1. Check **deliverables/status.md** for current priorities
+1. Check **STATUS.md** for current priorities
 2. Use **development-commands.md** for common tasks
 3. Follow **ai-assistant-guide.md** workflows
 4. Update documentation following standards
@@ -135,4 +135,4 @@ Use these guides as templates for:
 - [Documentation Standards](../documentation-standards.md)
 - [Visual Guide](../visual-guide.md) 
 - [Deliverables System](../../deliverables/README.md)
-- [Project Status](../../deliverables/status.md)
+- [Project Status](../../STATUS.md)

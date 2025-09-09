@@ -60,7 +60,7 @@ The project includes automatic changelog checking via git hooks:
 
 As defined in `CLAUDE.md`, AI assistants MUST:
 
-1. Update `deliverables/status.md` with progress
+1. Update `STATUS.md` with progress
 2. Update issue/bug/task PLAN files
 3. **Update CHANGELOG.md with completed work**
 4. Document decisions made
@@ -248,7 +248,7 @@ git commit -m "fix(auth): resolve session timeout issue (AI-assisted)"
 ./scripts/ai-changelog-audit.sh --report
 
 # 4. Update status files
-# Update deliverables/status.md
+# Update STATUS.md
 # Update CHANGELOG.md
 # Update relevant PLAN.md files
 ```

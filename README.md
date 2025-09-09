@@ -49,7 +49,7 @@ cp templates/CHANGELOG.template.md CHANGELOG.md
 1. Share these files with your AI assistant:
 
    - `CLAUDE.md` - AI instructions
-   - `status.md` - Project state
+   - `STATUS.md` - Project state
    - `docs/technical.md` - Technical specs
 
 2. Try your first agent:
@@ -77,7 +77,7 @@ my-project/
 │   └── workflows/           # Common workflows
 ├── scripts/                 # Automation tools
 ├── CLAUDE.md               # AI assistant instructions
-└── status.md               # Current project state
+└── STATUS.md               # Current project state
 ```
 
 ## Core Features

@@ -176,7 +176,7 @@ show_usage() {
     echo "  • Validates AI assistance documentation in commit messages"
     echo "  • Checks for security issues (API keys, secrets)"
     echo "  • Enforces file naming conventions"
-    echo "  • Warns about missing status.md updates"
+    echo "  • Warns about missing STATUS.md updates"
     echo ""
     echo -e "${YELLOW}Commit Message Template:${NC}"
     echo "  • Automatically opens with structured format"

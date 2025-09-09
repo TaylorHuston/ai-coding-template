@@ -12,7 +12,7 @@ model: haiku
 
 Refresh AI assistant context on project by:
 
-1. **Project Status**: Read current status.md or deliverables/status.md for project state
+1. **Project Status**: Read current STATUS.md for project state
 2. **AI Framework**: Read .claude/agents/INDEX.md for agent capabilities
 3. **Project Conventions**: Read CLAUDE.md for project-specific guidelines
 4. **Script Index**: Read scripts/README.md for overview of current helper scripts

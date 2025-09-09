@@ -26,7 +26,7 @@ Systematically discover and catalog:
 #### Essential Project Files
 ```markdown
 Priority 1 (Always Read):
-- deliverables/status.md - Current project state and priorities
+- STATUS.md - Current project state and priorities
 - CLAUDE.md - AI assistant instructions and patterns
 - docs/technical.md - System architecture and specifications
 - README.md - Project overview and setup
@@ -69,9 +69,9 @@ project_analysis:
     test_coverage: [estimated from test structure]
     
   current_priorities:
-    active_work: [from deliverables/status.md]
-    immediate_goals: [from deliverables/status.md]
-    blocking_issues: [from deliverables/status.md]
+    active_work: [from STATUS.md]
+    immediate_goals: [from STATUS.md]
+    blocking_issues: [from STATUS.md]
 ```
 
 #### Step 2: Pattern Recognition
@@ -138,7 +138,7 @@ enriched_context:
 - **Error Handling**: [How errors are handled in this project]
 
 ### Current Project State
-- **Active Work**: [From deliverables/status.md]
+- **Active Work**: [From STATUS.md]
 - **Priority Level**: [P0/P1/P2 from current work]
 - **Related Components**: [Components that may be affected]
 
@@ -260,7 +260,7 @@ context_management:
     - New files in key directories
     - Package.json / requirements.txt changes
     - Configuration file modifications
-    - deliverables/status.md updates
+    - STATUS.md updates
   
   context_versioning:
     - Track context changes over time

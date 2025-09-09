@@ -30,7 +30,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 **ALWAYS** read the following files BEFORE beginning any work:
 
-1. `deliverables/status.md` - Current project state and progress
+1. `STATUS.md` - Current project state and progress
 2. `deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md` - Active task instructions and workflows (if working on a specific issue)
 3. `docs/technical.md` - System architecture and technical specifications
 
@@ -58,7 +58,7 @@ You MUST follow these naming conventions:
 
 ### Session Startup Checklist
 
-1. Read `deliverables/status.md` to understand current project state
+1. Read `STATUS.md` to understand current project state
 2. Check `deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md` for active task instructions (if working on a specific issue)
 3. Review `docs/technical.md` for relevant technical context
 4. Confirm understanding of current context before proceeding
@@ -74,7 +74,7 @@ You MUST follow these naming conventions:
 
 ### Session Completion Protocol
 
-1. Update `deliverables/status.md` with current progress and achievements
+1. Update `STATUS.md` with current progress and achievements
 2. Update `deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md` with task progress and next steps (if working on a specific issue)
 3. **Update CHANGELOG.md**: Add entries for completed features, fixes, or changes under `[Unreleased]` section
 4. Document any important decisions or changes made
@@ -87,7 +87,7 @@ You MUST follow these naming conventions:
 
 Before beginning any work session:
 
-1. **Check for blockers**: Scan `deliverables/status.md` and active issue PLAN.md files for urgent issues
+1. **Check for blockers**: Scan `STATUS.md` and active issue PLAN.md files for urgent issues
 2. **Assess current work**: Review active tasks and progress
 3. **Check next priorities**: Identify upcoming work if no active tasks
 4. **Ask for direction**: Request user instruction if status is unclear
@@ -279,7 +279,7 @@ Your performance will be evaluated on:
 
 ### Context Management Issues
 
-1. **AI forgets previous context**: Update and reference `status.md` and `docs/technical.md`
+1. **AI forgets previous context**: Update and reference `STATUS.md` and `docs/technical.md`
 2. **Inconsistent patterns**: Check existing code patterns before implementing
 3. **Lost session context**: Follow session completion protocol properly
 

@@ -220,7 +220,7 @@ Add status to folder name for visibility:
 ```
 deliverables/
 ├── USAGE-GUIDE.md                    # This file
-├── status.md                         # Overall project status
+├── STATUS.md                         # Overall project status
 │
 ├── [deliverable-name]/               # Product deliverables
 │   ├── [deliverable-name].md         # Deliverable documentation

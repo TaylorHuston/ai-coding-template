@@ -19,7 +19,7 @@ NC='\033[0m' # No Color
 # Configuration
 CHANGELOG_FILE="CHANGELOG.md"
 DELIVERABLES_DIR="deliverables"
-STATUS_FILE="deliverables/status.md"
+STATUS_FILE="STATUS.md"
 
 # Statistics
 STATS_TOTAL_COMMITS=0

@@ -11,7 +11,7 @@ Quick reference for AI assistants working with this repository.
 ## First Session Checklist
 
 ### 1. Context Loading Priority (Read in Order)
-1. **deliverables/status.md** - Current project state and active work
+1. **STATUS.md** - Current project state and active work
 2. **CLAUDE.md** - Project-specific instructions and patterns
 3. **docs/technical.md** - System architecture and specifications
 4. **deliverables/README.md** - Deliverables and issue management workflow
@@ -29,7 +29,7 @@ Quick reference for AI assistants working with this repository.
 
 ### Starting New Work
 ```
-1. Check deliverables/status.md for current priorities
+1. Check STATUS.md for current priorities
 2. Look for existing deliverables/[DELIVERABLE]/issues/{ISSUE-KEY}/ directory
 3. If none exists, create one with templates
 4. Copy templates from deliverables/template-deliverable/issues/template/
@@ -57,7 +57,7 @@ See [AI Branching Strategy](../guides/ai-branching-strategy.md) for complete gui
 
 ### Completing Work
 ```
-1. Update deliverables/status.md with progress
+1. Update STATUS.md with progress
 2. Complete decision log entries
 3. Update deliverables/[DELIVERABLE]/issues/{ISSUE-KEY}/README.md with final status
 4. Run documentation health check (if available)
@@ -145,13 +145,13 @@ Use these Unicode characters for progress visualization:
 ## Context Management
 
 ### When Context Window Fills Up
-1. Summarize current progress in deliverables/status.md
+1. Summarize current progress in STATUS.md
 2. Update relevant issue files
 3. Start new session with context loading checklist
 4. Reference files by name rather than including full content
 
 ### Preserving Context Across Sessions
-- Update deliverables/status.md after each significant milestone
+- Update STATUS.md after each significant milestone
 - Keep issue directories current with progress
 - Document decisions in decision logs immediately
 - Reference external issue tracking system for requirements
@@ -161,7 +161,7 @@ Use these Unicode characters for progress visualization:
 ### Common Mistakes to Avoid
 - ❌ Creating UPPERCASE.md files (should be snake_case.md)
 - ❌ Skipping metadata headers in documentation
-- ❌ Not updating deliverables/status.md after progress
+- ❌ Not updating STATUS.md after progress
 - ❌ Creating files without reading existing patterns
 - ❌ Ignoring issue tracking system integration
 
@@ -175,7 +175,7 @@ Use these Unicode characters for progress visualization:
 ## Emergency Procedures
 
 ### Context Loss Recovery
-1. Read deliverables/status.md for last known state
+1. Read STATUS.md for last known state
 2. Check git log for recent commits
 3. Review deliverables/[DELIVERABLE]/issues/ directories for active issues
 4. Consult external issue tracking system
@@ -183,7 +183,7 @@ Use these Unicode characters for progress visualization:
 
 ### Conflicting Information
 1. External issue tracking system = source of truth for requirements
-2. deliverables/status.md = source of truth for current progress
+2. STATUS.md = source of truth for current progress
 3. docs/technical.md = source of truth for technical patterns
 4. When in doubt, ask user for clarification
 

@@ -27,7 +27,7 @@ Project Root
 │   ├── integration.md         # This file
 │   └── agent-best-practices.md # Agent usage guidelines
 ├── deliverables/               # Product deliverables and issues
-│   ├── status.md               # Project status and progress
+│   ├── STATUS.md               # Project status and progress
 │   └── [deliverable]/          # Individual deliverables with issues
 ├── docs/                       # Project documentation
 │   └── technical.md           # Technical specifications
@@ -42,7 +42,7 @@ User Request
     ↓
 context-analyzer (auto-invoked)
     ↓
-Gathers: deliverables/status.md, docs/technical.md, deliverables/{features,bugs,tasks}/, docs/
+Gathers: STATUS.md, docs/technical.md, deliverables/{features,bugs,tasks}/, docs/
     ↓
 Provides enriched context to specialist agents
 ```
@@ -68,7 +68,7 @@ If critical: security-auditor
     ↓
 docs-maintainer (auto-invoked for existing docs)
     ↓
-Update deliverables/status.md and deliverables/{features,bugs,tasks}/issues/
+Update STATUS.md and deliverables/{features,bugs,tasks}/issues/
 ```
 
 ## Workflow Integration Patterns
@@ -80,7 +80,7 @@ Update deliverables/status.md and deliverables/{features,bugs,tasks}/issues/
 4. **Implementation**: Specialist agents handle domain-specific work
 5. **Quality Gates**: code-reviewer, test-engineer, security-auditor
 6. **Documentation**: docs-maintainer updates existing documentation
-7. **Status Update**: Update status.md with progress
+7. **Status Update**: Update STATUS.md with progress
 
 ### Bug Fix Workflow
 1. **Analysis**: context-analyzer gathers relevant context
@@ -140,7 +140,7 @@ Updates existing documentation:
     ↓
 Runs documentation health check
     ↓
-Reports updates in status.md
+Reports updates in STATUS.md
 ```
 
 ### Documentation Creation Policy
@@ -257,5 +257,5 @@ agents:
 ### Support Resources
 - [Agent Best Practices](agent-best-practices.md)
 - [Quick Reference Guides](../docs/quick-reference/)
-- [Project Status](../deliverables/status.md)
+- [Project Status](../STATUS.md)
 - [Technical Specifications](../docs/technical.md)

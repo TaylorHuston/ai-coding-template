@@ -76,7 +76,7 @@ check_documentation_updates() {
         return 0
     fi
     
-    # Check if code files changed but status.md wasn't updated
+    # Check if code files changed but STATUS.md wasn't updated
     local code_changed=false
     local status_updated=false
     
@@ -88,20 +88,20 @@ check_documentation_updates() {
         fi
     done < <(git diff --cached --name-only)
     
-    # Check if status.md was updated
-    if git diff --cached --name-only | grep -q "status.md"; then
+    # Check if STATUS.md was updated
+    if git diff --cached --name-only | grep -q "STATUS.md"; then
         status_updated=true
     fi
     
     # Warn if significant code changes without status update
     if $code_changed && ! $status_updated; then
-        echo -e "${YELLOW}⚠️  WARNING: Code files changed but status.md not updated${NC}"
-        echo -e "${BLUE}💡 Consider updating status.md if this represents significant progress${NC}"
+        echo -e "${YELLOW}⚠️  WARNING: Code files changed but STATUS.md not updated${NC}"
+        echo -e "${BLUE}💡 Consider updating STATUS.md if this represents significant progress${NC}"
         echo ""
-        echo -e "${YELLOW}Continue without updating status.md? (y/N)${NC}"
+        echo -e "${YELLOW}Continue without updating STATUS.md? (y/N)${NC}"
         read -r response
         if [[ ! "$response" =~ ^[Yy]$ ]]; then
-            echo -e "${BLUE}💡 Edit status.md and run 'git add status.md' then commit again${NC}"
+            echo -e "${BLUE}💡 Edit STATUS.md and run 'git add STATUS.md' then commit again${NC}"
             return 1
         fi
     fi

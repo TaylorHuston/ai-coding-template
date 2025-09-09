@@ -13,7 +13,7 @@ model: haiku
 Update project progress by:
 
 1. Update the current PLAN.md file as needed
-2. Update the STATUS.md or deliverables/status.md as needed
+2. Update the STATUS.md as needed
 3. Update the CHANGELOG.md as needed
 4. Review latest progress and milestones
 5. Generate progress summary for tracking systems

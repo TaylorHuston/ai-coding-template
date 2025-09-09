@@ -53,7 +53,7 @@ mkdir workbench/PROJ-123/temp
 ### Quick Project Status Update
 ```bash
 # Edit status file
-$EDITOR status.md
+$EDITOR STATUS.md
 
 # Check git status for context
 git status

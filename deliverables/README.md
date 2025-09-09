@@ -27,7 +27,7 @@ This directory contains all product deliverables for the project. Each deliverab
 ```
 deliverables/
 ├── README.md                           # This file
-├── status.md                           # Overall project status
+├── STATUS.md                           # Overall project status
 ├── usage-guide.md                      # Guide for using the templates
 ├── template-deliverable/               # Template for creating new deliverables
 │   ├── template-deliverable.md         # Main deliverable documentation template

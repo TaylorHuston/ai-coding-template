@@ -223,7 +223,7 @@ Before marking any major task complete:
 
 ### Issue Tracking Integration
 - **Create issue directories** in deliverables for complex features
-- **Update deliverables/status.md** with progress tracking
+- **Update STATUS.md** with progress tracking
 - **Maintain decision logs** in deliverables issues documentation
 - **Link to external tickets** (Jira, Linear, GitHub Issues)
 
@@ -233,7 +233,7 @@ Before marking any major task complete:
 1. Create deliverables/{feature,bug,task}/{ISSUE-KEY}/ directory
 2. Copy planning templates and customize
 3. Coordinate agent execution based on plan
-4. Track progress in deliverables/status.md
+4. Track progress in STATUS.md
 5. Update deliverables issues documentation as work proceeds
 6. Final integration and validation
 ```
