@@ -115,7 +115,7 @@ Essential scripts for AI-assisted development:
 
 ### 📚 Getting Started
 
-- [Integration Guide](./docs/integration-guide.md) - Add to existing projects
+- [Integration Guide](./docs/setup/integration-guide.md) - Add to existing projects
 - [AI Agents Guide](./docs/ai-agents-guide.md) - Master the agent system
 - [Common Workflows](./docs/workflows/README.md) - Step-by-step processes
 
@@ -129,7 +129,7 @@ Essential scripts for AI-assisted development:
 
 - [AI Branching Strategy](./docs/guides/ai-branching-strategy.md)
 - [Documentation Standards](./docs/documentation-standards.md)
-- [Quick Reference](./docs/quick-reference/)
+- [Quick Reference](./docs/reference/)
 
 ## For Existing Projects
 
@@ -151,7 +151,7 @@ tar -xzf agents.tar.gz
 
 ### Option 3: Full Integration
 
-[Complete Integration Guide →](./docs/integration-guide.md)
+[Complete Integration Guide →](./docs/setup/integration-guide.md)
 
 ## Contributing
 

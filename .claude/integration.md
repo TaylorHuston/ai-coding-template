@@ -256,6 +256,6 @@ agents:
 
 ### Support Resources
 - [Agent Best Practices](agent-best-practices.md)
-- [Quick Reference Guides](../docs/quick-reference/)
+- [Quick Reference Guides](../docs/reference/)
 - [Project Status](../STATUS.md)
 - [Technical Specifications](../docs/technical.md)
