@@ -2,7 +2,7 @@
 
 **Version**: 1.0.0
 **Created**: 2025-08-22
-**Last Updated**: 2025-08-22
+**Last Updated**: 2025-09-10
 **Status**: Active
 **Target Audience**: All Users - Developers, Product Managers, AI Assistants
 
@@ -22,7 +22,7 @@
 ### I need to understand the system...
 
 **📚 Documentation standards and guidelines?**
-→ [Documentation Standards](documentation-standards.md)
+→ [Documentation Guidelines](documentation-guidelines.md)
 
 **🎯 See examples of good documentation?**
 → [Technical Example](architecture/user-authentication-architecture.md) | [Product Example](deliverables/user-authentication-deliverable.md)
@@ -32,20 +32,34 @@
 ```
 📁 docs/
 ├── 🏠 README.md                    # You are here - Central hub
-├── 📋 standards.md                 # Documentation standards & guidelines
-├── 🔧 architecture/                # Technical documentation
-│   ├── README.md                   # Technical documentation guide
+├── 📋 documentation-guidelines.md   # Documentation standards & guidelines
+├── 🔧 technical.md                 # System architecture overview
+├── 📊 quality-standards.md         # Quality requirements & validation
+├── 🛠️ setup/                      # Integration & setup guides
+│   ├── README.md                   # Setup hub
+│   ├── integration-guide.md        # Project integration
+│   ├── mcp-configuration-guide.md  # MCP server setup
+│   ├── project-management-integration.md # PM tools
+│   └── deployment-guide.md         # Production deployment
+├── 📚 guides/                      # How-to guides & tutorials
+│   ├── ai-*.md                     # AI-specific guides
+│   ├── testing-*.md                # Testing guides
+│   └── *.md                        # Other implementation guides
+├── 📖 reference/                   # Quick reference materials
+│   ├── README.md                   # Reference hub
+│   ├── development-commands.md     # Common commands
+│   ├── tool-selection.md           # Tool usage patterns
+│   └── *.md                        # Reference materials
+├── 🏗️ architecture/               # Technical documentation
+│   ├── README.md                   # Architecture guide
 │   └── *.md                        # Architecture documents
-├── 📊 deliverables/               # Product documentation
-│   ├── README.md                   # Product documentation guide
-│   └── *.md                        # Deliverable documents
-└── 📝 templates/                   # Templates for new documents
-    ├── simple/                     # Quick-start templates
-    │   ├── feature-simple.template.md      # 5-7 essential sections
-    │   └── deliverable-simple.template.md  # Business essentials
-    └── standard/                   # Comprehensive templates
-        ├── feature.template.md              # Full technical template
-        └── deliverable.template.md          # Full product template
+├── 🧩 workflows/                   # Process workflows
+│   └── *.md                        # Workflow documentation
+├── 📝 templates/                   # Document templates
+│   ├── simple/                     # Quick-start templates
+│   └── standard/                   # Comprehensive templates
+└── 📦 archived/                    # Deprecated content
+    └── *.md                        # Archived documentation
 ```
 
 ## Documentation Types
@@ -137,21 +151,35 @@
 4. **Evidence-Based**: Support all claims with verifiable information
 5. **Living Documents**: Keep documentation current with implementation
 
+## Setup and Integration
+
+### 🚀 [Setup Hub](./setup/README.md)
+Complete integration and setup guidance for new and existing projects.
+
+- **[Integration Guide](./setup/integration-guide.md)**: Project integration strategies
+- **[MCP Configuration](./setup/mcp-configuration-guide.md)**: MCP server setup
+- **[Project Management](./setup/project-management-integration.md)**: PM tool integration  
+- **[Deployment Guide](./setup/deployment-guide.md)**: Production deployment
+
 ## Quick Reference
 
 | I want to... | Go here |
 |---------------|---------|
+| **Setup & integrate this template** | **[Setup Hub](setup/README.md)** |
+| **Get quick development commands** | **[Reference Hub](reference/README.md)** |
 | Create simple technical docs | [Simple Technical Template](templates/simple/feature-simple.template.md) |
 | Create simple product docs | [Simple Product Template](templates/simple/deliverable-simple.template.md) |
 | Create comprehensive docs | [Standard Templates](templates/standard/) |
-| Understand documentation standards | [Documentation Standards](standards.md) |
+| Understand documentation standards | [Documentation Guidelines](documentation-guidelines.md) |
+| Understand quality requirements | [Quality Standards](quality-standards.md) |
 | See examples | [Technical Example](architecture/user-authentication-architecture.md) \| [Product Example](deliverables/user-authentication-deliverable.md) |
 | Get technical guidance | [Architecture Guide](architecture/README.md) |
 | Get product guidance | [Deliverables Guide](deliverables/README.md) |
+| Browse how-to guides | [Guides Directory](guides/) |
 
 ## Support
 
-- **Documentation Questions**: See [Documentation Standards](standards.md)
+- **Documentation Questions**: See [Documentation Guidelines](documentation-guidelines.md)
 - **Template Issues**: Use existing examples as reference
 - **Process Improvements**: Submit feedback through your team's standard channels
 

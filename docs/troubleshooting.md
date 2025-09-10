@@ -345,7 +345,7 @@ tail -f scripts/logs/ai-status.log
 
 1. **Check Documentation**:
 
-   - Quick Reference: `docs/quick-reference/`
+   - Quick Reference: `docs/reference/`
    - Agent docs: `.claude/agents/INDEX.md`
    - Guides: `docs/guides/`
 

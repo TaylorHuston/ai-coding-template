@@ -303,7 +303,7 @@ Reference these examples for different types of architectural documentation:
 ### Related Documentation Links
 
 - [Main Architecture Guide](../architecture.md) - High-level design principles
-- [Documentation Standards](../documentation-standards.md) - Writing and formatting guidelines
+- [Documentation Guidelines](../documentation-guidelines.md) - Writing and formatting guidelines
 - [Feature Template](../templates/standard/feature.template.md) - Template for new architecture docs
 - [AI Branching Strategy](../guides/ai-branching-strategy.md) - Version control integration
 
