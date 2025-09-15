@@ -22,7 +22,7 @@ This guide provides step-by-step workflows for common development tasks using AI
 
 ### AI-Safe Git Workflow
 
-Follow the [AI Branching Strategy](../guides/ai-branching-strategy.md) for safe AI-assisted development.
+Follow the [AI Branching Strategy](../../ai-collaboration/ai-branching-strategy.md) for safe AI-assisted development.
 
 ```bash
 # 1. Create feature branch (AI should ask permission)

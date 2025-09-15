@@ -14,7 +14,7 @@
 - Follow patterns established in the `examples/` directory
 - Follow established language-specific patterns and conventions
 - Use existing project patterns and conventions consistently
-- Validate against technical specifications in `docs/technical.md`
+- Follow system guidelines in `CLAUDE.md` and quality standards in this document
 - Never duplicate existing functionality without explicit justification
 
 ## Validation Protocol
@@ -202,4 +202,4 @@
 
 ---
 
-**Related Documentation**: [Documentation Guidelines](./documentation-guidelines.md) | [Technical Architecture](./technical.md) | [Setup Guide](./setup/README.md)
+**Related Documentation**: [Documentation Guidelines](./documentation-guidelines.md) | [System Guidelines](../CLAUDE.md) | [Setup Guide](./setup/README.md)

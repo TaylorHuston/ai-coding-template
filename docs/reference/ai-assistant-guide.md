@@ -13,7 +13,7 @@ Quick reference for AI assistants working with this repository.
 ### 1. Context Loading Priority (Read in Order)
 1. **STATUS.md** - Current project state and active work
 2. **CLAUDE.md** - Project-specific instructions and patterns
-3. **docs/technical.md** - System architecture and specifications
+3. **docs/quality-standards.md** - Development requirements and standards
 4. **deliverables/README.md** - Deliverables and issue management workflow
 5. **docs/documentation-standards.md** - Documentation conventions
 
@@ -23,7 +23,7 @@ Quick reference for AI assistants working with this repository.
 - [ ] Technology stack and patterns recognized
 - [ ] Any blocking issues or dependencies noted
 - [ ] Issue tracking system integration confirmed
-- [ ] **AI Branching Strategy** reviewed ([docs/guides/ai-branching-strategy.md](../guides/ai-branching-strategy.md))
+- [ ] **AI Branching Strategy** reviewed ([ai-collaboration/ai-branching-strategy.md](../../ai-collaboration/ai-branching-strategy.md))
 
 ## Common Workflows
 
@@ -44,12 +44,12 @@ Quick reference for AI assistants working with this repository.
 4. Follow naming: feature/ISSUE-KEY-description
 5. Tag commits with (AI-assisted)
 ```
-See [AI Branching Strategy](../guides/ai-branching-strategy.md) for complete guidelines.
+See [AI Branching Strategy](../../ai-collaboration/ai-branching-strategy.md) for complete guidelines.
 
 ### Implementing Features
 ```
 1. Read requirements from deliverables/[DELIVERABLE]/issues/{ISSUE-KEY}/docs/requirements.md
-2. Follow patterns in docs/technical.md
+2. Follow patterns in CLAUDE.md and quality-standards.md
 3. Check docs/documentation-standards.md for conventions
 4. Update decision log as you make choices
 5. Test against acceptance criteria
@@ -68,7 +68,7 @@ See [AI Branching Strategy](../guides/ai-branching-strategy.md) for complete gui
 
 ### Naming Rules
 - **Documentation**: snake_case.md (except README.md and CLAUDE.md)
-- **Code**: Follow language-specific conventions in docs/technical.md
+- **Code**: Follow quality standards in docs/quality-standards.md
 - **Templates**: Use {{VARIABLE}} syntax for substitution
 - **Issues**: Use issue tracking key format (PROJ-123, ENG-456, issue-789)
 
@@ -170,7 +170,7 @@ Use these Unicode characters for progress visualization:
 - Progress is tracked in visual format where applicable
 - Decision logs are updated with rationale
 - External issue tracking system is kept in sync
-- Code follows established patterns in docs/technical.md
+- Code follows quality standards in docs/quality-standards.md
 
 ## Emergency Procedures
 
@@ -184,7 +184,7 @@ Use these Unicode characters for progress visualization:
 ### Conflicting Information
 1. External issue tracking system = source of truth for requirements
 2. STATUS.md = source of truth for current progress
-3. docs/technical.md = source of truth for technical patterns
+3. docs/quality-standards.md = source of truth for quality requirements
 4. When in doubt, ask user for clarification
 
 ## Best Practices
@@ -197,6 +197,6 @@ Use these Unicode characters for progress visualization:
 
 ### Code Generation
 - Always follow existing patterns in codebase
-- Check docs/technical.md for architecture guidance
+- Check CLAUDE.md for system guidelines and architecture
 - Validate against requirements in workbench
 - Update documentation as you implement

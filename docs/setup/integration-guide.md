@@ -329,4 +329,4 @@ After successful integration:
 
 ---
 
-For questions or issues, see our [FAQ](./faq.md) or [Contributing Guidelines](../CONTRIBUTING.md).
+For questions or issues, see our [FAQ](../troubleshooting.md#frequently-asked-questions) or [Documentation Guidelines](../documentation-guidelines.md).

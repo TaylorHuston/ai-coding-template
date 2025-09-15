@@ -96,4 +96,4 @@ When completing work items, add entries here using this format:
 
 - [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - [Semantic Versioning](https://semver.org/)
-- [Changelog Maintenance Guide](./docs/guides/ai-changelog-maintenance.md)
+- [Changelog Maintenance Guide](./docs/guides/project-guidelines/changelog-maintenance.md)

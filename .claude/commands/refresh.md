@@ -16,7 +16,7 @@ Refresh AI assistant context on project by:
 2. **AI Framework**: Read .claude/agents/INDEX.md for agent capabilities
 3. **Project Conventions**: Read CLAUDE.md for project-specific guidelines
 4. **Script Index**: Read scripts/README.md for overview of current helper scripts
-5. **Technical Details**: Read docs/technical.md or similar architecture documents
+5. **Technical Details**: Read CLAUDE.md for system guidelines and docs/quality-standards.md for requirements
 6. **Development Practices**: Review current standards and patterns
 
 Process:

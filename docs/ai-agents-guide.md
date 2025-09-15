@@ -231,7 +231,7 @@ finally implement with appropriate specialists"
 ### Do's ✅
 
 - **Be specific** when requesting agents
-- **Provide context** files (STATUS.md, technical.md)
+- **Provide context** files (STATUS.md, CLAUDE.md, quality-standards.md)
 - **Let agents coordinate** naturally
 - **Trust agent expertise** in their domains
 - **Review agent output** before applying

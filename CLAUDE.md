@@ -1,20 +1,20 @@
 # CLAUDE.md - AI Agent Instructions
 
-**Version**: 1.0.0 **Created**: 2025-08-21 **Last Updated**: 2025-08-22 **Status**: Active **Target Audience**: AI Assistants
+**Version**: 1.0.0 **Created**: 2025-08-21 **Last Updated**: 2025-09-15 **Status**: Active **Target Audience**: AI Assistants
 
 You are working with an AI coding template repository designed to optimize AI-assisted development workflows. Follow these instructions precisely when operating in this codebase.
 
 ## Critical Rules
 
+**These apply to all actions and agents**
+
 1. **Commit Approval:** Never commit without explicit user approval first
 2. **Comment Approval:** Never comment on <Jira/Linear/etc> without explicit user approval first
 3. **No Assumptions**: Always check existing patterns and code, run tests, ask user if any ambiguity
 4. **Test First:** Follow strict TDD guidelines
-5. **Branch First:** Never work directly on main branches (see [AI Branching Strategy](./docs/guides/ai-branching-strategy.md))
+5. **Branch First:** Never work directly on main branches (see [AI Branching Strategy](./ai-collaboration/ai-branching-strategy.md))
 6. **Atomic Commits:** Keep commits small and focused
 7. **Ask Questions Often and Early**: Clarify ambiguity before implementation
-8. **Reindex Documentation**: Reindex all /docs/\* files after each major action
-9. **Keep Knowledge Current**: Before starting a new batch of work read all feature files and any relevant Context7 documentation
 
 ## AI Autonomy Matrix
 
@@ -25,16 +25,6 @@ You are working with an AI coding template repository designed to optimize AI-as
 | **Code Changes**   | ⚠️ Show First | Display changes before applying           |
 | **Commits/Merges** | 🛑 Always Ask | Never commit without explicit approval    |
 | **Deletions**      | 🛑 Always Ask | Any file/branch deletions need approval   |
-
-## Core Operating Principles
-
-**ALWAYS** read the following files BEFORE beginning any work:
-
-1. `STATUS.md` - Current project state and progress
-2. `deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md` - Active task instructions and workflows (if working on a specific issue)
-3. `docs/technical.md` - System architecture and technical specifications
-
-**NEVER** begin work without understanding the current project context.
 
 ## Response Protocol
 
@@ -56,80 +46,9 @@ You MUST follow these naming conventions:
 
 ## Context Management Protocol
 
-### Session Startup Checklist
+## 18-Agent Framework Integration
 
-1. Read `STATUS.md` to understand current project state
-2. Check `deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md` for active task instructions (if working on a specific issue)
-3. Review `docs/technical.md` for relevant technical context
-4. Confirm understanding of current context before proceeding
-5. Update your understanding based on these context files
-
-### Context Preservation Requirements
-
-- Use status management files to maintain context efficiently
-- Reference files by name rather than including full content unnecessarily
-- Focus on current task context rather than entire project history
-- Prune outdated information from conversations
-- Always preserve essential context for session handoffs
-
-### Session Completion Protocol
-
-1. Update `STATUS.md` with current progress and achievements
-2. Update `deliverables/[DELIVERABLE]/issues/[ISSUE]/PLAN.md` with task progress and next steps (if working on a specific issue)
-3. **Update CHANGELOG.md**: Add entries for completed features, fixes, or changes under `[Unreleased]` section
-4. Document any important decisions or changes made
-5. Prepare clear context for the next session handoff
-6. Ensure all context files accurately reflect current state
-
-## Session Initialization Protocol
-
-### Quick Status Assessment
-
-Before beginning any work session:
-
-1. **Check for blockers**: Scan `STATUS.md` and active issue PLAN.md files for urgent issues
-2. **Assess current work**: Review active tasks and progress
-3. **Check next priorities**: Identify upcoming work if no active tasks
-4. **Ask for direction**: Request user instruction if status is unclear
-
-### What You Should Suggest (But Wait for Approval)
-
-- **Blockers found**: "Found urgent issues. Should we address [specific issue] first?"
-- **Active work**: "Current work shows [details]. Continue with this work?"
-- **Ready for new work**: "Status looks clear. What would you like to work on?"
-
-**Key**: Always suggest based on actual conditions but wait for user instruction before proceeding.
-
-## 17-Agent Framework Integration
-
-You have access to 17 specialized agents through the `.claude/agents/` directory. Use these agents appropriately:
-
-### Automatically Invoked Agents (8 agents)
-
-These activate automatically based on context:
-
-- **project-manager**: Multi-domain tasks requiring coordination
-- **context-analyzer**: Investigation and root cause analysis tasks
-- **frontend-specialist**: UI/UX development and component work
-- **backend-specialist**: Server-side implementation and business logic
-- **database-specialist**: All database-related operations
-- **test-engineer**: Test creation and strategy development
-- **code-reviewer**: Post-implementation quality reviews
-- **docs-sync-agent**: After code changes affecting documentation
-
-### On-Demand Specialists (9 agents)
-
-Invoke these for specific needs:
-
-- **code-architect**: Architectural decisions and system design
-- **api-designer**: API architecture and endpoint design
-- **security-auditor**: Security audits and compliance validation
-- **devops-engineer**: Infrastructure and deployment automation
-- **performance-optimizer**: Performance analysis and optimization
-- **technical-writer**: New documentation creation
-- **refactoring-specialist**: Code improvement and technical debt reduction
-- **migration-specialist**: Version upgrades and framework migrations
-- **data-analyst**: Data processing, analysis, and reporting
+You have access to 18 specialized agents through the `.claude/agents/` directory. Your job is to orchestrate the work of the appropriate agents for each task, including passing context between them and keeping any status files up-to-date. Never edit code directly yourself.
 
 ### Agent Selection Rules
 
@@ -172,7 +91,7 @@ You MUST adhere to these standards:
 
 - Follow patterns established in the `examples/` directory
 - Use existing project patterns and conventions consistently
-- Validate against technical specifications in `docs/technical.md`
+- Validate against quality standards in `docs/quality-standards.md`
 - Never duplicate existing functionality without explicit justification
 
 ## Quality Requirements
@@ -229,9 +148,9 @@ When encountering problems:
 
 When working with unfamiliar areas:
 
-1. Use context engineering techniques from `docs/context-engineering.md`
+1. Use context engineering techniques from `ai-collaboration/context-engineering.md`
 2. Apply RAG strategies when working with large codebases
-3. Reference `prompting.md` for effective interaction patterns
+3. Reference `ai-collaboration/prompting.md` for effective interaction patterns
 4. Leverage the 17-agent framework for domain-specific expertise
 5. Maintain evidence-based reasoning throughout problem-solving
 
@@ -278,7 +197,7 @@ Your performance will be evaluated on:
 
 ### Context Management Issues
 
-1. **AI forgets previous context**: Update and reference `STATUS.md` and `docs/technical.md`
+1. **AI forgets previous context**: Update and reference `STATUS.md` and agent guidelines in `.claude/agents/INDEX.md`
 2. **Inconsistent patterns**: Check existing code patterns before implementing
 3. **Lost session context**: Follow session completion protocol properly
 

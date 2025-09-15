@@ -32,36 +32,18 @@ This template was built with Claude Code and VSCode in mind, but should adaptabl
 git clone https://github.com/yourusername/ai-coding-template.git my-project
 cd my-project
 
-# 2. Initialize
-rm -rf .git && git init
-chmod +x scripts/*.sh
+# 2. Run quick setup
 ./scripts/setup-manager.sh quick
 
-# 3. Set up CHANGELOG (optional)
-cp templates/CHANGELOG.template.md CHANGELOG.md
-
-# 4. Verify setup
+# 3. Verify installation
 ./scripts/ai-status.sh --check
 ```
 
+**→ [Complete Setup Guide](./docs/setup/quick-start.md)** - Detailed instructions and troubleshooting
+
 ### First AI Session
 
-1. Share these files with your AI assistant:
-
-   - `CLAUDE.md` - AI instructions
-   - `STATUS.md` - Project state
-   - `docs/technical.md` - Technical specs
-
-2. Try your first agent:
-
-   ```
-   "Use the context-analyzer agent to understand this project"
-   ```
-
-3. Create something:
-   ```
-   "Using the frontend-specialist, create a responsive navbar component"
-   ```
+**→ [Getting Started Guide](./docs/setup/quick-start.md#first-ai-session)** - Step-by-step first session walkthrough
 
 ## Project Structure
 
@@ -72,7 +54,7 @@ my-project/
 ├── deliverables/            # Feature and issue tracking
 │   └── [feature]/issues/    # Organized work items
 ├── docs/                    # Documentation
-│   ├── technical.md         # Technical specifications
+│   ├── quality-standards.md # Quality requirements and standards
 │   ├── guides/              # How-to guides
 │   └── workflows/           # Common workflows
 ├── scripts/                 # Automation tools
@@ -122,13 +104,13 @@ Essential scripts for AI-assisted development:
 ### 🔧 References
 
 - [Troubleshooting](./docs/troubleshooting.md) - Solve common issues
-- [FAQ](./docs/faq.md) - Frequently asked questions
-- [Changelog Guide](./docs/guides/changelog-guide.md) - Maintain project history
+- [FAQ](./docs/troubleshooting.md#frequently-asked-questions) - Frequently asked questions
+- [Changelog Guide](./docs/guides/project-guidelines/changelog-maintenance.md) - Maintain project history
 
 ### 🎯 Quick Links
 
-- [AI Branching Strategy](./docs/guides/ai-branching-strategy.md)
-- [Documentation Standards](./docs/documentation-standards.md)
+- [AI Branching Strategy](./ai-collaboration/ai-branching-strategy.md)
+- [Documentation Guidelines](./docs/documentation-guidelines.md)
 - [Quick Reference](./docs/reference/)
 
 ## For Existing Projects
@@ -161,7 +143,7 @@ This template evolves with community input. Contributions welcome!
 - 💡 [Suggest Features](https://github.com/yourusername/ai-coding-template/discussions)
 - 🤝 [Submit PRs](https://github.com/yourusername/ai-coding-template/pulls)
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+See our GitHub repository for contribution guidelines.
 
 ## Learn More
 
@@ -172,7 +154,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 ## License
 
-MIT - See [LICENSE](./LICENSE) for details.
+MIT License - see repository for full license details.
 
 ---
 

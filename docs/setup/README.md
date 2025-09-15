@@ -2,13 +2,20 @@
 
 **Version**: 1.0.0  
 **Created**: 2025-09-10  
-**Last Updated**: 2025-09-10  
+**Last Updated**: 2025-09-15  
 **Status**: Active  
 **Target Audience**: Developers, DevOps, Team Leads
 
 Comprehensive setup and integration guides for AI coding template.
 
 ## Quick Start
+
+### ⚡ [Quick Start Guide](./quick-start.md)
+Complete 5-minute setup for new users.
+- Essential prerequisites and installation
+- First AI session walkthrough
+- Basic troubleshooting
+- Next steps guidance
 
 ### 🚀 [Integration Guide](./integration-guide.md)
 Step-by-step instructions for integrating AI coding template into existing projects.
@@ -90,4 +97,4 @@ Each guide includes comprehensive troubleshooting sections. For additional suppo
 
 ---
 
-**Quick Links**: [Back to Documentation Hub](../README.md) | [Technical Architecture](../technical.md) | [Guides](../guides/)
+**Quick Links**: [Back to Documentation Hub](../README.md) | [System Guidelines](../../CLAUDE.md) | [Guides](../guides/)

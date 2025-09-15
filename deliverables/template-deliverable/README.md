@@ -67,5 +67,5 @@ This template follows the "Docs as Code" philosophy with a focus on:
 ## See Also
 
 - [Documentation Guidelines](../../docs/documentation-guidelines.md) - Detailed guide on what goes where
-- [AI Branching Strategy](../../docs/guides/ai-branching-strategy.md) - How AI should work with branches
+- [AI Branching Strategy](../../ai-collaboration/ai-branching-strategy.md) - How AI should work with branches
 - [CLAUDE.md](../../CLAUDE.md) - Instructions for AI assistants

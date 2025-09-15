@@ -2,7 +2,7 @@
 
 **Version**: 1.0.0
 **Created**: 2025-08-21
-**Last Updated**: 2025-09-10
+**Last Updated**: 2025-09-15
 **Status**: Active
 **Target Audience**: Development Team, AI Assistants
 
@@ -68,7 +68,7 @@ Guide for selecting the right tools for different development tasks.
 **Most Common**: [Development Commands](./development-commands.md)
 - Documentation health: `node scripts/docs-health.js`
 - Generate docs: `node scripts/generate-doc.js`
-- Git workflow with AI attribution and [AI Branching Strategy](../guides/ai-branching-strategy.md)
+- Git workflow with AI attribution and [AI Branching Strategy](../../ai-collaboration/ai-branching-strategy.md)
 
 ### For Troubleshooting
 **When Things Break**: [Troubleshooting Checklist](./troubleshooting-checklist.md)
@@ -82,7 +82,7 @@ Guide for selecting the right tools for different development tasks.
 ### Documentation System
 These guides integrate with:
 - **docs/documentation-guidelines.md**: Writing standards
-- **docs/guides/visual-guide.md**: Visual documentation patterns
+- **docs/guides/project-guidelines/visual-documentation.md**: Visual documentation patterns
 - **docs/templates/**: Documentation templates
 
 ### Deliverables System
@@ -153,8 +153,8 @@ Use these guides as templates for:
 
 ## Related Documentation
 
-- [AI Branching Strategy](../guides/ai-branching-strategy.md)
+- [AI Branching Strategy](../../ai-collaboration/ai-branching-strategy.md)
 - [Documentation Guidelines](../documentation-guidelines.md)
-- [Visual Guide](../guides/visual-guide.md) 
+- [Visual Guide](../guides/project-guidelines/visual-documentation.md) 
 - [Deliverables System](../../deliverables/README.md)
 - [Project Status](../../STATUS.md)

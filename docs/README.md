@@ -2,7 +2,7 @@
 
 **Version**: 1.0.0
 **Created**: 2025-08-22
-**Last Updated**: 2025-09-10
+**Last Updated**: 2025-09-15
 **Status**: Active
 **Target Audience**: All Users - Developers, Product Managers, AI Assistants
 
@@ -14,10 +14,10 @@
 → [Technical Documentation Guide](architecture/README.md) | [Use Technical Template](templates/simple/feature-simple.template.md)
 
 **📊 For product managers and business stakeholders?**
-→ [Product Documentation Guide](deliverables/README.md) | [Use Product Template](templates/simple/deliverable-simple.template.md)
+→ [Documentation Guidelines](documentation-guidelines.md) | [Use Simple Template](templates/simple/feature-simple.template.md)
 
 **📝 For comprehensive/enterprise features?**
-→ Use [Standard Technical Template](templates/standard/feature.template.md) or [Standard Product Template](templates/standard/deliverable.template.md)
+→ Use [Standard Technical Template](templates/standard/feature.template.md) with comprehensive documentation
 
 ### I need to understand the system...
 
@@ -25,7 +25,7 @@
 → [Documentation Guidelines](documentation-guidelines.md)
 
 **🎯 See examples of good documentation?**
-→ [Technical Example](architecture/user-authentication-architecture.md) | [Product Example](deliverables/user-authentication-deliverable.md)
+→ [Technical Example](architecture/user-authentication-architecture.md) | [System Design Example](architecture/system-design.md)
 
 ## Documentation Map
 
@@ -33,7 +33,7 @@
 📁 docs/
 ├── 🏠 README.md                    # You are here - Central hub
 ├── 📋 documentation-guidelines.md   # Documentation standards & guidelines
-├── 🔧 technical.md                 # System architecture overview
+├── 🔧 ai-agents-guide.md           # Complete agent system reference
 ├── 📊 quality-standards.md         # Quality requirements & validation
 ├── 🛠️ setup/                      # Integration & setup guides
 │   ├── README.md                   # Setup hub
@@ -70,13 +70,11 @@
 - **Audience**: Developers, AI assistants, technical contributors
 - **When to use**: System architecture, API design, database schemas, code implementation
 
-### Product Documentation (Business-Focused)
-- **Purpose**: Business requirements, user impact, product specifications
-- **Location**: `docs/deliverables/`
-- **Audience**: Product managers, stakeholders, business teams
-- **When to use**: Feature requirements, user stories, business impact, launch plans
-
-**Important**: This is **not a 1:1 mapping**. One product deliverable typically requires multiple technical architecture documents.
+### Process Documentation (Workflow-Focused)
+- **Purpose**: Development workflows, processes, and business requirements
+- **Location**: `docs/workflows/` and `docs/guides/`
+- **Audience**: Product managers, stakeholders, development teams
+- **When to use**: Process documentation, workflow guides, team standards
 
 ## Template Selection Guide
 
@@ -88,10 +86,10 @@
 - Essential testing information
 - ~5-7 sections, ~50-75 lines
 
-**Product**: Use [Simple Product Template](templates/simple/deliverable-simple.template.md)
-- Business objectives and user impact
-- Key requirements and success criteria
-- Implementation timeline
+**Process**: Use [Documentation Guidelines](documentation-guidelines.md)
+- Clear objectives and success criteria
+- Key requirements and implementation notes
+- Testing and validation approach
 - ~5-7 sections, ~50-75 lines
 
 ### For Complex/Enterprise Features
@@ -102,9 +100,9 @@
 - Complete testing and security coverage
 - ~15+ sections, ~200+ lines
 
-**Product**: Use [Standard Product Template](templates/standard/deliverable.template.md)
-- Detailed business analysis
-- Comprehensive stakeholder planning
+**Process**: Use comprehensive documentation approach
+- Detailed workflow analysis
+- Comprehensive process planning
 - Risk assessment and mitigation
 - ~13+ sections, ~200+ lines
 
@@ -115,7 +113,7 @@
 │                                                           │
 ├─ For developers/technical team? ───── YES ──→ Technical  │
 │  │                                                       │
-│  └─ NO ──→ For business/product team? ──→ Product        │
+│  └─ NO ──→ For process/workflow docs? ──→ Guidelines     │
 │                                                           │
 ├─ Simple feature (<2 weeks dev)? ──── YES ──→ Simple      │
 │  │                                                       │
@@ -132,11 +130,11 @@
 3. Fill in required sections, remove unused sections
 4. Follow [Technical Documentation Guide](architecture/README.md)
 
-### New Product Document
-1. Copy [Simple Product Template](templates/simple/deliverable-simple.template.md)
-2. Save as `deliverables/[feature-name]-deliverable.md`
+### New Process Document
+1. Follow [Documentation Guidelines](documentation-guidelines.md)
+2. Save as `workflows/[process-name].md` or `guides/[guide-name].md`
 3. Fill in required sections, remove unused sections
-4. Follow [Product Documentation Guide](deliverables/README.md)
+4. Use appropriate templates from `templates/` directory
 
 ### Complex Features
 - Start with simple template to outline basics
@@ -168,13 +166,13 @@ Complete integration and setup guidance for new and existing projects.
 | **Setup & integrate this template** | **[Setup Hub](setup/README.md)** |
 | **Get quick development commands** | **[Reference Hub](reference/README.md)** |
 | Create simple technical docs | [Simple Technical Template](templates/simple/feature-simple.template.md) |
-| Create simple product docs | [Simple Product Template](templates/simple/deliverable-simple.template.md) |
+| Create process documentation | [Documentation Guidelines](documentation-guidelines.md) |
 | Create comprehensive docs | [Standard Templates](templates/standard/) |
 | Understand documentation standards | [Documentation Guidelines](documentation-guidelines.md) |
 | Understand quality requirements | [Quality Standards](quality-standards.md) |
-| See examples | [Technical Example](architecture/user-authentication-architecture.md) \| [Product Example](deliverables/user-authentication-deliverable.md) |
+| See examples | [Technical Example](architecture/user-authentication-architecture.md) \| [System Design Example](architecture/system-design.md) |
 | Get technical guidance | [Architecture Guide](architecture/README.md) |
-| Get product guidance | [Deliverables Guide](deliverables/README.md) |
+| Get process guidance | [Documentation Guidelines](documentation-guidelines.md) |
 | Browse how-to guides | [Guides Directory](guides/) |
 
 ## Support

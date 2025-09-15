@@ -21,7 +21,7 @@ This guide helps resolve common issues and answers frequently asked questions ab
 1. Update and share `STATUS.md` at session start
 2. Reference specific files: "Check the existing auth implementation in src/auth/"
 3. Use context-analyzer agent: "Please analyze the current project state first"
-4. Share `docs/technical.md` for architecture context
+4. Share `CLAUDE.md` for system guidelines and context
 
 #### Agent Not Working as Expected
 
@@ -30,7 +30,7 @@ This guide helps resolve common issues and answers frequently asked questions ab
 **Solutions**:
 
 1. Be explicit: "Please use the frontend-specialist agent for this task"
-2. Provide context: Share relevant docs/technical.md sections
+2. Provide context: Share relevant CLAUDE.md and quality-standards.md sections
 3. Check agent documentation: `.claude/agents/[agent-name].md`
 4. Verify agent is appropriate for the task
 
@@ -89,7 +89,7 @@ which git node npm
 
 ```bash
 # Check required files exist
-ls -la CLAUDE.md STATUS.md docs/technical.md
+ls -la CLAUDE.md STATUS.md docs/quality-standards.md
 
 # Run diagnostics
 ./scripts/ai-status.sh --check
@@ -374,7 +374,7 @@ tail -f scripts/logs/ai-status.log
 1. **Regular Updates**:
 
    - Keep `STATUS.md` current
-   - Update `docs/technical.md` with changes
+   - Update documentation to reflect changes
    - Run health checks weekly
 
 2. **Session Management**:
@@ -447,7 +447,7 @@ rm -rf scripts/
 
 **A**: The template is language-agnostic. Simply:
 1. Adapt the examples to your language
-2. Update `docs/technical.md` with your stack
+2. Update documentation with your tech stack details
 3. Use appropriate specialist agents
 4. Follow your language's conventions
 
