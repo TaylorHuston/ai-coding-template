@@ -1,10 +1,5 @@
 ---
-command: "/feature-development"
 description: End-to-end feature implementation with TDD and quality gates
-category: "Development & Implementation"
-purpose: "Complete feature development workflow with quality gates"
-wave-enabled: true
-performance-profile: "standard"
 argument-hint: --issue KEY --type TYPE --complexity LEVEL --testing APPROACH
 allowed-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 model: opus

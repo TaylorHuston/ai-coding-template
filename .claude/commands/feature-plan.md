@@ -1,10 +1,5 @@
 ---
-command: "/feature-plan"
 description: Comprehensive feature planning workflow with deliverable setup
-category: "Planning & Architecture"
-purpose: "Create detailed feature plans with proper structure and comprehensive analysis"
-wave-enabled: true
-performance-profile: "complex"
 argument-hint: --issue ISSUE-KEY --deliverable DELIVERABLE-NAME --complexity LEVEL --research DEPTH
 allowed-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 model: opus

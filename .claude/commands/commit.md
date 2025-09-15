@@ -1,10 +1,5 @@
 ---
-command: "/commit"
 description: Create a proper git commit with quality checks and conventional message
-category: "Version Control & Quality"
-purpose: "Safe git commits with pre-commit validation and conventional messages"
-wave-enabled: false
-performance-profile: "standard"
 argument-hint: Optional commit message or files to include
 allowed-tools: Bash(git *), Bash(npm run *), Bash(pnpm *), Bash(yarn *), Read, Grep, Glob
 model: sonnet

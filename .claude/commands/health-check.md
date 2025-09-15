@@ -1,10 +1,5 @@
 ---
-command: "/health-check"
 description: Comprehensive project health assessment and reporting
-category: "Quality & Assessment"
-purpose: "Multi-dimensional project health evaluation and reporting"
-wave-enabled: false
-performance-profile: "standard"
 argument-hint: Optional scope (file, module, project, system)
 allowed-tools: Read, Bash, Grep, Glob, TodoWrite, Task
 model: sonnet

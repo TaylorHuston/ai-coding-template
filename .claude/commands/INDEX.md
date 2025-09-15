@@ -33,7 +33,7 @@ Comprehensive catalog of Claude Code slash commands with proper YAML frontmatter
   - *Usage*: `/review --scope SCOPE --focus FOCUS --depth DEPTH --output FORMAT`
   - *Model*: sonnet | *Tools*: Read, Bash, Grep, Glob, TodoWrite, Task
 
-- **[/security-audit](./security-audit.md)** - OWASP-compliant security assessment  
+- **[/security-audit](./security-audit.md)** - OWASP-compliant security assessment
   - *Purpose*: OWASP-compliant security assessment with vulnerability remediation
   - *Usage*: `/security-audit --scope SCOPE --depth DEPTH --compliance FRAMEWORK --output FORMAT`
   - *Model*: opus | *Tools*: Read, Bash, Grep, Glob, TodoWrite, Task
@@ -55,20 +55,20 @@ Comprehensive catalog of Claude Code slash commands with proper YAML frontmatter
   - *Model*: opus | *Tools*: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
 #### **Project Management**
-- **[/update-progress](./update-progress.md)** - Project progress tracking and status updates
-  - *Purpose*: Synchronize local status with project tracking systems
-  - *Usage*: `/update-progress [issue key or progress details]`  
-  - *Model*: haiku | *Tools*: Read, Write, Edit
+- **[/progress](./progress.md)** - **MERGED** - Project progress validation and tracking with evidence verification
+  - *Purpose*: Validate progress claims and update status with mandatory evidence verification
+  - *Usage*: `/progress --mode validate|update|both [issue key or progress details]`
+  - *Model*: sonnet | *Tools*: Read, Write, Edit, Grep, Glob, TodoWrite, Task
 
-- **[/merge-branch](./merge-branch.md)** - Safe branch merging with validation
-  - *Purpose*: Safe branch merging with automated testing and validation
+- **[/merge-branch](./merge-branch.md)** - **ENHANCED** - Safe branch merging with deployment validation
+  - *Purpose*: Safe branch merging with automated testing, deployment, and validation
   - *Usage*: `/merge-branch [target branch or merge options]`
-  - *Model*: sonnet | *Tools*: Bash(git), Bash(npm/pnpm/yarn), Read, Edit, Grep, Glob, TodoWrite
+  - *Model*: sonnet | *Tools*: Bash(git), Bash(npm/pnpm/yarn), Read, Edit, Grep, Glob, TodoWrite, Task
 
-- **[/refresh](./refresh.md)** - AI assistant context refresh
+- **[/refresh](./refresh.md)** - **ENHANCED** - AI assistant context refresh with git awareness
   - *Purpose*: Quick context refresh for AI assistants on project state and conventions
   - *Usage*: `/refresh [specific area]`
-  - *Model*: haiku | *Tools*: Read
+  - *Model*: haiku | *Tools*: Read, Bash(git)
 
 ## Command Usage Patterns
 
@@ -134,7 +134,7 @@ typical_duration: "1-2 days"
 #### **Low Complexity Commands**
 - commit - Git commit workflow
 - refresh - Context refresh
-- update-progress - Status updates
+- progress - Status validation and updates
 - test-fix - Test failure resolution
 
 ## Command Selection Guide
@@ -159,7 +159,7 @@ task_requirements:
     
   project_management:
     planning: [feature-plan]
-    progress: [update-progress]
+    progress: [progress]
     context: [refresh]
     merging: [merge-branch]
 ```
@@ -195,9 +195,9 @@ All commands now follow Claude Code standards:
 | `/review` | sonnet | `/review --scope SCOPE --focus FOCUS` | Comprehensive code review |
 | `/security-audit` | opus | `/security-audit --scope SCOPE --depth DEPTH` | OWASP security assessment |
 | `/test-fix` | sonnet | `/test-fix [pattern]` | Automatic test failure resolution |
-| `/update-progress` | haiku | `/update-progress [issue]` | Project progress tracking |
-| `/merge-branch` | sonnet | `/merge-branch [target]` | Safe branch merging with validation |
-| `/refresh` | haiku | `/refresh [area]` | AI assistant context refresh |
+| `/progress` | sonnet | `/progress --mode validate\|update [issue]` | **MERGED** - Progress validation and tracking |
+| `/merge-branch` | sonnet | `/merge-branch [target]` | **ENHANCED** - Branch merging with deployment validation |
+| `/refresh` | haiku | `/refresh [area]` | **ENHANCED** - Context refresh with git awareness |
 
 ---
 

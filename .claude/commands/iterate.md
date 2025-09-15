@@ -1,10 +1,5 @@
 ---
-command: "/iterate"
 description: Progressive iterative improvement workflow
-category: "Quality & Enhancement"
-purpose: "Systematic refinement through multiple improvement cycles"
-wave-enabled: true
-performance-profile: "standard"
 argument-hint: --target TARGET --iterations N --threshold LEVEL --scope SCOPE
 allowed-tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 model: sonnet

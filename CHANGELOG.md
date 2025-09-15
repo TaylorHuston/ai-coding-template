@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.3.1] - 2025-09-14
+
+### Changed
+
+- **Command Consolidation**: Merged `/validate-progress` and `/update-progress` into unified `/progress` command
+  - New usage: `/progress --mode validate|update|both [issue]`
+  - Maintains all validation and update functionality in single command
+  - Reduced command count from 12 to 11 (8.3% reduction)
+  - Simplified workflow while preserving mandatory evidence verification
+
 ## [0.3.0] - 2025-09-10
 
 ### Added
