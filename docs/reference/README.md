@@ -72,7 +72,7 @@ Guide for selecting the right tools for different development tasks.
 **Most Common**: [Development Commands](./development-commands.md)
 - Documentation health: `node scripts/docs-health.js`
 - Generate docs: `node scripts/generate-doc.js`
-- Git workflow with AI attribution and [AI Branching Strategy](../../ai-collaboration/ai-branching-strategy.md)
+- Git workflow with AI attribution and [AI Branching Strategy](../ai-collaboration-guide.md#ai-branching-strategy)
 
 ### For Troubleshooting
 **When Things Break**: [Troubleshooting Checklist](./troubleshooting-checklist.md)
@@ -157,7 +157,7 @@ Use these guides as templates for:
 
 ## Related Documentation
 
-- [AI Branching Strategy](../../ai-collaboration/ai-branching-strategy.md)
+- [AI Collaboration Guide](../ai-collaboration-guide.md)
 - [Documentation Guidelines](../documentation-guidelines.md)
 - [Visual Guide](../guides/project-guidelines/visual-documentation.md) 
 - [Deliverables System](../../deliverables/README.md)

@@ -109,7 +109,7 @@ Essential scripts for AI-assisted development:
 
 ### 🎯 Quick Links
 
-- [AI Branching Strategy](./ai-collaboration/ai-branching-strategy.md)
+- [AI Collaboration Guide](./docs/ai-collaboration-guide.md)
 - [Documentation Guidelines](./docs/documentation-guidelines.md)
 - [Quick Reference](./docs/reference/)
 

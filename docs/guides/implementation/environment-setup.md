@@ -4,7 +4,7 @@ version: "0.1.0"
 created: "2025-09-10"
 last_updated: "2025-09-10"
 status: "Active"
-target_audience: ["Developers", "New Team Members"]
+target_audience: ["developers", "new-team-members"]
 tags: ["environment-setup", "development-tools", "local-development", "ai-integration"]
 category: "Implementation Guides"
 description: "Platform-agnostic guide for setting up a local development environment for AI-assisted development."

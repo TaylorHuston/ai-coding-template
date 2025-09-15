@@ -28,35 +28,36 @@ Document the **technical implementation details** of your project:
 ```
 docs/architecture/
 ├── README.md                    # This guide
+├── c4-overview.md              # C4 model guide for visual architecture
+├── system-context.md           # Example C4 system context diagram
 ├── examples/                    # Reference examples (remove when not needed)
-│   ├── system-overview.md      # Example: overall architecture
-│   └── auth-system.md          # Example: feature architecture
-├── templates/                   # Quick-start templates
-│   ├── feature-architecture.md # Template for new features
-│   └── system-component.md     # Template for services/components
+│   ├── README.md               # Guide to examples
+│   └── system-overview.md      # Example: overall architecture
 └── decision-records/            # Architecture Decision Records (ADRs)
     ├── README.md               # ADR guide
-    ├── template.md             # ADR template
-    └── 001-example.md          # Example ADR
+    └── template.md             # ADR template
 ```
 
 ## Quick Start
 
 ### 1. **For Overall System Architecture**
 ```bash
-# Copy the template
-cp docs/architecture/templates/system-component.md docs/architecture/system-overview.md
+# Copy the example as starting point
+cp docs/architecture/examples/system-overview.md docs/architecture/my-system.md
 
-# Customize for your system
-# - Replace placeholders with your actual system details
+# Or use a template
+cp docs/templates/standard/feature.template.md docs/architecture/my-system.md
+
+# Then customize:
+# - Replace placeholders with your system details
 # - Add architecture diagrams
 # - Document your technology choices
 ```
 
 ### 2. **For New Features**
 ```bash
-# Copy the template
-cp docs/architecture/templates/feature-architecture.md docs/architecture/user-management.md
+# Use the standard feature template
+cp docs/templates/standard/feature.template.md docs/architecture/user-management.md
 
 # Customize for your feature
 # - Document the feature's purpose and design

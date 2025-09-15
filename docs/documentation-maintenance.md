@@ -1,10 +1,15 @@
-# Documentation Maintenance Guide
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "ai-assistants", "documentation-maintainers"]
+document_type: "guide"
+tags: ["documentation", "maintenance", "workflow"]
+difficulty: "intermediate"
+---
 
-**Version**: 1.0.0
-**Created**: 2025-09-15
-**Last Updated**: 2025-09-15
-**Status**: Active
-**Target Audience**: Developers, AI Assistants, Documentation Maintainers
+# Documentation Maintenance Guide
 
 ## Overview
 
@@ -33,8 +38,7 @@ This guide provides systematic procedures for maintaining documentation quality,
 ```
 README.md (project overview)
 ├── CLAUDE.md (AI instructions)
-├── docs/INDEX.md (complete navigation hub)
-└── docs/README.md (documentation hub alternative)
+└── docs/README.md (complete documentation hub)
     ├── setup/ (installation and configuration)
     ├── guides/ (how-to documentation)
     ├── reference/ (quick reference materials)
@@ -45,7 +49,7 @@ README.md (project overview)
 ```
 
 ### Validation Requirements
-- All files reachable from INDEX.md or README.md
+- All files reachable from docs/README.md or main README.md
 - No orphaned documentation
 - No broken internal references
 - Consistent cross-references between related documents
@@ -123,12 +127,12 @@ node scripts/docs-health.js
 **Detection**:
 ```bash
 # Find files not referenced in navigation
-grep -r "filename.md" docs/INDEX.md docs/README.md docs/*/README.md
+grep -r "filename.md" docs/README.md docs/*/README.md
 ```
 
 **Solution**:
 1. Add to appropriate README.md file
-2. Link from docs/INDEX.md
+2. Link from docs/README.md
 3. Create logical navigation path
 
 ### Broken References
@@ -239,7 +243,7 @@ node scripts/check-docs-links.js
 4. **Validate changes with tools**
 
 ### Navigation Maintenance
-1. **Update INDEX.md** for new major sections
+1. **Update docs/README.md** for new major sections
 2. **Maintain README.md files** in each directory
 3. **Create logical groupings** by audience and purpose
 4. **Test navigation paths** regularly

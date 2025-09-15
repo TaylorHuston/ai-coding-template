@@ -1,10 +1,14 @@
-# Code Examples
+---
+version: "0.1.0"
+created: "2025-08-21"
+last_updated: "2025-08-22"
+status: "active"
+target_audience: ["ai-assistants", "development-team"]
+document_type: "reference"
+tags: ["examples", "code-patterns", "reference"]
+---
 
-**Version**: 1.0.0
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-22
-**Status**: Active
-**Target Audience**: AI Assistants, Development Team
+# Code Examples
 
 This directory contains code pattern examples that AI assistants can reference when generating code for your project.
 
@@ -21,58 +25,82 @@ AI coding assistants perform much better when they have concrete examples to fol
 ## How to Use These Examples
 
 ### For Developers
+
 - Review examples before starting new features
 - Use as templates for common functionality
 - Ensure consistency across the codebase
 - Update examples when patterns change
 
 ### For AI Assistants
+
 - Reference these patterns when generating new code
 - Follow the established conventions shown in examples
 - Use similar structure and naming patterns
 - Apply the same error handling and validation approaches
 
-## Example Categories
+## Available Examples
 
-### API Patterns
-- RESTful endpoint implementations
-- Request/response handling
-- Error handling and validation
-- Authentication and authorization
+This directory contains working TypeScript/React examples that demonstrate best practices:
 
-### Component Patterns
-- UI component structure
-- State management
-- Props and event handling
+### [api-user-service.ts](./api-user-service.ts) (243 lines)
+**API Service Implementation**
+- Service class architecture
+- Async/await patterns
+- Error handling with custom error types
+- Type definitions for requests/responses
+- Repository pattern integration
+- Logging and monitoring
+
+### [component-user-card.tsx](./component-user-card.tsx) (239 lines)
+**React Component Pattern**
+- Functional component with TypeScript
+- Props interface definitions
+- State management with hooks
+- Event handling patterns
+- Conditional rendering
 - Styling approaches
 
-### Service Patterns
-- Business logic organization
-- External service integration
-- Database operations
-- Background job processing
-
-### Testing Patterns
-- Unit test structure
-- Integration test examples
-- Mock and fixture patterns
-- Test data management
-
-### Configuration Patterns
+### [config-app-config.ts](./config-app-config.ts) (404 lines)
+**Configuration Management**
 - Environment variable handling
-- Feature flag implementation
 - Configuration validation
+- Type-safe configuration objects
+- Default value patterns
+- Feature flag implementation
 - Secrets management
+
+### [test-user-service.test.ts](./test-user-service.test.ts) (419 lines)
+**Testing Patterns**
+- Unit test structure with Jest
+- Mock patterns for dependencies
+- Test data factories
+- Async testing patterns
+- Error condition testing
+- Test organization and setup
+
+## Quick Reference
+
+| I need to... | Use this example | File |
+|--------------|------------------|------|
+| **Create an API service** | Service class patterns | [api-user-service.ts](./api-user-service.ts) |
+| **Build a React component** | Component with TypeScript | [component-user-card.tsx](./component-user-card.tsx) |
+| **Handle configuration** | Environment config patterns | [config-app-config.ts](./config-app-config.ts) |
+| **Write unit tests** | Testing best practices | [test-user-service.test.ts](./test-user-service.test.ts) |
+| **Implement error handling** | See API service example | [api-user-service.ts](./api-user-service.ts) |
+| **Add type definitions** | All examples show patterns | Any TypeScript file |
+| **Structure async code** | Service and test examples | [api-user-service.ts](./api-user-service.ts) |
 
 ## Naming Conventions
 
 Examples follow this naming pattern:
+
 - `{category}-{functionality}.{extension}`
 - Example: `api-user-service.js`, `component-user-card.tsx`, `test-user-service.test.js`
 
 ## Contributing
 
 When adding new examples:
+
 1. Follow existing naming conventions
 2. Include comprehensive comments explaining the pattern
 3. Show both success and error handling
@@ -82,6 +110,7 @@ When adding new examples:
 ## Notes for AI Assistants
 
 When generating code based on these examples:
+
 - **Match the style**: Use the same naming conventions, formatting, and structure
 - **Include error handling**: Follow the error handling patterns shown
 - **Add proper typing**: Include type definitions as shown in examples

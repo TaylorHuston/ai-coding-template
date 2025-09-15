@@ -3,8 +3,8 @@ title: "Tool Selection Guide"
 version: "0.1.0"
 created: "2025-09-10"
 last_updated: "2025-09-10"
-status: "Active"
-target_audience: ["AI Assistants", "Developers"]
+status: "active"
+target_audience: ["ai-assistants", "developers"]
 tags: ["tool-selection", "quick-reference", "development-tools"]
 category: "Reference"
 description: "Quick reference for selecting the right tools for different development tasks."

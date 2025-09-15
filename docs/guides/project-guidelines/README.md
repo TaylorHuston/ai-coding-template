@@ -16,7 +16,7 @@
 ## Navigation
 
 - **[← Back to Guides](../README.md)** - All guides overview
-- **[AI Collaboration](../ai-collaboration/README.md)** - Working with AI effectively
+- **[AI Collaboration Guide](../../ai-collaboration-guide.md)** - Working with AI effectively
 - **[Implementation Guides](../implementation/README.md)** - Technical how-to guides
 
 ---

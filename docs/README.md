@@ -169,6 +169,14 @@ Complete integration and setup guidance for new and existing projects.
 |---------------|---------|
 | **Setup & integrate this template** | **[Setup Hub](setup/README.md)** |
 | **Get quick development commands** | **[Reference Hub](reference/README.md)** |
+| **Start using this template** | [Setup Guide](./setup/README.md) |
+| **Add to existing project** | [Integration Guide](./setup/integration-guide.md) |
+| **Understand the agent system** | [AI Agents Guide](./ai-agents-guide.md) |
+| **Learn effective AI prompting** | [AI Collaboration Guide](./ai-collaboration-guide.md#effective-ai-communication) |
+| **Set up development environment** | [Local Environment Setup](./guides/implementation/environment-setup.md) |
+| **Troubleshoot issues** | [Troubleshooting Guide](./troubleshooting.md) |
+| **Find command references** | [Development Commands](./reference/development-commands.md) |
+| **Configure deployment** | [Deployment Guide](./setup/deployment-guide.md) |
 | Create simple technical docs | [Simple Technical Template](templates/simple/feature-simple.template.md) |
 | Create process documentation | [Documentation Guidelines](documentation-guidelines.md) |
 | Create comprehensive docs | [Standard Templates](templates/standard/) |
@@ -178,6 +186,46 @@ Complete integration and setup guidance for new and existing projects.
 | Get technical guidance | [Architecture Guide](architecture/README.md) |
 | Get process guidance | [Documentation Guidelines](documentation-guidelines.md) |
 | Browse how-to guides | [Guides Directory](guides/) |
+
+## Search by Topic
+
+### AI & Machine Learning
+
+- [AI Agents Guide](./ai-agents-guide.md)
+- [AI Collaboration Guide](./ai-collaboration-guide.md) - Essential AI development patterns
+  - [Effective Communication](./ai-collaboration-guide.md#effective-ai-communication)
+  - [Context Management](./ai-collaboration-guide.md#context-management)
+  - [Branching Strategy](./ai-collaboration-guide.md#ai-branching-strategy)
+  - [Architecture Patterns](./ai-collaboration-guide.md#architecture-patterns-for-ai-development)
+
+### Development & Testing
+
+- [Testing Strategy (TDD)](./guides/implementation/testing/tdd-strategy.md)
+- [Test Benchmarking](./guides/implementation/testing/benchmarking.md)
+- [Local Environment Setup](./guides/implementation/environment-setup.md)
+- [Development Commands](./reference/development-commands.md)
+
+### Architecture & Design
+
+- [AI Agent System](./ai-agents-guide.md)
+- [System Design](./architecture/examples/system-overview.md)
+- [User Authentication](./architecture/user-authentication-architecture.md)
+- [Documentation Templates](./templates/README.md)
+
+### Setup & Integration
+
+- [Setup Hub](./setup/README.md)
+- [Integration Guide](./setup/integration-guide.md)
+- [MCP Configuration](./setup/mcp-configuration-guide.md)
+- [Project Management Integration](./setup/project-management-integration.md)
+- [Deployment Guide](./setup/deployment-guide.md)
+
+### Documentation & Processes
+
+- [Documentation Guidelines](./documentation-guidelines.md)
+- [Quality Standards](./quality-standards.md)
+- [Document Templates](./templates/)
+- [Changelog Maintenance](./guides/project-guidelines/changelog-maintenance.md)
 
 ## Support
 

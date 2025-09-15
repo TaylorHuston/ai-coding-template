@@ -3,8 +3,8 @@ title: "Development Commands Quick Reference"
 version: "0.1.0"
 created: "2025-08-21"
 last_updated: "2025-08-22"
-status: "Active"
-target_audience: ["Development Team", "AI Assistants"]
+status: "active"
+target_audience: ["development-team", "ai-assistants"]
 tags: ["development-commands", "quick-reference", "cli-tools"]
 category: "Reference"
 description: "Essential commands for common development tasks."

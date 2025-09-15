@@ -3,8 +3,8 @@ title: "Deployment Guide"
 version: "0.1.0"
 created: "2025-09-10"
 last_updated: "2025-09-10"
-status: "Active"
-target_audience: ["DevOps Engineers", "Developers", "System Administrators"]
+status: "active"
+target_audience: ["devops-engineers", "developers", "system-administrators"]
 tags: ["deployment", "infrastructure", "devops", "platform-agnostic"]
 category: "Setup"
 description: "Platform-agnostic deployment patterns and infrastructure setup for AI coding template projects."

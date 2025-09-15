@@ -1,10 +1,14 @@
-# Deliverables Usage Guide
+---
+version: "1.0.0"
+created: "2025-08-22"
+last_updated: "2025-08-22"
+status: "active"
+target_audience: ["development-team", "product-managers", "ai-assistants"]
+document_type: "guide"
+tags: ["deliverables", "usage", "templates"]
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-08-22  
-**Last Updated**: 2025-08-22  
-**Status**: Active  
-**Target Audience**: Development Team, Product Managers, AI Assistants  
+# Deliverables Usage Guide  
 
 ## When to Use Each Template
 

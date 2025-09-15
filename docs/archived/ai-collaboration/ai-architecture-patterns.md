@@ -3,8 +3,8 @@ title: "Architecture Guide"
 version: "0.1.0"
 created: "2025-08-21"
 last_updated: "2025-08-21"
-status: "Active"
-target_audience: ["Developers", "Architects", "AI Assistants"]
+status: "active"
+target_audience: ["developers", "architects", "ai-assistants"]
 tags: ["ai-collaboration", "architecture-patterns", "design-principles", "code-organization"]
 category: "AI Collaboration"
 description: "High-level system design principles and patterns for AI-assisted development."

@@ -3,8 +3,8 @@ title: "Project Management Integration Guide"
 version: "0.1.0"
 created: "2025-08-21"
 last_updated: "2025-08-21"
-status: "Active"
-target_audience: ["Project Managers", "Developers", "DevOps", "AI Assistants"]
+status: "active"
+target_audience: ["project-managers", "developers", "devops", "ai-assistants"]
 tags: ["project-management", "jira", "linear", "mcp-integration"]
 category: "Setup"
 description: "Comprehensive guide for integrating project management tools (Jira and Linear) with the AI coding template via MCP servers."

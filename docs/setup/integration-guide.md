@@ -3,8 +3,8 @@ title: "Integration Guide"
 version: "0.1.0"
 created: "2025-08-22"
 last_updated: "2025-08-22"
-status: "Active"
-target_audience: ["Developers", "Team Leads"]
+status: "active"
+target_audience: ["developers", "team-leads"]
 tags: ["integration", "setup", "existing-projects", "migration"]
 category: "Setup"
 description: "Comprehensive instructions for integrating the AI Coding Template into existing projects without disrupting current workflow."

@@ -1,13 +1,11 @@
 ---
-title: "API Documentation"
 version: "0.1.0"
 created: "2025-08-21"
 last_updated: "2025-08-21"
-status: "Active"
-target_audience: ["Developers", "API Consumers"]
+status: "active"
+target_audience: ["developers", "api-consumers"]
+document_type: "reference"
 tags: ["api-documentation", "rest-api", "directory-overview"]
-category: "Reference"
-description: "Directory overview for API specifications and documentation."
 ---
 
 # API Documentation

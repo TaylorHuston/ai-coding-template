@@ -1,6 +1,14 @@
-# How-To Guides
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "ai-assistants", "team-members"]
+document_type: "guide"
+tags: ["guides", "how-to", "navigation", "ai-development"]
+---
 
-**Version**: 1.0.0 **Created**: 2025-09-15 **Last Updated**: 2025-09-15 **Status**: Active **Target Audience**: Developers, AI Assistants, Team Members
+# How-To Guides
 
 ## Overview
 
@@ -8,20 +16,21 @@ Practical guides organized by focus area for implementing AI-assisted developmen
 
 ## Quick Start by Role
 
-- **New to AI-assisted development?** → Start with [AI Collaboration](./ai-collaboration/)
+- **New to AI-assisted development?** → Start with [AI Collaboration Guide](../ai-collaboration-guide.md)
 - **Setting up development environment?** → See [Implementation Guides](./implementation/)
 - **Looking for project standards?** → Check [Project Guidelines](./project-guidelines/)
 
 ## Guide Categories
 
-### [AI Collaboration](../../ai-collaboration/) - Working Effectively with AI
+### [AI Collaboration Guide](../ai-collaboration-guide.md) - Working Effectively with AI
 
 Master AI collaboration techniques and communication patterns:
 
-- **[Prompting Guide](../../ai-collaboration/prompting.md)** - Effective AI collaboration techniques
-- **[Context Engineering](../../ai-collaboration/context-engineering.md)** - Managing AI context and memory
-- **[AI Architecture Patterns](../../ai-collaboration/ai-architecture-patterns.md)** - Design patterns for AI-assisted projects
-- **[AI Branching Strategy](../../ai-collaboration/ai-branching-strategy.md)** - Git workflows optimized for AI assistance
+- **[AI Collaboration Guide](../ai-collaboration-guide.md)** - Complete guide to AI-assisted development
+  - Effective communication and prompting techniques
+  - Context management and memory strategies
+  - Architecture patterns for AI development
+  - Git workflows optimized for AI assistance
 
 ### [Implementation](./implementation/) - Technical How-To Guides
 
@@ -43,15 +52,15 @@ Standards and processes for consistent project management:
 
 | I want to... | Guide to read |
 | --- | --- |
-| **Learn effective AI prompting** | [Prompting Guide](../../ai-collaboration/prompting.md) |
-| **Manage AI context better** | [Context Engineering](../../ai-collaboration/context-engineering.md) |
+| **Learn effective AI prompting** | [AI Collaboration Guide](../ai-collaboration-guide.md#effective-ai-communication) |
+| **Manage AI context better** | [AI Collaboration Guide](../ai-collaboration-guide.md#context-management) |
 | **Set up development environment** | [Environment Setup](./implementation/environment-setup.md) |
-| **Implement AI-friendly Git workflow** | [AI Branching Strategy](../../ai-collaboration/ai-branching-strategy.md) |
+| **Implement AI-friendly Git workflow** | [AI Collaboration Guide](../ai-collaboration-guide.md#ai-branching-strategy) |
 | **Manage project changelogs** | [Changelog Maintenance](./project-guidelines/changelog-maintenance.md) |
 | **Set up testing with AI** | [TDD Strategy](./implementation/testing/tdd-strategy.md) |
 | **Deploy AI-assisted projects** | [Deployment Patterns](./implementation/deployment-patterns.md) |
 | **Configure RAG for better context** | [RAG Setup](./implementation/rag-setup.md) |
-| **Understand AI architecture patterns** | [AI Architecture Patterns](../../ai-collaboration/ai-architecture-patterns.md) |
+| **Understand AI architecture patterns** | [AI Collaboration Guide](../ai-collaboration-guide.md#architecture-patterns-for-ai-development) |
 
 ## Navigation
 

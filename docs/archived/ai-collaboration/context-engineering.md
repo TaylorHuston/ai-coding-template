@@ -3,8 +3,8 @@ title: "Context Engineering for AI Coding"
 version: "0.1.0"
 created: "2025-08-21"
 last_updated: "2025-08-21"
-status: "Active"
-target_audience: ["Developers", "AI Assistants"]
+status: "active"
+target_audience: ["developers", "ai-assistants"]
 tags: ["ai-collaboration", "context-management", "development-workflows", "memory-management"]
 category: "AI Collaboration"
 description: "Advanced techniques for managing context and memory in AI-assisted development."

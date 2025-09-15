@@ -3,8 +3,8 @@ title: "AI Branching Strategy"
 version: "0.1.0"
 created: "2025-08-21"
 last_updated: "2025-08-22"
-status: "Active"
-target_audience: ["Developers", "AI Assistants"]
+status: "active"
+target_audience: ["developers", "ai-assistants"]
 tags: ["ai-collaboration", "git-workflow", "branching-strategy", "development-workflows"]
 category: "AI Collaboration"
 description: "A comprehensive guide for implementing effective Git branching strategies when working with AI coding assistants."

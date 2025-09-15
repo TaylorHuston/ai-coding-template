@@ -3,8 +3,8 @@ title: "Prompting Guide"
 version: "0.1.0"
 created: "2025-08-21"
 last_updated: "2025-08-21"
-status: "Active"
-target_audience: ["Developers", "Technical Writers", "AI Assistants"]
+status: "active"
+target_audience: ["developers", "technical-writers", "ai-assistants"]
 tags: ["ai-collaboration", "prompting-techniques", "context-management", "communication-patterns"]
 category: "AI Collaboration"
 description: "A comprehensive guide to writing effective prompts for AI coding assistants."

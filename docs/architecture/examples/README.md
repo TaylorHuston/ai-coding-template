@@ -1,10 +1,14 @@
-# Architecture Documentation Examples
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "system-architects"]
+document_type: "reference"
+tags: ["architecture", "examples", "documentation"]
+---
 
-**Version**: 1.0.0
-**Created**: 2025-09-15
-**Last Updated**: 2025-09-15
-**Status**: Active
-**Target Audience**: Developers, System Architects
+# Architecture Documentation Examples
 
 ## Purpose
 
@@ -23,11 +27,6 @@ This directory contains **example architecture documentation** to show you how t
 **Purpose**: Shows how to document overall system architecture
 **Use When**: Documenting high-level system design and component relationships
 **Key Sections**: Architecture diagram, component overview, data flow, technology stack
-
-### [Auth System](./auth-system.md)
-**Purpose**: Shows how to document a specific feature's architecture
-**Use When**: Documenting authentication, authorization, or security systems
-**Key Sections**: Authentication flow, security considerations, API integration
 
 ## What to Document in Your Architecture
 
@@ -74,8 +73,8 @@ This directory contains **example architecture documentation** to show you how t
 
 For creating new architecture documentation:
 
-- **[Feature Architecture Template](../templates/feature-architecture.md)** - For documenting new features
-- **[System Component Template](../templates/system-component.md)** - For documenting services/components
+- **[Standard Feature Template](../../templates/standard/feature.template.md)** - For comprehensive architecture documentation
+- **[Simple Feature Template](../../templates/simple/feature-simple.template.md)** - For basic architecture documentation
 
 ## Next Steps
 

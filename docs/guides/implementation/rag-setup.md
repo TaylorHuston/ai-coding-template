@@ -4,7 +4,7 @@ version: "0.1.0"
 created: "2025-08-21"
 last_updated: "2025-08-21"
 status: "Active"
-target_audience: ["Developers", "DevOps", "AI Assistants"]
+target_audience: ["developers", "devops", "ai-assistants"]
 tags: ["rag-implementation", "vector-databases", "ai-integration", "code-retrieval"]
 category: "Implementation Guides"
 description: "Complete guide to implementing Retrieval-Augmented Generation for your codebase."

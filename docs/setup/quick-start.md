@@ -69,7 +69,7 @@ cp templates/CHANGELOG.template.md CHANGELOG.md
 - **`STATUS.md`** - Project memory and context
 - **`docs/ai-agents-guide.md`** - Agent system reference
 - **`.claude/agents/INDEX.md`** - Complete agent reference
-- **`docs/INDEX.md`** - Documentation navigation
+- **`docs/README.md`** - Documentation navigation hub
 
 ### Scripts Available
 - **`./scripts/ai-status.sh`** - Project status dashboard
@@ -133,7 +133,7 @@ For more comprehensive setup options:
 
 ## Support
 
-- **Documentation**: [Complete navigation](../INDEX.md)
+- **Documentation**: [Complete navigation](../README.md)
 - **Troubleshooting**: [Common issues](../troubleshooting.md)
 - **Examples**: [Architecture examples](../architecture/)
 

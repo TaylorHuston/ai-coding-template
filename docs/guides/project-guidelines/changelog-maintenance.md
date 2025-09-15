@@ -1,10 +1,16 @@
-# Changelog Maintenance Guide
+---
+version: "1.0.0"
+created: "2025-08-23"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "ai-assistants", "project-maintainers"]
+document_type: "guide"
+tags: ["changelog", "maintenance", "documentation", "workflow"]
+difficulty: "intermediate"
+estimated_time: "20 min"
+---
 
-**Version**: 1.0.0
-**Created**: 2025-08-23
-**Last Updated**: 2025-09-15
-**Status**: Active
-**Target Audience**: Developers, AI Assistants, Project Maintainers
+# Changelog Maintenance Guide
 
 ## Overview
 

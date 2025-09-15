@@ -21,7 +21,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 2. **Comment Approval:** Never comment on <Jira/Linear/etc> without explicit user approval first
 3. **No Assumptions**: Always check existing patterns and code, run tests, ask user if any ambiguity
 4. **Test First:** Follow strict TDD guidelines
-5. **Branch First:** Never work directly on main branches (see [AI Branching Strategy](./ai-collaboration/ai-branching-strategy.md))
+5. **Branch First:** Never work directly on main branches (see [AI Collaboration Guide](./docs/ai-collaboration-guide.md#ai-branching-strategy))
 6. **Atomic Commits:** Keep commits small and focused
 7. **Ask Questions Often and Early**: Clarify ambiguity before implementation
 
@@ -157,9 +157,9 @@ When encountering problems:
 
 When working with unfamiliar areas:
 
-1. Use context engineering techniques from `ai-collaboration/context-engineering.md`
+1. Use context engineering techniques from the [AI Collaboration Guide](./docs/ai-collaboration-guide.md#context-management)
 2. Apply RAG strategies when working with large codebases
-3. Reference `ai-collaboration/prompting.md` for effective interaction patterns
+3. Reference the [AI Collaboration Guide](./docs/ai-collaboration-guide.md#effective-ai-communication) for effective interaction patterns
 4. Leverage the 17-agent framework for domain-specific expertise
 5. Maintain evidence-based reasoning throughout problem-solving
 

@@ -1,10 +1,14 @@
-# Architecture Decision Records (ADRs)
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["architects", "senior-developers", "ai-assistants"]
+document_type: "reference"
+tags: ["architecture", "decisions", "adr"]
+---
 
-**Version**: 1.0.0
-**Created**: 2025-09-15
-**Last Updated**: 2025-09-15
-**Status**: Active
-**Target Audience**: Architects, Senior Developers, AI Assistants
+# Architecture Decision Records (ADRs)
 
 ## What are ADRs?
 
@@ -36,6 +40,8 @@ ADRs are numbered sequentially starting from 001:
 - `001-initial-architecture.md`
 - `002-database-selection.md`
 - `003-authentication-strategy.md`
+
+Use the [template.md](./template.md) to create new ADRs.
 
 ## ADR Lifecycle
 

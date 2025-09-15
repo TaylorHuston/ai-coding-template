@@ -1,10 +1,14 @@
-# Documentation Templates
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "technical-writers", "ai-assistants"]
+document_type: "template"
+tags: ["templates", "documentation", "standards"]
+---
 
-**Version**: 1.0.0
-**Created**: 2025-09-15
-**Last Updated**: 2025-09-15
-**Status**: Active
-**Target Audience**: Developers, Technical Writers, AI Assistants
+# Documentation Templates
 
 ## Overview
 
@@ -28,9 +32,6 @@ Detailed templates for complex features and enterprise requirements.
 Purpose-specific templates for common documentation types.
 
 - **[API Template](./api.template.md)** - API reference documentation
-- **[Architecture Template](./architecture.template.md)** - System architecture documentation
-- **[Component Template](./component.template.md)** - Component specification
-- **[Troubleshooting Template](./troubleshooting.template.md)** - Issue resolution guides
 
 ## Usage Guide
 
@@ -41,9 +42,9 @@ Purpose-specific templates for common documentation types.
 | **Quick feature docs** | [Simple Feature](./simple/feature-simple.template.md) | <2 weeks dev time, straightforward implementation |
 | **Complex features** | [Standard Feature](./standard/feature.template.md) | >2 weeks dev time, multiple systems involved |
 | **API documentation** | [API Template](./api.template.md) | REST APIs, GraphQL schemas, service contracts |
-| **System design** | [Architecture Template](./architecture.template.md) | System architecture, design decisions |
-| **Component specs** | [Component Template](./component.template.md) | UI components, modules, libraries |
-| **Support docs** | [Troubleshooting Template](./troubleshooting.template.md) | Issue resolution, debugging guides |
+| **System design** | [Standard Feature](./standard/feature.template.md) | System architecture, design decisions |
+| **Component specs** | [Standard Feature](./standard/feature.template.md) | UI components, modules, libraries |
+| **Support docs** | [Simple Feature](./simple/feature-simple.template.md) | Issue resolution, debugging guides |
 
 ### Using Templates
 
@@ -59,11 +60,11 @@ Purpose-specific templates for common documentation types.
 # Copy simple feature template
 cp docs/templates/simple/feature-simple.template.md docs/architecture/my-feature.md
 
+# Copy standard feature template
+cp docs/templates/standard/feature.template.md docs/architecture/my-system.md
+
 # Copy API template
 cp docs/templates/api.template.md docs/api/my-api.md
-
-# Copy architecture template
-cp docs/templates/architecture.template.md docs/architecture/my-system.md
 ```
 
 ## Template Features
@@ -128,11 +129,21 @@ Templates include patterns for:
 - Maintain single source of truth
 - Ensure accessibility and clarity
 
+## Template Philosophy
+
+This template set focuses on essential documentation needs:
+
+- **Simple Templates** - For quick, focused documentation
+- **Standard Templates** - For comprehensive, detailed documentation
+- **API Template** - For API-specific documentation needs
+
+For specialized needs (components, troubleshooting, etc.), use the Standard Feature template as a starting point.
+
 ## Related Documentation
 
 - **[Documentation Guidelines](../documentation-guidelines.md)** - Writing standards and conventions
 - **[Quality Standards](../quality-standards.md)** - Quality requirements for documentation
-- **[Documentation Index](../INDEX.md)** - Complete documentation navigation
+- **[Documentation Hub](../README.md)** - Complete documentation navigation
 
 ## Contributing Templates
 

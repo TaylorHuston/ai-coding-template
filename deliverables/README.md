@@ -1,10 +1,14 @@
-# Deliverables
+---
+version: "1.0.0"
+created: "2025-08-22"
+last_updated: "2025-08-22"
+status: "active"
+target_audience: ["product-managers", "stakeholders", "business-users"]
+document_type: "reference"
+tags: ["deliverables", "product-management", "hub"]
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-08-22  
-**Last Updated**: 2025-08-22  
-**Type**: Product Management Hub  
-**Audience**: Product Managers, Stakeholders, Business Users
+# Deliverables
 
 ## Overview
 

@@ -4,7 +4,7 @@ version: "0.1.0"
 created: "2025-09-10"
 last_updated: "2025-09-10"
 status: "Active"
-target_audience: ["DevOps Engineers", "Developers", "System Administrators"]
+target_audience: ["devops-engineers", "developers", "system-administrators"]
 tags: ["deployment-patterns", "devops", "blue-green-deployment", "infrastructure"]
 category: "Implementation Guides"
 description: "Platform-agnostic deployment patterns and strategies for modern application deployment across different environments and technologies."

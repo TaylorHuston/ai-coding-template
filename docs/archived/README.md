@@ -1,10 +1,14 @@
-# Archived Documentation
+---
+version: "1.0.0"
+created: "2025-09-10"
+last_updated: "2025-09-10"
+status: "archived"
+target_audience: ["maintainers", "historical-reference"]
+document_type: "reference"
+tags: ["archived", "deprecated", "historical"]
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-09-10  
-**Last Updated**: 2025-09-10  
-**Status**: Archive  
-**Target Audience**: Maintainers, Historical Reference
+# Archived Documentation
 
 This directory contains deprecated or superseded documentation that is maintained for historical reference.
 

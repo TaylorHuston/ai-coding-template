@@ -1,10 +1,16 @@
-# MCP Quick Start Guide
+---
+version: "1.0.0"
+created: "2025-08-21"
+last_updated: "2025-08-22"
+status: "active"
+target_audience: ["developers", "ai-assistants"]
+document_type: "reference"
+tags: ["mcp", "quick-start", "reference"]
+difficulty: "beginner"
+estimated_time: "15 min"
+---
 
-**Version**: 1.0.0
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-22
-**Status**: Active
-**Target Audience**: Developers, AI Assistants
+# MCP Quick Start Guide
 
 Quick reference for getting started with Model Context Protocol (MCP) servers.
 

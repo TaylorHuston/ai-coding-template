@@ -1,13 +1,11 @@
 ---
-title: "Common Workflows"
 version: "0.1.0"
 created: "2025-08-22"
 last_updated: "2025-08-22"
-status: "Active"
-target_audience: ["Developers", "AI Assistants"]
+status: "active"
+target_audience: ["developers", "ai-assistants"]
+document_type: "workflow"
 tags: ["workflows", "development-process", "git-workflows", "ai-assisted"]
-category: "Workflows"
-description: "Step-by-step workflows for common development tasks using AI agents."
 ---
 
 # Common Workflows
