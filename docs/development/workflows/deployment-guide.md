@@ -378,4 +378,4 @@ res.setHeader('Cache-Control', 'no-cache') // For dynamic content
 
 ---
 
-**Related Documentation**: [Integration Guide](./integration-guide.md) | [MCP Configuration](./mcp-configuration-guide.md) | [Setup Hub](./README.md)
+**Related Documentation**: [Integration Guide](../../ai-template/setup/integration-guide.md) | [MCP Setup](../../ai-template/setup/mcp-setup.md) | [Setup Hub](../../ai-template/setup/README.md)

@@ -1,3 +1,13 @@
+---
+version: "0.1.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "technical-writers"]
+document_type: "guide"
+tags: ["guidelines", "standards", "documentation"]
+---
+
 # Project Guidelines
 
 **Focus**: Project standards, processes, and documentation guidelines
@@ -16,7 +26,7 @@
 ## Navigation
 
 - **[← Back to Guides](../README.md)** - All guides overview
-- **[AI Collaboration Guide](../../ai-collaboration-guide.md)** - Working with AI effectively
+- **[AI Collaboration Guide](../../ai-template/guides/ai-collaboration-guide.md)** - Working with AI effectively
 - **[Implementation Guides](../implementation/README.md)** - Technical how-to guides
 
 ---

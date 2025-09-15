@@ -38,19 +38,19 @@ Essential commands for common development tasks.
 - Environment management
 - Debugging utilities
 
-### 🔧 [Troubleshooting Checklist](./troubleshooting-checklist.md)
-Systematic troubleshooting guide for common development issues.
-- General troubleshooting process
-- Application and performance issues
-- Network and database problems
+### 🔧 [Troubleshooting Guide](./troubleshooting.md)
+Comprehensive troubleshooting guide for AI template and development issues.
+- AI template-specific issues and solutions
+- Systematic debugging procedures
+- Application, network, and database problems
 - Emergency recovery procedures
 
-### 🚀 [MCP Quick Start](./mcp-quick-start.md)
-Quick reference for MCP (Model Context Protocol) server usage.
-- Essential MCP servers
-- Common configurations
-- Performance tips
-- Troubleshooting patterns
+### 🎤 [Commands Reference](./commands.md)
+Complete slash commands reference for AI-powered workflows.
+- Development and implementation commands
+- Quality and security assessment
+- Planning and architecture tools
+- Project management workflows
 
 ### 🔧 [Tool Selection Guide](./tool-selection.md)
 Guide for selecting the right tools for different development tasks.
@@ -72,10 +72,10 @@ Guide for selecting the right tools for different development tasks.
 **Most Common**: [Development Commands](./development-commands.md)
 - Documentation health: `node scripts/docs-health.js`
 - Generate docs: `node scripts/generate-doc.js`
-- Git workflow with AI attribution and [AI Branching Strategy](../ai-collaboration-guide.md#ai-branching-strategy)
+- Git workflow with AI attribution and [AI Branching Strategy](../guides/ai-collaboration-guide.md#ai-branching-strategy)
 
 ### For Troubleshooting
-**When Things Break**: [Troubleshooting Checklist](./troubleshooting-checklist.md)
+**When Things Break**: [Troubleshooting Guide](./troubleshooting.md)
 1. 5-minute quick checks
 2. Systematic investigation
 3. Issue-specific troubleshooting trees
@@ -112,14 +112,14 @@ Referenced commands:
 
 ### Issue Resolution
 1. Create issue directory under appropriate deliverable
-2. Use **troubleshooting-checklist.md** for investigation
+2. Use **troubleshooting.md** for systematic investigation
 3. Document findings in decision log
 4. Update status with resolution
 
 ### New Team Members
 1. Read **ai-assistant-guide.md** for project patterns
 2. Bookmark **development-commands.md** for daily tasks
-3. Familiarize with **troubleshooting-checklist.md**
+3. Familiarize with **troubleshooting.md**
 4. Review documentation standards and templates
 
 ## Maintenance
@@ -157,8 +157,8 @@ Use these guides as templates for:
 
 ## Related Documentation
 
-- [AI Collaboration Guide](../ai-collaboration-guide.md)
-- [Documentation Guidelines](../documentation-guidelines.md)
-- [Visual Guide](../guides/project-guidelines/visual-documentation.md) 
+- [AI Collaboration Guide](../guides/ai-collaboration-guide.md)
+- [Documentation Guidelines](../../development/guidelines/documentation-guidelines.md)
+- [Visual Guide](../../development/guidelines/visual-documentation.md) 
 - [Deliverables System](../../deliverables/README.md)
 - [Project Status](../../STATUS.md)

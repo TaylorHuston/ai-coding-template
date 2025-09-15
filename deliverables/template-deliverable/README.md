@@ -1,3 +1,13 @@
+---
+version: "0.1.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "project-managers"]
+document_type: "template"
+tags: ["template", "deliverables", "workflow"]
+---
+
 # Template Deliverable
 
 This directory contains templates for creating new deliverables and issues in your project.
@@ -66,6 +76,6 @@ This template follows the "Docs as Code" philosophy with a focus on:
 
 ## See Also
 
-- [Documentation Guidelines](../../docs/documentation-guidelines.md) - Detailed guide on what goes where
-- [AI Collaboration Guide](../../docs/ai-collaboration-guide.md) - How AI should work with branches and code
+- [Documentation Guidelines](../../docs/development/guidelines/documentation-guidelines.md) - Detailed guide on what goes where
+- [AI Collaboration Guide](../../docs/ai-template/guides/ai-collaboration-guide.md) - How AI should work with branches and code
 - [CLAUDE.md](../../CLAUDE.md) - Instructions for AI assistants

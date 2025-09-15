@@ -55,7 +55,7 @@ tags: ["documentation", "hub", "navigation"]
 │   ├── setup/                       # Template integration guides
 │   │   ├── integration-guide.md     # Project integration
 │   │   ├── quick-start.md           # Fast setup guide
-│   │   └── mcp-configuration-guide.md # MCP server setup
+│   │   └── mcp-setup.md               # MCP server setup
 │   ├── reference/                   # Commands, tools, troubleshooting
 │   │   ├── development-commands.md  # Common commands
 │   │   ├── tool-selection.md        # Tool usage patterns
@@ -168,7 +168,7 @@ Complete integration and setup guidance for new and existing projects.
 
 - **[Integration Guide](./ai-template/setup/integration-guide.md)**: Project integration strategies
 - **[Quick Start](./ai-template/setup/quick-start.md)**: Fast setup for new projects
-- **[MCP Configuration](./ai-template/setup/mcp-configuration-guide.md)**: MCP server setup
+- **[MCP Setup](./ai-template/setup/mcp-setup.md)**: MCP server setup and enhanced AI capabilities
 - **[Project Management](./ai-template/setup/project-management-integration.md)**: PM tool integration
 
 ## Quick Reference
@@ -224,7 +224,7 @@ Complete integration and setup guidance for new and existing projects.
 - [AI Template Setup](./ai-template/setup/)
 - [Integration Guide](./ai-template/setup/integration-guide.md)
 - [Quick Start Guide](./ai-template/setup/quick-start.md)
-- [MCP Configuration](./ai-template/setup/mcp-configuration-guide.md)
+- [MCP Setup](./ai-template/setup/mcp-setup.md)
 - [Project Management Integration](./ai-template/setup/project-management-integration.md)
 - [Deployment Guide](./development/workflows/deployment-guide.md)
 

@@ -16,33 +16,27 @@ This directory contains all documentation specific to this AI coding template. T
 
 ## Directory Structure
 
-### `/agents/`
-**AI Agent system documentation**
-- Documentation for each of the 17 specialized AI agents
-- Agent capabilities, usage patterns, and coordination
-- Multi-agent workflow examples and best practices
+### `/guides/`
+**Comprehensive guides and patterns**
+- **ai-agents-guide.md** - Complete guide to the 17-agent system
+- **ai-collaboration-guide.md** - Patterns for effective AI collaboration
+- **using-agents.md** - Practical guide for working with AI agents
 
 ### `/setup/`
 **Template installation and configuration**
 - **integration-guide.md** - Adding this template to existing projects
 - **quick-start.md** - Fast setup for new projects
-- **mcp-configuration-guide.md** - MCP server setup and configuration
+- **mcp-setup.md** - MCP server setup and enhanced AI capabilities
 - **project-management-integration.md** - Jira, Linear, GitHub integration
 - **rag-setup.md** - RAG system configuration for large codebases
 
 ### `/reference/`
 **Quick reference and troubleshooting**
+- **commands.md** - Complete slash commands reference for AI workflows
 - **ai-assistant-guide.md** - Working with AI assistants effectively
-- **development-commands.md** - Common development commands and scripts
-- **mcp-quick-start.md** - Quick MCP setup reference
+- **development-commands.md** - Common CLI development commands and scripts
 - **tool-selection.md** - Choosing the right tools for tasks
-- **troubleshooting-checklist.md** - Common issues and solutions
 - **troubleshooting.md** - Comprehensive troubleshooting guide
-
-### `/guides/`
-**Comprehensive guides and patterns**
-- **ai-agents-guide.md** - Complete guide to the 17-agent system
-- **ai-collaboration-guide.md** - Patterns for effective AI collaboration
 
 ## Key Features of This Template
 
@@ -73,7 +67,7 @@ This directory contains all documentation specific to this AI coding template. T
 ### For New Projects
 1. Read `/setup/quick-start.md` for fast setup
 2. Review `/guides/ai-agents-guide.md` to understand the agent system
-3. Follow `/setup/mcp-configuration-guide.md` for advanced features
+3. Follow `/setup/mcp-setup.md` for enhanced AI capabilities
 
 ### For Existing Projects
 1. Start with `/setup/integration-guide.md`
@@ -81,9 +75,10 @@ This directory contains all documentation specific to this AI coding template. T
 3. Configure only the agents and features you need
 
 ### For AI Assistants
-1. Reference `/guides/ai-collaboration-guide.md` for effective patterns
-2. Use `/reference/tool-selection.md` for choosing appropriate tools
-3. Follow `/reference/troubleshooting-checklist.md` for common issues
+1. Start with `/guides/using-agents.md` for practical agent usage
+2. Reference `/guides/ai-collaboration-guide.md` for advanced patterns
+3. Use `/reference/commands.md` for slash command workflows
+4. Follow `/reference/troubleshooting.md` for issue resolution
 
 ## Core Workflows
 
@@ -98,17 +93,18 @@ This directory contains all documentation specific to this AI coding template. T
 - Use deliverables/ directory for organized issue tracking
 
 ### Quality Assurance
-- Follow guidelines in `/reference/troubleshooting-checklist.md`
-- Use automated quality gates for consistent standards
+- Use `/reference/commands.md` for systematic quality workflows
+- Follow automated quality gates for consistent standards
 - Apply patterns from `/guides/ai-collaboration-guide.md`
 
 ## Tool Integration
 
 ### MCP Servers
-- Context7 for library documentation
-- Sequential thinking for complex problem solving
-- Playwright for web automation and testing
-- IDE integration for diagnostics and code execution
+- **context7** - Official library documentation access
+- **sequential-thinking** - Multi-step reasoning for complex problems
+- **gemini-cli** - Second opinions and massive context analysis
+- **playwright** - Browser automation and testing
+- **magic** - Modern UI component generation
 
 ### Development Tools
 - Git hooks for automated quality checks
@@ -125,9 +121,9 @@ This directory contains all documentation specific to this AI coding template. T
 
 ### Common Issues
 - **Agent not responding**: Check `/reference/troubleshooting.md`
-- **MCP connection issues**: See `/setup/mcp-configuration-guide.md`
+- **MCP connection issues**: See `/setup/mcp-setup.md`
 - **Integration problems**: Reference `/setup/integration-guide.md`
-- **Quality gate failures**: Check `/reference/troubleshooting-checklist.md`
+- **Generic AI responses**: Review `/guides/using-agents.md`
 
 ### Getting Help
 - Start with troubleshooting guides in `/reference/`

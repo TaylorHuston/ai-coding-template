@@ -213,4 +213,4 @@ chmod +x scripts/*.sh
 
 ---
 
-**Related Documentation**: [Development Commands](./development-commands.md) | [Troubleshooting Checklist](./troubleshooting-checklist.md) | [Reference Hub](./README.md)
+**Related Documentation**: [Development Commands](./development-commands.md) | [Troubleshooting Guide](./troubleshooting.md) | [Reference Hub](./README.md)

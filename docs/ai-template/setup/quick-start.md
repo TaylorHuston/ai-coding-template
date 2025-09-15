@@ -86,7 +86,7 @@ cp templates/CHANGELOG.template.md CHANGELOG.md
 ### For Existing Projects
 1. **Review integration options** in [Integration Guide](./integration-guide.md)
 2. **Plan gradual adoption** strategy
-3. **Configure MCP servers** using [MCP Configuration Guide](./mcp-configuration-guide.md)
+3. **Configure MCP servers** using [MCP Setup Guide](./mcp-setup.md)
 
 ### Essential Reading
 - [AI Agents Guide](../ai-agents-guide.md) - Understanding the 17 specialized agents
@@ -128,7 +128,7 @@ For more comprehensive setup options:
 
 - **[Full Setup Guide](./README.md)** - Complete setup workflows
 - **[Integration Guide](./integration-guide.md)** - Add to existing projects
-- **[MCP Configuration](./mcp-configuration-guide.md)** - Advanced AI capabilities
+- **[MCP Setup](./mcp-setup.md)** - Enhanced AI capabilities and tools
 - **[Deployment Guide](./deployment-guide.md)** - Production setup
 
 ## Support
