@@ -205,7 +205,7 @@ node scripts/generate-doc.js --template feature
 node scripts/generate-doc.js --template api --preview
 
 # Specify output file
-node scripts/generate-doc.js --template guide --output docs/guides/my-guide.md
+node scripts/generate-doc.js --template guide --output docs/development/guidelines/my-guide.md
 
 # List available templates
 node scripts/generate-doc.js --list

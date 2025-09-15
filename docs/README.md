@@ -15,82 +15,90 @@ tags: ["documentation", "hub", "navigation"]
 ### I need to create documentation...
 
 **🔧 For developers and technical implementation?**
-→ [Technical Documentation Guide](architecture/README.md) | [Use Technical Template](templates/simple/feature-simple.template.md)
+→ [Technical Documentation Guide](project/architecture/README.md) | [Use Technical Template](development/templates/simple/feature-simple.template.md)
 
 **📊 For product managers and business stakeholders?**
-→ [Documentation Guidelines](documentation-guidelines.md) | [Use Simple Template](templates/simple/feature-simple.template.md)
+→ [Documentation Guidelines](development/guidelines/documentation-guidelines.md) | [Use Simple Template](development/templates/simple/feature-simple.template.md)
 
 **📝 For comprehensive/enterprise features?**
-→ Use [Standard Technical Template](templates/standard/feature.template.md) with comprehensive documentation
+→ Use [Standard Technical Template](development/templates/standard/feature.template.md) with comprehensive documentation
 
 ### I need to understand the system...
 
 **📚 Documentation standards and guidelines?**
-→ [Documentation Guidelines](documentation-guidelines.md)
+→ [Documentation Guidelines](development/guidelines/documentation-guidelines.md)
 
 **🎯 See examples of good documentation?**
-→ [Technical Example](architecture/user-authentication-architecture.md) | [System Design Example](architecture/system-design.md)
+→ [Technical Examples](project/architecture/examples/) | [System Design Example](project/architecture/examples/system-overview.md)
 
 ## Documentation Map
 
 ```
 📁 docs/
-├── 🏠 README.md                    # You are here - Central hub
-├── 📋 documentation-guidelines.md   # Documentation standards & guidelines
-├── 🔧 ai-agents-guide.md           # Complete agent system reference
-├── 📊 quality-standards.md         # Quality requirements & validation
-├── 🛠️ setup/                      # Integration & setup guides
-│   ├── README.md                   # Setup hub
-│   ├── integration-guide.md        # Project integration
-│   ├── mcp-configuration-guide.md  # MCP server setup
-│   ├── project-management-integration.md # PM tools
-│   └── deployment-guide.md         # Production deployment
-├── 📚 guides/                      # How-to guides & tutorials
-│   ├── ai-*.md                     # AI-specific guides
-│   ├── testing-*.md                # Testing guides
-│   └── *.md                        # Other implementation guides
-├── 📖 reference/                   # Quick reference materials
-│   ├── README.md                   # Reference hub
-│   ├── development-commands.md     # Common commands
-│   ├── tool-selection.md           # Tool usage patterns
-│   └── *.md                        # Reference materials
-├── 🏗️ architecture/               # Technical documentation
-│   ├── README.md                   # Architecture guide
-│   └── *.md                        # Architecture documents
-├── 🧩 workflows/                   # Process workflows
-│   └── *.md                        # Workflow documentation
-├── 📝 templates/                   # Document templates
-│   ├── simple/                     # Quick-start templates
-│   └── standard/                   # Comprehensive templates
-└── 📦 archived/                    # Deprecated content
-    └── *.md                        # Archived documentation
+├── 🏠 README.md                     # You are here - Central hub
+├── 📋 project/                      # YOUR project's documentation
+│   ├── architecture/                # System design, C4 diagrams, ADRs
+│   ├── api/                         # API specs, endpoint docs
+│   ├── database/                    # Schema, ERDs, migrations
+│   └── decisions/                   # Architecture Decision Records
+├── 🔧 development/                  # Team processes & guidelines
+│   ├── guidelines/                  # Code quality, documentation standards
+│   │   ├── quality-standards.md     # Quality requirements & validation
+│   │   ├── documentation-guidelines.md # Documentation standards
+│   │   └── *.md                     # Other team guidelines
+│   ├── workflows/                   # Git, testing, deployment processes
+│   ├── setup/                       # Development environment setup
+│   └── templates/                   # Document templates
+│       ├── simple/                  # Quick-start templates
+│       └── standard/                # Comprehensive templates
+├── 🤖 ai-template/                  # AI assistant & template docs
+│   ├── setup/                       # Template integration guides
+│   │   ├── integration-guide.md     # Project integration
+│   │   ├── quick-start.md           # Fast setup guide
+│   │   └── mcp-configuration-guide.md # MCP server setup
+│   ├── reference/                   # Commands, tools, troubleshooting
+│   │   ├── development-commands.md  # Common commands
+│   │   ├── tool-selection.md        # Tool usage patterns
+│   │   └── troubleshooting.md       # Problem solving guide
+│   ├── guides/                      # AI collaboration patterns
+│   │   ├── ai-agents-guide.md       # Complete agent system reference
+│   │   └── ai-collaboration-guide.md # AI development patterns
+│   └── agents/                      # Agent documentation & workflows
+└── 📦 archived/                     # Deprecated content
+    └── *.md                         # Archived documentation
 ```
 
 ## Documentation Types
 
-### Technical Documentation (Developer-Focused)
-- **Purpose**: Implementation details, system design, code patterns
-- **Location**: `docs/architecture/`
-- **Audience**: Developers, AI assistants, technical contributors
-- **When to use**: System architecture, API design, database schemas, code implementation
+### Project Documentation (Project-Specific)
+- **Purpose**: Your project's architecture, API specs, database design
+- **Location**: `docs/project/`
+- **Audience**: Project team, stakeholders, new developers
+- **When to use**: System architecture, API design, database schemas, technical decisions
 
-### Process Documentation (Workflow-Focused)
-- **Purpose**: Development workflows, processes, and business requirements
-- **Location**: `docs/workflows/` and `docs/guides/`
-- **Audience**: Product managers, stakeholders, development teams
-- **When to use**: Process documentation, workflow guides, team standards
+### Development Documentation (Team Processes)
+- **Purpose**: Development workflows, coding standards, team guidelines
+- **Location**: `docs/development/`
+- **Audience**: Development team, contributors, code reviewers
+- **When to use**: Team standards, workflow processes, quality guidelines
+
+### AI Template Documentation (Template-Specific)
+- **Purpose**: AI assistant usage, template features, automation tools
+- **Location**: `docs/ai-template/`
+- **Audience**: AI assistants, developers using this template
+- **When to use**: Agent coordination, template setup, AI collaboration patterns
 
 ## Template Selection Guide
 
 ### For Simple Features (Most Common)
 
-**Technical**: Use [Simple Technical Template](templates/simple/feature-simple.template.md)
+**Technical**: Use [Simple Technical Template](development/templates/simple/feature-simple.template.md)
 - Basic architecture description
 - Key implementation details
 - Essential testing information
 - ~5-7 sections, ~50-75 lines
 
-**Process**: Use [Documentation Guidelines](documentation-guidelines.md)
+**Process**: Use [Documentation Guidelines](development/guidelines/documentation-guidelines.md)
 - Clear objectives and success criteria
 - Key requirements and implementation notes
 - Testing and validation approach
@@ -98,7 +106,7 @@ tags: ["documentation", "hub", "navigation"]
 
 ### For Complex/Enterprise Features
 
-**Technical**: Use [Standard Technical Template](templates/standard/feature.template.md)
+**Technical**: Use [Standard Technical Template](development/templates/standard/feature.template.md)
 - Comprehensive architecture analysis
 - Detailed implementation specifications
 - Complete testing and security coverage
@@ -129,16 +137,16 @@ tags: ["documentation", "hub", "navigation"]
 ## Getting Started
 
 ### New Technical Document
-1. Copy [Simple Technical Template](templates/simple/feature-simple.template.md) 
-2. Save as `architecture/[feature-name]-architecture.md`
+1. Copy [Simple Technical Template](development/templates/simple/feature-simple.template.md)
+2. Save as `project/architecture/[feature-name]-architecture.md`
 3. Fill in required sections, remove unused sections
-4. Follow [Technical Documentation Guide](architecture/README.md)
+4. Follow [Technical Documentation Guide](project/architecture/README.md)
 
 ### New Process Document
-1. Follow [Documentation Guidelines](documentation-guidelines.md)
-2. Save as `workflows/[process-name].md` or `guides/[guide-name].md`
+1. Follow [Documentation Guidelines](development/guidelines/documentation-guidelines.md)
+2. Save as `development/workflows/[process-name].md` or `development/guidelines/[guide-name].md`
 3. Fill in required sections, remove unused sections
-4. Use appropriate templates from `templates/` directory
+4. Use appropriate templates from `development/templates/` directory
 
 ### Complex Features
 - Start with simple template to outline basics
@@ -155,81 +163,81 @@ tags: ["documentation", "hub", "navigation"]
 
 ## Setup and Integration
 
-### 🚀 [Setup Hub](./setup/README.md)
+### 🚀 [AI Template Setup Hub](./ai-template/setup/)
 Complete integration and setup guidance for new and existing projects.
 
-- **[Integration Guide](./setup/integration-guide.md)**: Project integration strategies
-- **[MCP Configuration](./setup/mcp-configuration-guide.md)**: MCP server setup
-- **[Project Management](./setup/project-management-integration.md)**: PM tool integration  
-- **[Deployment Guide](./setup/deployment-guide.md)**: Production deployment
+- **[Integration Guide](./ai-template/setup/integration-guide.md)**: Project integration strategies
+- **[Quick Start](./ai-template/setup/quick-start.md)**: Fast setup for new projects
+- **[MCP Configuration](./ai-template/setup/mcp-configuration-guide.md)**: MCP server setup
+- **[Project Management](./ai-template/setup/project-management-integration.md)**: PM tool integration
 
 ## Quick Reference
 
 | I want to... | Go here |
 |---------------|---------|
-| **Setup & integrate this template** | **[Setup Hub](setup/README.md)** |
-| **Get quick development commands** | **[Reference Hub](reference/README.md)** |
-| **Start using this template** | [Setup Guide](./setup/README.md) |
-| **Add to existing project** | [Integration Guide](./setup/integration-guide.md) |
-| **Understand the agent system** | [AI Agents Guide](./ai-agents-guide.md) |
-| **Learn effective AI prompting** | [AI Collaboration Guide](./ai-collaboration-guide.md#effective-ai-communication) |
-| **Set up development environment** | [Local Environment Setup](./guides/implementation/environment-setup.md) |
-| **Troubleshoot issues** | [Troubleshooting Guide](./troubleshooting.md) |
-| **Find command references** | [Development Commands](./reference/development-commands.md) |
-| **Configure deployment** | [Deployment Guide](./setup/deployment-guide.md) |
-| Create simple technical docs | [Simple Technical Template](templates/simple/feature-simple.template.md) |
-| Create process documentation | [Documentation Guidelines](documentation-guidelines.md) |
-| Create comprehensive docs | [Standard Templates](templates/standard/) |
-| Understand documentation standards | [Documentation Guidelines](documentation-guidelines.md) |
-| Understand quality requirements | [Quality Standards](quality-standards.md) |
-| See examples | [Technical Example](architecture/user-authentication-architecture.md) \| [System Design Example](architecture/system-design.md) |
-| Get technical guidance | [Architecture Guide](architecture/README.md) |
-| Get process guidance | [Documentation Guidelines](documentation-guidelines.md) |
-| Browse how-to guides | [Guides Directory](guides/) |
+| **Setup & integrate this template** | **[AI Template Setup](ai-template/setup/)** |
+| **Get quick development commands** | **[Reference Hub](ai-template/reference/README.md)** |
+| **Start using this template** | [Quick Start Guide](./ai-template/setup/quick-start.md) |
+| **Add to existing project** | [Integration Guide](./ai-template/setup/integration-guide.md) |
+| **Understand the agent system** | [AI Agents Guide](./ai-template/guides/ai-agents-guide.md) |
+| **Learn effective AI prompting** | [AI Collaboration Guide](./ai-template/guides/ai-collaboration-guide.md#effective-ai-communication) |
+| **Set up development environment** | [Local Environment Setup](./development/setup/environment-setup.md) |
+| **Troubleshoot issues** | [Troubleshooting Guide](./ai-template/reference/troubleshooting.md) |
+| **Find command references** | [Development Commands](./ai-template/reference/development-commands.md) |
+| **Configure deployment** | [Deployment Guide](./development/workflows/deployment-guide.md) |
+| Create simple technical docs | [Simple Technical Template](development/templates/simple/feature-simple.template.md) |
+| Create process documentation | [Documentation Guidelines](development/guidelines/documentation-guidelines.md) |
+| Create comprehensive docs | [Standard Templates](development/templates/standard/) |
+| Understand documentation standards | [Documentation Guidelines](development/guidelines/documentation-guidelines.md) |
+| Understand quality requirements | [Quality Standards](development/guidelines/quality-standards.md) |
+| See examples | [Technical Examples](project/architecture/examples/) |
+| Get technical guidance | [Architecture Guide](project/architecture/README.md) |
+| Get process guidance | [Documentation Guidelines](development/guidelines/documentation-guidelines.md) |
+| Browse how-to guides | [AI Template Guides](ai-template/guides/) |
 
 ## Search by Topic
 
 ### AI & Machine Learning
 
-- [AI Agents Guide](./ai-agents-guide.md)
-- [AI Collaboration Guide](./ai-collaboration-guide.md) - Essential AI development patterns
-  - [Effective Communication](./ai-collaboration-guide.md#effective-ai-communication)
-  - [Context Management](./ai-collaboration-guide.md#context-management)
-  - [Branching Strategy](./ai-collaboration-guide.md#ai-branching-strategy)
-  - [Architecture Patterns](./ai-collaboration-guide.md#architecture-patterns-for-ai-development)
+- [AI Agents Guide](./ai-template/guides/ai-agents-guide.md)
+- [AI Collaboration Guide](./ai-template/guides/ai-collaboration-guide.md) - Essential AI development patterns
+  - [Effective Communication](./ai-template/guides/ai-collaboration-guide.md#effective-ai-communication)
+  - [Context Management](./ai-template/guides/ai-collaboration-guide.md#context-management)
+  - [Branching Strategy](./ai-template/guides/ai-collaboration-guide.md#ai-branching-strategy)
+  - [Architecture Patterns](./ai-template/guides/ai-collaboration-guide.md#architecture-patterns-for-ai-development)
 
 ### Development & Testing
 
-- [Testing Strategy (TDD)](./guides/implementation/testing/tdd-strategy.md)
-- [Test Benchmarking](./guides/implementation/testing/benchmarking.md)
-- [Local Environment Setup](./guides/implementation/environment-setup.md)
-- [Development Commands](./reference/development-commands.md)
+- [Testing Strategy (TDD)](./development/workflows/tdd-strategy.md)
+- [Test Benchmarking](./development/workflows/benchmarking.md)
+- [Local Environment Setup](./development/setup/environment-setup.md)
+- [Development Commands](./ai-template/reference/development-commands.md)
 
 ### Architecture & Design
 
-- [AI Agent System](./ai-agents-guide.md)
-- [System Design](./architecture/examples/system-overview.md)
-- [User Authentication](./architecture/user-authentication-architecture.md)
-- [Documentation Templates](./templates/README.md)
+- [AI Agent System](./ai-template/guides/ai-agents-guide.md)
+- [System Design](./project/architecture/examples/system-overview.md)
+- [Documentation Templates](./development/templates/README.md)
 
 ### Setup & Integration
 
-- [Setup Hub](./setup/README.md)
-- [Integration Guide](./setup/integration-guide.md)
-- [MCP Configuration](./setup/mcp-configuration-guide.md)
-- [Project Management Integration](./setup/project-management-integration.md)
-- [Deployment Guide](./setup/deployment-guide.md)
+- [AI Template Setup](./ai-template/setup/)
+- [Integration Guide](./ai-template/setup/integration-guide.md)
+- [Quick Start Guide](./ai-template/setup/quick-start.md)
+- [MCP Configuration](./ai-template/setup/mcp-configuration-guide.md)
+- [Project Management Integration](./ai-template/setup/project-management-integration.md)
+- [Deployment Guide](./development/workflows/deployment-guide.md)
 
 ### Documentation & Processes
 
-- [Documentation Guidelines](./documentation-guidelines.md)
-- [Quality Standards](./quality-standards.md)
-- [Document Templates](./templates/)
-- [Changelog Maintenance](./guides/project-guidelines/changelog-maintenance.md)
+- [Documentation Guidelines](./development/guidelines/documentation-guidelines.md)
+- [Quality Standards](./development/guidelines/quality-standards.md)
+- [Document Templates](./development/templates/)
+- [Changelog Maintenance](./development/guidelines/changelog-maintenance.md)
 
 ## Support
 
-- **Documentation Questions**: See [Documentation Guidelines](documentation-guidelines.md)
+- **Documentation Questions**: See [Documentation Guidelines](development/guidelines/documentation-guidelines.md)
 - **Template Issues**: Use existing examples as reference
 - **Process Improvements**: Submit feedback through your team's standard channels
 

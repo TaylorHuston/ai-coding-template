@@ -39,11 +39,11 @@ cd my-project
 ./scripts/ai-status.sh --check
 ```
 
-**→ [Complete Setup Guide](./docs/setup/quick-start.md)** - Detailed instructions and troubleshooting
+**→ [Complete Setup Guide](./docs/ai-template/setup/quick-start.md)** - Detailed instructions and troubleshooting
 
 ### First AI Session
 
-**→ [Getting Started Guide](./docs/setup/quick-start.md#first-ai-session)** - Step-by-step first session walkthrough
+**→ [Getting Started Guide](./docs/ai-template/setup/quick-start.md#first-ai-session)** - Step-by-step first session walkthrough
 
 ## Project Structure
 
@@ -53,10 +53,10 @@ my-project/
 │   └── agents/              # 17 specialized agents
 ├── deliverables/            # Feature and issue tracking
 │   └── [feature]/issues/    # Organized work items
-├── docs/                    # Documentation
-│   ├── quality-standards.md # Quality requirements and standards
-│   ├── guides/              # How-to guides
-│   └── workflows/           # Common workflows
+├── docs/                    # Three-tier documentation
+│   ├── project/             # YOUR project's documentation
+│   ├── development/         # Team processes & guidelines
+│   └── ai-template/         # AI assistant & template docs
 ├── scripts/                 # Automation tools
 ├── CLAUDE.md               # AI assistant instructions
 └── STATUS.md               # Current project state
@@ -76,7 +76,7 @@ Your team of specialists, automatically activated based on task:
 | **test-engineer**       | Testing           | "Write unit tests"          |
 | **security-auditor**    | Security          | "Audit for vulnerabilities" |
 
-[View all 17 agents →](./docs/ai-agents-guide.md)
+[View all 17 agents →](./docs/ai-template/guides/ai-agents-guide.md)
 
 ### Automation Tools
 
@@ -97,21 +97,21 @@ Essential scripts for AI-assisted development:
 
 ### 📚 Getting Started
 
-- [Integration Guide](./docs/setup/integration-guide.md) - Add to existing projects
-- [AI Agents Guide](./docs/ai-agents-guide.md) - Master the agent system
-- [Common Workflows](./docs/workflows/README.md) - Step-by-step processes
+- [Integration Guide](./docs/ai-template/setup/integration-guide.md) - Add to existing projects
+- [AI Agents Guide](./docs/ai-template/guides/ai-agents-guide.md) - Master the agent system
+- [Common Workflows](./docs/development/workflows/README.md) - Step-by-step processes
 
 ### 🔧 References
 
-- [Troubleshooting](./docs/troubleshooting.md) - Solve common issues
-- [FAQ](./docs/troubleshooting.md#frequently-asked-questions) - Frequently asked questions
-- [Changelog Guide](./docs/guides/project-guidelines/changelog-maintenance.md) - Maintain project history
+- [Troubleshooting](./docs/ai-template/reference/troubleshooting.md) - Solve common issues
+- [FAQ](./docs/ai-template/reference/troubleshooting.md#frequently-asked-questions) - Frequently asked questions
+- [Changelog Guide](./docs/development/guidelines/changelog-maintenance.md) - Maintain project history
 
 ### 🎯 Quick Links
 
-- [AI Collaboration Guide](./docs/ai-collaboration-guide.md)
-- [Documentation Guidelines](./docs/documentation-guidelines.md)
-- [Quick Reference](./docs/reference/)
+- [AI Collaboration Guide](./docs/ai-template/guides/ai-collaboration-guide.md)
+- [Documentation Guidelines](./docs/development/guidelines/documentation-guidelines.md)
+- [Quick Reference](./docs/ai-template/reference/)
 
 ## For Existing Projects
 
@@ -133,7 +133,7 @@ tar -xzf agents.tar.gz
 
 ### Option 3: Full Integration
 
-[Complete Integration Guide →](./docs/setup/integration-guide.md)
+[Complete Integration Guide →](./docs/ai-template/setup/integration-guide.md)
 
 ## Contributing
 
