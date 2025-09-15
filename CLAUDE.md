@@ -171,7 +171,6 @@ Project Management:
 You MUST adhere to these standards:
 
 - Follow patterns established in the `examples/` directory
-- Reference `.cursor/rules/` for language-specific guidelines
 - Use existing project patterns and conventions consistently
 - Validate against technical specifications in `docs/technical.md`
 - Never duplicate existing functionality without explicit justification
@@ -181,7 +180,7 @@ You MUST adhere to these standards:
 ### Validation Protocol
 
 1. Validate all code against project technical standards
-2. Follow security patterns from `.cursor/rules/security.md`
+2. Follow security best practices and established patterns
 3. Document AI assistance level in all commit messages
 4. Ensure comprehensive test coverage for new functionality
 5. **Update CHANGELOG.md** for user-facing changes (features, fixes, breaking changes)
@@ -240,7 +239,7 @@ When working with unfamiliar areas:
 
 You MUST:
 
-- Apply security patterns from `.cursor/rules/security.md`
+- Apply security best practices and established patterns
 - Document the level of AI assistance in all generated code
 - Never compromise security for convenience or development speed
 

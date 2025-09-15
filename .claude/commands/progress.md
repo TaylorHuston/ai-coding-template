@@ -204,5 +204,3 @@ Project_Tracking:
 /progress --scope project --output summary
 # Validate entire project progress and update all status documents
 ```
-
-This unified command provides comprehensive progress management with mandatory evidence verification to ensure accurate, credible project reporting.

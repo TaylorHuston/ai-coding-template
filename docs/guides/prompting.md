@@ -264,7 +264,7 @@ Create reusable context templates:
 **Strengths**: Full codebase understanding, multi-file editing
 
 **Best Practices**:
-- Use `.cursor/rules/` for project-specific patterns
+- Follow established project patterns and conventions
 - Leverage `@file` references in conversations
 - Use inline chat for quick fixes
 - Maintain clean git history for context

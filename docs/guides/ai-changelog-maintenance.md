@@ -348,8 +348,7 @@ cat .githooks.json | grep changelog
 ## Related Documentation
 
 - [Changelog Guide](./changelog-guide.md) - General changelog maintenance
-- [CLAUDE.md](/CLAUDE.md) - AI assistant instructions
-- [Git Standards](./.claude/rules/git-version-control-rules.md) - Version control rules
+- [CLAUDE.md](/CLAUDE.md) - AI assistant instructions and git workflows
 - [Deliverables Guide](../deliverables/README.md) - Work tracking system
 
 ---

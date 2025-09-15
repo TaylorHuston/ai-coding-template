@@ -12,7 +12,7 @@
 
 ### **Pattern Compliance**
 - Follow patterns established in the `examples/` directory
-- Reference `.cursor/rules/` for language-specific guidelines (if present)
+- Follow established language-specific patterns and conventions
 - Use existing project patterns and conventions consistently
 - Validate against technical specifications in `docs/technical.md`
 - Never duplicate existing functionality without explicit justification
