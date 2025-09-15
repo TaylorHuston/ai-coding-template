@@ -1,5 +1,3 @@
-# Documentation Guidelines
-
 ---
 version: "0.1.0"
 created: "2025-08-21"
@@ -9,6 +7,8 @@ target_audience: ["developers", "technical-writers", "ai-assistants"]
 document_type: "guide"
 tags: ["documentation", "standards", "workflow"]
 ---
+
+# Documentation Guidelines
 
 This guide explains what documentation goes where in this AI coding template, following the "Docs as Code" philosophy with a minimal, developer-focused approach.
 
@@ -58,6 +58,27 @@ project/
 - **Audience**: Product managers, stakeholders, business teams
 - **Focus**: WHAT to build and WHY it matters
 
+### C4 Architecture Documentation (Visual Architecture)
+
+- **Location**: `docs/architecture/` directory with C4-specific organization
+- **Purpose**: Visual system architecture using hierarchical C4 model levels
+- **Audience**: Architects, developers, stakeholders (audience varies by C4 level)
+- **Focus**: HOW the system is structured and WHY architectural decisions were made
+
+#### C4 Documentation Structure
+```
+docs/architecture/
+├── c4-overview.md              # C4 methodology guide
+├── system-context.md           # Level 1: System boundaries and external actors
+├── container-architecture.md   # Level 2: Technology choices and responsibilities
+├── components/                 # Level 3: Component-level architecture
+│   ├── agent-orchestration.md # Component details for complex containers
+│   └── context-management.md  # Component details for complex containers
+└── workflows/                  # Dynamic diagrams for key scenarios
+    ├── project-setup.md        # Workflow-specific architecture views
+    └── feature-development.md  # Multi-container interaction patterns
+```
+
 ## What Goes Where
 
 ### Project Level
@@ -67,7 +88,7 @@ project/
 | `/README.md`          | Project entry point | Project description, quick start, setup instructions |
 | `/CHANGELOG.md`       | Version history     | All changes following Keep a Changelog format        |
 | `/CLAUDE.md`          | AI instructions     | Rules and context for AI assistants                  |
-| `/docs/architecture/` | Technical design    | System architecture, technical decisions             |
+| `/docs/architecture/` | Technical design    | System architecture, technical decisions, C4 models |
 | `/docs/api/`          | API specs           | API documentation when building APIs                 |
 
 ### Deliverable Level (Epic)
@@ -247,6 +268,17 @@ When AI assistants work with documentation:
 4. **Don't add bloat** - if it's not helpful for implementation, leave it out
 5. **Use clear markers** for AI-completed tasks: `✅ Completed [date]`
 
+#### C4 Architecture Guidelines for AI Assistants
+
+When creating or updating C4 documentation:
+
+1. **Start with System Context** to understand overall system boundaries
+2. **Use consistent YAML frontmatter** with required C4 fields (`c4_level`, `diagram_type`, `related_diagrams`)
+3. **Reference C4 overview** (`docs/architecture/c4-overview.md`) for project-specific conventions
+4. **Maintain diagram relationships** by updating `related_diagrams` fields when creating new C4 docs
+5. **Follow progressive disclosure** - don't create component diagrams for simple containers
+6. **Use appropriate audiences** for each C4 level (context=all-stakeholders, container=technical, component=developers)
+
 ## What NOT to Include
 
 ### Don't Duplicate Project Management
@@ -277,6 +309,13 @@ Avoid:
 - When building a new API
 - When creating a reusable guide
 - NOT for every feature or small change
+
+#### When to Create C4 Documentation
+- **System Context**: For any new project or major system boundary changes
+- **Container Architecture**: When adding new technology containers or changing architectural approach
+- **Component Diagrams**: For complex containers with multiple interacting components
+- **Dynamic Diagrams**: For complex workflows that span multiple containers
+- **NOT**: For simple features, minor component changes, or straightforward implementations
 
 ## Success Indicators
 

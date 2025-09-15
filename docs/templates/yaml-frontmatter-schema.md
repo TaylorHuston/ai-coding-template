@@ -58,6 +58,13 @@ framework_version: "string" # Framework or tool version if applicable
 workflow_stage: "string"  # Stage in development workflow
 priority: "string"       # Document priority level
 next_review: "YYYY-MM-DD" # Scheduled review date
+
+# C4 Architecture Documentation Fields
+c4_level: "string"        # C4 model level (see C4 values below)
+diagram_type: "string"    # Specific diagram type (see C4 diagram types below)
+related_diagrams: ["array"] # List of related C4 diagram files
+parent_container: "string" # Parent container ID (for component-level docs)
+external_tools: ["array"] # Tools used for diagram creation
 ---
 ```
 
@@ -104,6 +111,30 @@ next_review: "YYYY-MM-DD" # Scheduled review date
 - `high` - Important for project success
 - `medium` - Useful but not essential
 - `low` - Nice to have
+
+### C4 Level Values
+- `overview` - C4 model overview and methodology documentation
+- `context` - System Context level (Level 1) - system boundaries and external actors
+- `container` - Container level (Level 2) - high-level technology choices and responsibilities
+- `component` - Component level (Level 3) - internal structure of containers
+- `code` - Code level (Level 4) - implementation details within components
+
+### C4 Diagram Type Values
+- `system_context` - System context showing external actors and boundaries
+- `container` - Container architecture showing technology choices
+- `component` - Component structure within a specific container
+- `system_landscape` - Multiple systems and their relationships
+- `dynamic` - Workflow or interaction diagrams
+- `deployment` - Infrastructure and deployment mapping
+
+### External Tools Values
+- `draw.io` - Draw.io/Diagrams.net diagramming tool
+- `miro` - Miro collaborative diagramming platform
+- `lucidchart` - Lucidchart diagramming software
+- `plantuml` - PlantUML text-based diagramming
+- `structurizr` - Structurizr C4 model tooling
+- `figma` - Figma design and diagramming tool
+- `visio` - Microsoft Visio diagramming software
 
 ## Document Type Templates
 
@@ -172,6 +203,67 @@ tags: ["system-design", "scalability"]
 ---
 ```
 
+### C4 System Context Template
+For C4 Level 1 documentation:
+
+```yaml
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["all-stakeholders", "developers", "ai-assistants"]
+document_type: "architecture"
+category: "architecture"
+c4_level: "context"
+diagram_type: "system_context"
+related_diagrams: ["container-architecture.md"]
+external_tools: ["draw.io"]
+tags: ["c4", "system-context", "boundaries", "actors"]
+---
+```
+
+### C4 Container Architecture Template
+For C4 Level 2 documentation:
+
+```yaml
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["architects", "senior-developers", "ai-assistants"]
+document_type: "architecture"
+category: "architecture"
+c4_level: "container"
+diagram_type: "container"
+related_diagrams: ["system-context.md", "components/component-name.md"]
+external_tools: ["draw.io"]
+tags: ["c4", "containers", "architecture", "technology-choices"]
+---
+```
+
+### C4 Component Architecture Template
+For C4 Level 3 documentation:
+
+```yaml
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["architects", "developers", "ai-assistants"]
+document_type: "architecture"
+category: "architecture"
+c4_level: "component"
+diagram_type: "component"
+related_diagrams: ["../container-architecture.md", "related-component.md"]
+parent_container: "container_system_name"
+external_tools: ["draw.io"]
+tags: ["c4", "components", "domain-tag", "technology-tag"]
+---
+```
+
 ### Template File Template
 For reusable templates:
 
@@ -212,6 +304,25 @@ tags: ["api", "authentication", "security"]
 - Use quotes for all string values
 - Use lowercase with hyphens for multi-word values: `"target-audience"`
 - Use snake_case for field names: `target_audience`
+
+### C4 Documentation Guidelines
+When creating C4 architecture documentation:
+
+#### Required C4 Fields
+- `c4_level`: Must be one of `overview`, `context`, `container`, `component`, or `code`
+- `diagram_type`: Should match the C4 level and specific diagram purpose
+- `related_diagrams`: Always include references to parent/child level diagrams
+
+#### C4 Naming Conventions
+- Use consistent file naming: `system-context.md`, `container-architecture.md`
+- Component files go in `components/` subdirectory
+- Use kebab-case for all C4 file names
+
+#### C4 Metadata Best Practices
+- Include `external_tools` to track diagram creation methods
+- Use `parent_container` for component-level documentation
+- Tag with appropriate domain and technology tags
+- Set appropriate target audiences for each C4 level
 
 ## Migration Process
 
