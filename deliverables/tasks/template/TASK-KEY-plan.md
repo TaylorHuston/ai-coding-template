@@ -1,11 +1,20 @@
-# Quick Task - [TASK-KEY]
+---
+title: "Quick Task - [TASK-KEY]"
+version: "0.1.0"
+created: "YYYY-MM-DD"
+last_updated: "YYYY-MM-DD"
+status: "Template"
+target_audience: ["Developers", "Project Managers"]
+tags: ["task", "template", "project-management"]
+category: "Deliverables"
+description: "Template for quick task documentation."
+task_type: "Task"
+task_status: "New/In Progress/Review/Complete"
+task_category: "Refactoring/Documentation/Performance/Security/Tech Debt/Enhancement"
+external_ticket: "[Jira/Linear/GitHub link if applicable]"
+---
 
-**Created**: YYYY-MM-DD  
-**Last Updated**: YYYY-MM-DD  
-**Type**: Task  
-**Status**: New/In Progress/Review/Complete  
-**Category**: Refactoring/Documentation/Performance/Security/Tech Debt/Enhancement  
-**External Ticket**: [Jira/Linear/GitHub link if applicable]  
+# Quick Task - [TASK-KEY]  
 
 ## Task Description
 

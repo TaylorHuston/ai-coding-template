@@ -1,12 +1,20 @@
-# [Deliverable Name] - Product Deliverable
+---
+title: "[Deliverable Name] - Product Deliverable"
+version: "0.1.0"
+created: "YYYY-MM-DD"
+last_updated: "YYYY-MM-DD"
+status: "Template"
+target_audience: ["Product Managers", "Stakeholders"]
+tags: ["deliverable", "template", "product-management"]
+category: "Deliverables"
+description: "Template for product deliverable documentation."
+deliverable_status: "Not Started/In Progress/Completed/Blocked"
+external_link: "[Jira/Linear link]"
+owner: "[Product Manager Name]"
+target_date: "YYYY-MM-DD"
+---
 
-**Version**: 1.0.0  
-**Created**: YYYY-MM-DD  
-**Last Updated**: YYYY-MM-DD  
-**Status**: Not Started/In Progress/Completed/Blocked  
-**External Epic/Project**: [Jira/Linear link]  
-**Owner**: [Product Manager Name]  
-**Target Date**: YYYY-MM-DD  
+# [Deliverable Name] - Product Deliverable  
 
 ## Executive Summary
 

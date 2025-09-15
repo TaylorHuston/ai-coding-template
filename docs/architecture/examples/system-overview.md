@@ -1,12 +1,16 @@
+---
+title: "Technical Specifications"
+version: "0.1.0"
+created: "2025-08-21"
+last_updated: "2025-08-21"
+status: "Active"
+target_audience: ["AI Assistants", "Development Team"]
+tags: ["system-architecture", "technical-specifications", "architecture-examples"]
+category: "Architecture"
+description: "Technical details and specifications that AI assistants need to understand the system."
+---
+
 # Technical Specifications
-
-**Version**: 1.0.0
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-21
-**Status**: Active
-**Target Audience**: AI Assistants, Development Team
-
-*Technical details and specifications that AI assistants need to understand the system.*
 
 ## System Architecture
 

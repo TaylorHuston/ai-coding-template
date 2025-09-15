@@ -1,10 +1,14 @@
 # Documentation Guidelines
 
-**Version**: 2.0.0  
-**Created**: 2025-08-21  
-**Last Updated**: 2025-08-26  
-**Status**: Active  
-**Target Audience**: Developers, Technical Writers, AI Assistants
+---
+version: "0.1.0"
+created: "2025-08-21"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "technical-writers", "ai-assistants"]
+document_type: "guide"
+tags: ["documentation", "standards", "workflow"]
+---
 
 This guide explains what documentation goes where in this AI coding template, following the "Docs as Code" philosophy with a minimal, developer-focused approach.
 
@@ -81,16 +85,39 @@ project/
 
 ## File Standards
 
-### Metadata Headers
+### YAML Frontmatter Headers
 
-Every documentation file should include:
+Every documentation file MUST include YAML frontmatter with required metadata. This provides machine-readable metadata while preventing formatting issues with linters and code formatters.
 
+#### Required Fields
+```yaml
+---
+version: "X.Y.Z"            # Semantic version
+created: "YYYY-MM-DD"       # Creation date (ISO 8601)
+last_updated: "YYYY-MM-DD"  # Last modification date
+status: "active"            # Document status
+target_audience: ["array"]  # Intended audiences
+---
+```
+
+#### Complete Schema Reference
+See [YAML Frontmatter Schema](./templates/yaml-frontmatter-schema.md) for the complete specification including optional fields, valid values, and document type templates.
+
+#### Migration from Legacy Format
+**Before (Legacy Bold Format):**
 ```markdown
-**Version**: X.Y.Z  
-**Created**: YYYY-MM-DD  
-**Last Updated**: YYYY-MM-DD  
-**Status**: Active/Deprecated  
-**Target Audience**: [Primary audience]
+**Version**: 1.0.0 **Created**: 2025-08-21 **Status**: Active
+```
+
+**After (YAML Frontmatter):**
+```yaml
+---
+version: "1.0.0"
+created: "2025-08-21"
+last_updated: "2025-08-21"
+status: "active"
+target_audience: ["developers"]
+---
 ```
 
 ### Versioning System
@@ -111,6 +138,16 @@ Every documentation file should include:
 ### PLAN.md Template (Task Tracking)
 
 ```markdown
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "ai-assistants"]
+document_type: "plan"
+workflow_stage: "in-progress"
+---
+
 # [ISSUE-KEY]: [Brief Title]
 
 ## Goal
@@ -138,6 +175,17 @@ Every documentation file should include:
 ### README.md Template (Implementation)
 
 ````markdown
+---
+version: "1.0.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers"]
+document_type: "guide"
+estimated_time: "30 min"
+tags: ["implementation", "setup"]
+---
+
 # [Title] Implementation Guide
 
 ## Quick Start

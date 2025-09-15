@@ -1,10 +1,18 @@
-# {{ISSUE_TITLE}} Troubleshooting Guide
+---
+title: "{{ISSUE_TITLE}} Troubleshooting Guide"
+version: "0.1.0"
+created: "{{CREATED}}"
+last_updated: "{{LAST_UPDATED}}"
+status: "Template"
+target_audience: "{{TARGET_AUDIENCE}}"
+tags: ["troubleshooting", "template", "issue-resolution"]
+category: "Templates"
+description: "Template for troubleshooting guides."
+issue_status: "{{STATUS}}"
+severity: "{{SEVERITY}}"
+---
 
-**Created**: {{CREATED}}
-**Last Updated**: {{LAST_UPDATED}}
-**Status**: {{STATUS}}
-**Target Audience**: {{TARGET_AUDIENCE}}
-**Severity**: {{SEVERITY}}
+# {{ISSUE_TITLE}} Troubleshooting Guide
 
 ## Problem Description
 

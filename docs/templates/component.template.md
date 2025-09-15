@@ -1,10 +1,18 @@
-# {{COMPONENT_NAME}} Component
+---
+title: "{{COMPONENT_NAME}} Component"
+version: "0.1.0"
+created: "{{CREATED}}"
+last_updated: "{{LAST_UPDATED}}"
+status: "Template"
+target_audience: "{{TARGET_AUDIENCE}}"
+tags: ["component", "template", "ui-component"]
+category: "Templates"
+description: "Template for component documentation."
+component_status: "{{STATUS}}"
+component_type: "{{COMPONENT_TYPE}}"
+---
 
-**Created**: {{CREATED}}
-**Last Updated**: {{LAST_UPDATED}}
-**Status**: {{STATUS}}
-**Target Audience**: {{TARGET_AUDIENCE}}
-**Component Type**: {{COMPONENT_TYPE}}
+# {{COMPONENT_NAME}} Component
 
 ## Overview
 

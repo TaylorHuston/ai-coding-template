@@ -1,10 +1,21 @@
-# ADR-XXX: [Decision Title]
+---
+title: "ADR-XXX: [Decision Title]"
+version: "0.1.0"
+created: "2025-08-21"
+last_updated: "2025-08-21"
+status: "Template"
+target_audience: ["Architects", "Developers", "Decision Makers"]
+tags: ["adr-template", "decision-records", "architecture-decisions"]
+category: "Architecture"
+description: "Template for Architecture Decision Records (ADRs)."
+adr_status: "Proposed | Accepted | Superseded | Deprecated"
+adr_date: "YYYY-MM-DD"
+deciders: "[List key people involved in the decision]"
+consulted: "[List people consulted]"
+informed: "[List people informed of the decision]"
+---
 
-**Status**: Proposed | Accepted | Superseded | Deprecated
-**Date**: YYYY-MM-DD
-**Deciders**: [List key people involved in the decision]
-**Consulted**: [List people consulted]
-**Informed**: [List people informed of the decision]
+# ADR-XXX: [Decision Title]
 
 ## Context
 

@@ -1,10 +1,16 @@
-# Local Environment Setup Guide
+---
+title: "Local Environment Setup Guide"
+version: "0.1.0"
+created: "2025-09-10"
+last_updated: "2025-09-10"
+status: "Active"
+target_audience: ["Developers", "New Team Members"]
+tags: ["environment-setup", "development-tools", "local-development", "ai-integration"]
+category: "Implementation Guides"
+description: "Platform-agnostic guide for setting up a local development environment for AI-assisted development."
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-09-10  
-**Last Updated**: 2025-09-10  
-**Status**: Active  
-**Target Audience**: Developers, New Team Members
+# Local Environment Setup Guide
 
 Platform-agnostic guide for setting up a local development environment for AI-assisted development.
 

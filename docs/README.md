@@ -1,10 +1,14 @@
-# Documentation Hub
+---
+version: "0.1.0"
+created: "2025-08-22"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "project-managers", "ai-assistants"]
+document_type: "guide"
+tags: ["documentation", "hub", "navigation"]
+---
 
-**Version**: 1.0.0
-**Created**: 2025-08-22
-**Last Updated**: 2025-09-15
-**Status**: Active
-**Target Audience**: All Users - Developers, Product Managers, AI Assistants
+# Documentation Hub
 
 ## Quick Start
 

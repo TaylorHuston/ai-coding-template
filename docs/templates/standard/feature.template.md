@@ -1,10 +1,14 @@
-# {{FEATURE_NAME}}
+---
+version: "{{VERSION}}"
+created: "{{CREATED}}"
+last_updated: "{{LAST_UPDATED}}"
+status: "{{STATUS}}"
+target_audience: ["{{TARGET_AUDIENCE}}"]
+document_type: "feature"
+tags: ["feature", "implementation"]
+---
 
-**Version**: {{VERSION}}
-**Created**: {{CREATED}}
-**Last Updated**: {{LAST_UPDATED}}
-**Status**: {{STATUS}}
-**Target Audience**: {{TARGET_AUDIENCE}}
+# {{FEATURE_NAME}}
 
 ## Summary
 

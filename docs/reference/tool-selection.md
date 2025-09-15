@@ -1,10 +1,16 @@
-# Tool Selection Guide
+---
+title: "Tool Selection Guide"
+version: "0.1.0"
+created: "2025-09-10"
+last_updated: "2025-09-10"
+status: "Active"
+target_audience: ["AI Assistants", "Developers"]
+tags: ["tool-selection", "quick-reference", "development-tools"]
+category: "Reference"
+description: "Quick reference for selecting the right tools for different development tasks."
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-09-10  
-**Last Updated**: 2025-09-10  
-**Status**: Active  
-**Target Audience**: AI Assistants, Developers
+# Tool Selection Guide
 
 Quick reference for selecting the right tools for different development tasks.
 

@@ -653,4 +653,4 @@ class PerformanceMonitor:
 
 ---
 
-**Related Documentation**: [Testing Strategy and TDD](./testing-strategy-tdd.md) | [Quality Standards](../quality-standards.md) | [Local Environment Setup](./local-environment-setup.md)
+**Related Documentation**: [Testing Strategy and TDD](./tdd-strategy.md) | [Quality Standards](../../../quality-standards.md) | [Local Environment Setup](../environment-setup.md)

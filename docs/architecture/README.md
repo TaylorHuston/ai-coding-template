@@ -1,10 +1,15 @@
-# Architecture Documentation
+---
+version: "0.1.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "architects", "ai-assistants"]
+document_type: "guide"
+category: "architecture"
+tags: ["architecture", "design", "documentation"]
+---
 
-**Version**: 1.0.0
-**Created**: 2025-09-15
-**Last Updated**: 2025-09-15
-**Status**: Active
-**Target Audience**: Developers, System Architects, AI Assistants
+# Architecture Documentation
 
 ## What Goes Here
 

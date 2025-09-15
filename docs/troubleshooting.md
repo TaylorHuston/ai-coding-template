@@ -1,10 +1,15 @@
-# Troubleshooting Guide
+---
+version: "0.1.0"
+created: "2025-08-22"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "ai-assistants"]
+document_type: "troubleshooting"
+difficulty: "intermediate"
+tags: ["troubleshooting", "debugging", "common-issues"]
+---
 
-**Version**: 1.1.0  
-**Created**: 2025-08-22  
-**Last Updated**: 2025-08-26  
-**Status**: Active  
-**Target Audience**: Developers, AI Assistants
+# Troubleshooting Guide
 
 This guide helps resolve common issues and answers frequently asked questions about the AI Coding Template.
 

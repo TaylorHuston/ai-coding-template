@@ -1,10 +1,21 @@
-# ADR-001: Database Technology Selection
+---
+title: "ADR-001: Database Technology Selection"
+version: "0.1.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "Active"
+target_audience: ["Architects", "Developers", "DevOps Engineers"]
+tags: ["database-selection", "architecture-decision", "postgresql"]
+category: "Architecture"
+description: "Architecture Decision Record for database technology selection."
+adr_status: "Accepted"
+adr_date: "2025-09-15"
+deciders: "Tech Lead, Senior Developer, Database Administrator"
+consulted: "Development Team, DevOps Engineer"
+informed: "Product Manager, Engineering Manager"
+---
 
-**Status**: Accepted
-**Date**: 2025-09-15
-**Deciders**: Tech Lead, Senior Developer, Database Administrator
-**Consulted**: Development Team, DevOps Engineer
-**Informed**: Product Manager, Engineering Manager
+# ADR-001: Database Technology Selection
 
 ## Context
 

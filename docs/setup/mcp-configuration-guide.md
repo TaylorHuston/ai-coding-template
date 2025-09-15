@@ -1,10 +1,16 @@
-# MCP Configuration Guide
+---
+title: "MCP Configuration Guide"
+version: "0.1.0"
+created: "2025-08-21"
+last_updated: "2025-08-21"
+status: "Active"
+target_audience: ["Developers", "DevOps", "AI Assistants"]
+tags: ["mcp", "configuration", "claude-code", "external-tools"]
+category: "Setup"
+description: "Comprehensive guide for configuring and managing Model Context Protocol (MCP) servers in AI-assisted development workflows."
+---
 
-**Version**: 1.0.0
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-21
-**Status**: Active
-**Target Audience**: Developers, DevOps, AI Assistants
+# MCP Configuration Guide
 
 Comprehensive guide for configuring and managing Model Context Protocol (MCP) servers in AI-assisted development workflows.
 

@@ -1,12 +1,16 @@
+---
+title: "Visual Documentation Guide"
+version: "0.1.0"
+created: "2025-08-21"
+last_updated: "2025-08-21"
+status: "Active"
+target_audience: ["Technical Writers", "Developers", "AI Assistants"]
+tags: ["visual-documentation", "diagrams", "mermaid", "progress-tracking"]
+category: "Project Guidelines"
+description: "Enhancing documentation with visual elements for better comprehension"
+---
+
 # Visual Documentation Guide
-
-**Version**: 1.0.0
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-21
-**Status**: Active
-**Target Audience**: Technical Writers, Developers, AI Assistants
-
-**Enhancing documentation with visual elements for better comprehension**
 
 ## Overview
 

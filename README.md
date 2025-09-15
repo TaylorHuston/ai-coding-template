@@ -160,16 +160,21 @@ MIT License - see repository for full license details.
 
 **Ready to supercharge your AI-assisted development?** Start with the [Quick Start](#quick-start-5-minutes) or explore the [Documentation](#documentation).
 
+## Resources
+
+- [C4 Model](https://c4model.com)
+- [12Factor](https://12factor.net)
+
 ## Inspiration
 
 Just a list of related things. Other projects attempting to accomplish the same goal, blog posts on the subject, etc.
 
 ### Repos
 
-[GitHub Spec Kit](https://github.com/github/spec-kit)
+- [GitHub Spec Kit](https://github.com/github/spec-kit)
 
 ### Posts
 
-[GitHub: Spec Driven Development](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/)
+- [GitHub: Spec Driven Development](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/)
 
 Built with ❤️ by developers tired of AI assistants forgetting everything.

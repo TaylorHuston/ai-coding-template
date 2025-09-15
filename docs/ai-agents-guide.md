@@ -1,10 +1,16 @@
-# AI Agents Guide
+---
+version: "0.1.0"
+created: "2025-08-22"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "ai-assistants"]
+document_type: "guide"
+difficulty: "intermediate"
+estimated_time: "20 min"
+tags: ["ai-agents", "workflow", "automation"]
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-08-22  
-**Last Updated**: 2025-08-22  
-**Status**: Active  
-**Target Audience**: Developers, AI Assistants
+# AI Agents Guide
 
 This guide explains the AI agent system and how to effectively use specialized agents for different development tasks.
 

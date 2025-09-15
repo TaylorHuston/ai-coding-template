@@ -1,11 +1,20 @@
-# Bug Report - [BUG-KEY]
+---
+title: "Bug Report - [BUG-KEY]"
+version: "0.1.0"
+created: "YYYY-MM-DD"
+last_updated: "YYYY-MM-DD"
+status: "Template"
+target_audience: ["Developers", "QA Engineers"]
+tags: ["bug-report", "template", "issue-tracking"]
+category: "Deliverables"
+description: "Template for bug report documentation."
+bug_type: "Bug"
+bug_status: "New/In Progress/Review/Complete"
+environment: "Production/Staging/Development"
+external_ticket: "[Jira/Linear/GitHub link]"
+---
 
-**Created**: YYYY-MM-DD  
-**Last Updated**: YYYY-MM-DD  
-**Type**: Bug  
-**Status**: New/In Progress/Review/Complete  
-**Environment**: Production/Staging/Development  
-**External Ticket**: [Jira/Linear/GitHub link]  
+# Bug Report - [BUG-KEY]  
 
 ## Bug Summary
 

@@ -1,8 +1,19 @@
-# Task Scope - [TASK-KEY]
+---
+title: "Task Scope - [TASK-KEY]"
+version: "0.1.0"
+created: "YYYY-MM-DD"
+last_updated: "YYYY-MM-DD"
+status: "Template"
+target_audience: ["Developers", "Project Managers"]
+tags: ["task-scope", "template", "project-planning"]
+category: "Deliverables"
+description: "Template for task scope documentation."
+task_title: "[Clear, descriptive title]"
+task_category: "Refactoring/Documentation/Performance/Security/Tech Debt/Enhancement"
+impact_level: "High/Medium/Low"
+---
 
-**Task Title**: [Clear, descriptive title]  
-**Category**: Refactoring/Documentation/Performance/Security/Tech Debt/Enhancement  
-**Impact Level**: High/Medium/Low
+# Task Scope - [TASK-KEY]
 
 ## Objective
 

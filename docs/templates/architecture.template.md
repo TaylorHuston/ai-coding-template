@@ -1,11 +1,18 @@
-# {{ARCHITECTURE_TITLE}} Architecture
+---
+title: "{{ARCHITECTURE_TITLE}} Architecture"
+version: "{{ARCHITECTURE_VERSION}}"
+created: "{{CREATED}}"
+last_updated: "{{LAST_UPDATED}}"
+status: "Template"
+target_audience: "{{TARGET_AUDIENCE}}"
+tags: ["architecture", "template", "system-design"]
+category: "Templates"
+description: "Template for architecture documentation."
+architecture_status: "{{STATUS}}"
+architecture_scope: "{{ARCHITECTURE_SCOPE}}"
+---
 
-**Created**: {{CREATED}}
-**Last Updated**: {{LAST_UPDATED}}
-**Status**: {{STATUS}}
-**Target Audience**: {{TARGET_AUDIENCE}}
-**Architecture Version**: {{ARCHITECTURE_VERSION}}
-**Scope**: {{ARCHITECTURE_SCOPE}}
+# {{ARCHITECTURE_TITLE}} Architecture
 
 ## Overview
 

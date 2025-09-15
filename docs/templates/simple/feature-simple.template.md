@@ -1,10 +1,17 @@
-# {{FEATURE_NAME}} - Technical Architecture
+---
+title: "{{FEATURE_NAME}} - Technical Architecture"
+version: "{{VERSION}}"
+created: "{{CREATION_DATE}}"
+last_updated: "{{LAST_UPDATED}}"
+status: "Template"
+target_audience: ["Developers", "AI Assistants"]
+tags: ["feature-architecture", "template", "technical-documentation"]
+category: "Templates"
+description: "Simple template for feature technical architecture."
+feature_status: "{{STATUS}} <!-- Planning | In Progress | Complete | Deprecated -->"
+---
 
-**Version**: {{VERSION}}
-**Created**: {{CREATION_DATE}}
-**Last Updated**: {{LAST_UPDATED}}
-**Status**: {{STATUS}} <!-- Planning | In Progress | Complete | Deprecated -->
-**Target Audience**: Developers, AI Assistants
+# {{FEATURE_NAME}} - Technical Architecture
 
 ## Summary
 

@@ -1,12 +1,19 @@
-# {{DELIVERABLE_NAME}} - Product Deliverable Documentation
+---
+title: "{{DELIVERABLE_NAME}} - Product Deliverable Documentation"
+version: "{{VERSION}}"
+created: "{{CREATION_DATE}}"
+last_updated: "{{LAST_UPDATED}}"
+status: "Template"
+target_audience: "{{AUDIENCE}} <!-- Product Managers, Stakeholders, External Teams -->"
+tags: ["deliverable", "template", "product-documentation"]
+category: "Templates"
+description: "Template for product deliverable documentation."
+deliverable_status: "{{STATUS}} <!-- Draft | In Progress | Complete | Delivered | Archived -->"
+owner: "{{OWNER}}"
+stakeholders: "{{STAKEHOLDERS}}"
+---
 
-**Version**: {{VERSION}}
-**Created**: {{CREATION_DATE}}
-**Last Updated**: {{LAST_UPDATED}}
-**Status**: {{STATUS}} <!-- Draft | In Progress | Complete | Delivered | Archived -->
-**Target Audience**: {{AUDIENCE}} <!-- Product Managers, Stakeholders, External Teams -->
-**Owner**: {{OWNER}}
-**Stakeholders**: {{STAKEHOLDERS}}
+# {{DELIVERABLE_NAME}} - Product Deliverable Documentation
 
 ## Executive Summary
 

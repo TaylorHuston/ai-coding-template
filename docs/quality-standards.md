@@ -1,10 +1,15 @@
-# Quality Standards
+---
+version: "0.1.0"
+created: "2025-09-10"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "ai-assistants"]
+document_type: "specification"
+priority: "high"
+tags: ["quality", "standards", "validation", "testing"]
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-09-10  
-**Last Updated**: 2025-09-10  
-**Status**: Active  
-**Target Audience**: Developers, AI Assistants
+# Quality Standards
 
 **Purpose**: Comprehensive quality requirements and validation protocols for AI-assisted development projects
 

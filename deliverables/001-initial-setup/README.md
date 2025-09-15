@@ -1,17 +1,27 @@
+---
+title: "Initial Project Setup Deliverable"
+version: "0.1.0"
+created: "2025-08-23"
+last_updated: "2025-08-23"
+status: "Example"
+target_audience: ["Developers", "Project Managers", "Technical Leads"]
+tags: ["project-setup", "example-deliverable", "foundation-tasks"]
+category: "Deliverables"
+description: "Example deliverable containing essential setup tasks for starting a new software project."
+deliverable_status: "🚀 Ready to Start"
+priority: "P0 - Critical Foundation"
+timeline: "Week 1 of Project"
+---
+
 # Initial Project Setup Deliverable
 
-> **📌 NOTE: This is an EXAMPLE deliverable**  
+> **📌 NOTE: This is an EXAMPLE deliverable**
 > Feel free to:
 > - ✅ **USE IT**: Follow these setup tasks for a solid project foundation
 > - 🗑️ **DELETE IT**: Remove this entire `001-initial-setup` directory if not needed
 > - ✏️ **MODIFY IT**: Adapt the issues to your specific needs
-> 
+>
 > This deliverable demonstrates the template structure while providing genuinely useful setup tasks based on 2025 best practices.
-
-**Status**: 🚀 Ready to Start  
-**Priority**: P0 - Critical Foundation  
-**Timeline**: Week 1 of Project  
-**Last Updated**: 2025-08-23
 
 ## Overview
 

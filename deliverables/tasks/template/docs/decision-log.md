@@ -1,11 +1,18 @@
+---
+title: "{ISSUE_KEY} Decision Log"
+version: "0.1.0"
+created: "[Date when decision log was created]"
+last_updated: "[Date when last decision was recorded]"
+status: "Template"
+target_audience: ["Development Team", "Stakeholders"]
+tags: ["decision-log", "template", "project-decisions"]
+category: "Deliverables"
+description: "Template for tracking significant decisions during development."
+decision_status: "Active/Archived"
+issue_reference: "{ISSUE_KEY} - {Issue Title}"
+---
+
 # {ISSUE_KEY} Decision Log
-
-**Created**: [Date when decision log was created]
-**Last Updated**: [Date when last decision was recorded]
-**Status**: Active/Archived
-**Target Audience**: Development Team, Stakeholders
-
-**Issue Reference**: {ISSUE_KEY} - {Issue Title}
 
 ## Overview
 

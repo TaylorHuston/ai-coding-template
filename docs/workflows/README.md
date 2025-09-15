@@ -1,10 +1,16 @@
-# Common Workflows
+---
+title: "Common Workflows"
+version: "0.1.0"
+created: "2025-08-22"
+last_updated: "2025-08-22"
+status: "Active"
+target_audience: ["Developers", "AI Assistants"]
+tags: ["workflows", "development-process", "git-workflows", "ai-assisted"]
+category: "Workflows"
+description: "Step-by-step workflows for common development tasks using AI agents."
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-08-22  
-**Last Updated**: 2025-08-22  
-**Status**: Active  
-**Target Audience**: Developers, AI Assistants
+# Common Workflows
 
 This guide provides step-by-step workflows for common development tasks using AI agents.
 

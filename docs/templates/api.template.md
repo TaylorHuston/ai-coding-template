@@ -1,10 +1,18 @@
-# {{API_NAME}} API Documentation
+---
+title: "{{API_NAME}} API Documentation"
+version: "{{API_VERSION}}"
+created: "{{CREATED}}"
+last_updated: "{{LAST_UPDATED}}"
+status: "Template"
+target_audience: "{{TARGET_AUDIENCE}}"
+tags: ["api-documentation", "rest-api", "template"]
+category: "Templates"
+description: "Template for API documentation."
+api_status: "{{STATUS}}"
+api_version: "{{API_VERSION}}"
+---
 
-**Created**: {{CREATED}}
-**Last Updated**: {{LAST_UPDATED}}
-**Status**: {{STATUS}}
-**Target Audience**: {{TARGET_AUDIENCE}}
-**API Version**: {{API_VERSION}}
+# {{API_NAME}} API Documentation
 
 ## Overview
 

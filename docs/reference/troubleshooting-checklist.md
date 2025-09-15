@@ -1,10 +1,16 @@
-# Troubleshooting Checklist
+---
+title: "Troubleshooting Checklist"
+version: "0.1.0"
+created: "2025-08-21"
+last_updated: "2025-08-22"
+status: "Active"
+target_audience: ["Development Team", "AI Assistants"]
+tags: ["troubleshooting", "checklist", "debugging", "problem-solving"]
+category: "Reference"
+description: "Systematic troubleshooting guide for common development issues."
+---
 
-**Version**: 1.0.0
-**Created**: 2025-08-21
-**Last Updated**: 2025-08-22
-**Status**: Active
-**Target Audience**: Development Team, AI Assistants
+# Troubleshooting Checklist
 
 Systematic troubleshooting guide for common development issues.
 

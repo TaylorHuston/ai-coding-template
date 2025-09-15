@@ -1,10 +1,14 @@
-# Documentation Index
+---
+version: "0.1.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "ai-assistants", "stakeholders"]
+document_type: "reference"
+tags: ["navigation", "index", "documentation"]
+---
 
-**Version**: 1.0.0
-**Created**: 2025-09-15
-**Last Updated**: 2025-09-15
-**Status**: Active
-**Target Audience**: All Users - Developers, AI Assistants, Product Teams
+# Documentation Index
 
 ## Quick Navigation
 
@@ -87,7 +91,7 @@
 - [System Guidelines](../CLAUDE.md)
 - [Architecture Examples](./architecture/)
 - [Development Workflows](./workflows/)
-- [Testing Guides](./guides/testing-strategy-tdd.md)
+- [Testing Guides](./guides/implementation/testing/)
 
 #### Maintenance
 - [Quality Standards](./quality-standards.md)

@@ -1,10 +1,17 @@
-# [Feature Name] Architecture
+---
+title: "[Feature Name] Architecture"
+version: "0.1.0"
+created: "YYYY-MM-DD"
+last_updated: "YYYY-MM-DD"
+status: "Template"
+target_audience: ["Developers", "AI Assistants"]
+tags: ["feature-architecture", "architecture-template", "feature-design"]
+category: "Architecture"
+description: "Template for documenting feature architecture."
+feature_status: "[Planned/In Progress/Implemented/Deprecated]"
+---
 
-**Version**: 1.0.0
-**Created**: YYYY-MM-DD
-**Last Updated**: YYYY-MM-DD
-**Status**: [Planned/In Progress/Implemented/Deprecated]
-**Target Audience**: Developers, AI Assistants
+# [Feature Name] Architecture
 
 ## Overview
 

@@ -1,10 +1,16 @@
-# Deployment Patterns Guide
+---
+title: "Deployment Patterns Guide"
+version: "0.1.0"
+created: "2025-09-10"
+last_updated: "2025-09-10"
+status: "Active"
+target_audience: ["DevOps Engineers", "Developers", "System Administrators"]
+tags: ["deployment-patterns", "devops", "blue-green-deployment", "infrastructure"]
+category: "Implementation Guides"
+description: "Platform-agnostic deployment patterns and strategies for modern application deployment across different environments and technologies."
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-09-10  
-**Last Updated**: 2025-09-10  
-**Status**: Active  
-**Target Audience**: DevOps Engineers, Developers, System Administrators
+# Deployment Patterns Guide
 
 Platform-agnostic deployment patterns and strategies for modern application deployment across different environments and technologies.
 

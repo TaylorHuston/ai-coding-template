@@ -1,10 +1,16 @@
-# User Authentication System - Technical Architecture EXAMPLE
+---
+title: "User Authentication System - Technical Architecture EXAMPLE"
+version: "0.1.0"
+created: "2025-08-22"
+last_updated: "2025-08-22"
+status: "Example Document"
+target_audience: ["Developers", "AI Assistants"]
+tags: ["authentication-system", "technical-architecture", "example-document"]
+category: "Architecture"
+description: "Example technical architecture documentation for a user authentication system."
+---
 
-**Version**: 1.0.0
-**Created**: 2025-08-22
-**Last Updated**: 2025-08-22
-**Status**: Example Document
-**Target Audience**: Developers, AI Assistants
+# User Authentication System - Technical Architecture EXAMPLE
 
 ## Summary & Status
 

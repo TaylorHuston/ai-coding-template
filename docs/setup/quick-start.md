@@ -1,10 +1,16 @@
-# Quick Start Guide
+---
+version: "0.1.0"
+created: "2025-09-15"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "end-users"]
+document_type: "setup"
+difficulty: "beginner"
+estimated_time: "5 min"
+tags: ["setup", "quick-start", "onboarding"]
+---
 
-**Version**: 1.0.0
-**Created**: 2025-09-15
-**Last Updated**: 2025-09-15
-**Status**: Active
-**Target Audience**: Developers, New Users
+# Quick Start Guide
 
 ## 5-Minute Setup
 

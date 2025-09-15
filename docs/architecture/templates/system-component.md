@@ -1,10 +1,17 @@
-# [Component Name] System Component
+---
+title: "[Component Name] System Component"
+version: "0.1.0"
+created: "YYYY-MM-DD"
+last_updated: "YYYY-MM-DD"
+status: "Template"
+target_audience: ["Developers", "System Architects", "AI Assistants"]
+tags: ["system-component", "architecture-template", "component-design"]
+category: "Architecture"
+description: "Template for documenting system components."
+component_status: "[Active/Deprecated/Planned]"
+---
 
-**Version**: 1.0.0
-**Created**: YYYY-MM-DD
-**Last Updated**: YYYY-MM-DD
-**Status**: [Active/Deprecated/Planned]
-**Target Audience**: Developers, System Architects, AI Assistants
+# [Component Name] System Component
 
 ## Component Overview
 

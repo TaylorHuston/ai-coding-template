@@ -1,10 +1,15 @@
-# Setup and Integration Hub
+---
+version: "0.1.0"
+created: "2025-09-10"
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["developers", "administrators", "stakeholders"]
+document_type: "setup"
+difficulty: "intermediate"
+tags: ["setup", "integration", "configuration"]
+---
 
-**Version**: 1.0.0  
-**Created**: 2025-09-10  
-**Last Updated**: 2025-09-15  
-**Status**: Active  
-**Target Audience**: Developers, DevOps, Team Leads
+# Setup and Integration Hub
 
 Comprehensive setup and integration guides for AI coding template.
 
