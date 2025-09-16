@@ -90,6 +90,108 @@ You MUST follow these naming conventions:
 
 You have access to 17 specialized agents through the `.claude/agents/` directory. Your job is to orchestrate the work of the appropriate agents for each task, including passing context between them and keeping any status files up-to-date. You should rarely be updating files yourself directly. Always delegate to the appropriate agent.
 
+## Multi-Agent Workflow Execution
+
+When working with deliverables that contain PLAN.md files, follow these coordination protocols:
+
+### Phase-Based Task Execution
+
+PLAN.md files use a structured P X.X.X format where each phase represents a logical commit boundary:
+
+- **P1.X.X**: Core implementation phase
+- **P2.X.X**: Integration/extension phase
+- **P3.X.X**: Finalization phase
+- Each phase follows: Analyze → Test → Implement → Review → Document → Commit
+
+### Agent Selection from Task Hints
+
+Tasks include agent hints in HTML comments:
+
+- `<!--agent:context-analyzer-->` - Use context-analyzer agent
+- `<!--agent:test-engineer-->` - Use test-engineer agent
+- Agent selection should be specific (e.g., `<!--agent:frontend-specialist-->`) - avoid auto-selection
+- `<!--agent:code-reviewer-->` - Use code-reviewer agent
+- `<!--agent:docs-sync-agent-->` - Use docs-sync-agent
+
+### HANDOFF.yml Coordination
+
+When delegating to agents, ensure proper handoff coordination:
+
+1. **Before Task Delegation**: Read the last 1-2 entries in HANDOFF.yml to understand current context
+2. **Agent Instructions**: Include relevant context from handoffs in your Task prompts
+3. **After Task Completion**: Verify the agent updated HANDOFF.yml with their findings
+
+### RESEARCH.md Integration
+
+Each issue includes a RESEARCH.md file for unstructured investigation findings:
+
+1. **Context-Analyzer Tasks (P X.1.0)**: Always dump comprehensive findings to RESEARCH.md
+2. **All Agents**: Reference RESEARCH.md before starting work to understand discoveries
+3. **Research Contributions**: Any agent can append findings, code snippets, or observations
+4. **Investigation Updates**: Update RESEARCH.md throughout the issue lifecycle as new information emerges
+
+### CHANGELOG.md Maintenance
+
+For user-facing changes, ensure CHANGELOG.md is kept current:
+
+**When to Update CHANGELOG.md:**
+
+- New features users interact with (UI components, API endpoints, commands)
+- Breaking API changes or configuration changes
+- Bug fixes that users would notice (not internal refactoring)
+- Security vulnerability fixes
+- Performance improvements users would experience
+- New dependencies or system requirements
+
+**When NOT to Update CHANGELOG.md:**
+
+- Internal code refactoring without user impact
+- Test additions or improvements
+- Documentation updates (unless user-facing guides)
+- Build system or CI/CD changes
+- Code style or linting fixes
+
+**Update Process:**
+
+1. **Feature Development**: Add entries to `[Unreleased]` section for qualifying changes
+2. **Bug Fixes**: Document fixes in the `Fixed` section with issue references
+3. **Breaking Changes**: Mark clearly with `**BREAKING**` prefix and migration notes
+4. **Final Phase Tasks**: Include CHANGELOG update as part of documentation tasks
+5. **Automation Available**: Use `./scripts/ai-update-changelog.sh` for assistance
+
+### Agent Coordination Protocol
+
+```yaml
+Required Workflow for Each Agent:
+1. Read PLAN.md to understand current task (P X.X.X)
+2. Read last 2 entries in HANDOFF.yml for context
+3. Read RESEARCH.md for investigation findings and discoveries
+4. Complete assigned work with full context
+5. Update HANDOFF.yml with handoff entry
+6. Update RESEARCH.md if new findings or insights emerge
+7. Update CHANGELOG.md if work affects user-facing functionality
+8. Update PLAN.md task status to checked
+9. Provide clear summary of work completed
+```
+
+### Task Delegation Examples
+
+**Good delegation pattern**:
+"Use the Task tool with test-engineer to work on P1.2.0. Context from HANDOFF.yml shows the context-analyzer identified the need for authentication tests covering JWT token generation and validation. Create comprehensive tests for these requirements."
+
+**Poor delegation pattern**:
+"Use test-engineer to write tests." (Lacks context and specific task reference)
+
+### Multi-Phase Coordination
+
+- Work through phases sequentially (complete all P1.X.X before P2.X.X)
+- Each phase should result in a logical, committable unit of work
+- If a phase needs subdivision, use sub-task numbering (P1.3.1, P1.3.2)
+- Phases can vary in length - not all require exactly 6 steps
+- Customize phase structure based on complexity and requirements
+- Quality gate at end of each phase: tests pass, code reviewed, documented
+- STATUS.md updated with phase summary upon completion
+
 ### Agent Selection Rules
 
 - Match agent expertise to specific task domains

@@ -1,0 +1,44 @@
+---
+# Agent Handoff Coordination File
+# This file tracks context and progress between AI agents during task execution
+# Each agent should add an entry when completing their assigned work
+
+# Schema version for future compatibility
+schema_version: "1.0"
+
+# Current workflow state
+current_phase: "P1.1.0"
+last_updated: "YYYY-MM-DDTHH:MM:SSZ"
+
+# Agent handoff entries (newest first)
+handoffs:
+  # Example entry - remove when using template
+  - agent: "example-agent"
+    timestamp: "2024-01-15T10:30:00Z"
+    task: "P1.1.0"
+    status: "completed"
+    summary: "Brief description of what was accomplished"
+    details:
+      - "Specific item 1 completed"
+      - "Specific item 2 completed"
+      - "Key decision made about X"
+    files_changed:
+      - "path/to/file1.tsx"
+      - "path/to/file2.py"
+    next_agent_context: "Important information the next agent needs to know"
+    changelog_impact: "User-facing changes requiring CHANGELOG.md update (optional)"
+    blockers: "Any issues that prevent continuation (optional)"
+
+# Agent coordination notes
+coordination_notes:
+  workflow_decisions: "Key architectural or approach decisions made during execution"
+  recurring_patterns: "Patterns that emerge across phases for future reference"
+  optimization_notes: "Improvements for future similar tasks"
+
+# Quality gate tracking
+quality_gates:
+  tests_passing: false
+  code_review_passed: false
+  documentation_updated: false
+  changelog_updated: false
+  ready_for_commit: false

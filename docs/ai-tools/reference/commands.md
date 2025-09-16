@@ -82,27 +82,54 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 ---
 
-### `/iterate` - Progressive Iterative Improvement
+### `/iterate` - Workflow Task Execution
 
-**Purpose**: Systematic refinement through multiple improvement cycles
+**Purpose**: Execute tasks from PLAN.md files with multi-agent coordination
 
-**Usage**: `/iterate --target TARGET --iterations N --threshold LEVEL --scope SCOPE`
-
-**Parameters**:
-- `--target`: Component, file, or system to improve
-- `--iterations`: Number of improvement cycles
-- `--threshold`: Quality threshold (basic, standard, advanced)
-- `--scope`: single-file, component, system
-
-**Features**:
-- Progressive code quality improvement
-- Automated testing between iterations
-- Performance and maintainability focus
-- Quality gate validation
-
-**Example**:
+**Usage**:
 ```bash
-/iterate --target src/components/UserProfile.tsx --iterations 3 --threshold advanced
+/iterate                    # Execute next unchecked task in current phase
+/iterate P2.3.0            # Execute specific task P2.3.0
+/iterate 1.4.0             # Execute specific task (P prefix optional)
+```
+
+**Behavior**:
+- Automatically finds PLAN.md in current directory or nearest parent
+- Identifies next unchecked task in active phase (first phase with incomplete tasks)
+- Uses agent specified in HTML comment (e.g., `<!--agent:backend-specialist-->`)
+- Reads HANDOFF.yml for context and RESEARCH.md for investigation findings
+- Passes both structured context and research findings to selected agent
+- Updates PLAN.md checkbox when task completes
+- Updates HANDOFF.yml with agent's work summary
+- Updates RESEARCH.md if agent discovers new findings or insights
+- Updates CHANGELOG.md if agent makes user-facing changes
+- Updates STATUS.md with phase summary when phase completes
+- Prompts for commit at end of each phase
+
+**Phase Completion Flow**:
+1. Completes final task in phase (e.g., P2.6.0)
+2. Updates STATUS.md with phase summary
+3. Prompts: "Phase 2 complete. Run `/commit` to commit changes?"
+4. Next `/iterate` starts next phase (P3.1.0)
+
+**Error Handling**:
+- **Malformed HANDOFF.yml**: Reports parsing error, suggests validation, continues with empty context
+- **Missing Agent Reference**: Reports missing `<!--agent:name-->` comment, prompts for manual agent selection
+- **Invalid Task Number**: "Task P2.8.0 not found in PLAN.md" - suggests available tasks
+- **Agent Validation**: Checks if referenced agent exists in `.claude/agents/` directory
+- **File Corruption**: Reports missing/corrupted files, suggests recovery procedures
+
+**End States**:
+- All phases complete: "All phases complete! Issue ready for final review."
+- No PLAN.md found: "No PLAN.md file found in current directory or parent directories."
+- Task validation failure: Prompts for correction before proceeding
+
+**Example Workflow**:
+```bash
+/iterate        # Executes P1.1.0 with context-analyzer
+/iterate        # Executes P1.2.0 with test-engineer
+/iterate P1.4.0 # Jumps to P1.4.0 with code-reviewer
+/iterate        # Continues with P1.5.0
 ```
 
 **Tools**: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task

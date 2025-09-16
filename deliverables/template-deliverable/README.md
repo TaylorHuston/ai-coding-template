@@ -26,17 +26,19 @@ template-deliverable/
         └── scripts/           # Optional: For automation scripts
 ```
 
-## 2-File Documentation Pattern
+## 4-File Documentation Pattern
 
-Each issue uses a lightweight 2-file structure:
+Each issue uses a lightweight 4-file structure:
 
 ### PLAN.md
-**Purpose**: Track what needs to be done  
+**Purpose**: Track what needs to be done through structured phases
 **Contents**:
 - Goal (1-2 sentences)
-- Task checklist for AI/developer tracking
-- Acceptance criteria
-- Minimal context for AI agents
+- Multi-phase task structure with P X.X.X numbering
+- Flexible phase lengths (phases can have 3-10+ tasks as needed)
+- Each phase represents a logical commit boundary
+- Agent hints for automatic coordination (<!--agent:specific-agent-->)
+- Overall acceptance criteria
 - Notes section for progress updates
 
 ### README.md
@@ -48,6 +50,25 @@ Each issue uses a lightweight 2-file structure:
 - Troubleshooting tips
 - Resource links
 
+### HANDOFF.yml
+**Purpose**: Agent coordination and context passing
+**Contents**:
+- Structured handoff entries between AI agents
+- Task progress tracking with P X.X.X references
+- Agent-to-agent context preservation
+- Quality gate status tracking
+- Workflow state management
+
+### RESEARCH.md
+**Purpose**: Unstructured research and investigation findings
+**Contents**:
+- Context discovery and analysis findings
+- Code snippets, dependencies, and technical details
+- Security considerations and performance analysis
+- Design decisions and rejected approaches
+- External resources and documentation links
+- Questions, assumptions, and future considerations
+
 ## Usage
 
 1. **Create a new deliverable**:
@@ -56,16 +77,23 @@ Each issue uses a lightweight 2-file structure:
 
 2. **Create a new issue**:
    - Copy `issues/template/` to `deliverables/XXX/issues/ISSUE-KEY/`
-   - Update PLAN.md with tasks and criteria
+   - Update PLAN.md with phased tasks (P X.X.X structure)
    - Update README.md with implementation details
+   - Initialize HANDOFF.yml for agent coordination
+   - Use RESEARCH.md for investigation findings and discoveries
+
 
 ## Philosophy
 
 This template follows the "Docs as Code" philosophy with a focus on:
 - **Minimal overhead**: Just enough documentation to work effectively
 - **Practical content**: Code examples over lengthy descriptions
-- **Clear separation**: Planning (PLAN.md) vs implementation (README.md)
+- **Clear separation**: Planning (PLAN.md) vs implementation (README.md) vs coordination (HANDOFF.yml) vs research (RESEARCH.md)
 - **AI-friendly**: Structured for AI assistants to parse and update
+- **Phase-driven**: Multi-phase P X.X.X structure for logical commit boundaries
+- **Flexible structure**: Phases can vary in length based on complexity
+- **Agent coordination**: Built-in handoff system for multi-agent workflows
+- **STATUS.md integration**: Automatic project status updates at phase completion
 
 ## What This Is NOT
 

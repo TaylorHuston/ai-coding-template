@@ -88,6 +88,42 @@ Request these explicitly for specialized work:
 "Use the project-manager to coordinate building a real-time chat feature with frontend, backend, database, and deployment considerations"
 ```
 
+## Multi-Agent Workflow Coordination
+
+When working with complex features, agents coordinate through structured workflows:
+
+### Phase-Based Execution
+
+Issues use a P X.X.X task structure where each phase represents a logical commit:
+
+```markdown
+## Phase 1: Core Implementation
+- [ ] P1.1.0 Analyze requirements <!--agent:context-analyzer-->
+- [ ] P1.2.0 Write tests <!--agent:test-engineer-->
+- [ ] P1.3.0 Implement feature <!--agent:auto-select-->
+- [ ] P1.4.0 Code review <!--agent:code-reviewer-->
+- [ ] P1.5.0 Update docs <!--agent:docs-sync-agent-->
+- [ ] P1.6.0 Commit: "feat: core implementation"
+```
+
+### Agent Coordination System
+
+Agents coordinate through multiple files:
+
+**HANDOFF.yml** - Structured coordination:
+- What each agent accomplished
+- Context for the next agent
+- Files changed and decisions made
+- Current workflow state
+
+**RESEARCH.md** - Unstructured findings:
+- Investigation discoveries and context analysis
+- Code snippets, dependencies, technical details
+- Design considerations and rejected approaches
+- Questions, assumptions, and external resources
+
+This dual system prevents context loss and preserves valuable research that might otherwise be forgotten.
+
 ## Common Workflows
 
 ### Feature Development Workflow
