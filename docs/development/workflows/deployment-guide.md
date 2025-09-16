@@ -1120,4 +1120,4 @@ deployment_strategy_selection:
 
 ---
 
-**Related Documentation**: [Integration Guide](../../ai-template/setup/integration-guide.md) | [MCP Setup](../../ai-template/setup/mcp-setup.md) | [Setup Hub](../../ai-template/setup/README.md)
+**Related Documentation**: [Integration Guide](../../ai-tools/setup/integration-guide.md) | [MCP Setup](../../ai-tools/setup/mcp-setup.md) | [Setup Hub](../../ai-tools/setup/README.md)

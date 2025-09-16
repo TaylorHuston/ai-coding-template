@@ -8,11 +8,11 @@ priority: "high"
 tags: ["project-docs", "placeholder"]
 ---
 
-# Project Documentation
+# Technical Documentation
 
-**This directory is for YOUR project's specific documentation.**
+**This directory is for YOUR project's technical documentation.**
 
-This is where you should place documentation that's specific to your actual project, not the AI template itself.
+This is where you should place technical documentation that's specific to your actual project, not the AI tools themselves.
 
 ## What Goes Here
 
@@ -62,4 +62,4 @@ When working with AI assistants on your project:
 
 ---
 
-**Note**: This documentation is separate from the AI template documentation (found in `../ai-template/`) and development process documentation (found in `../development/`).
+**Note**: This documentation is separate from the AI tools documentation (found in `../ai-tools/`) and development process documentation (found in `../development/`).

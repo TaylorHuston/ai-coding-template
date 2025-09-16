@@ -8,15 +8,15 @@ priority: "critical"
 tags: ["ai-template", "agents", "automation"]
 ---
 
-# AI Template Documentation
+# AI Tools Documentation
 
-**Documentation for the AI coding template system, agents, and workflows.**
+**Documentation for AI tools, agents, and automated workflows.**
 
-This directory contains all documentation specific to this AI coding template. This is the documentation you need to understand and work with the AI agent system, template features, and automation tools.
+This directory contains all documentation for AI tools and systems. This is the documentation you need to understand and work with the AI agent system, automation tools, and AI-powered workflows.
 
 ## System Overview
 
-- **[system-context.md](./system-context.md)** - High-level architecture of the AI template system
+- **[system-context.md](./system-context.md)** - High-level architecture of the AI tools system
 
 ## Directory Structure
 

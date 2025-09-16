@@ -77,5 +77,5 @@ This template follows the "Docs as Code" philosophy with a focus on:
 ## See Also
 
 - [Documentation Guidelines](../../docs/development/guidelines/documentation-guidelines.md) - Detailed guide on what goes where
-- [AI Collaboration Guide](../../docs/ai-template/guides/ai-collaboration-guide.md) - How AI should work with branches and code
+- [AI Collaboration Guide](../../docs/ai-tools/guides/ai-collaboration-guide.md) - How AI should work with branches and code
 - [CLAUDE.md](../../CLAUDE.md) - Instructions for AI assistants
