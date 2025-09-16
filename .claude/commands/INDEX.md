@@ -59,6 +59,11 @@ Comprehensive catalog of Claude Code slash commands with proper YAML frontmatter
   - _Usage_: `/feature-plan --issue ISSUE-KEY --deliverable DELIVERABLE-NAME --complexity LEVEL --research DEPTH`
   - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
+- **[/plan](./plan.md)** - Sequential multi-agent planning with comprehensive context gathering
+  - _Purpose_: Sequential multi-agent planning with comprehensive context gathering (deliverable created only if needed)
+  - _Usage_: `/plan --issue ISSUE-KEY [--deliverable NAME] [--agents LIST] [--review-agent AGENT] [--review-plan] [--init]`
+  - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
+
 #### **Project Management**
 
 - **[/progress](./progress.md)** - Project progress validation and tracking with evidence verification
@@ -210,6 +215,7 @@ All commands now follow Claude Code standards:
 | `/feature-plan` | opus | `/feature-plan --issue KEY --deliverable NAME` | Comprehensive feature planning |
 | `/health-check` | sonnet | `/health-check [scope]` | Project health assessment |
 | `/iterate` | sonnet | `/iterate --target TARGET --iterations N` | Progressive improvement cycles |
+| `/plan` | opus | `/plan --issue KEY [--deliverable NAME]` | Automated issue setup with intelligent planning |
 | `/review` | sonnet | `/review --scope SCOPE --focus FOCUS` | Comprehensive code review |
 | `/security-audit` | opus | `/security-audit --scope SCOPE --depth DEPTH` | OWASP security assessment |
 | `/test-fix` | sonnet | `/test-fix [pattern]` | Automatic test failure resolution |

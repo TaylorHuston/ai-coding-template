@@ -92,43 +92,63 @@ You have access to 17 specialized agents through the `.claude/agents/` directory
 
 ## Multi-Agent Workflow Execution
 
-When working with deliverables that contain PLAN.md files, follow these coordination protocols:
+When working with deliverables that contain PLAN.md files, follow these orchestrator-based coordination protocols:
+
+### Orchestrator Model (Claude Code Architecture)
+
+**Critical Understanding**: Sub-agents operate in separate context windows and start fresh each invocation. Context must be passed explicitly through Task tool prompts.
+
+**Orchestrator Responsibilities** (YOU as main Claude):
+- Read HANDOFF.yml and RESEARCH.md for complete context
+- Construct comprehensive prompts with all relevant information
+- Pass context explicitly to agents via Task tool prompts
+- Update coordination files after agent completion
+- Manage quality gates and phase transitions
+
+**Agent Responsibilities** (Sub-agents):
+- Execute assigned task with provided context
+- Return structured results (do NOT update files directly)
+- Focus solely on task execution
 
 ### Phase-Based Task Execution
 
 PLAN.md files use a structured P X.X.X format where each phase represents a logical commit boundary:
 
-- **P1.X.X**: Core implementation phase
-- **P2.X.X**: Integration/extension phase
-- **P3.X.X**: Finalization phase
-- Each phase follows: Analyze → Test → Implement → Review → Document → Commit
+- **P1.X.X**: Core implementation phase (analysis, testing, initial implementation)
+- **P2.X.X**: Integration/extension phase (features, integration, optimization)
+- **P3.X.X**: Finalization phase (review, documentation, deployment)
+- Each phase enforced by quality gates before progression
 
 ### Agent Selection from Task Hints
 
-Tasks include agent hints in HTML comments:
+Tasks include agent hints in HTML comments that YOU parse and use:
 
 - `<!--agent:context-analyzer-->` - Use context-analyzer agent
 - `<!--agent:test-engineer-->` - Use test-engineer agent
-- Agent selection should be specific (e.g., `<!--agent:frontend-specialist-->`) - avoid auto-selection
+- `<!--agent:backend-specialist-->` - Use backend-specialist agent
 - `<!--agent:code-reviewer-->` - Use code-reviewer agent
-- `<!--agent:docs-sync-agent-->` - Use docs-sync-agent
 
-### HANDOFF.yml Coordination
+**Implementation**: Extract agent hint, validate against .claude/agents/, call via Task tool
 
-When delegating to agents, ensure proper handoff coordination:
+### Context Management Protocol
 
-1. **Before Task Delegation**: Read the last 1-2 entries in HANDOFF.yml to understand current context
-2. **Agent Instructions**: Include relevant context from handoffs in your Task prompts
-3. **After Task Completion**: Verify the agent updated HANDOFF.yml with their findings
+**Before Agent Execution**:
+1. Read HANDOFF.yml for previous agent context (last 2 entries)
+2. Read RESEARCH.md CRITICAL_CONTEXT section
+3. Read current task details from PLAN.md
+4. Construct comprehensive prompt with ALL context
 
-### RESEARCH.md Integration
+**During Agent Execution**:
+1. Call agent via Task tool with complete context in prompt
+2. Agent executes task and returns structured results
+3. Parse agent output for technical details and findings
 
-Each issue includes a RESEARCH.md file for unstructured investigation findings:
-
-1. **Context-Analyzer Tasks (P X.1.0)**: Always dump comprehensive findings to RESEARCH.md
-2. **All Agents**: Reference RESEARCH.md before starting work to understand discoveries
-3. **Research Contributions**: Any agent can append findings, code snippets, or observations
-4. **Investigation Updates**: Update RESEARCH.md throughout the issue lifecycle as new information emerges
+**After Agent Execution**:
+1. Update PLAN.md task status (checkbox ✅)
+2. Create new HANDOFF.yml entry with agent's work details
+3. Update RESEARCH.md if new findings discovered
+4. Update CHANGELOG.md if user-facing changes made
+5. Run quality gate validation before next task
 
 ### CHANGELOG.md Maintenance
 
@@ -159,19 +179,25 @@ For user-facing changes, ensure CHANGELOG.md is kept current:
 4. **Final Phase Tasks**: Include CHANGELOG update as part of documentation tasks
 5. **Automation Available**: Use `./scripts/ai-update-changelog.sh` for assistance
 
-### Agent Coordination Protocol
+### Simplified Agent Coordination Protocol
+
+**Agent Execution Model** (Respects Claude Code Architecture):
 
 ```yaml
-Required Workflow for Each Agent:
-1. Read PLAN.md to understand current task (P X.X.X)
-2. Read last 2 entries in HANDOFF.yml for context
-3. Read RESEARCH.md for investigation findings and discoveries
-4. Complete assigned work with full context
-5. Update HANDOFF.yml with handoff entry
-6. Update RESEARCH.md if new findings or insights emerge
-7. Update CHANGELOG.md if work affects user-facing functionality
-8. Update PLAN.md task status to checked
-9. Provide clear summary of work completed
+Orchestrator Workflow (YOU handle):
+1. Read PLAN.md to get current task (P X.X.X)
+2. Read HANDOFF.yml for previous agent context
+3. Read RESEARCH.md for critical context and findings
+4. Construct comprehensive prompt with all context
+5. Call agent via Task tool with complete context
+6. Parse agent results and update all coordination files
+7. Run quality gates before proceeding to next task
+
+Agent Expectations (Sub-agents do):
+1. Receive complete context through Task tool prompt
+2. Execute assigned task with provided context
+3. Return structured results with technical details
+4. NO file updates (orchestrator handles all file operations)
 ```
 
 ### Task Delegation Examples

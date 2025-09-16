@@ -24,6 +24,7 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 | `/health-check` | Project health assessment | `/health-check [scope]` | sonnet |
 | `/iterate` | Progressive improvement cycles | `/iterate --target TARGET --iterations N` | sonnet |
 | `/merge-branch` | Safe branch merging with validation | `/merge-branch [target]` | sonnet |
+| `/plan` | Automated issue setup with intelligent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
 | `/progress` | Progress validation and tracking | `/progress --mode validate\|update [issue]` | sonnet |
 | `/refresh` | Context refresh with git awareness | `/refresh [area]` | haiku |
 | `/review` | Comprehensive code review | `/review --scope SCOPE --focus FOCUS` | sonnet |
@@ -93,24 +94,33 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 /iterate 1.4.0             # Execute specific task (P prefix optional)
 ```
 
+**Orchestrator Architecture**:
+- Acts as orchestrator for multi-agent coordination (respects Claude Code sub-agent isolation)
+- Reads HANDOFF.yml and RESEARCH.md for complete context
+- Constructs comprehensive prompts with all relevant information
+- Passes context explicitly to agents via Task tool prompts
+- Updates coordination files after agent completion (agents don't write files)
+
 **Behavior**:
 - Automatically finds PLAN.md in current directory or nearest parent
 - Identifies next unchecked task in active phase (first phase with incomplete tasks)
-- Uses agent specified in HTML comment (e.g., `<!--agent:backend-specialist-->`)
-- Reads HANDOFF.yml for context and RESEARCH.md for investigation findings
-- Passes both structured context and research findings to selected agent
-- Updates PLAN.md checkbox when task completes
-- Updates HANDOFF.yml with agent's work summary
-- Updates RESEARCH.md if agent discovers new findings or insights
-- Updates CHANGELOG.md if agent makes user-facing changes
+- Validates agent hint from HTML comment (e.g., `<!--agent:backend-specialist-->`)
+- Runs quality gate validation: `scripts/validate-quality-gates.sh`
+- Constructs comprehensive context from HANDOFF.yml and RESEARCH.md
+- Calls agent via Task tool with complete context in prompt
+- Parses agent output and updates PLAN.md checkbox when task completes
+- Creates new HANDOFF.yml entry with agent's technical specifications
+- Updates RESEARCH.md if new findings discovered
+- Updates CHANGELOG.md if user-facing changes made
 - Updates STATUS.md with phase summary when phase completes
-- Prompts for commit at end of each phase
+- Runs quality gates before phase transitions
 
 **Phase Completion Flow**:
 1. Completes final task in phase (e.g., P2.6.0)
-2. Updates STATUS.md with phase summary
-3. Prompts: "Phase 2 complete. Run `/commit` to commit changes?"
-4. Next `/iterate` starts next phase (P3.1.0)
+2. Runs comprehensive quality validation: `scripts/validate-quality-gates.sh`
+3. Updates STATUS.md with phase summary
+4. Prompts: "Phase 2 complete. Quality gates passed. Run `/commit` to commit changes?"
+5. Next `/iterate` starts next phase (P3.1.0)
 
 **Error Handling**:
 - **Malformed HANDOFF.yml**: Reports parsing error, suggests validation, continues with empty context
@@ -269,6 +279,62 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 **Tools**: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
+---
+
+### `/plan` - Sequential Multi-Agent Planning
+
+**Purpose**: Sequential multi-agent planning with comprehensive context gathering and technical specification generation
+
+**Usage**: `/plan --issue ISSUE-KEY [--deliverable DELIVERABLE-NAME] [--branch BRANCH-NAME] [--agents LIST] [--review-agent AGENT] [--review-plan] [--init]`
+
+**Orchestrator Architecture**:
+- Acts as orchestrator reading RESEARCH.md and passing context to agents
+- Constructs detailed prompts with accumulated findings for each agent
+- Updates RESEARCH.md with agent findings after each execution
+- Generates technical specifications for clear implementation guidance
+
+**Parameters**:
+- `--issue`: Issue key identifier (required, e.g., AUTH-123, BUG-456)
+- `--deliverable`: Deliverable name (auto-detected from existing deliverables or issue prefix)
+- `--branch`: Branch name (auto-generated as feature/ISSUE-KEY if not provided)
+- `--agents`: Comma-separated list to override auto-selection (e.g., "context-analyzer,security-auditor,test-engineer")
+- `--skip-branch`: Skip branch creation/checkout (use current branch)
+- `--template`: Custom template path (default: template-deliverable)
+
+**Special Modes**:
+- `--init`: Initialize directory structure and template files only (no planning analysis)
+- `--review-agent AGENT`: Add specific agent review to existing plan (e.g., "security-auditor")
+- `--review-plan`: Comprehensive plan review with recommendations for user approval (no automatic updates)
+
+**Features**:
+- Sequential agent execution (8-10 minutes for thorough planning)
+- Dynamic agent selection based on issue content keywords
+- Each agent builds on previous findings in RESEARCH.md
+- Comprehensive context gathering before plan generation
+- Smart deliverable detection (creates only if needed)
+- Issue directory structure setup within existing or new deliverables
+- Intelligent task generation based on accumulated context
+- Specialized agent assignment using HTML comment hints
+- Phase-based task organization (P X.X.X numbering)
+- HANDOFF.yml and RESEARCH.md initialization
+- Automatic deliverable issue tracking updates
+- Integration with existing workflow automation
+
+**Example**:
+```bash
+/plan --issue AUTH-123                # Auto-selects agents based on keywords
+/plan --issue AUTH-124                # Second issue: adds to existing AUTH deliverable
+/plan --issue PERF-456 --agents "context-analyzer,performance-optimizer,test-engineer"
+/plan --issue BUG-789 --skip-branch   # Bug fix using current branch
+
+# Special modes
+/plan --issue AUTH-123 --init                    # Setup only, no planning
+/plan --issue AUTH-123 --review-agent security-auditor   # Add security review
+/plan --issue AUTH-123 --review-plan             # Generate plan recommendations
+```
+
+**Tools**: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
+
 ## Project Management Commands
 
 ### `/progress` - Progress Validation and Tracking
@@ -354,27 +420,29 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 ### By Project Phase
 
 #### Planning Phase
-**Recommended Commands**: `feature-plan`, `health-check`, `security-audit`
+**Recommended Commands**: `plan`, `feature-plan`, `health-check`, `security-audit`
 
-**Workflow Pattern**: analysis → planning → validation
+**Workflow Pattern**: setup → analysis → planning → validation
 
 **Example Sequence**:
 ```bash
+/plan --issue AUTH-123           # Set up issue structure and branch
 /health-check                    # Assess current state
-/feature-plan --issue EPIC-123   # Plan the feature
+/feature-plan --issue AUTH-123   # Detailed planning (for complex features)
 /security-audit --scope feature  # Security requirements
 ```
 
 #### Development Phase
-**Recommended Commands**: `feature-development`, `review`, `iterate`
+**Recommended Commands**: `iterate`, `feature-development`, `review`
 
-**Workflow Pattern**: implement → review → iterate → test
+**Workflow Pattern**: execute → implement → review → iterate → test
 
 **Example Sequence**:
 ```bash
-/feature-development --issue AUTH-123 --type authentication
+/iterate                         # Execute tasks from PLAN.md
+/feature-development --issue AUTH-123 --type authentication  # Complex implementation
 /review --scope feature --focus quality
-/iterate --target auth-components --iterations 2
+/iterate                         # Continue with next tasks
 /test-fix
 ```
 
@@ -426,8 +494,9 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 ### Decision Matrix
 
 **New Feature Development**:
-- Simple: `/feature-development`
-- Complex: `/feature-plan` → `/feature-development` → `/security-audit`
+- Simple: `/plan` → `/iterate` (until complete)
+- Standard: `/plan` → `/iterate` → `/review` → `/commit`
+- Complex: `/plan` → `/feature-plan` → `/iterate` → `/security-audit`
 
 **Code Quality Improvement**:
 - Review: `/review`
@@ -440,7 +509,8 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 - Hardening: `/security-audit` → `/feature-development`
 
 **Project Management**:
-- Planning: `/feature-plan`
+- Issue Setup: `/plan`
+- Planning: `/feature-plan` (for complex features)
 - Progress Tracking: `/progress`
 - Context Updates: `/refresh`
 - Branch Management: `/merge-branch`
@@ -449,7 +519,19 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 ### Command Chaining
 Chain related commands for comprehensive workflows:
+
+**Complete Feature Workflow**:
 ```bash
+/plan --issue AUTH-123 --complexity complex
+/iterate                        # Execute phase 1 tasks
+/iterate                        # Execute phase 2 tasks
+/review --scope feature --focus security
+/commit
+```
+
+**Legacy Complex Planning** (for enterprise features):
+```bash
+/plan --issue AUTH-123
 /feature-plan --issue AUTH-123 --complexity complex
 /feature-development --issue AUTH-123 --type authentication --testing comprehensive
 /security-audit --scope feature --depth standard
