@@ -25,9 +25,28 @@ Project Management: <Add the link and details to your Jira/Linear/etc here>
 
 Wiki: <Add the link and details to your Confluence/Notion/etc here>
 
+## Documentation Structure
+
+This template uses a three-tier documentation system:
+
+- **docs/technical/** - YOUR project's technical documentation (architecture, API, database)
+- **docs/development/** - Team processes and guidelines (workflows, standards, testing)
+- **docs/ai-tools/** - AI assistant and template documentation (agents, commands, setup)
+
+**Note**: This file (CLAUDE.md) contains AI instructions. For human-readable documentation about using this template, see `docs/ai-tools/`.
+
+### Key Documentation References
+
+- [Command System](./docs/ai-tools/reference/commands.md) - All available slash commands and automation
+- [Using Agents](./docs/ai-tools/guides/using-agents.md) - Practical agent usage guide for development
+- [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md) - Essential AI development patterns
+- [MCP Setup](./docs/ai-tools/setup/mcp-setup.md) - Enhanced AI capabilities and tools
+- [Troubleshooting](./docs/ai-tools/reference/troubleshooting.md) - Comprehensive problem-solving guide
+- [STATUS.md](./STATUS.md) - Current project context and state for session continuity
+
 ## Critical Rules
 
-**These apply to all actions and agents**
+These apply to all actions and agents:
 
 1. **Commit Approval:** Never commit without explicit user approval first
 2. **Comment Approval:** Never comment on <Jira/Linear/etc> without explicit user approval first
@@ -67,7 +86,7 @@ You MUST follow these naming conventions:
 
 ## Context Management Protocol
 
-## 18-Agent Framework Integration
+## 17-Agent Framework Integration
 
 You have access to 17 specialized agents through the `.claude/agents/` directory. Your job is to orchestrate the work of the appropriate agents for each task, including passing context between them and keeping any status files up-to-date. You should rarely be updating files yourself directly. Always delegate to the appropriate agent.
 
@@ -104,6 +123,11 @@ Documentation:
 Project Management:
   - TodoWrite: Track progress and tasks
   - Task: Delegate to specialized agents
+
+Deliverables:
+  - Read: Review deliverables/ directory structure
+  - Edit: Update PLAN.md and README.md files
+  - Command System: Use commands.md for available automation
 ```
 
 ## Code Generation Standards
@@ -218,7 +242,7 @@ Your performance will be evaluated on:
 
 ### Context Management Issues
 
-1. **AI forgets previous context**: Update and reference `STATUS.md` and agent guidelines in `.claude/agents/INDEX.md`
+1. **AI forgets previous context**: Update and reference `STATUS.md` and follow [Context Management](./docs/ai-tools/guides/ai-collaboration-guide.md#context-management)
 2. **Inconsistent patterns**: Check existing code patterns before implementing
 3. **Lost session context**: Follow session completion protocol properly
 
@@ -230,9 +254,9 @@ Your performance will be evaluated on:
 
 ### Tool and Agent Issues
 
-1. **Agent not responding as expected**: Be explicit about agent requests
-2. **Tool selection confusion**: Reference the Tool Selection Guide above
-3. **MCP server failures**: Fall back to native Claude tools
+1. **Agent not responding as expected**: See [Using Agents](./docs/ai-tools/guides/using-agents.md) for practical guidance
+2. **Tool selection confusion**: Reference the Tool Selection Guide above and [Development Commands](./docs/ai-tools/reference/development-commands.md)
+3. **MCP server failures**: Follow [MCP Setup](./docs/ai-tools/setup/mcp-setup.md) troubleshooting or fall back to native Claude tools
 
 ### Code Quality Issues
 
@@ -243,8 +267,9 @@ Your performance will be evaluated on:
 ### General Troubleshooting
 
 1. **When in doubt**: Ask the user rather than making assumptions
-2. **Complex problems**: Use appropriate specialized agent
+2. **Complex problems**: Use appropriate specialized agent and follow [Troubleshooting Guide](./docs/ai-tools/reference/troubleshooting.md)
 3. **Multiple issues**: Address P0/critical issues first
+4. **Systematic debugging**: Follow procedures in [Troubleshooting Guide](./docs/ai-tools/reference/troubleshooting.md)
 
 ## Override Instructions
 
