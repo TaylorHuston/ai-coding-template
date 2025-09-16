@@ -27,8 +27,7 @@ This directory contains documentation about how your development team works toge
 ### `/workflows/`
 **Development processes and methodologies**
 - **README.md** - Overview of development workflows
-- **deployment-patterns.md** - Deployment strategies and patterns
-- **deployment-guide.md** - Step-by-step deployment procedures
+- **deployment-guide.md** - Comprehensive deployment patterns, strategies, and procedures
 - **tdd-strategy.md** - Test-driven development approach
 - **benchmarking.md** - Performance testing and benchmarking processes
 

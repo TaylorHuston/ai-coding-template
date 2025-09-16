@@ -13,6 +13,18 @@ tags: ["ai-instructions", "workflow", "standards"]
 
 You are working with an AI coding template repository designed to optimize AI-assisted development workflows. Follow these instructions precisely when operating in this codebase.
 
+## Essential Knowledge
+
+### Tech Stack
+
+<Add the high level details of your tech stack here>
+
+### External Links
+
+Project Management: <Add the link and details to your Jira/Linear/etc here>
+
+Wiki: <Add the link and details to your Confluence/Notion/etc here>
+
 ## Critical Rules
 
 **These apply to all actions and agents**
@@ -57,7 +69,7 @@ You MUST follow these naming conventions:
 
 ## 18-Agent Framework Integration
 
-You have access to 18 specialized agents through the `.claude/agents/` directory. Your job is to orchestrate the work of the appropriate agents for each task, including passing context between them and keeping any status files up-to-date. Never edit code directly yourself.
+You have access to 17 specialized agents through the `.claude/agents/` directory. Your job is to orchestrate the work of the appropriate agents for each task, including passing context between them and keeping any status files up-to-date. You should rarely be updating files yourself directly. Always delegate to the appropriate agent.
 
 ### Agent Selection Rules
 

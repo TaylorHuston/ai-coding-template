@@ -14,6 +14,10 @@ tags: ["ai-template", "agents", "automation"]
 
 This directory contains all documentation specific to this AI coding template. This is the documentation you need to understand and work with the AI agent system, template features, and automation tools.
 
+## System Overview
+
+- **[system-context.md](./system-context.md)** - High-level architecture of the AI template system
+
 ## Directory Structure
 
 ### `/guides/`

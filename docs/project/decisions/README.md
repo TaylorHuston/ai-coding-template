@@ -60,7 +60,7 @@ When superseding an ADR:
 
 1. **Copy the template**:
    ```bash
-   cp docs/architecture/decision-records/template.md docs/architecture/decision-records/001-your-decision.md
+   cp docs/project/decisions/template.md docs/architecture/decision-records/001-your-decision.md
    ```
 
 2. **Fill in the template**:

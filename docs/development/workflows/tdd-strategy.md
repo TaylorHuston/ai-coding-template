@@ -1,13 +1,12 @@
 ---
-title: "Testing Strategy and TDD Guide"
 version: "0.1.0"
 created: "2025-09-10"
-last_updated: "2025-09-10"
+last_updated: "2025-09-15"
 status: "active"
 target_audience: ["developers", "qa-engineers", "ai-assistants"]
+document_type: "guide"
+priority: "high"
 tags: ["testing-strategy", "tdd", "test-driven-development", "quality-assurance"]
-category: "Implementation Guides"
-description: "Comprehensive guide for implementing Test-Driven Development (TDD) and establishing effective testing strategies in AI-assisted development projects."
 ---
 
 # Testing Strategy and TDD Guide

@@ -29,13 +29,10 @@ Document the **technical implementation details** of your project:
 docs/architecture/
 ├── README.md                    # This guide
 ├── c4-overview.md              # C4 model guide for visual architecture
-├── system-context.md           # Example C4 system context diagram
-├── examples/                    # Reference examples (remove when not needed)
-│   ├── README.md               # Guide to examples
-│   └── system-overview.md      # Example: overall architecture
-└── decision-records/            # Architecture Decision Records (ADRs)
-    ├── README.md               # ADR guide
-    └── template.md             # ADR template
+├── [your-system-context.md]    # Your C4 system context diagram (see ai-template/system-context.md for example)
+└── examples/                    # Reference examples (remove when not needed)
+    ├── README.md               # Guide to examples
+    └── system-overview.md      # Example: overall architecture
 ```
 
 ## Quick Start

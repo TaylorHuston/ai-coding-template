@@ -1,13 +1,12 @@
 ---
-title: "Visual Documentation Guide"
 version: "0.1.0"
 created: "2025-08-21"
-last_updated: "2025-08-21"
-status: "Active"
-target_audience: ["Technical Writers", "Developers", "AI Assistants"]
+last_updated: "2025-09-15"
+status: "active"
+target_audience: ["technical-writers", "developers", "ai-assistants"]
+document_type: "guide"
+priority: "medium"
 tags: ["visual-documentation", "diagrams", "mermaid", "progress-tracking"]
-category: "Project Guidelines"
-description: "Enhancing documentation with visual elements for better comprehension"
 ---
 
 # Visual Documentation Guide
@@ -19,7 +18,8 @@ Visual documentation uses diagrams, progress bars, and flowcharts to make comple
 ## Visual Progress Bars
 
 ### Quick Reference
-```
+
+```text
 [██████████] 100% Complete ✅
 [████████░░] 80% In Progress 🚧
 [█████░░░░░] 50% Half Done
@@ -35,6 +35,7 @@ Visual documentation uses diagrams, progress bars, and flowcharts to make comple
 4. **Add Context**: Include percentage and status emoji
 
 ### Example Implementation
+
 ```javascript
 function progressBar(percent) {
   const filled = Math.round(percent / 10);
@@ -51,6 +52,7 @@ console.log(progressBar(75)); // [███████░░░]
 ### Supported Diagram Types
 
 #### 1. Flowcharts
+
 ```mermaid
 graph TD
     A[Start] --> B{Decision}
@@ -61,12 +63,13 @@ graph TD
 ```
 
 #### 2. Sequence Diagrams
+
 ```mermaid
 sequenceDiagram
     participant Client
     participant API
     participant Database
-    
+
     Client->>API: Request
     API->>Database: Query
     Database-->>API: Data
@@ -74,6 +77,7 @@ sequenceDiagram
 ```
 
 #### 3. State Diagrams
+
 ```mermaid
 stateDiagram-v2
     [*] --> Inactive
@@ -86,6 +90,7 @@ stateDiagram-v2
 ```
 
 #### 4. Entity Relationships
+
 ```mermaid
 erDiagram
     USER ||--o{ PROJECT : creates
@@ -95,24 +100,25 @@ erDiagram
 ```
 
 #### 5. System Architecture
+
 ```mermaid
 graph TB
     subgraph "Frontend"
         UI[User Interface]
         State[State Management]
     end
-    
+
     subgraph "Backend"
         API[API Layer]
         Logic[Business Logic]
         Auth[Authentication]
     end
-    
+
     subgraph "Data"
         DB[(Database)]
         Cache[(Cache)]
     end
-    
+
     UI --> API
     State --> API
     API --> Logic
@@ -131,35 +137,40 @@ graph TB
 
 ## When to Use Visual Documentation
 
-### Use Progress Bars For:
+### Use Progress Bars For
+
 - Feature completion status
 - Implementation progress
 - Test coverage metrics
 - Sprint progress tracking
 - Build and deployment status
 
-### Use Flowcharts For:
+### Use Flowcharts For
+
 - Decision trees and logic flows
 - Process workflows
 - User journey mapping
 - API request flows
 - Error handling paths
 
-### Use Sequence Diagrams For:
+### Use Sequence Diagrams For
+
 - Authentication flows
 - API interactions
 - Multi-step processes
 - System integrations
 - Event sequences
 
-### Use State Diagrams For:
+### Use State Diagrams For
+
 - Object lifecycles
 - Session states
 - Application states
 - User workflow states
 - Connection states
 
-### Use ER Diagrams For:
+### Use ER Diagrams For
+
 - Database schemas
 - Data relationships
 - System architecture
@@ -168,6 +179,7 @@ graph TB
 ## Integration Examples
 
 ### In Feature Documentation
+
 ```markdown
 ## Implementation Status
 
@@ -178,11 +190,11 @@ Database Schema     [██████████] 100% Complete ✅
 API Endpoints       [████████░░] 80% In Progress 🚧
 UI Components       [██░░░░░░░░] 20% Started
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Overall Progress    [███████░░░] 75% 
-```
+Overall Progress    [███████░░░] 75%
 ```
 
 ### In Architecture Docs
+
 ```markdown
 ## System Flow
 
@@ -197,9 +209,9 @@ graph LR
     API --> Frontend
     Frontend --> User
 ```
-```
 
 ### In Status Reports
+
 ```markdown
 ## Sprint Progress
 
@@ -211,16 +223,17 @@ Week 3    [░░░░░░░░░░] 0 points (planned)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Sprint    [██████░░░░] 60 points / 100 points
 ```
-```
 
 ## Tools and Resources
 
 ### Creating Diagrams
-- **Mermaid Live Editor**: https://mermaid.live/
+
+- **Mermaid Live Editor**: <https://mermaid.live/>
 - **Draw.io**: For complex diagrams
 - **Excalidraw**: For hand-drawn style diagrams
 
 ### Unicode Characters
+
 - `█` Full block (U+2588)
 - `░` Light shade (U+2591)
 - `▓` Medium shade (U+2593)
@@ -228,6 +241,7 @@ Sprint    [██████░░░░] 60 points / 100 points
 - `━` Horizontal line (U+2501)
 
 ### VS Code Extensions
+
 - **Markdown Preview Mermaid Support**
 - **Mermaid Markdown Syntax Highlighting**
 - **Unicode Character Insert**
@@ -235,6 +249,7 @@ Sprint    [██████░░░░] 60 points / 100 points
 ## Quick Templates
 
 ### Status Dashboard Template
+
 ```markdown
 ### Visual Progress
 ```
@@ -244,9 +259,9 @@ Component C         [░░░░░░░░░░] 0% Not Started ❌
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Overall             [██████░░░░] 60%
 ```
-```
 
 ### Decision Flow Template
+
 ```markdown
 ```mermaid
 graph TD
@@ -256,9 +271,9 @@ graph TD
     ResultA --> End[Complete]
     ResultB --> End
 ```
-```
 
 ### API Flow Template
+
 ```markdown
 ```mermaid
 sequenceDiagram
@@ -266,7 +281,7 @@ sequenceDiagram
     participant Frontend
     participant API
     participant Database
-    
+
     User->>Frontend: Action
     Frontend->>API: Request
     API->>Database: Query
@@ -274,9 +289,9 @@ sequenceDiagram
     API-->>Frontend: Response
     Frontend-->>User: Display
 ```
-```
 
 ### Architecture Overview Template
+
 ```markdown
 ```mermaid
 graph TB
@@ -284,23 +299,22 @@ graph TB
         UI[User Interface]
         State[State Management]
     end
-    
+
     subgraph "Server"
         API[API Layer]
         Logic[Business Logic]
     end
-    
+
     subgraph "Data"
         DB[(Database)]
         Cache[(Cache)]
     end
-    
+
     UI --> API
     State --> API
     API --> Logic
     Logic --> DB
     Logic --> Cache
-```
 ```
 
 ## Accessibility Considerations
@@ -313,12 +327,14 @@ graph TB
 ## Maintenance
 
 ### Keeping Visuals Updated
+
 1. Update progress bars with each milestone
 2. Revise diagrams when architecture changes
 3. Verify Mermaid syntax after updates
 4. Test rendering in target platforms (GitHub, VS Code, etc.)
 
 ### Version Control
+
 - Commit diagram source with documentation
 - Track changes to visual elements in git history
 - Document why diagrams changed in commit messages
@@ -327,12 +343,14 @@ graph TB
 ## Integration with Project Workflow
 
 ### During Development
+
 - Update progress bars as features are completed
 - Modify flowcharts when business logic changes
 - Update sequence diagrams when API contracts change
 - Revise architecture diagrams when system design evolves
 
 ### During Reviews
+
 - Use visual elements to explain complex changes
 - Include diagrams in pull request descriptions
 - Update status visuals before sprint reviews
@@ -341,6 +359,7 @@ graph TB
 ### For AI Assistants
 
 When creating or updating documentation:
+
 - Always include appropriate visual elements
 - Use progress bars for status updates
 - Create flowcharts for complex decision logic
