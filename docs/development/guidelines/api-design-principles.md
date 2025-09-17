@@ -611,7 +611,7 @@ const errorHandler = (error, req, res, next) => {
 - **[API Implementation Patterns](./api-implementation-patterns.md)** - Error handling, pagination, filtering implementation details
 - **[API Documentation Standards](./api-documentation-standards.md)** - OpenAPI specifications and documentation best practices
 - **[Security Principles](./security-principles.md)** - Security implementation patterns for APIs
-- **[Testing Guidelines](./testing-guidelines.md)** - API testing strategies and patterns
+- **[Testing Implementation](./testing-implementation.md)** - API testing strategies and patterns
 
 ## Navigation
 

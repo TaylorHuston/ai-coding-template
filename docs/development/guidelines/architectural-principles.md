@@ -811,9 +811,9 @@ function validateUser(user: User): void {
 These architectural principles should be referenced and applied in:
 
 1. **[Coding Standards](./coding-standards.md)**: All code examples should demonstrate SOLID principles
-2. **[Testing Guidelines](./testing-guidelines.md)**: Test design should follow SRP and DIP
-3. **[API Design Guidelines](./api-design-guidelines.md)**: API interfaces should follow ISP and OCP
-4. **[Security Guidelines](./security-guidelines.md)**: Security implementations should be simple (KISS) and non-repetitive (DRY)
+2. **[Testing Principles](./testing-principles.md)**: Test design should follow SRP and DIP
+3. **[API Design Principles](./api-design-principles.md)**: API interfaces should follow ISP and OCP
+4. **[Security Principles](./security-principles.md)**: Security implementations should be simple (KISS) and non-repetitive (DRY)
 5. **[Code Review Guidelines](./code-review-guidelines.md)**: Review checklists should include principle validation
 
 ### **Principle-Driven Development Workflow**
@@ -849,7 +849,7 @@ These architectural principles are not academic concepts—they are practical to
 
 - **[Coding Standards](./coding-standards.md)** - Practical application of these principles in code
 - **[Quality Standards](./quality-standards.md)** - Quality metrics aligned with architectural principles
-- **[Testing Guidelines](./testing-guidelines.md)** - Testing strategies that support good architecture
+- **[Testing Principles](./testing-principles.md)** - Testing strategies that support good architecture
 - **[Code Review Guidelines](./code-review-guidelines.md)** - Review processes that enforce architectural quality
 
 ## Navigation

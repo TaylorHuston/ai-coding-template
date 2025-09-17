@@ -359,8 +359,8 @@ tags: ["api-patterns", "best-practices", "error-handling", "authentication", "pa
 - **[API Design Principles](./api-design-principles.md)** - Core API design philosophy and standards
 - **[API Documentation Standards](./api-documentation-standards.md)** - OpenAPI specifications and documentation
 - **[Security Principles](./security-principles.md)** - Security implementation requirements
-- **[Testing Guidelines](./testing-guidelines.md)** - API testing strategies and patterns
-- **[Performance Guidelines](./performance-guidelines.md)** - Performance optimization strategies
+- **[Testing Implementation](./testing-implementation.md)** - API testing strategies and patterns
+- **[Benchmarking](../workflows/benchmarking.md)** - Performance optimization strategies and benchmarking
 
 ## Navigation
 

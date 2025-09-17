@@ -22,7 +22,8 @@ estimated_time: "5 min"
 ### **Core Development Guidelines**
 - **[Quality Standards](./quality-standards.md)** - Comprehensive quality requirements and validation protocols for AI-assisted development
 - **[Coding Standards](./coding-standards.md)** - Language-agnostic coding conventions, naming patterns, and best practices
-- **[Testing Guidelines](./testing-guidelines.md)** - Testing strategies, coverage requirements, and quality assurance practices
+- **[Testing Principles](./testing-principles.md)** - Testing philosophy, strategy, and TDD/BDD principles
+- **[Testing Implementation](./testing-implementation.md)** - Practical testing patterns, organization, and CI/CD integration
 
 ### **Security Guidelines**
 - **[Security Principles](./security-principles.md)** - Core security concepts, threat modeling, zero trust, and governance framework
@@ -56,7 +57,7 @@ estimated_time: "5 min"
 ### **Looking for Specific Guidelines?**
 - **Architecture & Principles**: [Architectural Principles](./architectural-principles.md) for DRY, KISS, YAGNI, SOLID fundamentals
 - **Code Quality**: [Coding Standards](./coding-standards.md) and [Code Review Guidelines](./code-review-guidelines.md)
-- **Testing**: [Testing Guidelines](./testing-guidelines.md) for comprehensive testing strategies
+- **Testing**: [Testing Principles](./testing-principles.md) and [Testing Implementation](./testing-implementation.md) for comprehensive testing strategies
 - **API Development**: [API Design Principles](./api-design-principles.md), [API Documentation Standards](./api-documentation-standards.md), [API Implementation Patterns](./api-implementation-patterns.md)
 - **Security**: [Security Principles](./security-principles.md), [Authentication & Authorization](./authentication-authorization.md), [Security Implementation](./security-implementation.md)
 - **Documentation**: [Documentation Guidelines](./documentation-guidelines.md) and [Visual Documentation](./visual-documentation.md)

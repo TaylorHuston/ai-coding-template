@@ -1,5 +1,5 @@
 ---
-version: "1.0.0"
+version: "2.0.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 status: "active"
@@ -8,926 +8,342 @@ document_type: "guide"
 priority: "critical"
 tags: ["authentication", "authorization", "jwt", "mfa", "rbac", "abac", "sessions"]
 difficulty: "advanced"
-estimated_time: "25 min"
+estimated_time: "15 min"
 ---
 
-# Authentication & Authorization
+# Authentication & Authorization Core Principles
 
-**Purpose**: Comprehensive authentication and authorization patterns, including multi-factor authentication, role-based access control, session management, and secure token handling.
+**Purpose**: Essential authentication and authorization principles, patterns, and decision frameworks for secure identity management. This guide focuses on WHAT, WHY, and WHEN rather than HOW - for implementation examples, see `/examples/code/auth/`.
 
-## Authentication Standards
+## Authentication Principles
 
-### **Multi-Factor Authentication (MFA)**
+### Multi-Factor Authentication (MFA) Strategy
 
-```javascript
-// Comprehensive MFA implementation
-class MFAService {
-  async authenticateUser(credentials) {
-    // Step 1: Primary authentication
-    const user = await this.validateCredentials(credentials);
-    if (!user) {
-      throw new AuthenticationError('Invalid credentials');
-    }
+#### When to Require MFA
+- **High-Value Accounts**: Administrative users, financial access, sensitive data handlers
+- **Sensitive Operations**: Password changes, account settings, data exports, privilege escalation
+- **Risk-Based Triggers**: Unusual login patterns, new devices, geographic anomalies
+- **Compliance Requirements**: Regulatory mandates (SOX, HIPAA, PCI-DSS)
 
-    // Step 2: Check MFA requirement
-    if (user.mfaEnabled) {
-      const mfaToken = await this.generateMFAChallenge(user);
-      return {
-        status: 'mfa_required',
-        challengeToken: mfaToken,
-        availableMethods: user.mfaMethods
-      };
-    }
+#### MFA Method Selection
+- **TOTP (Time-based)**: Preferred for technical users, offline capability, no SMS vulnerabilities
+- **SMS**: Convenient but vulnerable to SIM swapping, use only for low-risk scenarios
+- **Email**: Backup method, suitable for account recovery flows
+- **WebAuthn/FIDO2**: Highest security, phishing-resistant, hardware-based authentication
+- **Push Notifications**: User-friendly, real-time validation, requires internet connectivity
 
-    // Step 3: Create authenticated session
-    return this.createSession(user);
-  }
+#### Implementation Principles
+- **Clock Skew Tolerance**: Allow 30-60 second window for TOTP validation
+- **Token Reuse Prevention**: Track and reject previously used tokens within validity window
+- **Backup Codes**: Provide single-use recovery codes for device loss scenarios
+- **Progressive Enhancement**: Start with basic MFA, add stronger methods based on risk
+- **Constant-Time Comparison**: Prevent timing attacks during token validation
 
-  async validateMFAToken(challengeToken, userToken, method) {
-    const challenge = await this.validateChallengeToken(challengeToken);
+### Password Security Framework
 
-    switch (method) {
-      case 'totp':
-        return this.validateTOTP(challenge.userId, userToken);
-      case 'sms':
-        return this.validateSMSCode(challenge.userId, userToken);
-      case 'email':
-        return this.validateEmailCode(challenge.userId, userToken);
-      case 'webauthn':
-        return this.validateWebAuthn(challenge.userId, userToken);
-      default:
-        throw new ValidationError('Invalid MFA method');
-    }
-  }
+#### Password Requirements Strategy
+- **Minimum Length**: 12 characters minimum, 16+ recommended for high-security accounts
+- **Maximum Length**: 128 characters to prevent DoS attacks during hashing
+- **Character Complexity**: Require mix of uppercase, lowercase, numbers, special characters
+- **Entropy Threshold**: Minimum 60 bits of entropy for adequate security
+- **Common Password Prevention**: Block passwords from breach databases and common lists
+- **Personal Information Restriction**: Prevent use of user's personal data in passwords
 
-  async validateTOTP(userId, token) {
-    const user = await this.getUserById(userId);
-    const secret = await this.getTOTPSecret(userId);
+#### Hashing and Storage Principles
+- **Algorithm Selection**: bcrypt with cost factor 12+ (adjust based on hardware capabilities)
+- **Salt Generation**: Unique cryptographic salt per password, handled automatically by bcrypt
+- **Timing Attack Prevention**: Constant-time comparison and consistent delay patterns
+- **Upgrade Path**: Plan for algorithm migration (bcrypt → scrypt → Argon2)
 
-    // Use window to account for clock skew
-    const window = 1; // Allow 1 step before/after current
+#### Password Policy Enforcement
+- **Client-Side Validation**: User experience only, never rely for security
+- **Server-Side Validation**: Primary enforcement point, comprehensive checks
+- **Real-Time Feedback**: Password strength meter without revealing specific requirements
+- **Grace Periods**: Allow existing users time to upgrade to new requirements
 
-    for (let i = -window; i <= window; i++) {
-      const expectedToken = this.generateTOTP(secret, Date.now() + (i * 30000));
-      if (this.constantTimeCompare(token, expectedToken)) {
-
-        // Prevent token reuse
-        if (await this.hasTokenBeenUsed(userId, token)) {
-          throw new AuthenticationError('Token already used');
-        }
-
-        await this.markTokenAsUsed(userId, token);
-        return { success: true, method: 'totp' };
-      }
-    }
-
-    throw new AuthenticationError('Invalid TOTP token');
-  }
-
-  async setupTOTP(userId) {
-    const secret = this.generateTOTPSecret();
-    const user = await this.getUserById(userId);
-
-    const qrCode = await this.generateQRCode({
-      secret,
-      label: user.email,
-      issuer: process.env.APP_NAME
-    });
-
-    // Store secret temporarily until verification
-    await this.storeTempTOTPSecret(userId, secret);
-
-    return {
-      secret,
-      qrCode,
-      backupCodes: await this.generateBackupCodes(userId)
-    };
-  }
-
-  constantTimeCompare(a, b) {
-    if (a.length !== b.length) return false;
-
-    let result = 0;
-    for (let i = 0; i < a.length; i++) {
-      result |= a.charCodeAt(i) ^ b.charCodeAt(i);
-    }
-
-    return result === 0;
-  }
-}
-```
-
-### **Password Security**
-
-```javascript
-// Secure password handling
-const PASSWORD_REQUIREMENTS = {
-  minLength: 12,
-  maxLength: 128,
-  requireUppercase: true,
-  requireLowercase: true,
-  requireNumbers: true,
-  requireSpecialChars: true,
-  preventCommonPasswords: true,
-  preventUserInfoInPassword: true
-};
-
-class PasswordService {
-  async hashPassword(password, userData = {}) {
-    // Validate password strength
-    this.validatePasswordStrength(password, userData);
-
-    // Use bcrypt with high cost factor
-    const saltRounds = 12;
-    return await bcrypt.hash(password, saltRounds);
-  }
-
-  validatePasswordStrength(password, userData) {
-    // Check basic requirements
-    if (password.length < PASSWORD_REQUIREMENTS.minLength) {
-      throw new ValidationError('Password too short');
-    }
-
-    if (password.length > PASSWORD_REQUIREMENTS.maxLength) {
-      throw new ValidationError('Password too long');
-    }
-
-    // Check character requirements
-    if (PASSWORD_REQUIREMENTS.requireUppercase && !/[A-Z]/.test(password)) {
-      throw new ValidationError('Password must contain uppercase letters');
-    }
-
-    if (PASSWORD_REQUIREMENTS.requireLowercase && !/[a-z]/.test(password)) {
-      throw new ValidationError('Password must contain lowercase letters');
-    }
-
-    if (PASSWORD_REQUIREMENTS.requireNumbers && !/\d/.test(password)) {
-      throw new ValidationError('Password must contain numbers');
-    }
-
-    if (PASSWORD_REQUIREMENTS.requireSpecialChars && !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-      throw new ValidationError('Password must contain special characters');
-    }
-
-    // Check against common passwords
-    if (this.isCommonPassword(password)) {
-      throw new ValidationError('Password is too common');
-    }
-
-    // Check against user information
-    if (this.containsUserInfo(password, userData)) {
-      throw new ValidationError('Password cannot contain personal information');
-    }
-
-    // Calculate entropy
-    const entropy = this.calculatePasswordEntropy(password);
-    if (entropy < 60) {
-      throw new ValidationError('Password is not complex enough');
-    }
-  }
-
-  calculatePasswordEntropy(password) {
-    const charsets = [
-      /[a-z]/.test(password) ? 26 : 0, // lowercase
-      /[A-Z]/.test(password) ? 26 : 0, // uppercase
-      /\d/.test(password) ? 10 : 0,    // digits
-      /[!@#$%^&*(),.?":{}|<>]/.test(password) ? 32 : 0 // special chars
-    ];
-
-    const charsetSize = charsets.reduce((sum, size) => sum + size, 0);
-    return password.length * Math.log2(charsetSize);
-  }
-
-  // Prevent timing attacks during verification
-  async verifyPassword(password, hashedPassword) {
-    const isValid = await bcrypt.compare(password, hashedPassword);
-
-    // Add consistent timing delay
-    await this.constantTimeDelay();
-
-    return isValid;
-  }
-
-  async constantTimeDelay() {
-    // Add small random delay to prevent timing analysis
-    const delay = Math.random() * 50 + 50; // 50-100ms
-    await new Promise(resolve => setTimeout(resolve, delay));
-  }
-
-  async generateSecureRandomPassword(length = 16) {
-    const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
-    let password = '';
-
-    // Ensure at least one character from each required type
-    password += this.getRandomChar('abcdefghijklmnopqrstuvwxyz');
-    password += this.getRandomChar('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-    password += this.getRandomChar('0123456789');
-    password += this.getRandomChar('!@#$%^&*');
-
-    // Fill remaining length
-    for (let i = 4; i < length; i++) {
-      password += this.getRandomChar(charset);
-    }
-
-    // Shuffle the password
-    return password.split('').sort(() => Math.random() - 0.5).join('');
-  }
-}
-```
+#### Password Reset Security
+- **Token-Based Reset**: Cryptographically secure random tokens
+- **Time-Limited Tokens**: 15-30 minute expiration for reset links
+- **Single-Use Tokens**: Invalidate immediately after use or new token generation
+- **Rate Limiting**: Prevent abuse of reset functionality
+- **Identity Verification**: Multiple verification methods for high-value accounts
 
 ## Authorization Patterns
 
-### **Role-Based Access Control (RBAC)**
-
-```javascript
-// Comprehensive RBAC implementation
-class RBACAuthorizationService {
-  constructor(roleRepository, permissionRepository) {
-    this.roles = roleRepository;
-    this.permissions = permissionRepository;
-  }
-
-  async hasPermission(userId, resource, action) {
-    const userRoles = await this.getUserRoles(userId);
-    const requiredPermission = `${resource}:${action}`;
-
-    for (const role of userRoles) {
-      const rolePermissions = await this.getRolePermissions(role.id);
-
-      if (this.permissionMatches(rolePermissions, requiredPermission)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  permissionMatches(userPermissions, requiredPermission) {
-    return userPermissions.some(permission => {
-      // Support wildcard permissions
-      if (permission.includes('*')) {
-        const pattern = permission.replace('*', '.*');
-        return new RegExp(`^${pattern}$`).test(requiredPermission);
-      }
-
-      return permission === requiredPermission;
-    });
-  }
-
-  async assignRole(userId, roleId, context = {}) {
-    // Check if user can assign this role
-    const canAssign = await this.hasPermission(
-      context.assignedBy,
-      'roles',
-      'assign'
-    );
-
-    if (!canAssign) {
-      throw new AuthorizationError('Insufficient permissions to assign role');
-    }
-
-    // Check role hierarchy constraints
-    const assignerRoles = await this.getUserRoles(context.assignedBy);
-    const targetRole = await this.getRoleById(roleId);
-
-    if (!this.canAssignRole(assignerRoles, targetRole)) {
-      throw new AuthorizationError('Cannot assign role with equal or higher privileges');
-    }
-
-    await this.roles.assignUserRole(userId, roleId);
-
-    // Audit trail
-    await this.auditRoleAssignment(userId, roleId, context);
-  }
-
-  canAssignRole(assignerRoles, targetRole) {
-    const maxAssignerLevel = Math.max(
-      ...assignerRoles.map(role => role.hierarchyLevel)
-    );
-
-    return targetRole.hierarchyLevel < maxAssignerLevel;
-  }
-
-  async createRoleHierarchy() {
-    const hierarchy = {
-      'super_admin': {
-        level: 10,
-        permissions: ['*'],
-        inherits: []
-      },
-      'admin': {
-        level: 8,
-        permissions: [
-          'users:*',
-          'roles:read',
-          'reports:*'
-        ],
-        inherits: ['moderator']
-      },
-      'moderator': {
-        level: 5,
-        permissions: [
-          'content:*',
-          'users:read',
-          'users:suspend'
-        ],
-        inherits: ['user']
-      },
-      'user': {
-        level: 1,
-        permissions: [
-          'profile:read',
-          'profile:update',
-          'content:read',
-          'content:create'
-        ],
-        inherits: []
-      }
-    };
-
-    return hierarchy;
-  }
-}
-
-// Usage in middleware
-const requirePermission = (resource, action) => {
-  return async (req, res, next) => {
-    const userId = req.user?.id;
-
-    if (!userId) {
-      return res.status(401).json({ error: 'Authentication required' });
-    }
-
-    const hasAccess = await rbacService.hasPermission(userId, resource, action);
-
-    if (!hasAccess) {
-      return res.status(403).json({
-        error: 'Insufficient permissions',
-        required: `${resource}:${action}`
-      });
-    }
-
-    next();
-  };
-};
-
-// Usage in routes
-router.get('/admin/users',
-  authenticate,
-  requirePermission('users', 'list'),
-  adminController.getUsers
-);
-
-router.delete('/admin/users/:id',
-  authenticate,
-  requirePermission('users', 'delete'),
-  adminController.deleteUser
-);
-```
-
-### **Attribute-Based Access Control (ABAC)**
-
-```javascript
-// Advanced context-aware authorization
-class ABACAuthorizationService {
-  async evaluatePolicy(subject, resource, action, context = {}) {
-    const policy = await this.getPolicy(resource, action);
-
-    const evaluationContext = {
-      subject: await this.getSubjectAttributes(subject),
-      resource: await this.getResourceAttributes(resource),
-      action: action,
-      environment: {
-        time: new Date(),
-        ipAddress: context.ipAddress,
-        userAgent: context.userAgent,
-        location: context.location
-      }
-    };
-
-    return this.evaluateRules(policy.rules, evaluationContext);
-  }
-
-  evaluateRules(rules, context) {
-    return rules.every(rule => {
-      switch (rule.type) {
-        case 'time_based':
-          return this.evaluateTimeRule(rule, context.environment.time);
-        case 'location_based':
-          return this.evaluateLocationRule(rule, context.environment.location);
-        case 'role_based':
-          return this.evaluateRoleRule(rule, context.subject.roles);
-        case 'resource_owner':
-          return this.evaluateOwnershipRule(rule, context);
-        case 'dynamic_attribute':
-          return this.evaluateDynamicRule(rule, context);
-        default:
-          return false;
-      }
-    });
-  }
-
-  evaluateTimeRule(rule, currentTime) {
-    const hour = currentTime.getHours();
-    const dayOfWeek = currentTime.getDay();
-
-    if (rule.allowedHours && !rule.allowedHours.includes(hour)) {
-      return false;
-    }
-
-    if (rule.allowedDays && !rule.allowedDays.includes(dayOfWeek)) {
-      return false;
-    }
-
-    return true;
-  }
-
-  evaluateLocationRule(rule, location) {
-    if (!location) return rule.allowUnknownLocation || false;
-
-    if (rule.allowedCountries && !rule.allowedCountries.includes(location.country)) {
-      return false;
-    }
-
-    if (rule.blockedCountries && rule.blockedCountries.includes(location.country)) {
-      return false;
-    }
-
-    if (rule.allowedIpRanges) {
-      return rule.allowedIpRanges.some(range => this.isIpInRange(location.ip, range));
-    }
-
-    return true;
-  }
-
-  evaluateOwnershipRule(rule, context) {
-    // Check if subject owns the resource
-    if (rule.requireOwnership) {
-      return context.resource.ownerId === context.subject.id;
-    }
-
-    // Check if subject is in the same organization
-    if (rule.requireSameOrganization) {
-      return context.resource.organizationId === context.subject.organizationId;
-    }
-
-    return true;
-  }
-
-  evaluateDynamicRule(rule, context) {
-    // Support for custom JavaScript evaluation (carefully sandboxed)
-    try {
-      const vm = require('vm');
-      const sandbox = {
-        subject: context.subject,
-        resource: context.resource,
-        action: context.action,
-        environment: context.environment,
-        helpers: this.getHelperFunctions()
-      };
-
-      const script = new vm.Script(rule.condition);
-      const vmContext = vm.createContext(sandbox);
-
-      return script.runInContext(vmContext, { timeout: 1000 });
-    } catch (error) {
-      // Fail secure on evaluation errors
-      this.logPolicyEvaluationError(rule, error);
-      return false;
-    }
-  }
-
-  getHelperFunctions() {
-    return {
-      isInRole: (subject, role) => subject.roles.includes(role),
-      hasAttribute: (obj, attr, value) => obj[attr] === value,
-      isWithinTimeRange: (start, end) => {
-        const now = new Date();
-        return now >= new Date(start) && now <= new Date(end);
-      }
-    };
-  }
-}
-
-// Example ABAC policy
-const documentAccessPolicy = {
-  resource: 'document',
-  action: 'read',
-  rules: [
-    {
-      type: 'resource_owner',
-      requireOwnership: false,
-      requireSameOrganization: true
-    },
-    {
-      type: 'time_based',
-      allowedHours: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], // Business hours
-      allowedDays: [1, 2, 3, 4, 5] // Monday to Friday
-    },
-    {
-      type: 'location_based',
-      allowedCountries: ['US', 'CA', 'GB'],
-      allowUnknownLocation: false
-    },
-    {
-      type: 'dynamic_attribute',
-      condition: `
-        subject.department === 'legal' ||
-        (subject.clearanceLevel >= resource.classificationLevel &&
-         subject.needToKnow.includes(resource.category))
-      `
-    }
-  ]
-};
-```
-
-## Session Management
-
-### **Secure Session Handling**
-
-```javascript
-// Comprehensive session management
-class SessionManager {
-  constructor(redisClient, encryptionService) {
-    this.redis = redisClient;
-    this.encryption = encryptionService;
-    this.sessionTimeout = 2 * 60 * 60 * 1000; // 2 hours
-    this.maxSessionAge = 24 * 60 * 60 * 1000; // 24 hours
-  }
-
-  async createSession(user, context = {}) {
-    const sessionId = this.generateSecureSessionId();
-    const sessionData = {
-      userId: user.id,
-      userRole: user.role,
-      createdAt: new Date(),
-      lastActivity: new Date(),
-      ipAddress: context.ipAddress,
-      userAgent: context.userAgent,
-      mfaVerified: context.mfaVerified || false,
-      permissions: await this.getUserPermissions(user.id)
-    };
-
-    // Encrypt session data
-    const encryptedData = this.encryption.encrypt(
-      JSON.stringify(sessionData),
-      this.getSessionKey()
-    );
-
-    // Store in Redis with expiration
-    await this.redis.setex(
-      `session:${sessionId}`,
-      this.sessionTimeout / 1000,
-      JSON.stringify(encryptedData)
-    );
-
-    // Track active sessions for user
-    await this.addToActiveSessions(user.id, sessionId);
-
-    return {
-      sessionId,
-      expiresAt: new Date(Date.now() + this.sessionTimeout)
-    };
-  }
-
-  async validateSession(sessionId, context = {}) {
-    const encryptedData = await this.redis.get(`session:${sessionId}`);
-
-    if (!encryptedData) {
-      throw new SessionError('Session not found or expired');
-    }
-
-    // Decrypt session data
-    const sessionData = JSON.parse(
-      this.encryption.decrypt(JSON.parse(encryptedData), this.getSessionKey())
-    );
-
-    // Validate session integrity
-    this.validateSessionIntegrity(sessionData, context);
-
-    // Update last activity
-    sessionData.lastActivity = new Date();
-    await this.updateSession(sessionId, sessionData);
-
-    return sessionData;
-  }
-
-  validateSessionIntegrity(sessionData, context) {
-    // Check session age
-    const sessionAge = Date.now() - new Date(sessionData.createdAt).getTime();
-    if (sessionAge > this.maxSessionAge) {
-      throw new SessionError('Session expired due to age');
-    }
-
-    // Check IP address consistency (optional, configurable)
-    if (this.requireIPConsistency && sessionData.ipAddress !== context.ipAddress) {
-      throw new SessionError('Session IP address mismatch');
-    }
-
-    // Check for suspicious activity patterns
-    if (this.detectSuspiciousActivity(sessionData, context)) {
-      throw new SessionError('Suspicious session activity detected');
-    }
-  }
-
-  async rotateSession(oldSessionId, user, context) {
-    // Create new session
-    const newSession = await this.createSession(user, context);
-
-    // Invalidate old session
-    await this.invalidateSession(oldSessionId);
-
-    return newSession;
-  }
-
-  async invalidateSession(sessionId) {
-    const sessionData = await this.getSessionData(sessionId);
-
-    if (sessionData) {
-      await this.removeFromActiveSessions(sessionData.userId, sessionId);
-    }
-
-    await this.redis.del(`session:${sessionId}`);
-  }
-
-  async invalidateAllUserSessions(userId) {
-    const activeSessions = await this.getActiveSessions(userId);
-
-    for (const sessionId of activeSessions) {
-      await this.invalidateSession(sessionId);
-    }
-  }
-
-  generateSecureSessionId() {
-    // Generate cryptographically secure random session ID
-    return crypto.randomBytes(32).toString('hex');
-  }
-
-  getSessionKey() {
-    // Derive session encryption key from master key
-    return crypto.pbkdf2Sync(
-      process.env.SESSION_MASTER_KEY,
-      'session-salt',
-      100000,
-      32,
-      'sha256'
-    );
-  }
-}
-```
-
-## JWT Token Security
-
-### **Secure JWT Implementation**
-
-```javascript
-// Secure JWT service
-class JWTService {
-  constructor() {
-    this.privateKey = this.loadPrivateKey();
-    this.publicKey = this.loadPublicKey();
-    this.algorithm = 'RS256';
-    this.issuer = process.env.JWT_ISSUER;
-    this.audience = process.env.JWT_AUDIENCE;
-  }
-
-  generateToken(payload, options = {}) {
-    const tokenPayload = {
-      ...payload,
-      iss: this.issuer,
-      aud: this.audience,
-      iat: Math.floor(Date.now() / 1000),
-      exp: Math.floor(Date.now() / 1000) + (options.expiresIn || 3600), // 1 hour default
-      jti: crypto.randomUUID(), // Unique token ID for revocation
-      scope: options.scope || 'default'
-    };
-
-    return jwt.sign(tokenPayload, this.privateKey, {
-      algorithm: this.algorithm,
-      keyid: this.getKeyId()
-    });
-  }
-
-  async verifyToken(token) {
-    try {
-      const decoded = jwt.verify(token, this.publicKey, {
-        algorithms: [this.algorithm],
-        issuer: this.issuer,
-        audience: this.audience
-      });
-
-      // Check if token is revoked
-      if (await this.isTokenRevoked(decoded.jti)) {
-        throw new Error('Token has been revoked');
-      }
-
-      // Check custom claims
-      await this.validateCustomClaims(decoded);
-
-      return decoded;
-    } catch (error) {
-      throw new AuthenticationError('Invalid token: ' + error.message);
-    }
-  }
-
-  async revokeToken(tokenId, reason = 'user_request') {
-    // Add to revocation list with expiration
-    const expirationTime = 24 * 60 * 60; // 24 hours
-    await this.redis.setex(`revoked:${tokenId}`, expirationTime, JSON.stringify({
-      revokedAt: new Date().toISOString(),
-      reason
-    }));
-  }
-
-  async isTokenRevoked(tokenId) {
-    const revocationData = await this.redis.get(`revoked:${tokenId}`);
-    return revocationData !== null;
-  }
-
-  async validateCustomClaims(decoded) {
-    // Validate scope claims
-    if (decoded.scope && !await this.isScopeValid(decoded.scope)) {
-      throw new Error('Invalid token scope');
-    }
-
-    // Validate user still exists and is active
-    if (decoded.sub) {
-      const user = await this.getUserById(decoded.sub);
-      if (!user || !user.isActive) {
-        throw new Error('User account is inactive');
-      }
-    }
-  }
-
-  createRefreshToken(userId) {
-    return this.generateToken({
-      sub: userId,
-      type: 'refresh'
-    }, {
-      expiresIn: 30 * 24 * 60 * 60, // 30 days
-      scope: 'refresh'
-    });
-  }
-
-  async refreshAccessToken(refreshToken) {
-    const decoded = await this.verifyToken(refreshToken);
-
-    if (decoded.type !== 'refresh') {
-      throw new AuthenticationError('Invalid refresh token');
-    }
-
-    // Generate new access token
-    const accessToken = this.generateToken({
-      sub: decoded.sub,
-      type: 'access'
-    });
-
-    // Optionally rotate refresh token
-    const newRefreshToken = this.createRefreshToken(decoded.sub);
-
-    // Revoke old refresh token
-    await this.revokeToken(decoded.jti, 'token_refresh');
-
-    return {
-      accessToken,
-      refreshToken: newRefreshToken
-    };
-  }
-}
-```
-
-## Rate Limiting and Account Protection
-
-### **Advanced Rate Limiting**
-
-```javascript
-// Comprehensive rate limiting service
-class RateLimitService {
-  constructor(redisClient) {
-    this.redis = redisClient;
-    this.limits = {
-      authentication: { requests: 5, window: 15 * 60 * 1000 }, // 5 per 15 min
-      password_reset: { requests: 3, window: 60 * 60 * 1000 }, // 3 per hour
-      api_general: { requests: 1000, window: 60 * 60 * 1000 }, // 1000 per hour
-      api_premium: { requests: 10000, window: 60 * 60 * 1000 } // 10000 per hour
-    };
-  }
-
-  async checkRateLimit(identifier, limitType, context = {}) {
-    const limit = this.limits[limitType];
-    if (!limit) {
-      throw new Error(`Unknown rate limit type: ${limitType}`);
-    }
-
-    const key = `rate_limit:${limitType}:${identifier}`;
-    const current = await this.redis.get(key);
-
-    if (!current) {
-      // First request in window
-      await this.redis.setex(key, limit.window / 1000, '1');
-      return {
-        allowed: true,
-        remaining: limit.requests - 1,
-        resetTime: new Date(Date.now() + limit.window)
-      };
-    }
-
-    const currentCount = parseInt(current, 10);
-
-    if (currentCount >= limit.requests) {
-      // Rate limit exceeded
-      const ttl = await this.redis.ttl(key);
-
-      // Log rate limit violation
-      await this.logRateLimitViolation(identifier, limitType, currentCount, context);
-
-      return {
-        allowed: false,
-        remaining: 0,
-        resetTime: new Date(Date.now() + (ttl * 1000)),
-        retryAfter: ttl
-      };
-    }
-
-    // Increment counter
-    await this.redis.incr(key);
-
-    return {
-      allowed: true,
-      remaining: limit.requests - currentCount - 1,
-      resetTime: new Date(Date.now() + (await this.redis.ttl(key) * 1000))
-    };
-  }
-
-  // Progressive delay for failed authentication attempts
-  async getAuthenticationDelay(identifier) {
-    const failureKey = `auth_failures:${identifier}`;
-    const failures = await this.redis.get(failureKey) || 0;
-
-    // Progressive delays: 0s, 1s, 4s, 9s, 16s, 25s...
-    const delay = Math.min(Math.pow(failures, 2), 300) * 1000; // Max 5 minutes
-
-    return delay;
-  }
-
-  async recordAuthenticationFailure(identifier) {
-    const failureKey = `auth_failures:${identifier}`;
-    const failures = await this.redis.incr(failureKey);
-
-    if (failures === 1) {
-      // Set expiration for first failure
-      await this.redis.expire(failureKey, 60 * 60); // 1 hour
-    }
-
-    return failures;
-  }
-
-  async clearAuthenticationFailures(identifier) {
-    await this.redis.del(`auth_failures:${identifier}`);
-  }
-
-  // Middleware for Express.js
-  createMiddleware(limitType) {
-    return async (req, res, next) => {
-      const identifier = this.getIdentifier(req);
-      const result = await this.checkRateLimit(identifier, limitType, {
-        ip: req.ip,
-        userAgent: req.get('User-Agent'),
-        endpoint: req.path
-      });
-
-      // Set rate limit headers
-      res.set('X-RateLimit-Limit', this.limits[limitType].requests);
-      res.set('X-RateLimit-Remaining', result.remaining);
-      res.set('X-RateLimit-Reset', Math.floor(result.resetTime.getTime() / 1000));
-
-      if (!result.allowed) {
-        res.set('Retry-After', result.retryAfter);
-        return res.status(429).json({
-          error: 'Rate limit exceeded',
-          retryAfter: result.retryAfter
-        });
-      }
-
-      next();
-    };
-  }
-
-  getIdentifier(req) {
-    // Use user ID if authenticated, otherwise IP address
-    return req.user?.id || req.ip;
-  }
-}
-```
+### Role-Based Access Control (RBAC) Principles
+
+#### When to Use RBAC
+- **Well-Defined User Roles**: Organizations with clear job functions and responsibilities
+- **Stable Permission Sets**: Applications where permissions don't change frequently per user
+- **Scalable User Management**: Large user bases where individual permission management is impractical
+- **Compliance Requirements**: Regulations requiring clear role definitions and audit trails
+
+#### RBAC Design Principles
+- **Principle of Least Privilege**: Assign minimum permissions necessary for role function
+- **Role Hierarchy**: Implement inheritance where higher roles include lower role permissions
+- **Permission Granularity**: Balance between too coarse (overprivileged) and too fine (management overhead)
+- **Separation of Duties**: Ensure critical operations require multiple roles or approvals
+
+#### Role Assignment Strategy
+- **Hierarchy Enforcement**: Users cannot assign roles equal to or higher than their own level
+- **Approval Workflows**: Require manager approval for sensitive role assignments
+- **Time-Based Roles**: Temporary elevated privileges with automatic expiration
+- **Context-Sensitive Roles**: Role effectiveness based on location, time, or other factors
+
+#### Permission Structure
+- **Resource-Action Pattern**: Format permissions as `resource:action` (e.g., `users:read`, `reports:create`)
+- **Wildcard Support**: Allow broad permissions like `users:*` for administrative roles
+- **Negative Permissions**: Explicit denials that override positive permissions
+- **Permission Inheritance**: Roles inherit permissions from parent roles in hierarchy
+
+### Attribute-Based Access Control (ABAC) Principles
+
+#### When to Use ABAC
+- **Complex Authorization Requirements**: Fine-grained access control with multiple contextual factors
+- **Dynamic Decision Making**: Authorization based on real-time attributes and environmental factors
+- **Regulatory Compliance**: Requirements for detailed audit trails and policy enforcement
+- **Multi-Tenant Systems**: Different organizations with varying access patterns and rules
+
+#### ABAC Core Components
+- **Subject Attributes**: User identity, roles, clearance level, department, organization
+- **Resource Attributes**: Classification level, owner, creation date, sensitivity, category
+- **Action Attributes**: Operation type, risk level, audit requirements
+- **Environmental Attributes**: Time, location, IP address, device type, network security
+
+#### Policy Evaluation Strategy
+- **Rule Combination**: All rules must pass (AND) vs. any rule passes (OR) vs. weighted scoring
+- **Fail-Safe Defaults**: Deny access when policy evaluation fails or encounters errors
+- **Performance Optimization**: Cache frequently used attributes and policy decisions
+- **Policy Conflict Resolution**: Define precedence rules for conflicting policy outcomes
+
+#### Context-Aware Authorization
+- **Time-Based Controls**: Business hours, embargo periods, maintenance windows
+- **Location-Based Controls**: Geographic restrictions, IP allowlists, secure networks
+- **Risk-Based Controls**: Device trust level, behavioral patterns, threat intelligence
+- **Resource-Based Controls**: Ownership, organizational boundaries, data classification
+
+#### Dynamic Rule Evaluation
+- **Sandboxed Execution**: Secure evaluation environment for custom business logic
+- **Helper Functions**: Pre-approved utility functions for common authorization patterns
+- **Timeout Protection**: Prevent policy evaluation from blocking system performance
+- **Error Handling**: Graceful degradation when dynamic rules fail to evaluate
+
+## Session Management Principles
+
+### Session Architecture Strategy
+
+#### Session Storage Approaches
+- **Server-Side Storage**: Store session data on server, send only session ID to client (recommended)
+- **Encrypted Client Storage**: If client storage required, encrypt all session data with server-controlled keys
+- **Stateless Tokens**: JWT with proper signing and validation for distributed architectures
+- **Hybrid Approach**: Combine server storage with client tokens for scalability and security
+
+#### Session Lifecycle Management
+- **Creation**: Generate cryptographically secure session IDs (32+ bytes entropy)
+- **Validation**: Verify session integrity and authenticity on every request
+- **Renewal**: Regenerate session IDs after authentication and privilege changes
+- **Termination**: Implement both explicit logout and automatic timeout mechanisms
+
+### Session Security Controls
+
+#### Session Fixation Prevention
+- **ID Regeneration**: Create new session ID after successful authentication
+- **Old Session Cleanup**: Destroy previous session data completely
+- **Privilege Escalation**: Regenerate session on any permission level change
+- **Cross-Site Protection**: Validate session context and origin
+
+#### Session Hijacking Protection
+- **IP Validation**: Optional consistency checking (consider mobile users and NAT)
+- **Device Fingerprinting**: Track device characteristics for anomaly detection
+- **Concurrent Session Limits**: Prevent unlimited simultaneous sessions per user
+- **Anomaly Detection**: Monitor for impossible travel and unusual patterns
+
+#### Timeout and Expiration Strategy
+- **Absolute Timeout**: Maximum session lifetime regardless of activity (24 hours max)
+- **Idle Timeout**: Session expires after period of inactivity (2 hours typical)
+- **Progressive Timeout**: Shorter timeouts for higher privilege operations
+- **Warning System**: Notify users before session expiration with extension option
+
+### Session Data Management
+
+#### Data Encryption and Storage
+- **Encryption at Rest**: Encrypt session data using AES-256-GCM with unique keys
+- **Key Derivation**: Derive session keys from master key using PBKDF2 or similar
+- **Data Minimization**: Store only essential information in session context
+- **Secure Transmission**: Always use HTTPS for session ID transmission
+
+#### Session Context Tracking
+- **User Attributes**: ID, role, permissions, organization, MFA status
+- **Security Metadata**: Creation time, last activity, IP address, user agent
+- **Application State**: Current workflow, temporary data, user preferences
+- **Audit Information**: Login source, device fingerprint, geographic location
+
+## JWT Token Security Principles
+
+### JWT Architecture Decisions
+
+#### Algorithm Selection
+- **RS256 (Recommended)**: Asymmetric signing for distributed systems, key separation
+- **HS256**: Symmetric signing for single-application use, simpler key management
+- **ES256**: Elliptic curve signing for performance-critical applications
+- **Avoid**: None algorithm (alg: none), weak algorithms (HS256 with weak secrets)
+
+#### Token Structure Strategy
+- **Access Tokens**: Short-lived (15-60 minutes), contain current permissions and user context
+- **Refresh Tokens**: Long-lived (30 days), single-purpose for generating new access tokens
+- **ID Tokens**: User identity information, separate from authorization tokens
+- **Specialized Tokens**: Email verification, password reset, API access with specific scopes
+
+### JWT Security Implementation
+
+#### Token Validation Requirements
+- **Standard Claims**: Verify issuer (iss), audience (aud), expiration (exp), issued at (iat)
+- **Custom Claims**: Validate business-specific claims like scope, permissions, organization
+- **Signature Verification**: Always verify token signature before trusting any claims
+- **Clock Skew Tolerance**: Allow reasonable time variance (60 seconds) for distributed systems
+
+#### Token Revocation Strategy
+- **Revocation Lists**: Maintain blacklist of revoked token IDs in fast storage (Redis)
+- **Short Expiration**: Use brief access token lifetimes to limit revocation window
+- **User-Level Revocation**: Ability to invalidate all tokens for specific user
+- **Refresh Token Rotation**: Generate new refresh token on each use, invalidate old one
+
+#### Key Management Principles
+- **Key Rotation**: Regular rotation of signing keys with graceful transition periods
+- **Key Separation**: Different keys for different token types or applications
+- **Secure Storage**: Hardware Security Modules (HSM) or secure key management services
+- **Public Key Distribution**: Secure mechanism for clients to obtain current public keys
+
+### Token Lifecycle Management
+
+#### Generation Best Practices
+- **Unique Identifiers**: Include JTI (JWT ID) claim for individual token tracking
+- **Minimal Claims**: Include only necessary information to reduce token size
+- **Consistent Format**: Standardize claim names and structures across applications
+- **Metadata Inclusion**: Add token type, scope, and purpose for proper validation
+
+#### Validation and Verification
+- **Multi-Layer Validation**: Verify signature, claims, revocation status, and business rules
+- **Performance Optimization**: Cache validation results and public keys appropriately
+- **Error Handling**: Provide specific error messages for different validation failures
+- **Audit Logging**: Log token validation failures and security events
+
+## Rate Limiting and Account Protection Principles
+
+### Rate Limiting Strategy
+
+#### Rate Limiting Algorithms
+- **Fixed Window**: Simple implementation, potential for traffic spikes at window boundaries
+- **Sliding Window**: More accurate limiting, higher memory usage and complexity
+- **Token Bucket**: Allows burst traffic up to bucket capacity, smooth rate limiting
+- **Leaky Bucket**: Constant output rate regardless of input rate, good for traffic shaping
+
+#### Rate Limit Categories
+- **Authentication Limits**: 5 attempts per 15 minutes to prevent brute force attacks
+- **Password Reset Limits**: 3 requests per hour to prevent abuse and harassment
+- **API Rate Limits**: Tiered based on user type (free: 1000/hour, premium: 10000/hour)
+- **Resource-Intensive Operations**: File uploads, search queries, email sending
+
+#### Implementation Considerations
+- **Identifier Strategy**: User ID for authenticated requests, IP address for anonymous
+- **Distributed Enforcement**: Use Redis or similar for consistent limits across instances
+- **Graceful Degradation**: Fail open with logging when rate limiting service unavailable
+- **Header Communication**: Include X-RateLimit-* headers for client awareness
+
+### Account Protection Mechanisms
+
+#### Progressive Authentication Delays
+- **Failure Tracking**: Track consecutive authentication failures per identifier
+- **Progressive Delays**: Exponential backoff (1s, 4s, 9s, 16s, 25s) up to maximum (5 minutes)
+- **Failure Reset**: Clear counters after successful authentication or time expiration
+- **Account Lockout**: Temporary account lock after excessive failures (10+ attempts)
+
+#### Suspicious Activity Detection
+- **Geographic Anomalies**: Impossible travel patterns between login attempts
+- **Device Fingerprinting**: Unusual device characteristics or rapid device changes
+- **Behavioral Patterns**: Unusual access patterns, timing, or usage volumes
+- **Threat Intelligence**: Integration with IP reputation and threat feeds
+
+#### Account Lockout Strategy
+- **Lockout Triggers**: Excessive failed attempts, suspicious activity, security violations
+- **Lockout Duration**: Graduated timeouts based on threat severity and history
+- **Unlock Mechanisms**: Automatic expiration, manual override, identity verification
+- **User Communication**: Clear messaging about lockout reason and resolution steps
+
+### Distributed Rate Limiting
+
+#### Scalability Considerations
+- **Centralized Storage**: Redis cluster for consistent state across application instances
+- **Performance Optimization**: Local caching with periodic synchronization for high throughput
+- **Fault Tolerance**: Graceful degradation when rate limiting infrastructure fails
+- **Monitoring**: Real-time metrics for rate limit violations and system performance
+
+## Decision Framework
+
+### Authentication Method Selection
+
+#### Risk-Based Authentication Decisions
+1. **Assess Data Sensitivity**: Personal, financial, health data require strongest authentication
+2. **Evaluate User Experience**: Balance security with usability for different user types
+3. **Consider Compliance**: Regulatory requirements may dictate specific authentication methods
+4. **Review Threat Model**: Consider likely attackers and their capabilities
+5. **Resource Constraints**: Implement authentication proportional to available resources
+
+#### Authentication Control Selection
+- **High-Value Targets**: Multi-factor authentication with hardware tokens
+- **General Users**: Password + TOTP or SMS for moderate security
+- **Public APIs**: API keys with rate limiting and IP restrictions
+- **Internal Services**: Mutual TLS or service-to-service tokens
+
+### Authorization Architecture Selection
+
+#### RBAC vs ABAC Decision Matrix
+- **Use RBAC When**: Clear organizational roles, stable permissions, large user base
+- **Use ABAC When**: Complex rules, contextual decisions, regulatory compliance
+- **Hybrid Approach**: RBAC for basic permissions, ABAC for sensitive operations
+- **Migration Strategy**: Start with RBAC, evolve to ABAC as complexity grows
+
+#### Implementation Priorities
+
+##### Phase 1: Foundation
+1. Secure password handling and storage
+2. Basic role-based access control
+3. Session management with security controls
+4. Rate limiting for authentication endpoints
+
+##### Phase 2: Enhancement
+1. Multi-factor authentication implementation
+2. JWT token security with proper validation
+3. Advanced rate limiting and account protection
+4. Audit logging and monitoring
+
+##### Phase 3: Advanced
+1. Attribute-based access control
+2. Risk-based authentication
+3. Behavioral analysis and anomaly detection
+4. Zero-trust architecture implementation
 
 ---
 
 ## Related Guidelines
 
-- **[Security Principles](./security-principles.md)** - Core security principles and foundations
-- **[Security Implementation](./security-implementation.md)** - Practical security implementation patterns
+- **[Security Principles](./security-principles.md)** - Core security concepts, threat modeling, and governance framework
+- **[Security Implementation](./security-implementation.md)** - Practical security implementation patterns and decision frameworks
 - **[API Implementation Patterns](./api-implementation-patterns.md)** - API authentication and authorization patterns
-- **[Quality Standards](./quality-standards.md)** - Security validation protocols
+- **[Quality Standards](./quality-standards.md)** - Security requirements within quality standards
+- **[Code Review Guidelines](./code-review-guidelines.md)** - Security-focused code review processes
+
+## Implementation Examples
+
+All implementation examples and working code patterns are available in:
+
+- **[MFA Implementation Examples](../../../examples/code/auth/mfa-implementation.example.js)** - Comprehensive multi-factor authentication patterns
+- **[Password Security Examples](../../../examples/code/auth/password-security.example.js)** - Secure password handling and validation
+- **[RBAC Authorization Examples](../../../examples/code/auth/rbac-authorization.example.js)** - Role-based access control implementation
+- **[ABAC Authorization Examples](../../../examples/code/auth/abac-authorization.example.js)** - Attribute-based access control patterns
+- **[Session Management Examples](../../../examples/code/auth/session-management.example.js)** - Secure session handling and validation
+- **[JWT Security Examples](../../../examples/code/auth/jwt-security.example.js)** - JSON Web Token security implementation
+- **[Rate Limiting Examples](../../../examples/code/auth/rate-limiting.example.js)** - Account protection and rate limiting patterns
 
 ## Navigation
 

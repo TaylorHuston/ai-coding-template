@@ -212,8 +212,8 @@ estimated_time: "45 min"
 ## Related Guidelines
 
 - **[Documentation Guidelines](./documentation-guidelines.md)** - Documentation standards and quality requirements
-- **[Testing Guidelines](./testing-guidelines.md)** - Testing strategies and coverage requirements
-- **[Security Guidelines](./security-guidelines.md)** - Security standards and validation protocols
+- **[Testing Principles](./testing-principles.md)** - Testing strategies and coverage requirements
+- **[Security Principles](./security-principles.md)** - Security standards and validation protocols
 - **[Changelog Maintenance](./changelog-maintenance.md)** - Version history and change tracking
 
 ## Related Workflows

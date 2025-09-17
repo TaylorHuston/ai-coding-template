@@ -784,7 +784,7 @@ and security requirements."
 - **[Code Review Guidelines](./code-review-guidelines.md)** - Detailed review processes and checklists
 - **[Quality Standards](./quality-standards.md)** - Quality requirements for commits and PRs
 - **[Changelog Maintenance](./changelog-maintenance.md)** - Managing version history and releases
-- **[Security Guidelines](./security-guidelines.md)** - Security considerations in version control
+- **[Security Principles](./security-principles.md)** - Security considerations in version control
 
 ---
 

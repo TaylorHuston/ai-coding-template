@@ -612,9 +612,9 @@ class OrderProcessor {
 ## Related Guidelines
 
 - **[Quality Standards](./quality-standards.md)** - Comprehensive quality requirements and validation
-- **[Testing Guidelines](./testing-guidelines.md)** - Testing strategies and best practices
+- **[Testing Principles](./testing-principles.md)** - Testing strategies and best practices
 - **[Code Review Guidelines](./code-review-guidelines.md)** - Code review processes and checklists
-- **[Security Guidelines](./security-guidelines.md)** - Security best practices and requirements
+- **[Security Principles](./security-principles.md)** - Security best practices and requirements
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-version: "1.0.0"
+version: "2.0.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 status: "active"
@@ -8,12 +8,12 @@ document_type: "specification"
 priority: "critical"
 tags: ["security", "principles", "threat-modeling", "compliance", "governance"]
 difficulty: "advanced"
-estimated_time: "20 min"
+estimated_time: "15 min"
 ---
 
 # Security Principles
 
-**Purpose**: Core security principles, philosophy, and foundational concepts that guide all security implementations and decisions.
+**Purpose**: Core security principles, philosophy, and foundational concepts that guide all security implementations and decisions. This guide focuses on WHAT, WHY, and WHEN rather than HOW - for implementation examples, see `/examples/code/security/`.
 
 ## Security Philosophy
 
@@ -39,164 +39,63 @@ estimated_time: "20 min"
 
 ### **Principle of Least Privilege**
 
-Users, applications, and systems should have only the minimum access necessary to perform their functions.
+**Core Concept**: Users, applications, and systems should have only the minimum access necessary to perform their functions.
 
-```javascript
-// Good: Granular permission system
-class PermissionService {
-  async grantMinimalAccess(userId, resourceType, operation) {
-    const requiredPermissions = this.calculateMinimalPermissions(resourceType, operation);
+**Implementation Strategy**:
+- Grant minimal required permissions for specific operations
+- Use temporary permissions with automatic expiration
+- Implement regular permission auditing and cleanup
+- Justify all permission grants with business requirements
+- Automate permission lifecycle management
 
-    // Only grant the specific permissions needed
-    for (const permission of requiredPermissions) {
-      await this.grantTemporaryPermission(userId, permission, {
-        duration: '1h',
-        resource: resourceType,
-        justification: `Required for ${operation}`
-      });
-    }
-  }
+**Key Benefits**: Reduces attack surface, limits blast radius of compromised accounts, ensures compliance with access control requirements.
 
-  // Regularly audit and revoke unnecessary permissions
-  async auditPermissions(userId) {
-    const userPermissions = await this.getUserPermissions(userId);
-    const activeUsage = await this.getPermissionUsage(userId, '30d');
-
-    const unusedPermissions = userPermissions.filter(
-      permission => !activeUsage.includes(permission.id)
-    );
-
-    if (unusedPermissions.length > 0) {
-      await this.schedulePermissionReview(userId, unusedPermissions);
-    }
-  }
-}
-```
+**Example Implementation**: See `/examples/code/security/governance-principles.example.js` for comprehensive permission management patterns.
 
 ### **Defense in Depth**
 
-Multiple layers of security controls to protect against various attack vectors.
+**Core Concept**: Multiple layers of security controls to protect against various attack vectors. No single security measure should be relied upon.
 
-```yaml
-# Security layers implementation
-security_layers:
-  network:
-    - firewall_rules
-    - intrusion_detection
-    - ddos_protection
+**Security Layers**:
+- **Network Layer**: Firewalls, intrusion detection, DDoS protection
+- **Application Layer**: Input validation, output encoding, CSRF protection, rate limiting
+- **Authentication Layer**: Multi-factor authentication, password policies, session management
+- **Authorization Layer**: Role-based access, attribute-based access, resource permissions
+- **Data Layer**: Encryption at rest and in transit, data classification, backup security
+- **Monitoring Layer**: Security logging, anomaly detection, threat intelligence, incident response
 
-  application:
-    - input_validation
-    - output_encoding
-    - csrf_protection
-    - rate_limiting
-
-  authentication:
-    - multi_factor_auth
-    - password_policies
-    - session_management
-    - account_lockout
-
-  authorization:
-    - role_based_access
-    - attribute_based_access
-    - resource_level_permissions
-
-  data:
-    - encryption_at_rest
-    - encryption_in_transit
-    - data_classification
-    - backup_encryption
-
-  monitoring:
-    - security_logging
-    - anomaly_detection
-    - threat_intelligence
-    - incident_response
-```
+**Strategy**: Each layer should be independent and provide protection even if other layers fail. Design for redundancy and overlapping controls.
 
 ### **Zero Trust Architecture**
 
-Never trust, always verify - assume no implicit trust based on network location.
+**Core Concept**: Never trust, always verify - assume no implicit trust based on network location or previous authentication.
 
-```javascript
-// Zero trust verification implementation
-class ZeroTrustVerifier {
-  async verifyRequest(request) {
-    const verificationResults = await Promise.all([
-      this.verifyIdentity(request.user),
-      this.verifyDevice(request.deviceFingerprint),
-      this.verifyLocation(request.ipAddress),
-      this.verifyBehavior(request.user, request.pattern),
-      this.verifyResource(request.resource),
-      this.verifyContext(request.context)
-    ]);
+**Verification Framework**:
+- **Identity Verification**: Multi-factor authentication, continuous identity validation
+- **Device Verification**: Device fingerprinting, device trust scoring, known device tracking
+- **Location Verification**: Geographic analysis, VPN detection, unusual location flagging
+- **Behavior Verification**: User behavior analysis, anomaly detection, pattern recognition
+- **Resource Verification**: Resource sensitivity assessment, access pattern analysis
+- **Context Verification**: Time-based access, request context analysis
 
-    const trustScore = this.calculateTrustScore(verificationResults);
-    const riskLevel = this.assessRisk(request, trustScore);
+**Trust Scoring**: Combine verification results into weighted trust scores that determine access levels and additional security controls.
 
-    return {
-      allowed: trustScore >= this.getRequiredTrustScore(request.resource),
-      trustScore,
-      riskLevel,
-      additionalControls: this.getAdditionalControls(riskLevel)
-    };
-  }
-
-  calculateTrustScore(verificationResults) {
-    const weights = {
-      identity: 0.3,
-      device: 0.2,
-      location: 0.15,
-      behavior: 0.2,
-      resource: 0.1,
-      context: 0.05
-    };
-
-    return verificationResults.reduce((score, result, index) => {
-      const factor = Object.values(weights)[index];
-      return score + (result.confidence * factor);
-    }, 0);
-  }
-}
-```
+**Example Implementation**: See `/examples/code/security/governance-principles.example.js` for complete zero trust verification framework.
 
 ### **Fail Secure**
 
-When systems fail, they should fail to a secure state rather than an open state.
+**Core Concept**: When systems fail, they should fail to a secure state rather than an open state. Default to denying access when in doubt.
 
-```javascript
-// Fail-secure implementation patterns
-class SecureAuthorizationGate {
-  async checkAccess(userId, resource, action) {
-    try {
-      // Primary authorization check
-      const hasAccess = await this.primaryAuthCheck(userId, resource, action);
+**Implementation Principles**:
+- **Default Deny**: Access should be explicitly granted, never assumed
+- **Error Handling**: Any system errors should result in access denial
+- **Graceful Degradation**: Maintain security even when dependent services fail
+- **Comprehensive Logging**: Log all failures for security monitoring and analysis
+- **Fallback Mechanisms**: Design secure fallbacks for critical system failures
 
-      if (!hasAccess) {
-        return { allowed: false, reason: 'primary_auth_failed' };
-      }
+**Security Benefits**: Prevents unauthorized access during system failures, maintains security posture during outages, provides clear audit trails for investigation.
 
-      // Secondary validation
-      const secondaryCheck = await this.secondaryValidation(userId, resource);
-
-      if (!secondaryCheck) {
-        return { allowed: false, reason: 'secondary_validation_failed' };
-      }
-
-      return { allowed: true };
-
-    } catch (error) {
-      // Log security event
-      await this.logSecurityEvent('authorization_failure', {
-        userId,
-        resource,
-        action,
-        error: error.message,
-        timestamp: new Date().toISOString()
-      });
-
-      // Fail secure - deny access on any error
+**Example Implementation**: See `/examples/code/security/governance-principles.example.js` for fail-secure authorization patterns.
       return {
         allowed: false,
         reason: 'system_error',

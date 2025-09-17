@@ -122,7 +122,7 @@ target_audience: ["array"]  # Intended audiences
 ```
 
 #### Complete Schema Reference
-See [YAML Frontmatter Schema](./templates/yaml-frontmatter-schema.md) for the complete specification including optional fields, valid values, and document type templates.
+See [YAML Frontmatter Schema](../templates/yaml-frontmatter-schema.md) for the complete specification including optional fields, valid values, and document type templates.
 
 ### Versioning System
 

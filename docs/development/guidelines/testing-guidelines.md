@@ -1,19 +1,58 @@
 ---
-version: "1.0.0"
+version: "2.0.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
-status: "active"
+status: "deprecated"
 target_audience: ["developers", "ai-assistants", "qa-engineers"]
-document_type: "guide"
+document_type: "redirect"
 priority: "high"
-tags: ["testing", "quality", "automation", "tdd", "bdd"]
+tags: ["testing", "quality", "automation", "redirect"]
 difficulty: "intermediate"
-estimated_time: "40 min"
+estimated_time: "5 min"
 ---
 
 # Testing Guidelines
 
-**Purpose**: Comprehensive testing strategies, best practices, and implementation guidelines for robust, maintainable test suites in AI-assisted development.
+**Status**: This document has been split into focused documents for better organization and maintainability.
+
+## Updated Testing Documentation Structure
+
+This comprehensive testing guide has been reorganized into two focused documents:
+
+### **[Testing Principles](./testing-principles.md)**
+Core testing philosophy, strategy, and decision frameworks:
+- Testing pyramid strategy and philosophy
+- TDD/BDD principles and when to apply them
+- AI-assisted testing principles
+- Testing decision frameworks
+- Quality assurance strategy
+
+### **[Testing Implementation](./testing-implementation.md)**
+Practical implementation patterns and organization:
+- Test organization and file structure
+- Best practices and patterns (AAA, Page Object Model, etc.)
+- CI/CD integration strategies
+- Framework-specific guidance
+- Performance testing implementation
+- Troubleshooting and debugging
+
+## Implementation Examples
+
+For complete working examples of testing patterns and techniques:
+
+- **[Unit Testing Examples](../../../examples/code/testing/unit-testing.example.js)**
+- **[Integration Testing Examples](../../../examples/code/testing/integration-testing.example.js)**
+- **[E2E Testing Examples](../../../examples/code/testing/e2e-testing.example.js)**
+- **[Test Patterns Examples](../../../examples/code/testing/test-patterns.example.js)**
+- **[Performance Testing Examples](../../../examples/code/testing/performance-testing.example.js)**
+- **[CI/CD Testing Examples](../../../examples/code/testing/ci-cd-testing.example.yml)**
+- **[AI Testing Examples](../../../examples/code/testing/ai-testing.example.js)**
+
+## Quick Navigation
+
+**Start Here**: [Testing Principles](./testing-principles.md) for core philosophy and strategy
+**Then Review**: [Testing Implementation](./testing-implementation.md) for practical patterns
+**Browse Examples**: `/examples/code/testing/` for working code implementations
 
 ## Testing Philosophy
 
@@ -855,7 +894,7 @@ describe('Counter', () => {
 - **[Quality Standards](./quality-standards.md)** - Quality requirements and validation protocols
 - **[Coding Standards](./coding-standards.md)** - Code quality and consistency requirements
 - **[Code Review Guidelines](./code-review-guidelines.md)** - Review processes including test review
-- **[Security Guidelines](./security-guidelines.md)** - Security testing requirements
+- **[Security Principles](./security-principles.md)** - Security testing requirements
 
 ## Related Workflows
 
