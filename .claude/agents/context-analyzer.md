@@ -30,6 +30,8 @@ Priority 1 (Always Read):
 - CLAUDE.md - AI assistant instructions and patterns
 - docs/technical.md - System architecture and specifications
 - README.md - Project overview and setup
+- docs/vision.md / project-vision.md - Project vision and goals
+- docs/vision-template.md - Vision template for new projects
 
 Priority 2 (Conditional):
 - package.json / requirements.txt - Dependencies and scripts
@@ -61,17 +63,25 @@ project_analysis:
     framework: [detected from dependencies/structure]
     database: [detected from config/dependencies]
     testing_framework: [detected from test files]
-    
+
   project_maturity:
     development_phase: [startup/growth/maintenance]
     code_quality: [estimated from patterns]
     documentation_health: [from docs/ analysis]
     test_coverage: [estimated from test structure]
-    
+
   current_priorities:
     active_work: [from STATUS.md]
     immediate_goals: [from STATUS.md]
     blocking_issues: [from STATUS.md]
+
+  vision_context:
+    problem_statement: [from vision document]
+    solution_approach: [from vision document]
+    target_audience: [from vision document]
+    core_features: [from vision document]
+    success_metrics: [from vision document]
+    differentiators: [from vision document]
 ```
 
 #### Step 2: Pattern Recognition
@@ -125,6 +135,12 @@ enriched_context:
 ```markdown
 ## Project Context Summary for [Agent Name]
 
+### Vision Alignment
+- **Problem Being Solved**: [From vision document]
+- **Target Audience**: [From vision document]
+- **Key Differentiators**: [From vision document]
+- **Success Metrics**: [From vision document]
+
 ### Technology Stack
 - **Primary**: [Language/Framework]
 - **Database**: [Database technology]
@@ -152,6 +168,7 @@ enriched_context:
 - [Specific technical constraints]
 - [Team/process constraints]
 - [Performance/security requirements]
+- [Vision-driven requirements and priorities]
 ```
 
 ### For Architecture Agents

@@ -25,6 +25,10 @@ Project Management: <Add the link and details to your Jira/Linear/etc here>
 
 Wiki: <Add the link and details to your Confluence/Notion/etc here>
 
+### Project Vision
+
+Vision Document: `docs/vision.md` or `project-vision.md` - Contains problem statement, solution approach, target audience, core features, success metrics, and differentiators that guide all development decisions.
+
 ## Documentation Structure
 
 This template uses a three-tier documentation system:

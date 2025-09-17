@@ -96,6 +96,7 @@ When orchestrating agents, always consider:
 - **Testing framework** and coverage requirements
 - **Deployment platform** and infrastructure constraints
 - **Team size and expertise** levels
+- **Project vision and goals** from docs/vision.md or project-vision.md
 
 ### Quality Standards Coordination
 - **Code Quality**: Coordinate code-reviewer for all implementations
@@ -156,6 +157,9 @@ When delegating to agents, provide:
 ```markdown
 ## Context
 [Relevant background from context-analyzer or user]
+
+## Vision Alignment
+[How this task supports project vision and goals]
 
 ## Specific Task
 [Clear, actionable task description]

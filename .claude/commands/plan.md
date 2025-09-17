@@ -18,21 +18,23 @@ Sequential multi-agent planning workflow for thorough context gathering and inte
 Sequential Agent Process:
 - Parse arguments and determine required agents based on issue content
 - Create directory structure and initialize RESEARCH.md with CRITICAL_CONTEXT
+- Discover and integrate vision document (docs/vision.md or project-vision.md) if available
 - Execute agents sequentially, /plan orchestrating context flow:
-  1. context-analyzer: Foundation analysis and codebase patterns
+  1. context-analyzer: Foundation analysis, codebase patterns, and vision alignment
   2. domain specialists: Database, frontend, backend (based on issue content)
   3. cross-cutting specialists: Security, performance (based on issue content)
   4. test-engineer: Testing strategy and comprehensive quality requirements
   5. code-architect: Synthesis and architectural decisions
   6. project-manager: Final PLAN.md generation with technical specifications
-- /plan reads RESEARCH.md and passes accumulated context to each agent
+- /plan reads RESEARCH.md and vision document, passes accumulated context to each agent
 - /plan updates RESEARCH.md with agent findings after each execution
+- Each agent receives vision context for alignment with project goals and differentiators
 - Each phase builds technical specifications for implementation clarity
 - Total execution time: 8-10 minutes for thorough planning
 
 Intelligent Task Generation with Technical Specifications:
 - **Feature Development**:
-  - P1.1.0: Context analysis with API specifications <!--agent:context-analyzer-->
+  - P1.1.0: Context analysis with API specifications and vision alignment <!--agent:context-analyzer-->
   - P1.2.0: Test scaffolding with coverage requirements <!--agent:test-engineer-->
   - P1.3.0: Implementation with technical constraints <!--agent:backend-specialist-->
   - P1.4.0: Integration with performance benchmarks <!--agent:integration-specialist-->

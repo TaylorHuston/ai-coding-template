@@ -14,6 +14,12 @@ Sequential planning session where each agent reads previous findings and adds th
 
 *Non-negotiable findings that all agents must consider*
 
+### Vision Alignment
+- **Problem Statement**: [From vision document - what problem are we solving]
+- **Target Audience**: [From vision document - who we're building for]
+- **Success Metrics**: [From vision document - how we measure success]
+- **Key Differentiators**: [From vision document - what makes this unique]
+
 ### Architecture Decisions
 - [Fundamental architectural choices that constrain implementation]
 
