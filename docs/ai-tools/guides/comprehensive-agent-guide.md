@@ -1,33 +1,71 @@
 ---
-version: "0.1.0"
-created: "2025-09-15"
+version: "1.0.0"
+created: "2025-09-17"
+last_updated: "2025-09-17"
 status: "active"
-target_audience: ["developers", "ai-assistants"]
+target_audience: ["developers", "ai-assistants", "team-leads"]
 document_type: "guide"
-priority: "high"
-tags: ["agents", "workflows", "ai-collaboration"]
+difficulty: "intermediate"
+estimated_time: "20 min"
+tags: ["ai-agents", "system-overview", "workflows", "ai-collaboration"]
 ---
 
-# How to Use AI Agents
+# Comprehensive AI Agents Guide
 
-**Your team of 17 specialized AI experts, automatically activated based on your task.**
+**Your team of 17 specialized AI experts that automatically activate based on your work context.**
 
-This guide teaches you how to work effectively with the AI agent system to get better results faster.
+This comprehensive guide covers both the conceptual understanding of the AI agent system and practical guidance for effective usage.
 
-## The Agent System
+## What Are AI Agents?
 
-### What Are AI Agents?
+AI agents are specialized AI assistants with domain expertise that automatically activate based on your work context. Instead of getting generic responses, you get expert-level guidance tailored to specific development domains.
 
-AI agents are specialized AI assistants that automatically activate based on the type of work you're doing:
+### The Problem Agents Solve
 
-- **Frontend work?** → `frontend-specialist` activates
-- **Database issues?** → `database-specialist` takes over
-- **Security concerns?** → `security-auditor` gets involved
-- **Complex coordination?** → `project-manager` orchestrates multiple agents
+**Without Agents:**
+- Generic AI responses that lack domain expertise
+- No specialization for complex technical domains
+- Poor coordination between different aspects of development
+- Inconsistent quality and approach
 
-### Auto-Activation vs Manual
+**With Agents:**
+- Expert-level responses for each domain (frontend, backend, security, etc.)
+- Automatic activation based on task context
+- Coordinated workflows between multiple specialties
+- Consistent quality standards and best practices
 
-**Auto-Activated Agents (8 agents)**
+## Complete 17-Agent System
+
+### Architecture & Planning (3 agents)
+- **`code-architect`** - System design and technology decisions
+- **`project-manager`** - Complex task coordination and orchestration
+- **`context-analyzer`** - Project investigation and root cause analysis
+
+### Development & Implementation (4 agents)
+- **`frontend-specialist`** - UI/UX development and user experience
+- **`backend-specialist`** - Server-side implementation and business logic
+- **`database-specialist`** - Data modeling and query optimization
+- **`api-designer`** - API architecture and endpoint design
+
+### Quality & Testing (4 agents)
+- **`test-engineer`** - Test strategy and comprehensive testing
+- **`code-reviewer`** - Quality analysis and best practices
+- **`security-auditor`** - Security assessment and compliance
+- **`refactoring-specialist`** - Code improvement and technical debt
+
+### Operations & Performance (3 agents)
+- **`devops-engineer`** - Infrastructure and deployment automation
+- **`performance-optimizer`** - Performance analysis and optimization
+- **`migration-specialist`** - Version upgrades and framework migrations
+
+### Documentation & Analysis (3 agents)
+- **`technical-writer`** - New documentation creation
+- **`docs-sync-agent`** - Documentation maintenance and updates
+- **`data-analyst`** - Data processing and business intelligence
+
+## Agent Classification & Usage
+
+### Auto-Activated Agents (8 agents)
 These activate automatically when you mention relevant work:
 
 | When you say... | Agent that activates | What they do |
@@ -37,20 +75,23 @@ These activate automatically when you mention relevant work:
 | "Design user schema" | `database-specialist` | Data modeling |
 | "Write unit tests" | `test-engineer` | Test creation |
 | "Review this code" | `code-reviewer` | Quality analysis |
-| "Audit for vulnerabilities" | `security-auditor` | Security review |
-| "Deploy to production" | `devops-engineer` | Infrastructure |
+| "Complex feature coordination" | `project-manager` | Multi-domain orchestration |
+| "Investigate this bug" | `context-analyzer` | Root cause analysis |
 | "Update the docs" | `docs-sync-agent` | Documentation sync |
 
-**On-Demand Agents (9 agents)**
+### On-Demand Agents (9 agents)
 Request these explicitly for specialized work:
 
 | Say this... | Agent | Best for |
 |-------------|-------|----------|
 | "Use the code-architect" | `code-architect` | System design decisions |
 | "Get the api-designer" | `api-designer` | API architecture |
-| "Need the performance-optimizer" | `performance-optimizer` | Speed/efficiency issues |
-| "Use the refactoring-specialist" | `refactoring-specialist` | Code cleanup |
-| "Get the migration-specialist" | `migration-specialist` | Framework upgrades |
+| "Need the security-auditor" | `security-auditor` | Security reviews |
+| "Use the performance-optimizer" | `performance-optimizer` | Speed/efficiency issues |
+| "Get the refactoring-specialist" | `refactoring-specialist` | Code cleanup |
+| "Need the migration-specialist" | `migration-specialist` | Framework upgrades |
+| "Use the devops-engineer" | `devops-engineer` | Infrastructure |
+| "Get the technical-writer" | `technical-writer` | Documentation creation |
 | "Need the data-analyst" | `data-analyst` | Data insights |
 
 ## Effective Usage Patterns
@@ -90,8 +131,6 @@ Request these explicitly for specialized work:
 
 ## Multi-Agent Workflow Coordination
 
-When working with complex features, agents coordinate through structured workflows:
-
 ### Phase-Based Execution
 
 Issues use a P X.X.X task structure where each phase represents a logical commit:
@@ -124,6 +163,37 @@ Agents coordinate through multiple files:
 
 This dual system prevents context loss and preserves valuable research that might otherwise be forgotten.
 
+## Agent Coordination Patterns
+
+### Sequential Workflows
+Agents work in sequence for complex processes:
+
+```
+Feature Development:
+project-manager → specialists → code-reviewer → security-auditor → devops-engineer
+
+Bug Investigation:
+context-analyzer → domain-specialist → code-reviewer → test-engineer
+```
+
+### Parallel Workflows
+Multiple agents work simultaneously:
+
+```
+Quality Assurance:
+security-auditor + performance-optimizer + code-reviewer + database-specialist
+
+Comprehensive Analysis:
+All relevant domain specialists analyze different aspects simultaneously
+```
+
+### Handoff Procedures
+Agents coordinate seamlessly:
+1. Context preservation between agents
+2. Quality gates at handoff points
+3. Comprehensive briefing for next agent
+4. Shared understanding of project state
+
 ## Common Workflows
 
 ### Feature Development Workflow
@@ -150,20 +220,6 @@ This dual system prevents context loss and preserves valuable research that migh
    → code-reviewer activates
 2. "Use refactoring-specialist to improve this messy code"
 3. "Use performance-optimizer to speed this up"
-```
-
-## Agent Coordination
-
-### Sequential Workflows
-When you need step-by-step work:
-```
-"First use the database-specialist to design the schema, then have the backend-specialist create the API, then the frontend-specialist build the UI"
-```
-
-### Parallel Workflows
-When you need comprehensive analysis:
-```
-"Have the security-auditor, performance-optimizer, and code-reviewer all analyze this application"
 ```
 
 ## Tips for Better Results
@@ -242,6 +298,26 @@ This usually means no agent was activated. Try:
 - Explicitly requesting an agent
 - Providing technical context about your stack
 
+## Benefits of the Agent System
+
+### For Individual Developers
+- **Expert Guidance**: Get specialist advice for every domain
+- **Automatic Activation**: Right expertise at the right time
+- **Consistent Quality**: Built-in best practices and standards
+- **Learning**: Exposure to expert-level patterns and approaches
+
+### For Development Teams
+- **Standardized Approaches**: Consistent patterns across team members
+- **Knowledge Sharing**: Best practices embedded in agent responses
+- **Quality Assurance**: Automated quality gates and reviews
+- **Skill Development**: Team learns from expert-level guidance
+
+### For Project Management
+- **Predictable Quality**: Consistent standards across all work
+- **Risk Mitigation**: Automatic security and performance considerations
+- **Efficient Coordination**: Agents handle complex multi-domain tasks
+- **Documentation**: Automatic documentation maintenance
+
 ## Advanced Agent Usage
 
 ### Project-Specific Customization
@@ -257,11 +333,25 @@ Multiple team members can work with agents:
 - Decisions made with one agent are available to others
 - Use STATUS.md to share agent recommendations across team
 
+## Getting Started
+
+### For New Users
+1. **Start Small**: Use auto-activated agents naturally
+2. **Learn Patterns**: Observe how agents coordinate
+3. **Experiment**: Try different agent combinations
+4. **Customize**: Adapt agents to your project needs
+
+### For Teams
+1. **Establish Standards**: Define team-specific agent behaviors
+2. **Share Patterns**: Document successful agent workflows
+3. **Train Team**: Ensure everyone understands agent capabilities
+4. **Iterate**: Continuously improve agent effectiveness
+
 ---
 
 **Related Guides:**
-- [AI Collaboration Guide](./ai-collaboration-guide.md) - Advanced AI workflow patterns
+- [AI Collaboration Guide](./ai-collaboration-guide.md) - Advanced AI workflow patterns and context management
 - [Commands Reference](../reference/commands.md) - Slash commands for agent coordination
 - [Troubleshooting](../reference/troubleshooting.md) - Solve agent-related issues
 
-**Technical Details:** See `.claude/agents/README.md` for complete agent specifications and technical details.
+**Technical Details:** See `.claude/agents/README.md` for complete agent specifications and technical configuration.

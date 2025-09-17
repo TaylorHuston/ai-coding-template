@@ -2,7 +2,7 @@
 
 ## Transform AI into Your Architectural Partner
 
-From simple code generator to intelligent development partner through the **revolutionary /idea → /plan → /iterate workflow**.
+From simple code generator to intelligent development partner through the **revolutionary /feature → /architect → /plan → /develop workflow**.
 
 ---
 
@@ -34,7 +34,7 @@ From simple code generator to intelligent development partner through the **revo
 #### 🟡 **Intermediate** (Familiar with AI coding, want better workflow)
 1. **[⚡ Quick Demo](#quick-demo)** - 2-minute value demonstration
 2. **Setup**: `./scripts/setup-manager.sh quick` - Get running fast
-3. **Try Workflow**: Pick a real feature → `/idea` → `/plan` → `/iterate`
+3. **Try Workflow**: Pick a real feature → `/feature` → `/architect` → `/plan` → `/develop`
 4. **[🤖 Agent System](./docs/ai-tools/guides/using-agents.md)** - Understand your specialist team
 
 #### 🔴 **Advanced** (Ready for full architectural partnership)
@@ -80,38 +80,48 @@ AI: "What database? What authentication approach?" 🤦‍♂️
 
 ```mermaid
 graph LR
-    A[💡 /idea] --> B[📋 /plan] --> C[⚡ /iterate]
+    A[💡 /feature] --> B[🏗️ /architect] --> C[📋 /plan] --> D[⚡ /develop]
 
-    A --> A1[Interactive Exploration]
-    A --> A2[Specialist Consultation]
-    A --> A3[Decision Documentation]
+    A --> A1[Feature Definition]
+    A --> A2[Requirements Gathering]
+    A --> A3[Business Context]
 
-    B --> B1[Multi-Agent Analysis]
-    B --> B2[Phase-Based Planning]
-    B --> B3[Context Coordination]
+    B --> B1[Technical Design]
+    B --> B2[Architecture Decisions]
+    B --> B3[Technology Selection]
 
-    C --> C1[Agent Orchestration]
-    C --> C2[Quality Gates]
-    C --> C3[Context Preservation]
+    C --> C1[Multi-Agent Analysis]
+    C --> C2[Phase-Based Planning]
+    C --> C3[Context Coordination]
+
+    D --> D1[Agent Orchestration]
+    D --> D2[Quality Gates]
+    D --> D3[Context Preservation]
 ```
 
-#### 1. 💡 `/idea` - Interactive Architectural Exploration
-Transform architectural decision-making from guesswork to guided exploration:
-- **Conversational AI Facilitation**: AI guides you through structured decision exploration
-- **On-Demand Expert Consultation**: Specialist agents provide domain insights during conversation
-- **Comprehensive Documentation**: Automatic ADR generation with full context and rationale
+#### 1. 💡 `/feature` - Feature Definition and Requirements
+Define WHAT you're building and WHY with lightweight business context:
+- **Business Context**: Explores user needs, problem statements, and success criteria
+- **Requirements Gathering**: Documents functional requirements and dependencies
+- **External Integration**: Links to Jira/Linear issues when available
 
-#### 2. 📋 `/plan` - Sequential Multi-Agent Planning
-Turn vague requirements into detailed, expertly-reviewed implementation plans:
-- **Intelligent Agent Selection**: Automatically selects domain experts based on issue content
-- **Sequential Context Building**: Each agent builds on previous analysis for comprehensive understanding
-- **Phase-Based Task Generation**: Creates P1.X.X → P2.X.X → P3.X.X tasks with quality gates
+#### 2. 🏗️ `/architect` - Technical Architecture Design
+Define HOW to implement features through technical decisions and system design:
+- **Architecture Exploration**: Evaluates multiple technical approaches
+- **Technology Selection**: Chooses frameworks, patterns, and technologies
+- **Decision Recording**: Creates ADRs documenting choices and rationale
 
-#### 3. ⚡ `/iterate` - Orchestrated Task Execution
-Execute plans with perfect context preservation and quality validation:
-- **Context-Aware Execution**: Every agent receives complete context from previous work
-- **Automatic Quality Gates**: Built-in validation prevents progression without passing standards
-- **Coordination File Management**: HANDOFF.yml and RESEARCH.md maintain perfect context
+#### 3. 📋 `/plan` - Implementation Planning
+Break down architecture into executable tasks with context preservation:
+- **Context Integration**: Builds on feature and architecture documentation
+- **Task Decomposition**: Generates P1.X.X, P2.X.X, P3.X.X phased tasks
+- **Agent Selection**: Intelligent assignment based on task requirements
+
+#### 4. ⚡ `/develop` - Development Execution
+Execute implementation tasks with AI agent orchestration:
+- **Orchestrator Model**: Main Claude coordinates specialized agents
+- **Context Preservation**: Complete handoff context across all tasks
+- **Quality Gates**: Validation between phases with smart recovery
 
 ### Why This Workflow Matters
 
@@ -143,23 +153,29 @@ Execute plans with perfect context preservation and quality validation:
 ### Real-World Example: Adding Authentication
 
 ```bash
-# 1. EXPLORE THE DECISION
-/idea --start "How should we implement user authentication?"
-# → 20-minute guided conversation with security expert consultation
-# → Explores OAuth vs JWT vs hybrid approaches
-# → Generates comprehensive ADR with decision rationale
+# 1. DEFINE THE FEATURE
+/feature --new "User Authentication"
+# → Interactive requirements gathering
+# → Business context and success criteria
+# → Creates docs/technical/features/user-authentication.md
 
-# 2. PLAN THE IMPLEMENTATION
+# 2. DESIGN THE ARCHITECTURE
+/architect user-authentication
+# → Reviews feature requirements
+# → Explores JWT vs sessions architecture
+# → Creates architecture docs and ADRs
+
+# 3. PLAN THE IMPLEMENTATION
 /plan --issue AUTH-123
-# → 8-minute sequential analysis by 5 expert agents
-# → Generates 15 tasks across 3 phases with technical specifications
-# → Complete context in RESEARCH.md and HANDOFF.yml
+# → Reads feature context and architecture docs
+# → Sequential agent analysis and task generation
+# → Creates implementation plan in working directory
 
-# 3. EXECUTE WITH QUALITY
-/iterate  # Automatically starts P1.1.0
+# 4. EXECUTE WITH QUALITY
+/develop  # Execute next task from plan
 # → Executes each task with appropriate specialist agent
 # → Quality gates between every task
-# → Context preserved throughout all 15 tasks
+# → Context preserved throughout all tasks
 # → Ready for deployment with full documentation
 ```
 

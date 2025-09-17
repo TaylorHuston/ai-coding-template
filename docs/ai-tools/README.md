@@ -22,9 +22,9 @@ This directory contains all documentation for AI tools and systems. This is the 
 
 ### `/guides/`
 **Comprehensive guides and patterns**
-- **ai-agents-guide.md** - Complete guide to the 17-agent system
+- **comprehensive-agent-guide.md** - Complete guide to the 17-agent system and practical usage
 - **ai-collaboration-guide.md** - Patterns for effective AI collaboration
-- **using-agents.md** - Practical guide for working with AI agents
+- **multi-model-consultation-guide.md** - Advanced multi-model AI consultation patterns
 
 ### `/setup/`
 **Template installation and configuration**
@@ -71,7 +71,7 @@ This directory contains all documentation for AI tools and systems. This is the 
 
 ### For New Projects
 1. Read `/setup/quick-start.md` for fast setup
-2. Review `/guides/ai-agents-guide.md` to understand the agent system
+2. Review `/guides/comprehensive-agent-guide.md` to understand the agent system
 3. Follow `/setup/mcp-setup.md` for enhanced AI capabilities
 
 ### For Existing Projects
@@ -80,7 +80,7 @@ This directory contains all documentation for AI tools and systems. This is the 
 3. Configure only the agents and features you need
 
 ### For AI Assistants
-1. Start with `/guides/using-agents.md` for practical agent usage
+1. Start with `/guides/comprehensive-agent-guide.md` for complete agent understanding and usage
 2. Reference `/guides/ai-collaboration-guide.md` for advanced patterns
 3. Use `/reference/commands.md` for slash command workflows
 4. Follow `/reference/troubleshooting.md` for issue resolution
@@ -127,7 +127,7 @@ This directory contains all documentation for AI tools and systems. This is the 
 - **Agent not responding**: Check `/reference/troubleshooting.md`
 - **MCP connection issues**: See `/setup/mcp-setup.md`
 - **Integration problems**: Reference `/setup/integration-guide.md`
-- **Generic AI responses**: Review `/guides/using-agents.md`
+- **Generic AI responses**: Review `/guides/comprehensive-agent-guide.md`
 
 ### Getting Help
 - Start with troubleshooting guides in `/reference/`

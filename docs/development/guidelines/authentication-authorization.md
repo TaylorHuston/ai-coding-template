@@ -345,6 +345,12 @@ All implementation examples and working code patterns are available in:
 - **[JWT Security Examples](../../../examples/code/auth/jwt-security.example.js)** - JSON Web Token security implementation
 - **[Rate Limiting Examples](../../../examples/code/auth/rate-limiting.example.js)** - Account protection and rate limiting patterns
 
+## Related Security Guidelines
+
+- **[Security Principles](./security-principles.md)** - Core security concepts and governance philosophy
+- **[Security Implementation Guide](./security-implementation.md)** - Comprehensive security patterns and practices
+- **[Core Security Patterns](./security-implementation-core.md)** - Essential security implementation patterns
+
 ## Navigation
 
 - **[← Back to Guidelines](./README.md)** - All development guideline documentation

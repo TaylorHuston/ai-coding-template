@@ -449,6 +449,12 @@ All implementation examples and working code patterns are available in:
 - **[Compliance Examples](../../../examples/code/security/compliance-governance.example.js)** - GDPR and governance implementations
 - **[Security Testing Examples](../../../examples/code/security/security-testing.example.test.js)** - Comprehensive security test suites
 
+## Related Security Guidelines
+
+- **[Security Principles](./security-principles.md)** - Core security concepts and governance philosophy
+- **[Core Security Patterns](./security-implementation-core.md)** - Essential security implementation patterns
+- **[Authentication & Authorization](./authentication-authorization.md)** - Identity management and access control
+
 ## Navigation
 
 - **[← Back to Guidelines](./README.md)** - All development guideline documentation

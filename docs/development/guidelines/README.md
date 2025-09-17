@@ -27,8 +27,9 @@ estimated_time: "5 min"
 
 ### **Security Guidelines**
 - **[Security Principles](./security-principles.md)** - Core security concepts, threat modeling, zero trust, and governance framework
+- **[Security Implementation Guide](./security-implementation.md)** - Comprehensive security patterns: validation, encryption, logging, file security, testing
+- **[Core Security Patterns](./security-implementation-core.md)** - Essential security implementation patterns and foundational approaches
 - **[Authentication & Authorization](./authentication-authorization.md)** - Identity management, RBAC/ABAC, MFA, and session security
-- **[Security Implementation](./security-implementation.md)** - Practical security patterns: validation, encryption, logging, file security, testing
 
 ### **API Design Guidelines**
 - **[API Design Principles](./api-design-principles.md)** - Core REST/GraphQL principles, versioning, and architectural patterns
@@ -59,7 +60,7 @@ estimated_time: "5 min"
 - **Code Quality**: [Coding Standards](./coding-standards.md) and [Code Review Guidelines](./code-review-guidelines.md)
 - **Testing**: [Testing Principles](./testing-principles.md) and [Testing Implementation](./testing-implementation.md) for comprehensive testing strategies
 - **API Development**: [API Design Principles](./api-design-principles.md), [API Documentation Standards](./api-documentation-standards.md), [API Implementation Patterns](./api-implementation-patterns.md)
-- **Security**: [Security Principles](./security-principles.md), [Authentication & Authorization](./authentication-authorization.md), [Security Implementation](./security-implementation.md)
+- **Security**: [Security Principles](./security-principles.md), [Security Implementation Guide](./security-implementation.md), [Core Security Patterns](./security-implementation-core.md), [Authentication & Authorization](./authentication-authorization.md)
 - **Documentation**: [Documentation Guidelines](./documentation-guidelines.md) and [Visual Documentation](./visual-documentation.md)
 - **Maintenance**: [Documentation Maintenance](./documentation-maintenance.md) and [Changelog Maintenance](./changelog-maintenance.md)
 

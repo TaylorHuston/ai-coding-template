@@ -142,11 +142,15 @@ For complete working examples of these security principles:
 - **[Session Security Examples](../../../examples/code/security/session-security.example.js)** - Encrypted sessions, integrity validation, suspicious activity detection
 - **[JWT & API Security Examples](../../../examples/code/security/jwt-api-security.example.js)** - JWT implementation, rate limiting algorithms, API authentication
 
+## Related Security Guidelines
+
+- **[Security Principles](./security-principles.md)** - Core security concepts and governance philosophy
+- **[Security Implementation Guide](./security-implementation.md)** - Comprehensive security patterns and practices
+- **[Authentication & Authorization](./authentication-authorization.md)** - Identity management and access control
+
 ## Related Guidelines
 
-- **[Security Principles](./security-principles.md)** - Core security concepts and governance
-- **[Authentication Authorization](./authentication-authorization.md)** - Identity management patterns
-- **[Testing Principles](./testing-principles.md)** - General testing approaches including security testing
+- **[Testing Guidelines](./testing-guidelines.md)** - General testing approaches including security testing
 - **[API Implementation Patterns](./api-implementation-patterns.md)** - API security patterns
 
 ## Navigation

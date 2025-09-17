@@ -16,22 +16,24 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 ## Core Workflow Commands ⭐
 
-**The three-phase workflow that transforms AI from code generator to architectural partner:**
+**The four-phase workflow that transforms AI from code generator to architectural partner:**
 
 | Command | Purpose | Usage | Model |
 |---------|---------|-------|-------|
-| 💡 `/idea` | Interactive architectural exploration | `/idea --start "IDEA" \| --continue SESSION` | opus |
+| 💡 `/feature` | Feature definition and requirements | `/feature --new "FEATURE" \| --update FEATURE` | sonnet |
+| 🏗️ `/architect` | Technical architecture design | `/architect FEATURE \| --decision "DECISION"` | opus |
 | 📋 `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
-| ⚡ `/iterate` | Orchestrated task execution | `/iterate [TASK-ID] [--force]` | sonnet |
+| ⚡ `/develop` | Development execution | `/develop [TASK-ID] [--force] [--instruct]` | sonnet |
 
 ## All Available Commands
 
 | Command | Purpose | Usage | Model |
 |---------|---------|-------|-------|
 | **Core Workflow** | | | |
-| `/idea` | Interactive architectural exploration | `/idea --start "IDEA" \| --continue SESSION` | opus |
+| `/feature` | Feature definition and requirements | `/feature --new "FEATURE" \| --update FEATURE` | sonnet |
+| `/architect` | Technical architecture design | `/architect FEATURE \| --decision "DECISION"` | opus |
 | `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
-| `/iterate` | Orchestrated task execution | `/iterate [TASK-ID] [--force]` | sonnet |
+| `/develop` | Development execution | `/develop [TASK-ID] [--force] [--instruct]` | sonnet |
 | **Development & Quality** | | | |
 | `/commit` | Git commit with quality checks | `/commit [scope/files]` | sonnet |
 | `/feature-development` | End-to-end feature implementation | `/feature-development --issue KEY --type TYPE` | opus |

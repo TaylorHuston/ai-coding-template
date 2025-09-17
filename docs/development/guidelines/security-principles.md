@@ -581,10 +581,14 @@ class AICodeSecurityReviewer {
 
 ---
 
+## Related Security Guidelines
+
+- **[Security Implementation Guide](./security-implementation.md)** - Practical security patterns and implementation details
+- **[Core Security Patterns](./security-implementation-core.md)** - Essential security implementation patterns
+- **[Authentication & Authorization](./authentication-authorization.md)** - Identity management and access control
+
 ## Related Guidelines
 
-- **[Authentication & Authorization](./authentication-authorization.md)** - Detailed implementation patterns for auth systems
-- **[Security Implementation](./security-implementation.md)** - Practical security implementation patterns
 - **[API Design Principles](./api-design-principles.md)** - Security considerations in API design
 - **[Quality Standards](./quality-standards.md)** - Security validation protocols
 
