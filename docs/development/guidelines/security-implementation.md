@@ -224,7 +224,7 @@ class EncryptionService {
 
   encrypt(plaintext, key) {
     const iv = crypto.randomBytes(this.ivLength);
-    const cipher = crypto.createCipher(this.algorithm, key, iv);
+    const cipher = crypto.createCipherGCM(this.algorithm, key, iv);
 
     let encrypted = cipher.update(plaintext, 'utf8', 'hex');
     encrypted += cipher.final('hex');
@@ -239,7 +239,7 @@ class EncryptionService {
   }
 
   decrypt(encryptedData, key) {
-    const decipher = crypto.createDecipher(
+    const decipher = crypto.createDecipherGCM(
       this.algorithm,
       key,
       Buffer.from(encryptedData.iv, 'hex')

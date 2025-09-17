@@ -45,16 +45,6 @@ Uses **context-analyzer** agent to provide deep insights beyond basic status:
 - **Development Patterns**: Team productivity metrics, code review patterns
 - **Environment Consistency**: Development environment validation, dependency issues
 
-### Memory-Enhanced Intelligence
-
-When used with `--with-memory`, integrates **memory-bank-mcp** for enhanced insights:
-
-- **User Pattern Recognition**: Personal coding preferences and workflow patterns
-- **Historical Success Analysis**: Effective agent sequences and architectural decisions
-- **Cross-Project Insights**: Patterns and learnings from previous implementations
-- **Personalized Recommendations**: Suggestions based on past successful approaches
-- **Agent Effectiveness Tracking**: Performance analytics for intelligent agent selection
-
 ### Enhanced Status Dimensions
 
 ```yaml

@@ -92,7 +92,6 @@ docs/ai-tools/
     ├── claude-code-hooks-setup.md     # Claude Code hooks configuration and integration
     ├── integration-guide.md           # Adding AI workflow to existing projects
     ├── mcp-setup.md                   # MCP server configuration and enhanced capabilities
-    ├── memory-integration-guide.md    # Memory-bank integration and persistent learning
     ├── project-management-integration.md  # External project management tool integration
     ├── quick-start.md                 # Complete setup and configuration guide
     └── rag-setup.md                   # RAG implementation and knowledge base setup
@@ -181,19 +180,6 @@ docs/archived/
     └── prompting.md                   # Legacy prompting strategies and techniques
 ```
 
-## Memory Bank Documentation
-
-```
-memory-bank/
-├── activeContext.md                    # Current active project context and state
-├── productContext.md                  # Product vision and business context
-├── progress.md                        # Project progress tracking and milestones
-├── projectbrief.md                    # Project overview and objectives
-├── systemPatterns.md                  # Learned system patterns and best practices
-├── techContext.md                     # Technical context and stack information
-└── features/
-    └── sample-feature.md              # Example feature memory structure
-```
 
 ## Infrastructure Documentation
 

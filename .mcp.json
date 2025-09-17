@@ -11,13 +11,6 @@
     "playwright": {
       "command": "npx",
       "args": ["-y", "@playwright/mcp"]
-    },
-    "memory-bank": {
-      "command": "npx",
-      "args": ["-y", "memory-bank-mcp"],
-      "env": {
-        "MEMORY_BANK_STORAGE_PATH": "./project-memory"
-      }
     }
   }
 }

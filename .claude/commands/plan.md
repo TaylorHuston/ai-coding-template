@@ -73,12 +73,6 @@ Conditionally Included (based on issue keywords and memory patterns):
 - performance-optimizer: "slow", "optimize", "performance", "scale", "cache"
 - devops-engineer: "deploy", "infrastructure", "Docker", "CI/CD"
 
-Memory-Enhanced Selection (when memory-bank-mcp available):
-- Historical effectiveness data influences agent priority and selection
-- Past successful patterns for similar issues guide agent combinations
-- User preference patterns optimize agent sequence and specialization focus
-- Cross-project insights suggest additional agents based on successful outcomes
-
 Parameters from $ARGUMENTS:
 - --issue: Issue key identifier (required, e.g., AUTH-123, BUG-456)
 - --deliverable: Deliverable name (auto-detected from existing deliverables or issue prefix)

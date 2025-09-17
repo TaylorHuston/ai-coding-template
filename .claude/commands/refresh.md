@@ -1,33 +1,52 @@
 ---
-description: Refresh AI assistant context on project status and conventions with git awareness
-argument-hint: Optional specific area to refresh (status, agents, practices)
-allowed-tools: Read, Bash(git)
-model: haiku
+description: Intelligent project context refresh using structured documentation and git awareness
+argument-hint: Optional specific area to refresh (status, agents, workflow, technical)
+allowed-tools: Read, Bash(git), Task
+model: sonnet
 ---
 
-Refresh AI assistant context on project by:
+Intelligent project context refresh using our structured documentation system:
 
-1. **Project Status**:
-   1. Read project README.md for overview and current state
-   2. Read current STATUS.md and CHANGELOG.md for project state
-   3. Read the last two git commits to understand recent changes
-   4. Check any active issue tracking or project management system status
-   5. Read any uncommitted, changed files to understand current work
-2. **AI Framework**: Read .claude/agents/README.md for agent capabilities
-3. **Project Conventions**: Read CLAUDE.md for project-specific guidelines
-4. **Script Index**: Read scripts/README.md for overview of current helper scripts
-5. **Technical Details**: Read CLAUDE.md for system guidelines and docs/quality-standards.md for requirements
-6. **Development Practices**: Review current standards and patterns
+## Core Context Gathering
 
-Process:
+1. **Project Overview**:
+   - Read README.md for project introduction and goals
+   - Read START-HERE.md if it exists for guided introduction
+   - Read CLAUDE.md for AI instructions and project context
 
-- Read project README.md for high-level project overview and goals
-- Check recent git history to understand latest development activity
-- Read core project documentation files
-- Review any uncommitted changes that indicate work in progress
-- Summarize current project status and priorities
-- Identify any important changes or updates
-- Provide quick context summary for continued work
-- Highlight any blocking issues or urgent priorities
+2. **Current State Analysis**:
+   - Read STATUS.md for current project state and AI context
+   - Check git status and recent commits (last 3-5) for development activity
+   - Read CHANGELOG.md for recent changes and updates
+   - Review any uncommitted changes indicating work in progress
 
-Arguments: $ARGUMENTS (optional specific context area to focus on)
+3. **AI Framework Context**:
+   - Read .claude/references/documentation-tree.md for comprehensive documentation index
+   - Read .claude/agents/README.md for agent capabilities and coordination
+   - Check .claude/working/ for active development context and plans
+
+4. **Development Context**:
+   - Read docs/ai-tools/system-context.md for system-wide integration patterns
+   - Read docs/development/guidelines/quality-standards.md for requirements
+   - Read scripts/README.md for automation capabilities
+
+## Intelligent Analysis
+
+Use the Task tool with context-analyzer agent to:
+- Synthesize all gathered information into coherent project understanding
+- Identify current development phase and priorities
+- Highlight any blocking issues, incomplete work, or urgent tasks
+- Assess project health and documentation currency
+- Recommend next actions based on current state
+
+## Output Format
+
+Provide structured context summary:
+- **Project Phase**: Current development stage and focus area
+- **Recent Activity**: Summary of latest changes and commits
+- **Active Work**: Current tasks, working directories, and progress
+- **Available Tools**: Key scripts, agents, and automation capabilities
+- **Priorities**: Immediate next steps and any blocking issues
+- **Quick Reference**: Links to key documentation for current work
+
+Arguments: $ARGUMENTS (focus areas: status, agents, workflow, technical, all)
