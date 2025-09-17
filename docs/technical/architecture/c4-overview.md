@@ -100,7 +100,7 @@ For architecture documentation, use the [Standard Feature Template](../templates
 
 ## Example
 
-See [AI Template System Context](../../ai-template/system-context.md) for a practical example of C4 Level 1 documentation.
+See [AI Template System Context](../../ai-tools/system-context.md) for a practical example of C4 Level 1 documentation.
 
 ---
 

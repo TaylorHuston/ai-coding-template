@@ -150,7 +150,7 @@ For complete working examples of these security principles:
 
 ## Related Guidelines
 
-- **[Testing Guidelines](./testing-guidelines.md)** - General testing approaches including security testing
+- **[Testing Principles](./testing-principles.md)** - General testing approaches including security testing
 - **[API Implementation Patterns](./api-implementation-patterns.md)** - API security patterns
 
 ## Navigation

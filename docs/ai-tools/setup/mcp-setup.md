@@ -236,4 +236,4 @@ cp .claude/settings.local.json .claude/team-settings.template.json
 - [Commands Reference](../reference/commands.md) - Discover available slash commands
 - [Troubleshooting](../reference/troubleshooting.md) - Solve common issues
 
-**Technical Details**: See `.claude/mcp-integration-guide.md` for technical configuration details.
+**Technical Details**: See [../../.claude/mcp-integration-guide.md](../../../.claude/mcp-integration-guide.md) for technical configuration details.

@@ -1124,7 +1124,7 @@ deployment_strategy_selection:
 
 - **[Quality Standards](../guidelines/quality-standards.md)** - Quality gates and deployment validation
 - **[Security Guidelines](../guidelines/security-guidelines.md)** - Security considerations for deployment
-- **[Testing Guidelines](../guidelines/testing-guidelines.md)** - Testing strategies for deployment validation
+- **[Testing Principles](../guidelines/testing-principles.md)** - Testing strategies for deployment validation
 - **[Code Review Guidelines](../guidelines/code-review-guidelines.md)** - Review processes for deployment readiness
 
 ## Related Workflows

@@ -22,7 +22,7 @@
 ## Related Guidelines
 
 For development practices and standards, see:
-- **[Testing Guidelines](../guidelines/testing-guidelines.md)** - Comprehensive testing strategies including TDD/BDD
+- **[Testing Principles](../guidelines/testing-principles.md)** - Comprehensive testing strategies including TDD/BDD
 - **[Quality Standards](../guidelines/quality-standards.md)** - Performance requirements and validation protocols
 - **[Security Guidelines](../guidelines/security-guidelines.md)** - Security considerations for deployment
 

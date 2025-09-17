@@ -690,7 +690,7 @@ deployment_strategy_selection:
 
 - **[Quality Standards](../guidelines/quality-standards.md)** - Quality requirements and validation protocols
 - **[Security Guidelines](../guidelines/security-guidelines.md)** - Security patterns for deployment
-- **[Testing Guidelines](../guidelines/testing-guidelines.md)** - Testing strategies for deployment validation
+- **[Testing Principles](../guidelines/testing-principles.md)** - Testing strategies for deployment validation
 - **[API Design Guidelines](../guidelines/api-design-guidelines.md)** - API deployment considerations
 
 ## Related Workflows

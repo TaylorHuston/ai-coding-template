@@ -420,17 +420,10 @@ interface UserCreateResponse {
 
 ## Related Documentation
 
-### Detailed Guides (Archived)
-For comprehensive coverage of these topics, see:
-- [Detailed Prompting Guide](./archived/ai-collaboration/prompting.md)
-- [Complete Context Engineering](./archived/ai-collaboration/context-engineering.md)
-- [Full Branching Strategy](./archived/ai-collaboration/ai-branching-strategy.md)
-- [Architecture Patterns](./archived/ai-collaboration/ai-architecture-patterns.md)
-
 ### Core Project Files
-- [AI Agents Guide](./ai-agents-guide.md) - Complete agent system reference
-- [Quality Standards](./quality-standards.md) - Development requirements
-- [System Guidelines](../CLAUDE.md) - AI assistant instructions
+- [Comprehensive AI Agents Guide](./comprehensive-agent-guide.md) - Complete agent system reference
+- [Quality Standards](../../development/guidelines/quality-standards.md) - Development requirements
+- [System Guidelines](../../../CLAUDE.md) - AI assistant instructions
 
 ---
 

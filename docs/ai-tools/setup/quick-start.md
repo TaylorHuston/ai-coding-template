@@ -150,8 +150,8 @@ For more comprehensive setup options:
 
 - **Documentation**: [Complete navigation](../README.md)
 - **Troubleshooting**: [Common issues](../troubleshooting.md)
-- **Examples**: [Architecture examples](../architecture/)
+- **Examples**: [Architecture examples](../../technical/architecture/examples/)
 
 ---
 
-*Get up and running in 5 minutes, then explore the full capabilities at your own pace.*
+*Get up and running in 5 minutes, then explore the full capabilities at your own pace.*ce.*

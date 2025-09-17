@@ -127,7 +127,6 @@ docs/development/
 │   ├── security-implementation.md     # Security implementation patterns and procedures
 │   ├── security-implementation-core.md # Core security implementation principles
 │   ├── security-principles.md         # Security design principles and threat modeling
-│   ├── testing-guidelines.md          # Testing strategies and coverage requirements
 │   ├── testing-implementation.md      # Testing implementation patterns and examples
 │   ├── testing-principles.md          # Core testing principles and philosophy
 │   ├── visual-documentation.md        # Diagram and visual documentation standards
