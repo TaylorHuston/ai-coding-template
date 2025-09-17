@@ -12,10 +12,6 @@
       "command": "npx",
       "args": ["-y", "@playwright/mcp"]
     },
-    "magic": {
-      "command": "npx",
-      "args": ["-y", "@21st-dev/magic"]
-    },
     "memory-bank": {
       "command": "npx",
       "args": ["-y", "memory-bank-mcp"],

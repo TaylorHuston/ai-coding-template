@@ -109,7 +109,6 @@ This directory contains all documentation for AI tools and systems. This is the 
 - **sequential-thinking** - Multi-step reasoning for complex problems
 - **gemini-cli** - Second opinions and massive context analysis
 - **playwright** - Browser automation and testing
-- **magic** - Modern UI component generation
 
 ### Development Tools
 - Git hooks for automated quality checks

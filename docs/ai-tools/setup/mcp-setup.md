@@ -33,10 +33,6 @@ Model Context Protocol (MCP) extends Claude Code with powerful tools for documen
 - Visual testing and monitoring
 - Cross-browser validation
 
-### 🎨 **UI Component Generation**
-- Modern component creation
-- Design system integration
-- Accessibility compliance
 
 ## Quick Setup (5 Minutes)
 
@@ -80,7 +76,6 @@ These are automatically included in all setups:
 
 #### Frontend Projects Add:
 - **playwright** - Browser testing and automation
-- **magic** - UI component generation with design systems
 
 #### Backend Projects Add:
 - **database** tools for schema management
@@ -144,8 +139,7 @@ Modify the `enabledMcpServers` array in your settings:
     "context7",           // Essential - always keep
     "sequential-thinking", // Essential - always keep
     "gemini-cli",         // Essential - always keep
-    "playwright",         // Optional - for web testing
-    "magic"              // Optional - for UI development
+    "playwright"         // Optional - for web testing
   ]
 }
 ```

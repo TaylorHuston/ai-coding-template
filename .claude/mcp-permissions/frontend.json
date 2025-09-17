@@ -9,7 +9,6 @@
     "mcp__gemini-cli__*",
     "mcp__codex__prompt",
     "mcp__codex__*",
-    "mcp__magic__*",
     "mcp__playwright__browser_navigate",
     "mcp__playwright__browser_click",
     "mcp__playwright__browser_type",

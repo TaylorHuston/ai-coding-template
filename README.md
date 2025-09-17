@@ -641,10 +641,13 @@ cd ai-coding-template
 
 ### Related Projects
 
+Things that are kind of trying to accomplish the same thing and that I have taken inspiration from.
 
 - [AB Method](https://github.com/ayoubben18/ab-method) - Alternative AI development approach
 - [GitHub: Spec Driven Development](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/) - AI-powered specification development
 - [GitHub Spec Kit](https://github.com/github/spec-kit) - Specification-driven development
+- [Claude Studio](https://github.com/arnaldo-delisio/claude-code-studio)
+- [Claude Code PM](https://github.com/automazeio/ccpm)
 
 ---
 

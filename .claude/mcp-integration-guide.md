@@ -45,11 +45,6 @@ MCP (Model Context Protocol) servers extend Claude Code's capabilities by provid
 - **Tools**: `mcp__playwright__browser_*` (navigate, click, type, wait_for, etc.)
 - **Best For**: Web applications, UI testing
 
-#### **magic** - UI Component Generation
-- **Purpose**: Modern UI component generation with design system integration
-- **Use Cases**: Component development, design system implementation, responsive design
-- **Tools**: `mcp__magic__*`
-- **Best For**: Frontend projects, UI-heavy applications
 
 ## Configuration Setup
 
@@ -73,9 +68,8 @@ Edit `.claude/settings.local.json` to:
 ```json
 "enabledMcpjsonServers": [
   "context7",
-  "sequential-thinking", 
+  "sequential-thinking",
   "gemini-cli",
-  "magic",
   "playwright"
 ]
 ```
@@ -95,9 +89,8 @@ Edit `.claude/settings.local.json` to:
 ```json
 "enabledMcpjsonServers": [
   "context7",
-  "sequential-thinking", 
+  "sequential-thinking",
   "gemini-cli",
-  "magic",
   "playwright",
   "database-server"
 ]
@@ -161,7 +154,6 @@ Consider: service boundaries, data consistency, communication patterns, failure 
 #### **Frontend Development**
 ```json
 "allow": [
-  "mcp__magic__*",
   "mcp__playwright__browser_*",
   "WebFetch(domain:developer.mozilla.org)"
 ]
@@ -255,10 +247,9 @@ Error: Google Cloud authentication required
 
 ### Component Development Template
 ```typescript
-// 1. Magic for component generation
-// 2. Context7 for framework best practices
-// 3. Playwright for testing integration
-// 4. Gemini validation for accessibility and performance
+// 1. Context7 for framework best practices and component patterns
+// 2. Playwright for testing integration
+// 3. Gemini validation for accessibility and performance
 ```
 
 ---
