@@ -224,6 +224,11 @@ cd my-awesome-project
 - Git (2.25+)
 - VS Code or preferred editor
 - AI assistant account (Claude Code, Claude, etc.)
+- **[uv](https://github.com/astral-sh/uv)** - Python package manager for semantic code analysis
+  ```bash
+  # Install uv (required for Serena semantic tools)
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  ```
 
 **Optional (Enhanced Multi-Model Intelligence):**
 - **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Enables cross-validation and second opinions from Google's Gemini

@@ -43,7 +43,10 @@
       "mcp__playwright__browser_press_key",
       "mcp__playwright__browser_console_messages",
       "mcp__playwright__browser_close",
-      "mcp__playwright__browser_install"
+      "mcp__playwright__browser_install",
+      "mcp__serena__find_symbol",
+      "mcp__serena__find_referencing_symbols",
+      "mcp__serena__insert_after_symbol"
     ],
     "deny": [
       "Bash(sudo rm -rf /*)",
@@ -59,8 +62,9 @@
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "context7",
-    "sequential-thinking", 
+    "sequential-thinking",
     "gemini-cli",
-    "playwright"
+    "playwright",
+    "serena"
   ]
 }

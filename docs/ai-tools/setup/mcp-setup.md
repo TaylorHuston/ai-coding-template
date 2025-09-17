@@ -52,7 +52,16 @@ cp .claude/mcp-permissions/fullstack.json .claude/settings.local.json
 cp .claude/mcp-permissions/basic.json .claude/settings.local.json
 ```
 
-### 2. Essential MCP Tools
+### 2. Verify Prerequisites
+
+```bash
+# Check all prerequisites (including uv for semantic analysis)
+./scripts/setup-manager.sh check
+```
+
+The `uv` package manager is required for Serena semantic code analysis. Serena is pre-configured and will download automatically when first used.
+
+### 3. Essential MCP Tools
 
 These are automatically included in all setups:
 
@@ -72,7 +81,16 @@ These are automatically included in all setups:
 - **Example**: "Review this entire codebase and suggest improvements"
 - **Prerequisites**: Requires [Gemini CLI](https://github.com/google-gemini/gemini-cli) installation (see README)
 
+#### **serena** - Semantic Code Intelligence
+- **What it does**: Provides semantic code analysis and LSP-based intelligent code manipulation
+- **Why you need it**: Token-efficient semantic code understanding, precise symbol-level editing
+- **Example**: "Find all references to the Authentication class and analyze dependencies"
+- **Prerequisites**: Requires `uv` package manager (template prerequisite)
+
 ### 3. Optional Tools by Project Type
+
+#### All Projects Benefit From:
+- **serena** - Semantic code analysis for any language with LSP support
 
 #### Frontend Projects Add:
 - **playwright** - Browser testing and automation
@@ -80,6 +98,9 @@ These are automatically included in all setups:
 #### Backend Projects Add:
 - **database** tools for schema management
 - **api-testing** tools for endpoint validation
+
+#### Large/Complex Projects Add:
+- **serena** (essential) - Handles complex codebases with semantic precision
 
 ## Getting Started
 
@@ -110,6 +131,13 @@ Ask your AI assistant: "Use context7 to get the latest React hooks documentation
 **For documentation:**
 ```
 "Get the official documentation for [library/framework]"
+```
+
+**For semantic code analysis:**
+```
+"Find all references to the UserService class"
+"Analyze the impact of changing the authenticate method"
+"Insert error handling after the validateInput function"
 ```
 
 ## Project-Specific Customization

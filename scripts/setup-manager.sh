@@ -58,6 +58,16 @@ check_prerequisites() {
     
     local has_errors=false
     
+    # Check uv (required for semantic code analysis)
+    if command -v uv &> /dev/null; then
+        local uv_version=$(uv version 2>/dev/null | head -1)
+        log_success "uv installed: $uv_version"
+    else
+        log_error "uv not installed (required for Serena semantic tools)"
+        log_info "Install with: curl -LsSf https://astral.sh/uv/install.sh | sh"
+        has_errors=true
+    fi
+
     # Check Node.js (optional but recommended)
     if command -v node &> /dev/null; then
         local node_version=$(node -v)
