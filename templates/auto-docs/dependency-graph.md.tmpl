@@ -1,0 +1,307 @@
+---
+title: Dependency Graph
+generated: {{lastUpdated}}
+type: architecture
+category: dependencies
+version: "1.0"
+---
+
+# Dependency Graph
+
+**Last Updated**: {{lastUpdated}}
+
+## Overview
+
+This document provides a comprehensive analysis of project dependencies, their relationships, security status, and maintenance recommendations.
+
+## Dependency Summary
+
+- **Total Production Dependencies**: {{totalProdDeps}}
+- **Total Development Dependencies**: {{totalDevDeps}}
+- **Direct Dependencies**: {{directDeps}}
+- **Transitive Dependencies**: {{transitiveDeps}}
+
+## Production Dependencies
+
+### Critical Dependencies
+
+{{#if criticalDependencies}}
+{{#each criticalDependencies}}
+#### {{name}} {{version}}
+
+- **Purpose**: {{purpose}}
+- **License**: {{license}}
+- **Bundle Size**: {{bundleSize}}
+- **Security Status**: {{securityStatus}}
+- **Last Updated**: {{lastUpdated}}
+
+{{/each}}
+{{else}}
+No critical dependencies identified.
+{{/if}}
+
+### All Production Dependencies
+
+{{#if production}}
+{{#each production}}
+- **{{@key}}**: `{{this}}`
+{{/each}}
+{{else}}
+No production dependencies found.
+{{/if}}
+
+## Development Dependencies
+
+### Build and Development Tools
+
+{{#if buildTools}}
+{{#each buildTools}}
+- **{{name}}**: {{version}} - {{description}}
+{{/each}}
+{{/if}}
+
+### Testing Dependencies
+
+{{#if testingDeps}}
+{{#each testingDeps}}
+- **{{name}}**: {{version}} - {{framework}}
+{{/each}}
+{{/if}}
+
+### All Development Dependencies
+
+{{#if development}}
+{{#each development}}
+- **{{@key}}**: `{{this}}`
+{{/each}}
+
+{{#if moreDeps}}
+*... and {{moreDeps}} additional development dependencies*
+{{/if}}
+{{else}}
+No development dependencies found.
+{{/if}}
+
+## Dependency Analysis
+
+### Security Assessment
+
+#### Vulnerabilities
+{{#if vulnerabilities}}
+{{#each vulnerabilities}}
+- **{{package}}**: {{severity}} - {{description}}
+  - **CVSS Score**: {{cvssScore}}
+  - **Patched Version**: {{patchedVersion}}
+{{/each}}
+{{else}}
+✅ No known security vulnerabilities detected.
+{{/if}}
+
+#### Security Recommendations
+{{#if securityRecommendations}}
+{{#each securityRecommendations}}
+- **{{type}}**: {{recommendation}}
+{{/each}}
+{{/if}}
+
+### License Compliance
+
+#### License Distribution
+{{#if licenseDistribution}}
+{{#each licenseDistribution}}
+- **{{license}}**: {{count}} packages
+{{/each}}
+{{/if}}
+
+#### License Compatibility
+{{#if licenseIssues}}
+{{#each licenseIssues}}
+- **{{package}}**: {{license}} - {{issue}}
+{{/each}}
+{{else}}
+✅ No license compatibility issues detected.
+{{/if}}
+
+### Dependency Health
+
+#### Outdated Dependencies
+{{#if outdatedDeps}}
+{{#each outdatedDeps}}
+- **{{name}}**: Current `{{currentVersion}}` → Latest `{{latestVersion}}`
+  - **Age**: {{age}} behind
+  - **Breaking Changes**: {{breakingChanges}}
+{{/each}}
+{{else}}
+✅ All dependencies are up to date.
+{{/if}}
+
+#### Maintenance Status
+{{#if maintenanceIssues}}
+{{#each maintenanceIssues}}
+- **{{package}}**: {{status}} - {{recommendation}}
+{{/each}}
+{{/if}}
+
+## Dependency Visualization
+
+### Dependency Tree (Top Level)
+
+```
+{{projectName}}
+{{#each dependencyTree}}
+├── {{name}} ({{version}})
+{{#if children}}
+{{#each children}}
+│   ├── {{name}} ({{version}})
+{{/each}}
+{{/if}}
+{{/each}}
+```
+
+### Bundle Analysis
+
+#### Bundle Size Impact
+{{#if bundleAnalysis}}
+{{#each bundleAnalysis}}
+- **{{name}}**: {{size}} ({{percentage}}% of total bundle)
+{{/each}}
+{{/if}}
+
+#### Tree Shaking Opportunities
+{{#if treeShakingOpportunities}}
+{{#each treeShakingOpportunities}}
+- **{{package}}**: Could reduce size by {{potentialSavings}}
+{{/each}}
+{{/if}}
+
+## Internal Dependencies
+
+### Module Relationships
+
+{{#if internalModules}}
+{{#each internalModules}}
+#### {{name}}
+- **Dependencies**: {{dependencies.length}} internal modules
+- **Dependents**: {{dependents.length}} modules depend on this
+- **Coupling Score**: {{couplingScore}}
+
+{{/each}}
+{{/if}}
+
+### Circular Dependencies
+{{#if circularDependencies}}
+{{#each circularDependencies}}
+- **{{cycle}}**: {{modules.join(' → ')}}
+{{/each}}
+{{else}}
+✅ No circular dependencies detected.
+{{/if}}
+
+## Dependency Management
+
+### Update Strategy
+
+#### Automated Updates
+- **Patch Updates**: {{patchUpdateStrategy}}
+- **Minor Updates**: {{minorUpdateStrategy}}
+- **Major Updates**: {{majorUpdateStrategy}}
+
+#### Update Schedule
+{{#if updateSchedule}}
+{{#each updateSchedule}}
+- **{{frequency}}**: {{description}}
+{{/each}}
+{{/if}}
+
+### Dependency Policies
+
+#### Version Constraints
+{{#if versionPolicies}}
+{{#each versionPolicies}}
+- **{{category}}**: {{policy}}
+{{/each}}
+{{/if}}
+
+#### Security Policies
+{{#if securityPolicies}}
+{{#each securityPolicies}}
+- **{{policy}}**: {{description}}
+{{/each}}
+{{/if}}
+
+## Performance Impact
+
+### Load Time Analysis
+
+#### Critical Path Dependencies
+{{#if criticalPathDeps}}
+{{#each criticalPathDeps}}
+- **{{name}}**: {{loadTime}}ms impact
+{{/each}}
+{{/if}}
+
+#### Lazy Loading Opportunities
+{{#if lazyLoadingOpportunities}}
+{{#each lazyLoadingOpportunities}}
+- **{{module}}**: {{description}}
+{{/each}}
+{{/if}}
+
+### Runtime Performance
+
+#### Heavy Dependencies
+{{#if heavyDependencies}}
+{{#each heavyDependencies}}
+- **{{name}}**: {{impact}} - {{recommendation}}
+{{/each}}
+{{/if}}
+
+## Recommendations
+
+### Priority Actions
+
+{{#if priorityActions}}
+{{#each priorityActions}}
+#### {{priority}} Priority: {{title}}
+{{description}}
+
+**Action Items**:
+{{#each actionItems}}
+- {{this}}
+{{/each}}
+
+{{/each}}
+{{/if}}
+
+### Long-term Strategy
+
+{{#if longTermStrategy}}
+{{#each longTermStrategy}}
+- **{{area}}**: {{strategy}}
+{{/each}}
+{{/if}}
+
+## Monitoring and Alerts
+
+### Dependency Monitoring
+- **Security Scanning**: {{securityScanningFrequency}}
+- **License Checking**: {{licenseCheckingFrequency}}
+- **Update Notifications**: {{updateNotificationSettings}}
+
+### Alert Thresholds
+{{#if alertThresholds}}
+{{#each alertThresholds}}
+- **{{metric}}**: Alert when {{threshold}}
+{{/each}}
+{{/if}}
+
+---
+
+## Documentation Metadata
+
+- **Generated**: {{lastUpdated}}
+- **Analysis Tool**: {{analysisTool}}
+- **Next Scan**: {{nextScanDate}}
+- **Report Version**: {{reportVersion}}
+
+*This document is automatically generated from dependency analysis and updated when package.json changes are detected.*

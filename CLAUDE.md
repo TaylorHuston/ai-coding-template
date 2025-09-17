@@ -29,6 +29,105 @@ Wiki: <Add the link and details to your Confluence/Notion/etc here>
 
 Vision Document: `docs/vision.md` or `project-vision.md` - Contains problem statement, solution approach, target audience, core features, success metrics, and differentiators that guide all development decisions.
 
+## Core Workflow: /idea → /plan → /iterate
+
+**THIS IS THE PRIMARY WAY TO WORK WITH THIS TEMPLATE**
+
+This template transforms AI from a simple code generator into an intelligent architectural partner through a three-phase workflow that ensures well-explored decisions, comprehensive planning, and quality implementation.
+
+### The Three Phases
+
+#### 1. `/idea` - Interactive Architectural Exploration
+**Purpose**: Collaborative exploration of architectural decisions through guided conversation
+
+- **AI as Facilitator**: Guides structured exploration through conversation phases
+- **Specialist Consultation**: On-demand agent consultation during discussion
+- **Vision Integration**: Automatically aligns decisions with project goals
+- **Session Management**: Resume complex explorations across multiple sessions
+- **ADR Generation**: Creates comprehensive Architecture Decision Records
+
+**Example Usage**:
+```bash
+/idea --start "Should we implement microservices architecture?"
+# → Interactive conversation with specialist consultations
+# → Trade-off analysis and decision synthesis
+# → Generates comprehensive ADR when consensus reached
+```
+
+#### 2. `/plan` - Sequential Multi-Agent Planning
+**Purpose**: Thorough context gathering and intelligent plan generation for implementation
+
+- **Auto-Agent Selection**: Intelligent selection based on issue content and complexity
+- **Sequential Analysis**: Each agent builds on previous findings for comprehensive understanding
+- **Phase-Based Planning**: Generates P1.X.X, P2.X.X, P3.X.X tasks with technical specifications
+- **Context Coordination**: HANDOFF.yml and RESEARCH.md for perfect context preservation
+- **Quality Gates**: Built-in validation between phases
+
+**Example Usage**:
+```bash
+/plan --issue FEATURE-123
+# → Sequential agent analysis: context → specialists → architect → PM
+# → Vision alignment and requirement gathering
+# → Generates PLAN.md with phased implementation tasks
+```
+
+#### 3. `/iterate` - Task Execution with Agent Orchestration
+**Purpose**: Execute tasks from PLAN.md with intelligent agent coordination
+
+- **Orchestrator Model**: Main Claude manages sub-agents with explicit context passing
+- **Quality Gates**: Automatic validation between tasks with smart recovery
+- **Phase Management**: Sequential execution with commit prompts at phase boundaries
+- **Context Preservation**: Complete handoff context maintained across all tasks
+- **Hook Integration**: Automatic enforcement of quality standards
+
+**Example Usage**:
+```bash
+/iterate
+# → Executes P1.1.0 with assigned agent
+# → Updates coordination files with results
+# → Quality gate validation and progression
+```
+
+### The Complete Workflow in Action
+
+```
+ARCHITECTURAL EXPLORATION:
+/idea --start "Should we implement real-time notifications?"
+├── Interactive exploration with specialist consultations
+├── Trade-off analysis and decision synthesis
+└── Generates ADR: "Implement WebSocket-based notifications with fallback"
+
+COMPREHENSIVE PLANNING:
+/plan --issue NOTIFY-123
+├── Sequential agent analysis (context → backend → frontend → security)
+├── Vision alignment and technical requirements
+└── Generates PLAN.md with 12 phased tasks across 3 phases
+
+QUALITY EXECUTION:
+/iterate (through all phases)
+├── P1.X.X: Core implementation → Quality gates → Commit
+├── P2.X.X: Integration features → Quality gates → Commit
+└── P3.X.X: Testing & documentation → Quality gates → Complete
+```
+
+### Why This Workflow Matters
+
+1. **Architectural Quality**: Decisions are thoroughly explored before implementation
+2. **Context Preservation**: Never lose context across long development sessions
+3. **Multi-Agent Expertise**: Leverage 17 specialized agents with perfect coordination
+4. **Quality Assurance**: Built-in gates prevent progression without validation
+5. **Scalability**: Works for simple features to complex architectural changes
+
+### Everything Else Supports This Workflow
+
+- **17-Agent Framework**: Provides domain expertise at each workflow phase
+- **Documentation System**: Automatically maintains context and decisions
+- **Quality Gates**: Ensures standards throughout the workflow
+- **Tool Selection**: Optimized for workflow phase requirements
+- **Status Management**: Preserves workflow state across sessions
+
+**CRITICAL**: When in doubt about how to approach any task, use this workflow. It ensures you're not just generating code, but creating well-architected, thoroughly planned, and quality-validated solutions.
+
 ## Documentation Structure
 
 This template uses a three-tier documentation system:
@@ -90,9 +189,57 @@ You MUST follow these naming conventions:
 
 ## Context Management Protocol
 
-## 17-Agent Framework Integration
+## 17-Agent Framework: Workflow Enablers
 
-You have access to 17 specialized agents through the `.claude/agents/` directory. Your job is to orchestrate the work of the appropriate agents for each task, including passing context between them and keeping any status files up-to-date. You should rarely be updating files yourself directly. Always delegate to the appropriate agent.
+The 17 specialized agents exist to enhance and support the core workflow at each phase. Your role is to orchestrate these agents appropriately throughout the /idea → /plan → /iterate workflow.
+
+### Agents by Workflow Phase
+
+**During `/idea` (Architectural Exploration)**:
+- On-demand consultation during conversation
+- Domain-specific insights for decision-making
+- Technical feasibility assessment
+
+**During `/plan` (Sequential Planning)**:
+- Automatic selection based on issue content
+- Sequential analysis building comprehensive understanding
+- Technical specification generation
+
+**During `/iterate` (Task Execution)**:
+- Agent hints from PLAN.md tasks guide selection
+- Context passing via orchestrator model
+- Structured results for coordination file updates
+
+### Agent Categories for Workflow Support
+
+**Foundation Agents** (Always involved in planning):
+- **context-analyzer**: Codebase understanding and pattern analysis
+- **code-architect**: Architectural decisions and system design
+- **project-manager**: Plan generation and task coordination
+
+**Domain Specialists** (Selected based on content):
+- **frontend-specialist**, **backend-specialist**: Implementation domains
+- **database-specialist**: Data architecture and schema design
+- **api-designer**: Service contracts and integration patterns
+- **security-auditor**: Security analysis and vulnerability assessment
+- **performance-optimizer**: Performance analysis and optimization
+
+**Quality Specialists** (Cross-cutting concerns):
+- **test-engineer**: Testing strategy and quality validation
+- **code-reviewer**: Code quality and standards compliance
+- **docs-sync-agent**: Documentation maintenance and generation
+
+**Infrastructure Specialists** (Deployment and operations):
+- **devops-engineer**: Infrastructure and deployment automation
+- **migration-specialist**: Version upgrades and framework migrations
+
+### Orchestration Principles
+
+You should rarely update files directly. Always delegate to the appropriate agent through the workflow:
+- **Read context** from HANDOFF.yml and RESEARCH.md
+- **Pass complete context** to agents via Task tool prompts
+- **Update coordination files** after agent completion
+- **Maintain workflow state** across all agent interactions
 
 ## Multi-Agent Workflow Execution
 
@@ -229,38 +376,76 @@ Agent Expectations (Sub-agents do):
 - Plan coordination procedures for multi-agent workflows
 - Monitor agent effectiveness and optimize selection patterns
 
-## Tool Selection Guide
+## Tool Selection Guide: Workflow-Optimized
 
-Use these tools appropriately for different tasks:
+Use these tools appropriately for each workflow phase:
 
+### During `/idea` (Architectural Exploration)
 ```yaml
-Search:
-  - Grep: For specific patterns and content
-  - Glob: For file patterns and discovery
+Exploration Tools:
+  - Read: Review vision documents and existing architecture
+  - Grep/Glob: Search codebase for patterns and examples
+  - Task: Consult specialist agents on-demand during conversation
+  - WebFetch: Research external patterns and best practices
 
-Code Operations:
-  - Read: Always read before editing existing files
-  - Edit/MultiEdit: For existing file modifications
-  - Write: Only for new files
-
-Testing:
-  - Bash: Run test commands and validation
-  - Read: Review test files and results
-
-Documentation:
-  - Read: Check existing documentation
-  - Edit: Update existing documentation
-  - Write: Create new documentation (when explicitly requested)
-
-Project Management:
-  - TodoWrite: Track progress and tasks
-  - Task: Delegate to specialized agents
-
-Deliverables:
-  - Read: Review deliverables/ directory structure
-  - Edit: Update PLAN.md and README.md files
-  - Command System: Use commands.md for available automation
+Documentation Tools:
+  - Edit: Update exploration session files
+  - Write: Create ADR files when consensus reached
+  - Auto-Documentation: Generate ADRs with ./scripts/docs-manager.sh decision
 ```
+
+### During `/plan` (Sequential Planning)
+```yaml
+Analysis Tools:
+  - Read: Understand existing codebase and patterns
+  - Grep/Glob: Discover related files and dependencies
+  - Task: Sequential agent execution with context passing
+
+Planning Tools:
+  - Write: Create PLAN.md, HANDOFF.yml, RESEARCH.md
+  - Edit: Update deliverable tracking and status
+  - TodoWrite: Track planning progress (not implementation tasks)
+```
+
+### During `/iterate` (Task Execution)
+```yaml
+Execution Tools:
+  - Read: Always read context from HANDOFF.yml and RESEARCH.md
+  - Task: Execute agents with complete context for each P X.X.X task
+  - Edit/MultiEdit: Update coordination files after agent completion
+  - Bash: Run tests, validation, and quality gates
+
+Quality Assurance:
+  - Bash: Execute test suites and linting between tasks
+  - Read: Review test results and validation outputs
+  - Edit: Update CHANGELOG.md for user-facing changes
+  - Auto-Documentation: Sync docs with ./scripts/docs-manager.sh auto-docs
+
+Workflow Management:
+  - Edit: Update PLAN.md task checkboxes and HANDOFF.yml entries
+  - Read: Monitor STATUS.md for session continuity
+  - TodoWrite: Track implementation progress within phases
+```
+
+### General Workflow Support
+```yaml
+Context Management:
+  - Read: Always read before editing existing files
+  - Edit: Update STATUS.md and coordination files
+  - Grep/Glob: Search for patterns and integration points
+
+Agent Coordination:
+  - Task: Primary tool for all specialized agent delegation
+  - Read: Understand agent capabilities from .claude/agents/
+  - Edit: Update HANDOFF.yml with agent results
+
+Quality Gates:
+  - Bash: Run validation scripts between workflow phases
+  - Read: Review quality standards and guidelines
+  - Auto-Documentation: Maintain architectural consistency
+```
+
+**CRITICAL**: Always use Task tool for specialized work. The workflow depends on proper agent orchestration with complete context passing.
 
 ## Code Generation Standards
 
@@ -289,6 +474,45 @@ You MUST adhere to these standards:
 - Documentation MUST be updated to reflect code changes
 - Tests MUST be written or updated for all functional changes
 
+## Automatic Documentation System
+
+This project includes automatic documentation generation capabilities that you MUST use to maintain accurate, up-to-date architecture documentation:
+
+### Available Auto-Documentation
+
+- **Technology Stack**: `./scripts/docs-manager.sh auto-docs tech-stack`
+- **System Overview**: `./scripts/docs-manager.sh auto-docs system-overview`
+- **Dependency Graph**: `./scripts/docs-manager.sh auto-docs dependencies`
+- **All Documentation**: `./scripts/docs-manager.sh auto-docs all`
+
+### Architecture Decision Records (ADRs)
+
+For significant architectural or technical decisions, you MUST create Technical Decision Records:
+
+- **Create ADR**: `./scripts/docs-manager.sh decision "Decision Title"`
+- **Location**: `.decisions/YYYY-MM-DD-decision-title.md`
+- **Template**: Includes context, rationale, alternatives, and consequences
+
+### When to Use Auto-Documentation
+
+**Automatically Generate** when:
+- Adding new technologies or frameworks
+- Making architectural changes
+- Modifying system structure or components
+- Updating dependencies or tech stack
+- After implementing major features
+
+**Create ADRs** for:
+- Technology selection decisions
+- Architectural pattern choices
+- Security implementation decisions
+- Performance optimization strategies
+- Database or infrastructure decisions
+
+### Integration with Agent Workflows
+
+The `docs-sync-agent` will automatically invoke documentation generation when significant changes are detected. You can also manually trigger documentation updates as part of development workflows.
+
 ## Architecture Compliance
 
 You MUST maintain these architectural principles:
@@ -300,16 +524,19 @@ You MUST maintain these architectural principles:
 - Advanced memory management for long-term project continuity
 - Structured approach to AI-human collaborative development
 
-## Problem-Solving Framework
+## Problem-Solving Framework: Workflow-First Approach
 
 ### Decision Framework
 
-When uncertain about any task:
+When uncertain about any task, use the core workflow:
 
-1. **Check existing patterns** in similar files and components
-2. **Run tests** to validate current assumptions and functionality
-3. **Ask user** for clarification rather than making assumptions
-4. **Document decision** in code comments and status files
+1. **For Architectural Decisions**: Use `/idea` to explore options with specialist consultation
+2. **For Implementation Planning**: Use `/plan` to get comprehensive multi-agent analysis
+3. **For Execution Issues**: Use `/iterate` with appropriate agent for domain expertise
+4. **Check existing patterns** in similar files and components
+5. **Run tests** to validate current assumptions and functionality
+6. **Ask user** for clarification rather than making assumptions
+7. **Document decision** in appropriate workflow artifacts (ADRs, RESEARCH.md, HANDOFF.yml)
 
 ### Issue Resolution Protocol
 

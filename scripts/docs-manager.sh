@@ -32,6 +32,8 @@ COMMANDS:
     validate        Pre-commit validation of documentation
     init            Initialize documentation structure
     generate        Generate documentation index and navigation
+    auto-docs       Generate automatic documentation (tech-stack, system-overview, etc.)
+    decision        Create a new technical decision record
     clean           Remove generated documentation files
 
 OPTIONS:
@@ -45,6 +47,9 @@ EXAMPLES:
     $0 check --fix-auto         # Check and fix broken links
     $0 validate                 # Validate docs for commit
     $0 init                     # Initialize doc structure
+    $0 auto-docs tech-stack     # Generate technology stack documentation
+    $0 auto-docs all            # Generate all automatic documentation
+    $0 decision "API Design"    # Create new technical decision record
 
 EOF
 }
@@ -298,27 +303,107 @@ generate_index() {
 # Clean generated files
 clean_docs() {
     log_info "Cleaning generated documentation files..."
-    
+
     # Remove reports directory contents (but keep the directory)
     if [[ -d "$DOCS_DIR/reports" ]]; then
         find "$DOCS_DIR/reports" -type f -not -name ".gitkeep" -delete
         log_success "Cleaned reports directory"
     fi
-    
+
     log_success "Documentation cleanup complete"
+}
+
+# Auto-documentation command handler
+auto_docs_command() {
+    local doc_type="$1" # Get the type argument
+
+    if [[ "$NODE_AVAILABLE" != "true" ]]; then
+        log_error "Node.js is required for auto-documentation generation"
+        exit 1
+    fi
+
+    if [[ -z "$doc_type" ]]; then
+        log_error "Please specify documentation type"
+        log_info "Available types: tech-stack, system-overview, dependencies, all"
+        exit 1
+    fi
+
+    log_info "Generating automatic documentation: $doc_type"
+
+    if node "$SCRIPT_DIR/auto-docs-generator.js" --type "$doc_type"; then
+        log_success "Auto-documentation generation completed"
+    else
+        log_error "Auto-documentation generation failed"
+        exit 1
+    fi
+}
+
+# Create technical decision record
+create_decision_record() {
+    local decision_title="$1" # Get the title argument
+
+    if [[ -z "$decision_title" ]]; then
+        log_error "Please provide a decision title"
+        log_info "Usage: $0 decision \"Decision Title\""
+        exit 1
+    fi
+
+    local date_stamp=$(date +%Y-%m-%d)
+    local filename="adr-$(date +%s | tail -c 4)-$(echo "$decision_title" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/-$//' | sed 's/^-//').md"
+    local decisions_dir="$PROJECT_ROOT/docs/technical/decisions"
+    local decision_file="$decisions_dir/$filename"
+
+    # Ensure decisions directory exists
+    if [[ ! -d "$decisions_dir" ]]; then
+        mkdir -p "$decisions_dir"
+        log_success "Created decisions directory: $decisions_dir"
+    fi
+
+    # Check if file already exists
+    if [[ -f "$decision_file" ]]; then
+        log_error "Decision record already exists: $filename"
+        exit 1
+    fi
+
+    # Copy template and customize
+    local template_file="$decisions_dir/template.md"
+    if [[ ! -f "$template_file" ]]; then
+        log_error "Decision template not found: $template_file"
+        exit 1
+    fi
+
+    # Create the decision record from template
+    sed "s/\[TITLE\]/$decision_title/g" "$template_file" | \
+    sed "s/YYYY-MM-DD/$date_stamp/g" | \
+    grep -v "^# Technical Decision Record Template" | \
+    grep -v "^## How to Use This Template" | \
+    sed '/^Use this template when/,/^## Decision Record:/d' > "$decision_file"
+
+    log_success "Created decision record: $filename"
+    log_info "Edit the file to complete the decision record:"
+    log_info "  $decision_file"
+
+    # Open in editor if EDITOR is set
+    if [[ -n "$EDITOR" ]]; then
+        log_info "Opening in editor..."
+        "$EDITOR" "$decision_file"
+    fi
 }
 
 # Main execution
 main() {
     local command=$1
     shift
-    
+
+    # Store remaining arguments for commands that need them
+    local remaining_args=("$@")
+
     # Parse options
     local verbose=false
     local auto_fix=false
     local report=""
     local format="text"
-    
+
     while [[ $# -gt 0 ]]; do
         case $1 in
             --verbose)
@@ -339,6 +424,10 @@ main() {
                 shift 2
                 ;;
             *)
+                # If command expects additional arguments, break here
+                if [[ "$command" == "auto-docs" ]] || [[ "$command" == "decision" ]]; then
+                    break
+                fi
                 echo "Unknown option: $1"
                 show_usage
                 exit 1
@@ -362,6 +451,12 @@ main() {
             ;;
         generate)
             generate_index
+            ;;
+        auto-docs)
+            auto_docs_command "${remaining_args[@]}"
+            ;;
+        decision)
+            create_decision_record "${remaining_args[@]}"
             ;;
         clean)
             clean_docs

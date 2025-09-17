@@ -1,0 +1,24 @@
+{
+  "name": "ai-coding-template",
+  "version": "1.0.0",
+  "description": "AI-assisted development workflow template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:health": "node scripts/docs-health.js",
+    "docs:generate": "node scripts/auto-docs-generator.js"
+  },
+  "keywords": ["ai", "development", "template", "workflow"],
+  "author": "AI Coding Template Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "jest": "^29.6.2",
+    "prettier": "^3.0.0",
+    "nodemon": "^3.0.1"
+  }
+}

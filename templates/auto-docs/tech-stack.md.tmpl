@@ -1,0 +1,172 @@
+---
+title: Technology Stack
+generated: {{lastUpdated}}
+type: architecture
+category: tech-stack
+version: "1.0"
+---
+
+# Technology Stack
+
+## Overview
+
+This document outlines the comprehensive technology stack used in this project, including programming languages, frameworks, databases, development tools, and key architectural decisions.
+
+**Last Updated**: {{lastUpdated}}
+
+## Programming Languages
+
+{{#if languages}}
+{{#each languages}}
+- **{{this}}**
+{{/each}}
+{{else}}
+No programming languages detected in the current project structure.
+{{/if}}
+
+## Frameworks and Libraries
+
+### Production Frameworks
+{{#if frameworks}}
+{{#each frameworks}}
+- **{{this}}**
+{{/each}}
+{{else}}
+No major frameworks detected in production dependencies.
+{{/if}}
+
+### Key Libraries
+*Automatically extracted from dependencies*
+
+{{#if keyLibraries}}
+{{#each keyLibraries}}
+- **{{name}}**: {{version}} - {{description}}
+{{/each}}
+{{/if}}
+
+## Data Layer
+
+### Databases
+{{#if databases}}
+{{#each databases}}
+- **{{this}}**
+{{/each}}
+{{else}}
+No databases detected from environment configuration.
+{{/if}}
+
+### Data Storage Solutions
+{{#if dataStorage}}
+{{#each dataStorage}}
+- **{{type}}**: {{description}}
+{{/each}}
+{{/if}}
+
+## Development and Build Tools
+
+### Core Tools
+{{#if tools}}
+{{#each tools}}
+- **{{this}}**
+{{/each}}
+{{else}}
+Standard development tools in use (details in package.json).
+{{/if}}
+
+### Development Dependencies
+*Top development tools and utilities*
+
+{{#if devDependencies}}
+{{#each devDependencies}}
+- `{{this}}`
+{{/each}}
+
+{{#if moreDeps}}
+*... and {{moreDeps}} additional development dependencies*
+{{/if}}
+{{else}}
+No development dependencies detected.
+{{/if}}
+
+## Architecture Patterns
+
+### Design Patterns
+- **Architecture Style**: {{architectureStyle}}
+- **Component Pattern**: {{componentPattern}}
+- **State Management**: {{stateManagement}}
+
+### Code Organization
+- **Module System**: {{moduleSystem}}
+- **File Structure**: {{fileStructure}}
+- **Testing Strategy**: {{testingStrategy}}
+
+## Deployment and Infrastructure
+
+### Containerization
+{{#if containerization}}
+- **Container Technology**: {{containerization}}
+- **Orchestration**: {{orchestration}}
+{{else}}
+No containerization detected.
+{{/if}}
+
+### Cloud Services
+{{#if cloudServices}}
+{{#each cloudServices}}
+- **{{name}}**: {{usage}}
+{{/each}}
+{{/if}}
+
+## Technical Decisions
+
+### Key Architectural Choices
+
+1. **Language Selection**: {{languageRationale}}
+2. **Framework Choice**: {{frameworkRationale}}
+3. **Database Selection**: {{databaseRationale}}
+
+### Trade-offs and Considerations
+
+- **Performance**: {{performanceConsiderations}}
+- **Scalability**: {{scalabilityConsiderations}}
+- **Maintainability**: {{maintainabilityConsiderations}}
+
+## Dependencies Analysis
+
+### Dependency Health
+- **Total Production Dependencies**: {{totalProdDeps}}
+- **Total Development Dependencies**: {{totalDevDeps}}
+- **Security Vulnerabilities**: {{securityStatus}}
+- **Outdated Packages**: {{outdatedStatus}}
+
+### Dependency Strategy
+- **Version Management**: {{versionStrategy}}
+- **Update Policy**: {{updatePolicy}}
+- **Security Policy**: {{securityPolicy}}
+
+## Future Considerations
+
+### Planned Upgrades
+{{#if plannedUpgrades}}
+{{#each plannedUpgrades}}
+- **{{technology}}**: {{plan}}
+{{/each}}
+{{/if}}
+
+### Technology Roadmap
+{{#if roadmap}}
+{{#each roadmap}}
+- **{{quarter}}**: {{initiatives}}
+{{/each}}
+{{/if}}
+
+---
+
+## Documentation Metadata
+
+- **Generated**: {{lastUpdated}}
+- **Source**: Automatically extracted from project configuration
+- **Next Review**: {{nextReviewDate}}
+- **Maintainer**: {{maintainer}}
+
+*This document is automatically generated and updated when significant technology changes are detected.*

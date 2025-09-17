@@ -14,22 +14,116 @@ tags: ["commands", "slash-commands", "workflows", "ai-automation"]
 
 Claude Code slash commands provide structured, reusable workflows with proper argument handling, tool restrictions, and agent coordination for AI-assisted development.
 
-## Quick Command Reference
+## Core Workflow Commands ⭐
+
+**The three-phase workflow that transforms AI from code generator to architectural partner:**
 
 | Command | Purpose | Usage | Model |
 |---------|---------|-------|-------|
+| 💡 `/idea` | Interactive architectural exploration | `/idea --start "IDEA" \| --continue SESSION` | opus |
+| 📋 `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
+| ⚡ `/iterate` | Orchestrated task execution | `/iterate [TASK-ID] [--force]` | sonnet |
+
+## All Available Commands
+
+| Command | Purpose | Usage | Model |
+|---------|---------|-------|-------|
+| **Core Workflow** | | | |
+| `/idea` | Interactive architectural exploration | `/idea --start "IDEA" \| --continue SESSION` | opus |
+| `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
+| `/iterate` | Orchestrated task execution | `/iterate [TASK-ID] [--force]` | sonnet |
+| **Development & Quality** | | | |
 | `/commit` | Git commit with quality checks | `/commit [scope/files]` | sonnet |
 | `/feature-development` | End-to-end feature implementation | `/feature-development --issue KEY --type TYPE` | opus |
 | `/feature-plan` | Comprehensive feature planning | `/feature-plan --issue KEY --deliverable NAME` | opus |
 | `/health-check` | Project health assessment | `/health-check [scope]` | sonnet |
-| `/iterate` | Progressive improvement cycles | `/iterate --target TARGET --iterations N` | sonnet |
 | `/merge-branch` | Safe branch merging with validation | `/merge-branch [target]` | sonnet |
-| `/plan` | Automated issue setup with intelligent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
 | `/progress` | Progress validation and tracking | `/progress --mode validate\|update [issue]` | sonnet |
 | `/refresh` | Context refresh with git awareness | `/refresh [area]` | haiku |
 | `/review` | Comprehensive code review | `/review --scope SCOPE --focus FOCUS` | sonnet |
 | `/security-audit` | OWASP security assessment | `/security-audit --scope SCOPE --depth DEPTH` | opus |
 | `/test-fix` | Automatic test failure resolution | `/test-fix [pattern]` | sonnet |
+
+## Core Workflow Commands
+
+### 💡 `/idea` - Interactive Architectural Exploration
+
+**Purpose**: Transform architectural decision-making from guesswork to guided exploration through conversational AI facilitation
+
+**Usage**:
+```bash
+/idea --start "IDEA_DESCRIPTION"     # Begin new exploration
+/idea --continue SESSION-ID          # Resume exploration
+/idea --continue latest              # Resume most recent
+/idea --review SESSION-ID            # Analysis and pivot
+/idea --finalize SESSION-ID          # Generate ADR
+/idea --list [--active] [--recent]   # Show sessions
+```
+
+**The Five Exploration Phases**:
+
+1. **Idea Crystallization** (5-15 min): Understand problem space and constraints
+2. **Alternative Exploration** (15-30 min): Generate and explore 3-5 viable options with specialist consultation
+3. **Trade-off Analysis** (10-20 min): Compare options and assess trade-offs
+4. **Decision Synthesis** (5-10 min): Converge on decision with clear rationale
+5. **Documentation** (5-10 min): Generate comprehensive ADR
+
+**Specialist Consultation During Conversation**:
+- **On-Demand**: AI calls relevant agents during exploration (api-designer, security-auditor, performance-optimizer, etc.)
+- **Context-Aware**: Specialists receive complete conversation context and current options
+- **Integrated**: Agent insights seamlessly woven into ongoing conversation
+
+**Session Management**:
+```
+docs/technical/decisions/explorations/
+├── {SESSION-ID}/
+│   ├── conversation.md          # Live conversation log
+│   ├── state.yml               # Current session state
+│   ├── specialist-inputs.md    # Agent consultation results
+│   └── notes.md               # Scratchpad for ideas
+└── sessions-index.yml          # All sessions registry
+```
+
+**ADR Generation**:
+Upon finalization, creates comprehensive Architecture Decision Record:
+- Enhanced context from full exploration history
+- All alternatives explored with specialist analysis
+- Rich consequences section with implementation considerations
+- Decision journey with key conversation turning points
+
+**Example Workflow**:
+```bash
+# Start exploration
+/idea --start "Should we implement event sourcing for audit trails?"
+
+# AI guides conversation through 5 phases with specialist consultation...
+# Resume later if needed: /idea --continue latest
+
+# Generate final ADR when consensus reached
+/idea --finalize latest
+```
+
+**Vision Integration**: Automatically aligns decisions with project goals from `docs/vision.md`
+
+**Tools**: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
+
+---
+
+### 📋 `/plan` - Sequential Multi-Agent Planning
+
+**Purpose**: Transform architectural decisions into expertly-reviewed implementation plans through sequential multi-agent analysis
+
+**[Detailed documentation continues as existing...]**
+
+---
+
+### ⚡ `/iterate` - Orchestrated Task Execution
+
+**Purpose**: Execute tasks from PLAN.md with intelligent agent coordination and context preservation
+
+**[Detailed documentation continues as existing...]**
+
+---
 
 ## Development & Implementation Commands
 
@@ -419,6 +513,18 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 ### By Project Phase
 
+#### Architectural Exploration Phase
+**Recommended Commands**: `idea` → `plan` → `iterate`
+
+**Workflow Pattern**: explore → plan → execute
+
+**Example Sequence**:
+```bash
+/idea --start "Should we implement microservices architecture?"  # Explore decision
+/plan --issue ARCH-123           # Plan implementation
+/iterate                         # Execute tasks
+```
+
 #### Planning Phase
 **Recommended Commands**: `plan`, `feature-plan`, `health-check`, `security-audit`
 
@@ -494,9 +600,9 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 ### Decision Matrix
 
 **New Feature Development**:
-- Simple: `/plan` → `/iterate` (until complete)
-- Standard: `/plan` → `/iterate` → `/review` → `/commit`
-- Complex: `/plan` → `/feature-plan` → `/iterate` → `/security-audit`
+- Simple: `/idea` → `/plan` → `/iterate` → `/commit`
+- Standard: `/idea` → `/plan` → `/iterate` → `/review` → `/commit`
+- Complex: `/idea` → `/plan` → `/feature-plan` → `/iterate` → `/security-audit`
 
 **Code Quality Improvement**:
 - Review: `/review`
@@ -520,9 +626,10 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 ### Command Chaining
 Chain related commands for comprehensive workflows:
 
-**Complete Feature Workflow**:
+**Complete Workflow (Recommended)**:
 ```bash
-/plan --issue AUTH-123 --complexity complex
+/idea --start "How should we implement user authentication?"  # Explore decision
+/plan --issue AUTH-123          # Plan implementation
 /iterate                        # Execute phase 1 tasks
 /iterate                        # Execute phase 2 tasks
 /review --scope feature --focus security

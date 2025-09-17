@@ -1,48 +1,46 @@
 # Claude Code Command Reference
 
-**Created**: 2025-08-21 **Last Updated**: 2025-09-14 **Status**: Active - Claude Code Compatible **Target Audience**: AI Assistants, Development Team
+**Created**: 2025-08-21 **Last Updated**: 2025-09-17 **Status**: Active - Claude Code Compatible **Target Audience**: AI Assistants, Development Team
 
-Comprehensive catalog of Claude Code slash commands with proper YAML frontmatter, argument handling, and tool specifications.
+Comprehensive catalog of Claude Code slash commands centered around the revolutionary ***/idea → /plan → /iterate workflow*** that transforms AI from code generator to architectural partner.
 
-## Command Classification System
+## 🌟 Core Workflow Commands (Primary)
 
-### By Domain
+**THE THREE-PHASE WORKFLOW: From architectural exploration to quality execution**
 
-#### **Development & Implementation**
+### 💡 **/idea** - Interactive Architectural Exploration
+- _Purpose_: Transform architectural decision-making through guided conversation with specialist consultation
+- _Usage_: `/idea --start "IDEA" | --continue SESSION | --finalize SESSION`
+- _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
+- _Workflow Phase_: **1. Exploration** - 20-45 minutes of guided conversation → ADR generation
 
-- **[/commit](./commit.md)** - Git commit with quality checks and conventional messages
+### 📋 **/plan** - Sequential Multi-Agent Planning
+- _Purpose_: Transform decisions into expertly-reviewed implementation plans through sequential agent analysis
+- _Usage_: `/plan --issue KEY [--deliverable NAME] [--agents LIST]`
+- _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
+- _Workflow Phase_: **2. Planning** - 8-10 minutes of agent coordination → PLAN.md with phased tasks
 
-  - _Purpose_: Create proper commits with pre-commit validation
-  - _Usage_: `/commit [scope or files]`
-  - _Model_: sonnet | _Tools_: Bash(git), npm/pnpm/yarn, Read, Grep, Glob
+### ⚡ **/iterate** - Orchestrated Task Execution
+- _Purpose_: Execute planned tasks with intelligent agent coordination and perfect context preservation
+- _Usage_: `/iterate [TASK-ID] [--force] [--agent AGENT]`
+- _Model_: sonnet | _Tools_: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
+- _Workflow Phase_: **3. Execution** - Agent-orchestrated task completion → Quality-validated implementation
 
-- **[/feature-development](./feature-development.md)** - End-to-end feature implementation with TDD
+---
 
-  - _Purpose_: Complete feature development workflow with quality gates
-  - _Usage_: `/feature-development --issue KEY --type TYPE --complexity LEVEL --testing APPROACH`
-  - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
-
-- **[/iterate](./iterate.md)** - Progressive iterative improvement workflow
-  - _Purpose_: Systematic refinement through multiple improvement cycles
-  - _Usage_: `/iterate --target TARGET --iterations N --threshold LEVEL --scope SCOPE`
-  - _Model_: sonnet | _Tools_: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
-
-#### **Quality & Security**
+## 🔧 Supporting Commands (By Domain)
 
 - **[/review](./review.md)** - Comprehensive code review with multi-dimensional analysis
-
   - _Purpose_: Multi-dimensional code quality assessment with detailed feedback
   - _Usage_: `/review --scope SCOPE --focus FOCUS --depth DEPTH --output FORMAT`
   - _Model_: sonnet | _Tools_: Read, Bash, Grep, Glob, TodoWrite, Task
 
 - **[/security-audit](./security-audit.md)** - OWASP-compliant security assessment
-
   - _Purpose_: OWASP-compliant security assessment with vulnerability remediation
   - _Usage_: `/security-audit --scope SCOPE --depth DEPTH --compliance FRAMEWORK --output FORMAT`
   - _Model_: opus | _Tools_: Read, Bash, Grep, Glob, TodoWrite, Task
 
 - **[/test-fix](./test-fix.md)** - Automatic test failure detection and resolution
-
   - _Purpose_: Automated test failure detection, analysis, and resolution
   - _Usage_: `/test-fix [test pattern or files]`
   - _Model_: sonnet | _Tools_: Bash(npm/pnpm/yarn), Read, Edit, MultiEdit, Grep, Glob, TodoWrite, Task
@@ -52,25 +50,24 @@ Comprehensive catalog of Claude Code slash commands with proper YAML frontmatter
   - _Usage_: `/health-check [scope]`
   - _Model_: sonnet | _Tools_: Read, Bash, Grep, Glob, TodoWrite, Task
 
-#### **Planning & Architecture**
+### **Development Support**
 
-- **[/idea](./idea.md)** - Interactive architectural idea exploration and decision facilitation with ADR generation
-
-  - _Purpose_: Interactive exploration and collaborative decision-making for architectural choices
-  - _Usage_: `/idea --start "IDEA_DESCRIPTION" | --continue SESSION-ID | --review SESSION-ID | --finalize SESSION-ID | --list`
-  - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
+- **[/feature-development](./feature-development.md)** - End-to-end feature implementation with TDD
+  - _Purpose_: Complete feature development workflow with quality gates (alternative to workflow)
+  - _Usage_: `/feature-development --issue KEY --type TYPE --complexity LEVEL --testing APPROACH`
+  - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
 - **[/feature-plan](./feature-plan.md)** - Comprehensive feature planning workflow
   - _Purpose_: Create detailed feature plans with deliverable setup and architectural analysis
   - _Usage_: `/feature-plan --issue ISSUE-KEY --deliverable DELIVERABLE-NAME --complexity LEVEL --research DEPTH`
   - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
-- **[/plan](./plan.md)** - Sequential multi-agent planning with comprehensive context gathering
-  - _Purpose_: Sequential multi-agent planning with comprehensive context gathering (deliverable created only if needed)
-  - _Usage_: `/plan --issue ISSUE-KEY [--deliverable NAME] [--agents LIST] [--review-agent AGENT] [--review-plan] [--init]`
-  - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
+- **[/commit](./commit.md)** - Git commit with quality checks and conventional messages
+  - _Purpose_: Create proper commits with pre-commit validation
+  - _Usage_: `/commit [scope or files]`
+  - _Model_: sonnet | _Tools_: Bash(git), npm/pnpm/yarn, Read, Grep, Glob
 
-#### **Project Management**
+### **Project Management**
 
 - **[/progress](./progress.md)** - Project progress validation and tracking with evidence verification
 
@@ -89,57 +86,56 @@ Comprehensive catalog of Claude Code slash commands with proper YAML frontmatter
   - _Usage_: `/refresh [specific area]`
   - _Model_: haiku | _Tools_: Read, Bash(git)
 
-## Command Usage Patterns
+## 🚀 Workflow Usage Patterns
 
-### By Project Phase
-
-#### **Planning Phase**
+### The Complete Workflow (Recommended for All Features)
 
 ```yaml
-recommended_commands:
-  - idea: "Interactive architectural exploration and decision-making"
-  - feature-plan: "Comprehensive feature planning and architecture"
-  - health-check: "Assess current system state"
-  - security-audit: "Identify security requirements"
+core_workflow: "/idea → /plan → /iterate"
 
-workflow_pattern: "explore → decide → plan → validate"
-typical_duration: "1-3 days"
+phase_1_exploration:
+  command: "idea"
+  duration: "20-45 minutes"
+  output: "ADR with architectural decision"
+  description: "Guided conversation with specialist consultation"
+
+phase_2_planning:
+  command: "plan"
+  duration: "8-10 minutes"
+  output: "PLAN.md with phased tasks"
+  description: "Sequential multi-agent analysis and task generation"
+
+phase_3_execution:
+  command: "iterate"
+  duration: "Variable (per task)"
+  output: "Quality-validated implementation"
+  description: "Agent-orchestrated task execution with context preservation"
+
+total_workflow_time: "30-60 minutes planning + implementation time"
+quality_gates: "Built-in at every phase transition"
 ```
 
-#### **Development Phase**
+### Alternative Patterns (Legacy Support)
 
+#### **Enterprise/Complex Features**
 ```yaml
-recommended_commands:
-  - feature-development: "Core development workflow"
-  - review: "Quality assurance during development"
-  - iterate: "Continuous improvement"
-
-workflow_pattern: "implement → review → iterate → test"
-typical_duration: "1-4 weeks"
+pattern: "idea → plan → feature-plan → iterate → security-audit"
+use_case: "System-wide changes, new architectures"
+additional_commands: [feature-plan, security-audit]
 ```
 
-#### **Quality Assurance Phase**
-
+#### **Simple Features**
 ```yaml
-recommended_commands:
-  - security-audit: "Security validation"
-  - health-check: "Project health validation"
-  - review: "Final quality review"
-
-workflow_pattern: "security → health → quality → approval"
-typical_duration: "3-7 days"
+pattern: "idea → plan → iterate → commit"
+use_case: "Straightforward implementations"
+skip_commands: [feature-plan, review]
 ```
 
-#### **Deployment Phase**
-
+#### **Quality-First Development**
 ```yaml
-recommended_commands:
-  - commit: "Quality commit preparation"
-  - merge-branch: "Safe branch merging"
-  - health-check: "Post-deployment validation"
-
-workflow_pattern: "commit → merge → validate → monitor"
-typical_duration: "1-2 days"
+pattern: "idea → plan → iterate → review → security-audit → commit"
+use_case: "Security-critical or high-visibility features"
+additional_validation: [review, security-audit]
 ```
 
 ### By Complexity Level
@@ -215,22 +211,29 @@ All commands now follow Claude Code standards:
 
 ## Available Commands Summary
 
+### 🌟 Core Workflow Commands (Use These First)
+
+| Command | Model | Usage | Workflow Phase |
+| --- | --- | --- | --- |
+| 💡 `/idea` | opus | `/idea --start "DESCRIPTION" \| --continue ID` | **Phase 1**: Architectural exploration → ADR |
+| 📋 `/plan` | opus | `/plan --issue KEY [--deliverable NAME]` | **Phase 2**: Sequential planning → PLAN.md |
+| ⚡ `/iterate` | sonnet | `/iterate [TASK-ID] [--force]` | **Phase 3**: Task execution → Implementation |
+
+### 🔧 Supporting Commands
+
 | Command | Model | Usage | Primary Purpose |
 | --- | --- | --- | --- |
 | `/commit` | sonnet | `/commit [scope/files]` | Git commit with quality checks |
-| `/feature-development` | opus | `/feature-development --issue KEY --type TYPE` | End-to-end feature implementation |
-| `/feature-plan` | opus | `/feature-plan --issue KEY --deliverable NAME` | Comprehensive feature planning |
+| `/feature-development` | opus | `/feature-development --issue KEY --type TYPE` | Alternative to workflow (legacy) |
+| `/feature-plan` | opus | `/feature-plan --issue KEY --deliverable NAME` | Enterprise-level planning (additional) |
 | `/health-check` | sonnet | `/health-check [scope]` | Project health assessment |
-| `/idea` | opus | `/idea --start "DESCRIPTION" \| --continue ID` | **NEW** - Interactive architectural exploration |
-| `/iterate` | sonnet | `/iterate --target TARGET --iterations N` | Progressive improvement cycles |
-| `/plan` | opus | `/plan --issue KEY [--deliverable NAME]` | Automated issue setup with intelligent planning |
 | `/review` | sonnet | `/review --scope SCOPE --focus FOCUS` | Comprehensive code review |
 | `/security-audit` | opus | `/security-audit --scope SCOPE --depth DEPTH` | OWASP security assessment |
 | `/test-fix` | sonnet | `/test-fix [pattern]` | Automatic test failure resolution |
-| `/progress` | sonnet | `/progress --mode validate\|update [issue]` | **MERGED** - Progress validation and tracking |
-| `/merge-branch` | sonnet | `/merge-branch [target]` | **ENHANCED** - Branch merging with deployment validation |
-| `/refresh` | haiku | `/refresh [area]` | **ENHANCED** - Context refresh with git awareness |
+| `/progress` | sonnet | `/progress --mode validate\|update [issue]` | Progress validation and tracking |
+| `/merge-branch` | sonnet | `/merge-branch [target]` | Branch merging with deployment validation |
+| `/refresh` | haiku | `/refresh [area]` | Context refresh with git awareness |
 
 ---
 
-_Claude Code slash commands provide structured, reusable workflows with proper argument handling, tool restrictions, and agent coordination for AI-assisted development._
+*Claude Code slash commands provide structured, reusable workflows with proper argument handling, tool restrictions, and agent coordination for AI-assisted development.*

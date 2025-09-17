@@ -1,180 +1,357 @@
 # AI Coding Template
 
-Transform your AI coding assistant into a team of specialized experts with perfect memory and consistent patterns.
+## Transform AI into Your Architectural Partner
 
-## Why Use This Template?
+From simple code generator to intelligent development partner through the **revolutionary /idea → /plan → /iterate workflow**.
 
-AI coding tools are powerful but have limitations. The biggest challenge? **Limited context windows** that cause AI assistants to "forget" previous implementations and lose track during long working sessions leading to duplicate code, broken integrations, and degraded quality over time.
+### The Problem: AI Coding Without Context
 
-**This template attempts to solve these problems with:**
+Traditional AI coding is reactive and forgetful:
+- ❌ Generate code without understanding the bigger picture
+- ❌ Lose context between long development sessions
+- ❌ Make architectural decisions in isolation
+- ❌ Create inconsistent patterns and duplicate functionality
 
-- ✅ **17 Specialized AI Agents** - Expert consultants for every development task
-- ✅ **Smart Context Management** - Preserve project knowledge across sessions
-- ✅ **Automated Quality Gates** - Maintain standards automatically
-- ✅ **Proven Workflow Patterns** - Best practices built-in
-- ✅ **Team Collaboration Support** - Scale AI assistance across your team
+### The Solution: The Core Workflow
 
-This template was built with Claude Code and VSCode in mind, but should adaptable to other IDEs and assistants.
+**THIS CHANGES EVERYTHING**
 
-## Quick Start (5 Minutes)
+```mermaid
+graph LR
+    A[💡 /idea] --> B[📋 /plan] --> C[⚡ /iterate]
+
+    A --> A1[Interactive Exploration]
+    A --> A2[Specialist Consultation]
+    A --> A3[Decision Documentation]
+
+    B --> B1[Multi-Agent Analysis]
+    B --> B2[Phase-Based Planning]
+    B --> B3[Context Coordination]
+
+    C --> C1[Agent Orchestration]
+    C --> C2[Quality Gates]
+    C --> C3[Context Preservation]
+```
+
+#### 1. 💡 `/idea` - Interactive Architectural Exploration
+Transform architectural decision-making from guesswork to guided exploration:
+- **Conversational AI Facilitation**: AI guides you through structured decision exploration
+- **On-Demand Expert Consultation**: Specialist agents provide domain insights during conversation
+- **Comprehensive Documentation**: Automatic ADR generation with full context and rationale
+
+#### 2. 📋 `/plan` - Sequential Multi-Agent Planning
+Turn vague requirements into detailed, expertly-reviewed implementation plans:
+- **Intelligent Agent Selection**: Automatically selects domain experts based on issue content
+- **Sequential Context Building**: Each agent builds on previous analysis for comprehensive understanding
+- **Phase-Based Task Generation**: Creates P1.X.X → P2.X.X → P3.X.X tasks with quality gates
+
+#### 3. ⚡ `/iterate` - Orchestrated Task Execution
+Execute plans with perfect context preservation and quality validation:
+- **Context-Aware Execution**: Every agent receives complete context from previous work
+- **Automatic Quality Gates**: Built-in validation prevents progression without passing standards
+- **Coordination File Management**: HANDOFF.yml and RESEARCH.md maintain perfect context
+
+### Why This Workflow Matters
+
+**🎯 Architectural Quality**: Decisions are thoroughly explored before any code is written
+**🧠 Perfect Memory**: Context is preserved across sessions, agents, and phases
+**👥 Multi-Expert Coordination**: 17 specialized agents work together seamlessly
+**⚡ Quality Assurance**: Built-in gates ensure standards are maintained throughout
+**📈 Scalable Complexity**: Works for simple features to complex system redesigns
+
+## The Complete Workflow in Action
+
+### Real-World Example: Adding Authentication
+
+```bash
+# 1. EXPLORE THE DECISION
+/idea --start "How should we implement user authentication?"
+# → 20-minute guided conversation with security expert consultation
+# → Explores OAuth vs JWT vs hybrid approaches
+# → Generates comprehensive ADR with decision rationale
+
+# 2. PLAN THE IMPLEMENTATION
+/plan --issue AUTH-123
+# → 8-minute sequential analysis by 5 expert agents
+# → Generates 15 tasks across 3 phases with technical specifications
+# → Complete context in RESEARCH.md and HANDOFF.yml
+
+# 3. EXECUTE WITH QUALITY
+/iterate  # Automatically starts P1.1.0
+# → Executes each task with appropriate specialist agent
+# → Quality gates between every task
+# → Context preserved throughout all 15 tasks
+# → Ready for deployment with full documentation
+```
+
+**Result**: From idea to production-ready feature with expert-level architecture, comprehensive planning, and quality execution.
+
+## Quick Start: Your First Workflow (5 Minutes)
 
 ### Prerequisites
 
 - Git (2.25+)
-- Node.js (16+)
 - VS Code or preferred editor
-- AI assistant account (Claude, Cursor, etc.)
+- AI assistant account (Claude Code, Claude, etc.)
 
-### Setup
+### 1. Setup the Template
 
 ```bash
-# 1. Clone the template
+# Clone the template
 git clone https://github.com/yourusername/ai-coding-template.git my-project
 cd my-project
 
-# 2. Run quick setup
+# Quick setup
 ./scripts/setup-manager.sh quick
 
-# 3. Verify installation
+# Verify installation
 ./scripts/ai-status.sh --check
 ```
 
-**→ [Complete Setup Guide](./docs/ai-tools/setup/quick-start.md)** - Detailed instructions and troubleshooting
+### 2. Experience the Workflow
 
-### First AI Session
+**Try the complete workflow with a simple feature:**
 
-**→ [Getting Started Guide](./docs/ai-tools/setup/quick-start.md#first-ai-session)** - Step-by-step first session walkthrough
+```bash
+# EXPLORE: Start with an architectural decision
+/idea --start "How should we structure user data validation?"
 
-## Project Structure
+# PLAN: Create implementation plan
+/plan --issue VALIDATION-001
+
+# EXECUTE: Run through the tasks
+/iterate
+```
+
+**This 15-minute experience will show you:**
+- How AI-guided exploration improves decisions
+- How multi-agent planning creates better implementations
+- How context preservation eliminates the "forgetting" problem
+
+### 3. Learn the System
+
+**→ [Workflow Deep Dive](./docs/ai-tools/guides/workflow-guide.md)** - Master the three phases
+**→ [Agent System](./docs/ai-tools/guides/using-agents.md)** - Understand your 17 specialists
+**→ [Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration options
+
+## How the Template Supports the Workflow
+
+### Workflow-Optimized Project Structure
 
 ```
 my-project/
-├── .claude/                  # AI agent system
-│   └── agents/              # 17 specialized agents
-├── deliverables/            # Feature and issue tracking
-│   └── [feature]/issues/    # Organized work items
-├── docs/                    # Three-tier documentation
-│   ├── project/             # YOUR project's documentation
-│   ├── development/         # Team processes & guidelines
-│   └── ai-template/         # AI assistant & template docs
-├── scripts/                 # Automation tools
-├── CLAUDE.md               # AI assistant instructions
-└── STATUS.md               # Current project state
+├── .claude/                    # Workflow Orchestration System
+│   ├── commands/               # /idea, /plan, /iterate implementations
+│   └── agents/                # 17 specialized experts for each workflow phase
+├── deliverables/              # /plan Output: Organized implementation tracking
+│   └── [feature]/issues/      # PLAN.md, HANDOFF.yml, RESEARCH.md per issue
+├── docs/                      # Workflow Documentation Integration
+│   ├── technical/decisions/   # /idea Output: ADRs and exploration sessions
+│   ├── technical/architecture/ # Auto-generated from implementations
+│   └── ai-tools/              # Workflow guides and references
+├── scripts/                   # Workflow Automation Support
+│   ├── docs-manager.sh        # ADR generation, auto-documentation
+│   └── quality-gates.sh       # /iterate quality validation
+├── CLAUDE.md                  # AI instructions centered on workflow
+└── STATUS.md                  # Cross-session context preservation
 ```
 
-## Core Features
+### The 17-Agent System: Your Expert Council
 
-### AI Agents
+Agents are automatically selected and orchestrated throughout the workflow:
 
-Your team of specialists, automatically activated based on task:
+**Foundation Agents** (Always involved):
+- **context-analyzer**: Understands codebase patterns and integration points
+- **code-architect**: Makes architectural decisions and ensures system coherence
+- **project-manager**: Generates comprehensive plans and coordinates phases
 
-| Agent                   | Purpose           | Example Use                 |
-| ----------------------- | ----------------- | --------------------------- |
-| **frontend-specialist** | UI/UX development | "Create a login form"       |
-| **backend-specialist**  | Server logic      | "Build REST API"            |
-| **database-specialist** | Data modeling     | "Design user schema"        |
-| **test-engineer**       | Testing           | "Write unit tests"          |
-| **security-auditor**    | Security          | "Audit for vulnerabilities" |
+**Domain Specialists** (Content-based selection):
+- **frontend-specialist**, **backend-specialist**: Implementation expertise
+- **database-specialist**: Data architecture and schema design
+- **api-designer**: Service contracts and integration patterns
+- **security-auditor**: Security analysis and vulnerability assessment
+- **performance-optimizer**: Performance analysis and optimization strategies
 
-[View all 17 agents →](./docs/ai-tools/guides/ai-agents-guide.md)
+**Quality Specialists** (Cross-cutting):
+- **test-engineer**: Testing strategy and comprehensive quality validation
+- **code-reviewer**: Code quality, standards compliance, and architectural consistency
+- **docs-sync-agent**: Documentation maintenance and automatic generation
 
-### Automation Tools
+[Complete Agent Reference →](./docs/ai-tools/guides/using-agents.md)
 
-Essential scripts for AI-assisted development:
+### Workflow Automation Infrastructure
 
-- `setup-manager.sh` - Project initialization and validation
-- `ai-status.sh` - AI-friendly project status dashboard
-- **CHANGELOG System** - Complete changelog automation:
-  - `ai-changelog-audit.sh` - Audit and track missing entries
-  - `ai-update-changelog.sh` - Interactive entry management
-  - `check-changelog.sh` - Git hook integration
-  - `release.sh` - Automated release process
-- `validate-integration.sh` - Health checks and validation
+Everything is designed to enhance the core workflow:
 
-[View all tools →](./scripts/README.md)
+**Command System**:
+- `/idea` - Interactive architectural exploration with specialist consultation
+- `/plan` - Sequential multi-agent planning with intelligent agent selection
+- `/iterate` - Orchestrated task execution with quality gates
 
-## Documentation
+**Context Management**:
+- `HANDOFF.yml` - Perfect agent-to-agent context passing
+- `RESEARCH.md` - Accumulated knowledge from all workflow phases
+- `STATUS.md` - Cross-session workflow state preservation
 
-### 📚 Getting Started
+**Quality Assurance**:
+- Automatic quality gates between workflow phases
+- Built-in validation preventing progression without standards
+- Smart recovery and remediation suggestions
 
-- [Integration Guide](./docs/ai-tools/setup/integration-guide.md) - Add to existing projects
-- [AI Agents Guide](./docs/ai-tools/guides/ai-agents-guide.md) - Master the agent system
-- [Common Workflows](./docs/development/workflows/README.md) - Step-by-step processes
+**Documentation Integration**:
+- ADR generation from `/idea` architectural exploration
+- Technical decision tracking linked to implementation
+- Auto-generated architecture docs from `/iterate` execution
 
-### 🔧 References
+## Master the Workflow
 
-- [Troubleshooting](./docs/ai-tools/reference/troubleshooting.md) - Solve common issues
-- [FAQ](./docs/ai-tools/reference/troubleshooting.md#frequently-asked-questions) - Frequently asked questions
-- [Changelog Guide](./docs/development/guidelines/changelog-maintenance.md) - Maintain project history
+### 📚 Workflow Guides
 
-### 🎯 Quick Links
+- **[Workflow Deep Dive](./docs/ai-tools/guides/workflow-guide.md)** - Complete guide to /idea → /plan → /iterate
+- **[Using the Agent System](./docs/ai-tools/guides/using-agents.md)** - How 17 specialists enhance each phase
+- **[Architectural Exploration](./docs/ai-tools/guides/idea-guide.md)** - Master the /idea command for better decisions
 
-- [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)
-- [Documentation Guidelines](./docs/development/guidelines/documentation-guidelines.md)
-- [Quick Reference](./docs/ai-tools/reference/)
+### 🔧 Implementation Resources
 
-## For Existing Projects
+- **[Commands Reference](./docs/ai-tools/reference/commands.md)** - Complete command documentation
+- **[Integration Guide](./docs/ai-tools/setup/integration-guide.md)** - Add workflow to existing projects
+- **[Troubleshooting](./docs/ai-tools/reference/troubleshooting.md)** - Solve workflow and agent issues
 
-Already have a project? No problem! Three integration options:
+### 🎯 Quick References
 
-### Option 1: Quick Try (5 mins)
+- **[Quality Gates Guide](./docs/ai-tools/reference/quality-gates.md)** - Understand validation between phases
+- **[Context Management](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Perfect context preservation
+- **[Team Collaboration](./docs/development/workflows/team-workflow.md)** - Scale the workflow across teams
+
+## Add Workflow to Existing Projects
+
+Already have a project? The workflow can be integrated progressively:
+
+### Option 1: Workflow-Only Integration (15 mins)
 
 ```bash
-# Just add agents and context files
-curl -O [template-url]/.claude/agents.tar.gz
-tar -xzf agents.tar.gz
+# Add just the core workflow system
+curl -O [template-url]/workflow-core.tar.gz
+tar -xzf workflow-core.tar.gz
+
+# Test the workflow immediately
+/idea --start "How should we improve our current architecture?"
 ```
 
-### Option 2: Gradual Adoption (1 week)
+### Option 2: Progressive Integration (1 week)
 
-- Week 1: Add agents and context files
-- Week 2: Integrate workflows
-- Week 3: Full automation
+**Day 1-2**: Add workflow commands (`/idea`, `/plan`, `/iterate`)
+**Day 3-4**: Integrate agent system for specialist consultation
+**Day 5-7**: Add full automation and quality gates
 
-### Option 3: Full Integration
+### Option 3: Complete Template Integration
 
-[Complete Integration Guide →](./docs/ai-tools/setup/integration-guide.md)
+Transform your entire development process with the full template:
+**[Complete Integration Guide →](./docs/ai-tools/setup/integration-guide.md)**
 
-## Contributing
+## Why Teams Choose This Workflow
 
-This template evolves with community input. Contributions welcome!
+### Before: Traditional AI Coding
 
-- 🐛 [Report Issues](https://github.com/yourusername/ai-coding-template/issues)
-- 💡 [Suggest Features](https://github.com/yourusername/ai-coding-template/discussions)
-- 🤝 [Submit PRs](https://github.com/yourusername/ai-coding-template/pulls)
+```bash
+# Ask AI for code
+"Write a user authentication system"
 
-See our GitHub repository for contribution guidelines.
+# Get code without context
+# ❌ No architectural exploration
+# ❌ No expert consultation
+# ❌ No quality gates
+# ❌ Context lost between sessions
+```
 
-## Learn More
+### After: Workflow-Driven Development
 
-- 📖 [Blog Post: Why AI Assistants Forget](https://example.com/blog)
-- 🎥 [Video: Agent System Overview](https://example.com/video)
-- 💬 [Discord Community](https://discord.gg/example)
-- 🌟 [Star on GitHub](https://github.com/yourusername/ai-coding-template)
+```bash
+# Explore the decision thoroughly
+/idea --start "How should we implement authentication?"
+# → Guided conversation with security expert
+# → Comprehensive ADR with rationale
 
-## License
+# Plan with expert analysis
+/plan --issue AUTH-123
+# → 5 specialists analyze and plan
+# → 15 tasks with quality gates
 
-MIT License - see repository for full license details.
+# Execute with perfect context
+/iterate
+# → Context preserved across all tasks
+# → Quality validation at every step
+```
+
+**Result**: Expert-level architecture, comprehensive planning, and quality execution.
+
+## Contributing to the Workflow
+
+Help improve the /idea → /plan → /iterate workflow for everyone:
+
+### Workflow Improvements
+
+- 🎯 **Enhance Commands**: Improve `/idea`, `/plan`, or `/iterate` functionality
+- 🤖 **Agent Optimization**: Make agents more effective at their specializations
+- 📋 **Planning Templates**: Create better task generation patterns
+- 🔍 **Quality Gates**: Add validation that prevents common issues
+
+### Community
+
+- 🐛 [Report Workflow Issues](https://github.com/yourusername/ai-coding-template/issues)
+- 💡 [Suggest Workflow Enhancements](https://github.com/yourusername/ai-coding-template/discussions)
+- 🤝 [Submit Workflow Improvements](https://github.com/yourusername/ai-coding-template/pulls)
+
+**[Contribution Guidelines →](./docs/development/guidelines/contributing.md)**
+
+## Success Stories & Community
+
+### Learn from Others
+
+- 📖 **[Workflow Success Stories](https://example.com/success-stories)** - How teams transformed their development
+- 🎥 **[Workflow Demo Videos](https://example.com/demos)** - See the complete /idea → /plan → /iterate flow
+- 📚 **[Best Practices Guide](https://example.com/best-practices)** - Patterns from successful implementations
+
+### Join the Community
+
+- 💬 **[Discord Community](https://discord.gg/example)** - Discuss workflow optimizations
+- 🌟 **[Star on GitHub](https://github.com/yourusername/ai-coding-template)** - Support the project
+- 📧 **[Newsletter](https://example.com/newsletter)** - Workflow tips and updates
+
+## Get Started Today
+
+**Ready to transform AI from code generator to architectural partner?**
+
+```bash
+# Experience the workflow in 15 minutes
+git clone https://github.com/yourusername/ai-coding-template.git
+cd ai-coding-template
+./scripts/setup-manager.sh quick
+
+# Try your first workflow
+/idea --start "How should we structure our project architecture?"
+```
+
+**[Complete Setup Guide →](#quick-start-your-first-workflow-5-minutes)**
 
 ---
 
-**Ready to supercharge your AI-assisted development?** Start with the [Quick Start](#quick-start-5-minutes) or explore the [Documentation](#documentation).
+## Resources & Inspiration
 
-## Resources
+### Methodology References
 
-- [C4 Model](https://c4model.com)
-- [12Factor](https://12factor.net)
+- [C4 Model](https://c4model.com) - Architectural documentation approach
+- [12Factor](https://12factor.net) - Application design principles
+- [ADR Process](https://adr.github.io/) - Architecture Decision Records
 
-## Inspiration
+### Related Projects
 
-Just a list of related things. Other projects attempting to accomplish the same goal, blog posts on the subject, etc.
+- [GitHub Spec Kit](https://github.com/github/spec-kit) - Specification-driven development
+- [AB Method](https://github.com/ayoubben18/ab-method) - Alternative AI development approach
+- [GitHub: Spec Driven Development](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/) - AI-powered specification development
 
-### Repos
+---
 
-- [GitHub Spec Kit](https://github.com/github/spec-kit)
+Built with ❤️ by developers who believe AI should be an architectural partner, not just a code generator.
 
-### Posts
-
-- [GitHub: Spec Driven Development](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/)
-
-Built with ❤️ by developers tired of AI assistants forgetting everything.
+**Transform your development workflow today.**

@@ -1,0 +1,91 @@
+---
+title: "{{title}}"
+date: {{date}}
+status: {{status}}
+deciders: {{deciders}}
+consulted: {{consulted}}
+informed: {{informed}}
+tags: {{tags}}
+---
+
+# {{title}}
+
+## Status
+
+**{{status}}** - Decided on {{date}}
+
+## Context
+
+{{context}}
+
+## Decision
+
+{{decision}}
+
+## Rationale
+
+{{rationale}}
+
+### Considered Alternatives
+
+{{#each alternatives}}
+#### {{name}}
+
+**Pros:**
+{{#each pros}}
+- {{this}}
+{{/each}}
+
+**Cons:**
+{{#each cons}}
+- {{this}}
+{{/each}}
+
+{{/each}}
+
+## Consequences
+
+### Positive
+{{#each positiveConsequences}}
+- {{this}}
+{{/each}}
+
+### Negative
+{{#each negativeConsequences}}
+- {{this}}
+{{/each}}
+
+### Risks
+{{#each risks}}
+- **{{risk}}**: {{mitigation}}
+{{/each}}
+
+## Implementation
+
+### Timeline
+- **Decision Date**: {{date}}
+- **Implementation Start**: {{implementationStart}}
+- **Expected Completion**: {{expectedCompletion}}
+
+### Success Criteria
+{{#each successCriteria}}
+- {{this}}
+{{/each}}
+
+### Monitoring
+{{#each monitoringRequirements}}
+- {{this}}
+{{/each}}
+
+## References
+
+{{#each references}}
+- [{{title}}]({{url}})
+{{/each}}
+
+---
+
+**Stakeholders:**
+- **Deciders**: {{deciders}}
+- **Consulted**: {{consulted}}
+- **Informed**: {{informed}}

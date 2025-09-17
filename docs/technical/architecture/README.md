@@ -26,18 +26,41 @@ Document the **technical implementation details** of your project:
 ## Directory Structure
 
 ```
-docs/architecture/
-├── README.md                    # This guide
-├── c4-overview.md              # C4 model guide for visual architecture
-├── [your-system-context.md]    # Your C4 system context diagram (see ai-template/system-context.md for example)
-└── examples/                    # Reference examples (remove when not needed)
-    ├── README.md               # Guide to examples
-    └── system-overview.md      # Example: overall architecture
+📁 Architecture Documentation (Following Three-Tier Structure):
+
+docs/technical/architecture/    # Technical Architecture (Tier 1)
+├── README.md                   # This guide
+├── c4-overview.md             # C4 methodology guide
+├── system-design.md           # Manual: High-level architecture decisions
+├── feature-architecture.md    # Manual: Feature-specific design
+├── auto-generated/            # 🤖 AUTO-GENERATED: Factual data extraction
+│   ├── README.md              # Auto-generated documentation guide
+│   ├── tech-stack.md          # Auto: Technology analysis from code
+│   ├── system-overview.md     # Auto: Project structure analysis
+│   └── dependency-graph.md    # Auto: Dependency relationships
+└── examples/                   # Reference examples (remove when not needed)
+    ├── README.md              # Guide to examples
+    └── architecture-template.md # Template for manual architecture docs
 ```
+
+**⚠️ CRITICAL: Never manually edit files in auto-generated/ - they are automatically generated!**
 
 ## Quick Start
 
-### 1. **For Overall System Architecture**
+### 1. **For Auto-Generated Architecture Documentation**
+```bash
+# Generate all architecture documentation automatically
+./scripts/docs-manager.sh auto-docs all
+
+# Or generate specific components
+./scripts/docs-manager.sh auto-docs tech-stack      # Technology stack analysis
+./scripts/docs-manager.sh auto-docs system-overview # System structure overview
+./scripts/docs-manager.sh auto-docs dependencies    # Dependency graph
+
+# The auto-generated files will be placed in docs/technical/architecture/auto-generated/
+```
+
+### 2. **For Overall System Architecture**
 ```bash
 # Copy the example as starting point
 cp docs/architecture/examples/system-overview.md docs/architecture/my-system.md
@@ -62,27 +85,50 @@ cp docs/templates/standard/feature.template.md docs/architecture/user-management
 # - Include security and performance considerations
 ```
 
-### 3. **For Major Decisions**
+### 4. **For Technical Decisions**
 ```bash
-# Copy the ADR template
-cp docs/architecture/decision-records/template.md docs/architecture/decision-records/002-database-choice.md
+# Create a new technical decision record
+./scripts/docs-manager.sh decision "Choose Database Technology"
 
-# Document your decision
-# - Explain the context and problem
-# - List alternatives considered
-# - Document the decision and consequences
+# This creates a timestamped decision file in .decisions/
+# e.g., .decisions/2025-09-17-choose-database-technology.md
+
+# Edit the file to document:
+# - Context and problem
+# - Decision made
+# - Alternatives considered
+# - Consequences and implementation notes
 ```
 
-## When to Add Documentation
+## Automatic vs Manual Documentation
 
-Add architecture documentation when:
+### Auto-Generated Documentation
+The system automatically generates and maintains:
 
-- **Starting a new project**: Document overall system design
+- **Technology Stack Analysis** (`tech-stack.md`): Extracted from package.json, requirements.txt, and configuration files
+- **System Overview** (`system-overview.md`): Project structure and component analysis
+- **Dependency Graph** (`dependency-graph.md`): Production and development dependencies with analysis
+- **Technical Decision Records**: Structured decision capture with .decisions/ framework
+
+These are automatically updated when dependencies or system structure changes.
+
+### Manual Documentation
+Add manual architecture documentation when:
+
+- **Starting a new project**: Document overall system design and vision
 - **Adding major features**: Document complex features with multiple components
-- **Making technology choices**: Create ADRs for significant decisions
+- **Making technology choices**: Create detailed decision records beyond basic templates
 - **Designing APIs**: Document endpoint design and data contracts
 - **Implementing security**: Document authentication and authorization design
 - **Performance requirements**: Document scaling and optimization strategies
+
+## When to Regenerate Auto-Docs
+
+Trigger automatic documentation regeneration:
+- After adding or updating dependencies (package.json, requirements.txt)
+- When significant code structure changes occur
+- After major refactoring that affects system architecture
+- Before releases to ensure documentation is current
 
 ## File Naming Conventions
 
