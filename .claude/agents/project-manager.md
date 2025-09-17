@@ -1,7 +1,7 @@
 ---
 name: project-manager
 description: PROACTIVELY orchestrates multiple specialized agents for complex, multi-domain tasks AND serves as a general-purpose agent when no specialist is suitable. Use for feature development, system-wide changes, multi-domain tasks, or general research and analysis. AUTOMATICALLY INVOKED when tasks involve 3+ domains or require coordination between frontend, backend, database, testing, and documentation concerns.
-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking, mcp__gemini-cli__prompt
+tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking
 model: opus
 color: blue
 coordination:

@@ -1,6 +1,6 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-09-16 **Status**: Active - Enhanced Template System **Target Audience**: AI Assistants, Development Teams **Total Agents**: 18 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-09-16 **Status**: Active - Enhanced with MCP Integration **Target Audience**: AI Assistants, Development Teams **Total Agents**: 18 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 
@@ -484,7 +484,8 @@ performance_metrics:
 | **Grep/Glob** | All agents | - | Code search and file discovery |
 | **TodoWrite** | All agents | - | Task tracking and coordination |
 | **MultiEdit** | refactoring-specialist, migration-specialist | backend-specialist, frontend-specialist | Bulk code changes |
-| **Specialized Tools** | security-auditor, code-reviewer | - | MCP integrations for analysis |
+| **MCP Context7** | frontend-specialist, backend-specialist, api-designer, database-specialist | code-reviewer, code-architect, security-auditor, performance-optimizer | Framework documentation lookup, library research |
+| **MCP Sequential Thinking** | project-manager, code-reviewer, code-architect, security-auditor, performance-optimizer | - | Complex analysis and systematic reasoning |
 
 ### Model Usage Justification
 

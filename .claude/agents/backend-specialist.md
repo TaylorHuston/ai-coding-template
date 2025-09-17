@@ -1,13 +1,13 @@
 ---
 name: backend-specialist
 description: Expert-level backend development specialist focused on implementing robust, scalable server-side applications. Auto-invoked for server-side implementation tasks, business logic development, and middleware setup.
-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
+tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs
 model: sonnet
 color: green
 coordination:
   hands_off_to: [api-designer, database-specialist, test-engineer, code-reviewer, docs-sync-agent]
   receives_from: [project-manager, api-designer, database-specialist, code-architect]
-  parallel_with: [frontend-specialist, security-auditor, devops-engineer]
+  parallel_with: [frontend-specialist, security-auditor, devops-engineer, ai-llm-expert]
 ---
 
 ## Purpose

@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
 description: Thorough code reviews focusing on quality, maintainability, security, and adherence to project standards. Use PROACTIVELY after code implementation to ensure quality standards. Reviews code for best practices, potential issues, performance implications, and architectural alignment.
-tools: Read, Grep, Glob, Bash, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking, mcp__gemini-cli__prompt
+tools: Read, Grep, Glob, Bash, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking
 model: sonnet
 color: yellow
 coordination:

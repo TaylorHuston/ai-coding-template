@@ -1,7 +1,7 @@
 ---
 name: performance-optimizer
 description: Performance analysis and optimization specialist focused on identifying bottlenecks, improving system efficiency, and ensuring optimal user experience. Auto-invoked for performance bottlenecks, slow queries, and optimization requests.
-tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
+tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking
 model: sonnet
 color: orange
 coordination:

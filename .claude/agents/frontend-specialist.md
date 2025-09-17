@@ -1,7 +1,7 @@
 ---
 name: frontend-specialist
 description: Expert-level frontend development specialist focused on creating exceptional user interfaces and experiences. Auto-invoked for UI/UX development tasks, component creation, and responsive design.
-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
+tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs
 model: sonnet
 color: blue
 coordination:

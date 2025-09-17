@@ -1,7 +1,7 @@
 ---
 name: api-designer
 description: API design, endpoint architecture, and service contract definition. Use for designing REST APIs, GraphQL schemas, service interfaces, data validation patterns, and API documentation. Focus on developer experience, consistency, and robust error handling.
-tools: Read, Write, Edit, MultiEdit, Grep, Glob, TodoWrite
+tools: Read, Write, Edit, MultiEdit, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs
 model: sonnet
 color: orange
 coordination:

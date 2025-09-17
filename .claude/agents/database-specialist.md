@@ -1,7 +1,7 @@
 ---
 name: database-specialist
 description: AUTOMATICALLY INVOKED for all database-related work including schema design, query optimization, migrations, performance tuning, and data architecture. Use for database schema changes, complex queries, performance issues, data modeling, and database administration tasks.
-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
+tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs
 model: sonnet
 color: cyan
 coordination:
