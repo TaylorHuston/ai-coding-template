@@ -1,26 +1,27 @@
 ---
-description: Sequential multi-agent planning with comprehensive context gathering
-argument-hint: --issue ISSUE-KEY [--deliverable DELIVERABLE-NAME] [--branch BRANCH-NAME] [--agents LIST] [--review-agent AGENT] [--review-plan] [--init]
+description: Implementation planning with feature/architecture context integration
+argument-hint: --issue ISSUE-KEY [--feature FEATURE-NAME] [--working-dir DIR-NAME] [--branch BRANCH-NAME] [--agents LIST] [--review-plan] [--init]
 allowed-tools: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
 model: opus
 ---
 
-Sequential multi-agent planning workflow for thorough context gathering and intelligent plan generation:
-1. Check if deliverable exists, create only if needed
-2. Create/checkout feature branch if needed
-3. Set up issue directory structure from templates
-4. Execute sequential agent analysis chain (each agent reads previous findings)
+Implementation planning workflow that integrates feature and architecture context:
+1. Check for existing feature context (docs/technical/features/) and architecture docs
+2. Create working directory in .claude/working/[issue-id]/
+3. Create/checkout feature branch if needed
+4. Execute sequential agent analysis chain building on feature/architecture context
 5. Generate comprehensive PLAN.md with phase-based tasks (P X.X.X numbering)
 6. Initialize coordination files (HANDOFF.yml, RESEARCH.md)
-7. Update deliverable tracking with new issue
-8. Provide setup confirmation and next steps
+7. Link to feature context and architecture decisions
+8. Provide implementation guidance and next steps
 
 Sequential Agent Process:
 - Parse arguments and determine required agents based on issue content
 - **Interactive Clarification**: Never assume details - ask specific questions to clarify requirements
 - **Task Complexity Assessment**: Classify as Simple | Complex | Architectural
 - **Development Strategy Selection**: Backend-First | Frontend-First | Full-Stack (Backend-First recommended)
-- Create directory structure and initialize RESEARCH.md with CRITICAL_CONTEXT
+- Create working directory structure (.claude/working/[issue-id]/) and initialize RESEARCH.md with CRITICAL_CONTEXT
+- Discover and integrate feature context (docs/technical/features/) and architecture docs
 - Discover and integrate vision document (docs/vision.md or project-vision.md) if available
 - Execute agents sequentially, /plan orchestrating context flow:
   1. context-analyzer: Foundation analysis, codebase patterns, and vision alignment

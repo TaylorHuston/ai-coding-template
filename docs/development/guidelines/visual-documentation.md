@@ -1,12 +1,14 @@
 ---
-version: "0.1.0"
+version: "0.2.0"
 created: "2025-08-21"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["technical-writers", "developers", "ai-assistants"]
 document_type: "guide"
 priority: "medium"
 tags: ["visual-documentation", "diagrams", "mermaid", "progress-tracking"]
+difficulty: "intermediate"
+estimated_time: "25 min"
 ---
 
 # Visual Documentation Guide

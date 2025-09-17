@@ -1,5 +1,5 @@
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 status: "active"
@@ -62,7 +62,7 @@ All templates follow this structure:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "YYYY-MM-DD"
 last_updated: "YYYY-MM-DD"
 purpose: "Brief description of template purpose"

@@ -1,11 +1,13 @@
 ---
-version: "0.1.0"
+version: "0.2.0"
 created: "2025-08-21"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers", "technical-writers", "ai-assistants"]
 document_type: "guide"
-tags: ["documentation", "standards", "workflow"]
+tags: ["documentation", "standards", "workflow", "structure"]
+difficulty: "intermediate"
+estimated_time: "30 min"
 ---
 
 # Documentation Guidelines
@@ -279,6 +281,10 @@ When creating or updating C4 documentation:
 5. **Follow progressive disclosure** - don't create component diagrams for simple containers
 6. **Use appropriate audiences** for each C4 level (context=all-stakeholders, container=technical, component=developers)
 
+## Maintenance and Updates
+
+For detailed documentation maintenance procedures, including link validation, health assessment, and automation tools, see the **[Documentation Maintenance Guide](./documentation-maintenance.md)**.
+
 ## What NOT to Include
 
 ### Don't Duplicate Project Management
@@ -296,22 +302,17 @@ Avoid:
 - Writing extensive background that won't help implementation
 - Creating documents "just in case"
 
-## Documentation Maintenance
+## When to Create Documentation
 
-### When to Update
-- **PLAN.md**: Update checklist in real-time as work progresses
-- **README.md**: Update when implementation approach changes
-- **CHANGELOG.md**: Update before committing features
-- **Architecture docs**: Update with significant design changes
+### Create New Documents When
+- Introducing a new architectural pattern
+- Building a new API requiring specification
+- Creating a reusable guide for repeated tasks
+- Establishing new process or workflow
+- **NOT** for every feature or small change
 
-### When to Create New Docs
-- When introducing a new architectural pattern
-- When building a new API
-- When creating a reusable guide
-- NOT for every feature or small change
-
-#### When to Create C4 Documentation
-- **System Context**: For any new project or major system boundary changes
+#### C4 Documentation Creation Guidelines
+- **System Context**: For new projects or major system boundary changes
 - **Container Architecture**: When adding new technology containers or changing architectural approach
 - **Component Diagrams**: For complex containers with multiple interacting components
 - **Dynamic Diagrams**: For complex workflows that span multiple containers
@@ -335,4 +336,10 @@ Your documentation is working when:
 5. **If a developer needs examples, put it in README.md**
 
 Remember: This template is for **getting work done**, not for managing projects. Keep documentation minimal, practical, and focused on helping developers and AI assistants complete tasks efficiently.
-```
+
+## Related Guidelines
+
+- **[Documentation Maintenance](./documentation-maintenance.md)** - Systematic maintenance procedures and automation
+- **[Visual Documentation](./visual-documentation.md)** - Progress bars and Mermaid diagrams
+- **[Quality Standards](./quality-standards.md)** - Quality requirements and validation protocols
+- **[Changelog Maintenance](./changelog-maintenance.md)** - Version history and change tracking

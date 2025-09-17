@@ -1,11 +1,11 @@
 ---
-version: "1.0.0"
+version: "1.1.0"
 created: "2025-08-23"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers", "ai-assistants", "project-maintainers"]
 document_type: "guide"
-tags: ["changelog", "maintenance", "documentation", "workflow"]
+tags: ["changelog", "maintenance", "documentation", "workflow", "automation"]
 difficulty: "intermediate"
 estimated_time: "20 min"
 ---

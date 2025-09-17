@@ -660,4 +660,22 @@ class PerformanceMonitor:
 
 ---
 
-**Related Documentation**: [Testing Strategy and TDD](./tdd-strategy.md) | [Quality Standards](../../../quality-standards.md) | [Local Environment Setup](../environment-setup.md)
+## Related Guidelines
+
+- **[Testing Guidelines](../guidelines/testing-guidelines.md)** - Comprehensive testing strategies including TDD/BDD
+- **[Quality Standards](../guidelines/quality-standards.md)** - Performance requirements and validation protocols
+- **[Security Guidelines](../guidelines/security-guidelines.md)** - Security considerations for performance testing
+
+## Related Workflows
+
+- **[Deployment Guide](./deployment-guide.md)** - Performance considerations in deployment
+- **[Deployment Patterns](./deployment-patterns.md)** - Performance monitoring in deployment strategies
+
+## Navigation
+
+- **[← Back to Workflows](./README.md)** - All development workflow documentation
+- **[Guidelines](../guidelines/README.md)** - Development standards and practices
+
+---
+
+**System Guidelines**: [CLAUDE.md](../../../CLAUDE.md) - AI assistant instructions and project context

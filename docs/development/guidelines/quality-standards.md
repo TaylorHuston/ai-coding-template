@@ -1,12 +1,14 @@
 ---
-version: "0.1.0"
+version: "0.2.0"
 created: "2025-09-10"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers", "ai-assistants"]
 document_type: "specification"
 priority: "high"
 tags: ["quality", "standards", "validation", "testing"]
+difficulty: "intermediate"
+estimated_time: "45 min"
 ---
 
 # Quality Standards
@@ -16,7 +18,7 @@ tags: ["quality", "standards", "validation", "testing"]
 ## Code Generation Standards
 
 ### **Pattern Compliance**
-- Follow patterns established in the `examples/` directory
+- Follow patterns established in the project codebase and templates
 - Follow established language-specific patterns and conventions
 - Use existing project patterns and conventions consistently
 - Follow system guidelines in `CLAUDE.md` and quality standards in this document
@@ -207,4 +209,18 @@ tags: ["quality", "standards", "validation", "testing"]
 
 ---
 
-**Related Documentation**: [Documentation Guidelines](./documentation-guidelines.md) | [System Guidelines](../CLAUDE.md) | [Setup Guide](./setup/README.md)
+## Related Guidelines
+
+- **[Documentation Guidelines](./documentation-guidelines.md)** - Documentation standards and quality requirements
+- **[Testing Guidelines](./testing-guidelines.md)** - Testing strategies and coverage requirements
+- **[Security Guidelines](./security-guidelines.md)** - Security standards and validation protocols
+- **[Changelog Maintenance](./changelog-maintenance.md)** - Version history and change tracking
+
+## Related Workflows
+
+- **[Benchmarking](../workflows/benchmarking.md)** - Performance validation and quality metrics
+- **[Deployment Guide](../workflows/deployment-guide.md)** - Quality gates in deployment processes
+
+---
+
+**System Guidelines**: [CLAUDE.md](../../../CLAUDE.md) - AI assistant instructions and project context

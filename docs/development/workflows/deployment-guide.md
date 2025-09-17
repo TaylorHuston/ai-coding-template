@@ -1120,4 +1120,24 @@ deployment_strategy_selection:
 
 ---
 
-**Related Documentation**: [Integration Guide](../../ai-tools/setup/integration-guide.md) | [MCP Setup](../../ai-tools/setup/mcp-setup.md) | [Setup Hub](../../ai-tools/setup/README.md)
+## Related Guidelines
+
+- **[Quality Standards](../guidelines/quality-standards.md)** - Quality gates and deployment validation
+- **[Security Guidelines](../guidelines/security-guidelines.md)** - Security considerations for deployment
+- **[Testing Guidelines](../guidelines/testing-guidelines.md)** - Testing strategies for deployment validation
+- **[Code Review Guidelines](../guidelines/code-review-guidelines.md)** - Review processes for deployment readiness
+
+## Related Workflows
+
+- **[Benchmarking](./benchmarking.md)** - Performance testing for deployment validation
+- **[Deployment Patterns](./deployment-patterns.md)** - Specific deployment implementation patterns
+
+## Navigation
+
+- **[← Back to Workflows](./README.md)** - All development workflow documentation
+- **[Guidelines](../guidelines/README.md)** - Development standards and practices
+- **[AI Tools Setup](../../ai-tools/setup/README.md)** - AI assistant and template setup
+
+---
+
+**System Guidelines**: [CLAUDE.md](../../../CLAUDE.md) - AI assistant instructions and project context

@@ -1,12 +1,13 @@
 ---
-version: "1.0.0"
+version: "1.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers", "ai-assistants", "documentation-maintainers"]
 document_type: "guide"
-tags: ["documentation", "maintenance", "workflow"]
+tags: ["documentation", "maintenance", "workflow", "automation"]
 difficulty: "intermediate"
+estimated_time: "25 min"
 ---
 
 # Documentation Maintenance Guide
@@ -14,6 +15,8 @@ difficulty: "intermediate"
 ## Overview
 
 This guide provides systematic procedures for maintaining documentation quality, consistency, and currency across the AI Coding Template project.
+
+**For documentation structure and organization principles, see the [Documentation Guidelines](./documentation-guidelines.md).**
 
 ## Core Principles
 

@@ -1,5 +1,5 @@
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 purpose: "Define standardized template format for all templates in the system"
@@ -23,7 +23,7 @@ Every template MUST start with YAML frontmatter containing standardized metadata
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "YYYY-MM-DD"
 last_updated: "YYYY-MM-DD"
 purpose: "Brief description of template purpose"
@@ -96,7 +96,7 @@ Show what the template looks like when filled out.
 ### Required Fields
 
 ```yaml
-version: "1.0.0"                    # Semantic version of template
+version: "0.1.0"                    # Semantic version of template
 created: "YYYY-MM-DD"               # ISO date when created
 last_updated: "YYYY-MM-DD"          # ISO date of last update
 purpose: "Brief purpose statement"   # One-sentence purpose
@@ -224,7 +224,7 @@ generation_context:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 purpose: "Simple example template"
@@ -247,7 +247,7 @@ This is a minimal template example.
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 purpose: "Comprehensive template with all features"

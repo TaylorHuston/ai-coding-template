@@ -686,4 +686,24 @@ deployment_strategy_selection:
 
 ---
 
-**Related Documentation**: [Setup Hub](../setup/README.md) | [Quality Standards](../quality-standards.md) | [Local Environment Setup](./local-environment-setup.md)
+## Related Guidelines
+
+- **[Quality Standards](../guidelines/quality-standards.md)** - Quality requirements and validation protocols
+- **[Security Guidelines](../guidelines/security-guidelines.md)** - Security patterns for deployment
+- **[Testing Guidelines](../guidelines/testing-guidelines.md)** - Testing strategies for deployment validation
+- **[API Design Guidelines](../guidelines/api-design-guidelines.md)** - API deployment considerations
+
+## Related Workflows
+
+- **[Deployment Guide](./deployment-guide.md)** - Comprehensive deployment strategies and setup
+- **[Benchmarking](./benchmarking.md)** - Performance testing for deployment validation
+
+## Navigation
+
+- **[← Back to Workflows](./README.md)** - All development workflow documentation
+- **[Guidelines](../guidelines/README.md)** - Development standards and practices
+- **[AI Tools Setup](../../ai-tools/setup/README.md)** - AI assistant and template setup
+
+---
+
+**System Guidelines**: [CLAUDE.md](../../../CLAUDE.md) - AI assistant instructions and project context

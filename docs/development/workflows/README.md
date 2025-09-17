@@ -1,23 +1,36 @@
-# Testing Guides
+# Development Workflows
 
-**Focus**: Testing strategies and best practices for AI-assisted development
+**Focus**: Operational workflows, deployment patterns, and performance optimization for AI-assisted development projects
 
-## Guides in This Section
+## Workflows in This Section
 
-- **[TDD Strategy](./tdd-strategy.md)** - Test-driven development approach with AI assistance
-- **[Benchmarking](./benchmarking.md)** - Performance testing guidelines and best practices
+### **Performance and Testing**
+- **[Benchmarking](./benchmarking.md)** - Performance testing guidelines and benchmarking best practices
+
+### **Deployment and Operations**
+- **[Deployment Guide](./deployment-guide.md)** - Comprehensive deployment strategies and infrastructure setup
+- **[Deployment Patterns](./deployment-patterns.md)** - Platform-agnostic deployment patterns and strategies
 
 ## Quick Start
 
-**Implementing tests with AI?** Start with [TDD Strategy](./tdd-strategy.md).
+**Setting up deployments?** Start with [Deployment Guide](./deployment-guide.md) for comprehensive strategies.
 
-**Need performance testing?** Use [Benchmarking](./benchmarking.md) guidelines.
+**Need specific deployment patterns?** Use [Deployment Patterns](./deployment-patterns.md) for Blue-Green, Canary, and other strategies.
+
+**Performance testing?** Follow [Benchmarking](./benchmarking.md) guidelines for effective performance validation.
+
+## Related Guidelines
+
+For development practices and standards, see:
+- **[Testing Guidelines](../guidelines/testing-guidelines.md)** - Comprehensive testing strategies including TDD/BDD
+- **[Quality Standards](../guidelines/quality-standards.md)** - Performance requirements and validation protocols
+- **[Security Guidelines](../guidelines/security-guidelines.md)** - Security considerations for deployment
 
 ## Navigation
 
-- **[← Back to Implementation](../README.md)** - All implementation guides
-- **[← Back to Guides](../../README.md)** - All guides overview
+- **[← Back to Development Docs](../README.md)** - All development documentation overview
+- **[Guidelines](../guidelines/README.md)** - Development standards and practices
 
 ---
 
-*Testing strategies optimized for AI-assisted development.*
+*Operational workflows and deployment strategies for production-ready applications.*

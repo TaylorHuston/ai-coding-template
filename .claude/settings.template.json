@@ -43,7 +43,7 @@
       "mcp__playwright__browser_press_key",
       "mcp__playwright__browser_console_messages",
       "mcp__playwright__browser_close",
-      "mcp__playwright__browser_install",
+      "mcp__playwright__browser_install"
     ],
     "deny": [
       "Bash(sudo rm -rf /*)",
@@ -61,6 +61,6 @@
     "context7",
     "sequential-thinking", 
     "gemini-cli",
-    "playwright",
+    "playwright"
   ]
 }

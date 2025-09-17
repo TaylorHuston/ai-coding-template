@@ -638,6 +638,7 @@ cd ai-coding-template
 - [C4 Model](https://c4model.com) - Architectural documentation approach
 - [12Factor](https://12factor.net) - Application design principles
 - [ADR Process](https://adr.github.io/) - Architecture Decision Records
+- [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle)
 
 ### Related Projects
 

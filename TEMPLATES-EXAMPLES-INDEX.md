@@ -1,5 +1,5 @@
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 purpose: "Master index for all templates and examples in the system"
@@ -17,24 +17,24 @@ tags: ["templates", "examples", "index", "discovery"]
 
 | **I need to...** | **Type** | **Resource** | **Location** |
 |-------------------|----------|-------------|--------------|
-| **Create a new feature** | Template | Feature Template (Simple/Comprehensive) | [templates/docs/features/](./templates/docs/features/) |
+| **Create a new feature** | Template | Feature Template (Minimal/Standard/Comprehensive) | [templates/workflow/feature/](./templates/workflow/feature/) |
 | **Build a React component** | Template | React Component Template | [templates/code/components/](./templates/code/components/) |
 | **See component examples** | Example | React Component Example | [examples/code/patterns/](./examples/code/patterns/) |
 | **Create an API service** | Template | Service Template | [templates/code/api/](./templates/code/api/) |
 | **See service examples** | Example | API Service Example | [examples/code/patterns/](./examples/code/patterns/) |
 | **Write unit tests** | Example | Test Examples | [examples/code/patterns/](./examples/code/patterns/) |
-| **Document an API** | Template | API Documentation Template | [templates/docs/api/](./templates/docs/api/) |
-| **Make a technical decision** | Template | Decision Record Template | [templates/docs/decisions/](./templates/docs/decisions/) |
-| **Create a project README** | Template | **Intelligent Project Templates** | [templates/docs/project/](./templates/docs/project/) |
-| **Build a web application** | Template | Web App Project Template | [templates/docs/project/web-app-template.md](./templates/docs/project/web-app-template.md) |
-| **Build an API service** | Template | API Service Project Template | [templates/docs/project/api-service-template.md](./templates/docs/project/api-service-template.md) |
-| **Build a CLI tool** | Template | CLI Tool Project Template | [templates/docs/project/cli-tool-template.md](./templates/docs/project/cli-tool-template.md) |
-| **Build a library/package** | Template | Library Project Template | [templates/docs/project/library-template.md](./templates/docs/project/library-template.md) |
-| **Build a mobile app** | Template | Mobile App Project Template | [templates/docs/project/mobile-app-template.md](./templates/docs/project/mobile-app-template.md) |
-| **Build enterprise software** | Template | Enterprise Project Template | [templates/docs/project/enterprise-template.md](./templates/docs/project/enterprise-template.md) |
+| **Document an API** | Template | API Documentation Template | [templates/documentation/technical/](./templates/documentation/technical/) |
+| **Make a technical decision** | Template | Architecture Template | [templates/workflow/architecture/](./templates/workflow/architecture/) |
+| **Create a project README** | Template | **Intelligent Project Templates** | [templates/documentation/project/](./templates/documentation/project/) |
+| **Build a web application** | Template | Web App Project Template | [templates/documentation/project/web-app.template.md](./templates/documentation/project/web-app.template.md) |
+| **Build an API service** | Template | API Service Project Template | [templates/documentation/project/api-service.template.md](./templates/documentation/project/api-service.template.md) |
+| **Build a CLI tool** | Template | CLI Tool Project Template | [templates/documentation/project/cli-tool.template.md](./templates/documentation/project/cli-tool.template.md) |
+| **Build a library/package** | Template | Library Project Template | [templates/documentation/project/library.template.md](./templates/documentation/project/library.template.md) |
+| **Build a mobile app** | Template | Mobile App Project Template | [templates/documentation/project/mobile-app.template.md](./templates/documentation/project/mobile-app.template.md) |
+| **Build enterprise software** | Template | Enterprise Project Template | [templates/documentation/project/enterprise.template.md](./templates/documentation/project/enterprise.template.md) |
 | **Initialize any project** | System | **Intelligent Setup Manager** | `./scripts/setup-manager.sh init-project` |
-| **Plan a deliverable** | Template | Deliverable Template | [templates/workflow/deliverables/](./templates/workflow/deliverables/) |
-| **Explore architecture** | Template | Exploration Templates | [templates/workflow/explorations/](./templates/workflow/explorations/) |
+| **Plan a deliverable** | Template | Implementation Planning Templates | [templates/workflow/planning/](./templates/workflow/planning/) |
+| **Create architecture docs** | Template | Architecture Template | [templates/workflow/architecture/](./templates/workflow/architecture/) |
 | **Configure the app** | Example | Configuration Example | [examples/code/configs/](./examples/code/configs/) |
 
 ## 📁 Directory Structure Overview
@@ -52,32 +52,33 @@ templates/
 │   │   └── service.template.ts        # API service template
 │   ├── tests/                         # Test templates
 │   └── configs/                       # Configuration templates
-├── docs/                              # Documentation templates
-│   ├── features/
-│   │   ├── feature.template.md        # Comprehensive feature docs
-│   │   ├── feature-simple.template.md # Simple feature docs
-│   │   └── feature-comprehensive.template.md # Advanced feature docs
-│   ├── project/                       # **NEW: Intelligent Project Templates**
-│   │   ├── project-readme-template.md      # Generic project README
-│   │   ├── web-app-template.md            # Web application README
-│   │   ├── api-service-template.md        # API service README
-│   │   ├── cli-tool-template.md           # CLI tool README
-│   │   ├── library-template.md            # Library/package README
-│   │   ├── mobile-app-template.md         # Mobile app README
-│   │   └── enterprise-template.md         # Enterprise app README
-│   ├── api/
-│   │   └── api.template.md            # API documentation
-│   ├── decisions/
-│   │   └── decision.template.md       # Architecture Decision Records
+├── documentation/                     # Documentation templates
+│   ├── project/                       # **Intelligent Project Templates**
+│   │   ├── project-readme.template.md     # Generic project README
+│   │   ├── web-app.template.md             # Web application README
+│   │   ├── api-service.template.md         # API service README
+│   │   ├── cli-tool.template.md            # CLI tool README
+│   │   ├── library.template.md             # Library/package README
+│   │   ├── mobile-app.template.md          # Mobile app README
+│   │   ├── enterprise.template.md          # Enterprise app README
+│   │   └── CHANGELOG.template.md           # Changelog template
 │   └── technical/
-│       ├── vision.template.md         # Vision document
-│       └── changelog.template.md      # Changelog
-├── workflow/                          # Workflow templates
-│   ├── deliverables/
-│   │   ├── deliverable-simple.template.md
-│   │   └── deliverable-comprehensive.template.md
-│   ├── issues/                        # Issue templates (PLAN.md, HANDOFF.yml, etc.)
-│   └── explorations/                  # Architectural exploration templates
+│       ├── project-vision.template.md     # Vision document
+│       ├── project-changelog.template.md  # Technical changelog
+│       └── api-reference.template.md      # API documentation
+├── workflow/                          # AI Workflow templates
+│   ├── feature/                       # Feature context templates
+│   │   ├── feature-minimal.template.md    # Basic feature docs (<50 lines)
+│   │   ├── feature-standard.template.md   # Standard feature docs (50-150 lines)
+│   │   └── feature-comprehensive.template.md # Advanced feature docs (150+ lines)
+│   ├── architecture/
+│   │   └── architecture.template.md       # Technical architecture docs
+│   ├── planning/                      # Implementation planning templates
+│   │   ├── plan.template.md               # Implementation plan (P1.X.X format)
+│   │   ├── handoff.template.yml           # Agent coordination file
+│   │   └── research.template.md           # Research and findings
+│   └── implementation/
+│       └── implementation-record.template.md # Completed work documentation
 └── generation/                        # Auto-generation templates (.tmpl files)
     ├── tech-stack.tmpl
     ├── system-overview.tmpl
@@ -145,12 +146,12 @@ cd my-project
 
 | **Project Type** | **Perfect For** | **Template** |
 |------------------|-----------------|--------------|
-| **Web App** | React/Vue frontends, dashboards, e-commerce | [web-app-template.md](./templates/docs/project/web-app-template.md) |
-| **API Service** | REST APIs, microservices, backends | [api-service-template.md](./templates/docs/project/api-service-template.md) |
-| **CLI Tool** | Command-line utilities, dev tools | [cli-tool-template.md](./templates/docs/project/cli-tool-template.md) |
-| **Library** | NPM packages, shared utilities | [library-template.md](./templates/docs/project/library-template.md) |
-| **Mobile App** | React Native, Flutter apps | [mobile-app-template.md](./templates/docs/project/mobile-app-template.md) |
-| **Enterprise** | Large-scale, compliance-ready systems | [enterprise-template.md](./templates/docs/project/enterprise-template.md) |
+| **Web App** | React/Vue frontends, dashboards, e-commerce | [web-app.template.md](./templates/documentation/project/web-app.template.md) |
+| **API Service** | REST APIs, microservices, backends | [api-service.template.md](./templates/documentation/project/api-service.template.md) |
+| **CLI Tool** | Command-line utilities, dev tools | [cli-tool.template.md](./templates/documentation/project/cli-tool.template.md) |
+| **Library** | NPM packages, shared utilities | [library.template.md](./templates/documentation/project/library.template.md) |
+| **Mobile App** | React Native, Flutter apps | [mobile-app.template.md](./templates/documentation/project/mobile-app.template.md) |
+| **Enterprise** | Large-scale, compliance-ready systems | [enterprise.template.md](./templates/documentation/project/enterprise.template.md) |
 
 ### The Result
 
@@ -167,23 +168,26 @@ See **[Setup Manager Documentation](./docs/ai-tools/reference/setup-manager.md)*
 
 ### 1. Creating a New Feature
 
-**Quick Start**: Simple feature documentation
-```bash
-# Copy template
-cp templates/docs/features/feature-simple.template.md docs/features/my-feature.md
+**NEW: AI-Enhanced Workflow** (Recommended):
 
-# Study examples
-cat examples/code/patterns/api-user-service.example.ts
-cat examples/code/patterns/component-user-card.example.tsx
+```bash
+# Use /feature command for intelligent workflow
+/feature --minimal "user authentication"      # Quick, focused features
+/feature --standard "user dashboard"          # Balanced complexity
+/feature --comprehensive "payment system"     # Full specification
 ```
 
-**Comprehensive**: Full feature documentation
-```bash
-# Copy template
-cp templates/docs/features/feature-comprehensive.template.md docs/features/my-feature.md
+**Manual Template Approach**:
 
-# Study comprehensive patterns
-cat examples/code/patterns/test-user-service.example.test.ts
+```bash
+# Minimal: Basic feature docs (<50 lines)
+cp templates/workflow/feature/feature-minimal.template.md docs/technical/features/my-feature.md
+
+# Standard: Balanced feature docs (50-150 lines)
+cp templates/workflow/feature/feature-standard.template.md docs/technical/features/my-feature.md
+
+# Comprehensive: Advanced feature docs (150+ lines)
+cp templates/workflow/feature/feature-comprehensive.template.md docs/technical/features/my-feature.md
 ```
 
 ### 2. Building Components
@@ -218,22 +222,43 @@ cat examples/code/patterns/api-user-service.example.ts
 cat examples/code/patterns/test-user-service.example.test.ts
 ```
 
-## 🔧 Template Categories by Complexity
+## 🔧 NEW: Template Categories by Complexity
 
-### Simple Templates (Quick Start)
-- **Feature Simple**: Basic feature documentation
-- **Deliverable Simple**: Basic deliverable planning
-- **Component Basic**: Standard React component
+### 🚀 AI Workflow Templates (Recommended)
 
-### Comprehensive Templates (Full Featured)
-- **Feature Comprehensive**: Complete feature specification
-- **Deliverable Comprehensive**: Full project deliverable
-- **Service Advanced**: Complete service with error handling
+**Feature Templates** - Three complexity levels:
+- **Minimal** (<50 lines): Quick feature contexts for simple requirements
+- **Standard** (50-150 lines): Balanced feature documentation with business context
+- **Comprehensive** (150+ lines): Full feature specifications with detailed analysis
 
-### Specialized Templates (Domain Specific)
-- **API Documentation**: REST API documentation
-- **Decision Records**: Architecture decisions
-- **Vision Document**: Project vision and strategy
+**Workflow Phase Templates**:
+- **Architecture**: Technical design and decision documentation
+- **Planning**: Implementation planning with P1.X.X task structure
+- **Implementation**: Historical records of completed work
+
+### 📄 Documentation Templates
+
+**Project Templates** - Intelligent README generation:
+- **Web App**: Frontend applications, dashboards, e-commerce
+- **API Service**: REST APIs, microservices, backend systems
+- **CLI Tool**: Command-line utilities and developer tools
+- **Library**: NPM packages, shared utilities, frameworks
+- **Mobile App**: React Native, Flutter mobile applications
+- **Enterprise**: Large-scale, compliance-ready systems
+
+**Technical Templates**:
+- **API Reference**: REST API documentation with examples
+- **Project Vision**: Strategic direction and goals
+- **Project Changelog**: Version history and updates
+
+### 💻 Code Templates
+
+**Component Templates**:
+- **React Component**: TypeScript React components with props and styling
+- **API Service**: Backend service templates with error handling
+
+**Configuration Templates**:
+- **App Config**: Application configuration patterns
 
 ## 📊 Quality Levels
 

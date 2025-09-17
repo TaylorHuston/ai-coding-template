@@ -1,5 +1,5 @@
 ---
-version: "0.2.0"
+version: "0.1.0"
 created: "2025-08-21"
 last_updated: "2025-09-17"
 status: "active"
@@ -29,88 +29,109 @@ Wiki: <Add the link and details to your Confluence/Notion/etc here>
 
 Vision Document: `docs/vision.md` or `project-vision.md` - Contains problem statement, solution approach, target audience, core features, success metrics, and differentiators that guide all development decisions.
 
-## Core Workflow: /idea → /plan → /iterate
+## Core Workflow: /feature → /architect → /plan → /develop
 
 **THIS IS THE PRIMARY WAY TO WORK WITH THIS TEMPLATE**
 
-This template transforms AI from a simple code generator into an intelligent architectural partner through a three-phase workflow that ensures well-explored decisions, comprehensive planning, and quality implementation.
+This template provides a hierarchical development workflow that follows industry-standard patterns while leveraging AI agents for enhanced productivity and context management.
 
-### The Three Phases
+### The Four Phases
 
-#### 1. `/idea` - Interactive Architectural Exploration
-**Purpose**: Collaborative exploration of architectural decisions through guided conversation
+#### 1. `/feature` - Feature Definition and Requirements
+**Purpose**: Define WHAT we're building and WHY, creating lightweight feature context documents
 
-- **AI as Facilitator**: Guides structured exploration through conversation phases
-- **Specialist Consultation**: On-demand agent consultation during discussion
-- **Vision Integration**: Automatically aligns decisions with project goals
-- **Session Management**: Resume complex explorations across multiple sessions
-- **ADR Generation**: Creates comprehensive Architecture Decision Records
+- **Business Context**: Explores user needs, problem statements, and success criteria
+- **Requirements Gathering**: Documents functional requirements and dependencies
+- **External Integration**: Links to Jira/Linear issues when available
+- **Lightweight Documentation**: 1-2 page feature contexts, not heavy PRDs
+- **Scale Gracefully**: Useful for solo devs, complements enterprise tools
 
 **Example Usage**:
 ```bash
-/idea --start "Should we implement microservices architecture?"
-# → Interactive conversation with specialist consultations
-# → Trade-off analysis and decision synthesis
-# → Generates comprehensive ADR when consensus reached
+/feature --new "User Authentication"
+# → Interactive requirements gathering
+# → Business context and success criteria
+# → Creates docs/technical/features/user-authentication.md
 ```
 
-#### 2. `/plan` - Sequential Multi-Agent Planning
-**Purpose**: Thorough context gathering and intelligent plan generation for implementation
+#### 2. `/architect` - Technical Architecture Design
+**Purpose**: Define HOW to implement features through technical decisions and system design
 
-- **Auto-Agent Selection**: Intelligent selection based on issue content and complexity
-- **Sequential Analysis**: Each agent builds on previous findings for comprehensive understanding
-- **Phase-Based Planning**: Generates P1.X.X, P2.X.X, P3.X.X tasks with technical specifications
-- **Context Coordination**: HANDOFF.yml and RESEARCH.md for perfect context preservation
-- **Quality Gates**: Built-in validation between phases
+- **Architecture Exploration**: Evaluates multiple technical approaches
+- **Technology Selection**: Chooses frameworks, patterns, and technologies
+- **Decision Recording**: Creates ADRs documenting choices and rationale
+- **System Design**: Documents component structure and integration
+- **Specialist Consultation**: Leverages domain-specific agents
 
 **Example Usage**:
 ```bash
-/plan --issue FEATURE-123
-# → Sequential agent analysis: context → specialists → architect → PM
-# → Vision alignment and requirement gathering
-# → Generates PLAN.md with phased implementation tasks
+/architect user-authentication
+# → Reviews feature requirements
+# → Explores JWT vs sessions architecture
+# → Creates architecture docs and ADRs
 ```
 
-#### 3. `/iterate` - Task Execution with Agent Orchestration
-**Purpose**: Execute tasks from PLAN.md with intelligent agent coordination and automatic script integration
+#### 3. `/plan` - Implementation Planning
+**Purpose**: Break down architecture into executable tasks with context preservation
 
-- **Orchestrator Model**: Main Claude manages sub-agents with explicit context passing
-- **Quality Gates**: Automatic validation between tasks with smart recovery
-- **Phase Management**: Sequential execution with commit prompts at phase boundaries
-- **Context Preservation**: Complete handoff context maintained across all tasks
-- **Script Integration**: Agents automatically invoke appropriate scripts with full context
-- **Intelligent Coordination**: Scripts serve agents, not users directly
-- **Tutoring Mode**: `--instruct` flag transforms execution into interactive teaching mode
+- **Context Integration**: Builds on feature and architecture documentation
+- **Task Decomposition**: Generates P1.X.X, P2.X.X, P3.X.X phased tasks
+- **Agent Selection**: Intelligent assignment based on task requirements
+- **Working Directory**: Creates .claude/working/[issue-id]/ for active development
+- **Context Coordination**: HANDOFF.yml and RESEARCH.md for agent coordination
 
 **Example Usage**:
 ```bash
-/iterate                    # Execute task with agent coordination
-/iterate --instruct P1.3.0  # Tutoring mode: learn approach without changes
-# → Agent explains approach and reasoning
-# → Interactive Q&A session for understanding
-# → No file modifications (purely educational)
+/plan --issue AUTH-123
+# → Reads feature context and architecture docs
+# → Sequential agent analysis and task generation
+# → Creates implementation plan in working directory
+```
+
+#### 4. `/develop` - Development Execution
+**Purpose**: Execute implementation tasks with AI agent orchestration
+
+- **Orchestrator Model**: Main Claude coordinates specialized agents
+- **Context Preservation**: Complete handoff context across all tasks
+- **Quality Gates**: Validation between phases with smart recovery
+- **Tutoring Mode**: `--instruct` flag for learning without changes
+- **Implementation Records**: Promotes completed work to permanent documentation
+
+**Example Usage**:
+```bash
+/develop                    # Execute next task from plan
+/develop --instruct P1.3.0  # Learn approach without implementing
+# → Agent coordination with context passing
+# → Quality validation between tasks
+# → Implementation record creation
 ```
 
 ### The Complete Workflow in Action
 
 ```
-ARCHITECTURAL EXPLORATION:
-/idea --start "Should we implement real-time notifications?"
-├── Interactive exploration with specialist consultations
-├── Trade-off analysis and decision synthesis
-└── Generates ADR: "Implement WebSocket-based notifications with fallback"
+FEATURE DEFINITION:
+/feature --new "Real-time Notifications"
+├── Interactive requirements gathering
+├── Business context and user needs analysis
+└── Creates docs/technical/features/real-time-notifications.md
 
-COMPREHENSIVE PLANNING:
+TECHNICAL ARCHITECTURE:
+/architect real-time-notifications
+├── Evaluates WebSocket vs SSE vs polling approaches
+├── Considers scalability and browser compatibility
+└── Creates architecture docs and ADR-001-websocket-selection.md
+
+IMPLEMENTATION PLANNING:
 /plan --issue NOTIFY-123
-├── Sequential agent analysis (context → backend → frontend → security)
-├── Vision alignment and technical requirements
-└── Generates PLAN.md with 12 phased tasks across 3 phases
+├── Reads feature context and architecture decisions
+├── Sequential agent analysis building on documented context
+└── Creates .claude/working/NOTIFY-123/PLAN.md with phased tasks
 
-QUALITY EXECUTION:
-/iterate (through all phases)
+DEVELOPMENT EXECUTION:
+/develop (through all phases)
 ├── P1.X.X: Core implementation → Quality gates → Commit
 ├── P2.X.X: Integration features → Quality gates → Commit
-└── P3.X.X: Testing & documentation → Quality gates → Complete
+└── P3.X.X: Testing & documentation → Promote to implementations/
 ```
 
 ### Why This Workflow Matters
@@ -135,11 +156,17 @@ QUALITY EXECUTION:
 
 ## Documentation Structure
 
-This template uses a three-tier documentation system:
+This template uses a three-tier documentation system with hierarchical organization:
 
-- **docs/technical/** - YOUR project's technical documentation (architecture, API, database)
+- **docs/technical/** - YOUR project's technical documentation following the workflow hierarchy
+  - `features/` - Feature context documents (WHAT and WHY)
+  - `architecture/` - System design documents (HOW)
+  - `decisions/` - Architecture Decision Records (WHY specific choices)
+  - `implementations/` - Historical implementation records (WHAT was actually done)
 - **docs/development/** - Team processes and guidelines (workflows, standards, testing)
 - **docs/ai-tools/** - AI assistant and template documentation (agents, commands, setup)
+
+**Active Development Context**: `.claude/working/[issue-id]/` contains ephemeral work artifacts (PLAN.md, HANDOFF.yml, RESEARCH.md) that get promoted to permanent documentation after completion.
 
 **Note**: This file (CLAUDE.md) contains AI instructions. For human-readable documentation about using this template, see `docs/ai-tools/`.
 
