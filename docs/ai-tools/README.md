@@ -36,6 +36,7 @@ This directory contains all documentation for AI tools and systems. This is the 
 
 ### `/reference/`
 **Quick reference and troubleshooting**
+- **setup-manager.md** - **NEW: Intelligent project initialization system**
 - **commands.md** - Complete slash commands reference for AI workflows
 - **ai-assistant-guide.md** - Working with AI assistants effectively
 - **development-commands.md** - Common CLI development commands and scripts

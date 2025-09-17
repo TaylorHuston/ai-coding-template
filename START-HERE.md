@@ -15,16 +15,34 @@ git clone https://github.com/yourusername/ai-coding-template.git my-project && c
 npm run demo
 ```
 
-### 🛠️ **Path 2: Start Building** (10 minutes)
-*"I want to try the workflow on a real feature"*
+### 🛠️ **Path 2: Create Your Project** (10 minutes)
+*"I want to transform this template into MY project"*
 
 ```bash
-# Set up the system and try your first feature
-./scripts/setup-manager.sh quick
-/idea --start "How should we implement user authentication?"
+# Transform template into your real project
+git clone https://github.com/yourusername/ai-coding-template.git my-awesome-project
+cd my-awesome-project
+./scripts/setup-manager.sh init-project
 ```
 
-### 📚 **Path 3: Learn the System** (30 minutes)
+**🧠 What happens during setup:**
+1. **Claude Code Verification** - Ensures AI tools are ready
+2. **Project Discovery** - Understands your project type (web-app, API, CLI, etc.)
+3. **Business Context** - B2B SaaS, consumer, internal, open-source
+4. **External Integrations** - Connects Jira, Linear, Confluence, Notion
+5. **Professional README** - Industry-standard docs tailored to your project
+6. **Template Preservation** - All guidance moved to `docs/ai-tools/`
+
+### 🚀 **Path 3: Try the AI Workflow** (15 minutes)
+*"I want to experience the /idea → /plan → /iterate flow"*
+
+```bash
+# After project setup, try your first AI-assisted feature
+/idea --start "How should we implement user authentication?"
+# → Guided architectural exploration with specialist consultation
+```
+
+### 📚 **Path 4: Learn the System** (30 minutes)
 *"I want to understand how this works"*
 
 → **[Complete System Guide](./docs/ai-tools/guides/workflow-guide.md)**
@@ -44,6 +62,26 @@ npm run demo
 - ✅ Guided architectural exploration with expert consultation
 - ✅ Systematic planning with specialist agents
 - ✅ Quality-validated execution with automatic documentation
+
+## 🔄 **Intelligent Template → Project Transformation**
+
+**🚀 Revolutionary Feature**: AI-powered project initialization that understands YOUR needs!
+
+```bash
+# Traditional templates: One-size-fits-all nightmare
+git clone template → manually replace README → guess configuration → lose context
+
+# AI Coding Template: Intelligent transformation
+./scripts/setup-manager.sh init-project
+```
+
+**🎯 Intelligence Features:**
+- **🔍 Smart Discovery**: Detects if you're building a web app, API, CLI tool, library, mobile app, or enterprise solution
+- **🏢 Business Awareness**: Understands B2B SaaS vs consumer vs internal tools vs open-source
+- **👥 Team Integration**: Adapts to solo developer vs small team vs enterprise
+- **🔗 Tool Connection**: Integrates with Jira, Linear, GitHub Issues, Confluence, Notion
+- **📋 Professional Docs**: Generates industry-standard README tailored to your exact project type
+- **🧠 Preserved Knowledge**: Template docs safely moved to `docs/ai-tools/` for reference
 
 ## 📋 **The Magic: 3-Phase Workflow**
 

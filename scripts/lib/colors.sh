@@ -164,6 +164,23 @@ print_purple() { echo -e "${PURPLE}$*${NC}"; }
 print_cyan() { echo -e "${CYAN}$*${NC}"; }
 print_bold() { echo -e "${BOLD}$*${NC}"; }
 
+# Color function for inline colored text
+log_color() {
+    local color="$1"
+    shift
+    case "$color" in
+        "red") echo -ne "${RED}$*${NC}" ;;
+        "green") echo -ne "${GREEN}$*${NC}" ;;
+        "yellow") echo -ne "${YELLOW}$*${NC}" ;;
+        "blue") echo -ne "${BLUE}$*${NC}" ;;
+        "purple") echo -ne "${PURPLE}$*${NC}" ;;
+        "cyan") echo -ne "${CYAN}$*${NC}" ;;
+        "white") echo -ne "${WHITE}$*${NC}" ;;
+        "bold") echo -ne "${BOLD}$*${NC}" ;;
+        *) echo -ne "$*" ;;
+    esac
+}
+
 # Export functions
 export -f print_red
 export -f print_green
@@ -172,3 +189,4 @@ export -f print_blue
 export -f print_purple
 export -f print_cyan
 export -f print_bold
+export -f log_color

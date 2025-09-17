@@ -23,7 +23,12 @@ From simple code generator to intelligent development partner through the **revo
 #### 🟢 **Beginner** (New to AI-assisted development)
 1. **[👋 START HERE](./START-HERE.md)** - Your guided 5-minute introduction
 2. **Demo**: `npm run demo` - See the value without setup
-3. **First Try**: Basic setup → `/idea` → simple feature exploration
+3. **🚀 Intelligent Setup**: `./scripts/setup-manager.sh init-project` - **AI-powered project initialization**
+   - Claude Code verification and guidance
+   - Smart project type discovery (web-app, API, CLI, library, mobile, enterprise)
+   - Business context awareness (B2B SaaS, consumer, internal, open-source)
+   - External tool integration (Jira, Linear, Confluence, Notion)
+   - Professional README generation based on your project type
 4. **[📋 Templates Guide](./TEMPLATES-EXAMPLES-INDEX.md)** - Find pre-built starting points
 
 #### 🟡 **Intermediate** (Familiar with AI coding, want better workflow)
@@ -172,6 +177,45 @@ npm run demo
 
 This simulation shows you exactly how the template transforms AI from reactive coding to proactive architectural partnership.
 
+## 🔄 **NEW: Intelligent Project Initialization**
+
+**Revolutionary Feature**: AI-powered project setup that understands your needs!
+
+```bash
+# Traditional templates: One-size-fits-all nightmare
+git clone template → manually replace README → guess at configuration → lose context
+
+# AI Coding Template: Intelligent transformation
+git clone ai-coding-template.git my-awesome-project
+cd my-awesome-project
+./scripts/setup-manager.sh init-project
+```
+
+**🧠 What Makes It Intelligent:**
+
+### **1. Smart Project Discovery**
+- **Project Types**: Web app, API service, CLI tool, library, mobile app, enterprise
+- **Business Context**: B2B SaaS, consumer, internal tools, open-source, educational, research
+- **Team Awareness**: Solo developer to large enterprise teams (1-100+ people)
+
+### **2. Claude Code Integration**
+- **Automatic Detection**: Verifies Claude Code is installed and ready
+- **Installation Guidance**: Interactive help if setup needed
+- **Version Verification**: Ensures compatibility
+
+### **3. External Tool Integration**
+- **Project Management**: Jira, Linear, GitHub Issues, Asana
+- **Documentation**: Confluence, Notion, GitBook, Git/Markdown
+- **Smart Defaults**: Configures based on team size and preferences
+
+### **4. Context-Aware Generation**
+- **Professional README**: Industry-standard format tailored to your project type
+- **Template Docs Preserved**: All guidance moved to `docs/ai-tools/`
+- **Customized AI Instructions**: CLAUDE.md updated with your project context
+- **Project Memory**: STATUS.md initialized with your vision and goals
+
+**🎯 The Result**: A perfectly configured project that understands your business, integrates with your tools, and preserves institutional knowledge.
+
 ## Quick Start: Your First Workflow (5 Minutes)
 
 ### Prerequisites
@@ -191,22 +235,32 @@ This simulation shows you exactly how the template transforms AI from reactive c
   # See: https://github.com/google-gemini/gemini-cli#installation
   ```
 
-### 1. Setup the Template
+### 1. Intelligent Project Setup
 
 ```bash
 # Clone the template
 git clone https://github.com/yourusername/ai-coding-template.git my-project
 cd my-project
 
-# Quick setup
+# 🚀 INTELLIGENT INITIALIZATION (Recommended for new projects)
+./scripts/setup-manager.sh init-project
+# → Guided setup: project type, business context, external tools
+# → Professional README generation
+# → Template docs preserved in docs/ai-tools/
+
+# OR: Quick setup (keeps template as-is)
 ./scripts/setup-manager.sh quick
 
-# Initialize workflow for your first feature
-./scripts/init-workflow.sh --issue FEATURE-001
-
-# Verify installation
-./scripts/ai-status.sh --check
+# Verify everything is ready
+./scripts/setup-manager.sh check
 ```
+
+**🎯 What `init-project` does:**
+1. **Verifies Claude Code** is installed and ready
+2. **Discovers your project** through guided questions
+3. **Integrates external tools** (Jira, Confluence, etc.)
+4. **Generates professional docs** tailored to your project type
+5. **Preserves template knowledge** in `docs/ai-tools/`
 
 ### 2. Experience the Workflow
 

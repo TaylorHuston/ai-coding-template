@@ -25,6 +25,14 @@ tags: ["templates", "examples", "index", "discovery"]
 | **Write unit tests** | Example | Test Examples | [examples/code/patterns/](./examples/code/patterns/) |
 | **Document an API** | Template | API Documentation Template | [templates/docs/api/](./templates/docs/api/) |
 | **Make a technical decision** | Template | Decision Record Template | [templates/docs/decisions/](./templates/docs/decisions/) |
+| **Create a project README** | Template | **Intelligent Project Templates** | [templates/docs/project/](./templates/docs/project/) |
+| **Build a web application** | Template | Web App Project Template | [templates/docs/project/web-app-template.md](./templates/docs/project/web-app-template.md) |
+| **Build an API service** | Template | API Service Project Template | [templates/docs/project/api-service-template.md](./templates/docs/project/api-service-template.md) |
+| **Build a CLI tool** | Template | CLI Tool Project Template | [templates/docs/project/cli-tool-template.md](./templates/docs/project/cli-tool-template.md) |
+| **Build a library/package** | Template | Library Project Template | [templates/docs/project/library-template.md](./templates/docs/project/library-template.md) |
+| **Build a mobile app** | Template | Mobile App Project Template | [templates/docs/project/mobile-app-template.md](./templates/docs/project/mobile-app-template.md) |
+| **Build enterprise software** | Template | Enterprise Project Template | [templates/docs/project/enterprise-template.md](./templates/docs/project/enterprise-template.md) |
+| **Initialize any project** | System | **Intelligent Setup Manager** | `./scripts/setup-manager.sh init-project` |
 | **Plan a deliverable** | Template | Deliverable Template | [templates/workflow/deliverables/](./templates/workflow/deliverables/) |
 | **Explore architecture** | Template | Exploration Templates | [templates/workflow/explorations/](./templates/workflow/explorations/) |
 | **Configure the app** | Example | Configuration Example | [examples/code/configs/](./examples/code/configs/) |
@@ -49,6 +57,14 @@ templates/
 │   │   ├── feature.template.md        # Comprehensive feature docs
 │   │   ├── feature-simple.template.md # Simple feature docs
 │   │   └── feature-comprehensive.template.md # Advanced feature docs
+│   ├── project/                       # **NEW: Intelligent Project Templates**
+│   │   ├── project-readme-template.md      # Generic project README
+│   │   ├── web-app-template.md            # Web application README
+│   │   ├── api-service-template.md        # API service README
+│   │   ├── cli-tool-template.md           # CLI tool README
+│   │   ├── library-template.md            # Library/package README
+│   │   ├── mobile-app-template.md         # Mobile app README
+│   │   └── enterprise-template.md         # Enterprise app README
 │   ├── api/
 │   │   └── api.template.md            # API documentation
 │   ├── decisions/
@@ -102,6 +118,50 @@ examples/
 - ✅ Working code you can study and adapt
 - ✅ Best practices demonstration
 - ✅ Reference implementations to learn from
+
+## 🧠 NEW: Intelligent Project Initialization
+
+**Revolutionary Feature**: The template now includes AI-powered project setup that generates the perfect README for YOUR specific project type.
+
+### How It Works
+
+```bash
+# Clone template
+git clone https://github.com/yourusername/ai-coding-template.git my-project
+cd my-project
+
+# Intelligent setup
+./scripts/setup-manager.sh init-project
+```
+
+**🎯 What makes it intelligent:**
+
+1. **Smart Discovery**: Understands if you're building a web app, API, CLI tool, library, mobile app, or enterprise system
+2. **Business Context**: Adapts to B2B SaaS, consumer, internal tools, open-source, educational, or research projects
+3. **External Integration**: Connects with Jira, Linear, GitHub Issues, Confluence, Notion, GitBook
+4. **Professional Output**: Generates industry-standard README with sections relevant to YOUR project type
+
+### Project Templates Available
+
+| **Project Type** | **Perfect For** | **Template** |
+|------------------|-----------------|--------------|
+| **Web App** | React/Vue frontends, dashboards, e-commerce | [web-app-template.md](./templates/docs/project/web-app-template.md) |
+| **API Service** | REST APIs, microservices, backends | [api-service-template.md](./templates/docs/project/api-service-template.md) |
+| **CLI Tool** | Command-line utilities, dev tools | [cli-tool-template.md](./templates/docs/project/cli-tool-template.md) |
+| **Library** | NPM packages, shared utilities | [library-template.md](./templates/docs/project/library-template.md) |
+| **Mobile App** | React Native, Flutter apps | [mobile-app-template.md](./templates/docs/project/mobile-app-template.md) |
+| **Enterprise** | Large-scale, compliance-ready systems | [enterprise-template.md](./templates/docs/project/enterprise-template.md) |
+
+### The Result
+
+**Before**: Generic template README
+**After**: Professional project documentation with:
+- ✅ Project-specific sections (API docs for APIs, app store links for mobile apps)
+- ✅ Business-context features (multi-tenant for B2B SaaS, social features for consumer)
+- ✅ External tool integration (Jira links, Confluence docs)
+- ✅ Template knowledge preserved in `docs/ai-tools/`
+
+See **[Setup Manager Documentation](./docs/ai-tools/reference/setup-manager.md)** for complete details.
 
 ## 🚀 Getting Started Workflows
 
