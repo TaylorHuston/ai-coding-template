@@ -4,6 +4,8 @@
   "description": "AI-assisted development workflow template",
   "main": "index.js",
   "scripts": {
+    "demo": "node scripts/demo.js",
+    "start": "node scripts/demo.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:health": "node scripts/docs-health.js",
     "docs:generate": "node scripts/auto-docs-generator.js"

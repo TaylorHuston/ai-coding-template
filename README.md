@@ -4,17 +4,74 @@
 
 From simple code generator to intelligent development partner through the **revolutionary /idea → /plan → /iterate workflow**.
 
-### The Problem: AI Coding Without Context
+---
 
-Traditional AI coding is reactive and forgetful:
-- ❌ Generate code without understanding the bigger picture
-- ❌ Lose context between long development sessions
-- ❌ Make architectural decisions in isolation
-- ❌ Create inconsistent patterns and duplicate functionality
+## 🚀 **New Here? Start Smart**
 
-### The Solution: The Core Workflow
+### **🎯 Choose Your Entry Point**
+- **[👋 START HERE](./START-HERE.md)** - New user? Your 5-minute guided introduction
+- **[📋 Find Any Template](./TEMPLATES-EXAMPLES-INDEX.md)** - Need to build something? Find the right starting point
+- **[⚡ 2-Minute Demo](#quick-demo)** - See the value immediately
 
-**THIS CHANGES EVERYTHING**
+### **📚 Essential Navigation**
+- **[🔧 All Commands](./docs/ai-tools/reference/commands.md)** - Complete command reference
+- **[🤖 18 Specialist Agents](./docs/ai-tools/guides/using-agents.md)** - Your expert team
+- **[🏗️ Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration guide
+
+### **🎓 Choose Your Learning Path**
+
+#### 🟢 **Beginner** (New to AI-assisted development)
+1. **[👋 START HERE](./START-HERE.md)** - Your guided 5-minute introduction
+2. **Demo**: `npm run demo` - See the value without setup
+3. **First Try**: Basic setup → `/idea` → simple feature exploration
+4. **[📋 Templates Guide](./TEMPLATES-EXAMPLES-INDEX.md)** - Find pre-built starting points
+
+#### 🟡 **Intermediate** (Familiar with AI coding, want better workflow)
+1. **[⚡ Quick Demo](#quick-demo)** - 2-minute value demonstration
+2. **Setup**: `./scripts/setup-manager.sh quick` - Get running fast
+3. **Try Workflow**: Pick a real feature → `/idea` → `/plan` → `/iterate`
+4. **[🤖 Agent System](./docs/ai-tools/guides/using-agents.md)** - Understand your specialist team
+
+#### 🔴 **Advanced** (Ready for full architectural partnership)
+1. **[🏗️ Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration
+2. **[📖 Workflow Deep Dive](./docs/ai-tools/guides/workflow-guide.md)** - Master all three phases
+3. **[🔧 Commands Reference](./docs/ai-tools/reference/commands.md)** - All 11+ intelligent commands
+4. **[⚙️ Customization](./docs/ai-tools/setup/integration-guide.md)** - Adapt to existing projects
+
+---
+
+## 🤔 Why This Matters: The AI Coding Problem
+
+### **The Reality: Traditional AI Development**
+
+You've experienced this frustration:
+
+```bash
+# Hour 1: Fresh start
+You: "Help me build a user authentication system"
+AI: "Here's a login component..."
+
+# Hour 2: Lost context
+You: "Now add the backend API"
+AI: "What frontend framework are you using?" 🤦‍♂️
+
+# Hour 3: Starting over
+You: "How does this integrate with our database?"
+AI: "What database? What authentication approach?" 🤦‍♂️
+```
+
+**Result**: 3+ hours of repetitive explanations, inconsistent patterns, and architectural decisions made in isolation.
+
+### **Root Causes of AI Development Friction**
+- ❌ **Context Amnesia**: AI forgets decisions 5 minutes after making them
+- ❌ **Architectural Blindness**: No understanding of how pieces fit together
+- ❌ **Pattern Inconsistency**: Each request generates different approaches
+- ❌ **Decision Isolation**: No memory of why choices were made
+- ❌ **Quality Gaps**: No systematic validation between iterations
+
+### **The Solution: AI as Architectural Partner**
+
+**Transform AI from reactive code generator to proactive architectural partner:**
 
 ```mermaid
 graph LR
@@ -103,13 +160,36 @@ Execute plans with perfect context preservation and quality validation:
 
 **Result**: From idea to production-ready feature with expert-level architecture, comprehensive planning, and quality execution.
 
+## Quick Demo
+
+**See the value in 2 minutes before diving deeper:**
+
+```bash
+# Clone and run the interactive demo
+git clone [your-repo] my-project && cd my-project
+npm run demo
+```
+
+This simulation shows you exactly how the template transforms AI from reactive coding to proactive architectural partnership.
+
 ## Quick Start: Your First Workflow (5 Minutes)
 
 ### Prerequisites
 
+**Required:**
 - Git (2.25+)
 - VS Code or preferred editor
 - AI assistant account (Claude Code, Claude, etc.)
+
+**Optional (Enhanced Multi-Model Intelligence):**
+- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Enables cross-validation and second opinions from Google's Gemini
+  ```bash
+  # Install via npm
+  npm install -g @google/gemini-cli
+
+  # Or using your package manager
+  # See: https://github.com/google-gemini/gemini-cli#installation
+  ```
 
 ### 1. Setup the Template
 
