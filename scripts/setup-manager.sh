@@ -416,6 +416,35 @@ check_setup() {
             log_info "$dir/ directory missing (may not be needed for your project)"
         fi
     done
+
+    log_section "MCP Configuration"
+    if [[ -f "$PROJECT_ROOT/.mcp.json" ]]; then
+        log_success ".mcp.json exists"
+
+        # Check for memory-bank-mcp configuration
+        if grep -q "memory-bank" "$PROJECT_ROOT/.mcp.json"; then
+            log_success "memory-bank-mcp configured"
+
+            # Check if memory storage directory exists
+            if [[ -d "$PROJECT_ROOT/project-memory" ]]; then
+                log_info "Memory storage directory exists (will be created on first use)"
+            else
+                log_info "Memory storage directory will be created on first use"
+            fi
+        else
+            log_warning "memory-bank-mcp not configured (optional)"
+            log_info "Consider adding for persistent cross-session learning"
+        fi
+
+        # Verify MCP server availability (non-blocking)
+        if command -v npx &> /dev/null; then
+            log_info "MCP servers can be installed via npx (Node.js package manager)"
+        else
+            log_warning "npx not available - MCP servers may not work"
+        fi
+    else
+        log_warning ".mcp.json missing (optional for enhanced AI capabilities)"
+    fi
     
     if [[ "$all_good" == "true" ]]; then
         log_success "Setup is complete and working!"

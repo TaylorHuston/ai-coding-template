@@ -55,7 +55,7 @@ Each task includes:
 - Context handoff requirements for next agent
 
 Dynamic Agent Selection:
-Based on issue content analysis, agents are automatically selected:
+Based on issue content analysis and optional memory-enhanced insights, agents are automatically selected:
 
 Always Included:
 - context-analyzer (foundation analysis)
@@ -63,7 +63,7 @@ Always Included:
 - code-architect (synthesis and decisions)
 - project-manager (final plan generation)
 
-Conditionally Included (based on issue keywords):
+Conditionally Included (based on issue keywords and memory patterns):
 - database-specialist: "database", "schema", "migration", "query", "SQL"
 - frontend-specialist: "UI", "component", "frontend", "React", "CSS", "interface"
 - backend-specialist: "API", "endpoint", "server", "backend", "service"
@@ -71,6 +71,12 @@ Conditionally Included (based on issue keywords):
 - security-auditor: "auth", "security", "OAuth", "encryption", "vulnerability"
 - performance-optimizer: "slow", "optimize", "performance", "scale", "cache"
 - devops-engineer: "deploy", "infrastructure", "Docker", "CI/CD"
+
+Memory-Enhanced Selection (when memory-bank-mcp available):
+- Historical effectiveness data influences agent priority and selection
+- Past successful patterns for similar issues guide agent combinations
+- User preference patterns optimize agent sequence and specialization focus
+- Cross-project insights suggest additional agents based on successful outcomes
 
 Parameters from $ARGUMENTS:
 - --issue: Issue key identifier (required, e.g., AUTH-123, BUG-456)
