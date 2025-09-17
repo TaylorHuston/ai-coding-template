@@ -54,6 +54,12 @@ Comprehensive catalog of Claude Code slash commands with proper YAML frontmatter
 
 #### **Planning & Architecture**
 
+- **[/idea](./idea.md)** - Interactive architectural idea exploration and decision facilitation with ADR generation
+
+  - _Purpose_: Interactive exploration and collaborative decision-making for architectural choices
+  - _Usage_: `/idea --start "IDEA_DESCRIPTION" | --continue SESSION-ID | --review SESSION-ID | --finalize SESSION-ID | --list`
+  - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
+
 - **[/feature-plan](./feature-plan.md)** - Comprehensive feature planning workflow
   - _Purpose_: Create detailed feature plans with deliverable setup and architectural analysis
   - _Usage_: `/feature-plan --issue ISSUE-KEY --deliverable DELIVERABLE-NAME --complexity LEVEL --research DEPTH`
@@ -91,11 +97,12 @@ Comprehensive catalog of Claude Code slash commands with proper YAML frontmatter
 
 ```yaml
 recommended_commands:
+  - idea: "Interactive architectural exploration and decision-making"
   - feature-plan: "Comprehensive feature planning and architecture"
   - health-check: "Assess current system state"
   - security-audit: "Identify security requirements"
 
-workflow_pattern: "analysis → planning → validation"
+workflow_pattern: "explore → decide → plan → validate"
 typical_duration: "1-3 days"
 ```
 
@@ -214,6 +221,7 @@ All commands now follow Claude Code standards:
 | `/feature-development` | opus | `/feature-development --issue KEY --type TYPE` | End-to-end feature implementation |
 | `/feature-plan` | opus | `/feature-plan --issue KEY --deliverable NAME` | Comprehensive feature planning |
 | `/health-check` | sonnet | `/health-check [scope]` | Project health assessment |
+| `/idea` | opus | `/idea --start "DESCRIPTION" \| --continue ID` | **NEW** - Interactive architectural exploration |
 | `/iterate` | sonnet | `/iterate --target TARGET --iterations N` | Progressive improvement cycles |
 | `/plan` | opus | `/plan --issue KEY [--deliverable NAME]` | Automated issue setup with intelligent planning |
 | `/review` | sonnet | `/review --scope SCOPE --focus FOCUS` | Comprehensive code review |

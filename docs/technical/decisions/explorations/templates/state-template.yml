@@ -1,0 +1,133 @@
+# Exploration Session State Template
+# This file tracks the current state and progress of an architectural exploration session
+
+session_id: "{SESSION_ID}"
+idea: "{IDEA_DESCRIPTION}"
+idea_title: "{IDEA_TITLE}"
+
+# Session metadata
+created: "{CREATED_TIMESTAMP}"
+last_updated: "{LAST_UPDATED_TIMESTAMP}"
+status: "active"  # active, paused, completed, abandoned
+
+# Current exploration progress
+phase: "idea-crystallization"  # idea-crystallization, alternative-exploration, trade-off-analysis, decision-synthesis, documentation
+phase_progress: "initial-questions"  # specific progress within current phase
+phase_completion: 0  # percentage complete for current phase
+
+# Vision document integration
+vision_context:
+  vision_document_found: false
+  vision_document_path: ""
+  problem_statement: ""
+  solution_approach: ""
+  target_audience: ""
+  core_features: []
+  success_metrics: []
+  differentiators: []
+
+# Problem space understanding
+problem_context:
+  driving_factors: []
+  pain_points: []
+  business_requirements: []
+  technical_requirements: []
+  user_needs: []
+
+# Constraints and preferences
+constraints:
+  timeline: ""
+  budget: ""
+  team_expertise: []
+  technical_limitations: []
+  compliance_requirements: []
+  legacy_system_dependencies: []
+
+user_preferences:
+  risk_tolerance: ""  # low, medium, high
+  innovation_preference: ""  # conservative, balanced, cutting-edge
+  maintenance_preference: ""  # minimal, standard, extensive
+  complexity_tolerance: ""  # low, medium, high
+  specific_preferences: []
+
+# Options under consideration
+current_options:
+  - title: ""
+    description: ""
+    status: "pending"  # pending, exploring, explored, eliminated
+    preference: "unknown"  # high, moderate, low, eliminated
+    pros: []
+    cons: []
+    technical_feasibility: ""  # high, medium, low, unknown
+    implementation_complexity: ""  # low, medium, high, unknown
+    risk_assessment: ""  # low, medium, high, unknown
+
+# Specialist agent consultations
+specialist_consultations:
+  - agent: ""
+    timestamp: ""
+    context: ""
+    consultation_request: ""
+    key_insights: []
+    recommendations: []
+    concerns: []
+    follow_up_questions: []
+    technical_analysis: ""
+
+# Decision factors and weights
+decision_factors:
+  - factor: ""
+    description: ""
+    weight: ""  # critical, high, medium, low
+    current_assessment: ""
+    notes: ""
+
+# Conversation state
+conversation_state:
+  last_ai_question: ""
+  pending_user_response: false
+  awaiting_specialist_input: false
+  specialist_agent_needed: ""
+  next_questions: []
+  conversation_topics_covered: []
+
+# Progress tracking
+exploration_quality:
+  alternatives_explored: 0
+  specialists_consulted: 0
+  decision_factors_identified: 0
+  trade_offs_analyzed: 0
+  vision_alignment_checked: false
+  implementation_considerations_documented: false
+
+# Session flow control
+next_actions:
+  immediate_next_step: ""
+  phase_transition_ready: false
+  decision_ready: false
+  finalization_ready: false
+
+# Notes and insights
+insights:
+  key_realizations: []
+  surprising_discoveries: []
+  assumption_challenges: []
+  pattern_recognitions: []
+
+# Quality gates
+quality_gates:
+  minimum_alternatives_explored: 3
+  required_specialist_consultations: []
+  required_decision_factors: []
+  vision_alignment_required: true
+  trade_off_analysis_required: true
+  implementation_feasibility_required: true
+
+# Session metrics
+metrics:
+  total_conversation_turns: 0
+  exploration_duration_minutes: 0
+  specialist_consultations_count: 0
+  options_generated: 0
+  options_eliminated: 0
+  decision_factors_weighted: 0

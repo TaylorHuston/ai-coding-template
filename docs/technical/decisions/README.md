@@ -58,9 +58,40 @@ When superseding an ADR:
 
 ## Creating a New ADR
 
+### Method 1: Interactive Exploration (Recommended)
+
+Use the `/idea` command for collaborative architectural decision-making:
+
+```bash
+# Start interactive exploration
+/idea --start "Should we migrate from REST to GraphQL?"
+
+# Continue the conversation to explore alternatives
+# AI will guide you through phases and consult specialists
+
+# Finalize the decision and generate ADR
+/idea --finalize {session-id}
+```
+
+**Benefits**:
+- Guided exploration through structured phases
+- On-demand specialist consultation during conversation
+- Comprehensive alternatives analysis
+- Rich documentation of decision journey
+- Automatic ADR generation from exploration
+
+**Exploration Process**:
+1. **Idea Crystallization**: Understand problem space and constraints
+2. **Alternative Exploration**: Generate and analyze 3-5 viable options
+3. **Trade-off Analysis**: Compare options with specialist input
+4. **Decision Synthesis**: Converge on decision with clear rationale
+5. **Documentation**: Generate comprehensive ADR automatically
+
+### Method 2: Manual ADR Creation
+
 1. **Copy the template**:
    ```bash
-   cp docs/technical/decisions/template.md docs/architecture/decision-records/001-your-decision.md
+   cp docs/technical/decisions/template.md docs/technical/decisions/001-your-decision.md
    ```
 
 2. **Fill in the template**:
@@ -106,16 +137,39 @@ When superseding an ADR:
 3. **Review in Pull Requests**: Include ADR changes in code reviews
 4. **Communicate Decisions**: Share ADRs with the broader team
 
+## Exploration Sessions
+
+Interactive explorations are stored in the [explorations/](./explorations/) directory:
+
+- **[Exploration Guide](./explorations/README.md)** - Complete guide to interactive exploration
+- **Session Management**: All active and completed exploration sessions
+- **Specialist Inputs**: Detailed technical analysis from domain experts
+- **Decision Journey**: Full conversation history and rationale development
+
+### Managing Exploration Sessions
+
+```bash
+# List active exploration sessions
+/idea --list
+
+# Continue previous exploration
+/idea --continue {session-id}
+
+# Review and potentially redirect exploration
+/idea --review {session-id}
+```
+
 ## Templates and Examples
 
 - **[ADR Template](./template.md)** - Standard template for new ADRs
 - **[Example ADR](./001-example.md)** - Sample ADR showing the format
+- **[Exploration Templates](./explorations/templates/)** - Templates for interactive sessions
 
 ## Related Documentation
 
-- [System Architecture](../examples/system-overview.md) - Overall system design
+- [System Architecture](../architecture/README.md) - Overall system design
 - [System Guidelines](../../../CLAUDE.md) - High-level system design
-- [Documentation Guidelines](../../documentation-guidelines.md) - Writing standards
+- [Documentation Guidelines](../../development/guidelines/documentation-guidelines.md) - Writing standards
 
 ---
 
