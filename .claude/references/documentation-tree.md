@@ -1,5 +1,5 @@
 ---
-version: "1.0.0"
+version: "0.2.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 status: "active"
@@ -12,7 +12,14 @@ maintainer: "docs-sync-agent"
 
 # Documentation Tree Reference
 
-**Purpose**: Comprehensive index of all documentation files in the repository for efficient navigation and updates.
+**Purpose**: Comprehensive index of actual documentation files in the repository for efficient navigation and updates.
+
+**Scope**: This tree includes only actual documentation files from the three main documentation directories:
+- `docs/technical/` - Technical documentation (architecture, features, decisions, implementations)
+- `docs/development/` - Development processes and guidelines (coding standards, workflows, testing)
+- `docs/ai-tools/` - AI assistant documentation (guides, reference, setup)
+
+**Excluded**: Template files (`templates/`), example files (`examples/`), and `.claude/` template files are not included in this documentation tree as they serve as templates rather than actual documentation.
 
 **Note**: This file is maintained by the docs-sync-agent. Do not edit manually.
 
@@ -69,6 +76,7 @@ docs/
     └── documentation-health.md         # Automated documentation health status report
 ```
 
+
 ## AI Tools Documentation
 
 ```
@@ -117,8 +125,11 @@ docs/development/
 │   ├── git-workflow.md                # Git branching strategy and commit conventions
 │   ├── quality-standards.md           # Comprehensive quality requirements and validation
 │   ├── security-implementation.md     # Security implementation patterns and procedures
+│   ├── security-implementation-core.md # Core security implementation principles
 │   ├── security-principles.md         # Security design principles and threat modeling
 │   ├── testing-guidelines.md          # Testing strategies and coverage requirements
+│   ├── testing-implementation.md      # Testing implementation patterns and examples
+│   ├── testing-principles.md          # Core testing principles and philosophy
 │   ├── visual-documentation.md        # Diagram and visual documentation standards
 │   └── legacy/
 │       ├── README.md                  # Legacy guidelines archive index
@@ -126,6 +137,16 @@ docs/development/
 │       └── security-guidelines.md     # Archived security guidelines
 ├── setup/
 │   └── environment-setup.md           # Development environment configuration guide
+├── templates/
+│   ├── README.md                      # Development templates overview
+│   ├── yaml-frontmatter-schema.md     # YAML frontmatter schema and validation
+│   ├── api.template.md                # API specification template
+│   ├── standard/
+│   │   ├── feature.template.md        # Standard feature specification template
+│   │   └── deliverable.template.md    # Standard deliverable template
+│   └── simple/
+│       ├── feature-simple.template.md # Simple feature specification template
+│       └── deliverable-simple.template.md # Simple deliverable template
 └── workflows/
     ├── README.md                      # Development workflows overview
     ├── benchmarking.md                # Performance measurement and validation workflows
@@ -230,10 +251,11 @@ scripts/
 - File purposes or descriptions change
 
 **Update Process**:
-1. Scan repository for new/changed .md files (excluding templates/examples)
+1. Scan repository for new/changed .md files in documentation directories only
 2. Update tree structure to reflect current organization
 3. Verify all file descriptions are accurate and helpful
 4. Maintain consistent formatting and categorization
+5. Exclude template and example files from documentation tree
 
 **Quality Checks**:
 - All documentation files should have clear, one-line descriptions

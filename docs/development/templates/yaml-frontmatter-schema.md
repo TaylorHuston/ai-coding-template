@@ -3,7 +3,7 @@
 ---
 version: "0.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers", "technical-writers", "ai-assistants"]
 document_type: "schema"
@@ -143,9 +143,9 @@ For most documentation files:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers"]
 document_type: "guide"
@@ -157,9 +157,9 @@ For instructional documentation:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers", "ai-assistants"]
 document_type: "guide"
@@ -175,9 +175,9 @@ For API-related documentation:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers"]
 document_type: "api"
@@ -191,9 +191,9 @@ For system design documents:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers", "stakeholders"]
 document_type: "architecture"
@@ -208,9 +208,9 @@ For C4 Level 1 documentation:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["all-stakeholders", "developers", "ai-assistants"]
 document_type: "architecture"
@@ -228,9 +228,9 @@ For C4 Level 2 documentation:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["architects", "senior-developers", "ai-assistants"]
 document_type: "architecture"
@@ -248,9 +248,9 @@ For C4 Level 3 documentation:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["architects", "developers", "ai-assistants"]
 document_type: "architecture"
@@ -269,9 +269,9 @@ For reusable templates:
 
 ```yaml
 ---
-version: "1.0.0"
+version: "0.1.0"
 created: "2025-09-15"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers", "technical-writers"]
 document_type: "template"
@@ -358,9 +358,9 @@ This guide explains how to authenticate...
 ### After (YAML Frontmatter Format)
 ```markdown
 ---
-version: "1.2.0"
+version: "0.1.2"
 created: "2025-08-21"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["developers"]
 document_type: "guide"
