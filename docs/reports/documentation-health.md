@@ -11,28 +11,28 @@
 ```
 
 ### Key Metrics
-- **Total Files**: 135 documentation files
-- **Total Lines**: 38,114 lines
-- **Code Examples**: 1118 code blocks
-- **Maintenance**: 320 TODOs, 0 FIXMEs
-- **Freshness**: 135 fresh, 0 moderate, 0 stale
+- **Total Files**: 139 documentation files
+- **Total Lines**: 41,153 lines
+- **Code Examples**: 1135 code blocks
+- **Maintenance**: 320 TODOs, 2 FIXMEs
+- **Freshness**: 138 fresh, 0 moderate, 0 stale
 
 ## File Health Breakdown
 
 | Category | Files | Health Score | Last Updated |
 |----------|-------|--------------|--------------|
-| root | 3 | [█████] 100% 100/100 | 2025-09-17 |
-| docs | 132 | [█████] 100% 100/100 | 2025-09-17 |
+| root | 5 | [█████] 100% 100/100 | 2025-09-17 |
+| docs | 134 | [█████] 100% 100/100 | 2025-09-17 |
 
 
 ## Recommendations
 
 ### Immediate Actions Required
-- ✅ **No immediate actions required** - documentation is in good health
+- ⚠️ **2 files** contain FIXMEs/TODOs needing attention
 
 
 ### Quality Improvements
-- Add code examples to -983 files without code blocks
+- Add code examples to -996 files without code blocks
 - Convert 320 open TODOs to completed tasks or remove if obsolete
 - Update 0 stale documentation files
 
@@ -42,7 +42,7 @@
 
 #### CLAUDE.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 736 lines, 77 headers
+- **Size**: 745 lines, 77 headers
 - **Elements**: 12 code blocks
 - **Links**: 15 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
@@ -51,12 +51,21 @@
 
 #### README.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 488 lines, 91 headers
-- **Elements**: 11 code blocks
-- **Links**: 18 internal, 15 external
+- **Size**: 600 lines, 110 headers
+- **Elements**: 15 code blocks
+- **Links**: 38 internal, 16 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
+
+#### START-HERE.md
+- **Health**: [█████] 100% 100/100
+- **Size**: 154 lines, 39 headers
+- **Elements**: 4 code blocks
+- **Links**: 5 internal, 0 external
+- **Tasks**: 0 completed, 0 pending
+- **Last Updated**:  (NaN days ago)
+- **Freshness**: stale
 
 #### STATUS.md
 - **Health**: [█████] 100% 100/100
@@ -64,7 +73,16 @@
 - **Elements**: 1 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 3 completed, 2 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
+- **Freshness**: fresh
+
+#### TEMPLATES-EXAMPLES-INDEX.md
+- **Health**: [█████] 100% 100/100
+- **Size**: 238 lines, 40 headers
+- **Elements**: 7 code blocks
+- **Links**: 17 internal, 0 external
+- **Tasks**: 0 completed, 0 pending
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 ### Docs Files
@@ -188,9 +206,9 @@
 
 #### docs/ai-tools/setup/mcp-setup.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 216 lines, 39 headers
+- **Size**: 217 lines, 39 headers
 - **Elements**: 11 code blocks
-- **Links**: 0 internal, 0 external
+- **Links**: 0 internal, 1 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
@@ -463,6 +481,15 @@
 - **Links**: 1 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-15 (2 days ago)
+- **Freshness**: fresh
+
+#### docs/reports/documentation-health.md
+- **Health**: [█████] 100% 100/100
+- **Size**: 1262 lines, 146 headers
+- **Elements**: 1 code blocks
+- **Links**: 0 internal, 0 external
+- **Tasks**: 0 completed, 0 pending
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/README.md
@@ -782,9 +809,9 @@
 
 #### docs/ai-tools/setup/mcp-setup.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 216 lines, 39 headers
+- **Size**: 217 lines, 39 headers
 - **Elements**: 11 code blocks
-- **Links**: 0 internal, 0 external
+- **Links**: 0 internal, 1 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
@@ -1057,6 +1084,15 @@
 - **Links**: 1 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-15 (2 days ago)
+- **Freshness**: fresh
+
+#### docs/reports/documentation-health.md
+- **Health**: [█████] 100% 100/100
+- **Size**: 1262 lines, 146 headers
+- **Elements**: 1 code blocks
+- **Links**: 0 internal, 0 external
+- **Tasks**: 0 completed, 0 pending
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/README.md

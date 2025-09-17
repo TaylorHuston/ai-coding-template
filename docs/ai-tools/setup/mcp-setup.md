@@ -74,6 +74,7 @@ These are automatically included in all setups:
 - **What it does**: Free access to Google Gemini for consensus analysis
 - **Why you need it**: Validation of critical decisions, massive context window
 - **Example**: "Review this entire codebase and suggest improvements"
+- **Prerequisites**: Requires [Gemini CLI](https://github.com/google-gemini/gemini-cli) installation (see README)
 
 ### 3. Optional Tools by Project Type
 

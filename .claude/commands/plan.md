@@ -17,6 +17,9 @@ Sequential multi-agent planning workflow for thorough context gathering and inte
 
 Sequential Agent Process:
 - Parse arguments and determine required agents based on issue content
+- **Interactive Clarification**: Never assume details - ask specific questions to clarify requirements
+- **Task Complexity Assessment**: Classify as Simple | Complex | Architectural
+- **Development Strategy Selection**: Backend-First | Frontend-First | Full-Stack (Backend-First recommended)
 - Create directory structure and initialize RESEARCH.md with CRITICAL_CONTEXT
 - Discover and integrate vision document (docs/vision.md or project-vision.md) if available
 - Execute agents sequentially, /plan orchestrating context flow:
@@ -30,6 +33,7 @@ Sequential Agent Process:
 - /plan updates RESEARCH.md with agent findings after each execution
 - Each agent receives vision context for alignment with project goals and differentiators
 - Each phase builds technical specifications for implementation clarity
+- **User Validation Checkpoints**: Confirm understanding before agent execution
 - Total execution time: 8-10 minutes for thorough planning
 
 Intelligent Task Generation with Technical Specifications:

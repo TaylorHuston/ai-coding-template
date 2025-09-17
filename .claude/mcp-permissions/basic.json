@@ -6,7 +6,9 @@
     "mcp__context7__get-library-docs",
     "mcp__sequential-thinking__sequentialthinking",
     "mcp__gemini-cli__prompt",
-    "mcp__gemini-cli__*"
+    "mcp__gemini-cli__*",
+    "mcp__codex__prompt",
+    "mcp__codex__*"
   ],
   "bash_permissions": [
     "Bash(git add:*)",
@@ -33,6 +35,7 @@
   "enabled_servers": [
     "context7",
     "sequential-thinking",
-    "gemini-cli"
+    "gemini-cli",
+    "codex"
   ]
 }
