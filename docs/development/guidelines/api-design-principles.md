@@ -7,8 +7,6 @@ target_audience: ["developers", "ai-assistants", "api-designers", "architects"]
 document_type: "guide"
 priority: "high"
 tags: ["api-design", "rest", "graphql", "principles", "architecture"]
-difficulty: "intermediate"
-estimated_time: "25 min"
 ---
 
 # API Design Principles
@@ -612,7 +610,7 @@ const errorHandler = (error, req, res, next) => {
 
 - **[API Implementation Patterns](./api-implementation-patterns.md)** - Error handling, pagination, filtering implementation details
 - **[API Documentation Standards](./api-documentation-standards.md)** - OpenAPI specifications and documentation best practices
-- **[Security Guidelines](./security-principles.md)** - Security implementation patterns for APIs
+- **[Security Principles](./security-principles.md)** - Security implementation patterns for APIs
 - **[Testing Guidelines](./testing-guidelines.md)** - API testing strategies and patterns
 
 ## Navigation

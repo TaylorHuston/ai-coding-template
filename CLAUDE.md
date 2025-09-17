@@ -648,13 +648,6 @@ This project includes intelligent documentation management that coordinates agen
 - **Sync Documentation**: `/docs sync`
 - **Health Check**: `/docs health`
 
-### Legacy Script Access (Fallback)
-
-- **Technology Stack**: `./scripts/docs-manager.sh auto-docs tech-stack`
-- **System Overview**: `./scripts/docs-manager.sh auto-docs system-overview`
-- **Dependency Graph**: `./scripts/docs-manager.sh auto-docs dependencies`
-- **All Documentation**: `./scripts/docs-manager.sh auto-docs all`
-
 ### Architecture Decision Records (ADRs)
 
 For significant architectural or technical decisions, use the intelligent `/docs` command:

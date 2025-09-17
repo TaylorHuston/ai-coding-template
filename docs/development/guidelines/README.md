@@ -23,12 +23,20 @@ estimated_time: "5 min"
 - **[Quality Standards](./quality-standards.md)** - Comprehensive quality requirements and validation protocols for AI-assisted development
 - **[Coding Standards](./coding-standards.md)** - Language-agnostic coding conventions, naming patterns, and best practices
 - **[Testing Guidelines](./testing-guidelines.md)** - Testing strategies, coverage requirements, and quality assurance practices
-- **[Security Guidelines](./security-guidelines.md)** - Security standards, authentication patterns, and threat protection measures
+
+### **Security Guidelines**
+- **[Security Principles](./security-principles.md)** - Core security concepts, threat modeling, zero trust, and governance framework
+- **[Authentication & Authorization](./authentication-authorization.md)** - Identity management, RBAC/ABAC, MFA, and session security
+- **[Security Implementation](./security-implementation.md)** - Practical security patterns: validation, encryption, logging, file security, testing
+
+### **API Design Guidelines**
+- **[API Design Principles](./api-design-principles.md)** - Core REST/GraphQL principles, versioning, and architectural patterns
+- **[API Documentation Standards](./api-documentation-standards.md)** - OpenAPI specifications, schema design, and documentation best practices
+- **[API Implementation Patterns](./api-implementation-patterns.md)** - Practical patterns: error handling, pagination, filtering, caching
 
 ### **Collaboration and Process Guidelines**
 - **[Git Workflow](./git-workflow.md)** - Branching strategies, commit conventions, and version control best practices
 - **[Code Review Guidelines](./code-review-guidelines.md)** - Review processes, quality checklists, and AI collaboration standards
-- **[API Design Guidelines](./api-design-guidelines.md)** - REST/GraphQL design patterns, versioning, and documentation standards
 
 ### **Documentation Guidelines**
 - **[Documentation Guidelines](./documentation-guidelines.md)** - Documentation structure, standards, and organization principles
@@ -43,14 +51,14 @@ estimated_time: "5 min"
 2. **Review [Quality Standards](./quality-standards.md)** - Understand overall quality requirements
 3. **Study [Coding Standards](./coding-standards.md)** - Learn project coding conventions
 4. **Master [Git Workflow](./git-workflow.md)** - Version control practices
-5. **Understand [Security Guidelines](./security-guidelines.md)** - Essential security practices
+5. **Understand [Security Principles](./security-principles.md)** - Essential security practices
 
 ### **Looking for Specific Guidelines?**
 - **Architecture & Principles**: [Architectural Principles](./architectural-principles.md) for DRY, KISS, YAGNI, SOLID fundamentals
 - **Code Quality**: [Coding Standards](./coding-standards.md) and [Code Review Guidelines](./code-review-guidelines.md)
 - **Testing**: [Testing Guidelines](./testing-guidelines.md) for comprehensive testing strategies
-- **API Development**: [API Design Guidelines](./api-design-guidelines.md) for REST/GraphQL best practices
-- **Security**: [Security Guidelines](./security-guidelines.md) for authentication and threat protection
+- **API Development**: [API Design Principles](./api-design-principles.md), [API Documentation Standards](./api-documentation-standards.md), [API Implementation Patterns](./api-implementation-patterns.md)
+- **Security**: [Security Principles](./security-principles.md), [Authentication & Authorization](./authentication-authorization.md), [Security Implementation](./security-implementation.md)
 - **Documentation**: [Documentation Guidelines](./documentation-guidelines.md) and [Visual Documentation](./visual-documentation.md)
 - **Maintenance**: [Documentation Maintenance](./documentation-maintenance.md) and [Changelog Maintenance](./changelog-maintenance.md)
 

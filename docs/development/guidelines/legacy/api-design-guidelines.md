@@ -7,8 +7,6 @@ target_audience: ["developers", "ai-assistants", "api-designers", "architects"]
 document_type: "guide"
 priority: "high"
 tags: ["api-design", "rest", "graphql", "versioning", "documentation"]
-difficulty: "intermediate"
-estimated_time: "40 min"
 ---
 
 # API Design Guidelines
