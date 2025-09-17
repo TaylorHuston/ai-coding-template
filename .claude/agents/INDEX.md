@@ -1,6 +1,6 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-08-21 **Status**: Active - Enhanced Template System **Target Audience**: AI Assistants, Development Teams **Total Agents**: 17 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-09-16 **Status**: Active - Enhanced Template System **Target Audience**: AI Assistants, Development Teams **Total Agents**: 18 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 
@@ -26,6 +26,11 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
   - _Capabilities_: Root cause analysis, systematic investigation, evidence-based reasoning
   - _Best For_: Bug investigation, system analysis, problem diagnosis
   - _Model_: sonnet | _Color_: yellow | _Auto-Invoked_: Investigation tasks
+
+- **[ai-llm-expert](./ai-llm-expert.md)** - AI/LLM architecture, implementation, and optimization
+  - _Capabilities_: LLM architecture design, prompt engineering, context management, AI integration patterns
+  - _Best For_: AI/ML decision analysis, LLM implementation guidance, AI architecture optimization
+  - _Model_: opus | _Color_: green | _Auto-Invoked_: AI/ML architecture decisions
 
 #### **Development & Implementation**
 
@@ -127,25 +132,27 @@ These agents activate automatically based on context and task requirements:
 7. **code-reviewer** - Post-implementation quality reviews
 8. **docs-sync-agent** - After code changes affecting documentation
 
-### **On-Demand Specialists** (9 agents)
+### **On-Demand Specialists** (10 agents)
 
 These are invoked for specific domains or specialized work:
 
 1. **code-architect** - Architectural decisions and system design
-2. **api-designer** - API architecture and endpoint design
-3. **security-auditor** - Security audits and compliance validation
-4. **devops-engineer** - Infrastructure and deployment automation
-5. **performance-optimizer** - Performance analysis and optimization
-6. **technical-writer** - New documentation creation
-7. **refactoring-specialist** - Code improvement and technical debt reduction
-8. **migration-specialist** - Version upgrades and framework migrations
-9. **data-analyst** - Data processing, analysis, and reporting
+2. **ai-llm-expert** - AI/LLM architecture and implementation guidance
+3. **api-designer** - API architecture and endpoint design
+4. **security-auditor** - Security audits and compliance validation
+5. **devops-engineer** - Infrastructure and deployment automation
+6. **performance-optimizer** - Performance analysis and optimization
+7. **technical-writer** - New documentation creation
+8. **refactoring-specialist** - Code improvement and technical debt reduction
+9. **migration-specialist** - Version upgrades and framework migrations
+10. **data-analyst** - Data processing, analysis, and reporting
 
 ### By Task Complexity
 
 #### **High Complexity (Opus Model)**
 
 - **code-architect** - System architecture and technology decisions
+- **ai-llm-expert** - AI/LLM architecture and implementation optimization
 - **project-manager** - Multi-agent orchestration and complex coordination
 - **security-auditor** - Critical security analysis and compliance
 - **technical-writer** - Content creation and technical writing
