@@ -1,7 +1,8 @@
 {
   "config": {
-    "version": "0.1.0",
-    "description": "AI Coding Template Git Hooks Configuration"
+    "version": "0.2.0",
+    "description": "AI Coding Template Git Hooks Configuration - Context-Aware & User-Friendly",
+    "last_updated": "2025-09-17"
   },
   "pre-commit": {
     "enabled": true,
@@ -9,7 +10,8 @@
       "branch-protection": {
         "enabled": true,
         "protected-branches": ["main", "master", "develop", "production"],
-        "allow-emergency-bypass": false
+        "allow-emergency-bypass": false,
+        "user-friendly-message": true
       },
       "ai-documentation": {
         "enabled": true,
@@ -26,71 +28,214 @@
         "enabled": true,
         "check-status-md": true,
         "warning-only": true,
+        "skip-for-doc-only-commits": true,
         "code-file-patterns": [
-          "\\.(js|ts|jsx|tsx)$",
-          "\\.(py|java|cpp|c|go|rs|php)$",
-          "\\.(html|css|scss|sass)$"
+          "\\.js$",
+          "\\.ts$",
+          "\\.jsx$",
+          "\\.tsx$",
+          "\\.py$",
+          "\\.java$",
+          "\\.cpp$",
+          "\\.c$",
+          "\\.go$",
+          "\\.rs$",
+          "\\.php$"
         ]
       },
       "security-scan": {
         "enabled": true,
-        "patterns": [
-          "api[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]",
-          "secret[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]",
-          "password[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]",
-          "token[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]",
-          "private[_-]?key[[:space:]]*[:=]",
-          "-----BEGIN (RSA |DSA )?PRIVATE KEY-----",
-          "sk_live_[0-9a-zA-Z]{24,}",
-          "pk_live_[0-9a-zA-Z]{24,}"
+        "context-aware": true,
+        "exclude-paths": [
+          "test/",
+          "tests/",
+          "__tests__/",
+          "spec/",
+          "examples/",
+          "templates/",
+          "docs/",
+          "*.test.*",
+          "*.spec.*",
+          "*.template.*",
+          "*.example.*"
         ],
+        "patterns": {
+          "api-keys": {
+            "regex": "api[-_]?key.*=.*['\\\"][A-Za-z0-9_-]{20,}['\\\"]",
+            "severity": "high",
+            "exclude-if-contains": ["process.env", "getenv", "environ", "${", "{{", "example", "placeholder", "YOUR_API_KEY"]
+          },
+          "aws-keys": {
+            "regex": "AKIA[0-9A-Z]{16}",
+            "severity": "critical"
+          },
+          "private-keys": {
+            "regex": "-----BEGIN.*PRIVATE KEY",
+            "severity": "critical"
+          },
+          "generic-secrets": {
+            "regex": "secret.*=.*['\\\"][A-Za-z0-9_-]{10,}['\\\"]",
+            "severity": "medium",
+            "exclude-if-contains": ["test", "mock", "fake", "example", "sample"]
+          },
+          "passwords": {
+            "regex": "password.*=.*['\\\"][^'\\\"]{8,}['\\\"]",
+            "severity": "medium",
+            "exclude-if-contains": ["test", "mock", "fake", "example", "sample", "placeholder", "changeme", "process.env", "TEST_PASSWORD"]
+          },
+          "github-tokens": {
+            "regex": "ghp_[0-9a-zA-Z]{36}",
+            "severity": "critical"
+          },
+          "jwt-tokens": {
+            "regex": "eyJ[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+",
+            "severity": "high",
+            "exclude-if-contains": ["test", "example", "mock"]
+          }
+        },
         "sensitive-files": [
           ".env",
-          "secrets.json", 
+          ".env.local",
+          ".env.production",
+          "secrets.json",
           "credentials.json",
-          "private.key",
+          "*.pem",
+          "*.key",
           "id_rsa",
-          "id_dsa"
+          "id_dsa",
+          "id_ecdsa",
+          "id_ed25519"
+        ],
+        "allowed-in-examples": [
+          ".env.example",
+          ".env.template",
+          "secrets.example.json",
+          "config.template.json"
         ]
       },
       "file-naming": {
         "enabled": true,
-        "documentation-pattern": "^[a-z0-9-]+$",
-        "exceptions": [
-          "README",
-          "CONTRIBUTING", 
-          "CHANGELOG",
-          "CODE_OF_CONDUCT",
-          "LICENSE"
-        ]
+        "skip-deleted-files": true,
+        "rules": {
+          "documentation": {
+            "paths": ["docs/**/*.md", "**/*.md"],
+            "pattern": "^[a-z0-9-]+$",
+            "exceptions": [
+              "README",
+              "CONTRIBUTING",
+              "CHANGELOG",
+              "CODE_OF_CONDUCT",
+              "LICENSE",
+              "SECURITY",
+              "AUTHORS",
+              "CLAUDE",
+              "STATUS",
+              "TODO"
+            ],
+            "allow-templates": true,
+            "template-pattern": "^[a-z0-9-]+\\.template$"
+          },
+          "scripts": {
+            "paths": ["scripts/**/*"],
+            "pattern": "^[a-z0-9-]+(\\.sh|\\.js|\\.py)?$",
+            "exceptions": []
+          }
+        },
+        "error-handling": {
+          "show-correct-format": true,
+          "suggest-rename-command": true
+        }
       },
       "changelog-reminder": {
         "enabled": true,
-        "script": "scripts/check-changelog.sh",
         "warning-only": true,
-        "ai-assistant-mode": true
+        "check-for": {
+          "features": ["feat:", "feature:", "add:"],
+          "fixes": ["fix:", "bugfix:", "hotfix:"],
+          "breaking": ["breaking:", "BREAKING CHANGE:", "!:"]
+        },
+        "exclude-paths": [
+          "test/",
+          "tests/",
+          "docs/",
+          ".github/",
+          "scripts/"
+        ]
+      },
+      "file-size": {
+        "enabled": true,
+        "warning-only": true,
+        "max-file-size-mb": 10,
+        "large-file-warning-mb": 5,
+        "exclude-patterns": [
+          "*.min.js",
+          "*.bundle.js",
+          "vendor/",
+          "node_modules/",
+          "dist/",
+          "build/"
+        ]
       }
+    },
+    "error-handling": {
+      "continue-on-warning": true,
+      "show-bypass-instructions": true,
+      "bypass-flag": "--no-verify",
+      "detailed-error-messages": true,
+      "suggest-fixes": true
     }
   },
   "commit-msg": {
     "enabled": true,
     "checks": {
       "length": {
-        "max-subject-length": 50,
-        "max-body-line-length": 72
+        "enabled": true,
+        "warning-only": true,
+        "max-subject-length": 72,
+        "recommend-subject-length": 50,
+        "max-body-line-length": 100,
+        "recommend-body-line-length": 72
       },
       "format": {
+        "enabled": false,
         "require-issue-reference": false,
-        "conventional-commits": false
+        "conventional-commits": false,
+        "allow-custom-formats": true
+      },
+      "ai-attribution": {
+        "enabled": true,
+        "warning-only": true,
+        "suggest-if-missing": true
       }
     }
   },
   "pre-push": {
     "enabled": false,
     "checks": {
-      "run-tests": false,
-      "lint-check": false,
-      "documentation-links": false
+      "run-tests": {
+        "enabled": false,
+        "command": "npm test",
+        "blocking": false
+      },
+      "lint-check": {
+        "enabled": false,
+        "command": "npm run lint",
+        "blocking": false
+      },
+      "documentation-links": {
+        "enabled": false,
+        "check-internal": true,
+        "check-external": false
+      }
     }
+  },
+  "hooks-behavior": {
+    "interactive-mode": true,
+    "colored-output": true,
+    "progress-indicators": true,
+    "summary-at-end": true,
+    "group-errors-by-type": true,
+    "allow-force-commit": true,
+    "respect-ci-environment": true
   }
 }
