@@ -1,13 +1,31 @@
 /**
- * Example configuration management
- * 
- * This example demonstrates:
- * - Type-safe configuration
- * - Environment variable handling
- * - Configuration validation
- * - Default values
- * - Nested configuration objects
- * - Configuration loading patterns
+ * @example Application Configuration Management
+ *
+ * Demonstrates:
+ * - Type-safe configuration with runtime validation
+ * - Environment variable handling and parsing
+ * - Configuration schema validation with Zod
+ * - Default value patterns and fallback strategies
+ * - Nested configuration objects and hierarchies
+ * - Multi-environment configuration management
+ * - Feature flag implementation and toggling
+ * - Secrets management and security best practices
+ * - Configuration loading and caching patterns
+ *
+ * Key Patterns:
+ * - Schema-driven configuration validation
+ * - Environment-specific configuration loading
+ * - Type-safe access to configuration values
+ * - Validation error handling and reporting
+ * - Configuration hot-reloading capabilities
+ * - Secure handling of sensitive configuration data
+ * - Configuration documentation and self-documenting schemas
+ *
+ * Usage Context: Application startup, environment configuration, feature flags
+ * Complexity: Medium - shows comprehensive configuration patterns
+ *
+ * @see examples/code/patterns/api-user-service.example.ts for configuration usage
+ * @see templates/code/configs/config.template.ts for configuration template
  */
 
 import { z } from 'zod';

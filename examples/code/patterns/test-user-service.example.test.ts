@@ -1,13 +1,31 @@
 /**
- * Example test implementation
- * 
- * This example demonstrates:
- * - Test structure and organization
- * - Mocking dependencies
- * - Test data setup
- * - Async testing patterns
- * - Error testing
- * - Assertion patterns
+ * @example UserService Unit Tests
+ *
+ * Demonstrates:
+ * - Unit test structure with Jest/Vitest framework
+ * - Mock patterns for dependencies and external services
+ * - Test data factories and builders for consistent test data
+ * - Async testing patterns and Promise handling
+ * - Error condition testing and exception handling
+ * - Test organization and setup/teardown procedures
+ * - Assertion strategies and matcher usage
+ * - Coverage optimization and edge case testing
+ * - Integration testing with mocked dependencies
+ *
+ * Key Patterns:
+ * - Arrange-Act-Assert (AAA) pattern
+ * - Mock injection and dependency isolation
+ * - Test data factories for maintainable test data
+ * - Error simulation and edge case coverage
+ * - Custom matchers for domain-specific assertions
+ * - Test lifecycle management (beforeEach, afterEach)
+ * - Parameterized tests for comprehensive coverage
+ *
+ * Usage Context: Unit testing, test-driven development, quality assurance
+ * Complexity: Advanced - shows comprehensive testing strategies
+ *
+ * @see examples/code/patterns/api-user-service.example.ts for the service being tested
+ * @see templates/code/tests/test.template.js for test template
  */
 
 import { UserService } from '../services/user-service';

@@ -415,6 +415,37 @@ Transform your entire development process with the full template:
 
 **Result**: Intelligent script orchestration, context-aware execution, and unified workflow integration.
 
+## 📚 Templates & Examples System
+
+### Accelerate Development with Standardized Resources
+
+The template system provides **fill-in-the-blank starting points** and **working reference implementations** to accelerate your development:
+
+**🔍 Quick Discovery**:
+- **Need to create a feature?** → [Feature Templates](./templates/docs/features/)
+- **Building a React component?** → [Component Template](./templates/code/components/) + [Component Example](./examples/code/patterns/)
+- **Creating an API service?** → [Service Template](./templates/code/api/) + [Service Example](./examples/code/patterns/)
+- **Writing tests?** → [Test Examples](./examples/code/patterns/)
+- **Documenting an API?** → [API Template](./templates/docs/api/)
+
+**📋 Two Resource Types**:
+- **Templates** (`/templates/`) - Fill-in-the-blank starting points with placeholders
+- **Examples** (`/examples/`) - Working reference implementations to study and adapt
+
+**🚀 Get Started**:
+```bash
+# Find the right resource for your task
+cat TEMPLATES-EXAMPLES-INDEX.md
+
+# Copy a template to start fresh
+cp templates/docs/features/feature.template.md docs/my-feature.md
+
+# Study working examples for patterns
+cat examples/code/patterns/api-user-service.example.ts
+```
+
+**[📖 Complete Templates & Examples Guide →](./TEMPLATES-EXAMPLES-INDEX.md)**
+
 ## Contributing to the Workflow
 
 Help improve the /idea → /plan → /iterate workflow for everyone:

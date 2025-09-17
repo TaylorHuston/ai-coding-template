@@ -1,14 +1,31 @@
 /**
- * Example React component implementation
- * 
- * This example demonstrates:
- * - Functional component with TypeScript
- * - Props interface definition
- * - State management with hooks
- * - Event handling patterns
- * - Conditional rendering
- * - Error handling in components
- * - Accessibility considerations
+ * @example UserCard React Component
+ *
+ * Demonstrates:
+ * - Functional component with TypeScript and proper typing
+ * - Props interface definitions and validation
+ * - State management with React hooks (useState, useCallback, useEffect)
+ * - Event handling patterns and performance optimization
+ * - Conditional rendering strategies
+ * - Error boundary integration and error handling
+ * - Accessibility best practices and ARIA attributes
+ * - Loading states and skeleton UI patterns
+ * - CSS-in-JS styling approaches
+ *
+ * Key Patterns:
+ * - Props destructuring with defaults
+ * - Custom hooks for reusable logic
+ * - Memoization for performance (useCallback, useMemo)
+ * - Error boundaries for graceful failure handling
+ * - Semantic HTML and accessibility features
+ * - Progressive enhancement patterns
+ * - Responsive design considerations
+ *
+ * Usage Context: Frontend UI components, user interface elements
+ * Complexity: Medium - shows comprehensive React patterns
+ *
+ * @see examples/code/patterns/api-user-service.example.ts for backend service integration
+ * @see templates/code/components/component.template.tsx for component template
  */
 
 import React, { useState, useCallback } from 'react';

@@ -1,12 +1,29 @@
 /**
- * Example API service implementation
- * 
- * This example demonstrates:
- * - Service class structure
- * - Error handling patterns
- * - Type definitions
- * - Async/await usage
- * - Logging and monitoring
+ * @example User Service API Implementation
+ *
+ * Demonstrates:
+ * - Service layer architecture with dependency injection
+ * - Async/await patterns with proper error handling
+ * - TypeScript interfaces and type safety
+ * - Repository pattern integration
+ * - Custom error types for different failure modes
+ * - Input validation and sanitization
+ * - Logging and monitoring integration
+ * - Testing-friendly constructor injection
+ *
+ * Key Patterns:
+ * - Constructor injection for testability
+ * - Custom error types for different failure modes
+ * - Validation at service boundaries
+ * - Logging for observability
+ * - Separation of concerns (service/repository layers)
+ * - Consistent error handling and propagation
+ *
+ * Usage Context: Backend API services, business logic layer
+ * Complexity: Medium - shows comprehensive service patterns
+ *
+ * @see examples/code/patterns/test-user-service.example.test.ts for testing patterns
+ * @see examples/code/configs/config-app-config.example.ts for configuration patterns
  */
 
 import { Logger } from '../utils/logger';
