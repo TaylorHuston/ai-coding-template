@@ -1,12 +1,12 @@
 ---
-version: "0.1.0"
+version: "0.2.0"
 created: "2025-08-21"
-last_updated: "2025-09-15"
+last_updated: "2025-09-17"
 status: "active"
 target_audience: ["ai-assistants"]
 document_type: "specification"
 priority: "critical"
-tags: ["ai-instructions", "workflow", "standards"]
+tags: ["ai-instructions", "workflow", "standards", "intelligent-integration"]
 ---
 
 # CLAUDE.md - AI Agent Instructions
@@ -72,13 +72,14 @@ This template transforms AI from a simple code generator into an intelligent arc
 ```
 
 #### 3. `/iterate` - Task Execution with Agent Orchestration
-**Purpose**: Execute tasks from PLAN.md with intelligent agent coordination
+**Purpose**: Execute tasks from PLAN.md with intelligent agent coordination and automatic script integration
 
 - **Orchestrator Model**: Main Claude manages sub-agents with explicit context passing
 - **Quality Gates**: Automatic validation between tasks with smart recovery
 - **Phase Management**: Sequential execution with commit prompts at phase boundaries
 - **Context Preservation**: Complete handoff context maintained across all tasks
-- **Hook Integration**: Automatic enforcement of quality standards
+- **Script Integration**: Agents automatically invoke appropriate scripts with full context
+- **Intelligent Coordination**: Scripts serve agents, not users directly
 
 **Example Usage**:
 ```bash
@@ -120,11 +121,12 @@ QUALITY EXECUTION:
 
 ### Everything Else Supports This Workflow
 
-- **17-Agent Framework**: Provides domain expertise at each workflow phase
-- **Documentation System**: Automatically maintains context and decisions
-- **Quality Gates**: Ensures standards throughout the workflow
-- **Tool Selection**: Optimized for workflow phase requirements
-- **Status Management**: Preserves workflow state across sessions
+- **17-Agent Framework**: Provides domain expertise with intelligent script orchestration
+- **Unified Commands**: `/docs`, `/quality`, `/status` provide intelligent agent coordination
+- **Documentation System**: Automatically maintains context and decisions via agent-script integration
+- **Quality Gates**: Ensures standards throughout the workflow with automated script validation
+- **Script Orchestration**: Agents intelligently coordinate existing scripts based on context
+- **Status Management**: Preserves workflow state across sessions with intelligent analysis
 
 **CRITICAL**: When in doubt about how to approach any task, use this workflow. It ensures you're not just generating code, but creating well-architected, thoroughly planned, and quality-validated solutions.
 
@@ -233,13 +235,65 @@ The 17 specialized agents exist to enhance and support the core workflow at each
 - **devops-engineer**: Infrastructure and deployment automation
 - **migration-specialist**: Version upgrades and framework migrations
 
-### Orchestration Principles
+### Enhanced Orchestration Principles
 
-You should rarely update files directly. Always delegate to the appropriate agent through the workflow:
+You should rarely update files directly. Always delegate to the appropriate agent through the workflow with intelligent script integration:
 - **Read context** from HANDOFF.yml and RESEARCH.md
-- **Pass complete context** to agents via Task tool prompts
-- **Update coordination files** after agent completion
-- **Maintain workflow state** across all agent interactions
+- **Pass complete context** to agents via Task tool prompts including script coordination requirements
+- **Agent-Script Coordination**: Agents automatically invoke appropriate scripts with full context
+- **Update coordination files** after agent completion and script execution
+- **Maintain workflow state** across all agent interactions and script orchestrations
+
+### Agent-Script Integration Mapping
+
+**New Unified Commands with Agent Coordination:**
+
+```yaml
+unified_commands:
+  docs:
+    primary_agent: technical-writer | docs-sync-agent
+    script_coordination:
+      generate: auto-docs-generator.js
+      validate: check-docs-links.js + docs-health.js
+      sync: docs-manager.sh + context analysis
+
+  quality:
+    primary_agent: code-reviewer
+    supporting_agents: [security-auditor, test-engineer, performance-optimizer]
+    script_coordination:
+      assess: validate-quality-gates.sh + static analysis tools
+      validate: test runners + linting tools + security scanners
+      audit: security scanning tools + compliance checkers
+      fix: automated formatting + remediation scripts
+
+  status:
+    primary_agent: context-analyzer
+    script_coordination:
+      basic_data: ai-status.sh
+      intelligent_analysis: agent processes script output
+      enhanced_reporting: context-aware insights generation
+```
+
+### Script Invocation Protocol
+
+When agents need to invoke scripts, they MUST:
+
+1. **Context Assessment**: Determine which scripts are relevant based on task and project state
+2. **Parameter Optimization**: Pass relevant context and parameters to scripts
+3. **Result Processing**: Interpret script output in context of current task and project
+4. **Integration**: Incorporate script results into agent response and workflow coordination
+5. **Documentation**: Update coordination files with script execution results
+
+**Example Agent-Script Coordination:**
+```yaml
+agent_task: "Generate comprehensive documentation"
+agent: technical-writer
+script_sequence:
+  1. auto-docs-generator.js --type tech-stack --context HANDOFF.yml
+  2. docs-manager.sh auto-docs all --integration-mode
+  3. check-docs-links.js --validate-internal --validate-external
+  4. Agent processes all outputs and creates unified documentation report
+```
 
 ## Multi-Agent Workflow Execution
 
@@ -376,9 +430,9 @@ Agent Expectations (Sub-agents do):
 - Plan coordination procedures for multi-agent workflows
 - Monitor agent effectiveness and optimize selection patterns
 
-## Tool Selection Guide: Workflow-Optimized
+## Tool Selection Guide: Workflow-Optimized with Intelligent Commands
 
-Use these tools appropriately for each workflow phase:
+Use these tools appropriately for each workflow phase, prioritizing unified intelligent commands:
 
 ### During `/idea` (Architectural Exploration)
 ```yaml
@@ -389,9 +443,9 @@ Exploration Tools:
   - WebFetch: Research external patterns and best practices
 
 Documentation Tools:
-  - Edit: Update exploration session files
-  - Write: Create ADR files when consensus reached
-  - Auto-Documentation: Generate ADRs with ./scripts/docs-manager.sh decision
+  - /docs generate --type decisions: Generate ADRs with intelligent agent coordination
+  - Edit: Update exploration session files (fallback)
+  - Write: Create ADR files when consensus reached (fallback)
 ```
 
 ### During `/plan` (Sequential Planning)
@@ -411,19 +465,19 @@ Planning Tools:
 ```yaml
 Execution Tools:
   - Read: Always read context from HANDOFF.yml and RESEARCH.md
-  - Task: Execute agents with complete context for each P X.X.X task
+  - Task: Execute agents with complete context for each P X.X.X task (agents automatically coordinate scripts)
   - Edit/MultiEdit: Update coordination files after agent completion
-  - Bash: Run tests, validation, and quality gates
+  - /quality validate: Intelligent quality gates with multi-agent coordination
 
 Quality Assurance:
-  - Bash: Execute test suites and linting between tasks
-  - Read: Review test results and validation outputs
+  - /quality assess: Multi-dimensional quality analysis with automatic script coordination
+  - /docs sync: Intelligent documentation updates with context awareness
+  - Read: Review agent results and validation outputs
   - Edit: Update CHANGELOG.md for user-facing changes
-  - Auto-Documentation: Sync docs with ./scripts/docs-manager.sh auto-docs
 
 Workflow Management:
   - Edit: Update PLAN.md task checkboxes and HANDOFF.yml entries
-  - Read: Monitor STATUS.md for session continuity
+  - /status --ai-format: Intelligent project status with context analysis
   - TodoWrite: Track implementation progress within phases
 ```
 
@@ -431,21 +485,31 @@ Workflow Management:
 ```yaml
 Context Management:
   - Read: Always read before editing existing files
+  - /status: Enhanced project intelligence with context-analyzer coordination
   - Edit: Update STATUS.md and coordination files
   - Grep/Glob: Search for patterns and integration points
 
 Agent Coordination:
-  - Task: Primary tool for all specialized agent delegation
+  - Task: Primary tool for all specialized agent delegation with script coordination
   - Read: Understand agent capabilities from .claude/agents/
-  - Edit: Update HANDOFF.yml with agent results
+  - Edit: Update HANDOFF.yml with agent results and script execution outcomes
 
 Quality Gates:
-  - Bash: Run validation scripts between workflow phases
+  - /quality validate --scope current-phase: Intelligent validation with agent oversight
+  - /docs validate: Documentation health checks with agent coordination
   - Read: Review quality standards and guidelines
-  - Auto-Documentation: Maintain architectural consistency
 ```
 
-**CRITICAL**: Always use Task tool for specialized work. The workflow depends on proper agent orchestration with complete context passing.
+### Unified Command Priority
+
+**ALWAYS prefer unified intelligent commands when available:**
+
+1. **Documentation Operations**: Use `/docs` instead of manual script invocation
+2. **Quality Assessment**: Use `/quality` instead of individual validation scripts
+3. **Project Status**: Use `/status` instead of basic status reporting
+4. **Agent Coordination**: Agents automatically invoke scripts with full context
+
+**CRITICAL**: The new unified commands provide intelligent agent-script coordination. Always use these for better context awareness and integrated execution.
 
 ## Code Generation Standards
 
@@ -474,11 +538,21 @@ You MUST adhere to these standards:
 - Documentation MUST be updated to reflect code changes
 - Tests MUST be written or updated for all functional changes
 
-## Automatic Documentation System
+## Intelligent Documentation System
 
-This project includes automatic documentation generation capabilities that you MUST use to maintain accurate, up-to-date architecture documentation:
+This project includes intelligent documentation management that coordinates agents with scripts automatically:
 
-### Available Auto-Documentation
+### Unified Documentation Commands (Preferred)
+
+- **Generate All Documentation**: `/docs generate --type all`
+- **Generate Technology Stack**: `/docs generate --type tech-stack`
+- **Generate System Overview**: `/docs generate --type system-overview`
+- **Generate Dependency Graph**: `/docs generate --type dependencies`
+- **Validate Documentation**: `/docs validate`
+- **Sync Documentation**: `/docs sync`
+- **Health Check**: `/docs health`
+
+### Legacy Script Access (Fallback)
 
 - **Technology Stack**: `./scripts/docs-manager.sh auto-docs tech-stack`
 - **System Overview**: `./scripts/docs-manager.sh auto-docs system-overview`
@@ -487,31 +561,49 @@ This project includes automatic documentation generation capabilities that you M
 
 ### Architecture Decision Records (ADRs)
 
-For significant architectural or technical decisions, you MUST create Technical Decision Records:
+For significant architectural or technical decisions, use the intelligent `/docs` command:
 
-- **Create ADR**: `./scripts/docs-manager.sh decision "Decision Title"`
+- **Create ADR with Intelligence**: `/docs generate --type decisions`
+- **Legacy ADR Creation**: `./scripts/docs-manager.sh decision "Decision Title"`
 - **Location**: `.decisions/YYYY-MM-DD-decision-title.md`
 - **Template**: Includes context, rationale, alternatives, and consequences
 
-### When to Use Auto-Documentation
+### When to Use Intelligent Documentation
 
-**Automatically Generate** when:
+**Automatically Generate** using `/docs generate` when:
 - Adding new technologies or frameworks
 - Making architectural changes
 - Modifying system structure or components
 - Updating dependencies or tech stack
 - After implementing major features
 
-**Create ADRs** for:
+**Create ADRs** using `/docs generate --type decisions` for:
 - Technology selection decisions
 - Architectural pattern choices
 - Security implementation decisions
 - Performance optimization strategies
 - Database or infrastructure decisions
 
-### Integration with Agent Workflows
+### Agent-Script Integration
 
-The `docs-sync-agent` will automatically invoke documentation generation when significant changes are detected. You can also manually trigger documentation updates as part of development workflows.
+The intelligent `/docs` commands provide superior coordination:
+
+1. **Agent Selection**: Automatically selects appropriate agents (technical-writer, docs-sync-agent)
+2. **Context Awareness**: Agents understand project state and documentation needs
+3. **Script Orchestration**: Agents invoke scripts with optimized parameters and context
+4. **Result Integration**: Intelligent processing and integration of script outputs
+5. **Quality Validation**: Automatic validation and improvement suggestions
+
+**Example Intelligence:**
+```yaml
+command: "/docs generate --type tech-stack"
+agent_coordination:
+  1. technical-writer analyzes project structure
+  2. auto-docs-generator.js invoked with context parameters
+  3. Agent processes output for completeness and accuracy
+  4. check-docs-links.js validates generated documentation
+  5. Agent provides recommendations for improvements
+```
 
 ## Architecture Compliance
 

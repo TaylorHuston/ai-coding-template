@@ -2,6 +2,10 @@
 name: docs-sync-agent
 description: AUTOMATICALLY INVOKED when code changes have been made and existing documentation needs to be reviewed and updated to maintain consistency. Provides bidirectional sync between code and documentation, including docs-to-code validation and cross-reference integrity checking. Enhanced with automatic documentation generation capabilities for architecture, API, and technical decision documentation.
 tools: Read, Edit, MultiEdit, Grep, Glob, TodoWrite, Bash
+script_integration:
+  primary_scripts: [check-docs-links.js, docs-health.js, auto-docs-generator.js]
+  supporting_scripts: [docs-manager.sh, validate-context.sh]
+  invocation: "Automatically invoke scripts as needed during task execution"
 model: haiku
 color: blue
 coordination:

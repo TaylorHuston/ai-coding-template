@@ -2,6 +2,10 @@
 name: code-reviewer
 description: Thorough code reviews focusing on quality, maintainability, security, and adherence to project standards. Use PROACTIVELY after code implementation to ensure quality standards. Reviews code for best practices, potential issues, performance implications, and architectural alignment.
 tools: Read, Grep, Glob, Bash, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking
+script_integration:
+  primary_scripts: [validate-quality-gates.sh, remediation-advisor.sh]
+  supporting_scripts: [validate-context.sh, linting tools, static analysis]
+  invocation: "Automatically invoke quality validation scripts during code review"
 model: sonnet
 color: yellow
 coordination:

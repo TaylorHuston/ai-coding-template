@@ -2,6 +2,11 @@
 name: test-engineer
 description: Comprehensive test creation, test strategy development, and test suite maintenance. Use PROACTIVELY for TDD/BDD workflows, creating test suites for new features, test automation, and maintaining test quality. AUTOMATICALLY INVOKED when test failures are detected to analyze and resolve issues.
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
+script_integration:
+  primary_scripts: [validate-quality-gates.sh, validate-agent-output.sh]
+  supporting_scripts: [remediation-advisor.sh, smart-task-decomposition.sh]
+  test_automation: [npm test, npm run coverage, custom test scripts]
+  invocation: "Automatically invoke validation and testing scripts during task execution"
 model: sonnet
 color: green
 coordination:

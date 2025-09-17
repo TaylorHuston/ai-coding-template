@@ -219,6 +219,417 @@ node scripts/generate-doc.js --list
 - Automatic directory creation
 - Template variable extraction and defaults
 
+### Workflow & Planning Scripts
+
+#### 🔄 `init-workflow.sh` - Workflow Structure Initialization
+Sets up proper workflow structure for plan → iterate coordination with deliverables tracking.
+
+**Purpose**: Initialize workflow directory structure and files for issue tracking and agent coordination.
+
+**Usage**:
+```bash
+# Initialize workflow for an issue
+./scripts/init-workflow.sh --issue AUTH-123
+
+# Specify custom deliverable name
+./scripts/init-workflow.sh --issue AUTH-123 --deliverable user-management
+
+# Force overwrite existing files
+./scripts/init-workflow.sh --issue AUTH-123 --force
+```
+
+**Features**:
+- Creates deliverables/[DELIVERABLE]/issues/[ISSUE-KEY] structure
+- Generates initial PLAN.md, HANDOFF.yml, and RESEARCH.md files
+- Validates issue key format and deliverable naming
+- Integrates with /plan and /iterate workflow commands
+
+#### 🧠 `smart-task-decomposition.sh` - Intelligent Task Breakdown
+Breaks down complex tasks into manageable, sequential steps with agent assignment hints.
+
+**Purpose**: Decompose large features or complex requirements into actionable tasks for the /iterate workflow.
+
+**Usage**:
+```bash
+# Decompose a feature description
+./scripts/smart-task-decomposition.sh --feature "User authentication system"
+
+# Decompose from issue file
+./scripts/smart-task-decomposition.sh --from-file deliverables/auth/issues/001/requirements.md
+
+# Specify complexity level
+./scripts/smart-task-decomposition.sh --feature "API redesign" --complexity high
+
+# Generate phases for large projects
+./scripts/smart-task-decomposition.sh --feature "Microservices migration" --phases 3
+```
+
+**Features**:
+- AI-powered task decomposition using intelligent analysis
+- Agent assignment hints for each task (<!--agent:agent-name-->)
+- Phase-based organization (P1.X.X, P2.X.X, P3.X.X)
+- Dependency analysis and sequencing
+- Integration with PLAN.md format for /iterate execution
+
+#### 🎯 `distill-context.sh` - Agent Context Preparation
+Generates focused, agent-specific context from verbose HANDOFF.yml and RESEARCH.md files.
+
+**Purpose**: Prepare concise, relevant context for agent execution during /iterate workflow.
+
+**Usage**:
+```bash
+# Prepare context for specific agent
+./scripts/distill-context.sh --agent backend-specialist --task P1.3.0
+
+# Generate context for Claude Code hooks
+./scripts/distill-context.sh --agent test-engineer --prepare
+
+# Output to specific file
+./scripts/distill-context.sh --agent frontend-specialist --output /tmp/context.md
+
+# Quiet mode for automation
+./scripts/distill-context.sh --agent database-specialist --task P2.1.0 --quiet
+```
+
+**Features**:
+- Agent-specific context filtering and summarization
+- Task-specific context extraction
+- Integration with Claude Code hooks system
+- Reduces context window usage while preserving critical information
+- Supports all 18 agent types in the framework
+
+### Changelog & Release Management
+
+#### 📝 `ai-update-changelog.sh` - AI-Friendly Changelog Assistant
+Helps AI coding assistants generate and add changelog entries with proper categorization.
+
+**Purpose**: Streamline changelog maintenance with AI-assisted entry generation and validation.
+
+**Usage**:
+```bash
+# Analyze recent commits and suggest entries
+./scripts/ai-update-changelog.sh analyze --since '1 week ago'
+
+# Add entry interactively
+./scripts/ai-update-changelog.sh add --category Added --reference ISSUE-001 --message "User authentication system"
+
+# Generate entry from specific commit
+./scripts/ai-update-changelog.sh from-commit HEAD
+
+# Generate from issue file
+./scripts/ai-update-changelog.sh from-issue deliverables/auth/issues/001/ISSUE-001-plan.md
+
+# Audit for missing entries
+./scripts/ai-update-changelog.sh audit
+```
+
+**Features**:
+- Intelligent commit analysis for changelog suggestions
+- Proper categorization (Added, Changed, Fixed, Removed, Deprecated, Security)
+- Breaking change detection and marking
+- Integration with deliverables and issue tracking
+- Pre-commit validation support
+
+#### 🔍 `ai-changelog-audit.sh` - Changelog Completeness Auditor
+Audits changelog for missing entries by analyzing git history and commits.
+
+**Purpose**: Ensure changelog completeness by identifying commits that should have changelog entries.
+
+**Usage**:
+```bash
+# Basic audit from last release
+./scripts/ai-changelog-audit.sh
+
+# Audit specific time period
+./scripts/ai-changelog-audit.sh --since "v1.0.0"
+
+# Include all commit types
+./scripts/ai-changelog-audit.sh --include-all
+
+# Generate audit report
+./scripts/ai-changelog-audit.sh --report audit-report.md
+```
+
+**Features**:
+- Git history analysis for missing changelog entries
+- Intelligent filtering of commit types (feature, fix, breaking changes)
+- Suggestion generation for missing entries
+- Integration with release workflow
+- Configurable audit rules and exceptions
+
+#### ✅ `check-changelog.sh` - Changelog Format Validator
+Validates changelog format, structure, and compliance with Keep a Changelog standard.
+
+**Purpose**: Ensure changelog follows proper format and contains required sections.
+
+**Usage**:
+```bash
+# Basic format validation
+./scripts/check-changelog.sh
+
+# Validate specific changelog file
+./scripts/check-changelog.sh --file CHANGELOG.md
+
+# Check for unreleased section
+./scripts/check-changelog.sh --require-unreleased
+
+# Validate before release
+./scripts/check-changelog.sh --validate-release
+```
+
+**Features**:
+- Keep a Changelog format validation
+- Section structure verification (Added, Changed, Fixed, etc.)
+- Link validation for version references
+- Unreleased section requirement checking
+- Integration with release workflow validation
+
+#### 🚀 `release.sh` - Automated Release Management
+Automates the complete release process from changelog to git tagging and publishing.
+
+**Purpose**: Create releases with proper versioning, changelog updates, and git tag management.
+
+**Usage**:
+```bash
+# Create new release
+./scripts/release.sh 1.2.0
+
+# Preview release without changes
+./scripts/release.sh 1.2.0 --dry-run
+
+# Release without pushing to remote
+./scripts/release.sh 1.2.0 --no-push
+
+# Skip git tag creation
+./scripts/release.sh 1.2.0 --no-tag
+```
+
+**Features**:
+- Semantic version validation
+- Automatic changelog section creation from [Unreleased]
+- Git tag creation and annotation
+- Release branch management
+- Integration with CI/CD workflows
+- Rollback capabilities for failed releases
+
+### Quality Assurance & Validation
+
+#### 🛡️ `validate-quality-gates.sh` - Workflow Quality Gate Validator
+Validates quality gates between workflow phases to ensure standards compliance.
+
+**Purpose**: Enforce quality standards at each phase boundary in the /iterate workflow.
+
+**Usage**:
+```bash
+# Validate current phase quality gates
+./scripts/validate-quality-gates.sh
+
+# Validate specific phase
+./scripts/validate-quality-gates.sh --phase P1
+
+# Skip specific checks
+./scripts/validate-quality-gates.sh --skip-tests
+
+# Generate validation report
+./scripts/validate-quality-gates.sh --report quality-report.md
+```
+
+**Features**:
+- Multi-phase quality validation (P1, P2, P3)
+- Test coverage verification
+- Code quality metrics checking
+- Documentation completeness validation
+- Security compliance verification
+- Integration with /iterate workflow
+
+#### 🔎 `validate-agent-output.sh` - Agent Response Validator
+Validates agent outputs for completeness, format, and quality standards.
+
+**Purpose**: Ensure agent responses meet quality standards and contain required information.
+
+**Usage**:
+```bash
+# Validate agent output file
+./scripts/validate-agent-output.sh --file agent-output.md
+
+# Validate specific agent type output
+./scripts/validate-agent-output.sh --agent backend-specialist --file output.md
+
+# Validate HANDOFF.yml entry
+./scripts/validate-agent-output.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
+
+# Strict validation mode
+./scripts/validate-agent-output.sh --strict --file output.md
+```
+
+**Features**:
+- Agent-specific output format validation
+- Required section verification
+- Technical detail completeness checking
+- HANDOFF.yml format validation
+- Integration with post-agent validation hooks
+
+#### 📋 `validate-context.sh` - Context File Validator
+Validates HANDOFF.yml and RESEARCH.md files for proper format and completeness.
+
+**Purpose**: Ensure workflow context files maintain proper structure and required information.
+
+**Usage**:
+```bash
+# Validate context files in current directory
+./scripts/validate-context.sh
+
+# Validate specific HANDOFF.yml
+./scripts/validate-context.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
+
+# Validate RESEARCH.md file
+./scripts/validate-context.sh --research deliverables/auth/issues/001/RESEARCH.md
+
+# Validate entire deliverable
+./scripts/validate-context.sh --deliverable auth/issues/001
+```
+
+**Features**:
+- YAML format validation for HANDOFF.yml
+- Required field verification
+- Markdown structure validation for RESEARCH.md
+- Cross-reference validation between files
+- Integration with workflow state management
+
+#### 💡 `remediation-advisor.sh` - Issue Resolution Assistant
+Suggests fixes and remediation steps for common validation failures and workflow issues.
+
+**Purpose**: Provide intelligent suggestions for resolving workflow and validation issues.
+
+**Usage**:
+```bash
+# Analyze current issues and suggest fixes
+./scripts/remediation-advisor.sh
+
+# Get remediation for specific error
+./scripts/remediation-advisor.sh --error "validation-failed"
+
+# Analyze specific file for issues
+./scripts/remediation-advisor.sh --file HANDOFF.yml
+
+# Generate remediation report
+./scripts/remediation-advisor.sh --report remediation-plan.md
+```
+
+**Features**:
+- Intelligent error analysis and categorization
+- Step-by-step remediation instructions
+- Integration with validation scripts
+- Common issue pattern recognition
+- Automated fix suggestions where possible
+
+### Setup & Configuration Scripts
+
+#### ⚙️ `setup-git-hooks.sh` - Git Hooks Configuration
+Configures git hooks for automated validation and workflow enforcement.
+
+**Purpose**: Set up git hooks to enforce quality standards and workflow compliance.
+
+**Usage**:
+```bash
+# Install all git hooks
+./scripts/setup-git-hooks.sh
+
+# Install specific hook type
+./scripts/setup-git-hooks.sh --type pre-commit
+
+# Force overwrite existing hooks
+./scripts/setup-git-hooks.sh --force
+
+# Uninstall all hooks
+./scripts/setup-git-hooks.sh --uninstall
+```
+
+**Features**:
+- Pre-commit validation hook installation
+- Pre-push quality gate enforcement
+- Commit message format validation
+- Integration with workflow validation scripts
+- Backup and restore of existing hooks
+
+#### 📚 `auto-docs-generator.js` - Automatic Documentation Generator
+Generates architectural documentation automatically from codebase analysis and templates.
+
+**Purpose**: Create and maintain technical documentation through automated analysis and generation.
+
+**Usage**:
+```bash
+# Generate all documentation types
+node scripts/auto-docs-generator.js --type all
+
+# Generate specific documentation
+node scripts/auto-docs-generator.js --type tech-stack
+node scripts/auto-docs-generator.js --type system-overview
+node scripts/auto-docs-generator.js --type dependencies
+
+# Use custom template
+node scripts/auto-docs-generator.js --type tech-stack --template custom-template.md
+
+# Output to specific directory
+node scripts/auto-docs-generator.js --type all --output docs/generated/
+```
+
+**Features**:
+- Technology stack documentation generation
+- System overview and architecture diagrams
+- Dependency graph creation
+- Template-based documentation generation
+- Integration with docs-manager.sh auto-docs command
+- Automatic codebase analysis and pattern detection
+
+### Git Hook Validation Scripts
+
+The `hooks/` subdirectory contains specialized validation scripts that integrate with git hooks for automated quality enforcement:
+
+#### 🔒 `hooks/pre-task-validation.sh` - Pre-Task Execution Validator
+Validates system state and requirements before task execution in /iterate workflow.
+
+**Purpose**: Ensure proper setup and context before agent task execution.
+
+**Features**:
+- Environment validation
+- Required file existence checking
+- Context file format validation
+- Dependency verification
+
+#### ✏️ `hooks/pre-edit-validation.sh` - Pre-Edit File Validator
+Validates files and permissions before allowing edits during workflow execution.
+
+**Purpose**: Prevent destructive edits and ensure file integrity.
+
+**Features**:
+- File permission validation
+- Backup creation before edits
+- Critical file protection
+- Edit scope validation
+
+#### ✅ `hooks/post-agent-validation.sh` - Post-Agent Output Validator
+Validates agent outputs and updates workflow state after agent completion.
+
+**Purpose**: Ensure agent work meets quality standards before workflow progression.
+
+**Features**:
+- Agent output format validation
+- Workflow state updates
+- Quality gate enforcement
+- HANDOFF.yml updates
+
+#### 🔄 `hooks/workflow-state-check.sh` - Workflow State Consistency Checker
+Validates workflow state consistency across all coordination files.
+
+**Purpose**: Maintain consistency between PLAN.md, HANDOFF.yml, and RESEARCH.md.
+
+**Features**:
+- Cross-file consistency validation
+- State synchronization checking
+- Progress tracking validation
+- Workflow integrity enforcement
+
 ### Support Libraries
 
 #### 🎨 `lib/colors.sh` - Color Management

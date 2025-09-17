@@ -72,17 +72,28 @@ For each task execution:
    - Extract CRITICAL_CONTEXT from RESEARCH.md
    - Validate context integrity: `scripts/validate-context.sh`
 
-2. **Agent Execution (Orchestrated)**
+2. **Agent Execution (Orchestrated with Script Integration)**
    - Validate agent exists in .claude/agents/ directory
+   - **Auto Script Integration**: Agent intelligently invokes relevant scripts:
+     ```yaml
+     agent_script_mapping:
+       test-engineer: [validate-quality-gates.sh, test validation scripts]
+       docs-sync-agent: [check-docs-links.js, docs-health.js]
+       security-auditor: [security validation scripts]
+       code-reviewer: [validation scripts, linting tools]
+       devops-engineer: [deployment scripts, environment validation]
+     ```
    - Generate focused context: `scripts/distill-context.sh --agent AGENT-TYPE --task TASK-ID`
    - Construct comprehensive prompt including:
      - Current task P X.X.X with full description
+     - **Script Integration Context**: Available scripts the agent can invoke
      - Distilled technical specifications from previous agents
      - CRITICAL_CONTEXT requirements from RESEARCH.md
      - Focused handoff context relevant to agent type
      - Quality requirements and success criteria
-   - Call agent via Task tool with focused context in prompt
-   - Agent executes task and returns structured results
+   - Call agent via Task tool with enhanced context in prompt
+   - **Agent Script Orchestration**: Agent automatically invokes appropriate scripts during execution
+   - Agent executes task and returns structured results with script outputs
    - Validate agent output: `scripts/validate-agent-output.sh --output AGENT-OUTPUT --task TASK-ID`
 
 3. **Post-Execution Coordination**
@@ -97,18 +108,23 @@ For each task execution:
    - Update CHANGELOG.md if user-facing changes made
    - Update STATUS.md timestamp and progress
 
-4. **Quality Gate Enforcement with Smart Recovery**
-   - Run automated quality checks: `scripts/validate-quality-gates.sh`
-   - If quality gates fail, run remediation analysis: `scripts/remediation-advisor.sh`
-   - Block progression on critical failures:
-     - Test failures → Suggests test-engineer for remediation
-     - Build failures → Suggests devops-engineer or relevant specialist
-     - Security vulnerabilities → Suggests security-auditor
-   - If multiple failures, analyze task complexity: `scripts/smart-task-decomposition.sh --task TASK-ID --failure-reason "quality gates"`
-   - Allow progression with warnings for:
-     - Coverage below threshold (with remediation suggestions)
-     - Minor linting issues (with auto-fix recommendations)
-     - Documentation gaps (with docs-maintainer suggestions)
+4. **Quality Gate Enforcement with Intelligent Script Integration**
+   - **Agent-Driven Quality Validation**: Quality checks now handled by specialized agents:
+     ```yaml
+     quality_gate_agents:
+       code_quality: code-reviewer (auto-invokes linting and validation scripts)
+       test_coverage: test-engineer (auto-invokes test validation scripts)
+       security_compliance: security-auditor (auto-invokes security scanning scripts)
+       documentation: docs-sync-agent (auto-invokes docs validation scripts)
+     ```
+   - **Smart Recovery with Agent Orchestration**:
+     - Test failures → test-engineer automatically invokes `validate-quality-gates.sh` and provides fix
+     - Build failures → devops-engineer automatically diagnoses and suggests solutions
+     - Security vulnerabilities → security-auditor automatically scans and provides remediation
+     - Documentation gaps → docs-sync-agent automatically validates and updates
+   - **Automatic Script Orchestration**: Agents determine which scripts to run based on task context
+   - **Progressive Quality Enforcement**: Quality gates adapt to workflow phase and complexity
+   - **Intelligent Recovery**: `scripts/remediation-advisor.sh` integrated into agent decision-making
 
 5. **Phase Transition Management**
    - Detect phase completion when all P X.X.X tasks checked
