@@ -90,6 +90,16 @@ check_prerequisites() {
         log_error "Git not installed (required)"
         has_errors=true
     fi
+
+    # Check jq (required for git hooks)
+    if command -v jq &> /dev/null; then
+        local jq_version=$(jq --version)
+        log_success "jq installed: $jq_version"
+    else
+        log_error "jq not installed (required for git hooks)"
+        log_info "Install with: sudo apt-get install jq (Ubuntu/Debian) or brew install jq (macOS)"
+        has_errors=true
+    fi
     
     # Check Docker (optional)
     if command -v docker &> /dev/null; then
@@ -297,9 +307,22 @@ setup_tools() {
         log_success "Dependencies installed"
     fi
     
-    # Check for common development tools
-    local tools=("git" "node" "code")
-    for tool in "${tools[@]}"; do
+    # Check for required system tools
+    local required_tools=("git" "jq")
+    local optional_tools=("node" "code")
+
+    for tool in "${required_tools[@]}"; do
+        if command -v "$tool" &> /dev/null; then
+            log_success "$tool is available"
+        else
+            log_error "$tool is required but not found"
+            log_info "Please install $tool and try again"
+            return 1
+        fi
+    done
+
+    # Check for optional development tools
+    for tool in "${optional_tools[@]}"; do
         if command -v "$tool" &> /dev/null; then
             log_success "$tool is available"
         else

@@ -17,8 +17,23 @@ tags: ["setup", "quick-start", "onboarding"]
 ### Prerequisites
 - Git (2.25+)
 - Node.js (16+) - for JavaScript-based automation scripts
+- jq (1.6+) - for advanced git hook validation and JSON processing
 - Your preferred editor (VS Code, Cursor, etc.)
 - AI assistant account (Claude, GitHub Copilot, etc.)
+
+#### Installing jq
+```bash
+# Ubuntu/Debian
+sudo apt-get install jq
+
+# macOS
+brew install jq
+
+# Windows (via Chocolatey)
+choco install jq
+
+# Or download from: https://jqlang.github.io/jq/download/
+```
 
 ### Installation
 
