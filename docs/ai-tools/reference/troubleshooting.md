@@ -407,7 +407,7 @@ tail -f scripts/logs/ai-status.log
 1. **Check Documentation**:
 
    - Quick Reference: `docs/reference/`
-   - Agent docs: `.claude/agents/INDEX.md`
+   - Agent docs: `.claude/agents/README.md`
    - Guides: `docs/guides/`
 
 2. **Run Diagnostics**:

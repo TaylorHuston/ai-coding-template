@@ -401,7 +401,7 @@ interface UserCreateResponse {
 **Solutions**:
 - Be explicit about agent choice
 - Use project-manager for complex tasks
-- Reference .claude/agents/INDEX.md
+- Reference .claude/agents/README.md
 - Provide clear domain context
 
 ### Best Practices

@@ -190,7 +190,7 @@ function checkProjectStructure() {
     const requiredFiles = [
         'START-HERE.md',
         'TEMPLATES-EXAMPLES-INDEX.md',
-        '.claude/agents/INDEX.md',
+        '.claude/agents/README.md',
         'scripts/ai-status.sh'
     ];
 

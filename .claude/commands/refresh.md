@@ -13,7 +13,7 @@ Refresh AI assistant context on project by:
    3. Read the last two git commits to understand recent changes
    4. Check any active issue tracking or project management system status
    5. Read any uncommitted, changed files to understand current work
-2. **AI Framework**: Read .claude/agents/INDEX.md for agent capabilities
+2. **AI Framework**: Read .claude/agents/README.md for agent capabilities
 3. **Project Conventions**: Read CLAUDE.md for project-specific guidelines
 4. **Script Index**: Read scripts/README.md for overview of current helper scripts
 5. **Technical Details**: Read CLAUDE.md for system guidelines and docs/quality-standards.md for requirements

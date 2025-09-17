@@ -102,7 +102,7 @@ for agent in context-analyzer frontend-specialist backend-specialist security-au
 done
 
 # Get agent index
-curl -o .claude/agents/INDEX.md "https://raw.githubusercontent.com/yourusername/ai-coding-template/main/.claude/agents/INDEX.md"
+curl -o .claude/agents/README.md "https://raw.githubusercontent.com/yourusername/ai-coding-template/main/.claude/agents/README.md"
 ```
 
 ### Step 3: Create Context Files
@@ -250,7 +250,7 @@ cat > scripts/validate-integration.sh << 'EOF'
 echo "🔍 Validating AI template integration..."
 
 # Check essential files
-files=("CLAUDE.md" "STATUS.md" "docs/technical.md" ".claude/agents/INDEX.md")
+files=("CLAUDE.md" "STATUS.md" "docs/technical.md" ".claude/agents/README.md")
 for file in "${files[@]}"; do
   if [ -f "$file" ]; then
     echo "✅ $file exists"

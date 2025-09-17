@@ -264,4 +264,4 @@ Multiple team members can work with agents:
 - [Commands Reference](../reference/commands.md) - Slash commands for agent coordination
 - [Troubleshooting](../reference/troubleshooting.md) - Solve agent-related issues
 
-**Technical Details:** See `.claude/agents/INDEX.md` for complete agent specifications and technical details.
+**Technical Details:** See `.claude/agents/README.md` for complete agent specifications and technical details.

@@ -228,4 +228,4 @@ Agents coordinate seamlessly:
 - [AI Collaboration Guide](./ai-collaboration-guide.md) - Advanced AI collaboration techniques
 - [Commands Reference](../reference/commands.md) - Slash commands for agent coordination
 
-**Technical Details:** See `.claude/agents/INDEX.md` for complete agent specifications and technical configuration.
+**Technical Details:** See `.claude/agents/README.md` for complete agent specifications and technical configuration.

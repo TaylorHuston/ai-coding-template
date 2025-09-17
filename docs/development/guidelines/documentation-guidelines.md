@@ -135,7 +135,9 @@ See [YAML Frontmatter Schema](./templates/yaml-frontmatter-schema.md) for the co
 - Use **lowercase-kebab-case** exclusively (e.g., `authentication-guide.md`)
 - Be descriptive but concise
 - No redundant suffixes (avoid `guide` in guides/ folder)
-- Use README.md as index for directories
+- **Always use README.md** for directory documentation
+- Never use INDEX.md or other variations
+- This ensures GitHub auto-rendering and developer familiarity
 
 ### Document Length and Optimization Guidelines
 

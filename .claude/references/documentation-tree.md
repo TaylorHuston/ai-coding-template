@@ -35,7 +35,7 @@ maintainer: "docs-sync-agent"
 ├── mcp-integration-guide.md            # MCP server setup and configuration guide
 ├── precedence.md                       # AI instruction precedence and conflict resolution
 ├── agents/
-│   ├── INDEX.md                        # Complete agent catalog and selection guide
+│   ├── README.md                       # Complete agent catalog and selection guide
 │   ├── ai-llm-expert.md               # AI/LLM architecture and implementation specialist
 │   ├── api-designer.md                # API design and service contract specialist
 │   ├── backend-specialist.md          # Server-side implementation and business logic expert
@@ -213,7 +213,7 @@ scripts/
 - `docs/README.md` - Documentation hub
 
 ### **AI Framework** (Essential for AI Development)
-- `.claude/agents/INDEX.md` - Agent catalog
+- `.claude/agents/README.md` - Agent catalog
 - `docs/ai-tools/guides/using-agents.md` - Agent usage guide
 - `docs/ai-tools/reference/commands.md` - Command reference
 - `CLAUDE.md` - AI instructions

@@ -68,7 +68,7 @@ cp templates/CHANGELOG.template.md CHANGELOG.md
 - **`CLAUDE.md`** - Instructions for AI assistants
 - **`STATUS.md`** - Project memory and context
 - **`docs/ai-agents-guide.md`** - Agent system reference
-- **`.claude/agents/INDEX.md`** - Complete agent reference
+- **`.claude/agents/README.md`** - Complete agent reference
 - **`docs/README.md`** - Documentation navigation hub
 
 ### Scripts Available
@@ -80,7 +80,7 @@ cp templates/CHANGELOG.template.md CHANGELOG.md
 
 ### For New Projects
 1. **Update STATUS.md** with your project details
-2. **Configure agents** by reading `.claude/agents/INDEX.md`
+2. **Configure agents** by reading `.claude/agents/README.md`
 3. **Set up development environment** using [Local Environment Setup](../guides/implementation/environment-setup.md)
 
 ### For Existing Projects
