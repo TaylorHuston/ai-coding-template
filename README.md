@@ -476,9 +476,10 @@ cd ai-coding-template
 
 ### Related Projects
 
-- [GitHub Spec Kit](https://github.com/github/spec-kit) - Specification-driven development
+
 - [AB Method](https://github.com/ayoubben18/ab-method) - Alternative AI development approach
 - [GitHub: Spec Driven Development](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/) - AI-powered specification development
+- [GitHub Spec Kit](https://github.com/github/spec-kit) - Specification-driven development
 
 ---
 

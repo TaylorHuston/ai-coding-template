@@ -80,13 +80,15 @@ This template transforms AI from a simple code generator into an intelligent arc
 - **Context Preservation**: Complete handoff context maintained across all tasks
 - **Script Integration**: Agents automatically invoke appropriate scripts with full context
 - **Intelligent Coordination**: Scripts serve agents, not users directly
+- **Tutoring Mode**: `--instruct` flag transforms execution into interactive teaching mode
 
 **Example Usage**:
 ```bash
-/iterate
-# → Executes P1.1.0 with assigned agent
-# → Updates coordination files with results
-# → Quality gate validation and progression
+/iterate                    # Execute task with agent coordination
+/iterate --instruct P1.3.0  # Tutoring mode: learn approach without changes
+# → Agent explains approach and reasoning
+# → Interactive Q&A session for understanding
+# → No file modifications (purely educational)
 ```
 
 ### The Complete Workflow in Action
@@ -118,6 +120,7 @@ QUALITY EXECUTION:
 3. **Multi-Agent Expertise**: Leverage 17 specialized agents with perfect coordination
 4. **Quality Assurance**: Built-in gates prevent progression without validation
 5. **Scalability**: Works for simple features to complex architectural changes
+6. **Learning Mode**: `--instruct` flag enables mentorship and understanding before implementation
 
 ### Everything Else Supports This Workflow
 
@@ -463,11 +466,17 @@ Planning Tools:
 
 ### During `/iterate` (Task Execution)
 ```yaml
-Execution Tools:
+Execution Mode:
   - Read: Always read context from HANDOFF.yml and RESEARCH.md
   - Task: Execute agents with complete context for each P X.X.X task (agents automatically coordinate scripts)
   - Edit/MultiEdit: Update coordination files after agent completion
   - /quality validate: Intelligent quality gates with multi-agent coordination
+
+Tutoring Mode (--instruct):
+  - Read: Same context gathering as execution mode
+  - Task: Call agent with tutoring-specific prompt for educational response
+  - Interactive Q&A: Enable follow-up questions and clarifications
+  - No file updates: Purely educational, task remains available for execution
 
 Quality Assurance:
   - /quality assess: Multi-dimensional quality analysis with automatic script coordination

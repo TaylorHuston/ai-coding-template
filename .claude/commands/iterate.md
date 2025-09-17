@@ -1,6 +1,6 @@
 ---
 description: Execute tasks from PLAN.md files with multi-agent coordination
-argument-hint: [TASK-ID] [--force] [--agent AGENT-NAME]
+argument-hint: [TASK-ID] [--force] [--agent AGENT-NAME] [--instruct]
 allowed-tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 model: sonnet
 ---
@@ -26,14 +26,23 @@ Executes tasks from PLAN.md files using the structured P X.X.X numbering system 
 - Updates STATUS.md with phase summaries
 - Validates task completion before progression
 
+**Tutoring Mode (`--instruct` flag):**
+- Agent explains their planned approach and reasoning without making changes
+- Interactive Q&A session for learning and understanding
+- Detailed explanation of implementation patterns and best practices
+- User can ask follow-up questions and request clarifications
+- Agent provides code examples and explanations in teaching format
+- No file modifications or coordination updates (purely educational)
+
 ## Usage Patterns
 
 ```bash
 /iterate                    # Execute next unchecked task in current phase
 /iterate P2.3.0            # Execute specific task P2.3.0
 /iterate 1.4.0             # Execute specific task (P prefix optional)
-/iterate --force P1.5.0    # Execute task even if previous tasks incomplete
+/iterate --force P1.5.0    # Execute task even if prerequisites incomplete
 /iterate --agent test-engineer P1.2.0  # Override agent hint
+/iterate --instruct P1.3.0 # Tutoring mode: agent explains approach without making changes
 ```
 
 ## Orchestrator Architecture with Hooks
@@ -134,6 +143,54 @@ For each task execution:
    - Update HANDOFF.yml current_phase to next phase
    - Next iteration automatically starts next phase tasks
 
+## Tutoring Mode Workflow (`--instruct`)
+
+When using the `--instruct` flag, `/iterate` transforms from execution mode into an interactive teaching mode:
+
+### Tutoring Mode Process
+
+1. **Context Gathering** (Same as execution mode)
+   - Parse PLAN.md and locate target task
+   - Read HANDOFF.yml for previous agent context
+   - Extract CRITICAL_CONTEXT from RESEARCH.md
+   - Validate context integrity
+
+2. **Agent Teaching Session**
+   - Call agent via Task tool with tutoring-specific prompt:
+     - "Explain your approach to this task without making changes"
+     - "Provide detailed reasoning and educational context"
+     - "Prepare for interactive Q&A with the user"
+   - Agent returns comprehensive teaching response including:
+     - Detailed explanation of planned approach
+     - Implementation patterns and best practices
+     - Code examples with explanations
+     - Architectural considerations and trade-offs
+     - Potential challenges and solutions
+
+3. **Interactive Learning Session**
+   - Present agent's teaching response to user
+   - Enable interactive Q&A dialogue:
+     - User can ask clarifying questions
+     - Agent provides additional explanations
+     - Discussion of alternatives and trade-offs
+     - Deep dive into specific concepts as needed
+   - Session continues until user indicates understanding
+
+4. **Educational Completion**
+   - No file updates or task marking (task remains unchecked)
+   - No coordination file updates
+   - Optional: User can run `/iterate P1.3.0` (without `--instruct`) to execute
+   - Task stays available for actual execution after learning
+
+### Tutoring Mode Benefits
+
+- **Learn Before Doing**: Understand the approach before implementation
+- **Pattern Recognition**: Learn implementation patterns and architectural decisions
+- **Safe Exploration**: Explore alternatives without affecting codebase
+- **Mentorship Experience**: Get expert-level guidance from specialized agents
+- **Interactive Learning**: Ask questions and get immediate clarification
+- **Context Preservation**: All context remains intact for actual execution later
+
 ## Error Handling
 
 **File Issues:**
@@ -211,6 +268,7 @@ Note: Agents DO NOT update files directly - /iterate handles all file updates
 - **TASK-ID**: Specific task to execute (e.g., P2.3.0, 1.4.0)
 - **--force**: Execute task even if prerequisites incomplete (also affects hooks)
 - **--agent AGENT-NAME**: Override agent hint with specific agent
+- **--instruct**: Tutoring mode - agent explains approach without making changes
 - **--dry-run**: Show what would be executed without running
 - **--context-only**: Display context that would be passed to agent
 
