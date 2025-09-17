@@ -1,7 +1,7 @@
 ---
 name: context-analyzer
 description: AUTOMATICALLY INVOKED before complex tasks to gather comprehensive project context including documentation, architecture patterns, existing code, and project status. This agent MUST BE USED PROACTIVELY before implementing features, making architectural changes, or starting multi-step development work. Provides enriched context to other agents for better decision-making.
-tools: Read, Grep, Glob, TodoWrite
+tools: Read, Grep, Glob, TodoWrite, mcp__serena__get_symbols_overview, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__search_for_pattern
 model: haiku
 color: green
 coordination:
@@ -51,6 +51,12 @@ Framework Detection:
 - Identify primary framework (React, Django, Express, etc.)
 - Find framework-specific patterns and conventions
 - Locate framework configuration files
+
+Semantic Analysis (via Serena):
+- Use mcp__serena__get_symbols_overview for intelligent code structure analysis
+- Analyze component relationships and dependencies semantically
+- Understand data flow patterns through semantic code analysis
+- Discover usage patterns and architectural conventions
 ```
 
 ### 2. Context Synthesis Process
@@ -243,14 +249,38 @@ find . -type d -name "*test*" -o -name "*spec*" | head -5
 
 ### Pattern Discovery
 ```bash
-# Common naming patterns
+# Traditional text-based discovery
 find . -name "*.js" -o -name "*.ts" -o -name "*.py" | head -20 | xargs basename -s
-
-# Import/export patterns
 grep -r "import\|require\|from" --include="*.js" --include="*.ts" . | head -10
-
-# Configuration patterns
 find . -name ".*rc" -o -name "*.config.*" -o -name "config.*" | head -10
+```
+
+### Semantic Pattern Discovery (Enhanced with Serena)
+```yaml
+semantic_analysis_workflow:
+  code_structure_analysis:
+    - Use mcp__serena__get_symbols_overview on key source files
+    - Identify main classes, functions, and modules semantically
+    - Map component hierarchies and relationships
+    - Understand inheritance and composition patterns
+
+  dependency_analysis:
+    - Use mcp__serena__find_referencing_symbols to map usage patterns
+    - Trace data flow through semantic relationships
+    - Identify coupling and cohesion patterns
+    - Map API usage and integration points
+
+  architectural_pattern_detection:
+    - Use mcp__serena__search_for_pattern for architectural patterns
+    - Detect MVC, MVVM, Clean Architecture implementations
+    - Identify design patterns (Factory, Observer, Strategy, etc.)
+    - Map service layer and business logic organization
+
+  integration_pattern_analysis:
+    - Analyze database integration patterns through semantic search
+    - Map API client/server patterns and implementations
+    - Understand error handling and logging patterns
+    - Identify testing and mocking strategies
 ```
 
 ## Integration with Agent Workflows
