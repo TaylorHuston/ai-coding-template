@@ -18,6 +18,7 @@ tags: ["workflow", "features", "requirements"]
 ```bash
 /feature --new "User Authentication"
 # Creates docs/technical/features/user-authentication.md from template
+# Automatically validates against vision document if present
 ```
 
 ### Update Existing Feature
@@ -29,7 +30,13 @@ tags: ["workflow", "features", "requirements"]
 ### Link to External Issue
 ```bash
 /feature --new "Payment Processing" --external JIRA-PAY-123
-# Creates feature doc with external reference
+# Creates feature doc with external reference and vision alignment check
+```
+
+### Validate Feature Against Vision
+```bash
+/feature --validate user-authentication
+# Checks feature alignment with current vision document
 ```
 
 ### List Features
@@ -82,6 +89,7 @@ implementations/2024-01-15-auth.md → What steps we took
 ```
 
 ### Relationship to Other Commands
+- **After `/vision`**: Features must align with and support core product vision
 - **Before `/architect`**: Define what you're building before deciding how
 - **References external tools**: Links to Jira/Linear when available
 - **Informs `/plan`**: Feature context guides implementation planning

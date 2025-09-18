@@ -3,7 +3,8 @@
 # Consolidates all setup scripts into a single entry point
 # Usage: ./scripts/setup-manager.sh <command> [options]
 
-set -e
+set -eE  # Also trap ERR
+trap 'echo "❌ Error at line $LINENO in function ${FUNCNAME[1]:-main}" >&2; echo "Last command: $BASH_COMMAND" >&2' ERR
 
 # Source shared libraries
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -19,6 +20,11 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 ENV_FILE="$PROJECT_ROOT/.env"
 ENV_LOCAL_FILE="$PROJECT_ROOT/.env.local"
 ENV_EXAMPLE="$PROJECT_ROOT/.env.example"
+
+# Utility function to safely escape variables for sed replacement
+escape_sed_replacement() {
+    printf '%s\n' "$1" | sed 's/[[\.*^$()+?{|]/\\&/g; s|/|\\/|g'
+}
 
 # Display usage
 show_usage() {
@@ -499,382 +505,16 @@ check_claude_code() {
     fi
 }
 
-# Project type selection with intelligent defaults
-select_project_type() {
-    log_header "🎯 Project Discovery"
-    log_info "Let's understand what you're building to provide the best setup..."
-    echo
 
-    echo "$(log_color cyan "What type of project are you creating?")"
-    echo "  1) 🌐 Web Application (React, Vue, Angular, etc.)"
-    echo "  2) 🔗 API/Backend Service (Node.js, Python, Go, etc.)"
-    echo "  3) ⚡ CLI Tool/Utility"
-    echo "  4) 📦 JavaScript Library/Package"
-    echo "  5) 📱 Mobile Application (React Native, Flutter, etc.)"
-    echo "  6) 🏢 Enterprise Application (with compliance needs)"
-    echo
 
-    local project_type=""
-    while [[ -z "$project_type" ]]; do
-        read -p "$(log_color yellow "Select [1-6]: ")" selection
-        case $selection in
-            1) project_type="web-app"; break ;;
-            2) project_type="api-service"; break ;;
-            3) project_type="cli-tool"; break ;;
-            4) project_type="library"; break ;;
-            5) project_type="mobile-app"; break ;;
-            6) project_type="enterprise"; break ;;
-            *) log_warning "Please select 1-6" ;;
-        esac
-    done
 
-    echo "$project_type"
-}
 
-# Business context discovery
-discover_business_context() {
-    local project_type=$1
-
-    echo
-    log_info "Understanding your business context..."
-    echo
-
-    echo "$(log_color cyan "What's the business context for this project?")"
-    echo "  1) 🏢 B2B SaaS Application"
-    echo "  2) 👥 Consumer Application"
-    echo "  3) 🏭 Internal Company Tool"
-    echo "  4) 🌍 Open Source Project"
-    echo "  5) 📚 Educational/Learning Project"
-    echo "  6) 🔬 Research/Prototype"
-    echo
-
-    local business_context=""
-    while [[ -z "$business_context" ]]; do
-        read -p "$(log_color yellow "Select [1-6]: ")" selection
-        case $selection in
-            1) business_context="b2b-saas"; break ;;
-            2) business_context="consumer"; break ;;
-            3) business_context="internal"; break ;;
-            4) business_context="open-source"; break ;;
-            5) business_context="educational"; break ;;
-            6) business_context="research"; break ;;
-            *) log_warning "Please select 1-6" ;;
-        esac
-    done
-
-    echo "$business_context"
-}
-
-# Team context discovery
-discover_team_context() {
-    echo
-    log_info "Understanding your team setup..."
-    echo
-
-    echo "$(log_color cyan "What's your team structure?")"
-    echo "  1) 👤 Solo developer"
-    echo "  2) 👥 Small team (2-5 people)"
-    echo "  3) 🏢 Medium team (5-15 people)"
-    echo "  4) 🏗️ Enterprise team (15+ people)"
-    echo
-
-    local team_size=""
-    while [[ -z "$team_size" ]]; do
-        read -p "$(log_color yellow "Select [1-4]: ")" selection
-        case $selection in
-            1) team_size="solo"; break ;;
-            2) team_size="small"; break ;;
-            3) team_size="medium"; break ;;
-            4) team_size="enterprise"; break ;;
-            *) log_warning "Please select 1-4" ;;
-        esac
-    done
-
-    echo "$team_size"
-}
-
-# External system integration discovery
-configure_external_systems() {
-    local team_size=$1
-
-    # Skip for solo developers unless they specifically want it
-    if [[ "$team_size" == "solo" ]]; then
-        read -p "$(log_color yellow "Do you use external project management or documentation tools? [y/N]: ")" use_external
-        if [[ ! "$use_external" =~ ^[Yy] ]]; then
-            return 0
-        fi
-    fi
-
-    echo
-    log_info "Let's connect your existing development tools..."
-    echo
-
-    # Project Management
-    echo "$(log_color cyan "Project Management System:")"
-    echo "  1) Jira"
-    echo "  2) Linear"
-    echo "  3) GitHub Issues"
-    echo "  4) Asana"
-    echo "  5) None/Other"
-    echo
-
-    read -p "$(log_color yellow "Select [1-5]: ")" pm_selection
-    local pm_system=""
-    local pm_url=""
-    local pm_project=""
-
-    case $pm_selection in
-        1) pm_system="jira" ;;
-        2) pm_system="linear" ;;
-        3) pm_system="github" ;;
-        4) pm_system="asana" ;;
-        5) pm_system="none" ;;
-    esac
-
-    if [[ "$pm_system" != "none" ]]; then
-        read -p "$(log_color yellow "Base URL (e.g., company.atlassian.net): ")" pm_url
-        read -p "$(log_color yellow "Project key/identifier: ")" pm_project
-    fi
-
-    # Documentation System
-    echo
-    echo "$(log_color cyan "Documentation System:")"
-    echo "  1) Confluence"
-    echo "  2) Notion"
-    echo "  3) GitBook"
-    echo "  4) Just Git/Markdown"
-    echo "  5) None/Other"
-    echo
-
-    read -p "$(log_color yellow "Select [1-5]: ")" doc_selection
-    local doc_system=""
-    local doc_url=""
-
-    case $doc_selection in
-        1) doc_system="confluence" ;;
-        2) doc_system="notion" ;;
-        3) doc_system="gitbook" ;;
-        4) doc_system="git" ;;
-        5) doc_system="none" ;;
-    esac
-
-    if [[ "$doc_system" != "none" && "$doc_system" != "git" ]]; then
-        read -p "$(log_color yellow "Documentation base URL: ")" doc_url
-    fi
-
-    # Export for use in template generation
-    export PM_SYSTEM="$pm_system"
-    export PM_URL="$pm_url"
-    export PM_PROJECT="$pm_project"
-    export DOC_SYSTEM="$doc_system"
-    export DOC_URL="$doc_url"
-}
-
-# Enhanced project vision generation
-generate_project_vision() {
-    local project_name="$1"
-    local project_description="$2"
-    local business_context="$3"
-    local project_type="$4"
-
-    log_info "Generating comprehensive project vision..."
-
-    mkdir -p "$PROJECT_ROOT/docs/technical"
-
-    # Create project vision document
-    cat > "$PROJECT_ROOT/docs/technical/project-vision.md" << EOF
----
-title: "$project_name Project Vision"
-created: "$(date +"%Y-%m-%d")"
-status: "draft"
-business_context: "$business_context"
-project_type: "$project_type"
----
-
-# $project_name - Project Vision
-
-## Problem Statement
-
-$project_description
-
-## Target Audience
-
-### Primary Users
-$(case $business_context in
-    "b2b-saas") echo "- Business professionals seeking to improve their workflow efficiency
-- Companies looking to streamline their operations
-- Teams requiring collaborative solutions" ;;
-    "consumer") echo "- End consumers looking for intuitive solutions
-- Users seeking better user experiences
-- Individuals wanting to solve personal challenges" ;;
-    "internal") echo "- Internal team members and stakeholders
-- Employees requiring improved tools
-- Management seeking operational efficiency" ;;
-    "open-source") echo "- Developers and technical contributors
-- Users seeking open alternatives
-- Community members wanting to contribute" ;;
-    "educational") echo "- Students and learners
-- Educators and instructors
-- Anyone exploring new concepts" ;;
-    "research") echo "- Researchers and academics
-- Industry professionals
-- Innovation teams" ;;
-esac)
-
-### Secondary Users
-- Technical implementers and developers
-- System administrators and operators
-- Support and customer success teams
-
-## Success Metrics
-
-### Primary KPIs
-$(case $business_context in
-    "b2b-saas") echo "- Monthly Recurring Revenue (MRR) growth
-- Customer Acquisition Cost (CAC) reduction
-- Net Promoter Score (NPS) > 50
-- Customer retention rate > 90%" ;;
-    "consumer") echo "- Daily/Monthly Active Users growth
-- User engagement metrics
-- App store ratings > 4.5
-- User retention rates" ;;
-    "internal") echo "- Employee productivity improvement
-- Process efficiency gains
-- Cost reduction metrics
-- User satisfaction scores" ;;
-    "open-source") echo "- GitHub stars and forks
-- Community contributions
-- Issue resolution time
-- Documentation quality scores" ;;
-    "educational") echo "- Learning outcome improvements
-- Student engagement metrics
-- Knowledge retention rates
-- Completion rates" ;;
-    "research") echo "- Research output quality
-- Collaboration effectiveness
-- Discovery acceleration
-- Publication impact" ;;
-esac)
-
-### Technical KPIs
-- System uptime > 99.9%
-- Response time < 200ms (P95)
-- Zero critical security vulnerabilities
-- Test coverage > 80%
-
-## Competitive Landscape
-
-### Direct Competitors
-- [Competitor 1]: [Key differentiator]
-- [Competitor 2]: [Key differentiator]
-- [Competitor 3]: [Key differentiator]
-
-### Our Unique Value Proposition
-- **AI-Enhanced Development**: Built with intelligent development workflows
-- **Quality by Design**: Comprehensive testing and validation from day one
-- **Scalable Architecture**: Designed for growth and evolution
-- **Developer Experience**: Optimized for team productivity
-
-## Technical Vision
-
-### Architecture Principles
-$(case $project_type in
-    "web-app") echo "- Component-driven development
-- Progressive Web App capabilities
-- Mobile-first responsive design
-- Performance-optimized delivery" ;;
-    "api-service") echo "- RESTful API design principles
-- Microservices architecture
-- Event-driven communication
-- Horizontal scalability" ;;
-    "cli-tool") echo "- POSIX compliance
-- Cross-platform compatibility
-- Plugin-based extensibility
-- Zero-dependency operation" ;;
-    "library") echo "- Framework agnostic design
-- Minimal dependencies
-- Tree-shaking optimization
-- TypeScript-first development" ;;
-    "mobile-app") echo "- Native performance
-- Offline-first architecture
-- Platform-specific optimizations
-- Accessibility by design" ;;
-    "enterprise") echo "- Enterprise security standards
-- Compliance-ready architecture
-- Audit trail capabilities
-- Role-based access control" ;;
-esac)
-
-### Technology Constraints
-- Must maintain backward compatibility
-- Security-first development approach
-- Performance budgets and monitoring
-- Accessibility compliance (WCAG 2.1)
-
-## Feature Roadmap
-
-### Phase 1: MVP (Months 1-3)
-- Core functionality implementation
-- Basic user interface
-- Essential integrations
-- Security foundations
-
-### Phase 2: Growth (Months 4-6)
-- Advanced features
-- Performance optimizations
-- Extended integrations
-- User feedback incorporation
-
-### Phase 3: Scale (Months 7-12)
-- Enterprise features
-- Advanced analytics
-- Automation capabilities
-- Ecosystem expansion
-
-## Risk Assessment
-
-### Technical Risks
-- **Scalability challenges**: Mitigation through cloud-native architecture
-- **Security vulnerabilities**: Mitigation through automated security scanning
-- **Performance bottlenecks**: Mitigation through continuous monitoring
-- **Integration complexity**: Mitigation through standardized APIs
-
-### Business Risks
-- **Market competition**: Mitigation through unique value proposition
-- **User adoption**: Mitigation through user-centered design
-- **Resource constraints**: Mitigation through agile development
-- **Technology obsolescence**: Mitigation through modular architecture
-
-## Success Criteria
-
-### Definition of Done
-- Feature complete according to acceptance criteria
-- All tests passing (unit, integration, E2E)
-- Security review completed
-- Performance benchmarks met
-- Documentation updated
-- User feedback incorporated
-
-### Launch Readiness
-- Production environment verified
-- Monitoring and alerting configured
-- Support processes established
-- User onboarding completed
-- Rollback procedures tested
-
----
-
-*This vision document is living and should be updated as the project evolves.*
-EOF
-
-    log_success "Created comprehensive project vision: docs/technical/project-vision.md"
-}
 
 # Project initialization - Transform template to real project
 init_project() {
     local force=$1
 
-    log_header "🚀 Intelligent Project Initialization"
+    log_header "🚀 Project Initialization"
 
     # Check if this looks like a fresh template clone
     if [[ -f "$PROJECT_ROOT/.template-initialized" ]] && [[ "$force" != "true" ]]; then
@@ -883,29 +523,9 @@ init_project() {
         return 1
     fi
 
-    # Phase 1: Environment verification
-    log_info "🔍 Phase 1: Environment Verification"
-    local has_claude_code=false
-    if check_claude_code; then
-        has_claude_code=true
-    fi
-    echo
+    # Collect essential project details
+    log_info "📝 Project Details"
 
-    # Phase 2: Project discovery
-    log_info "🎯 Phase 2: Project Discovery"
-    local project_type=$(select_project_type)
-    local business_context=$(discover_business_context "$project_type")
-    local team_size=$(discover_team_context)
-
-    # Phase 3: External systems
-    log_info "🔗 Phase 3: External Integration"
-    configure_external_systems "$team_size"
-    echo
-
-    # Phase 4: Basic project details
-    log_header "📝 Project Details"
-
-    # Interactive project details collection with intelligent defaults
     local project_name=""
     local project_slug=""
     local project_description=""
@@ -913,7 +533,6 @@ init_project() {
     local author_email=""
     local repo_url=""
     local license_type="MIT"
-    local tech_stack=""
 
     # Get current git user info if available
     if command -v git &> /dev/null; then
@@ -968,9 +587,6 @@ init_project() {
         license_type="$input_license"
     fi
 
-    # Tech stack
-    read -p "$(log_color yellow "Tech Stack (e.g., React, Node.js, PostgreSQL): ")" tech_stack
-
     echo
     log_info "Project Details:"
     log_info "  Name: $project_name"
@@ -979,7 +595,6 @@ init_project() {
     log_info "  Author: $author_name <$author_email>"
     log_info "  Repository: ${repo_url:-"Not specified"}"
     log_info "  License: $license_type"
-    log_info "  Tech Stack: ${tech_stack:-"Not specified"}"
     echo
 
     read -p "$(log_color yellow "Continue with project initialization? [Y/n]: ")" confirm
@@ -1014,161 +629,137 @@ init_project() {
         log_success "Archived templates index → docs/ai-tools/templates-and-examples.md"
     fi
 
-    # 2. Generate project vision
-    generate_project_vision "$project_name" "$project_description" "$business_context" "$project_type"
+    # 2. Create standard-readme compliant README.md
+    log_info "Creating standard README.md..."
 
-    # 3. Create project README from intelligent template selection
-    log_info "Creating project README..."
-
-    # Select appropriate template based on project type
-    local readme_template="$PROJECT_ROOT/templates/docs/project/$project_type-template.md"
-
-    # Fallback to basic template if specific one doesn't exist
-    if [[ ! -f "$readme_template" ]]; then
-        readme_template="$PROJECT_ROOT/templates/docs/project/project-readme-template.md"
-    fi
+    local readme_template="$PROJECT_ROOT/templates/documentation/project/standard-readme.template.md"
+    local current_year=$(date +"%Y")
 
     if [[ -f "$readme_template" ]]; then
-        # Gather external system information
-        local pm_system="${EXTERNAL_PM_SYSTEM:-"GitHub Issues"}"
-        local pm_url="${EXTERNAL_PM_URL:-"https://github.com/yourusername/$project_slug/issues"}"
-        local docs_system="${EXTERNAL_DOCS_SYSTEM:-"GitHub Wiki"}"
-        local docs_url="${EXTERNAL_DOCS_URL:-"https://github.com/yourusername/$project_slug/wiki"}"
+        # Prepare email section
+        local author_email_section=""
+        if [[ -n "$author_email" ]]; then
+            author_email_section=" <$author_email>"
+        fi
 
-        # Set project-type specific defaults
-        local api_framework="Express.js"
-        local frontend_framework="React"
-        local database_tech="PostgreSQL"
-        local auth_strategy="JWT"
+        # Use template with safe variable substitution
+        local temp_file=$(mktemp)
+        cp "$readme_template" "$temp_file"
 
-        case "$project_type" in
-            "api-service")
-                api_framework="Express.js"
-                database_tech="PostgreSQL"
-                auth_strategy="JWT"
-                ;;
-            "web-app")
-                frontend_framework="React"
-                database_tech="PostgreSQL"
-                ;;
-            "cli-tool")
-                api_framework="Commander.js"
-                database_tech="SQLite"
-                ;;
-        esac
+        # Safely escape all variables for sed
+        local safe_project_name=$(escape_sed_replacement "$project_name")
+        local safe_project_description=$(escape_sed_replacement "$project_description")
+        local safe_project_slug=$(escape_sed_replacement "$project_slug")
+        local safe_repo_url=$(escape_sed_replacement "${repo_url:-"https://github.com/yourusername/$project_slug"}")
+        local safe_author_name=$(escape_sed_replacement "$author_name")
+        local safe_author_email_section=$(escape_sed_replacement "$author_email_section")
+        local safe_license_type=$(escape_sed_replacement "$license_type")
 
-        # Business context specific features
-        local context_features=""
-        case "$business_context" in
-            "b2b-saas")
-                context_features="Multi-tenant architecture|Enterprise SSO|Usage analytics"
-                ;;
-            "consumer")
-                context_features="User-friendly interface|Social features|Performance optimization"
-                ;;
-            "internal")
-                context_features="Internal tools integration|Audit logging|Administrative controls"
-                ;;
-            "open-source")
-                context_features="Community contributions|Documentation|Extensible architecture"
-                ;;
-        esac
-
-        # Process the template with comprehensive substitutions
-        sed -e "s/{{PROJECT_NAME}}/$project_name/g" \
-            -e "s/{{PROJECT_DESCRIPTION}}/$project_description/g" \
-            -e "s/{{PROJECT_SLUG}}/$project_slug/g" \
-            -e "s/{{PROJECT_SLUG_UPPER}}/$(echo "$project_slug" | tr '[:lower:]' '[:upper:]' | tr '-' '_')/g" \
-            -e "s|{{REPO_URL}}|${repo_url:-"https://github.com/yourusername/$project_slug"}|g" \
-            -e "s/{{LICENSE_TYPE}}/$license_type/g" \
-            -e "s/{{TECH_REQUIREMENTS}}/${tech_stack:-"Node.js 18+, Git 2.25+"}/g" \
-            -e "s/{{RECOMMENDED_TOOLS}}/VS Code, AI assistant (Claude Code)/g" \
+        # Apply substitutions safely
+        if sed -i \
+            -e "s/{{PROJECT_NAME}}/$safe_project_name/g" \
+            -e "s/{{PROJECT_DESCRIPTION}}/$safe_project_description/g" \
+            -e "s/{{PROJECT_SLUG}}/$safe_project_slug/g" \
+            -e "s|{{REPO_URL}}|$safe_repo_url|g" \
             -e "s/{{INSTALL_COMMANDS}}/npm install/g" \
-            -e "s/{{DEV_COMMANDS}}/npm run dev/g" \
-            -e "s/{{TEST_COMMANDS}}/npm test/g" \
-            -e "s/{{BUILD_COMMANDS}}/npm run build/g" \
-            -e "s/{{API_FRAMEWORK}}/$api_framework/g" \
-            -e "s/{{FRONTEND_FRAMEWORK}}/$frontend_framework/g" \
-            -e "s/{{DATABASE_TECH}}/$database_tech/g" \
-            -e "s/{{AUTH_STRATEGY}}/$auth_strategy/g" \
-            -e "s/{{BUSINESS_CONTEXT}}/$business_context/g" \
-            -e "s/{{PM_SYSTEM}}/$pm_system/g" \
-            -e "s/{{PM_URL}}/$pm_url/g" \
-            -e "s/{{DOCS_SYSTEM}}/$docs_system/g" \
-            -e "s/{{DOCS_URL}}/$docs_url/g" \
-            -e "s/{{TARGET_USERS}}/$(echo "$business_context" | sed 's/-/ /g'| sed 's/\b\w/\u&/g') users/g" \
-            -e "s/{{FEATURE_1}}/🚀 AI-assisted development workflow/g" \
-            -e "s/{{FEATURE_2}}/📋 Comprehensive documentation system/g" \
-            -e "s/{{FEATURE_3}}/⚡ Quality gates and automated validation/g" \
-            -e "s/{{ENVIRONMENT_1}}/Development/g" \
-            -e "s/{{ENVIRONMENT_2}}/Production/g" \
-            -e "s/{{DEPLOY_COMMANDS_1}}/npm run dev/g" \
-            -e "s/{{DEPLOY_COMMANDS_2}}/npm run build \&\& npm start/g" \
-            -e "s/{{INTEGRATION_TEST_COMMANDS}}/npm run test:integration/g" \
-            -e "s/{{E2E_TEST_COMMANDS}}/npm run test:e2e/g" \
-            -e "s/{{PERFORMANCE_TEST_COMMANDS}}/npm run test:performance/g" \
-            -e "s/{{A11Y_TEST_COMMANDS}}/npm run test:a11y/g" \
-            -e "s/{{API_TEST_COMMANDS}}/npm run test:api/g" \
-            -e "s/{{LOAD_TEST_COMMANDS}}/npm run test:load/g" \
-            -e "s/{{SECURITY_TEST_COMMANDS}}/npm run test:security/g" \
-            -e "s/{{COVERAGE_COMMANDS}}/npm run test:coverage/g" \
-            -e "s/{{ADDITIONAL_ACKNOWLEDGMENTS}}/Built with intelligence and community support/g" \
-            "$readme_template" > "$PROJECT_ROOT/README.md"
-
-        log_success "Created project README.md"
+            -e "s/{{DEV_COMMANDS}}/npm start/g" \
+            -e "s/{{AUTHOR_NAME}}/$safe_author_name/g" \
+            -e "s/{{AUTHOR_EMAIL_SECTION}}/$safe_author_email_section/g" \
+            -e "s/{{LICENSE_TYPE}}/$safe_license_type/g" \
+            -e "s/{{CURRENT_YEAR}}/$current_year/g" \
+            "$temp_file" && mv "$temp_file" "$PROJECT_ROOT/README.md"; then
+            log_success "Created standard-readme compliant README.md from template"
+        else
+            log_error "Failed to create README from template"
+            rm -f "$temp_file"
+            return 1
+        fi
     else
-        log_warning "Template README not found, creating basic README"
+        # Fallback to basic README if template not found
+        local current_year=$(date +"%Y")
         cat > "$PROJECT_ROOT/README.md" << EOF
 # $project_name
 
 $project_description
 
-## 🚀 Features
-
-- AI-assisted development workflow
-- Comprehensive documentation system
-- Quality gates and automated validation
-
-## 📋 Prerequisites
-
-${tech_stack:-"Node.js 18+, Git 2.25+"}
-
-## ⚡ Quick Start
+## Install
 
 \`\`\`bash
-# Install dependencies
+git clone ${repo_url:-"https://github.com/yourusername/$project_slug"}
+cd $project_slug
 npm install
-
-# Start development
-npm run dev
 \`\`\`
 
-## 🏗️ Architecture
+## Usage
 
-This project uses the [AI Coding Template](./docs/ai-tools/template-documentation.md) workflow for intelligent development.
+\`\`\`bash
+npm start
+\`\`\`
 
-## 📖 Documentation
+## Maintainers
 
-- [Template Documentation](./docs/ai-tools/template-documentation.md)
-- [Getting Started with AI Workflow](./docs/ai-tools/getting-started-with-template.md)
-- [Templates and Examples](./docs/ai-tools/templates-and-examples.md)
+$author_name${author_email:+ <$author_email>}
 
-## 📄 License
+## Contributing
 
-$license_type
+PRs accepted.
+
+## License
+
+$license_type © $current_year $author_name
 EOF
+        log_warning "Template not found, created basic README"
     fi
 
-    # 3. Update package.json
+    # 3. Copy CHANGELOG template to root
+    log_info "Setting up CHANGELOG..."
+
+    if [[ -f "$PROJECT_ROOT/templates/documentation/project/CHANGELOG.template.md" ]]; then
+        if cp "$PROJECT_ROOT/templates/documentation/project/CHANGELOG.template.md" "$PROJECT_ROOT/CHANGELOG.md"; then
+            # Add initial entry
+            local current_date=$(date +"%Y-%m-%d")
+            if sed -i.bak \
+                -e "s/## \[Unreleased\]/## [Unreleased]\n\n## [0.1.0] - $current_date/" \
+                -e "s/### Added\n- New features that have been added/### Added\n- Initial project setup from AI Coding Template\n- Standard README structure\n- Changelog tracking/" \
+                "$PROJECT_ROOT/CHANGELOG.md"; then
+                rm -f "$PROJECT_ROOT/CHANGELOG.md.bak" 2>/dev/null
+                log_success "Created CHANGELOG.md with initial entry"
+            else
+                log_error "Failed to update CHANGELOG.md with initial entry"
+                return 1
+            fi
+        else
+            log_error "Failed to copy CHANGELOG template"
+            return 1
+        fi
+    else
+        log_warning "CHANGELOG template not found, skipping"
+    fi
+
+    # 4. Clear git history and reinitialize
+    log_info "Clearing git history and reinitializing..."
+
+    if [[ -d "$PROJECT_ROOT/.git" ]]; then
+        rm -rf "$PROJECT_ROOT/.git"
+        log_success "Cleared existing git history"
+    fi
+
+    # Initialize fresh repository
+    git init
+    git add .
+    git commit -m "Initial commit - Project initialized from AI Coding Template"
+    log_success "Initialized fresh git repository"
+
+    # 5. Update package.json if it exists
     if [[ -f "$PROJECT_ROOT/package.json" ]]; then
         log_info "Updating package.json..."
 
-        # Create a temporary script to update package.json
         node -e "
         const fs = require('fs');
         const pkg = JSON.parse(fs.readFileSync('$PROJECT_ROOT/package.json', 'utf8'));
         pkg.name = '$project_slug';
         pkg.description = '$project_description';
+        pkg.version = '0.1.0';
         if ('$author_name') pkg.author = '$author_name' + ('$author_email' ? ' <$author_email>' : '');
         if ('$repo_url') {
           pkg.repository = { type: 'git', url: '$repo_url' };
@@ -1179,27 +770,20 @@ EOF
         " 2>/dev/null && log_success "Updated package.json" || log_warning "Could not update package.json (Node.js required)"
     fi
 
-    # 4. Update CLAUDE.md with project context
+    # 6. Update CLAUDE.md with project context
     if [[ -f "$PROJECT_ROOT/CLAUDE.md" ]]; then
         log_info "Customizing AI instructions..."
 
-        # Update the tech stack section
-        sed -i.bak "s|<Add the high level details of your tech stack here>|$project_name: ${tech_stack:-"Modern web application"}|g" "$PROJECT_ROOT/CLAUDE.md"
-
-        # Update the vision section reference
-        sed -i.bak "s|Vision Document:.*|Vision Document: This is $project_name - $project_description|g" "$PROJECT_ROOT/CLAUDE.md"
-
+        sed -i.bak "s|<Add the high level details of your tech stack here>|$project_name - $project_description|g" "$PROJECT_ROOT/CLAUDE.md"
         rm -f "$PROJECT_ROOT/CLAUDE.md.bak" 2>/dev/null
         log_success "Customized CLAUDE.md for your project"
     fi
 
-    # 5. Initialize STATUS.md with project details
+    # 7. Initialize STATUS.md with project details
     if [[ -f "$PROJECT_ROOT/STATUS.md" ]]; then
         log_info "Initializing project memory..."
 
         local current_date=$(date +"%Y-%m-%d")
-
-        # Update STATUS.md with project-specific information
         sed -i.bak \
             -e "s|\[What you're currently working on\]|Setting up $project_name|g" \
             -e "s|\[Planning/Development/Testing/Production/Maintenance\]|Development|g" \
@@ -1213,28 +797,30 @@ EOF
         log_success "Initialized STATUS.md for project tracking"
     fi
 
-    # 6. Create project tracking marker
+    # 8. Create project tracking marker
     echo "$project_name" > "$PROJECT_ROOT/.template-initialized"
 
-    # 7. Clean up template-specific files (optional)
+    # 9. Clean up template-specific files
     rm -f "$PROJECT_ROOT/START-HERE.md" 2>/dev/null
     rm -f "$PROJECT_ROOT/TEMPLATES-EXAMPLES-INDEX.md" 2>/dev/null
 
     log_success "Project initialization complete!"
     echo
     log_header "🎉 Welcome to $project_name!"
-    log_info "Your AI-powered project is ready:"
-    log_info "  📋 README.md - Professional project documentation"
-    log_info "  🤖 CLAUDE.md - Customized AI instructions"
+    log_info "Your project is ready with:"
+    log_info "  📋 README.md - Standard-readme compliant documentation"
+    log_info "  📝 CHANGELOG.md - Professional change tracking"
+    log_info "  🤖 CLAUDE.md - AI assistant instructions"
     log_info "  📊 STATUS.md - Project memory and context"
     log_info "  📚 docs/ai-tools/ - Template documentation preserved"
+    log_info "  🔄 Fresh git history - Ready for your first real commit"
     echo
     log_info "Next steps:"
-    log_info "  1. Review and customize README.md"
-    log_info "  2. Start your first feature: /idea 'your feature idea'"
-    log_info "  3. Use the AI workflow: /idea → /plan → /iterate"
+    log_info "  1. Customize README.md for your project"
+    log_info "  2. Start development with the AI workflow"
+    log_info "  3. Use: /feature → /architect → /plan → /develop"
     echo
-    log_success "Happy building with AI superpowers! 🚀"
+    log_success "Happy building! 🚀"
 }
 
 # Main execution

@@ -80,7 +80,9 @@ check_iterate_readiness() {
     fi
 
     # Check if context validation script exists
-    if [ -f "../../scripts/validate-context.sh" ]; then
+    if [ -f "../../scripts/quality/validate-context.sh" ]; then
+        if ../../scripts/quality/validate-context.sh --quiet; then
+    elif [ -f "../../scripts/validate-context.sh" ]; then
         if ../../scripts/validate-context.sh --quiet; then
             log_info "✅ Context validation passed"
         else
@@ -140,7 +142,7 @@ provide_workflow_guidance() {
     log_info "  - Run /plan first to set up issue structure"
     log_info "  - Use /iterate to execute tasks sequentially"
     log_info "  - Check HANDOFF.yml for context between tasks"
-    log_info "  - Run scripts/validate-quality-gates.sh to check status"
+    log_info "  - Run scripts/quality/validate.js quality-gates to check status"
 }
 
 # Main execution

@@ -2,29 +2,35 @@
 
 **Created**: 2025-08-21 **Last Updated**: 2025-09-17 **Status**: Active - Claude Code Compatible **Target Audience**: AI Assistants, Development Team
 
-Comprehensive catalog of Claude Code slash commands centered around the revolutionary ***/idea → /plan → /iterate workflow*** that transforms AI from code generator to architectural partner.
+Comprehensive catalog of Claude Code slash commands centered around the **/feature → /architect → /plan → /develop workflow** that transforms AI from code generator to architectural partner.
 
 ## 🌟 Core Workflow Commands (Primary)
 
-**THE THREE-PHASE WORKFLOW: From architectural exploration to quality execution**
+**THE FOUR-PHASE WORKFLOW: From feature definition to quality execution**
 
-### 💡 **/idea** - Interactive Architectural Exploration
-- _Purpose_: Transform architectural decision-making through guided conversation with specialist consultation
-- _Usage_: `/idea --start "IDEA" | --continue SESSION | --finalize SESSION`
+### 💡 **/feature** - Feature Definition and Requirements
+- _Purpose_: Define what and why with business context, users, requirements
+- _Usage_: `/feature --new "FEATURE" | --update FEATURE`
+- _Model_: sonnet | _Tools_: Read, Write, Edit, Grep, Glob, TodoWrite, Task
+- _Workflow Phase_: **1. Feature** - Capture context, dependencies, and success criteria
+
+### 🏗️ **/architect** - Technical Architecture Design
+- _Purpose_: Explore alternatives, select patterns/tech, and document trade-offs
+- _Usage_: `/architect FEATURE | --decision "DECISION"`
 - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
-- _Workflow Phase_: **1. Exploration** - 20-45 minutes of guided conversation → ADR generation
+- _Workflow Phase_: **2. Architecture** - Produce ADRs and design guidance
 
 ### 📋 **/plan** - Sequential Multi-Agent Planning
-- _Purpose_: Transform decisions into expertly-reviewed implementation plans through sequential agent analysis
+- _Purpose_: Transform design into an executable plan through specialist analysis
 - _Usage_: `/plan --issue KEY [--deliverable NAME] [--agents LIST]`
 - _Model_: opus | _Tools_: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
-- _Workflow Phase_: **2. Planning** - 8-10 minutes of agent coordination → PLAN.md with phased tasks
+- _Workflow Phase_: **3. Planning** - PLAN.md with phased tasks + HANDOFF.yml + RESEARCH.md
 
-### ⚡ **/iterate** - Orchestrated Task Execution
+### ⚡ **/develop** - Orchestrated Task Execution
 - _Purpose_: Execute planned tasks with intelligent agent coordination and perfect context preservation
-- _Usage_: `/iterate [TASK-ID] [--force] [--agent AGENT]`
+- _Usage_: `/develop [TASK-ID] [--force] [--agent AGENT]`
 - _Model_: sonnet | _Tools_: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
-- _Workflow Phase_: **3. Execution** - Agent-orchestrated task completion → Quality-validated implementation
+- _Workflow Phase_: **4. Execution** - Agent-orchestrated task completion → Quality-validated implementation
 
 ---
 
@@ -91,22 +97,28 @@ Comprehensive catalog of Claude Code slash commands centered around the revoluti
 ### The Complete Workflow (Recommended for All Features)
 
 ```yaml
-core_workflow: "/idea → /plan → /iterate"
+core_workflow: "/feature → /architect → /plan → /develop"
 
-phase_1_exploration:
-  command: "idea"
-  duration: "20-45 minutes"
-  output: "ADR with architectural decision"
-  description: "Guided conversation with specialist consultation"
+phase_1_feature:
+  command: "feature"
+  duration: "5-10 minutes"
+  output: "Feature brief with context and requirements"
+  description: "Business context, users, requirements, dependencies"
 
-phase_2_planning:
+phase_2_architecture:
+  command: "architect"
+  duration: "10-20 minutes"
+  output: "ADR(s) and technical design"
+  description: "Explore alternatives, trade-offs, decisions"
+
+phase_3_planning:
   command: "plan"
   duration: "8-10 minutes"
-  output: "PLAN.md with phased tasks"
+  output: "PLAN.md + HANDOFF.yml + RESEARCH.md"
   description: "Sequential multi-agent analysis and task generation"
 
-phase_3_execution:
-  command: "iterate"
+phase_4_execution:
+  command: "develop"
   duration: "Variable (per task)"
   output: "Quality-validated implementation"
   description: "Agent-orchestrated task execution with context preservation"

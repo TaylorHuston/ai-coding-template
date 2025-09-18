@@ -3,8 +3,8 @@ name: docs-sync-agent
 description: AUTOMATICALLY INVOKED when code changes have been made and existing documentation needs to be reviewed and updated to maintain consistency. Provides bidirectional sync between code and documentation, including docs-to-code validation and cross-reference integrity checking. Enhanced with automatic documentation generation capabilities for architecture, API, and technical decision documentation.
 tools: Read, Edit, MultiEdit, Grep, Glob, TodoWrite, Bash
 script_integration:
-  primary_scripts: [check-docs-links.js, docs-health.js, auto-docs-generator.js]
-  supporting_scripts: [docs-manager.sh, validate-context.sh]
+  primary_scripts: [docs/docs-tool.js]
+  supporting_scripts: [docs/docs-manager.sh, quality/validate.js]
   invocation: "Automatically invoke scripts as needed during task execution"
 model: haiku
 color: blue
@@ -470,21 +470,21 @@ automation_workflow:
 ```yaml
 generation_commands:
   architecture_generation:
-    tech_stack: "node scripts/auto-docs-generator.js --type tech-stack"
-    system_overview: "node scripts/auto-docs-generator.js --type system-overview"
-    dependency_graph: "node scripts/auto-docs-generator.js --type dependencies"
+    tech_stack: "node scripts/docs/docs-tool.js auto-generate tech-stack"
+    system_overview: "node scripts/docs/docs-tool.js auto-generate system-overview"
+    dependency_graph: "node scripts/docs/docs-tool.js auto-generate dependencies"
 
   api_generation:
-    api_reference: "node scripts/auto-docs-generator.js --type api-reference"
-    schema_docs: "node scripts/auto-docs-generator.js --type schemas"
+    api_reference: "node scripts/docs/docs-tool.js auto-generate api-reference"
+    schema_docs: "node scripts/docs/docs-tool.js auto-generate schemas"
 
   decision_generation:
-    capture_decision: "node scripts/auto-docs-generator.js --type decision --title 'Decision Title'"
-    decision_summary: "node scripts/auto-docs-generator.js --type decision-summary"
+    capture_decision: "node scripts/docs/docs-tool.js auto-generate decision --title 'Decision Title'"
+    decision_summary: "node scripts/docs/docs-tool.js auto-generate decision-summary"
 
   comprehensive_generation:
-    full_refresh: "node scripts/auto-docs-generator.js --type all --force"
-    incremental: "node scripts/auto-docs-generator.js --type auto"
+    full_refresh: "node scripts/docs/docs-tool.js auto-generate all --force"
+    incremental: "node scripts/docs/docs-tool.js auto-generate all"
 ```
 
 ## Quality Standards and Guidelines

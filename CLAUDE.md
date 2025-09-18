@@ -23,7 +23,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## Core Workflow
 
-**Primary**: `/feature` → `/architect` → `/plan` → `/develop`
+**Primary**: `/vision` → `/feature` → `/architect` → `/plan` → `/develop`
 
 **Complete Reference**: [docs/ai-tools/reference/commands.md](./docs/ai-tools/reference/commands.md)
 
@@ -82,7 +82,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## Problem-Solving Framework
 
-1. **For Architectural Decisions**: Use `/feature` → `/architect` workflow with specialist consultation
+1. **For Architectural Decisions**: Use `/vision` → `/feature` → `/architect` workflow with specialist consultation
 2. **For Implementation Planning**: Use `/plan` to get comprehensive multi-agent analysis
 3. **For Execution Issues**: Use appropriate agent for domain expertise
 4. **Check existing patterns** in similar files and components

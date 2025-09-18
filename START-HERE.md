@@ -34,12 +34,18 @@ cd my-awesome-project
 6. **Template Preservation** - All guidance moved to `docs/ai-tools/`
 
 ### 🚀 **Path 3: Try the AI Workflow** (15 minutes)
-*"I want to experience the /idea → /plan → /iterate flow"*
+*"I want to experience the /vision → /feature → /architect → /plan → /develop flow"*
 
 ```bash
-# After project setup, try your first AI-assisted feature
-/idea --start "How should we implement user authentication?"
-# → Guided architectural exploration with specialist consultation
+# After project setup, try your first complete AI workflow
+/vision --create
+# → Define product vision, problem, solution, and success metrics
+
+/feature --new "User Authentication"
+# → Captures business context, requirements, success criteria
+
+/architect user-authentication
+# → Explore approaches, select patterns/tech, capture ADR
 ```
 
 ### 📚 **Path 4: Learn the System** (30 minutes)
@@ -83,24 +89,34 @@ git clone template → manually replace README → guess configuration → lose 
 - **📋 Professional Docs**: Generates industry-standard README tailored to your exact project type
 - **🧠 Preserved Knowledge**: Template docs safely moved to `docs/ai-tools/` for reference
 
-## 📋 **The Magic: 3-Phase Workflow**
+## 📋 **The Magic: 5-Phase Workflow**
 
-Instead of "AI, write me some code," you get:
+Instead of "AI, write me some code," you get a structured, context-preserving flow:
 
-### 1. 💡 **Explore** (`/idea`)
-- Interactive conversation about architectural decisions
-- On-demand specialist consultation (security, performance, etc.)
-- Comprehensive decision documentation (ADRs)
+### 0. 🎯 **Vision** (`/vision`)
+- Define WHY you're building and WHAT success looks like
+- Problem validation and solution strategy
+- Success framework with measurable metrics
 
-### 2. 📋 **Plan** (`/plan`)
-- Multi-agent analysis by domain experts
-- Phase-based implementation roadmap (P1 → P2 → P3)
-- Complete context preservation in coordination files
+### 1. 💡 **Feature** (`/feature`)
+- Define what and why (business context, users, requirements)
+- Identify dependencies and success criteria
+- Link to external issue trackers when available
 
-### 3. ⚡ **Execute** (`/iterate`)
-- Task-by-task execution with appropriate specialists
-- Quality gates between every phase
-- Perfect memory of all decisions and context
+### 2. 🏗️ **Architect** (`/architect`)
+- Explore alternatives and select patterns/tech
+- Document trade-offs with ADRs
+- Align with constraints and non-functionals
+
+### 3. 📋 **Plan** (`/plan`)
+- Sequential multi-agent planning by specialists
+- Phased roadmap (P1 → P2 → P3) with dependencies
+- Coordination files: PLAN.md, HANDOFF.yml, RESEARCH.md
+
+### 4. ⚡ **Develop** (`/develop`)
+- Execute tasks with the right specialist agents
+- Enforce quality gates between phases
+- Preserve and update context and documentation
 
 ---
 
@@ -109,22 +125,29 @@ Instead of "AI, write me some code," you get:
 Here's what a real workflow looks like:
 
 ```bash
-# 1. EXPLORE: Guided architectural conversation
-/idea --start "Should we use microservices or monolith?"
-# → 10-minute conversation with architecture expert
-# → Decision documented with full rationale
+# 0. VISION: Define why the product exists
+/vision --create
+# → Establishes product vision, problem statement, success metrics
 
-# 2. PLAN: Expert analysis and task breakdown
+# 1. FEATURE: Define what and why
+/feature --new "User Authentication"
+# → Captures business context, requirements, success criteria (aligned with vision)
+
+# 2. ARCHITECT: Decide how
+/architect user-authentication
+# → Explore JWT vs sessions, security, data model → ADR (supports vision)
+
+# 3. PLAN: Expert analysis and task breakdown
 /plan --issue AUTH-123
-# → 5 agents analyze: security, backend, frontend, database, testing
-# → 12 tasks generated across 3 phases with quality gates
+# → Specialists analyze (security, backend, frontend, DB, testing)
+# → 12 tasks across 3 phases with quality gates
 
-# 3. EXECUTE: Quality execution with perfect memory
-/iterate
+# 4. DEVELOP: Execute with quality and memory
+/develop
 # → P1.1.0 ✅ → P1.2.0 ✅ → P1.3.0 ✅ (Phase 1 complete)
 # → P2.1.0 ✅ → P2.2.0 ✅ → P2.3.0 ✅ (Phase 2 complete)
 # → P3.1.0 ✅ → P3.2.0 ✅ → P3.3.0 ✅ (Phase 3 complete)
-# Result: Production-ready feature with full documentation
+# Result: Production-ready feature with full documentation and vision alignment
 ```
 
 **Total time: 30 minutes of guided work vs. 3 hours of back-and-forth**
@@ -169,12 +192,12 @@ cat TEMPLATES-EXAMPLES-INDEX.md
 
 ### **Quick Answers**
 - **"What commands are available?"** → `./docs/ai-tools/reference/commands.md`
-- **"How do I start a new feature?"** → `/idea --start "Describe your feature"`
+- **"How do I start a new feature?"** → `/feature --new "Describe your feature"`
 - **"Where are the templates?"** → `TEMPLATES-EXAMPLES-INDEX.md`
 - **"Something's broken?"** → `./docs/ai-tools/reference/troubleshooting.md`
 
 ### **Common First Steps**
-1. **For new features**: Start with `/idea` to explore the approach
+1. **For new features**: Start with `/feature`, then `/architect`
 2. **For existing code**: Use `/quality assess` to understand current state
 3. **For documentation**: Check `TEMPLATES-EXAMPLES-INDEX.md` for the right template
 4. **For bugs**: Use `/plan --issue BUG-001` to systematically approach fixes

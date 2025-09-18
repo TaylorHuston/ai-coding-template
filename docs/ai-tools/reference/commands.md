@@ -16,10 +16,11 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 ## Core Workflow Commands ⭐
 
-**The four-phase workflow that transforms AI from code generator to architectural partner:**
+**The five-phase workflow that transforms AI from code generator to architectural partner:**
 
 | Command | Purpose | Usage | Model |
 |---------|---------|-------|-------|
+| 🎯 `/vision` | Vision creation and strategy | `/vision --create \| --review \| --validate FEATURE` | opus |
 | 💡 `/feature` | Feature definition and requirements | `/feature --new "FEATURE" \| --update FEATURE` | sonnet |
 | 🏗️ `/architect` | Technical architecture design | `/architect FEATURE \| --decision "DECISION"` | opus |
 | 📋 `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
@@ -30,6 +31,7 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 | Command | Purpose | Usage | Model |
 |---------|---------|-------|-------|
 | **Core Workflow** | | | |
+| `/vision` | Vision creation and strategy | `/vision --create \| --review \| --validate FEATURE` | opus |
 | `/feature` | Feature definition and requirements | `/feature --new "FEATURE" \| --update FEATURE` | sonnet |
 | `/architect` | Technical architecture design | `/architect FEATURE \| --decision "DECISION"` | opus |
 | `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
@@ -48,7 +50,7 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 ## Core Workflow Commands
 
-### 💡 `/idea` - Interactive Architectural Exploration
+### 💡 `/idea` - Interactive Architectural Exploration (Supporting)
 
 **Purpose**: Transform architectural decision-making from guesswork to guided exploration through conversational AI facilitation
 
@@ -119,7 +121,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 ---
 
-### ⚡ `/iterate` - Orchestrated Task Execution
+### ⚡ `/develop` - Orchestrated Task Execution
 
 **Purpose**: Execute tasks from PLAN.md with intelligent agent coordination and context preservation
 
@@ -179,15 +181,15 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 ---
 
-### `/iterate` - Workflow Task Execution
+### `/develop` - Workflow Task Execution
 
 **Purpose**: Execute tasks from PLAN.md files with multi-agent coordination
 
 **Usage**:
 ```bash
-/iterate                    # Execute next unchecked task in current phase
-/iterate P2.3.0            # Execute specific task P2.3.0
-/iterate 1.4.0             # Execute specific task (P prefix optional)
+/develop                    # Execute next unchecked task in current phase
+/develop P2.3.0            # Execute specific task P2.3.0
+/develop 1.4.0             # Execute specific task (P prefix optional)
 ```
 
 **Orchestrator Architecture**:
@@ -232,10 +234,10 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 **Example Workflow**:
 ```bash
-/iterate        # Executes P1.1.0 with context-analyzer
-/iterate        # Executes P1.2.0 with test-engineer
-/iterate P1.4.0 # Jumps to P1.4.0 with code-reviewer
-/iterate        # Continues with P1.5.0
+/develop        # Executes P1.1.0 with context-analyzer
+/develop        # Executes P1.2.0 with test-engineer
+/develop P1.4.0 # Jumps to P1.4.0 with code-reviewer
+/develop        # Continues with P1.5.0
 ```
 
 **Tools**: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task

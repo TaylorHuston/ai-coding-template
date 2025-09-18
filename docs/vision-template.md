@@ -1,6 +1,17 @@
+---
+version: "1.0.0"
+created: "2025-09-17"
+last_updated: "2025-09-17"
+status: "active"
+target_audience: ["stakeholders", "team", "investors"]
+document_type: "vision"
+priority: "critical"
+tags: ["vision", "strategy", "product"]
+---
+
 # Vision Document: [Project Name]
 
-**Last Updated:** September 16, 2025
+**Version:** 1.0.0 **Last Updated:** September 17, 2025 **Status:** Active
 
 ---
 
@@ -60,8 +71,66 @@ _What makes your solution unique or better than existing alternatives? Focus on 
 
 _How will you know if the project is successful? List measurable, quantitative goals._
 
+### Primary Success Metrics
 - **Activation:** 100 active users within the first 3 months.
 - **Engagement:** 50% of active users have sent at least 3 invoices.
 - **Retention:** 20% month-over-month user growth.
+
+### Vision Validation Metrics
+- **Problem Validation:** 80% of target users confirm problem significance (survey/interview)
+- **Solution Validation:** 70% of users report 2x+ improvement over current solution
+- **Market Validation:** $10K+ MRR within 6 months demonstrating willingness to pay
+- **Execution Validation:** 95% feature delivery on time with quality standards
+
+---
+
+## 7. Strategic Context (Optional)
+
+### Market Landscape
+_Brief overview of competitive landscape and positioning opportunity._
+
+### Business Model
+_How value is created, delivered, and captured._
+
+### Technical Constraints
+_Key technical considerations that shape the solution._
+
+---
+
+## 8. Vision Evolution
+
+### Version History
+| Version | Date | Changes | Rationale |
+|---------|------|---------|----------|
+| 1.0.0 | 2025-09-17 | Initial vision | Project kickoff |
+
+### Validation Results
+_Evidence and learnings that support or challenge vision assumptions._
+
+### Next Review Date
+**Scheduled:** [Date] - Quarterly vision review and potential evolution
+
+---
+
+## Vision Validation Framework
+
+### Feature Alignment Scoring
+Use this framework to evaluate new features:
+- **Core Problem Alignment (1-10):** How well does feature address core problem?
+- **Target Audience Fit (1-10):** How well does feature serve primary users?
+- **Differentiation Support (1-10):** How much does feature enhance key differentiators?
+- **Success Metric Impact (1-10):** How much will feature drive primary success metrics?
+
+**Minimum threshold for feature consideration: 28/40 total score**
+
+### Architecture Validation
+- Does technical architecture support vision scalability needs?
+- Do technical decisions enable key differentiators?
+- Is success metric measurement infrastructure in place?
+
+### Planning Validation
+- Are highest vision-impact items prioritized in roadmap?
+- Does resource allocation align with vision-critical work?
+- Are vision-threatening risks identified and mitigated?
 
 ---

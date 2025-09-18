@@ -11,18 +11,18 @@
 ```
 
 ### Key Metrics
-- **Total Files**: 176 documentation files
-- **Total Lines**: 60,244 lines
-- **Code Examples**: 1439 code blocks
-- **Maintenance**: 622 TODOs, 4 FIXMEs
-- **Freshness**: 176 fresh, 0 moderate, 0 stale
+- **Total Files**: 165 documentation files
+- **Total Lines**: 55,793 lines
+- **Code Examples**: 1319 code blocks
+- **Maintenance**: 524 TODOs, 4 FIXMEs
+- **Freshness**: 164 fresh, 0 moderate, 0 stale
 
 ## File Health Breakdown
 
 | Category | Files | Health Score | Last Updated |
 |----------|-------|--------------|--------------|
-| root | 4 | [█████] 100% 100/100 | 2025-09-17 |
-| docs | 172 | [█████] 100% 100/100 | 2025-09-17 |
+| root | 5 | [█████] 100% 100/100 |  |
+| docs | 160 | [█████] 100% 100/100 | 2025-09-17 |
 
 
 ## Recommendations
@@ -32,35 +32,44 @@
 
 
 ### Quality Improvements
-- Add code examples to -1263 files without code blocks
-- Convert 622 open TODOs to completed tasks or remove if obsolete
+- Add code examples to -1154 files without code blocks
+- Convert 524 open TODOs to completed tasks or remove if obsolete
 - Update 0 stale documentation files
 
 ## Detailed File Analysis
 
 ### Root Files
 
+#### ARCHITECTURE_REVIEW.md
+- **Health**: [█████] 100% 100/100
+- **Size**: 206 lines, 35 headers
+- **Elements**: 7 code blocks
+- **Links**: 0 internal, 0 external
+- **Tasks**: 0 completed, 0 pending
+- **Last Updated**:  (NaN days ago)
+- **Freshness**: stale
+
 #### CLAUDE.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 765 lines, 80 headers
-- **Elements**: 13 code blocks
-- **Links**: 15 internal, 0 external
+- **Size**: 111 lines, 12 headers
+- **Elements**: 0 code blocks
+- **Links**: 8 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### README.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 663 lines, 120 headers
-- **Elements**: 17 code blocks
-- **Links**: 38 internal, 20 external
+- **Size**: 450 lines, 67 headers
+- **Elements**: 13 code blocks
+- **Links**: 27 internal, 10 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### START-HERE.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 192 lines, 45 headers
+- **Size**: 204 lines, 48 headers
 - **Elements**: 6 code blocks
 - **Links**: 5 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
@@ -96,21 +105,21 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/ai-agents-guide.md
+#### docs/ai-tools/guides/ai-collaboration-guide.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 231 lines, 37 headers
-- **Elements**: 2 code blocks
-- **Links**: 2 internal, 0 external
+- **Size**: 430 lines, 63 headers
+- **Elements**: 25 code blocks
+- **Links**: 1 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/ai-collaboration-guide.md
+#### docs/ai-tools/guides/comprehensive-agent-guide.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 437 lines, 64 headers
-- **Elements**: 25 code blocks
-- **Links**: 6 internal, 0 external
-- **Tasks**: 0 completed, 0 pending
+- **Size**: 357 lines, 49 headers
+- **Elements**: 21 code blocks
+- **Links**: 1 internal, 0 external
+- **Tasks**: 0 completed, 6 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
@@ -120,15 +129,6 @@
 - **Elements**: 9 code blocks
 - **Links**: 1 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-17 (0 days ago)
-- **Freshness**: fresh
-
-#### docs/ai-tools/guides/using-agents.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 267 lines, 33 headers
-- **Elements**: 21 code blocks
-- **Links**: 1 internal, 0 external
-- **Tasks**: 0 completed, 6 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
@@ -147,12 +147,12 @@
 - **Elements**: 9 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 6 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/ai-tools/reference/commands.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 673 lines, 47 headers
+- **Size**: 676 lines, 47 headers
 - **Elements**: 25 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
@@ -273,52 +273,7 @@
 - **Elements**: 0 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/README.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 30 lines, 4 headers
-- **Elements**: 0 code blocks
-- **Links**: 8 internal, 0 external
-- **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/ai-architecture-patterns.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 664 lines, 31 headers
-- **Elements**: 16 code blocks
-- **Links**: 0 internal, 0 external
-- **Tasks**: 0 completed, 21 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/ai-branching-strategy.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 426 lines, 82 headers
-- **Elements**: 16 code blocks
-- **Links**: 0 internal, 0 external
-- **Tasks**: 0 completed, 6 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/context-engineering.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 368 lines, 79 headers
-- **Elements**: 13 code blocks
-- **Links**: 0 internal, 0 external
-- **Tasks**: 0 completed, 22 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/prompting.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 343 lines, 54 headers
-- **Elements**: 8 code blocks
-- **Links**: 0 internal, 0 external
-- **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/README.md
@@ -332,9 +287,9 @@
 
 #### docs/development/guidelines/README.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 74 lines, 12 headers
+- **Size**: 75 lines, 12 headers
 - **Elements**: 0 code blocks
-- **Links**: 37 internal, 0 external
+- **Links**: 39 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
@@ -377,9 +332,9 @@
 
 #### docs/development/guidelines/authentication-authorization.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 355 lines, 69 headers
+- **Size**: 361 lines, 70 headers
 - **Elements**: 0 code blocks
-- **Links**: 6 internal, 0 external
+- **Links**: 9 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
@@ -449,27 +404,27 @@
 
 #### docs/development/guidelines/security-implementation-core.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 157 lines, 22 headers
+- **Size**: 161 lines, 23 headers
 - **Elements**: 0 code blocks
-- **Links**: 5 internal, 0 external
+- **Links**: 6 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/guidelines/security-implementation.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 459 lines, 92 headers
+- **Size**: 465 lines, 93 headers
 - **Elements**: 0 code blocks
-- **Links**: 7 internal, 0 external
+- **Links**: 10 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/guidelines/security-principles.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 598 lines, 28 headers
+- **Size**: 602 lines, 29 headers
 - **Elements**: 10 code blocks
-- **Links**: 5 internal, 0 external
+- **Links**: 6 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
@@ -525,7 +480,7 @@
 - **Elements**: 1 code blocks
 - **Links**: 11 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/templates/api.template.md
@@ -579,7 +534,7 @@
 - **Elements**: 13 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/workflows/README.md
@@ -620,7 +575,7 @@
 
 #### docs/reports/documentation-health.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 1577 lines, 181 headers
+- **Size**: 1631 lines, 187 headers
 - **Elements**: 1 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
@@ -696,7 +651,7 @@
 - **Elements**: 1 code blocks
 - **Links**: 0 internal, 3 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/architecture/examples/README.md
@@ -705,7 +660,7 @@
 - **Elements**: 0 code blocks
 - **Links**: 1 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/architecture/examples/architecture-template.md
@@ -732,7 +687,7 @@
 - **Elements**: 3 code blocks
 - **Links**: 8 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-16 (1 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/decisions/adr-001-adopt-automatic-documentation-generation.md
@@ -777,7 +732,7 @@
 - **Elements**: 5 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-16 (1 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/decisions/explorations/templates/conversation-template.md
@@ -870,21 +825,21 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/ai-agents-guide.md
+#### docs/ai-tools/guides/ai-collaboration-guide.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 231 lines, 37 headers
-- **Elements**: 2 code blocks
-- **Links**: 2 internal, 0 external
+- **Size**: 430 lines, 63 headers
+- **Elements**: 25 code blocks
+- **Links**: 1 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/ai-collaboration-guide.md
+#### docs/ai-tools/guides/comprehensive-agent-guide.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 437 lines, 64 headers
-- **Elements**: 25 code blocks
-- **Links**: 6 internal, 0 external
-- **Tasks**: 0 completed, 0 pending
+- **Size**: 357 lines, 49 headers
+- **Elements**: 21 code blocks
+- **Links**: 1 internal, 0 external
+- **Tasks**: 0 completed, 6 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
@@ -894,15 +849,6 @@
 - **Elements**: 9 code blocks
 - **Links**: 1 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-17 (0 days ago)
-- **Freshness**: fresh
-
-#### docs/ai-tools/guides/using-agents.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 267 lines, 33 headers
-- **Elements**: 21 code blocks
-- **Links**: 1 internal, 0 external
-- **Tasks**: 0 completed, 6 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
@@ -921,12 +867,12 @@
 - **Elements**: 9 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 6 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/ai-tools/reference/commands.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 673 lines, 47 headers
+- **Size**: 676 lines, 47 headers
 - **Elements**: 25 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
@@ -1047,52 +993,7 @@
 - **Elements**: 0 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/README.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 30 lines, 4 headers
-- **Elements**: 0 code blocks
-- **Links**: 8 internal, 0 external
-- **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/ai-architecture-patterns.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 664 lines, 31 headers
-- **Elements**: 16 code blocks
-- **Links**: 0 internal, 0 external
-- **Tasks**: 0 completed, 21 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/ai-branching-strategy.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 426 lines, 82 headers
-- **Elements**: 16 code blocks
-- **Links**: 0 internal, 0 external
-- **Tasks**: 0 completed, 6 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/context-engineering.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 368 lines, 79 headers
-- **Elements**: 13 code blocks
-- **Links**: 0 internal, 0 external
-- **Tasks**: 0 completed, 22 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
-- **Freshness**: fresh
-
-#### docs/archived/ai-collaboration/prompting.md
-- **Health**: [█████] 100% 100/100
-- **Size**: 343 lines, 54 headers
-- **Elements**: 8 code blocks
-- **Links**: 0 internal, 0 external
-- **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/README.md
@@ -1106,9 +1007,9 @@
 
 #### docs/development/guidelines/README.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 74 lines, 12 headers
+- **Size**: 75 lines, 12 headers
 - **Elements**: 0 code blocks
-- **Links**: 37 internal, 0 external
+- **Links**: 39 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
@@ -1151,9 +1052,9 @@
 
 #### docs/development/guidelines/authentication-authorization.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 355 lines, 69 headers
+- **Size**: 361 lines, 70 headers
 - **Elements**: 0 code blocks
-- **Links**: 6 internal, 0 external
+- **Links**: 9 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
@@ -1223,27 +1124,27 @@
 
 #### docs/development/guidelines/security-implementation-core.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 157 lines, 22 headers
+- **Size**: 161 lines, 23 headers
 - **Elements**: 0 code blocks
-- **Links**: 5 internal, 0 external
+- **Links**: 6 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/guidelines/security-implementation.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 459 lines, 92 headers
+- **Size**: 465 lines, 93 headers
 - **Elements**: 0 code blocks
-- **Links**: 7 internal, 0 external
+- **Links**: 10 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/guidelines/security-principles.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 598 lines, 28 headers
+- **Size**: 602 lines, 29 headers
 - **Elements**: 10 code blocks
-- **Links**: 5 internal, 0 external
+- **Links**: 6 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
@@ -1299,7 +1200,7 @@
 - **Elements**: 1 code blocks
 - **Links**: 11 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/templates/api.template.md
@@ -1353,7 +1254,7 @@
 - **Elements**: 13 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/development/workflows/README.md
@@ -1394,7 +1295,7 @@
 
 #### docs/reports/documentation-health.md
 - **Health**: [█████] 100% 100/100
-- **Size**: 1577 lines, 181 headers
+- **Size**: 1631 lines, 187 headers
 - **Elements**: 1 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
@@ -1470,7 +1371,7 @@
 - **Elements**: 1 code blocks
 - **Links**: 0 internal, 3 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/architecture/examples/README.md
@@ -1479,7 +1380,7 @@
 - **Elements**: 0 code blocks
 - **Links**: 1 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-15 (2 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/architecture/examples/architecture-template.md
@@ -1506,7 +1407,7 @@
 - **Elements**: 3 code blocks
 - **Links**: 8 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-16 (1 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/decisions/adr-001-adopt-automatic-documentation-generation.md
@@ -1551,7 +1452,7 @@
 - **Elements**: 5 code blocks
 - **Links**: 0 internal, 0 external
 - **Tasks**: 0 completed, 0 pending
-- **Last Updated**: 2025-09-16 (1 days ago)
+- **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
 #### docs/technical/decisions/explorations/templates/conversation-template.md

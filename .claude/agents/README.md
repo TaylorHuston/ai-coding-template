@@ -1,6 +1,6 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-09-16 **Status**: Active - Enhanced with MCP Integration **Target Audience**: AI Assistants, Development Teams **Total Agents**: 18 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-09-17 **Status**: Active - Enhanced with Vision Integration **Target Audience**: AI Assistants, Development Teams **Total Agents**: 19 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 
@@ -9,6 +9,12 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
 ### By Domain Expertise
 
 #### **Architecture & Planning**
+
+- **[vision-strategist](./vision-strategist.md)** - Product vision and strategic planning
+
+  - _Capabilities_: Vision creation, strategic analysis, business model design, success metrics
+  - _Best For_: Product vision development, strategic decisions, market positioning
+  - _Model_: opus | _Color_: purple | _Auto-Invoked_: Vision and strategic planning tasks
 
 - **[code-architect](./code-architect.md)** - System design and long-term architecture
 

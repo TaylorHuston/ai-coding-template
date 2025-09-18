@@ -81,7 +81,7 @@ The AI will guide you through these phases:
 
 ## Integration with Workflow
 
-### Position in Hierarchy
+### Position in 5-Phase Workflow
 ```
 vision.md                           → Why the product exists
 features/user-auth.md               → Why we need authentication
@@ -91,9 +91,10 @@ implementations/2024-01-15-auth.md  → What steps we took
 ```
 
 ### Relationship to Other Commands
-- **After `/feature`**: Understand what to build before designing how
+- **After `/vision` and `/feature`**: Architecture decisions guided by vision goals and feature requirements
 - **Before `/plan`**: Define architecture before implementation planning
 - **Creates input for `/plan`**: Architecture decisions guide task breakdown
+- **Vision Alignment**: Ensures technical decisions support core product vision
 
 ## Agent Coordination
 

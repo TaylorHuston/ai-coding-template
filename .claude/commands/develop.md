@@ -51,7 +51,7 @@ As the main Claude instance, `/iterate` acts as the orchestrator for all agent c
 
 **Context Management:**
 - Reads HANDOFF.yml and RESEARCH.md for complete context
-- **Hook Enhancement**: `scripts/distill-context.sh` automatically generates focused context
+- **Hook Enhancement**: `scripts/workflow/distill-context.sh` automatically generates focused context
 - Constructs detailed prompts with all relevant information
 - Passes context explicitly to agents via Task tool prompts
 - Updates coordination files after agent completion
@@ -76,10 +76,10 @@ For each task execution:
    - Parse PLAN.md and locate target task
    - Validate task format and agent hint presence
    - Check prerequisites completed (unless --force)
-   - Run quality gate validation: `scripts/validate-quality-gates.sh`
+   - Run quality gate validation: `scripts/quality/validate.js quality-gates`
    - Read HANDOFF.yml for previous agent context
    - Extract CRITICAL_CONTEXT from RESEARCH.md
-   - Validate context integrity: `scripts/validate-context.sh`
+   - Validate context integrity: `scripts/quality/validate.js context`
 
 2. **Agent Execution (Orchestrated with Script Integration)**
    - Validate agent exists in .claude/agents/ directory
@@ -92,7 +92,7 @@ For each task execution:
        code-reviewer: [validation scripts, linting tools]
        devops-engineer: [deployment scripts, environment validation]
      ```
-   - Generate focused context: `scripts/distill-context.sh --agent AGENT-TYPE --task TASK-ID`
+   - Generate focused context: `scripts/workflow/distill-context.sh --agent AGENT-TYPE --task TASK-ID`
    - Construct comprehensive prompt including:
      - Current task P X.X.X with full description
      - **Script Integration Context**: Available scripts the agent can invoke
@@ -103,7 +103,7 @@ For each task execution:
    - Call agent via Task tool with enhanced context in prompt
    - **Agent Script Orchestration**: Agent automatically invokes appropriate scripts during execution
    - Agent executes task and returns structured results with script outputs
-   - Validate agent output: `scripts/validate-agent-output.sh --output AGENT-OUTPUT --task TASK-ID`
+   - Validate agent output: `scripts/quality/validate.js agent-output --file AGENT-OUTPUT --task TASK-ID`
 
 3. **Post-Execution Coordination**
    - Parse agent output for technical details and findings
@@ -133,7 +133,7 @@ For each task execution:
      - Documentation gaps → docs-sync-agent automatically validates and updates
    - **Automatic Script Orchestration**: Agents determine which scripts to run based on task context
    - **Progressive Quality Enforcement**: Quality gates adapt to workflow phase and complexity
-   - **Intelligent Recovery**: `scripts/remediation-advisor.sh` integrated into agent decision-making
+   - **Intelligent Recovery**: `scripts/workflow/remediation-advisor.sh` integrated into agent decision-making
 
 5. **Phase Transition Management**
    - Detect phase completion when all P X.X.X tasks checked
@@ -202,14 +202,14 @@ When using the `--instruct` flag, `/iterate` transforms from execution mode into
 - **Invalid task ID**: "Task P2.8.0 not found in PLAN.md" + suggest available tasks
 - **Prerequisites incomplete**: List incomplete tasks, suggest --force if intentional
 - **Agent not found**: List available agents from .claude/agents/
-- **Task too complex**: Run `scripts/smart-task-decomposition.sh --task TASK-ID` for decomposition suggestions
+- **Task too complex**: Run `scripts/workflow/smart-task-decomposition.sh --task TASK-ID` for decomposition suggestions
 - **Agent output validation fails**: Provide specific feedback and suggest retry with different agent
 
 **Quality Gates:**
-- **Tests failing**: Block progression, run `scripts/remediation-advisor.sh` for specific guidance
+- **Tests failing**: Block progression, run `scripts/workflow/remediation-advisor.sh` for specific guidance
 - **Linting errors**: Block progression, suggest automatic fixes and appropriate agents
 - **Security issues**: Block progression, suggest security-auditor agent
-- **Multiple failures**: Consider task decomposition with `scripts/smart-task-decomposition.sh`
+- **Multiple failures**: Consider task decomposition with `scripts/workflow/smart-task-decomposition.sh`
 - **Missing documentation**: Warn but allow progression, suggest docs-maintainer
 
 ## Integration with PLAN.md Structure

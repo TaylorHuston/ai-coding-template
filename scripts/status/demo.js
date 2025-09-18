@@ -98,17 +98,25 @@ async function runDemo() {
     console.log(colorize('✅ AI TEMPLATE APPROACH:', 'green'));
     console.log();
 
-    await typeText('/idea --start "user authentication approach"', 'cyan', 20);
+    await typeText('/feature --new "User Authentication"', 'cyan', 20);
     console.log();
     await sleep(500);
 
-    await typeText('🤖 Starting guided exploration...', 'blue');
+    await typeText('🧭 Capturing business context, requirements, and success criteria...', 'blue');
     console.log();
-    await typeText('🛡️  Security expert: "Consider OAuth vs JWT vs hybrid..."', 'blue');
+    await typeText('🔗 Linking external issue tracker (AUTH-123)...', 'blue');
     console.log();
-    await typeText('🏗️  Architect: "This affects database schema and API design..."', 'blue');
+    await sleep(800);
+
+    await typeText('/architect user-authentication', 'cyan', 20);
     console.log();
-    await typeText('📋 Decision: JWT with refresh tokens + OAuth social login', 'green');
+    await sleep(500);
+
+    await typeText('🛡️  Security: "Consider OAuth vs JWT vs hybrid..."', 'blue');
+    console.log();
+    await typeText('🏗️  Architecture: "Impacts schema, API design, and session strategy..."', 'blue');
+    console.log();
+    await typeText('📋 ADR: JWT with refresh tokens + optional OAuth social login', 'green');
     console.log();
     await sleep(1000);
 
@@ -128,7 +136,7 @@ async function runDemo() {
     console.log();
     await sleep(1000);
 
-    await typeText('/iterate', 'cyan', 20);
+    await typeText('/develop', 'cyan', 20);
     console.log();
     await sleep(500);
 

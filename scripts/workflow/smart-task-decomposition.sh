@@ -304,13 +304,13 @@ if [ $complexity_result -ge 1 ]; then
         echo ""
         echo -e "${BLUE}To manually decompose:${NC}"
         echo "1. Edit PLAN.md to replace current task with suggested subtasks"
-        echo "2. Run: /iterate (will start with first subtask)"
+        echo "2. Run: /develop (will start with first subtask)"
     fi
 else
     echo -e "${GREEN}Task complexity is appropriate - no decomposition needed${NC}"
     echo ""
     echo -e "${BLUE}Alternative approaches if task is failing:${NC}"
-    echo "• Try different agent: /iterate --agent DIFFERENT-AGENT $TASK_ID"
-    echo "• Force retry: /iterate --force $TASK_ID"
+    echo "• Try different agent: /develop --agent DIFFERENT-AGENT $TASK_ID"
+    echo "• Force retry: /develop --force $TASK_ID"
     echo "• Get more context: scripts/distill-context.sh --agent AGENT --task $TASK_ID"
 fi
