@@ -11,10 +11,6 @@ tags: ["vision", "strategy", "product"]
 
 # Vision Document: [Project Name]
 
-**Version:** 1.0.0 **Last Updated:** September 17, 2025 **Status:** Active
-
----
-
 ## 1. The Problem
 
 _A concise, one-paragraph summary of the core problem you are solving. Be specific about the pain point._
