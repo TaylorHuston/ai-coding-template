@@ -94,8 +94,8 @@ log_message() {
     echo -e "$output"
     
     # Output to file if configured
-    if [[ -n "$LOG_FILE" ]]; then
-        echo -e "$output" | sed 's/\x1b\[[0-9;]*m//g' >> "$LOG_FILE"  # Strip colors for file
+    if [[ -n "${LOG_FILE:-}" ]]; then
+        echo -e "$output" | sed 's/\x1b\[[0-9;]*m//g' >> "${LOG_FILE}"  # Strip colors for file
     fi
 }
 
@@ -122,18 +122,24 @@ log_critical() {
 
 # Status logging functions
 log_success() {
-    echo -e "${GREEN}${EMOJI_SUCCESS} $*${NC}"
-    [[ -n "$LOG_FILE" ]] && echo "[SUCCESS] $*" >> "$LOG_FILE"
+    echo -e "${GREEN:-}${EMOJI_SUCCESS:-✅} $*${NC:-}"
+    if [[ -n "${LOG_FILE:-}" ]]; then
+        echo "[SUCCESS] $*" >> "${LOG_FILE}"
+    fi
 }
 
 log_failure() {
-    echo -e "${RED}${EMOJI_ERROR} $*${NC}"
-    [[ -n "$LOG_FILE" ]] && echo "[FAILURE] $*" >> "$LOG_FILE"
+    echo -e "${RED:-}${EMOJI_ERROR:-❌} $*${NC:-}"
+    if [[ -n "${LOG_FILE:-}" ]]; then
+        echo "[FAILURE] $*" >> "${LOG_FILE}"
+    fi
 }
 
 log_skip() {
-    echo -e "${YELLOW}${EMOJI_ARROW_RIGHT} Skipped: $*${NC}"
-    [[ -n "$LOG_FILE" ]] && echo "[SKIPPED] $*" >> "$LOG_FILE"
+    echo -e "${YELLOW:-}${EMOJI_ARROW_RIGHT:-→} Skipped: $*${NC:-}"
+    if [[ -n "${LOG_FILE:-}" ]]; then
+        echo "[SKIPPED] $*" >> "${LOG_FILE}"
+    fi
 }
 
 # Progress logging
@@ -142,7 +148,9 @@ log_step() {
     local total="$2"
     local message="$3"
     echo -e "${CYAN}[${step}/${total}] $message${NC}"
-    [[ -n "$LOG_FILE" ]] && echo "[STEP ${step}/${total}] $message" >> "$LOG_FILE"
+    if [[ -n "${LOG_FILE:-}" ]]; then
+        echo "[STEP ${step}/${total}] $message" >> "${LOG_FILE}"
+    fi
 }
 
 # Header logging
@@ -158,24 +166,28 @@ log_header() {
     echo "$line"
     echo -e "${NC}"
     
-    if [[ -n "$LOG_FILE" ]]; then
-        echo "" >> "$LOG_FILE"
-        echo "$line" >> "$LOG_FILE"
-        echo " $title" >> "$LOG_FILE"
-        echo "$line" >> "$LOG_FILE"
+    if [[ -n "${LOG_FILE:-}" ]]; then
+        echo "" >> "${LOG_FILE}"
+        echo "$line" >> "${LOG_FILE}"
+        echo " $title" >> "${LOG_FILE}"
+        echo "$line" >> "${LOG_FILE}"
     fi
 }
 
 # Section logging
 log_section() {
     echo -e "\\n${BOLD}${BLUE}=== $* ===${NC}\\n"
-    [[ -n "$LOG_FILE" ]] && echo -e "\\n=== $* ===\\n" >> "$LOG_FILE"
+    if [[ -n "${LOG_FILE:-}" ]]; then
+        echo -e "\\n=== $* ===\\n" >> "${LOG_FILE}"
+    fi
 }
 
 # Subsection logging
 log_subsection() {
     echo -e "${CYAN}--- $* ---${NC}"
-    [[ -n "$LOG_FILE" ]] && echo "--- $* ---" >> "$LOG_FILE"
+    if [[ -n "${LOG_FILE:-}" ]]; then
+        echo "--- $* ---" >> "${LOG_FILE}"
+    fi
 }
 
 # Command execution logging
@@ -195,7 +207,9 @@ log_exec() {
 # Dry run logging
 log_dry_run() {
     echo -e "${YELLOW}[DRY RUN] Would execute: $*${NC}"
-    [[ -n "$LOG_FILE" ]] && echo "[DRY RUN] $*" >> "$LOG_FILE"
+    if [[ -n "${LOG_FILE:-}" ]]; then
+        echo "[DRY RUN] $*" >> "${LOG_FILE}"
+    fi
 }
 
 # Spinner for long operations

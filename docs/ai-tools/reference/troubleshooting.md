@@ -132,6 +132,18 @@ which git node npm
 ./scripts/setup-manager.sh quick
 ```
 
+**Specific Issue**: Script stops after "Archived template README" or exits with LOG_FILE error at line 617
+
+**Root Cause**: Empty LOG_FILE variable causing append operations to fail
+
+**Solution**: This was fixed in the latest template version. If using an older copy:
+```bash
+# Ensure you're using the latest template version
+# The fix involves updating all LOG_FILE append operations in scripts/lib/logging.sh
+# from: [[ -n "${LOG_FILE:-}" ]] && echo "text" >> "$LOG_FILE"
+# to: if [[ -n "${LOG_FILE:-}" ]]; then echo "text" >> "${LOG_FILE}"; fi
+```
+
 #### AI Status Dashboard Issues
 
 **Problem**: `ai-status.sh` shows errors or incomplete information

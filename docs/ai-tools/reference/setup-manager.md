@@ -272,6 +272,24 @@ chmod +x scripts/lib/colors.sh
 ls -la scripts/lib/
 ```
 
+#### `Error at line 617: [[ -n "${LOG_FILE:-}" ]]` or Script Stops After Template Archiving
+**Symptoms**: Script exits with LOG_FILE error or stops after "Archived template README" message
+**Root Cause**: Empty LOG_FILE variable causing append operations to fail with `set -e`
+**Solution**: This was fixed in the template - ensure you're using the latest version
+
+```bash
+# If you encounter this in an older copy, the fix involves updating logging.sh:
+# Change all instances of:
+[[ -n "${LOG_FILE:-}" ]] && echo "[SUCCESS] $*" >> "$LOG_FILE"
+
+# To:
+if [[ -n "${LOG_FILE:-}" ]]; then
+    echo "[SUCCESS] $*" >> "${LOG_FILE}"
+fi
+```
+
+**Fixed in Version**: All instances resolved as of September 2025
+
 #### `Claude Code not found`
 **Solution**: Install Claude Code following the interactive guidance
 ```bash
