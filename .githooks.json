@@ -43,6 +43,12 @@
           "\\.php$"
         ]
       },
+      "documentation-trigger": {
+        "enabled": true,
+        "script": "scripts/hooks/documentation-trigger.sh",
+        "warning-only": true,
+        "description": "Remind to use technical-writer agent for new documentation"
+      },
       "security-scan": {
         "enabled": true,
         "context-aware": true,
