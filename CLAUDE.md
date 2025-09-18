@@ -15,10 +15,12 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## Project Context
 
+- **Project Structure**: Dual-purpose repository containing both AI workflow template (root) and example application code (`src/`)
 - **Tech Stack**: [Add the high level details of your tech stack here]
 - **External Links**: Project Management: [Add link to Jira/Linear/etc], Wiki: [Add link to Confluence/Notion/etc]
 - **Project Vision**: `docs/vision.md` or `project-vision.md` - Contains problem statement, solution approach, and core features
 - **Documentation Structure**: Three-tier system (docs/technical/, docs/development/, docs/ai-tools/)
+- **Application Code**: All implementation code resides in `src/` following standard project structure
 - **Active Development Context**: `.claude/working/[issue-id]/` contains ephemeral work artifacts
 
 ## Core Workflow

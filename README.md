@@ -4,6 +4,8 @@
 
 This is an attempt to add structure and guidance around ai-assisted coding. It is very much in an alpha phase at the moment and I greatly appreciate any feedback on it. It's also currently being frequently updated with large changes, so check back often!
 
+**Project Structure**: This template includes both the AI workflow framework (in the root) and example application code (in `src/`) to demonstrate real-world usage patterns.
+
 ## Transform AI into Your Architectural Partner
 
 From simple code generator to intelligent development partner through the **revolutionary /vision → /feature → /architect → /plan → /develop workflow**.

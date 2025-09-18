@@ -22,6 +22,7 @@ npm run demo
 # Transform template into your real project
 git clone https://github.com/yourusername/ai-coding-template.git my-awesome-project
 cd my-awesome-project
+rm -rf src/*  # Clear example application code
 ./scripts/setup-manager.sh init-project
 ```
 

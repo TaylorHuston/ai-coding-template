@@ -44,6 +44,7 @@ cd my-project
 
 # 2. Initialize for your project
 rm -rf .git && git init
+rm -rf src/*  # Clear example application code
 chmod +x scripts/*.sh
 ./scripts/setup-manager.sh quick
 
