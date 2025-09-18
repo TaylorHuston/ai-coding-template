@@ -67,47 +67,110 @@ tags: ["workflow", "vision", "strategy", "planning"]
 4. **Metrics Tracking**: Monitor progress toward stated success metrics
 5. **Validation Framework**: Provide framework for ongoing vision alignment
 
-## Conversation Flow
+## Collaborative Conversation Flow
 
-The AI will guide you through these strategic phases:
+The AI guides you through **structured checkpoint conversations** with progressive disclosure and confidence indicators to ensure collaborative vision development.
 
-### 1. Problem Discovery
-- What core problem are you solving?
-- Who experiences this problem most acutely?
-- How do they currently handle this problem?
-- What makes this problem worth solving?
-- What happens if this problem remains unsolved?
+### Conversation Structure Pattern
+```yaml
+checkpoint_pattern:
+  current_understanding: "Here's what I understand so far..."
+  validation_question: "What am I missing or misunderstanding?"
+  options_exploration: "I see 3 possible directions..."
+  confidence_indicator: "I'm 90% confident about X, but only 60% about Y"
+  decision_point: "This seems like a key choice - what matters most?"
+  context_preservation: "Based on our discussion of X, now considering Y..."
+```
 
-### 2. Solution Exploration
-- What is your unique approach to solving this problem?
-- What makes your solution different from existing alternatives?
-- What is the minimum viable solution that delivers core value?
-- How does your solution create 10x better outcomes?
+### Phase 1: Problem Space Exploration
 
-### 3. Audience Definition
-- Who is your primary user/customer?
-- What are their key characteristics and behaviors?
-- What do they value most in a solution?
-- How do they currently discover and adopt new tools?
-- What would make them switch from their current solution?
+**Checkpoint 1A - Problem Validation**
+- *AI*: "Let me understand the core problem. From what you've described, I see this challenge: [initial understanding]. What am I missing about the pain points your users face?"
+- *Focus*: Validate problem existence and severity
+- *Confidence Level*: Express uncertainty about problem nuances
 
-### 4. Value Proposition
-- What unique value do you deliver?
-- What are your 1-3 key differentiators?
-- Why would users choose you over alternatives?
-- What makes you defensible in the market?
+**Checkpoint 1B - Problem Prioritization**
+- *AI*: "I'm hearing multiple problems: [A, B, C]. Which one keeps your target users awake at night? Which one, if solved, would create the most significant impact?"
+- *Focus*: Narrow to the most critical problem
+- *Progressive Disclosure*: Build on validated problem understanding
 
-### 5. Success Framework
-- What does success look like in 6 months? 2 years?
-- What metrics will you track to measure progress?
-- What are your key activation and retention goals?
-- How will you know if you need to pivot?
+**Checkpoint 1C - Current Solutions Analysis**
+- *AI*: "Here's how I understand people handle this today: [current approach]. What's broken about these existing solutions? What makes this worth building something new?"
+- *Focus*: Understand solution landscape and opportunity gaps
 
-### 6. Vision Documentation
-- Synthesize insights into clear, compelling vision document
-- Establish version tracking for future evolution
-- Create validation framework for ongoing alignment
-- Set up success metrics monitoring
+### Phase 2: Solution Direction Setting
+
+**Checkpoint 2A - Approach Exploration**
+- *AI*: "I see 3 potential solution approaches: [Option A: description], [Option B: description], [Option C: description]. Each has different implications for complexity and market differentiation. Which direction resonates with your vision?"
+- *Focus*: Explore solution alternatives with trade-offs
+- *Confidence Indicators*: Rate approach feasibility
+
+**Checkpoint 2B - Unique Value Identification**
+- *AI*: "Based on your chosen approach, I think your unique value is [X]. But I'm only 70% confident about what makes you truly different. What's your unfair advantage or unique insight?"
+- *Focus*: Define competitive differentiation
+- *Validation Needed*: Seek confirmation of uniqueness
+
+**Checkpoint 2C - Solution Validation**
+- *AI*: "So your solution is [summary]. This would solve [problem] by [approach] for [audience]. Does this capture the essence? What would make someone choose this over [existing alternative]?"
+- *Focus*: Consolidate solution understanding
+
+### Phase 3: Target Audience Definition
+
+**Checkpoint 3A - Primary User Identification**
+- *AI*: "I'm thinking your primary user is [user type] who [key characteristics]. They currently [current behavior] and value [key values]. Am I targeting the right persona?"
+- *Focus*: Define specific target audience
+- *Confidence Level*: Express uncertainty about user motivations
+
+**Checkpoint 3B - User Journey Mapping**
+- *AI*: "Let me sketch their journey: [discovery → evaluation → adoption → usage]. What steps am I missing? Where do they typically get stuck with current solutions?"
+- *Focus*: Understand user experience and pain points
+- *Iterative Building*: Build on validated user understanding
+
+**Checkpoint 3C - Value Proposition Validation**
+- *AI*: "For this audience, I think the compelling value is [benefit]. But what would actually make them switch from their current solution? What's the minimum improvement that would drive adoption?"
+- *Focus*: Validate value proposition with target audience
+
+### Phase 4: Success Framework Creation
+
+**Checkpoint 4A - Success Definition**
+- *AI*: "I'm thinking success looks like [6-month vision] in the short term and [2-year vision] longer term. Does this align with your ambitions? What does 'winning' mean to you?"
+- *Focus*: Define success vision and ambition level
+- *Confidence Check*: Validate timeline assumptions
+
+**Checkpoint 4B - Metrics Selection**
+- *AI*: "For tracking progress, I suggest measuring [3-4 key metrics]. I'm confident about [metric A and B] but uncertain whether [metric C] is the right proxy for success. What metrics matter most to your business?"
+- *Focus*: Select measurable success indicators
+- *Uncertainty Acknowledgment*: Request guidance on measurement
+
+**Checkpoint 4C - Validation Framework**
+- *AI*: "To validate we're on track, I propose checking [validation approach] every [timeframe]. This would tell us [what we'd learn]. Does this validation plan make sense for your context?"
+- *Focus*: Establish ongoing validation process
+
+### Phase 5: Vision Synthesis & Documentation
+
+**Final Checkpoint - Vision Coherence**
+- *AI*: "Let me synthesize our discussion: [complete vision summary]. This connects [problem] → [solution] → [audience] → [success]. Does this capture the essence of what you want to build? What feels missing or misaligned?"
+- *Focus*: Validate complete vision coherence
+- *Final Confidence Check*: Ensure alignment before documentation
+
+### Context Management Throughout
+
+**Every 3-4 Checkpoints:**
+```yaml
+context_refresh:
+  decisions_made: "Key decisions from our discussion"
+  open_questions: "Items we still need to resolve"
+  assumptions_log: "What we're assuming that needs validation"
+  next_focus: "What we're exploring next"
+```
+
+**Iteration Triggers:**
+```yaml
+backward_flow_signals:
+  assumption_challenged: "This new insight challenges our earlier assumption about..."
+  constraint_discovered: "This constraint affects our previous decision about..."
+  opportunity_identified: "This opens up a possibility we hadn't considered..."
+```
 
 ## Integration with 5-Phase Workflow
 
@@ -136,22 +199,99 @@ implementations/2024-01.md   → What steps we took
 - **Shapes `/plan`**: Implementation priorities driven by vision impact
 - **Validates `/develop`**: Implementation outcomes measured against vision metrics
 
-## Vision Document Structure
+## Vision Document Structure (Collaborative Format)
 
-### Core Sections
+### Core Sections with Collaboration Markers
+
 1. **The Problem** - Clear, specific problem statement
+   ```yaml
+   confidence_level: "high|medium|low"
+   validation_evidence: "Sources that confirm this problem exists"
+   assumptions: "What we're assuming about this problem"
+   open_questions: "What we still need to validate"
+   # TODO: Add user research evidence here
+   ```
+
 2. **The Solution** - High-level solution approach and value proposition
+   ```yaml
+   approach_confidence: "high|medium|low"
+   alternatives_considered: "Other approaches we evaluated"
+   unique_insight: "Our key differentiating insight"
+   # DISCUSSION NEEDED: Technical feasibility of core approach
+   ```
+
 3. **Target Audience** - Specific user/customer definition
+   ```yaml
+   persona_confidence: "high|medium|low"
+   evidence_sources: "How we validated this audience"
+   secondary_audiences: "Other potential user groups"
+   # USER INPUT: Add specific customer interview insights
+   ```
+
 4. **Core Features (MVP)** - Minimum viable product scope
+   ```yaml
+   feature_confidence: "high|medium|low"
+   prioritization_rationale: "Why these features are essential"
+   nice_to_haves: "Features for later consideration"
+   # VALIDATE: Do these features solve the core problem?
+   ```
+
 5. **Key Differentiators** - Unique value and competitive advantages
+   ```yaml
+   differentiation_confidence: "high|medium|low"
+   competitive_analysis: "How we compare to alternatives"
+   defensibility: "What makes this advantage sustainable"
+   # VERIFY: Are these actually unique?
+   ```
+
 6. **Success Metrics** - Measurable goals and validation criteria
+   ```yaml
+   metrics_confidence: "high|medium|low"
+   measurement_approach: "How we'll track these metrics"
+   targets: "Specific goals and timeframes"
+   # QUESTION: What metrics matter most to the business?
+   ```
 
 ### Enhanced Sections (Advanced)
-7. **Market Context** - Competitive landscape and positioning
-8. **Business Model** - How value is captured and delivered
-9. **Technical Constraints** - Key technical considerations and limitations
-10. **Evolution History** - Vision changes and pivots over time
-11. **Validation Results** - Evidence supporting vision assumptions
+
+7. **Decision Ledger** - Record of key choices made
+   ```yaml
+   decisions:
+     - content: "Chose mobile-first approach"
+       confidence: "high"
+       rationale: "Target audience primarily uses mobile"
+       alternatives: "Web-first, cross-platform"
+       validation_needed: "Mobile usage analytics"
+       date: "2025-01-15"
+   ```
+
+8. **Evolution History** - Vision changes and pivots over time
+   ```yaml
+   version_history:
+     - version: "1.0.0"
+       changes: "Initial vision"
+       trigger: "Market research completion"
+       preserved: "Core problem statement"
+       changed: "Target audience narrowed"
+   ```
+
+9. **Collaboration Artifacts**
+   ```markdown
+   ## Outstanding Questions
+   - [ ] What's our pricing strategy? (affects value proposition)
+   - [ ] Should we support enterprise customers initially?
+   - [ ] How do we handle international markets?
+
+   ## Assumptions to Validate
+   - [ ] Users will pay for this solution
+   - [ ] Market size is sufficient for VC funding
+   - [ ] Technical approach is feasible within timeline
+
+   ## Discussion Points
+   - [ ] Mobile vs web priority
+   - [ ] Freemium vs paid-only model
+   - [ ] Geographic expansion strategy
+   ```
 
 ## Vision Validation Framework
 
