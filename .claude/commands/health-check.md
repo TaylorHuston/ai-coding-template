@@ -17,7 +17,7 @@ Process:
 - Use code-reviewer for code quality assessment
 - Use test-engineer for test suite health evaluation
 - Use security-auditor for vulnerability assessment
-- Use docs-sync-agent for documentation health check
+- Use technical-writer for documentation health check
 - Run project-specific health checks and linting
 - Generate comprehensive health report with recommendations
 - Update status files with current health metrics

@@ -100,7 +100,7 @@ Project_Tracking:
 **Primary Agent**: context-analyzer (for validation and analysis)
 **Supporting Agents**:
 - code-reviewer: For implementation quality verification
-- docs-sync-agent: For documentation consistency checks
+- technical-writer: For documentation consistency checks
 - project-manager: For coordination and reporting
 
 ## Output Format

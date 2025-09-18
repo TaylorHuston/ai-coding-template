@@ -24,7 +24,7 @@ The project lacked consistent, up-to-date architecture documentation. Manual doc
 
 ## Decision
 
-Implement automatic documentation generation capabilities in the docs-sync-agent, including:
+Implement automatic documentation generation capabilities in the technical-writer, including:
 - Technology stack analysis from package.json and configuration files
 - System architecture overview generation
 - Dependency graph visualization
@@ -86,7 +86,7 @@ Automatic documentation generation ensures:
 
 ## Implementation
 - Created auto-docs-generator.js script for core functionality
-- Enhanced docs-sync-agent with automatic generation capabilities
+- Enhanced technical-writer with automatic generation capabilities
 - Integrated with docs-manager.sh for unified command interface
 - Enhanced existing ADR system in docs/technical/decisions/ for technical decision records
 - Added template system for consistent document structure
@@ -106,7 +106,7 @@ Automatic documentation generation ensures:
 - Schedule review in 6 months to evaluate effectiveness
 
 ## References
-- [docs-sync-agent.md](../../../.claude/agents/docs-sync-agent.md) - Enhanced agent documentation
+- [technical-writer.md](../../../.claude/agents/technical-writer.md) - Enhanced agent documentation
 - [auto-docs-generator.js](../../../scripts/auto-docs-generator.js) - Core automation script
 - [docs-manager.sh](../../../scripts/docs-manager.sh) - Command interface
 - [Architecture Documentation](../architecture/auto-generated/) - Generated documentation examples

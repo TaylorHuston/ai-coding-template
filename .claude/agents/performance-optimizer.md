@@ -5,9 +5,9 @@ tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, mcp__context7__resolv
 model: sonnet
 color: orange
 coordination:
-  hands_off_to: [database-specialist, devops-engineer, docs-sync-agent]
+  hands_off_to: [database-specialist, devops-engineer, technical-writer]
   receives_from: [code-reviewer, frontend-specialist, backend-specialist, database-specialist]
-  parallel_with: [security-auditor, test-engineer, docs-sync-agent]
+  parallel_with: [security-auditor, test-engineer, technical-writer]
 ---
 
 ## Purpose

@@ -5,7 +5,7 @@ tools: Read, Edit, MultiEdit, Grep, Glob, TodoWrite, mcp__serena__find_symbol, m
 model: sonnet
 color: yellow
 coordination:
-  hands_off_to: [code-reviewer, test-engineer, docs-sync-agent]
+  hands_off_to: [code-reviewer, test-engineer, technical-writer]
   receives_from: [code-reviewer, project-manager, performance-optimizer]
   parallel_with: [test-engineer, security-auditor]
 ---

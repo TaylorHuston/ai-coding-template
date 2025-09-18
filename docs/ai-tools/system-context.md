@@ -81,7 +81,7 @@ The **AI Coding Template** is a comprehensive platform that transforms individua
   - Follow consistent documentation standards
 - **Interactions**:
   - Use documentation templates and guidelines
-  - Leverage docs-sync-agent for maintaining currency
+  - Leverage technical-writer for maintaining currency
   - Create new documentation using technical-writer agent
 - **Value Received**: Automated documentation maintenance and consistency
 

@@ -3,11 +3,11 @@ version: "0.2.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 status: "active"
-target_audience: ["ai-assistants", "docs-sync-agent"]
+target_audience: ["ai-assistants", "technical-writer"]
 document_type: "reference"
 priority: "high"
 tags: ["documentation", "reference", "navigation", "index"]
-maintainer: "docs-sync-agent"
+maintainer: "technical-writer"
 ---
 
 # Documentation Tree Reference
@@ -21,7 +21,7 @@ maintainer: "docs-sync-agent"
 
 **Excluded**: Template files (`templates/`), example files (`examples/`), and `.claude/` template files are not included in this documentation tree as they serve as templates rather than actual documentation.
 
-**Note**: This file is maintained by the docs-sync-agent. Do not edit manually.
+**Note**: This file is maintained by the technical-writer. Do not edit manually.
 
 ## Root Level Documentation
 
@@ -52,7 +52,7 @@ maintainer: "docs-sync-agent"
 │   ├── data-analyst.md                # Data processing and analytics specialist
 │   ├── database-specialist.md         # Database design and optimization specialist
 │   ├── devops-engineer.md             # Infrastructure and deployment automation specialist
-│   ├── docs-sync-agent.md             # Documentation synchronization and maintenance agent
+│   ├── technical-writer.md             # Documentation synchronization and maintenance agent
 │   ├── frontend-specialist.md         # UI/UX development and optimization specialist
 │   ├── migration-specialist.md        # Framework upgrades and system migration specialist
 │   ├── performance-optimizer.md       # Performance analysis and optimization specialist
@@ -244,7 +244,7 @@ scripts/
 
 ## Maintenance Notes
 
-**For docs-sync-agent**: This file should be updated whenever:
+**For technical-writer**: This file should be updated whenever:
 - New documentation files are added
 - Documentation files are moved or renamed
 - Documentation structure changes
@@ -267,4 +267,4 @@ scripts/
 
 **Last Updated**: 2025-09-17 by system scan
 **Next Review**: When documentation structure changes
-**Maintainer**: docs-sync-agent (automated updates)
+**Maintainer**: technical-writer (automated updates)

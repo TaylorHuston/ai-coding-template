@@ -26,6 +26,13 @@ Essential patterns and practices for effective AI-assisted development. This gui
 - **Review**: "Use code-reviewer agent to assess this implementation"
 - **Safety**: "Show me the changes before committing to this branch"
 
+### Foundation-First Workflow
+
+**Enhanced workflow pattern** for new projects:
+- `/vision` → `/architect --decision "foundational tech stack"` → `/feature` → `/architect [feature]` → `/plan` → `/develop`
+
+**Key principle**: Establish foundational technical decisions before defining specific features to ensure architectural consistency.
+
 ## Effective AI Communication
 
 ### Prompt Principles
@@ -66,6 +73,32 @@ Help me with this code
 **✅ Agent-Specific:**
 ```
 Use the security-auditor agent to review this authentication code for vulnerabilities
+```
+
+### Early Specialist Consultation
+
+**Principle**: Consult domain specialists during decision-making phases, not just during implementation.
+
+#### When to Consult Early
+- **Technology Stack Decisions**: Get input from relevant specialists before committing to tools/frameworks
+- **Architecture Patterns**: Have specialists validate approaches before detailed design
+- **Security Considerations**: Include security-auditor in foundational decisions
+- **Performance Requirements**: Engage performance-optimizer for critical path decisions
+
+#### Consultation Patterns
+
+**✅ Proactive Consultation:**
+```
+"Before finalizing this database choice, let me get input from:
+- database-specialist on schema design implications
+- performance-optimizer on scaling considerations
+- security-auditor on data protection requirements"
+```
+
+**✅ Multi-Agent Decision Making:**
+```
+"Use Task tool to launch database-specialist, frontend-specialist, and security-auditor
+in parallel to review this architecture proposal before creating ADRs"
 ```
 
 ### Communication Patterns
@@ -417,6 +450,26 @@ interface UserCreateResponse {
 2. **Show changes before committing** on protected workflows
 3. **Reference existing patterns** when generating new code
 4. **Update context files** with progress and decisions
+
+### Workflow Best Practices (From Experience)
+
+#### Command Design Principles
+- **Natural conversation over scripted patterns**: AI performs better with conversational guidance than rigid step-by-step scripts
+- **Outcome-focused instructions**: Define what success looks like rather than micromanaging the process
+- **Minimal instruction overhead**: Verbose commands degrade AI performance by 15-20%
+- **Trust AI capabilities**: Provide guidance without constraining natural problem-solving abilities
+
+#### Foundation-First Development
+- **Establish tech stack before features**: Make foundational architecture decisions during vision phase
+- **Early specialist consultation**: Include domain experts in decision-making, not just implementation
+- **Document architectural rationale**: Create ADRs with specialist input for all foundational choices
+- **Validate decisions holistically**: Consider security, performance, and maintainability perspectives together
+
+#### Quality Through Simplicity
+- **Simplify verbose workflows**: Reduce instruction complexity while maintaining quality outcomes
+- **Focus on essential guidance**: Preserve critical success criteria while eliminating prescriptive steps
+- **Enable iterative refinement**: Allow natural back-and-forth rather than forced dialogue patterns
+- **Measure effectiveness**: Track workflow efficiency and adjust based on real usage patterns
 
 ## Related Documentation
 

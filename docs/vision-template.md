@@ -65,7 +65,7 @@ _What makes your solution unique or better than existing alternatives? Focus on 
 - **Simplicity:** Intentionally avoids the feature bloat of larger accounting software.
 - **Transparent Pricing:** A simple, flat monthly fee with no hidden costs or per-invoice charges.
 
----
+part of the---
 
 ## 6. Success Metrics
 

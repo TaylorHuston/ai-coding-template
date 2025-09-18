@@ -59,7 +59,7 @@ docs/
 
 ## Automation Details
 
-- **Trigger**: Run manually or automatically via docs-sync-agent
+- **Trigger**: Run manually or automatically via technical-writer
 - **Source Data**: Package.json, .env files, directory structure, dependencies
 - **Update Frequency**: On-demand or when significant code changes detected
 - **Validation**: Files include generation timestamps and metadata

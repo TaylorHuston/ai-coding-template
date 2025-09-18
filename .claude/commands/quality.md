@@ -111,7 +111,7 @@ Intelligent issue resolution with agent-guided fixes.
 **Agent Integration:**
 - Uses **refactoring-specialist** for code improvements
 - Uses **test-engineer** for test fixes
-- Uses **docs-sync-agent** for documentation fixes
+- Uses **technical-writer** for documentation fixes
 - Coordinates with domain specialists for complex fixes
 
 ## Quality Dimensions
@@ -142,7 +142,7 @@ quality_dimensions:
 
   documentation:
     metrics: [completeness, accuracy, freshness]
-    agent: docs-sync-agent
+    agent: technical-writer
     scripts: [docs validation, link checking]
 
   architecture:

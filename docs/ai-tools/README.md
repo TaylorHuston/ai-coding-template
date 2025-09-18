@@ -50,7 +50,7 @@ This directory contains all documentation for AI tools and systems. This is the 
 - **Development**: frontend-specialist, backend-specialist, database-specialist, api-designer
 - **Quality**: test-engineer, code-reviewer, security-auditor, refactoring-specialist
 - **Operations**: devops-engineer, performance-optimizer, migration-specialist
-- **Documentation**: technical-writer, docs-sync-agent, data-analyst
+- **Documentation**: technical-writer, technical-writer, data-analyst
 
 ### Smart Context Management
 - Preserve project knowledge across AI sessions

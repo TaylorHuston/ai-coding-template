@@ -60,7 +60,7 @@ AI agents are specialized AI assistants with domain expertise that automatically
 
 ### Documentation & Analysis (3 agents)
 - **`technical-writer`** - New documentation creation
-- **`docs-sync-agent`** - Documentation maintenance and updates
+- **`technical-writer`** - Documentation maintenance and updates
 - **`data-analyst`** - Data processing and business intelligence
 
 ## Agent Classification & Usage
@@ -77,7 +77,7 @@ These activate automatically when you mention relevant work:
 | "Review this code" | `code-reviewer` | Quality analysis |
 | "Complex feature coordination" | `project-manager` | Multi-domain orchestration |
 | "Investigate this bug" | `context-analyzer` | Root cause analysis |
-| "Update the docs" | `docs-sync-agent` | Documentation sync |
+| "Update the docs" | `technical-writer` | Documentation sync |
 
 ### On-Demand Agents (9 agents)
 Request these explicitly for specialized work:
@@ -141,7 +141,7 @@ Issues use a P X.X.X task structure where each phase represents a logical commit
 - [ ] P1.2.0 Write tests <!--agent:test-engineer-->
 - [ ] P1.3.0 Implement feature <!--agent:auto-select-->
 - [ ] P1.4.0 Code review <!--agent:code-reviewer-->
-- [ ] P1.5.0 Update docs <!--agent:docs-sync-agent-->
+- [ ] P1.5.0 Update docs <!--agent:technical-writer-->
 - [ ] P1.6.0 Commit: "feat: core implementation"
 ```
 

@@ -1,5 +1,5 @@
 ---
-version: "0.2.0"
+version: "0.3.0"
 created: "2025-09-17"
 last_updated: "2025-09-17"
 status: "active"
@@ -10,7 +10,7 @@ tags: ["workflow", "features", "requirements"]
 
 # /feature Command
 
-**Purpose**: Define specific capabilities and requirements for features through collaborative exploration.
+**Purpose**: Define feature requirements through natural conversation about user problems and solutions.
 
 ## Usage
 
@@ -18,95 +18,39 @@ tags: ["workflow", "features", "requirements"]
 /feature --new "Feature Name"    # Create new feature document
 /feature --update feature-name   # Update existing feature
 /feature --validate feature-name # Check vision alignment
-/feature --list                  # Show all features
 ```
-
-## Objectives
-
-**Primary Goal**: Define WHAT capabilities need to be built and WHY through collaborative requirements exploration.
-
-**Core Outcomes**:
-1. **User Journey Mapping**: Clear understanding of user experience and pain points
-2. **Requirements Definition**: Must-have vs nice-to-have capabilities
-3. **Success Criteria**: Measurable outcomes and validation approach
-4. **System Integration**: Dependencies and integration points
-5. **Documentation**: Create feature specification in `docs/technical/features/`
 
 ## Approach
 
-Use **collaborative exploration** to uncover feature requirements:
-- Map the user journey and identify pain points
-- Define essential capabilities vs enhancements
-- Establish success metrics and validation methods
+**Natural conversation focused on user problems and requirements**:
+
+- Start with user journey and pain points
+- Define essential vs nice-to-have capabilities
+- Establish success metrics and validation approach
 - Identify dependencies and constraints
-- Create structured feature documentation
+- Document requirements in `docs/technical/features/`
 
-**Focus on user experience** - ground requirements in actual user problems rather than technical solutions.
+**Key principle**: Ground requirements in actual user problems, not technical solutions.
 
-## Key Exploration Areas
+## Conversation Flow
 
-### User Journey & Pain Points
-- What specific user problem does this solve?
-- What steps do users take today and where do they struggle?
-- Who is affected by this problem and how often?
-- What would success look like from the user's perspective?
+**Start with the user**: Who has this problem and what's their current experience?
+**Define the pain**: What specifically is broken or missing today?
+**Explore solutions**: What capabilities would solve this? What's essential vs nice-to-have?
+**Set success criteria**: How will you know this feature works?
+**Identify dependencies**: What does this connect to or depend on?
 
-### Requirements & Scope
-- What capabilities are absolutely essential?
-- What would be nice to have but not critical?
-- What edge cases need consideration?
-- How does this connect with existing features?
+## Outputs
 
-### Success Definition
-- What metrics indicate this feature is working?
-- How will you validate it with users?
-- What performance expectations matter?
-- What business outcomes should this drive?
+**Feature specification** in `docs/technical/features/` with:
 
-### Technical Context
-- What existing systems does this touch?
-- What dependencies or constraints exist?
-- What external services or APIs are needed?
-- What technical risks should be considered?
-
-## Document Structure
-
-Create feature specifications with these core sections:
-
-1. **Problem Statement** - User pain point and context
-2. **User Journey** - Current experience and desired improvements
-3. **Requirements** - Must-have and nice-to-have capabilities
-4. **Success Metrics** - Measurable outcomes and validation plan
-5. **Dependencies** - System integration points and external needs
-6. **External References** - Links to Jira/Linear when available
-
-Include collaboration markers:
-- Confidence levels for requirements
-- Open questions needing resolution
-- Assumptions requiring validation
-- Evidence sources for decisions
+- Problem statement and user journey
+- Requirements (must-have vs nice-to-have)
+- Success metrics and validation plan
+- Dependencies and integration points
 
 ## Integration with Workflow
 
-**Position**: Defines capabilities that support the product vision and guide technical implementation
+**Position**: After `/vision`, before `/architect`
 
-**Relationship to Other Commands**:
-- **After /vision**: Features must align with product goals
-- **Before /architect**: Define what to build before deciding how
-- **Informs /plan**: Requirements guide implementation planning
-- **Validated by /develop**: Implementation proves feature value
-
-## Success Criteria
-
-**Complete Feature Specification**:
-- Clear user problem and journey mapped
-- Requirements prioritized with rationale
-- Success metrics defined and measurable
-- Dependencies identified with risk assessment
-- Integration points documented
-
-**Quality Indicators**:
-- Requirements trace to user problems
-- Success metrics are actionable
-- Scope is focused and achievable
-- Technical constraints are considered
+- Vision goals → feature requirements → technical implementation

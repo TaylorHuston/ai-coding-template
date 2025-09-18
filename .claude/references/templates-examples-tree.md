@@ -7,14 +7,14 @@ target_audience: ["ai-assistants", "developers", "technical-writer"]
 document_type: "reference"
 priority: "high"
 tags: ["templates", "examples", "reference", "navigation", "code-patterns"]
-maintainer: "docs-sync-agent"
+maintainer: "technical-writer"
 ---
 
 # Templates and Examples Tree Reference
 
 **Purpose**: Comprehensive index of all templates and code examples in the repository for efficient development and documentation creation.
 
-**Note**: This file is maintained by the docs-sync-agent. Do not edit manually.
+**Note**: This file is maintained by the technical-writer. Do not edit manually.
 
 ## Root Level Template System
 
@@ -578,7 +578,7 @@ ls examples/code/testing/
 
 ## Maintenance Notes
 
-**For docs-sync-agent**: This file should be updated whenever:
+**For technical-writer**: This file should be updated whenever:
 - New templates are added to any templates/ directory (including auto-docs/ and generation/)
 - New examples are added to any examples/ directory (including auth/, security/, testing/)
 - Template files are moved, renamed, or restructured
@@ -609,7 +609,7 @@ ls examples/code/testing/
 
 ---
 
-**Last Updated**: 2025-09-17 by docs-sync-agent
+**Last Updated**: 2025-09-17 by technical-writer
 **Next Review**: When template/example structure changes
-**Maintainer**: docs-sync-agent (automated updates)
+**Maintainer**: technical-writer (automated updates)
 **Key Changes**: Added auto-docs/, generation/, auth/, security/, testing/ directories; updated categorization and commands

@@ -177,7 +177,7 @@ node scripts/docs-health.js
 # Request documentation update:
 "Using the technical-writer agent, update docs to match current implementation"
 
-# Or use docs-sync-agent:
+# Or use technical-writer:
 "Please sync documentation with recent code changes"
 ```
 

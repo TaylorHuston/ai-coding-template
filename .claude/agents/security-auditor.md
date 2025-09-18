@@ -5,7 +5,7 @@ tools: Read, Grep, Glob, Bash, TodoWrite, mcp__context7__resolve-library-id, mcp
 model: opus
 color: red
 coordination:
-  hands_off_to: [devops-engineer, backend-specialist, docs-sync-agent]
+  hands_off_to: [devops-engineer, backend-specialist, technical-writer]
   receives_from: [project-manager, code-reviewer, backend-specialist, database-specialist]
   parallel_with: [code-reviewer, test-engineer, performance-optimizer, ai-llm-expert]
 ---

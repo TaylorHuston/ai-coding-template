@@ -168,6 +168,45 @@
           "scripts/"
         ]
       },
+      "docs-sync": {
+        "enabled": true,
+        "warning-only": true,
+        "description": "Review all commits for documentation sync opportunities",
+        "action": "auto-sync",
+        "agent": "technical-writer",
+        "timeout-seconds": 30,
+        "skip-conditions": {
+          "docs-only-commits": false,
+          "exclude-patterns": [
+            "^test/",
+            "^tests/",
+            "^\\.github/",
+            "^node_modules/",
+            "^dist/",
+            "^build/"
+          ]
+        },
+        "priority-paths": {
+          "high": [
+            ".claude/commands/",
+            ".claude/agents/",
+            ".claude/references/",
+            "src/",
+            "lib/",
+            "scripts/"
+          ],
+          "medium": [
+            "package.json",
+            "README.md",
+            "CLAUDE.md",
+            "STATUS.md"
+          ],
+          "low": [
+            "config/",
+            "examples/"
+          ]
+        }
+      },
       "file-size": {
         "enabled": true,
         "warning-only": true,

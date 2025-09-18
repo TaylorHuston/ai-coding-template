@@ -49,7 +49,7 @@ Orchestrates the technical-writer agent with auto-docs-generator.js to create co
 **Agent Integration:**
 - Uses **technical-writer** for content creation and structuring
 - Automatically invokes `auto-docs-generator.js` for codebase analysis
-- Uses **docs-sync-agent** for consistency validation
+- Uses **technical-writer** for consistency validation
 
 ### `validate` - Validate Documentation
 
@@ -62,7 +62,7 @@ Comprehensive validation of documentation quality, links, and structure.
 - TODO/FIXME item tracking
 
 **Agent Integration:**
-- Uses **docs-sync-agent** for validation coordination
+- Uses **technical-writer** for validation coordination
 - Automatically invokes `check-docs-links.js` and `docs-health.js`
 - Generates actionable improvement recommendations
 
@@ -77,7 +77,7 @@ Automatically updates documentation to reflect code changes and maintains consis
 - Validates documentation-code alignment
 
 **Agent Integration:**
-- Uses **docs-sync-agent** as primary coordinator
+- Uses **technical-writer** as primary coordinator
 - Involves domain specialists (frontend-specialist, backend-specialist) for technical accuracy
 - Automatically updates architectural documentation
 
@@ -92,7 +92,7 @@ Comprehensive health analysis with detailed reporting and maintenance recommenda
 - Visual health dashboard
 
 **Agent Integration:**
-- Uses **docs-sync-agent** for health analysis coordination
+- Uses **technical-writer** for health analysis coordination
 - Automatically invokes `docs-health.js` for metrics
 - Generates detailed markdown reports
 
@@ -147,7 +147,7 @@ script_integration:
 ### Validate Before Commit
 ```bash
 /docs validate
-# → docs-sync-agent validates all documentation
+# → technical-writer validates all documentation
 # → check-docs-links.js verifies link integrity
 # → docs-health.js provides quality metrics
 ```
@@ -164,7 +164,7 @@ script_integration:
 
 The `/docs` command uses intelligent agent coordination:
 
-1. **Primary Agent Selection**: Based on action type (technical-writer for creation, docs-sync-agent for maintenance)
+1. **Primary Agent Selection**: Based on action type (technical-writer for creation, technical-writer for maintenance)
 2. **Script Orchestration**: Agents invoke appropriate scripts automatically
 3. **Context Preservation**: All results are captured in workflow context files
 4. **Quality Gates**: Automatic validation ensures documentation quality

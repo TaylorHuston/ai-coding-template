@@ -10,7 +10,7 @@ tags: ["workflow", "development", "execution"]
 
 # /develop Command
 
-**Purpose**: Execute implementation tasks from plans through intelligent agent coordination and progress tracking.
+**Purpose**: Execute implementation tasks through intelligent agent coordination and systematic progression through the implementation plan.
 
 ## Usage
 
@@ -21,99 +21,37 @@ tags: ["workflow", "development", "execution"]
 /develop --force        # Skip validation checks
 ```
 
-## Objectives
-
-**Primary Goal**: Execute planned implementation tasks through specialist agent coordination with quality validation and progress tracking.
-
-**Core Outcomes**:
-1. **Task Execution**: Complete specific implementation tasks from PLAN.md
-2. **Agent Coordination**: Route tasks to appropriate specialist agents
-3. **Quality Validation**: Ensure task completion meets requirements
-4. **Progress Tracking**: Update plan status and coordination files
-5. **Context Preservation**: Maintain implementation state across tasks
-
 ## Approach
 
-Use **intelligent task orchestration** to execute implementations:
-- Automatically detect next task in active plan phase
-- Route tasks to specialist agents based on expertise
-- Provide comprehensive context from planning artifacts
-- Validate completion against task requirements
-- Update coordination files with implementation results
+**Systematic task execution** through specialist agent coordination:
 
-**Focus on systematic execution** - complete tasks in logical order with proper validation and handoffs.
+- Find next unchecked task in PLAN.md
+- Route to appropriate specialist agent based on task type
+- Provide planning context and requirements
+- Validate completion and update coordination files
+- Track progress through implementation phases
 
-## Key Execution Areas
+**Key principle**: Execute tasks systematically with proper agent expertise and quality validation.
 
-### Task Management
-- What is the next task to execute in the current phase?
-- Which specialist agent should handle this task?
-- What context and requirements guide execution?
-- How do we validate successful completion?
+## Execution Process
 
-### Agent Coordination
-- How do we route tasks to appropriate specialists?
-- What context does each agent need for success?
-- How do we handle handoffs between agents?
-- What information needs preservation across tasks?
+**Task Detection**: What's the next task to complete in our current phase?
+**Agent Selection**: Which specialist should handle this task type?
+**Context Provision**: What planning artifacts and requirements guide execution?
+**Quality Validation**: How do we confirm successful completion?
+**Progress Updates**: What coordination files need updating?
 
-### Quality Assurance
-- How do we validate task completion?
-- What criteria determine successful implementation?
-- When do we move to the next phase?
-- How do we maintain quality standards?
+## Outputs
 
-### Progress Tracking
-- How do we update plan status after completion?
-- What coordination information needs updating?
-- How do we communicate progress to the team?
-- When do we trigger commits and phase transitions?
+**Implementation progress** with updated coordination files:
 
-## Execution Structure
-
-Execute implementation tasks with these components:
-
-**Task Processing**:
-1. **Detection** - Find next unchecked task in PLAN.md
-2. **Agent Selection** - Route to specialist based on task type
-3. **Context Assembly** - Gather requirements and dependencies
-4. **Execution** - Agent implements task requirements
-5. **Validation** - Verify completion against success criteria
-
-**Coordination Updates**:
-- **PLAN.md** - Mark tasks complete with checkboxes
-- **HANDOFF.yml** - Record implementation decisions and context
-- **RESEARCH.md** - Capture discoveries and learnings
-- **STATUS.md** - Update project progress summaries
-
-Include execution markers:
-- Task completion status
-- Quality validation results
-- Implementation decisions made
-- Next task dependencies
+- **PLAN.md**: Mark tasks complete with checkboxes
+- **HANDOFF.yml**: Record implementation decisions and context
+- **RESEARCH.md**: Capture discoveries and technical learnings
+- **STATUS.md**: Update project progress summaries
 
 ## Integration with Workflow
 
-**Position**: Executes planned work by coordinating specialist agents
+**Position**: Final execution phase after `/vision`, `/feature`, `/architect`, and `/plan`
 
-**Relationship to Other Commands**:
-- **After /plan**: Executes tasks defined in implementation plan
-- **Uses specialist agents**: Routes work to appropriate domain experts
-- **Tracks progress**: Maintains state through task completion
-- **Enables iteration**: Supports incremental development cycles
-
-## Success Criteria
-
-**Successful Task Execution**:
-- Task requirements implemented completely
-- Quality validation criteria satisfied
-- Appropriate agent handled implementation
-- Coordination files updated accurately
-- Progress tracked and communicated
-
-**Quality Indicators**:
-- Implementation meets task specifications
-- Code quality standards maintained
-- Dependencies properly handled
-- Phase transitions occur correctly
-
+- Implementation plans → specialist agent execution → validated deliverables

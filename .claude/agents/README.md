@@ -112,7 +112,7 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
 
 #### **Documentation & Communication**
 
-- **[docs-sync-agent](./docs-sync-agent.md)** - Documentation synchronization and maintenance
+- **[technical-writer](./technical-writer.md)** - Documentation synchronization and maintenance
 
   - _Capabilities_: Documentation updates, consistency maintenance, link validation
   - _Best For_: Keeping docs current with code changes, maintaining accuracy
@@ -136,7 +136,7 @@ These agents activate automatically based on context and task requirements:
 5. **database-specialist** - All database-related operations
 6. **test-engineer** - Test creation and strategy development
 7. **code-reviewer** - Post-implementation quality reviews
-8. **docs-sync-agent** - After code changes affecting documentation
+8. **technical-writer** - After code changes affecting documentation
 
 ### **On-Demand Specialists** (10 agents)
 
@@ -180,7 +180,7 @@ These are invoked for specific domains or specialized work:
 
 #### **Low Complexity (Haiku Model)**
 
-- **docs-sync-agent** - Documentation maintenance and synchronization
+- **technical-writer** - Documentation maintenance and synchronization
 
 ### By Usage Frequency
 
@@ -190,7 +190,7 @@ These are invoked for specific domains or specialized work:
 2. **backend-specialist** - Server-side implementation and business logic
 3. **database-specialist** - Data modeling and query optimization
 4. **code-reviewer** - Quality assurance and best practices
-5. **docs-sync-agent** - Documentation maintenance
+5. **technical-writer** - Documentation maintenance
 
 #### **Strategic Agents** (Weekly/project milestones)
 
@@ -244,7 +244,7 @@ task_type_mapping:
     security_hardening: [security-auditor, devops-engineer]
 
   documentation:
-    sync_with_code: [docs-sync-agent] # auto-invoked
+    sync_with_code: [technical-writer] # auto-invoked
     new_documentation: [technical-writer]
     api_docs: [technical-writer, api-designer]
     architecture_docs: [technical-writer, code-architect]
@@ -269,11 +269,11 @@ task_type_mapping:
 - **Development**: frontend-specialist, api-designer, database-specialist
 - **Quality Assurance**: code-reviewer, test-engineer, security-auditor
 - **Deployment**: devops-engineer
-- **Maintenance**: performance-optimizer, docs-sync-agent, security-auditor
+- **Maintenance**: performance-optimizer, technical-writer, security-auditor
 
 #### **By Team Size**
 
-- **Solo Developer**: Use 3-4 core agents (frontend-specialist, database-specialist, code-reviewer, docs-sync-agent)
+- **Solo Developer**: Use 3-4 core agents (frontend-specialist, database-specialist, code-reviewer, technical-writer)
 - **Small Team (2-5)**: Add specialists as needed (devops-engineer, security-auditor, performance-optimizer)
 - **Large Team (5+)**: Full agent suite with project-manager for coordination
 
@@ -458,7 +458,7 @@ performance_metrics:
 | **security-auditor** | ✅ Security | ✅ Security | ✅ Security | ✅ Security | ⚠️ Security | ⚠️ Security | ✅ Security |
 | **devops-engineer** | ⚠️ Build | ⚠️ Build | ❌ | ✅ Primary | ⚠️ Ops | ⚠️ E2E | ✅ Primary |
 | **performance-optimizer** | ✅ Perf | ✅ Perf | ✅ Queries | ⚠️ Perf | ❌ | ✅ Perf Tests | ⚠️ Perf |
-| **docs-sync-agent** | ❌ | ❌ | ❌ | ❌ | ✅ Primary | ❌ | ❌ |
+| **technical-writer** | ❌ | ❌ | ❌ | ❌ | ✅ Primary | ❌ | ❌ |
 | **technical-writer** | ❌ | ❌ | ❌ | ❌ | ✅ Primary | ❌ | ❌ |
 | **refactoring-specialist** | ✅ Refactor | ✅ Refactor | ⚠️ Schema | ⚠️ Config | ❌ | ⚠️ Test Refactor | ❌ |
 | **migration-specialist** | ✅ Migrations | ✅ Migrations | ✅ Migrations | ✅ Migrations | ⚠️ Migration | ⚠️ Migration | ✅ Migrations |
@@ -476,7 +476,7 @@ performance_metrics:
 | **API Development** | api-designer | backend-specialist, frontend-specialist, test-engineer | api-designer → backend → frontend → test-engineer |
 | **Quality Assurance** | test-engineer, code-reviewer | security-auditor, performance-optimizer | test-engineer → code-reviewer → security → performance |
 | **Infrastructure** | devops-engineer | security-auditor, performance-optimizer, migration-specialist | devops → security → performance → migration |
-| **Documentation** | technical-writer, docs-sync-agent | All domain specialists | docs-sync → technical-writer → domain-specialist |
+| **Documentation** | technical-writer, technical-writer | All domain specialists | docs-sync → technical-writer → domain-specialist |
 | **Code Quality** | refactoring-specialist, code-reviewer | performance-optimizer, security-auditor | code-reviewer → refactoring → performance → security |
 | **System Migration** | migration-specialist | code-architect, devops-engineer, database-specialist | migration → architect → devops → database |
 | **Data & Analytics** | data-analyst | database-specialist, backend-specialist | data-analyst → database → backend |
@@ -499,7 +499,7 @@ performance_metrics:
 |-------|--------|---------------|
 | **Opus** | code-architect, project-manager, security-auditor, technical-writer | Complex reasoning, strategic decisions, security analysis, content creation |
 | **Sonnet** | Most specialists | Balanced performance for technical implementation tasks |
-| **Haiku** | docs-sync-agent, context-analyzer | Fast, lightweight tasks with clear objectives |
+| **Haiku** | technical-writer, context-analyzer | Fast, lightweight tasks with clear objectives |
 
 ## Best Practices for Agent Management
 

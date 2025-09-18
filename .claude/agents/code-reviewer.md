@@ -9,7 +9,7 @@ script_integration:
 model: sonnet
 color: yellow
 coordination:
-  hands_off_to: [security-auditor, performance-optimizer, docs-sync-agent, refactoring-specialist]
+  hands_off_to: [security-auditor, performance-optimizer, technical-writer, refactoring-specialist]
   receives_from: [frontend-specialist, backend-specialist, database-specialist, api-designer, test-engineer, project-manager]
   parallel_with: [test-engineer, security-auditor]
 ---

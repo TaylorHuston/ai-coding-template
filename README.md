@@ -268,7 +268,7 @@ Expert AI agents automatically coordinate throughout the workflow:
 - **Foundation**: context-analyzer, code-architect, project-manager
 - **Development**: frontend-specialist, backend-specialist, database-specialist, api-designer
 - **Quality**: test-engineer, code-reviewer, security-auditor, performance-optimizer
-- **Operations**: devops-engineer, docs-sync-agent, migration-specialist, refactoring-specialist, data-analyst, technical-writer
+- **Operations**: devops-engineer, technical-writer, migration-specialist, refactoring-specialist, data-analyst, technical-writer
 
 **[Complete Agent Guide →](./docs/ai-tools/guides/comprehensive-agent-guide.md)**
 

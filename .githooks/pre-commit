@@ -129,7 +129,7 @@ check_branch_protection() {
     fi
 
     ((CHECKS_TOTAL++))
-    show_progress "$CHECKS_TOTAL" 7 "branch protection"
+    show_progress "$CHECKS_TOTAL" 8 "branch protection"
 
     local current_branch=$(git branch --show-current)
     local protected_branches=$(get_config '.["pre-commit"].checks["branch-protection"]["protected-branches"]' '[]')
@@ -155,7 +155,7 @@ check_security() {
     fi
 
     ((CHECKS_TOTAL++))
-    show_progress "$CHECKS_TOTAL" 7 "security scan"
+    show_progress "$CHECKS_TOTAL" 8 "security scan"
 
     local staged_files
     staged_files=$(get_staged_files)
@@ -224,7 +224,7 @@ check_file_naming() {
     fi
 
     ((CHECKS_TOTAL++))
-    show_progress "$CHECKS_TOTAL" 7 "file naming"
+    show_progress "$CHECKS_TOTAL" 8 "file naming"
 
     local skip_deleted=$(get_config '.["pre-commit"].checks["file-naming"]["skip-deleted-files"]' "true")
     local staged_files
@@ -283,7 +283,7 @@ check_file_size() {
     fi
 
     ((CHECKS_TOTAL++))
-    show_progress "$CHECKS_TOTAL" 7 "file size"
+    show_progress "$CHECKS_TOTAL" 8 "file size"
 
     local staged_files
     staged_files=$(get_staged_files)
@@ -332,7 +332,7 @@ check_ai_documentation() {
     fi
 
     ((CHECKS_TOTAL++))
-    show_progress "$CHECKS_TOTAL" 7 "AI documentation"
+    show_progress "$CHECKS_TOTAL" 8 "AI documentation"
 
     local require_indicator=$(get_config '.["pre-commit"].checks["ai-documentation"]["require-ai-indicator"]' "false")
     local warning_only=$(get_config '.["pre-commit"].checks["ai-documentation"]["warning-only"]' "true")
@@ -350,7 +350,7 @@ check_documentation_updates() {
     fi
 
     ((CHECKS_TOTAL++))
-    show_progress "$CHECKS_TOTAL" 7 "documentation updates"
+    show_progress "$CHECKS_TOTAL" 8 "documentation updates"
 
     local staged_files
     staged_files=$(get_staged_files)
@@ -387,7 +387,7 @@ check_changelog_reminder() {
     fi
 
     ((CHECKS_TOTAL++))
-    show_progress "$CHECKS_TOTAL" 7 "changelog reminder"
+    show_progress "$CHECKS_TOTAL" 8 "changelog reminder"
 
     # Check commit message for feature/fix indicators
     local commit_msg_file=".git/COMMIT_EDITMSG"
@@ -405,6 +405,129 @@ check_changelog_reminder() {
         log_result "warn" "Changelog: Consider updating CHANGELOG.md for this change"
     else
         log_result "pass" "Changelog reminder check passed"
+    fi
+
+    return 0
+}
+
+# Documentation synchronization with technical-writer agent
+check_docs_sync() {
+    if ! is_enabled "docs-sync"; then
+        return 0
+    fi
+
+    ((CHECKS_TOTAL++))
+    show_progress "$CHECKS_TOTAL" 8 "docs sync"
+
+    local staged_files
+    staged_files=$(get_staged_files)
+    local warning_only=$(get_config '.["pre-commit"].checks["docs-sync"]["warning-only"]' "true")
+    local exclude_patterns=$(get_config '.["pre-commit"].checks["docs-sync"]["skip-conditions"]["exclude-patterns"]' '[]')
+    local docs_only_skip=$(get_config '.["pre-commit"].checks["docs-sync"]["skip-conditions"]["docs-only-commits"]' "false")
+
+    # Analyze staged files
+    local has_relevant_changes=false
+    local has_docs_changes=false
+    local priority_changes=()
+    local all_changes=()
+
+    while IFS= read -r file; do
+        if [[ -z "$file" ]]; then
+            continue
+        fi
+
+        # Skip excluded patterns
+        local skip_file=false
+        while IFS= read -r pattern; do
+            if [[ -n "$pattern" && "$file" =~ $pattern ]]; then
+                skip_file=true
+                break
+            fi
+        done < <(echo "$exclude_patterns" | jq -r '.[]?')
+
+        if [[ "$skip_file" == "true" ]]; then
+            continue
+        fi
+
+        all_changes+=("$file")
+
+        # Check if it's a documentation file
+        if [[ "$file" =~ \.md$ || "$file" =~ ^docs/ ]]; then
+            has_docs_changes=true
+        else
+            has_relevant_changes=true
+        fi
+
+        # Check priority levels
+        local priority_paths_high=$(get_config '.["pre-commit"].checks["docs-sync"]["priority-paths"]["high"]' '[]')
+        local priority_paths_medium=$(get_config '.["pre-commit"].checks["docs-sync"]["priority-paths"]["medium"]' '[]')
+
+        while IFS= read -r priority_path; do
+            if [[ -n "$priority_path" && "$file" =~ ^$priority_path ]]; then
+                priority_changes+=("$file")
+                break
+            fi
+        done < <(echo "$priority_paths_high" | jq -r '.[]?')
+
+        while IFS= read -r priority_path; do
+            if [[ -n "$priority_path" && "$file" =~ ^$priority_path ]]; then
+                priority_changes+=("$file")
+                break
+            fi
+        done < <(echo "$priority_paths_medium" | jq -r '.[]?')
+    done <<< "$staged_files"
+
+    # Skip if only docs changes and skip is enabled
+    if [[ "$docs_only_skip" == "true" && "$has_docs_changes" == "true" && "$has_relevant_changes" != "true" ]]; then
+        log_result "pass" "Docs sync skipped - documentation-only changes"
+        return 0
+    fi
+
+    # Skip if no relevant changes
+    if [[ "${#all_changes[@]}" -eq 0 ]]; then
+        log_result "pass" "Docs sync check passed - no relevant changes"
+        return 0
+    fi
+
+    # Always run docs-sync analysis for any significant changes
+    if [[ "$has_relevant_changes" == "true" || "${#priority_changes[@]}" -gt 0 ]]; then
+        if [[ "${#priority_changes[@]}" -gt 0 ]]; then
+            log_result "warn" "Docs sync: High-priority changes detected (${#priority_changes[@]} files)"
+        else
+            log_result "warn" "Docs sync: Changes detected - reviewing for documentation impact"
+        fi
+
+        # Check if docs-sync trigger script is available
+        local trigger_script="scripts/hooks/docs-sync-trigger.sh"
+        if [[ -x "$trigger_script" ]]; then
+            echo "  Running comprehensive docs-sync analysis..."
+            if "$trigger_script"; then
+                log_result "pass" "Docs sync: Analysis completed successfully"
+            else
+                local exit_code=$?
+                if [[ "$warning_only" != "true" ]]; then
+                    log_result "fail" "Docs sync: Analysis failed (exit code: $exit_code)"
+                    return 1
+                else
+                    log_result "warn" "Docs sync: Analysis completed with warnings"
+                fi
+            fi
+        else
+            # Fallback to manual guidance
+            log_result "warn" "Docs sync: Manual documentation review recommended"
+            echo "  Changed files: ${#all_changes[@]}"
+            if [[ "${#priority_changes[@]}" -gt 0 ]]; then
+                echo "  Priority files: ${priority_changes[*]}"
+            fi
+            echo "  Consider running: Task technical-writer"
+            echo "  Review: docs/, README.md, CHANGELOG.md, .claude/"
+
+            if [[ "$warning_only" != "true" ]]; then
+                return 1  # Block commit if not warning-only
+            fi
+        fi
+    else
+        log_result "pass" "Docs sync check passed"
     fi
 
     return 0
@@ -445,6 +568,7 @@ main() {
     check_file_size || overall_result=1
     check_ai_documentation || overall_result=1
     check_documentation_updates || overall_result=1
+    check_docs_sync || overall_result=1
     check_changelog_reminder || overall_result=1
 
     # Show summary

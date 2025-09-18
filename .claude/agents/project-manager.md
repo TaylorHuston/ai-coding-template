@@ -5,7 +5,7 @@ tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task, mcp__con
 model: opus
 color: blue
 coordination:
-  hands_off_to: [frontend-specialist, backend-specialist, database-specialist, api-designer, test-engineer, code-reviewer, security-auditor, devops-engineer, technical-writer, docs-sync-agent]
+  hands_off_to: [frontend-specialist, backend-specialist, database-specialist, api-designer, test-engineer, code-reviewer, security-auditor, devops-engineer, technical-writer, technical-writer]
   receives_from: [context-analyzer]
   parallel_with: [context-analyzer, performance-optimizer]
 ---

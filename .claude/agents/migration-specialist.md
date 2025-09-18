@@ -5,7 +5,7 @@ tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
 model: sonnet
 color: purple
 coordination:
-  hands_off_to: [test-engineer, code-reviewer, docs-sync-agent]
+  hands_off_to: [test-engineer, code-reviewer, technical-writer]
   receives_from: [project-manager, code-architect, database-specialist]
   parallel_with: [devops-engineer, security-auditor]
 ---
