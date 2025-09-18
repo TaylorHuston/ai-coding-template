@@ -23,6 +23,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Updated all documentation, README.md, and command references
   - Improved logical flow: establish tech stack before defining feature requirements
 
+### Removed
+
+- Removed premature ADRs created during workflow development
+  - ADR-001: NextJS + SQLite full-stack architecture
+  - ADR-002: Prisma ORM selection
+  - ADR-003: Frontend architecture
+  - ADR-004: Security architecture
+- Removed infrastructure feature document from /feature experiment
+  - Cleaned slate for proper /scaffold → /feature → /architect workflow testing
+
 ## [0.2.0] - 2025-09-18
 
 ### Added
