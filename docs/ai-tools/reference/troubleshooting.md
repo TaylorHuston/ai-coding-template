@@ -26,7 +26,7 @@ This guide combines AI template-specific troubleshooting with systematic debuggi
 ### Common Quick Fixes
 ```bash
 # Make scripts executable
-chmod +x scripts/*.sh
+chmod +x .resources/scripts/*.sh
 
 # Refresh AI context
 /refresh
@@ -108,11 +108,11 @@ git log --oneline -10
 
 ```bash
 # Make all scripts executable
-chmod +x scripts/*.sh
-chmod +x scripts/**/*.sh
+chmod +x .resources/scripts/*.sh
+chmod +x .resources/scripts/**/*.sh
 
 # Verify permissions
-ls -la scripts/
+ls -la .resources/scripts/
 ```
 
 #### Setup Manager Failures
@@ -126,10 +126,10 @@ ls -la scripts/
 which git node npm
 
 # Run in verbose mode
-./scripts/setup-manager.sh check --verbose
+./.resources/scripts/setup-manager.sh check --verbose
 
 # Try minimal setup
-./scripts/setup-manager.sh quick
+./.resources/scripts/setup-manager.sh quick
 ```
 
 **Specific Issue**: Script stops after "Archived template README" or exits with LOG_FILE error at line 617
@@ -139,7 +139,7 @@ which git node npm
 **Solution**: This was fixed in the latest template version. If using an older copy:
 ```bash
 # Ensure you're using the latest template version
-# The fix involves updating all LOG_FILE append operations in scripts/lib/logging.sh
+# The fix involves updating all LOG_FILE append operations in .resources/scripts/lib/logging.sh
 # from: [[ -n "${LOG_FILE:-}" ]] && echo "text" >> "$LOG_FILE"
 # to: if [[ -n "${LOG_FILE:-}" ]]; then echo "text" >> "${LOG_FILE}"; fi
 ```
@@ -155,7 +155,7 @@ which git node npm
 ls -la CLAUDE.md STATUS.md docs/quality-standards.md
 
 # Run diagnostics
-./scripts/ai-status.sh --check
+./.resources/scripts/ai-status.sh --check
 
 # Create missing files
 touch STATUS.md
@@ -172,7 +172,7 @@ echo "# Project Status" > STATUS.md
 
 ```bash
 # Check documentation health
-node scripts/docs-health.js
+node .resources/scripts/docs-health.js
 
 # Request documentation update:
 "Using the technical-writer agent, update docs to match current implementation"
@@ -293,13 +293,13 @@ bundle install
 
 ```bash
 # Use minimal options
-./scripts/ai-status.sh --minimal
+./.resources/scripts/ai-status.sh --minimal
 
 # Skip expensive checks
-./scripts/setup-manager.sh quick --skip-validation
+./.resources/scripts/setup-manager.sh quick --skip-validation
 
 # Run specific checks only
-./scripts/docs-health.js --file README.md
+./.resources/scripts/docs-health.js --file README.md
 ```
 
 #### Large Context Window Issues
@@ -336,14 +336,14 @@ alias find=gfind
 git config --global core.autocrlf input
 
 # Convert scripts to Unix format
-dos2unix scripts/*.sh
+dos2unix .resources/scripts/*.sh
 ```
 
 #### Permission Issues
 
 ```bash
 # WSL permission fix
-chmod -R 755 scripts/
+chmod -R 755 .resources/scripts/
 chmod -R 644 docs/
 ```
 
@@ -389,27 +389,27 @@ sudo aa-status
 
 ```bash
 # Most scripts support verbose mode
-./scripts/setup-manager.sh check --verbose
-./scripts/ai-status.sh --verbose --debug
+./.resources/scripts/setup-manager.sh check --verbose
+./.resources/scripts/ai-status.sh --verbose --debug
 ```
 
 ### Check Logs
 
 ```bash
 # Check script logs
-tail -f scripts/logs/setup.log
-tail -f scripts/logs/ai-status.log
+tail -f .resources/scripts/logs/setup.log
+tail -f .resources/scripts/logs/ai-status.log
 ```
 
 ### Validate Configuration
 
 ```bash
 # Run validation suite
-./scripts/validate-all.sh
+./.resources/scripts/validate-all.sh
 
 # Check specific components
-./scripts/validate-agents.sh
-./scripts/validate-docs.sh
+./.resources/scripts/validate-agents.sh
+./.resources/scripts/validate-docs.sh
 ```
 
 ## Getting Help
@@ -425,8 +425,8 @@ tail -f scripts/logs/ai-status.log
 2. **Run Diagnostics**:
 
    ```bash
-   ./scripts/setup-manager.sh check
-   ./scripts/ai-status.sh --diagnostics
+   ./.resources/scripts/setup-manager.sh check
+   ./.resources/scripts/ai-status.sh --diagnostics
    ```
 
 3. **Ask AI for Help**:
@@ -465,13 +465,13 @@ tail -f scripts/logs/ai-status.log
 
 ```bash
 # Weekly maintenance
-./scripts/docs-health.js
-./scripts/validate-all.sh
+./.resources/scripts/docs-health.js
+./.resources/scripts/validate-all.sh
 git clean -fd  # Remove untracked files
 
 # Monthly maintenance
-./scripts/cleanup-old-sessions.sh
-./scripts/optimize-agents.sh
+./.resources/scripts/cleanup-old-sessions.sh
+./.resources/scripts/optimize-agents.sh
 ```
 
 ## Prevention and Monitoring
@@ -862,18 +862,18 @@ cp -r . ../project-backup
 # Reset to clean state
 git clean -fdx
 git reset --hard
-./scripts/setup-manager.sh full
+./.resources/scripts/setup-manager.sh full
 ```
 
 #### Partial Recovery
 ```bash
 # Reset just agents
 rm -rf .claude/agents/
-./scripts/setup-manager.sh agents-only
+./.resources/scripts/setup-manager.sh agents-only
 
 # Reset just scripts
-rm -rf scripts/
-./scripts/setup-manager.sh scripts-only
+rm -rf .resources/scripts/
+./.resources/scripts/setup-manager.sh scripts-only
 ```
 
 ## Frequently Asked Questions

@@ -47,7 +47,7 @@ README.md (project overview)
     ├── reference/ (quick reference materials)
     ├── architecture/ (system design documents)
     ├── workflows/ (process documentation)
-    ├── templates/ (document templates)
+    ├── .resources/templates/ (document templates)
     └── archived/ (deprecated content)
 ```
 
@@ -93,13 +93,13 @@ README.md (project overview)
 #### Link Validation
 ```bash
 # Check all documentation links
-node scripts/check-docs-links.js --external
+node .resources/scripts/check-docs-links.js --external
 ```
 
 #### Health Assessment
 ```bash
 # Generate documentation health report
-node scripts/docs-health.js
+node .resources/scripts/docs-health.js
 ```
 
 #### Navigation Audit
@@ -144,7 +144,7 @@ grep -r "filename.md" docs/README.md docs/*/README.md
 **Detection**:
 ```bash
 # Use automated link checker
-node scripts/check-docs-links.js
+node .resources/scripts/check-docs-links.js
 ```
 
 **Solution**:
@@ -181,10 +181,10 @@ node scripts/check-docs-links.js
 ## Automation Tools
 
 ### Available Scripts
-- **`scripts/check-docs-links.js`** - Link validation
-- **`scripts/docs-health.js`** - Health dashboard
-- **`scripts/docs-changelog.js`** - Change tracking
-- **`scripts/generate-doc.js`** - Template-based creation
+- **`.resources/scripts/check-docs-links.js`** - Link validation
+- **`.resources/scripts/docs-health.js`** - Health dashboard
+- **`.resources/scripts/docs-changelog.js`** - Change tracking
+- **`.resources/scripts/generate-doc.js`** - Template-based creation
 
 ### Integration Points
 - **Pre-commit hooks** - Basic validation before commits
@@ -234,7 +234,7 @@ node scripts/check-docs-links.js
 ## Tools and Workflows
 
 ### Documentation Creation
-1. **Choose appropriate template** from docs/templates/
+1. **Choose appropriate template** from .resources/templates/
 2. **Follow naming conventions** (lowercase-kebab-case)
 3. **Add to navigation structure** immediately
 4. **Test all links and examples**

@@ -1,22 +1,23 @@
 #!/bin/bash
 # Unified Setup Manager for AI Coding Template
 # Consolidates all setup scripts into a single entry point
-# Usage: ./scripts/setup-manager.sh <command> [options]
+# Usage: ./.resources/scripts/setup-manager.sh <command> [options]
 
 set -eE  # Also trap ERR
 trap 'echo "❌ Error at line $LINENO in function ${FUNCNAME[1]:-main}" >&2; echo "Last command: $BASH_COMMAND" >&2' ERR
 
 # Source shared libraries
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-if [[ -f "$SCRIPT_DIR/lib/colors.sh" ]]; then
-    source "$SCRIPT_DIR/lib/colors.sh"
+SCRIPTS_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+if [[ -f "$SCRIPTS_ROOT/lib/colors.sh" ]]; then
+    source "$SCRIPTS_ROOT/lib/colors.sh"
 fi
-if [[ -f "$SCRIPT_DIR/lib/logging.sh" ]]; then
-    source "$SCRIPT_DIR/lib/logging.sh"
+if [[ -f "$SCRIPTS_ROOT/lib/logging.sh" ]]; then
+    source "$SCRIPTS_ROOT/lib/logging.sh"
 fi
 
 # Configuration
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPTS_ROOT/../.." && pwd)"
 ENV_FILE="$PROJECT_ROOT/.env"
 ENV_LOCAL_FILE="$PROJECT_ROOT/.env.local"
 ENV_EXAMPLE="$PROJECT_ROOT/.env.example"
@@ -365,7 +366,7 @@ quick_setup() {
     log_info "Next steps:"
     echo "1. Update .env with your project-specific configuration"
     echo "2. Review and customize .gitignore for your project"
-    echo "3. Run './scripts/setup-manager.sh check' to verify setup"
+    echo "3. Run './.resources/scripts/setup-manager.sh check' to verify setup"
 }
 
 # Full setup
@@ -400,9 +401,9 @@ full_setup() {
     log_info "Your development environment is ready!"
     echo ""
     log_info "Available commands:"
-    echo "  • Check status: ./scripts/ai-status.sh"
-    echo "  • Check docs health: node scripts/docs-health.js"
-    echo "  • Verify setup: ./scripts/setup-manager.sh check"
+    echo "  • Check status: ./.resources/scripts/ai-status.sh"
+    echo "  • Check docs health: node .resources/scripts/docs-health.js"
+    echo "  • Verify setup: ./.resources/scripts/setup-manager.sh check"
 }
 
 # Check setup completeness
@@ -492,7 +493,7 @@ check_claude_code() {
         read -p "$(log_color yellow "Continue without Claude Code? [y/N]: ")" continue_anyway
         if [[ ! "$continue_anyway" =~ ^[Yy] ]]; then
             log_error "Please install Claude Code and run setup again"
-            log_info "After installation, run: ./scripts/setup-manager.sh init-project"
+            log_info "After installation, run: ./.resources/scripts/setup-manager.sh init-project"
             exit 1
         fi
 
@@ -632,7 +633,7 @@ init_project() {
     # 2. Create standard-readme compliant README.md
     log_info "Creating standard README.md..."
 
-    local readme_template="$PROJECT_ROOT/templates/documentation/project/standard-readme.template.md"
+    local readme_template="$PROJECT_ROOT/.resources/templates/documentation/project/standard-readme.template.md"
     local current_year=$(date +"%Y")
 
     if [[ -f "$readme_template" ]]; then
@@ -714,8 +715,8 @@ EOF
     # 3. Copy CHANGELOG template to root
     log_info "Setting up CHANGELOG..."
 
-    if [[ -f "$PROJECT_ROOT/templates/documentation/project/CHANGELOG.template.md" ]]; then
-        if cp "$PROJECT_ROOT/templates/documentation/project/CHANGELOG.template.md" "$PROJECT_ROOT/CHANGELOG.md"; then
+    if [[ -f "$PROJECT_ROOT/.resources/templates/documentation/project/CHANGELOG.template.md" ]]; then
+        if cp "$PROJECT_ROOT/.resources/templates/documentation/project/CHANGELOG.template.md" "$PROJECT_ROOT/CHANGELOG.md"; then
             # Add initial entry
             local current_date=$(date +"%Y-%m-%d")
             if sed -i.bak \

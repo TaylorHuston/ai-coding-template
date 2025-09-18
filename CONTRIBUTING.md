@@ -23,7 +23,7 @@ Thank you for your interest in contributing to the AI Coding Template project! T
 ### 📖 Documentation Improvements
 - Follow our [3-tier documentation system](./docs/ai-tools/system-context.md)
 - Use the established [metadata headers](./docs/development/guidelines/quality-standards.md)
-- Test all links using `./scripts/docs/link-validator.sh`
+- Test all links using `./.resources/scripts/docs/link-validator.sh`
 
 ### 🔧 Code Contributions
 - Follow the project's established patterns and conventions
@@ -37,7 +37,7 @@ Thank you for your interest in contributing to the AI Coding Template project! T
 # Clone and setup the repository
 git clone <repository-url>
 cd ai-coding-template
-./scripts/setup/setup-manager.sh
+./.resources/scripts/setup/setup-manager.sh
 ```
 
 ### 2. Workflow
@@ -114,8 +114,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 ### Resources
 - **Documentation**: [docs/](./docs/) directory contains comprehensive guides
-- **Examples**: [examples/](./examples/) show implementation patterns
-- **Scripts**: [scripts/](./scripts/) provide automation tools
+- **Examples**: [.resources/examples/](./.resources/examples/) show implementation patterns
+- **Scripts**: [.resources/scripts/](./.resources/scripts/) provide automation tools
 
 ### Support Channels
 - **GitHub Issues**: For bugs and feature requests

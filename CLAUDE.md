@@ -67,7 +67,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## Quality Standards
 
-- Follow patterns established in the `examples/` directory
+- Follow patterns established in the `.resources/examples/` directory
 - Use existing project patterns and conventions consistently
 - Validate against quality standards in `docs/development/guidelines/quality-standards.md`
 - Never duplicate existing functionality without explicit justification
@@ -84,7 +84,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## Problem-Solving Framework
 
-1. **For Architectural Decisions**: Use `/vision` → `/feature` → `/architect` workflow with specialist consultation
+1. **For Architectural Decisions**: Use `/design` → `/architect` workflow with specialist consultation
 2. **For Implementation Planning**: Use `/plan` to get comprehensive multi-agent analysis
 3. **For Execution Issues**: Use appropriate agent for domain expertise
 4. **Check existing patterns** in similar files and components

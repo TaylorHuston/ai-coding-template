@@ -4,7 +4,7 @@
  * Unified Documentation Management Tool
  * Consolidates all documentation scripts into a single CLI interface
  *
- * Usage: node scripts/docs-tool.js <command> [options]
+ * Usage: node .resources/scripts/docs-tool.js <command> [options]
  *
  * Commands:
  *   health                   Analyze documentation health and coverage
@@ -37,7 +37,7 @@ const { URL } = require('url');
 // Configuration
 const CONFIG = {
   docsDir: './docs',
-  templatesDir: './templates/documentation',
+  templatesDir: './.resources/templates/documentation',
   outputDir: './docs/reports',
   fileExtensions: ['.md', '.mdx'],
   excludeDirs: ['node_modules', '.git', '.next', 'dist', 'build'],

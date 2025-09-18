@@ -3,7 +3,7 @@
 # AI Coding Template Status Dashboard
 # AI-friendly project status dashboard providing comprehensive project information
 # in multiple output formats for both humans and AI assistants
-# Usage: ./scripts/ai-status.sh [options]
+# Usage: ./.resources/scripts/ai-status.sh [options]
 
 set -e
 
@@ -174,7 +174,7 @@ EOF
 
 ### Key Directories
 - **docs/**: $([ "$has_docs" = "true" ] && echo "✅ Present" || echo "❌ Missing")
-- **scripts/**: $([ "$has_scripts" = "true" ] && echo "✅ Present" || echo "❌ Missing")
+- **.resources/scripts/**: $([ "$has_scripts" = "true" ] && echo "✅ Present" || echo "❌ Missing")
 - **.claude/**: $([ "$has_claude" = "true" ] && echo "✅ Present" || echo "❌ Missing")
 - **.cursor/**: $([ "$has_cursor" = "true" ] && echo "✅ Present" || echo "❌ Missing")
 
@@ -194,7 +194,7 @@ EOF
             echo ""
             echo -e "${CYAN}Key Directories:${NC}"
             echo -e "   docs/: $([ "$has_docs" = "true" ] && echo "${STATUS_GOOD} Present" || echo "${STATUS_ERROR} Missing")"
-            echo -e "   scripts/: $([ "$has_scripts" = "true" ] && echo "${STATUS_GOOD} Present" || echo "${STATUS_ERROR} Missing")"
+            echo -e "   .resources/scripts/: $([ "$has_scripts" = "true" ] && echo "${STATUS_GOOD} Present" || echo "${STATUS_ERROR} Missing")"
             echo -e "   .claude/: $([ "$has_claude" = "true" ] && echo "${STATUS_GOOD} Present" || echo "${STATUS_ERROR} Missing")"
             echo -e "   .cursor/: $([ "$has_cursor" = "true" ] && echo "${STATUS_GOOD} Present" || echo "${STATUS_ERROR} Missing")"
             echo ""

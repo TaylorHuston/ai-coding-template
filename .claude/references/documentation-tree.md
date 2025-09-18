@@ -19,7 +19,7 @@ maintainer: "technical-writer"
 - `docs/development/` - Development processes and guidelines (coding standards, workflows, testing)
 - `docs/ai-tools/` - AI assistant documentation (guides, reference, setup)
 
-**Excluded**: Template files (`templates/`), example files (`examples/`), and `.claude/` template files are not included in this documentation tree as they serve as templates rather than actual documentation.
+**Excluded**: Template files (`.resources/templates/`), example files (`.resources/examples/`), and `.claude/` template files are not included in this documentation tree as they serve as templates rather than actual documentation.
 
 **Note**: This file is maintained by the technical-writer. Do not edit manually.
 
@@ -206,7 +206,7 @@ docs/archived/
 ## Infrastructure Documentation
 
 ```
-scripts/
+.resources/scripts/
 └── README.md                          # Complete scripts reference and automation guide
 
 .githooks/
@@ -241,7 +241,7 @@ scripts/
 ### **Setup & Integration** (Getting Started)
 - `docs/ai-tools/setup/quick-start.md` - Complete setup guide
 - `docs/ai-tools/setup/integration-guide.md` - Existing project integration
-- `scripts/README.md` - Automation scripts reference
+- `.resources/scripts/README.md` - Automation scripts reference
 
 ## Maintenance Notes
 

@@ -24,21 +24,21 @@ AI-friendly project status dashboard that provides comprehensive project informa
 **Usage**:
 ```bash
 # Basic status check
-./scripts/ai-status.sh
+./.resources/scripts/ai-status.sh
 
 # AI-optimized format
-./scripts/ai-status.sh --ai-format
+./.resources/scripts/ai-status.sh --ai-format
 
 # JSON output for programmatic access
-./scripts/ai-status.sh --json
+./.resources/scripts/ai-status.sh --json
 
 # Markdown format for documentation
-./scripts/ai-status.sh --markdown --timestamp
+./.resources/scripts/ai-status.sh --markdown --timestamp
 
 # Component-specific checks
-./scripts/ai-status.sh --git-only
-./scripts/ai-status.sh --project-only
-./scripts/ai-status.sh --env-only
+./.resources/scripts/ai-status.sh --git-only
+./.resources/scripts/ai-status.sh --project-only
+./.resources/scripts/ai-status.sh --env-only
 ```
 
 **Features**:
@@ -56,18 +56,18 @@ Unified setup manager that consolidates all setup scripts into a single entry po
 **Usage**:
 ```bash
 # Quick setup with minimal configuration
-./scripts/setup-manager.sh quick
+./.resources/scripts/setup-manager.sh quick
 
 # Complete development environment setup
-./scripts/setup-manager.sh full --verbose
+./.resources/scripts/setup-manager.sh full --verbose
 
 # Setup specific components
-./scripts/setup-manager.sh env --force
-./scripts/setup-manager.sh git
-./scripts/setup-manager.sh tools
+./.resources/scripts/setup-manager.sh env --force
+./.resources/scripts/setup-manager.sh git
+./.resources/scripts/setup-manager.sh tools
 
 # Verify setup completeness
-./scripts/setup-manager.sh check
+./.resources/scripts/setup-manager.sh check
 ```
 
 **Features**:
@@ -85,19 +85,19 @@ Centralizes documentation operations and maintenance tasks.
 **Usage**:
 ```bash
 # Initialize documentation structure
-./scripts/docs-manager.sh init
+./.resources/scripts/docs-manager.sh init
 
 # Check documentation health
-./scripts/docs-manager.sh health
+./.resources/scripts/docs-manager.sh health
 
 # Validate documentation for commits
-./scripts/docs-manager.sh validate
+./.resources/scripts/docs-manager.sh validate
 
 # Check and fix broken links
-./scripts/docs-manager.sh check --fix-auto --verbose
+./.resources/scripts/docs-manager.sh check --fix-auto --verbose
 
 # Clean generated documentation files
-./scripts/docs-manager.sh clean
+./.resources/scripts/docs-manager.sh clean
 ```
 
 **Features**:
@@ -116,19 +116,19 @@ Validates internal and external links in documentation files with comprehensive 
 **Usage**:
 ```bash
 # Basic link checking (internal links only)
-node scripts/check-docs-links.js
+node .resources/scripts/check-docs-links.js
 
 # Check external links (slower but comprehensive)
-node scripts/check-docs-links.js --external
+node .resources/scripts/check-docs-links.js --external
 
 # Generate JSON report
-node scripts/check-docs-links.js --format json --output link-report.json
+node .resources/scripts/check-docs-links.js --format json --output link-report.json
 
 # Auto-fix obvious issues
-node scripts/check-docs-links.js --fix
+node .resources/scripts/check-docs-links.js --fix
 
 # Quiet mode for CI/CD
-node scripts/check-docs-links.js --quiet
+node .resources/scripts/check-docs-links.js --quiet
 ```
 
 **Features**:
@@ -148,7 +148,7 @@ Comprehensive documentation quality analyzer that generates detailed health repo
 **Usage**:
 ```bash
 # Run complete health analysis
-node scripts/docs-health.js
+node .resources/scripts/docs-health.js
 ```
 
 **Features**:
@@ -168,16 +168,16 @@ Tracks documentation changes using Git history with detailed analysis.
 **Usage**:
 ```bash
 # Show changes from last 30 days
-node scripts/docs-changelog.js
+node .resources/scripts/docs-changelog.js
 
 # Custom time range
-node scripts/docs-changelog.js --since "7 days ago"
+node .resources/scripts/docs-changelog.js --since "7 days ago"
 
 # Filter by author
-node scripts/docs-changelog.js --author "username"
+node .resources/scripts/docs-changelog.js --author "username"
 
 # Generate detailed report
-node scripts/docs-changelog.js --detailed --format json --output changelog.json
+node .resources/scripts/docs-changelog.js --detailed --format json --output changelog.json
 ```
 
 **Features**:
@@ -196,19 +196,19 @@ Interactive CLI tool for generating documentation from templates.
 **Usage**:
 ```bash
 # Interactive template selection
-node scripts/generate-doc.js
+node .resources/scripts/generate-doc.js
 
 # Use specific template
-node scripts/generate-doc.js --template feature
+node .resources/scripts/generate-doc.js --template feature
 
 # Preview without writing
-node scripts/generate-doc.js --template api --preview
+node .resources/scripts/generate-doc.js --template api --preview
 
 # Specify output file
-node scripts/generate-doc.js --template guide --output docs/development/guidelines/my-guide.md
+node .resources/scripts/generate-doc.js --template guide --output docs/development/guidelines/my-guide.md
 
 # List available templates
-node scripts/generate-doc.js --list
+node .resources/scripts/generate-doc.js --list
 ```
 
 **Features**:
@@ -229,13 +229,13 @@ Sets up proper workflow structure for plan → iterate coordination with deliver
 **Usage**:
 ```bash
 # Initialize workflow for an issue
-./scripts/init-workflow.sh --issue AUTH-123
+./.resources/scripts/init-workflow.sh --issue AUTH-123
 
 # Specify custom deliverable name
-./scripts/init-workflow.sh --issue AUTH-123 --deliverable user-management
+./.resources/scripts/init-workflow.sh --issue AUTH-123 --deliverable user-management
 
 # Force overwrite existing files
-./scripts/init-workflow.sh --issue AUTH-123 --force
+./.resources/scripts/init-workflow.sh --issue AUTH-123 --force
 ```
 
 **Features**:
@@ -252,16 +252,16 @@ Breaks down complex tasks into manageable, sequential steps with agent assignmen
 **Usage**:
 ```bash
 # Decompose a feature description
-./scripts/smart-task-decomposition.sh --feature "User authentication system"
+./.resources/scripts/smart-task-decomposition.sh --feature "User authentication system"
 
 # Decompose from issue file
-./scripts/smart-task-decomposition.sh --from-file deliverables/auth/issues/001/requirements.md
+./.resources/scripts/smart-task-decomposition.sh --from-file deliverables/auth/issues/001/requirements.md
 
 # Specify complexity level
-./scripts/smart-task-decomposition.sh --feature "API redesign" --complexity high
+./.resources/scripts/smart-task-decomposition.sh --feature "API redesign" --complexity high
 
 # Generate phases for large projects
-./scripts/smart-task-decomposition.sh --feature "Microservices migration" --phases 3
+./.resources/scripts/smart-task-decomposition.sh --feature "Microservices migration" --phases 3
 ```
 
 **Features**:
@@ -279,16 +279,16 @@ Generates focused, agent-specific context from verbose HANDOFF.yml and RESEARCH.
 **Usage**:
 ```bash
 # Prepare context for specific agent
-./scripts/distill-context.sh --agent backend-specialist --task P1.3.0
+./.resources/scripts/distill-context.sh --agent backend-specialist --task P1.3.0
 
 # Generate context for Claude Code hooks
-./scripts/distill-context.sh --agent test-engineer --prepare
+./.resources/scripts/distill-context.sh --agent test-engineer --prepare
 
 # Output to specific file
-./scripts/distill-context.sh --agent frontend-specialist --output /tmp/context.md
+./.resources/scripts/distill-context.sh --agent frontend-specialist --output /tmp/context.md
 
 # Quiet mode for automation
-./scripts/distill-context.sh --agent database-specialist --task P2.1.0 --quiet
+./.resources/scripts/distill-context.sh --agent database-specialist --task P2.1.0 --quiet
 ```
 
 **Features**:
@@ -308,19 +308,19 @@ Helps AI coding assistants generate and add changelog entries with proper catego
 **Usage**:
 ```bash
 # Analyze recent commits and suggest entries
-./scripts/ai-update-changelog.sh analyze --since '1 week ago'
+./.resources/scripts/ai-update-changelog.sh analyze --since '1 week ago'
 
 # Add entry interactively
-./scripts/ai-update-changelog.sh add --category Added --reference ISSUE-001 --message "User authentication system"
+./.resources/scripts/ai-update-changelog.sh add --category Added --reference ISSUE-001 --message "User authentication system"
 
 # Generate entry from specific commit
-./scripts/ai-update-changelog.sh from-commit HEAD
+./.resources/scripts/ai-update-changelog.sh from-commit HEAD
 
 # Generate from issue file
-./scripts/ai-update-changelog.sh from-issue deliverables/auth/issues/001/ISSUE-001-plan.md
+./.resources/scripts/ai-update-changelog.sh from-issue deliverables/auth/issues/001/ISSUE-001-plan.md
 
 # Audit for missing entries
-./scripts/ai-update-changelog.sh audit
+./.resources/scripts/ai-update-changelog.sh audit
 ```
 
 **Features**:
@@ -338,16 +338,16 @@ Audits changelog for missing entries by analyzing git history and commits.
 **Usage**:
 ```bash
 # Basic audit from last release
-./scripts/ai-changelog-audit.sh
+./.resources/scripts/ai-changelog-audit.sh
 
 # Audit specific time period
-./scripts/ai-changelog-audit.sh --since "v1.0.0"
+./.resources/scripts/ai-changelog-audit.sh --since "v1.0.0"
 
 # Include all commit types
-./scripts/ai-changelog-audit.sh --include-all
+./.resources/scripts/ai-changelog-audit.sh --include-all
 
 # Generate audit report
-./scripts/ai-changelog-audit.sh --report audit-report.md
+./.resources/scripts/ai-changelog-audit.sh --report audit-report.md
 ```
 
 **Features**:
@@ -365,16 +365,16 @@ Validates changelog format, structure, and compliance with Keep a Changelog stan
 **Usage**:
 ```bash
 # Basic format validation
-./scripts/check-changelog.sh
+./.resources/scripts/check-changelog.sh
 
 # Validate specific changelog file
-./scripts/check-changelog.sh --file CHANGELOG.md
+./.resources/scripts/check-changelog.sh --file CHANGELOG.md
 
 # Check for unreleased section
-./scripts/check-changelog.sh --require-unreleased
+./.resources/scripts/check-changelog.sh --require-unreleased
 
 # Validate before release
-./scripts/check-changelog.sh --validate-release
+./.resources/scripts/check-changelog.sh --validate-release
 ```
 
 **Features**:
@@ -392,16 +392,16 @@ Automates the complete release process from changelog to git tagging and publish
 **Usage**:
 ```bash
 # Create new release
-./scripts/release.sh 1.2.0
+./.resources/scripts/release.sh 1.2.0
 
 # Preview release without changes
-./scripts/release.sh 1.2.0 --dry-run
+./.resources/scripts/release.sh 1.2.0 --dry-run
 
 # Release without pushing to remote
-./scripts/release.sh 1.2.0 --no-push
+./.resources/scripts/release.sh 1.2.0 --no-push
 
 # Skip git tag creation
-./scripts/release.sh 1.2.0 --no-tag
+./.resources/scripts/release.sh 1.2.0 --no-tag
 ```
 
 **Features**:
@@ -422,16 +422,16 @@ Validates quality gates between workflow phases to ensure standards compliance.
 **Usage**:
 ```bash
 # Validate current phase quality gates
-./scripts/validate-quality-gates.sh
+./.resources/scripts/validate-quality-gates.sh
 
 # Validate specific phase
-./scripts/validate-quality-gates.sh --phase P1
+./.resources/scripts/validate-quality-gates.sh --phase P1
 
 # Skip specific checks
-./scripts/validate-quality-gates.sh --skip-tests
+./.resources/scripts/validate-quality-gates.sh --skip-tests
 
 # Generate validation report
-./scripts/validate-quality-gates.sh --report quality-report.md
+./.resources/scripts/validate-quality-gates.sh --report quality-report.md
 ```
 
 **Features**:
@@ -450,16 +450,16 @@ Validates agent outputs for completeness, format, and quality standards.
 **Usage**:
 ```bash
 # Validate agent output file
-./scripts/validate-agent-output.sh --file agent-output.md
+./.resources/scripts/validate-agent-output.sh --file agent-output.md
 
 # Validate specific agent type output
-./scripts/validate-agent-output.sh --agent backend-specialist --file output.md
+./.resources/scripts/validate-agent-output.sh --agent backend-specialist --file output.md
 
 # Validate HANDOFF.yml entry
-./scripts/validate-agent-output.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
+./.resources/scripts/validate-agent-output.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
 
 # Strict validation mode
-./scripts/validate-agent-output.sh --strict --file output.md
+./.resources/scripts/validate-agent-output.sh --strict --file output.md
 ```
 
 **Features**:
@@ -477,16 +477,16 @@ Validates HANDOFF.yml and RESEARCH.md files for proper format and completeness.
 **Usage**:
 ```bash
 # Validate context files in current directory
-./scripts/validate-context.sh
+./.resources/scripts/validate-context.sh
 
 # Validate specific HANDOFF.yml
-./scripts/validate-context.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
+./.resources/scripts/validate-context.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
 
 # Validate RESEARCH.md file
-./scripts/validate-context.sh --research deliverables/auth/issues/001/RESEARCH.md
+./.resources/scripts/validate-context.sh --research deliverables/auth/issues/001/RESEARCH.md
 
 # Validate entire deliverable
-./scripts/validate-context.sh --deliverable auth/issues/001
+./.resources/scripts/validate-context.sh --deliverable auth/issues/001
 ```
 
 **Features**:
@@ -504,16 +504,16 @@ Suggests fixes and remediation steps for common validation failures and workflow
 **Usage**:
 ```bash
 # Analyze current issues and suggest fixes
-./scripts/remediation-advisor.sh
+./.resources/scripts/remediation-advisor.sh
 
 # Get remediation for specific error
-./scripts/remediation-advisor.sh --error "validation-failed"
+./.resources/scripts/remediation-advisor.sh --error "validation-failed"
 
 # Analyze specific file for issues
-./scripts/remediation-advisor.sh --file HANDOFF.yml
+./.resources/scripts/remediation-advisor.sh --file HANDOFF.yml
 
 # Generate remediation report
-./scripts/remediation-advisor.sh --report remediation-plan.md
+./.resources/scripts/remediation-advisor.sh --report remediation-plan.md
 ```
 
 **Features**:
@@ -533,16 +533,16 @@ Configures git hooks for automated validation and workflow enforcement.
 **Usage**:
 ```bash
 # Install all git hooks
-./scripts/setup-git-hooks.sh
+./.resources/scripts/setup-git-hooks.sh
 
 # Install specific hook type
-./scripts/setup-git-hooks.sh --type pre-commit
+./.resources/scripts/setup-git-hooks.sh --type pre-commit
 
 # Force overwrite existing hooks
-./scripts/setup-git-hooks.sh --force
+./.resources/scripts/setup-git-hooks.sh --force
 
 # Uninstall all hooks
-./scripts/setup-git-hooks.sh --uninstall
+./.resources/scripts/setup-git-hooks.sh --uninstall
 ```
 
 **Features**:
@@ -560,18 +560,18 @@ Generates architectural documentation automatically from codebase analysis and t
 **Usage**:
 ```bash
 # Generate all documentation types
-node scripts/auto-docs-generator.js --type all
+node .resources/scripts/auto-docs-generator.js --type all
 
 # Generate specific documentation
-node scripts/auto-docs-generator.js --type tech-stack
-node scripts/auto-docs-generator.js --type system-overview
-node scripts/auto-docs-generator.js --type dependencies
+node .resources/scripts/auto-docs-generator.js --type tech-stack
+node .resources/scripts/auto-docs-generator.js --type system-overview
+node .resources/scripts/auto-docs-generator.js --type dependencies
 
 # Use custom template
-node scripts/auto-docs-generator.js --type tech-stack --template custom-template.md
+node .resources/scripts/auto-docs-generator.js --type tech-stack --template custom-template.md
 
 # Output to specific directory
-node scripts/auto-docs-generator.js --type all --output docs/generated/
+node .resources/scripts/auto-docs-generator.js --type all --output docs/generated/
 ```
 
 **Features**:
@@ -669,61 +669,61 @@ Comprehensive logging system with multiple levels and output formats.
 ### Quick Start
 ```bash
 # Make scripts executable
-chmod +x scripts/*.sh
+chmod +x .resources/scripts/*.sh
 
 # Run quick setup
-./scripts/setup-manager.sh quick
+./.resources/scripts/setup-manager.sh quick
 
 # Check status
-./scripts/ai-status.sh
+./.resources/scripts/ai-status.sh
 ```
 
 ### Full Development Setup
 ```bash
 # Complete setup with all tools
-./scripts/setup-manager.sh full --verbose
+./.resources/scripts/setup-manager.sh full --verbose
 
 # Initialize documentation structure
-./scripts/docs-manager.sh init
+./.resources/scripts/docs-manager.sh init
 
 # Run health checks
-node scripts/docs-health.js
+node .resources/scripts/docs-health.js
 ```
 
 ## Common Workflows
 
 ### New Project Setup
-1. **Initial Setup**: `./scripts/setup-manager.sh full`
-2. **Initialize Docs**: `./scripts/docs-manager.sh init`
-3. **Verify Setup**: `./scripts/setup-manager.sh check`
-4. **Check Status**: `./scripts/ai-status.sh`
+1. **Initial Setup**: `./.resources/scripts/setup-manager.sh full`
+2. **Initialize Docs**: `./.resources/scripts/docs-manager.sh init`
+3. **Verify Setup**: `./.resources/scripts/setup-manager.sh check`
+4. **Check Status**: `./.resources/scripts/ai-status.sh`
 
 ### Documentation Maintenance
-1. **Health Check**: `node scripts/docs-health.js`
-2. **Link Validation**: `node scripts/check-docs-links.js --external`
-3. **Generate Content**: `node scripts/generate-doc.js`
-4. **Track Changes**: `node scripts/docs-changelog.js --since "1 week ago"`
+1. **Health Check**: `node .resources/scripts/docs-health.js`
+2. **Link Validation**: `node .resources/scripts/check-docs-links.js --external`
+3. **Generate Content**: `node .resources/scripts/generate-doc.js`
+4. **Track Changes**: `node .resources/scripts/docs-changelog.js --since "1 week ago"`
 
 ### Pre-Commit Validation
 ```bash
 # Validate documentation before commit
-./scripts/docs-manager.sh validate
+./.resources/scripts/docs-manager.sh validate
 
 # Check all links
-node scripts/check-docs-links.js --quiet
+node .resources/scripts/check-docs-links.js --quiet
 
 # Quick status check
-./scripts/ai-status.sh --git-only
+./.resources/scripts/ai-status.sh --git-only
 ```
 
 ### CI/CD Integration
 ```bash
 # Status check for AI assistants
-./scripts/ai-status.sh --ai-format
+./.resources/scripts/ai-status.sh --ai-format
 
 # Generate reports for artifacts
-node scripts/docs-health.js
-node scripts/check-docs-links.js --format json --output reports/links.json
+node .resources/scripts/docs-health.js
+node .resources/scripts/check-docs-links.js --format json --output reports/links.json
 ```
 
 ## Configuration
@@ -767,8 +767,8 @@ Most scripts support common options:
 #### Permission Denied
 ```bash
 # Make scripts executable
-chmod +x scripts/*.sh
-chmod +x scripts/lib/*.sh
+chmod +x .resources/scripts/*.sh
+chmod +x .resources/scripts/lib/*.sh
 ```
 
 #### Node.js Scripts Not Working
@@ -796,14 +796,14 @@ git config user.email "your.email@example.com"
 export COLOR_SUPPORT=true
 
 # Or disable colors
-./scripts/ai-status.sh --no-color
+./.resources/scripts/ai-status.sh --no-color
 ```
 
 ### Debug Mode
 Enable verbose logging for troubleshooting:
 ```bash
 export LOG_LEVEL=DEBUG
-./scripts/setup-manager.sh full --verbose
+./.resources/scripts/setup-manager.sh full --verbose
 ```
 
 ## Contributing
@@ -821,7 +821,7 @@ When adding new scripts:
 ```bash
 #!/bin/bash
 # Script description
-# Usage: ./scripts/script-name.sh [options]
+# Usage: ./.resources/scripts/script-name.sh [options]
 
 set -e
 
@@ -843,7 +843,7 @@ These scripts are designed to work seamlessly with AI coding assistants:
 - **Consistent interfaces** across all scripts
 - **Machine-readable reports** for automated analysis
 
-Use `./scripts/ai-status.sh --ai-format` to get current project status in a format optimized for AI consumption.
+Use `./.resources/scripts/ai-status.sh --ai-format` to get current project status in a format optimized for AI consumption.
 
 ---
 

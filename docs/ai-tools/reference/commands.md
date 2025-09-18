@@ -202,7 +202,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 - Automatically finds PLAN.md in current directory or nearest parent
 - Identifies next unchecked task in active phase (first phase with incomplete tasks)
 - Validates agent hint from HTML comment (e.g., `<!--agent:backend-specialist-->`)
-- Runs quality gate validation: `scripts/validate-quality-gates.sh`
+- Runs quality gate validation: `.resources/scripts/validate-quality-gates.sh`
 - Constructs comprehensive context from HANDOFF.yml and RESEARCH.md
 - Calls agent via Task tool with complete context in prompt
 - Parses agent output and updates PLAN.md checkbox when task completes
@@ -214,7 +214,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 **Phase Completion Flow**:
 1. Completes final task in phase (e.g., P2.6.0)
-2. Runs comprehensive quality validation: `scripts/validate-quality-gates.sh`
+2. Runs comprehensive quality validation: `.resources/scripts/validate-quality-gates.sh`
 3. Updates STATUS.md with phase summary
 4. Prompts: "Phase 2 complete. Quality gates passed. Run `/commit` to commit changes?"
 5. Next `/iterate` starts next phase (P3.1.0)

@@ -2,9 +2,9 @@
 
 ## Intro
 
-This is an attempt to add structure and guidance around ai-assisted coding. It is very much in an alpha phase at the moment and I greatly appreciate any feedback on it. It's also currently being frequently updated with large changes, so check back often!
+This is an attempt to add structure and guidance around ai-assisted coding. It is very much in an alpha phase at the moment and I greatly appreciate any feedback on it. This is an experiment, I'm still figuring out the best way to give the AI tools all of the context and guide rails they need to work effectively without being too restrictive or trying to basically replicated Jira in your repo.
 
-**Project Structure**: This template includes both the AI workflow framework (in the root) and example application code (in `src/`) to demonstrate real-world usage patterns.
+**Project Structure**: This template includes both the AI workflow framework (in the root) and example application code (in `src/`) that is being used to test this out and try out different commands, workflows and iterations.
 
 ## Transform AI into Your Architectural Partner
 
@@ -149,7 +149,7 @@ This simulation shows you exactly how the template transforms AI from reactive c
 ```bash
 git clone ai-coding-template.git my-project
 cd my-project
-./scripts/setup-manager.sh init-project
+./.resources/scripts/setup-manager.sh init-project
 ```
 
 - **Smart Discovery**: Automatically detects project type and business context
@@ -193,16 +193,16 @@ git clone https://github.com/yourusername/ai-coding-template.git my-project
 cd my-project
 
 # 🚀 INTELLIGENT INITIALIZATION (Recommended for new projects)
-./scripts/setup-manager.sh init-project
+./.resources/scripts/setup-manager.sh init-project
 # → Guided setup: project type, business context, external tools
 # → Professional README generation
 # → Template docs preserved in docs/ai-tools/
 
 # OR: Quick setup (keeps template as-is)
-./scripts/setup-manager.sh quick
+./.resources/scripts/setup-manager.sh quick
 
 # Verify everything is ready
-./scripts/setup-manager.sh check
+./.resources/scripts/setup-manager.sh check
 ```
 
 **🎯 What `init-project` does:**
@@ -256,7 +256,7 @@ my-project/
 │   ├── technical/decisions/   # /architect Output: ADRs and technical decisions
 │   ├── technical/architecture/ # Auto-generated from implementations
 │   └── ai-tools/              # Workflow guides and references
-├── scripts/                   # Workflow Automation Support
+├── .resources/scripts/                   # Workflow Automation Support
 │   ├── docs-manager.sh        # ADR generation, auto-documentation
 │   └── quality-gates.sh       # /develop quality validation
 ├── CLAUDE.md                  # AI instructions centered on workflow
@@ -351,7 +351,7 @@ The template provides **11 intelligently integrated commands** that orchestrate 
 - ADR generation from `/architect` technical design
 - Technical decision tracking linked to implementation
 - Auto-generated architecture docs from `/develop` execution
-- **Automatic documentation**: Run `./scripts/docs-manager.sh auto-docs all` to generate:
+- **Automatic documentation**: Run `./.resources/scripts/docs-manager.sh auto-docs all` to generate:
   - Technology stack documentation
   - System overview diagrams
   - Dependency graphs
@@ -361,12 +361,12 @@ The template provides **11 intelligently integrated commands** that orchestrate 
 
 Essential scripts for workflow automation:
 
-- **Setup**: `./scripts/setup-manager.sh quick` - Environment setup
-- **Documentation**: `./scripts/docs-manager.sh auto-docs all` - Generate documentation
-- **Status**: `./scripts/ai-status.sh` - Project health dashboard
-- **Quality**: `./scripts/validate-quality-gates.sh` - Validate between phases
+- **Setup**: `./.resources/scripts/setup-manager.sh quick` - Environment setup
+- **Documentation**: `./.resources/scripts/docs-manager.sh auto-docs all` - Generate documentation
+- **Status**: `./.resources/scripts/ai-status.sh` - Project health dashboard
+- **Quality**: `./.resources/scripts/validate-quality-gates.sh` - Validate between phases
 
-**[Complete Scripts Reference →](./scripts/README.md)**
+**[Complete Scripts Reference →](./.resources/scripts/README.md)**
 
 ## Add to Existing Projects
 
@@ -385,9 +385,9 @@ curl -O [template-url]/workflow-integration.tar.gz && tar -xzf workflow-integrat
 
 ```bash
 # Manual script coordination
-"Run ./scripts/docs-manager.sh auto-docs all"
-"Run ./scripts/validate-quality-gates.sh"
-"Run ./scripts/check-docs-links.js"
+"Run ./.resources/scripts/docs-manager.sh auto-docs all"
+"Run ./.resources/scripts/validate-quality-gates.sh"
+"Run ./.resources/scripts/check-docs-links.js"
 
 # ❌ No intelligent coordination
 # ❌ Manual script selection
@@ -422,16 +422,16 @@ The template system provides **fill-in-the-blank starting points** and **working
 
 **🔍 Quick Discovery**:
 
-- **Need to create a feature?** → [Feature Templates](./templates/docs/features/)
-- **Building a React component?** → [Component Template](./templates/code/components/) + [Component Example](./examples/code/patterns/)
-- **Creating an API service?** → [Service Template](./templates/code/api/) + [Service Example](./examples/code/patterns/)
-- **Writing tests?** → [Test Examples](./examples/code/patterns/)
-- **Documenting an API?** → [API Template](./templates/docs/api/)
+- **Need to create a feature?** → [Feature Templates](./.resources/templates/docs/features/)
+- **Building a React component?** → [Component Template](./.resources/templates/code/components/) + [Component Example](./.resources/examples/code/patterns/)
+- **Creating an API service?** → [Service Template](./.resources/templates/code/api/) + [Service Example](./.resources/examples/code/patterns/)
+- **Writing tests?** → [Test Examples](./.resources/examples/code/patterns/)
+- **Documenting an API?** → [API Template](./.resources/templates/docs/api/)
 
 **📋 Two Resource Types**:
 
-- **Templates** (`/templates/`) - Fill-in-the-blank starting points with placeholders
-- **Examples** (`/examples/`) - Working reference implementations to study and adapt
+- **Templates** (`/.resources/templates/`) - Fill-in-the-blank starting points with placeholders
+- **Examples** (`/.resources/examples/`) - Working reference implementations to study and adapt
 
 **🚀 Get Started**:
 
@@ -440,10 +440,10 @@ The template system provides **fill-in-the-blank starting points** and **working
 /feature "your feature description"
 
 # Copy a template to start fresh
-cp templates/docs/features/feature.template.md docs/my-feature.md
+cp .resources/templates/docs/features/feature.template.md docs/my-feature.md
 
 # Study working examples for patterns
-cat examples/code/patterns/api-user-service.example.ts
+cat .resources/examples/code/patterns/api-user-service.example.ts
 ```
 
 **[📖 Complete AI Workflow Guide →](./docs/ai-tools/reference/commands.md)**

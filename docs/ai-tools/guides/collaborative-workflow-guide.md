@@ -45,17 +45,17 @@ Successfully transformed the AI coding template's 5-phase workflow from linear e
 ### 2. Context Management System
 
 #### Context Management Templates
-- **Created**: `templates/workflow/context-management.template.md`
+- **Created**: `.resources/templates/workflow/context-management.template.md`
 - **Features**: Structured context preservation, decision tracking, conversation state management
 - **Usage**: Maintain conversation continuity across long workflows
 
 #### Decision Ledger Format
-- **Created**: `templates/workflow/decision-ledger.template.yml`
+- **Created**: `.resources/templates/workflow/decision-ledger.template.yml`
 - **Features**: Comprehensive decision tracking with alternatives, rationale, and validation
 - **Usage**: Document architectural and business decisions with full context
 
 #### Iteration Trigger Detection
-- **Created**: `scripts/workflow/iteration-detector.sh`
+- **Created**: `.resources/scripts/workflow/iteration-detector.sh`
 - **Features**: Automatic detection of when to revisit earlier phases
 - **Triggers**: Scope changes, technical blockers, assumption failures, collaboration issues
 
@@ -113,9 +113,9 @@ Successfully transformed the AI coding template's 5-phase workflow from linear e
 5. `.claude/commands/develop.md` - Added iterative implementation checkpoints
 
 ### Files Created
-1. `templates/workflow/context-management.template.md` - Context management utilities
-2. `templates/workflow/decision-ledger.template.yml` - Decision tracking format
-3. `scripts/workflow/iteration-detector.sh` - Iteration trigger detection
+1. `.resources/templates/workflow/context-management.template.md` - Context management utilities
+2. `.resources/templates/workflow/decision-ledger.template.yml` - Decision tracking format
+3. `.resources/scripts/workflow/iteration-detector.sh` - Iteration trigger detection
 4. `COLLABORATIVE-WORKFLOW-IMPLEMENTATION.md` - This summary document
 
 ### Key Patterns Implemented

@@ -96,10 +96,15 @@ tags: ["workflow", "design", "vision", "features", "non-technical"]
 
 **Position**: First phase for any new project, feature, or significant change
 
+**Clear Separation from /architect**:
+
+- **`/design`**: Focus on WHAT users need and WHY they need it (non-technical)
+- **`/architect`**: Focus on HOW to build it technically (implementation decisions)
+
 **Workflow Relationships**:
 
-- **Before /architect**: Establish requirements before technical decisions
-- **Guides /architect**: Technical choices must support design requirements
+- **Before /architect**: Define user needs and business requirements before technical decisions
+- **Guides /architect**: Technical choices must support design requirements and constraints
 - **Informs /plan**: Implementation planning based on design specifications
 - **Validates /develop**: Ensure implementation meets design intent
 
@@ -138,3 +143,19 @@ tags: ["workflow", "design", "vision", "features", "non-technical"]
 - Any domain specialists for requirement validation and feasibility input
 
 **Key Principle**: Keep design phase non-technical - save implementation details for `/architect` phase.
+
+## Examples: /design vs /architect
+
+**`/design` captures WHAT and WHY** (user perspective):
+
+- "Users need to upload files up to 100MB for document sharing"
+- "System must support 1000 concurrent users during peak hours"
+- "Users require real-time notifications when someone mentions them"
+- "Data must be retained for 7 years for compliance"
+
+**`/architect` decides HOW** (technical implementation):
+
+- "Use S3 with multipart upload API for 100MB file handling"
+- "Deploy on Kubernetes with horizontal pod autoscaling for 1000 users"
+- "Implement WebSockets via Socket.io for real-time notifications"
+- "PostgreSQL with partitioned tables for 7-year data retention"

@@ -323,7 +323,7 @@ pip cache purge
 sudo chown -R $USER:$USER /path/to/project
 
 # Fix execute permissions
-chmod +x scripts/*.sh
+chmod +x .resources/scripts/*.sh
 ```
 
 **NPM Permission Issues**:

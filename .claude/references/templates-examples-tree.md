@@ -19,7 +19,7 @@ maintainer: "technical-writer"
 ## Root Level Template System
 
 ```text
-templates/
+.resources/templates/
 ├── README.md                           # Master template system overview and usage guide
 ├── template-format-reference.md       # Template formatting standards and variable syntax
 ├── code/                              # Code implementation templates
@@ -32,7 +32,7 @@ templates/
 ## Generation Templates
 
 ```text
-templates/generation/
+.resources/templates/generation/
 ├── dependency-graph.md.tmpl            # Dependency graph generation template
 ├── system-overview.md.tmpl             # System overview generation template
 ├── tech-stack.md.tmpl                  # Technology stack generation template
@@ -43,7 +43,7 @@ templates/generation/
 ## Documentation Templates
 
 ```text
-templates/docs/
+.resources/templates/docs/
 ├── api/
 │   └── api.template.md                 # API documentation template
 ├── decisions/
@@ -73,7 +73,7 @@ templates/docs/
 ### Feature Development Templates
 
 ```text
-templates/workflow/feature/
+.resources/templates/workflow/feature/
 ├── README.md                           # Feature template usage guide and selection criteria
 ├── feature-minimal.template.md         # Lightweight feature specification template
 ├── feature-standard.template.md        # Standard feature specification template
@@ -83,14 +83,14 @@ templates/workflow/feature/
 ### Architecture Templates
 
 ```text
-templates/workflow/architecture/
+.resources/templates/workflow/architecture/
 └── architecture.template.md            # Architecture decision and design template
 ```
 
 ### Planning and Coordination Templates
 
 ```text
-templates/workflow/planning/
+.resources/templates/workflow/planning/
 ├── plan.template.md                    # Implementation plan template for /plan workflow
 ├── research.template.md                # Research document template for context gathering
 └── handoff.template.yml                # Agent coordination handoff template
@@ -99,7 +99,7 @@ templates/workflow/planning/
 ### Exploration Templates
 
 ```text
-templates/workflow/exploration/
+.resources/templates/workflow/exploration/
 ├── conversation.template.md            # Decision exploration conversation template
 ├── notes.template.md                   # Exploration notes and insights template
 ├── specialist-inputs.template.md       # Specialist agent consultation inputs template
@@ -109,7 +109,7 @@ templates/workflow/exploration/
 ### Deliverable Templates
 
 ```text
-templates/workflow/deliverables/
+.resources/templates/workflow/deliverables/
 ├── deliverable.template.md             # Standard deliverable template
 └── deliverable-simple.template.md      # Simple deliverable template
 ```
@@ -117,7 +117,7 @@ templates/workflow/deliverables/
 ### Implementation Templates
 
 ```text
-templates/workflow/implementation/
+.resources/templates/workflow/implementation/
 └── implementation-record.template.md   # Implementation record template for completed work
 ```
 
@@ -126,35 +126,35 @@ templates/workflow/implementation/
 ### API Development Templates
 
 ```text
-templates/code/api/
+.resources/templates/code/api/
 └── service.template.ts                 # TypeScript API service template with best practices
 ```
 
 ### Component Templates
 
 ```text
-templates/code/components/
+.resources/templates/code/components/
 └── component.template.tsx              # React component template with TypeScript
 ```
 
 ### Configuration Templates
 
 ```text
-templates/code/configs/
+.resources/templates/code/configs/
 └── [empty - reserved for configuration templates]
 ```
 
 ### Test Templates
 
 ```text
-templates/code/tests/
+.resources/templates/code/tests/
 └── [empty - reserved for test templates]
 ```
 
 ## Configuration Templates
 
 ```text
-templates/config/
+.resources/templates/config/
 └── claude-settings.template.json       # Claude Code settings template with MCP integration
 ```
 
@@ -165,7 +165,7 @@ templates/config/
 ### Root Examples System
 
 ```text
-examples/
+.resources/examples/
 ├── README.md                           # Examples system overview and navigation guide
 └── [category directories]/             # Organized example collections by type
 ```
@@ -173,7 +173,7 @@ examples/
 ### Workflow Examples
 
 ```text
-examples/workflow/
+.resources/examples/workflow/
 ├── README.md                           # Workflow examples overview and usage patterns
 ├── complete-feature-workflow-example.md  # End-to-end feature development example
 └── template-usage-guide.md            # Guide for using templates effectively
@@ -182,7 +182,7 @@ examples/workflow/
 ### Code Pattern Examples
 
 ```text
-examples/code/patterns/
+.resources/examples/code/patterns/
 ├── api-auth.example.js                 # Authentication implementation patterns
 ├── api-error-handling.example.js       # Error handling patterns and best practices
 ├── api-file-upload.example.js          # File upload handling patterns
@@ -199,7 +199,7 @@ examples/code/patterns/
 ### Authentication Examples
 
 ```text
-examples/code/auth/
+.resources/examples/code/auth/
 ├── abac-authorization.example.js       # Attribute-based access control implementation
 ├── jwt-security.example.js             # JWT token security and validation
 ├── mfa-implementation.example.js       # Multi-factor authentication patterns
@@ -212,7 +212,7 @@ examples/code/auth/
 ### Security Examples
 
 ```text
-examples/code/security/
+.resources/examples/code/security/
 ├── ai-security.example.js              # AI-specific security patterns
 ├── api-security.example.js             # API security implementation
 ├── compliance-governance.example.js    # Compliance and governance patterns
@@ -233,7 +233,7 @@ examples/code/security/
 ### Testing Examples
 
 ```text
-examples/code/testing/
+.resources/examples/code/testing/
 ├── ai-testing.example.js               # AI system testing patterns
 ├── ci-cd-testing.example.yml           # CI/CD testing pipeline configuration
 ├── e2e-testing.example.js              # End-to-end testing patterns
@@ -246,21 +246,21 @@ examples/code/testing/
 ### Configuration Examples
 
 ```text
-examples/code/configs/
+.resources/examples/code/configs/
 └── config-app-config.example.ts        # Application configuration patterns
 ```
 
 ### Integration Examples
 
 ```text
-examples/code/integrations/
+.resources/examples/code/integrations/
 └── [empty - reserved for integration examples]
 ```
 
 ### Documentation Examples
 
 ```text
-examples/docs/
+.resources/examples/docs/
 ├── completed/                          # Completed documentation examples
 └── references/                        # Reference documentation examples
 
@@ -270,17 +270,17 @@ examples/docs/
 
 ```text
 Project README Templates:
-├── templates/documentation/project/api-service.template.md
-├── templates/documentation/project/web-app.template.md
-├── templates/documentation/project/cli-tool.template.md
-├── templates/documentation/project/library.template.md
-├── templates/documentation/project/mobile-app.template.md
-├── templates/documentation/project/enterprise.template.md
-└── templates/documentation/project/project-readme.template.md
+├── .resources/templates/documentation/project/api-service.template.md
+├── .resources/templates/documentation/project/web-app.template.md
+├── .resources/templates/documentation/project/cli-tool.template.md
+├── .resources/templates/documentation/project/library.template.md
+├── .resources/templates/documentation/project/mobile-app.template.md
+├── .resources/templates/documentation/project/enterprise.template.md
+└── .resources/templates/documentation/project/project-readme.template.md
 
 Project Setup Templates:
-├── templates/documentation/project/CHANGELOG.template.md
-├── templates/documentation/technical/project-vision.template.md
+├── .resources/templates/documentation/project/CHANGELOG.template.md
+├── .resources/templates/documentation/technical/project-vision.template.md
 └── .claude/settings.template.json
 ```
 
@@ -288,85 +288,85 @@ Project Setup Templates:
 
 ```text
 Feature Specification:
-├── templates/workflow/feature/feature-minimal.template.md
-├── templates/workflow/feature/feature-standard.template.md
-└── templates/workflow/feature/feature-comprehensive.template.md
+├── .resources/templates/workflow/feature/feature-minimal.template.md
+├── .resources/templates/workflow/feature/feature-standard.template.md
+└── .resources/templates/workflow/feature/feature-comprehensive.template.md
 
 Implementation Planning:
-├── templates/workflow/planning/plan.template.md
-├── templates/workflow/planning/research.template.md
-└── templates/workflow/planning/handoff.template.yml
+├── .resources/templates/workflow/planning/plan.template.md
+├── .resources/templates/workflow/planning/research.template.md
+└── .resources/templates/workflow/planning/handoff.template.yml
 
 Code Implementation:
-├── templates/code/api/service.template.ts
-├── templates/code/components/component.template.tsx
-├── examples/code/patterns/ (API and component patterns)
-├── examples/code/auth/ (authentication examples)
-├── examples/code/security/ (security implementation examples)
-└── examples/code/testing/ (testing strategy examples)
+├── .resources/templates/code/api/service.template.ts
+├── .resources/templates/code/components/component.template.tsx
+├── .resources/examples/code/patterns/ (API and component patterns)
+├── .resources/examples/code/auth/ (authentication examples)
+├── .resources/examples/code/security/ (security implementation examples)
+└── .resources/examples/code/testing/ (testing strategy examples)
 ```
 
 ### **Architecture and Design** (Make Technical Decisions)
 
 ```text
 Architecture Documentation:
-├── templates/workflow/architecture/architecture.template.md
-├── docs/technical/architecture/examples/architecture-template.md
-└── docs/technical/decisions/explorations/templates/ (decision exploration)
+├── .resources/templates/workflow/architecture/architecture.template.md
+├── docs/technical/architecture/.resources/examples/architecture-template.md
+└── docs/technical/decisions/explorations/.resources/templates/ (decision exploration)
 
 Decision Recording:
-├── docs/technical/decisions/explorations/templates/conversation-template.md
-├── docs/technical/decisions/explorations/templates/notes-template.md
-└── docs/technical/decisions/explorations/templates/specialist-inputs-template.md
+├── docs/technical/decisions/explorations/.resources/templates/conversation-template.md
+├── docs/technical/decisions/explorations/.resources/templates/notes-template.md
+└── docs/technical/decisions/explorations/.resources/templates/specialist-inputs-template.md
 ```
 
 ### **Documentation Creation** (Document Systems)
 
 ```text
 Auto-Documentation:
-├── templates/auto-docs/ (auto-generation templates)
-├── templates/generation/ (documentation generation templates)
+├── .resources/templates/auto-docs/ (auto-generation templates)
+├── .resources/templates/generation/ (documentation generation templates)
 └── /docs generate commands (intelligent documentation)
 
 API Documentation:
-├── templates/documentation/technical/api-reference.template.md
-└── examples/code/patterns/api-*.example.js (reference implementations)
+├── .resources/templates/documentation/technical/api-reference.template.md
+└── .resources/examples/code/patterns/api-*.example.js (reference implementations)
 
 Technical Writing:
-├── templates/documentation/technical/project-changelog.template.md
-├── templates/documentation/technical/project-vision.template.md
-└── docs/development/templates/api.template.md (legacy)
+├── .resources/templates/documentation/technical/project-changelog.template.md
+├── .resources/templates/documentation/technical/project-vision.template.md
+└── docs/development/.resources/templates/api.template.md (legacy)
 ```
 
 ### **Code Development** (Implement Solutions)
 
 ```text
 Backend Development:
-├── templates/code/api/service.template.ts
-├── examples/code/patterns/api-*.example.js (comprehensive API patterns)
-├── examples/code/auth/ (authentication and authorization)
-└── examples/code/security/ (security implementation)
+├── .resources/templates/code/api/service.template.ts
+├── .resources/examples/code/patterns/api-*.example.js (comprehensive API patterns)
+├── .resources/examples/code/auth/ (authentication and authorization)
+└── .resources/examples/code/security/ (security implementation)
 
 Frontend Development:
-├── templates/code/components/component.template.tsx
-├── examples/code/patterns/component-user-card.example.tsx
-└── examples/code/configs/config-app-config.example.ts
+├── .resources/templates/code/components/component.template.tsx
+├── .resources/examples/code/patterns/component-user-card.example.tsx
+└── .resources/examples/code/configs/config-app-config.example.ts
 
 Testing:
-├── examples/code/patterns/test-user-service.example.test.ts
-└── examples/code/testing/ (comprehensive testing strategies)
+├── .resources/examples/code/patterns/test-user-service.example.test.ts
+└── .resources/examples/code/testing/ (comprehensive testing strategies)
 ```
 
 ### **Workflow Management** (Coordinate Development)
 
 ```text
 Implementation Records:
-├── templates/workflow/implementation/implementation-record.template.md
-└── examples/workflow/complete-feature-workflow-example.md
+├── .resources/templates/workflow/implementation/implementation-record.template.md
+└── .resources/examples/workflow/complete-feature-workflow-example.md
 
 Process Documentation:
-├── examples/workflow/template-usage-guide.md
-└── templates/README.md (master guide)
+├── .resources/examples/workflow/template-usage-guide.md
+└── .resources/templates/README.md (master guide)
 ```
 
 ## Template Usage Patterns
@@ -375,100 +375,100 @@ Process Documentation:
 
 ```yaml
 Planning_Phase:
-  - templates/workflow/feature/ (feature specifications)
-  - templates/workflow/architecture/ (technical design)
-  - templates/workflow/planning/ (implementation planning)
-  - docs/technical/decisions/explorations/templates/ (decision exploration)
+  - .resources/templates/workflow/feature/ (feature specifications)
+  - .resources/templates/workflow/architecture/ (technical design)
+  - .resources/templates/workflow/planning/ (implementation planning)
+  - docs/technical/decisions/explorations/.resources/templates/ (decision exploration)
 
 Development_Phase:
-  - templates/code/ (code templates)
-  - examples/code/patterns/ (API and component patterns)
-  - examples/code/auth/ (authentication patterns)
-  - examples/code/security/ (security implementations)
-  - examples/code/testing/ (testing strategies)
-  - templates/workflow/planning/handoff.template.yml (coordination)
+  - .resources/templates/code/ (code templates)
+  - .resources/examples/code/patterns/ (API and component patterns)
+  - .resources/examples/code/auth/ (authentication patterns)
+  - .resources/examples/code/security/ (security implementations)
+  - .resources/examples/code/testing/ (testing strategies)
+  - .resources/templates/workflow/planning/handoff.template.yml (coordination)
 
 Documentation_Phase:
-  - templates/auto-docs/ (auto-generation templates)
-  - templates/generation/ (documentation generation)
-  - templates/documentation/ (all documentation types)
-  - templates/workflow/implementation/ (implementation records)
-  - examples/workflow/ (process examples)
+  - .resources/templates/auto-docs/ (auto-generation templates)
+  - .resources/templates/generation/ (documentation generation)
+  - .resources/templates/documentation/ (all documentation types)
+  - .resources/templates/workflow/implementation/ (implementation records)
+  - .resources/examples/workflow/ (process examples)
 
 Release_Phase:
-  - templates/documentation/project/CHANGELOG.template.md
-  - templates/documentation/technical/project-changelog.template.md
+  - .resources/templates/documentation/project/CHANGELOG.template.md
+  - .resources/templates/documentation/technical/project-changelog.template.md
 ```
 
 ### **By Project Type**
 
 ```yaml
 API_Projects:
-  - templates/documentation/project/api-service.template.md
-  - templates/code/api/service.template.ts
-  - examples/code/patterns/api-*.example.js
-  - examples/code/auth/ (API authentication)
-  - examples/code/security/api-security.example.js
-  - templates/documentation/technical/api-reference.template.md
+  - .resources/templates/documentation/project/api-service.template.md
+  - .resources/templates/code/api/service.template.ts
+  - .resources/examples/code/patterns/api-*.example.js
+  - .resources/examples/code/auth/ (API authentication)
+  - .resources/examples/code/security/api-security.example.js
+  - .resources/templates/documentation/technical/api-reference.template.md
 
 Web_Applications:
-  - templates/documentation/project/web-app.template.md
-  - templates/code/components/component.template.tsx
-  - examples/code/patterns/component-*.example.tsx
-  - examples/code/security/ (web security patterns)
+  - .resources/templates/documentation/project/web-app.template.md
+  - .resources/templates/code/components/component.template.tsx
+  - .resources/examples/code/patterns/component-*.example.tsx
+  - .resources/examples/code/security/ (web security patterns)
 
 CLI_Tools:
-  - templates/documentation/project/cli-tool.template.md
-  - examples/code/configs/config-*.example.ts
+  - .resources/templates/documentation/project/cli-tool.template.md
+  - .resources/examples/code/configs/config-*.example.ts
 
 Libraries:
-  - templates/documentation/project/library.template.md
-  - templates/documentation/technical/api-reference.template.md
-  - examples/code/testing/ (library testing patterns)
+  - .resources/templates/documentation/project/library.template.md
+  - .resources/templates/documentation/technical/api-reference.template.md
+  - .resources/examples/code/testing/ (library testing patterns)
 
 Enterprise_Applications:
-  - templates/documentation/project/enterprise.template.md
-  - templates/workflow/feature/feature-comprehensive.template.md
-  - examples/code/security/ (enterprise security)
-  - examples/code/testing/ (enterprise testing strategies)
+  - .resources/templates/documentation/project/enterprise.template.md
+  - .resources/templates/workflow/feature/feature-comprehensive.template.md
+  - .resources/examples/code/security/ (enterprise security)
+  - .resources/examples/code/testing/ (enterprise testing strategies)
 ```
 
 ### **By User Type**
 
 ```yaml
 Developers:
-  - templates/code/ (implementation templates)
-  - examples/code/patterns/ (API and component patterns)
-  - examples/code/auth/ (authentication implementations)
-  - examples/code/security/ (security patterns)
-  - examples/code/testing/ (testing strategies)
-  - templates/workflow/planning/ (coordination)
+  - .resources/templates/code/ (implementation templates)
+  - .resources/examples/code/patterns/ (API and component patterns)
+  - .resources/examples/code/auth/ (authentication implementations)
+  - .resources/examples/code/security/ (security patterns)
+  - .resources/examples/code/testing/ (testing strategies)
+  - .resources/templates/workflow/planning/ (coordination)
 
 Technical_Writers:
-  - templates/auto-docs/ (auto-generation templates)
-  - templates/generation/ (documentation generation)
-  - templates/documentation/ (all documentation templates)
-  - docs/development/templates/ (legacy templates)
-  - examples/workflow/template-usage-guide.md
+  - .resources/templates/auto-docs/ (auto-generation templates)
+  - .resources/templates/generation/ (documentation generation)
+  - .resources/templates/documentation/ (all documentation templates)
+  - docs/development/.resources/templates/ (legacy templates)
+  - .resources/examples/workflow/template-usage-guide.md
 
 Project_Managers:
-  - templates/workflow/feature/ (feature specifications)
-  - templates/workflow/implementation/ (progress tracking)
-  - examples/workflow/complete-feature-workflow-example.md
+  - .resources/templates/workflow/feature/ (feature specifications)
+  - .resources/templates/workflow/implementation/ (progress tracking)
+  - .resources/examples/workflow/complete-feature-workflow-example.md
 
 Architects:
-  - templates/workflow/architecture/ (design documentation)
-  - docs/technical/decisions/explorations/templates/ (decision making)
-  - docs/technical/architecture/examples/ (architecture patterns)
+  - .resources/templates/workflow/architecture/ (design documentation)
+  - docs/technical/decisions/explorations/.resources/templates/ (decision making)
+  - docs/technical/architecture/.resources/examples/ (architecture patterns)
 
 Security_Engineers:
-  - examples/code/security/ (security implementation patterns)
-  - examples/code/auth/ (authentication and authorization)
-  - templates/auto-docs/ (security documentation generation)
+  - .resources/examples/code/security/ (security implementation patterns)
+  - .resources/examples/code/auth/ (authentication and authorization)
+  - .resources/templates/auto-docs/ (security documentation generation)
 
 QA_Engineers:
-  - examples/code/testing/ (comprehensive testing strategies)
-  - examples/code/security/security-testing.example.test.js
+  - .resources/examples/code/testing/ (comprehensive testing strategies)
+  - .resources/examples/code/security/security-testing.example.test.js
 ```
 
 ## Quick Reference Commands
@@ -477,70 +477,70 @@ QA_Engineers:
 
 ```bash
 # Find templates by category
-find templates/ -name "*.template.*" -o -name "*.tmpl" | grep [category]
+find .resources/templates/ -name "*.template.*" -o -name "*.tmpl" | grep [category]
 
 # List all available templates
-cat templates/README.md
+cat .resources/templates/README.md
 
 # Get template format reference
-cat templates/TEMPLATE-FORMAT-REFERENCE.md
+cat .resources/templates/TEMPLATE-FORMAT-REFERENCE.md
 
 # List auto-docs templates
-ls templates/auto-docs/
+ls .resources/templates/auto-docs/
 
 # List generation templates
-ls templates/generation/
+ls .resources/templates/generation/
 ```
 
 ### **Example Usage**
 
 ```bash
 # Browse code examples
-cat examples/README.md
+cat .resources/examples/README.md
 
 # View API pattern examples
-ls examples/code/patterns/
+ls .resources/examples/code/patterns/
 
 # View authentication examples
-ls examples/code/auth/
+ls .resources/examples/code/auth/
 
 # View security examples
-ls examples/code/security/
+ls .resources/examples/code/security/
 
 # View testing examples
-ls examples/code/testing/
+ls .resources/examples/code/testing/
 
 # Study workflow examples
-cat examples/workflow/complete-feature-workflow-example.md
+cat .resources/examples/workflow/complete-feature-workflow-example.md
 ```
 
 ### **Template Selection**
 
 ```bash
 # Feature development
-ls templates/workflow/feature/
+ls .resources/templates/workflow/feature/
 
 # Auto-documentation
-ls templates/auto-docs/
+ls .resources/templates/auto-docs/
 
 # Project initialization
-ls templates/documentation/project/
+ls .resources/templates/documentation/project/
 
 # Code implementation
-ls templates/code/ && ls examples/code/
+ls .resources/templates/code/ && ls .resources/examples/code/
 
 # Security patterns
-ls examples/code/security/
+ls .resources/examples/code/security/
 
 # Testing strategies
-ls examples/code/testing/
+ls .resources/examples/code/testing/
 ```
 
 ## Maintenance Notes
 
 **For technical-writer**: This file should be updated whenever:
-- New templates are added to any templates/ directory (including auto-docs/ and generation/)
-- New examples are added to any examples/ directory (including auth/, security/, testing/)
+- New templates are added to any .resources/templates/ directory (including auto-docs/ and generation/)
+- New examples are added to any .resources/examples/ directory (including auth/, security/, testing/)
 - Template files are moved, renamed, or restructured
 - Template purposes or usage patterns change
 - New template categories are introduced
@@ -548,7 +548,7 @@ ls examples/code/testing/
 - Security or testing example patterns are added
 
 **Update Process**:
-1. Scan all templates/ and examples/ directories for changes
+1. Scan all .resources/templates/ and .resources/examples/ directories for changes
 2. Pay special attention to auto-docs/, generation/, auth/, security/, and testing/ directories
 3. Update tree structure to reflect current organization
 4. Verify all template and example descriptions are accurate
@@ -572,4 +572,4 @@ ls examples/code/testing/
 **Last Updated**: 2025-09-18 by template cleanup reorganization
 **Next Review**: When template/example structure changes
 **Maintainer**: technical-writer (automated updates)
-**Key Changes**: Consolidated all templates under templates/ directory, standardized naming convention, removed duplicates, improved organization
+**Key Changes**: Consolidated all templates under .resources/templates/ directory, standardized naming convention, removed duplicates, improved organization

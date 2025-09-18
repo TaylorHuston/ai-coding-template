@@ -45,7 +45,7 @@
       },
       "documentation-trigger": {
         "enabled": true,
-        "script": "scripts/hooks/documentation-trigger.sh",
+        "script": ".resources/scripts/hooks/documentation-trigger.sh",
         "warning-only": true,
         "description": "Remind to use technical-writer agent for new documentation"
       },
@@ -57,8 +57,8 @@
           "tests/",
           "__tests__/",
           "spec/",
-          "examples/",
-          "templates/",
+          ".resources/examples/",
+          ".resources/templates/",
           "docs/",
           "*.test.*",
           "*.spec.*",
@@ -142,7 +142,7 @@
             "template-pattern": "^[a-z0-9-]+\\.template$"
           },
           "scripts": {
-            "paths": ["scripts/**/*"],
+            "paths": [".resources/scripts/**/*"],
             "pattern": "^[a-z0-9-]+(\\.sh|\\.js|\\.py)?$",
             "exceptions": []
           }
@@ -165,7 +165,7 @@
           "tests/",
           "docs/",
           ".github/",
-          "scripts/"
+          ".resources/scripts/"
         ]
       },
       "docs-sync": {
@@ -193,7 +193,7 @@
             ".claude/references/",
             "src/",
             "lib/",
-            "scripts/"
+            ".resources/scripts/"
           ],
           "medium": [
             "package.json",
@@ -203,7 +203,7 @@
           ],
           "low": [
             "config/",
-            "examples/"
+            ".resources/examples/"
           ]
         }
       },

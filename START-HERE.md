@@ -23,7 +23,7 @@ npm run demo
 git clone https://github.com/yourusername/ai-coding-template.git my-awesome-project
 cd my-awesome-project
 rm -rf src/*  # Clear example application code
-./scripts/setup-manager.sh init-project
+./.resources/scripts/setup-manager.sh init-project
 ```
 
 **🧠 What happens during setup:**
@@ -79,7 +79,7 @@ rm -rf src/*  # Clear example application code
 git clone template → manually replace README → guess configuration → lose context
 
 # AI Coding Template: Intelligent transformation
-./scripts/setup-manager.sh init-project
+./.resources/scripts/setup-manager.sh init-project
 ```
 
 **🎯 Intelligence Features:**
@@ -172,7 +172,7 @@ Here's what a real workflow looks like:
 ### **Quick Commands**
 ```bash
 # Project status and health
-./scripts/ai-status.sh
+./.resources/scripts/ai-status.sh
 
 # Find the right template or example
 cat TEMPLATES-EXAMPLES-INDEX.md
