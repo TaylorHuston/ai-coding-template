@@ -1,5 +1,9 @@
 # AI Coding Template
 
+## Intro
+
+This is an attempt to add structure and guidance around ai-assisted coding. It is very much in an alpha phase at the moment and I greatly appreciate any feedback on it. It's also currently being frequently updated with large changes, so check back often!
+
 ## Transform AI into Your Architectural Partner
 
 From simple code generator to intelligent development partner through the **revolutionary /vision → /feature → /architect → /plan → /develop workflow**.
@@ -10,7 +14,7 @@ From simple code generator to intelligent development partner through the **revo
 
 ### **🎯 Choose Your Entry Point**
 - **[👋 START HERE](./START-HERE.md)** - New user? Your 5-minute guided introduction
-- **[📋 Find Any Template](./templates/TEMPLATE-FORMAT-REFERENCE.md)** - Need to build something? Find the right starting point
+- **[🤖 AI Workflow Commands](./docs/ai-tools/reference/commands.md)** - Let AI handle everything automatically
 - **[⚡ 2-Minute Demo](#quick-demo)** - See the value immediately
 
 ### **📚 Essential Navigation**
@@ -24,7 +28,7 @@ From simple code generator to intelligent development partner through the **revo
 2. **[⚡ Quick Demo](#quick-demo)** - See the workflow in action
 3. **[🏗️ Setup Guide](./docs/ai-tools/setup/quick-start.md)** - Complete configuration
 4. **[🤖 Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - 17 specialist team
-5. **[📋 Templates](./TEMPLATES-EXAMPLES-INDEX.md)** - Pre-built starting points
+5. **[🤖 AI Commands](./docs/ai-tools/reference/commands.md)** - Start your AI-assisted workflow
 
 ---
 
@@ -418,8 +422,8 @@ The template system provides **fill-in-the-blank starting points** and **working
 
 **🚀 Get Started**:
 ```bash
-# Find the right resource for your task
-cat TEMPLATES-EXAMPLES-INDEX.md
+# Start the AI workflow - no templates needed
+/feature "your feature description"
 
 # Copy a template to start fresh
 cp templates/docs/features/feature.template.md docs/my-feature.md
@@ -428,7 +432,7 @@ cp templates/docs/features/feature.template.md docs/my-feature.md
 cat examples/code/patterns/api-user-service.example.ts
 ```
 
-**[📖 Complete Templates & Examples Guide →](./TEMPLATES-EXAMPLES-INDEX.md)**
+**[📖 Complete AI Workflow Guide →](./docs/ai-tools/reference/commands.md)**
 
 ## Contributing to the Workflow
 
