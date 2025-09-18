@@ -18,9 +18,9 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
 
 - **[code-architect](./code-architect.md)** - System design and long-term architecture
 
-  - _Capabilities_: System architecture, technology decisions, API design
-  - _Best For_: Large-scale design decisions, technology selection, architectural reviews
-  - _Model_: opus | _Color_: purple | _Auto-Invoked_: Complex architectural tasks
+  - _Capabilities_: System architecture, feature-level design patterns, API design
+  - _Best For_: Feature architecture decisions, implementation patterns, technical design
+  - _Model_: opus | _Color_: purple | _Auto-Invoked_: Feature architectural tasks
 
 - **[project-manager](./project-manager.md)** - Project coordination and orchestration
 
@@ -265,8 +265,12 @@ task_type_mapping:
 
 #### **By Project Phase**
 
-- **Architecture/Planning**: code-architect, project-manager
-- **Development**: frontend-specialist, api-designer, database-specialist
+- **Vision**: vision-strategist, project-manager
+- **Scaffold**: devops-engineer, database-specialist, code-architect (foundation focus)
+- **Feature**: business-analyst patterns through feature-focused conversations
+- **Architecture**: code-architect, api-designer, security-auditor (feature implementation focus)
+- **Planning**: project-manager, context-analyzer
+- **Development**: frontend-specialist, backend-specialist, database-specialist
 - **Quality Assurance**: code-reviewer, test-engineer, security-auditor
 - **Deployment**: devops-engineer
 - **Maintenance**: performance-optimizer, technical-writer, security-auditor

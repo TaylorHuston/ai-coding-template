@@ -16,11 +16,12 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 ## Core Workflow Commands ⭐
 
-**The five-phase workflow that transforms AI from code generator to architectural partner:**
+**The six-phase workflow that transforms AI from code generator to architectural partner:**
 
 | Command | Purpose | Usage | Model |
 |---------|---------|-------|-------|
 | 🎯 `/vision` | Vision creation and strategy | `/vision --create \| --review \| --validate FEATURE` | opus |
+| 🔧 `/scaffold` | Technology stack and project foundation | `/scaffold --new \| --tech-stack \| --environment` | sonnet |
 | 💡 `/feature` | Feature definition and requirements | `/feature --new "FEATURE" \| --update FEATURE` | sonnet |
 | 🏗️ `/architect` | Technical architecture design | `/architect FEATURE \| --decision "DECISION"` | opus |
 | 📋 `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
@@ -32,6 +33,7 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 |---------|---------|-------|-------|
 | **Core Workflow** | | | |
 | `/vision` | Vision creation and strategy | `/vision --create \| --review \| --validate FEATURE` | opus |
+| `/scaffold` | Technology stack and project foundation | `/scaffold --new \| --tech-stack \| --environment` | sonnet |
 | `/feature` | Feature definition and requirements | `/feature --new "FEATURE" \| --update FEATURE` | sonnet |
 | `/architect` | Technical architecture design | `/architect FEATURE \| --decision "DECISION"` | opus |
 | `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |

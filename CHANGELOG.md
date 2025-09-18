@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+- **NEW**: `/scaffold` command - Foundation-first technology stack setup phase
+  - Bridges workflow gap between `/vision` and `/feature` phases
+  - Establishes project technology foundation before feature definition
+  - Agent coordination: devops-engineer, database-specialist, code-architect
+  - Creates working development environment with Docker + build tools
+  - Generates foundational ADRs for technology decisions
+
+### Changed
+
+- **MAJOR**: Enhanced workflow from 5-phase to 6-phase development cycle
+  - Updated sequence: `/vision` → `/scaffold` → `/feature` → `/architect` → `/plan` → `/develop`
+  - Clarified agent responsibilities: infrastructure (scaffold) vs feature implementation (architect)
+  - Updated all documentation, README.md, and command references
+  - Improved logical flow: establish tech stack before defining feature requirements
+
 ## [0.2.0] - 2025-09-18
 
 ### Added

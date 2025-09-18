@@ -8,18 +8,20 @@ This is an attempt to add structure and guidance around ai-assisted coding. It i
 
 ## Transform AI into Your Architectural Partner
 
-From simple code generator to intelligent development partner through the **revolutionary /vision → /feature → /architect → /plan → /develop workflow**.
+From simple code generator to intelligent development partner through the a lightweight /vision → /scaffold → /feature → /architect → /plan → /develop workflow.
 
 ---
 
 ## 🚀 **New Here? Start Smart**
 
 ### **🎯 Choose Your Entry Point**
+
 - **[👋 START HERE](./START-HERE.md)** - New user? Your 5-minute guided introduction
 - **[🤖 AI Workflow Commands](./docs/ai-tools/reference/commands.md)** - Let AI handle everything automatically
 - **[⚡ 2-Minute Demo](#quick-demo)** - See the value immediately
 
 ### **📚 Essential Navigation**
+
 - **[🔧 All Commands](./docs/ai-tools/reference/commands.md)** - Complete command reference
 - **[🤖 17 Specialist Agents](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Your expert team
 - **[🏗️ Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration guide
@@ -51,11 +53,15 @@ From simple code generator to intelligent development partner through the **revo
 
 ```mermaid
 graph LR
-    V[🎯 /vision] --> A[💡 /feature] --> B[🏗️ /architect] --> C[📋 /plan] --> D[⚡ /develop]
+    V[🎯 /vision] --> S[🔧 /scaffold] --> A[💡 /feature] --> B[🏗️ /architect] --> C[📋 /plan] --> D[⚡ /develop]
 
     V --> V1[Problem Definition]
     V --> V2[Solution Strategy]
     V --> V3[Success Metrics]
+
+    S --> S1[Technology Stack]
+    S --> S2[Development Environment]
+    S --> S3[Project Foundation]
 
     A --> A1[Feature Definition]
     A --> A2[Requirements Gathering]
@@ -63,7 +69,7 @@ graph LR
 
     B --> B1[Technical Design]
     B --> B2[Architecture Decisions]
-    B --> B3[Technology Selection]
+    B --> B3[Implementation Patterns]
 
     C --> C1[Multi-Agent Analysis]
     C --> C2[Phase-Based Planning]
@@ -75,60 +81,77 @@ graph LR
 ```
 
 #### 0. 🎯 `/vision` - Strategic Foundation and Product Vision
+
 Define WHY you're building and WHAT success looks like with strategic clarity:
+
 - **Problem Validation**: Deep dive into the core problem worth solving
 - **Solution Strategy**: High-level approach and unique value proposition
 - **Success Framework**: Measurable metrics and validation criteria
 
-#### 1. 💡 `/feature` - Feature Definition and Requirements
+#### 1. 🔧 `/scaffold` - Technology Stack and Project Foundation
+
+Establish the technical foundation needed for feature development:
+
+- **Technology Selection**: Choose frameworks, databases, and core technologies
+- **Development Environment**: Set up Docker, build tools, and local development
+- **Project Structure**: Create foundational directory layout and conventions
+- **Infrastructure Decisions**: Document technology choices through foundational ADRs
+
+#### 2. 💡 `/feature` - Feature Definition and Requirements
+
 Define WHAT you're building and WHY with lightweight business context:
+
 - **Business Context**: Explores user needs, problem statements, and success criteria
 - **Requirements Gathering**: Documents functional requirements and dependencies
 - **External Integration**: Links to Jira/Linear issues when available
 
-#### 2. 🏗️ `/architect` - Technical Architecture Design
-Define HOW to implement features through technical decisions and system design:
-- **Architecture Exploration**: Evaluates multiple technical approaches
-- **Technology Selection**: Chooses frameworks, patterns, and technologies
-- **Decision Recording**: Creates ADRs documenting choices and rationale
+#### 3. 🏗️ `/architect` - Technical Architecture Design
 
-#### 3. 📋 `/plan` - Implementation Planning
+Define HOW to implement features through technical decisions and system design:
+
+- **Architecture Exploration**: Evaluates multiple technical approaches for specific features
+- **Implementation Patterns**: Designs component interactions and data flow
+- **Feature ADRs**: Creates architecture decision records for feature-specific choices
+
+#### 4. 📋 `/plan` - Implementation Planning
+
 Break down architecture into executable tasks with context preservation:
+
 - **Context Integration**: Builds on vision, feature and architecture documentation
 - **Task Decomposition**: Generates P1.X.X, P2.X.X, P3.X.X phased tasks
 - **Agent Selection**: Intelligent assignment based on task requirements
 
 #### 4. ⚡ `/develop` - Development Execution
+
 Execute implementation tasks with AI agent orchestration:
+
 - **Orchestrator Model**: Main Claude coordinates specialized agents
 - **Context Preservation**: Complete handoff context across all tasks
 - **Quality Gates**: Validation between phases with smart recovery
 
 ### Why This Workflow Matters
 
-**🎯 Architectural Quality**: Decisions are thoroughly explored before any code is written
-**🧠 Perfect Memory**: Context is preserved across sessions, agents, and phases
-**👥 Multi-Expert Coordination**: 17 specialized agents work together seamlessly
-**⚡ Quality Assurance**: Built-in gates ensure standards are maintained throughout
-**📈 Scalable Complexity**: Works for simple features to complex system redesigns
+**🎯 Architectural Quality**: Decisions are thoroughly explored before any code is written **🧠 Perfect Memory**: Context is preserved across sessions, agents, and phases **👥 Multi-Expert Coordination**: 17 specialized agents work together seamlessly **⚡ Quality Assurance**: Built-in gates ensure standards are maintained throughout **📈 Scalable Complexity**: Works for simple features to complex system redesigns
 
 ### Key Innovation: Agent-First Architecture
 
 **🚀 Intelligence Over Automation**: Scripts serve agents, not users directly
+
 - Agents make context-aware decisions about which scripts to invoke
 - Intelligent orchestration replaces manual script coordination
 - Scripts become tools that agents use intelligently
 
 **🔗 Unified Interface**: Complex operations simplified through intelligent commands
+
 - `/docs` replaces 5+ manual documentation scripts
 - `/quality` coordinates multiple validation tools automatically
 - `/status` provides intelligent analysis, not just raw data
 
 **🧠 Context-Aware Execution**: Every script invocation includes project context
+
 - Agents understand project state and requirements
 - Scripts receive relevant context for optimal execution
 - Results are interpreted and integrated intelligently
-
 
 ## Quick Demo
 
@@ -163,6 +186,7 @@ cd my-project
 ### Prerequisites
 
 **Required:**
+
 - Git (2.25+)
 - VS Code or preferred editor
 - AI assistant account (Claude Code, Claude, etc.)
@@ -173,7 +197,9 @@ cd my-project
   ```
 
 **Optional (Enhanced Multi-Model Intelligence):**
+
 - **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** - Enables cross-validation and second opinions from Google's Gemini
+
   ```bash
   # Install via npm
   npm install -g @google/gemini-cli
@@ -203,6 +229,7 @@ cd my-project
 ```
 
 **🎯 What `init-project` does:**
+
 1. **Verifies Claude Code** is installed and ready
 2. **Discovers your project** through guided questions
 3. **Integrates external tools** (Jira, Confluence, etc.)
@@ -228,16 +255,14 @@ cd my-project
 ```
 
 **This 15-minute experience will show you:**
+
 - How AI-guided exploration improves decisions
 - How multi-agent planning creates better implementations
 - How context preservation eliminates the "forgetting" problem
 
 ### 3. Learn the System
 
-**→ [Commands Reference](./docs/ai-tools/reference/commands.md)** - Master the four phases
-**→ [Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Understand your 17 specialists
-**→ [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Advanced AI patterns
-**→ [Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration options
+**→ [Commands Reference](./docs/ai-tools/reference/commands.md)** - Master the four phases **→ [Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Understand your 17 specialists **→ [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Advanced AI patterns **→ [Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration options
 
 ## How the Template Supports the Workflow
 
@@ -277,6 +302,7 @@ Expert AI agents automatically coordinate throughout the workflow:
 Everything is designed to enhance the core workflow:
 
 **Intelligent Command System**:
+
 - `/feature` - Feature definition and requirements
 - `/architect` - Technical architecture design and ADRs
 - `/plan` - Sequential multi-agent planning with intelligent agent selection
@@ -290,17 +316,20 @@ Everything is designed to enhance the core workflow:
 The template provides **11 intelligently integrated commands** that orchestrate agents and scripts seamlessly:
 
 **🌟 Core Workflow Commands:**
+
 - **`/feature`** - Feature definition and requirements
 - **`/architect`** - Technical architecture design and ADRs
 - **`/plan`** - Sequential multi-agent planning with intelligent agent selection
 - **`/develop`** - Orchestrated task execution with automatic script integration via agents
 
 **🔧 Unified Intelligence Commands:**
+
 - **`/docs`** - Unified documentation management with intelligent agent coordination
 - **`/quality`** - Comprehensive quality assessment with multi-agent coordination
 - **`/status`** - Enhanced project status with intelligent context analysis
 
 **📋 Development Support Commands:**
+
 - **`/commit`** - Git commit with quality checks and conventional messages
 - **`/review`** - Comprehensive code review with multi-dimensional analysis
 - **`/security-audit`** - OWASP-compliant security assessment with remediation
@@ -308,6 +337,7 @@ The template provides **11 intelligently integrated commands** that orchestrate 
 - **`/merge-branch`** - Safe branch merging with deployment validation
 
 **Enhanced Workflow Examples:**
+
 ```bash
 # Quality-focused development with intelligent coordination
 /feature --new "Secure File Uploads"
@@ -328,16 +358,19 @@ The template provides **11 intelligently integrated commands** that orchestrate 
 **→ [Complete Commands Reference](./docs/ai-tools/reference/commands.md)** - Detailed usage guide for all integrated commands
 
 **Context Management**:
+
 - `HANDOFF.yml` - Perfect agent-to-agent context passing
 - `RESEARCH.md` - Accumulated knowledge from all workflow phases
 - `STATUS.md` - Cross-session workflow state preservation
 
 **Quality Assurance**:
+
 - Automatic quality gates between workflow phases
 - Built-in validation preventing progression without standards
 - Smart recovery and remediation suggestions
 
 **Documentation Integration**:
+
 - ADR generation from `/architect` technical design
 - Technical decision tracking linked to implementation
 - Auto-generated architecture docs from `/develop` execution
@@ -346,7 +379,6 @@ The template provides **11 intelligently integrated commands** that orchestrate 
   - System overview diagrams
   - Dependency graphs
   - Architecture documentation
-
 
 ## Development Scripts
 
@@ -412,6 +444,7 @@ curl -O [template-url]/workflow-integration.tar.gz && tar -xzf workflow-integrat
 The template system provides **fill-in-the-blank starting points** and **working reference implementations** to accelerate your development:
 
 **🔍 Quick Discovery**:
+
 - **Need to create a feature?** → [Feature Templates](./templates/docs/features/)
 - **Building a React component?** → [Component Template](./templates/code/components/) + [Component Example](./examples/code/patterns/)
 - **Creating an API service?** → [Service Template](./templates/code/api/) + [Service Example](./examples/code/patterns/)
@@ -419,10 +452,12 @@ The template system provides **fill-in-the-blank starting points** and **working
 - **Documenting an API?** → [API Template](./templates/docs/api/)
 
 **📋 Two Resource Types**:
+
 - **Templates** (`/templates/`) - Fill-in-the-blank starting points with placeholders
 - **Examples** (`/examples/`) - Working reference implementations to study and adapt
 
 **🚀 Get Started**:
+
 ```bash
 # Start the AI workflow - no templates needed
 /feature "your feature description"
@@ -462,4 +497,5 @@ Help improve the /feature → /architect → /plan → /develop workflow for eve
 ---
 
 Built with ❤️ by developers who believe AI should be an architectural partner, not just a code generator.
-*
+
+-
