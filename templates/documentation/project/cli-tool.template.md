@@ -312,7 +312,7 @@ This project uses AI-assisted development for consistent, high-quality results:
 
 ### Pull Request Process
 1. Create feature branch: `git checkout -b feature/new-command`
-2. Use AI workflow: `/feature` → `/architect` → `/plan` → `/develop`
+2. Use AI workflow: `/vision` → `/feature` → `/architect` → `/plan` → `/develop`
 3. Add tests and documentation
 4. Test on multiple platforms
 5. Update CHANGELOG.md
@@ -374,7 +374,7 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 
 ### AI Development Tools
 - **[Template Documentation](./docs/ai-tools/template-documentation.md)** - Complete AI template guide
-- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 18 specialist AI agents
+- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 19 specialist AI agents
 
 ## 📊 Project Status
 

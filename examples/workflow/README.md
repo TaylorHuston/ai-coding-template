@@ -9,7 +9,7 @@ tags: ["workflow-examples", "ai-workflow", "best-practices", "development-proces
 
 # Workflow Examples
 
-This directory contains comprehensive examples demonstrating the AI-assisted development workflow using the `/feature → /architect → /plan → /develop` process.
+This directory contains comprehensive examples demonstrating the AI-assisted development workflow using the `/vision → /feature → /architect → /plan → /develop` process.
 
 ## 🎯 Purpose
 
@@ -27,9 +27,9 @@ These examples show how the template system and AI workflow commands work togeth
 **File**: [complete-feature-workflow-example.md](./complete-feature-workflow-example.md)
 
 **Demonstrates**:
-- Full `/feature → /architect → /plan → /develop` workflow
+- Full `/vision → /feature → /architect → /plan → /develop` workflow
 - User authentication system implementation
-- All four workflow phases with realistic output
+- All five workflow phases with realistic output
 - Agent coordination and context passing
 - Quality gates and validation checkpoints
 
@@ -58,7 +58,7 @@ Coming soon:
 
 1. **Copy the Pattern**: Use the structure as a template for your features
 2. **Adapt Templates**: Modify templates to match your project specifics
-3. **Follow Phase Sequence**: Always progress through /feature → /architect → /plan → /develop
+3. **Follow Phase Sequence**: Always progress through /vision → /feature → /architect → /plan → /develop
 4. **Maintain Documentation**: Keep artifacts updated as implementation progresses
 
 ### For Team Onboarding
@@ -113,6 +113,11 @@ Coming soon:
 
 ## 🔄 Workflow Phase Examples
 
+### Phase 0: `/vision` - Strategic Foundation
+**Demonstrated**: Product vision and strategic planning
+**Shows**: Problem definition, solution approach, success metrics
+**Templates Used**: vision.template.md
+
 ### Phase 1: `/feature` - Requirements Definition
 **Demonstrated**: User authentication system requirements
 **Shows**: Business context, success criteria, technical considerations
@@ -141,6 +146,7 @@ Coming soon:
 - **Context Awareness**: Templates adapt to project type and requirements
 
 ### Command Integration
+- **`/vision`**: Strategic foundation and product vision creation
 - **`/feature`**: Intelligent template selection based on complexity
 - **`/architect`**: Automatic ADR and design document generation
 - **`/plan`**: Comprehensive planning with agent coordination

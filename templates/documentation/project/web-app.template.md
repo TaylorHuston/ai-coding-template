@@ -87,6 +87,7 @@ src/
 
 This project includes intelligent development workflows:
 
+- **`/vision`** - Strategic foundation and product vision creation
 - **`/feature`** - Feature requirements and context creation
 - **`/architect`** - Technical architecture and decision design
 - **`/plan`** - Multi-agent planning and task breakdown
@@ -170,11 +171,12 @@ SENDGRID_API_KEY={{SENDGRID_API_KEY}}
 
 This project uses AI-assisted development for consistent, high-quality results:
 
-1. **Define** - Use `/feature` to create feature requirements and context
-2. **Design** - Use `/architect` to create technical architecture and decisions
-3. **Plan** - Use `/plan` to create detailed implementation roadmaps
-4. **Execute** - Use `/develop` to implement with context-aware quality gates
-5. **Validate** - Use `/quality` to ensure performance and accessibility standards
+1. **Envision** - Use `/vision` to establish strategic foundation and product vision
+2. **Define** - Use `/feature` to create feature requirements and context
+3. **Design** - Use `/architect` to create technical architecture and decisions
+4. **Plan** - Use `/plan` to create detailed implementation roadmaps
+5. **Execute** - Use `/develop` to implement with context-aware quality gates
+6. **Validate** - Use `/quality` to ensure performance and accessibility standards
 
 ### Code Organization
 
@@ -213,7 +215,7 @@ This project uses AI-assisted development for consistent, high-quality results:
 ### Getting Started
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Use AI workflow: `/feature "amazing feature approach"` → `/architect` → `/plan` → `/develop`
+3. Use AI workflow: `/vision` → `/feature "amazing feature approach"` → `/architect` → `/plan` → `/develop`
 4. Test your changes: `npm run test`
 5. Check performance: `npm run lighthouse`
 6. Commit your changes: `git commit -m "feat: add amazing feature"`
@@ -264,7 +266,7 @@ Found a bug? Please check existing issues first, then:
 ### AI Development Tools
 - **[Template Documentation](./docs/ai-tools/template-documentation.md)** - Complete AI template guide
 - **[Available Templates](./docs/ai-tools/templates-and-examples.md)** - Code and documentation templates
-- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 18 specialist AI agents
+- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 19 specialist AI agents
 
 ## 🔒 Security
 

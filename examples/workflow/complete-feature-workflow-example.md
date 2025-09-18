@@ -1,7 +1,7 @@
 ---
 version: "0.1.0"
 created: "2025-09-17"
-purpose: "Complete workflow example demonstrating /feature → /architect → /plan → /develop"
+purpose: "Complete workflow example demonstrating /vision → /feature → /architect → /plan → /develop"
 workflow_phase: "example"
 complexity: "comprehensive"
 estimated_time: "2-4 hours for full implementation"
@@ -10,7 +10,7 @@ tags: ["workflow-example", "feature-development", "ai-workflow", "best-practices
 
 # Complete Feature Workflow Example: User Authentication System
 
-This example demonstrates the complete AI-assisted development workflow using the new `/feature → /architect → /plan → /develop` process for implementing a user authentication system.
+This example demonstrates the complete AI-assisted development workflow using the new `/vision → /feature → /architect → /plan → /develop` process for implementing a user authentication system.
 
 ## 🎯 Workflow Overview
 

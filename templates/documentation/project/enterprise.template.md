@@ -431,7 +431,7 @@ This project uses AI-assisted development for consistent, high-quality results:
 
 ### AI Development Tools
 - **[Template Documentation](./docs/ai-tools/template-documentation.md)** - Complete AI template guide
-- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 18 specialist AI agents
+- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 19 specialist AI agents
 
 ## 📊 Project Status
 

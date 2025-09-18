@@ -818,7 +818,7 @@ EOF
     log_info "Next steps:"
     log_info "  1. Customize README.md for your project"
     log_info "  2. Start development with the AI workflow"
-    log_info "  3. Use: /feature → /architect → /plan → /develop"
+    log_info "  3. Use: /vision → /feature → /architect → /plan → /develop"
     echo
     log_success "Happy building! 🚀"
 }

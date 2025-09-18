@@ -330,7 +330,7 @@ Project README (project templates)
 ## 🚀 Next Steps
 
 1. **Choose Your Starting Point**: Select template based on what you're building
-2. **Follow the Workflow**: Use `/feature → /architect → /plan → /develop` for complex features
+2. **Follow the Workflow**: Use `/vision → /feature → /architect → /plan → /develop` for complex features
 3. **Customize as Needed**: Adapt templates to your project specifics
 4. **Maintain Consistency**: Keep using templates for all similar work
 5. **Share with Team**: Establish templates as team standards

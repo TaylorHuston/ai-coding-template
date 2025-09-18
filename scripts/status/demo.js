@@ -172,7 +172,7 @@ async function runDemo() {
     console.log(colorize('🎯 KEY DIFFERENCES:', 'yellow'));
     console.log();
     console.log(colorize('  📝 Perfect Memory: Every decision preserved in HANDOFF.yml, RESEARCH.md', 'white'));
-    console.log(colorize('  🧠 Expert Consultation: 18 specialist agents for every domain', 'white'));
+    console.log(colorize('  🧠 Expert Consultation: 19 specialist agents for every domain', 'white'));
     console.log(colorize('  🎯 Quality Gates: Automatic validation between every phase', 'white'));
     console.log(colorize('  📋 Systematic Planning: P1→P2→P3 phases with logical dependencies', 'white'));
     console.log(colorize('  🔄 Context Awareness: AI remembers everything across long sessions', 'white'));

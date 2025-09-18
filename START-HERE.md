@@ -165,7 +165,7 @@ Here's what a real workflow looks like:
 ### **Key Directories**
 - **`templates/`** - Fill-in-the-blank starting points for any task
 - **`examples/`** - Working code examples to study and adapt
-- **`.claude/agents/`** - 18 specialist agents for every domain
+- **`.claude/agents/`** - 19 specialist agents for every domain
 - **`scripts/`** - 20+ automation scripts for development workflow
 
 ### **Quick Commands**

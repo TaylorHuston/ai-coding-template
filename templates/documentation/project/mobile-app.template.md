@@ -297,7 +297,7 @@ This project uses AI-assisted development for consistent, high-quality results:
 ### Pull Request Process
 
 1. Create feature branch: `git checkout -b feature/new-screen`
-2. Use AI workflow: `/feature` → `/architect` → `/plan` → `/develop`
+2. Use AI workflow: `/vision` → `/feature` → `/architect` → `/plan` → `/develop`
 3. Test on both platforms
 4. Update screenshots and documentation
 5. Submit pull request with device testing results
@@ -317,7 +317,7 @@ This project uses AI-assisted development for consistent, high-quality results:
 
 ### AI Development Tools
 - **[Template Documentation](./docs/ai-tools/template-documentation.md)** - Complete AI template guide
-- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 18 specialist AI agents
+- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 19 specialist AI agents
 
 ## 🐛 Bug Reports & Support
 

@@ -75,7 +75,7 @@ See [Getting Started with AI Workflow](./docs/ai-tools/getting-started-with-temp
 ### AI Development Tools
 - **[Template Documentation](./docs/ai-tools/template-documentation.md)** - Complete AI template guide
 - **[Available Templates](./docs/ai-tools/templates-and-examples.md)** - Code and documentation templates
-- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 18 specialist AI agents
+- **[Agent System](./docs/ai-tools/guides/using-agents.md)** - 19 specialist AI agents
 - **[Command Reference](./docs/ai-tools/reference/commands.md)** - All available AI commands
 
 ## 🧪 Testing
@@ -120,7 +120,7 @@ See [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md) f
 ### Getting Started
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Use AI workflow: `/feature "amazing feature approach"` → `/architect` → `/plan` → `/develop`
+3. Use AI workflow: `/vision` → `/feature "amazing feature approach"` → `/architect` → `/plan` → `/develop`
 4. Commit your changes: `git commit -m "feat: add amazing feature"`
 5. Push to the branch: `git push origin feature/amazing-feature`
 6. Open a Pull Request

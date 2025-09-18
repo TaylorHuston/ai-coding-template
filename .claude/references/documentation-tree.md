@@ -60,7 +60,8 @@ maintainer: "docs-sync-agent"
 │   ├── refactoring-specialist.md      # Code improvement and technical debt reduction
 │   ├── security-auditor.md            # Security assessment and compliance specialist
 │   ├── technical-writer.md            # Technical documentation creation specialist
-│   └── test-engineer.md               # Testing strategy and quality assurance specialist
+│   ├── test-engineer.md               # Testing strategy and quality assurance specialist
+│   └── vision-strategist.md           # Product vision and strategic planning specialist
 └── working/                            # Active development workspace and coordination files
     ├── README.md                       # Working directory usage and structure guide
     └── [issue-directories]/            # Issue-specific PLAN.md, RESEARCH.md, HANDOFF.yml files
