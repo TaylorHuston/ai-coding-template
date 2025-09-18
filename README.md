@@ -8,7 +8,7 @@ This is an attempt to add structure and guidance around ai-assisted coding. It i
 
 ## Transform AI into Your Architectural Partner
 
-From simple code generator to intelligent development partner through the a lightweight /vision → /scaffold → /feature → /architect → /plan → /develop workflow.
+From simple code generator to intelligent development partner through the a streamlined /design → /architect → /plan → /develop workflow.
 
 ---
 
@@ -53,71 +53,48 @@ From simple code generator to intelligent development partner through the a ligh
 
 ```mermaid
 graph LR
-    V[🎯 /vision] --> S[🔧 /scaffold] --> A[💡 /feature] --> B[🏗️ /architect] --> C[📋 /plan] --> D[⚡ /develop]
+    D[📝 /design] --> A[🏗️ /architect] --> P[📋 /plan] --> V[⚡ /develop]
 
-    V --> V1[Problem Definition]
-    V --> V2[Solution Strategy]
-    V --> V3[Success Metrics]
+    D --> D1[Vision & Strategy]
+    D --> D2[Feature Requirements]
+    D --> D3[User Stories]
 
-    S --> S1[Technology Stack]
-    S --> S2[Development Environment]
-    S --> S3[Project Foundation]
+    A --> A1[Technology Stack]
+    A --> A2[Architecture Decisions]
+    A --> A3[Implementation Patterns]
 
-    A --> A1[Feature Definition]
-    A --> A2[Requirements Gathering]
-    A --> A3[Business Context]
+    P --> P1[Multi-Agent Analysis]
+    P --> P2[Task Breakdown]
+    P --> P3[Context Coordination]
 
-    B --> B1[Technical Design]
-    B --> B2[Architecture Decisions]
-    B --> B3[Implementation Patterns]
-
-    C --> C1[Multi-Agent Analysis]
-    C --> C2[Phase-Based Planning]
-    C --> C3[Context Coordination]
-
-    D --> D1[Agent Orchestration]
-    D --> D2[Quality Gates]
-    D --> D3[Context Preservation]
+    V --> V1[Agent Orchestration]
+    V --> V2[Quality Gates]
+    V --> V3[Context Preservation]
 ```
 
-#### 0. 🎯 `/vision` - Strategic Foundation and Product Vision
+#### 1. 📝 `/design` - Vision, Features, and Requirements
 
-Define WHY you're building and WHAT success looks like with strategic clarity:
+Define all non-technical aspects - from product vision to detailed user stories:
 
-- **Problem Validation**: Deep dive into the core problem worth solving
-- **Solution Strategy**: High-level approach and unique value proposition
-- **Success Framework**: Measurable metrics and validation criteria
+- **Vision Documents**: Problem definition, solution strategy, and success metrics
+- **Feature Specifications**: Detailed feature requirements and user workflows
+- **User Stories**: Specific use cases with acceptance criteria
+- **Business Context**: Target audience and value propositions
 
-#### 1. 🔧 `/scaffold` - Technology Stack and Project Foundation
+#### 2. 🏗️ `/architect` - Technical Architecture and Infrastructure
 
-Establish the technical foundation needed for feature development:
+Make comprehensive technical decisions through collaborative exploration:
 
-- **Technology Selection**: Choose frameworks, databases, and core technologies
-- **Development Environment**: Set up Docker, build tools, and local development
-- **Project Structure**: Create foundational directory layout and conventions
-- **Infrastructure Decisions**: Document technology choices through foundational ADRs
+- **Technology Foundation**: Framework, database, and infrastructure choices
+- **Architecture Patterns**: Component design, API structure, and integration approaches
+- **Development Environment**: Containerization, build tools, and deployment architecture
+- **Decision Documentation**: Create ADRs with rationale and alternatives considered
 
-#### 2. 💡 `/feature` - Feature Definition and Requirements
-
-Define WHAT you're building and WHY with lightweight business context:
-
-- **Business Context**: Explores user needs, problem statements, and success criteria
-- **Requirements Gathering**: Documents functional requirements and dependencies
-- **External Integration**: Links to Jira/Linear issues when available
-
-#### 3. 🏗️ `/architect` - Technical Architecture Design
-
-Define HOW to implement features through technical decisions and system design:
-
-- **Architecture Exploration**: Evaluates multiple technical approaches for specific features
-- **Implementation Patterns**: Designs component interactions and data flow
-- **Feature ADRs**: Creates architecture decision records for feature-specific choices
-
-#### 4. 📋 `/plan` - Implementation Planning
+#### 3. 📋 `/plan` - Implementation Planning
 
 Break down architecture into executable tasks with context preservation:
 
-- **Context Integration**: Builds on vision, feature and architecture documentation
+- **Context Integration**: Builds on design and architecture documentation
 - **Task Decomposition**: Generates P1.X.X, P2.X.X, P3.X.X phased tasks
 - **Agent Selection**: Intelligent assignment based on task requirements
 

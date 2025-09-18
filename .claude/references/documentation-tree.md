@@ -1,7 +1,7 @@
 ---
-version: "0.2.0"
+version: "0.3.0"
 created: "2025-09-17"
-last_updated: "2025-09-17"
+last_updated: "2025-09-18"
 status: "active"
 target_audience: ["ai-assistants", "technical-writer"]
 document_type: "reference"
@@ -52,14 +52,13 @@ maintainer: "technical-writer"
 │   ├── data-analyst.md                # Data processing and analytics specialist
 │   ├── database-specialist.md         # Database design and optimization specialist
 │   ├── devops-engineer.md             # Infrastructure and deployment automation specialist
-│   ├── technical-writer.md             # Documentation synchronization and maintenance agent
 │   ├── frontend-specialist.md         # UI/UX development and optimization specialist
 │   ├── migration-specialist.md        # Framework upgrades and system migration specialist
 │   ├── performance-optimizer.md       # Performance analysis and optimization specialist
 │   ├── project-manager.md             # Multi-agent coordination and project orchestration
 │   ├── refactoring-specialist.md      # Code improvement and technical debt reduction
 │   ├── security-auditor.md            # Security assessment and compliance specialist
-│   ├── technical-writer.md            # Technical documentation creation specialist
+│   ├── technical-writer.md            # Technical documentation creation and maintenance specialist
 │   ├── test-engineer.md               # Testing strategy and quality assurance specialist
 │   └── vision-strategist.md           # Product vision and strategic planning specialist
 └── working/                            # Active development workspace and coordination files
@@ -85,18 +84,21 @@ docs/ai-tools/
 ├── README.md                           # AI tools and workflow system overview
 ├── system-context.md                  # System-wide context and integration patterns
 ├── guides/
-│   ├── ai-agents-guide.md             # Comprehensive agent usage and coordination guide
 │   ├── ai-collaboration-guide.md      # AI-human collaboration patterns and best practices
-│   ├── multi-model-consultation-guide.md  # Multi-model AI consultation and cross-validation
-│   └── using-agents.md                # Practical agent selection and orchestration guide
+│   ├── collaborative-workflow-guide.md # Collaborative development workflow patterns
+│   ├── comprehensive-agent-guide.md   # Complete agent usage and coordination guide
+│   └── multi-model-consultation-guide.md  # Multi-model AI consultation and cross-validation
 ├── reference/
 │   ├── README.md                      # Reference documentation index and navigation
 │   ├── ai-assistant-guide.md          # General AI assistant usage guidelines
 │   ├── commands.md                    # Complete command reference and usage guide
 │   ├── development-commands.md        # Development-specific command documentation
+│   ├── serena-semantic-tools.md       # Serena semantic analysis tools reference
 │   ├── setup-manager.md               # Setup manager script comprehensive reference
 │   ├── tool-selection.md              # Tool selection criteria and decision matrix
 │   └── troubleshooting.md             # Comprehensive troubleshooting guide
+├── features/
+│   └── docs-sync-hook.md              # Documentation synchronization hook system
 └── setup/
     ├── claude-code-hooks-setup.md     # Claude Code hooks configuration and integration
     ├── integration-guide.md           # Adding AI workflow to existing projects
@@ -174,7 +176,6 @@ docs/technical/
 ├── decisions/
 │   ├── README.md                      # Architecture Decision Records index
 │   ├── template.md                    # ADR template for consistent decision documentation
-│   ├── adr-001-adopt-automatic-documentation-generation.md  # ADR: Documentation automation
 │   └── explorations/
 │       ├── README.md                  # Decision exploration sessions index
 │       └── 20250116-103045-graphql-migration/
@@ -221,7 +222,7 @@ scripts/
 
 ### **AI Framework** (Essential for AI Development)
 - `.claude/agents/README.md` - Agent catalog
-- `docs/ai-tools/guides/using-agents.md` - Agent usage guide
+- `docs/ai-tools/guides/comprehensive-agent-guide.md` - Complete agent usage guide
 - `docs/ai-tools/reference/commands.md` - Command reference
 - `CLAUDE.md` - AI instructions
 
@@ -265,6 +266,6 @@ scripts/
 
 ---
 
-**Last Updated**: 2025-09-17 by system scan
+**Last Updated**: 2025-09-18 by workflow simplification update
 **Next Review**: When documentation structure changes
 **Maintainer**: technical-writer (automated updates)

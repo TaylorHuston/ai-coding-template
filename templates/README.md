@@ -1,7 +1,7 @@
 ---
-version: "0.1.0"
+version: "0.2.0"
 created: "2025-09-17"
-last_updated: "2025-09-17"
+last_updated: "2025-09-18"
 status: "active"
 target_audience: ["developers", "technical-writers", "ai-assistants"]
 document_type: "index"
@@ -27,17 +27,26 @@ Generate consistent code patterns and structures:
 ### Documentation Templates (`/docs/`)
 Create standardized documentation:
 
-- **`/technical/`** - Architecture, design, and technical docs
-- **`/decisions/`** - ADR and decision documentation templates
 - **`/api/`** - API documentation templates
-- **`/features/`** - Feature specification templates
+- **`/decisions/`** - ADR and decision documentation templates
+- **`/development/`** - Development process and guideline templates
+- **`/project/`** - Project README, vision, and changelog templates
+- **`/technical/`** - Architecture, design, and technical docs
 
 ### Workflow Templates (`/workflow/`)
 Structure development workflows:
 
+- **`/architecture/`** - Architecture design and decision templates
 - **`/deliverables/`** - Project deliverable templates
-- **`/issues/`** - Issue tracking templates
-- **`/explorations/`** - Architectural exploration templates
+- **`/exploration/`** - Architectural exploration and decision templates
+- **`/feature/`** - Feature specification templates
+- **`/implementation/`** - Implementation record templates
+- **`/planning/`** - Plan, research, and handoff templates
+
+### Configuration Templates (`/config/`)
+Configuration and settings templates:
+
+- **Claude Code settings and configurations**
 
 ### Generation Templates (`/generation/`)
 Auto-generation and script templates:

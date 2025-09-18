@@ -1,7 +1,7 @@
 ---
-version: "0.1.0"
+version: "0.2.0"
 created: "2025-09-17"
-last_updated: "2025-09-17"
+last_updated: "2025-09-18"
 status: "active"
 target_audience: ["ai-assistants", "developers", "technical-writer"]
 document_type: "reference"
@@ -21,28 +21,15 @@ maintainer: "technical-writer"
 ```text
 templates/
 ├── README.md                           # Master template system overview and usage guide
-├── TEMPLATE-FORMAT-REFERENCE.md       # Template formatting standards and variable syntax
-├── auto-docs/                          # Auto-documentation generation templates
-├── generation/                         # Documentation generation templates
+├── template-format-reference.md       # Template formatting standards and variable syntax
 ├── code/                              # Code implementation templates
-├── documentation/                     # Project and technical documentation templates
-└── workflow/                          # Development workflow templates
+├── docs/                              # Project and technical documentation templates
+├── workflow/                          # Development workflow templates
+├── generation/                        # Auto-documentation generation templates (.tmpl files)
+└── config/                            # Configuration and settings templates
 ```
 
-## Auto-Documentation Templates
-
-### Auto-Generation Templates
-
-```text
-templates/auto-docs/
-├── dependency-graph.md.tmpl            # Dependency graph documentation template
-├── system-overview.md.tmpl             # System overview documentation template
-├── tech-stack.md.tmpl                  # Technology stack documentation template
-├── tech-stack-simple.md.tmpl           # Simplified technology stack template
-└── technical-decision.md.tmpl          # Technical decision record template
-```
-
-### Generation Templates
+## Generation Templates
 
 ```text
 templates/generation/
@@ -55,27 +42,30 @@ templates/generation/
 
 ## Documentation Templates
 
-### Project Documentation Templates
-
 ```text
-templates/documentation/project/
-├── api-service.template.md             # API service project README template
-├── cli-tool.template.md                # Command-line tool project README template
-├── enterprise.template.md              # Enterprise application README template
-├── library.template.md                 # Library/package project README template
-├── mobile-app.template.md              # Mobile application README template
-├── project-readme.template.md          # Generic project README template
-├── web-app.template.md                 # Web application README template
-└── CHANGELOG.template.md               # Project changelog template following Keep a Changelog
-```
-
-### Technical Documentation Templates
-
-```text
-templates/documentation/technical/
-├── api-reference.template.md           # API documentation template with OpenAPI structure
-├── project-changelog.template.md       # Technical changelog template for releases
-└── project-vision.template.md          # Project vision and strategy document template
+templates/docs/
+├── api/
+│   └── api.template.md                 # API documentation template
+├── decisions/
+│   └── adr.template.md                 # Architecture Decision Record template
+├── development/
+│   ├── README.md                       # Development templates overview
+│   └── yaml-frontmatter-schema.md     # YAML frontmatter schema specification
+├── project/
+│   ├── api-service.template.md         # API service project README template
+│   ├── cli-tool.template.md            # Command-line tool project README template
+│   ├── enterprise.template.md          # Enterprise application README template
+│   ├── library.template.md             # Library/package project README template
+│   ├── mobile-app.template.md          # Mobile application README template
+│   ├── project-readme.template.md      # Generic project README template
+│   ├── standard-readme.template.md     # Standard project README template
+│   ├── web-app.template.md             # Web application README template
+│   ├── vision.template.md              # Project vision template
+│   └── CHANGELOG.template.md           # Project changelog template following Keep a Changelog
+└── technical/
+    ├── api-reference.template.md       # API documentation template with OpenAPI structure
+    ├── project-changelog.template.md   # Technical changelog template for releases
+    └── project-vision.template.md      # Project vision and strategy document template
 ```
 
 ## Workflow Templates
@@ -104,6 +94,24 @@ templates/workflow/planning/
 ├── plan.template.md                    # Implementation plan template for /plan workflow
 ├── research.template.md                # Research document template for context gathering
 └── handoff.template.yml                # Agent coordination handoff template
+```
+
+### Exploration Templates
+
+```text
+templates/workflow/exploration/
+├── conversation.template.md            # Decision exploration conversation template
+├── notes.template.md                   # Exploration notes and insights template
+├── specialist-inputs.template.md       # Specialist agent consultation inputs template
+└── state.template.yml                  # Exploration state tracking template
+```
+
+### Deliverable Templates
+
+```text
+templates/workflow/deliverables/
+├── deliverable.template.md             # Standard deliverable template
+└── deliverable-simple.template.md      # Simple deliverable template
 ```
 
 ### Implementation Templates
@@ -143,52 +151,14 @@ templates/code/tests/
 └── [empty - reserved for test templates]
 ```
 
-## Legacy Development Templates
-
-### Standard Development Templates
+## Configuration Templates
 
 ```text
-docs/development/templates/standard/
-├── feature.template.md                 # Legacy standard feature template
-└── deliverable.template.md             # Legacy deliverable template
+templates/config/
+└── claude-settings.template.json       # Claude Code settings template with MCP integration
 ```
 
-### Simple Development Templates
 
-```text
-docs/development/templates/simple/
-├── feature-simple.template.md          # Legacy simple feature template
-└── deliverable-simple.template.md      # Legacy simple deliverable template
-```
-
-### Development Template Resources
-
-```text
-docs/development/templates/
-├── README.md                           # Development templates overview and migration guide
-├── api.template.md                     # Legacy API documentation template
-└── yaml-frontmatter-schema.md         # YAML frontmatter schema specification
-```
-
-## Exploration and Decision Templates
-
-### Decision Exploration Templates
-
-```text
-docs/technical/decisions/explorations/templates/
-├── conversation-template.md            # Template for recording exploration conversations
-├── notes-template.md                   # Template for exploration notes and insights
-├── specialist-inputs-template.md       # Template for specialist agent consultation inputs
-└── state-template.yml                  # Template for exploration state tracking
-```
-
-### Architecture Example Templates
-
-```text
-docs/technical/architecture/examples/
-├── README.md                           # Architecture examples overview and usage
-└── architecture-template.md            # Architecture documentation example template
-```
 
 ## Working Examples
 
@@ -293,16 +263,6 @@ examples/code/integrations/
 examples/docs/
 ├── completed/                          # Completed documentation examples
 └── references/                        # Reference documentation examples
-```
-
-## Configuration Templates
-
-### AI Assistant Configuration
-
-```text
-.claude/
-└── settings.template.json              # Claude Code settings template with MCP integration
-```
 
 ## Template Categories by Purpose
 
@@ -609,7 +569,7 @@ ls examples/code/testing/
 
 ---
 
-**Last Updated**: 2025-09-17 by technical-writer
+**Last Updated**: 2025-09-18 by template cleanup reorganization
 **Next Review**: When template/example structure changes
 **Maintainer**: technical-writer (automated updates)
-**Key Changes**: Added auto-docs/, generation/, auth/, security/, testing/ directories; updated categorization and commands
+**Key Changes**: Consolidated all templates under templates/ directory, standardized naming convention, removed duplicates, improved organization

@@ -1,6 +1,7 @@
 ---
-version: "0.1.0"
+version: "0.2.0"
 created: "2025-09-15"
+last_updated: "2025-09-18"
 status: "active"
 target_audience: ["developers", "ai-assistants", "team-leads"]
 document_type: "reference"
@@ -16,14 +17,12 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 ## Core Workflow Commands ⭐
 
-**The six-phase workflow that transforms AI from code generator to architectural partner:**
+**The four-phase workflow that transforms AI from code generator to architectural partner:**
 
 | Command | Purpose | Usage | Model |
 |---------|---------|-------|-------|
-| 🎯 `/vision` | Vision creation and strategy | `/vision --create \| --review \| --validate FEATURE` | opus |
-| 🔧 `/scaffold` | Technology stack and project foundation | `/scaffold --new \| --tech-stack \| --environment` | sonnet |
-| 💡 `/feature` | Feature definition and requirements | `/feature --new "FEATURE" \| --update FEATURE` | sonnet |
-| 🏗️ `/architect` | Technical architecture design | `/architect FEATURE \| --decision "DECISION"` | opus |
+| 📝 `/design` | Vision, features, and requirements (combines vision + feature planning) | `/design --new "PROJECT" \| --feature "FEATURE" \| --update` | opus |
+| 🏗️ `/architect` | Technical architecture and technology decisions (combines scaffold + architectural design) | `/architect FEATURE \| --tech-stack \| --decision "DECISION"` | opus |
 | 📋 `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
 | ⚡ `/develop` | Development execution | `/develop [TASK-ID] [--force] [--instruct]` | sonnet |
 
@@ -32,10 +31,8 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 | Command | Purpose | Usage | Model |
 |---------|---------|-------|-------|
 | **Core Workflow** | | | |
-| `/vision` | Vision creation and strategy | `/vision --create \| --review \| --validate FEATURE` | opus |
-| `/scaffold` | Technology stack and project foundation | `/scaffold --new \| --tech-stack \| --environment` | sonnet |
-| `/feature` | Feature definition and requirements | `/feature --new "FEATURE" \| --update FEATURE` | sonnet |
-| `/architect` | Technical architecture design | `/architect FEATURE \| --decision "DECISION"` | opus |
+| `/design` | Vision, features, and requirements | `/design --new "PROJECT" \| --feature "FEATURE" \| --update` | opus |
+| `/architect` | Technical architecture and technology decisions | `/architect FEATURE \| --tech-stack \| --decision "DECISION"` | opus |
 | `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
 | `/develop` | Development execution | `/develop [TASK-ID] [--force] [--instruct]` | sonnet |
 | **Development & Quality** | | | |

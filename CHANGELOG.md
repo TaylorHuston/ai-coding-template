@@ -8,30 +8,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- **NEW**: `/scaffold` command - Foundation-first technology stack setup phase
-  - Bridges workflow gap between `/vision` and `/feature` phases
-  - Establishes project technology foundation before feature definition
-  - Agent coordination: devops-engineer, database-specialist, code-architect
-  - Creates working development environment with Docker + build tools
-  - Generates foundational ADRs for technology decisions
+- **Workflow Simplification**: Simplified from 6-step to 4-step workflow cycle
+  - New sequence: `/design` → `/architect` → `/plan` → `/develop`
+  - Consolidated `/vision` + `/feature` → `/design` for all non-technical planning
+  - Consolidated `/scaffold` + existing `/architect` → `/architect` for all technical decisions
 
 ### Changed
 
-- **MAJOR**: Enhanced workflow from 5-phase to 6-phase development cycle
-  - Updated sequence: `/vision` → `/scaffold` → `/feature` → `/architect` → `/plan` → `/develop`
-  - Clarified agent responsibilities: infrastructure (scaffold) vs feature implementation (architect)
-  - Updated all documentation, README.md, and command references
-  - Improved logical flow: establish tech stack before defining feature requirements
+- **MAJOR**: Simplified workflow to 4-step streamlined approach for better flexibility
+  - All documentation, README.md, and command references updated to reflect new workflow
+  - Removed artificial boundaries between vision/feature and scaffold/architect phases
+  - Commands now work at any granularity: vision to user stories, tech stack to feature architecture
+- Cleaned up and re-organized the various template files
+  - Standardized on naming convention
+  - Moved all under the templates/ directory tree
 
 ### Removed
-
-- Removed premature ADRs created during workflow development
-  - ADR-001: NextJS + SQLite full-stack architecture
-  - ADR-002: Prisma ORM selection
-  - ADR-003: Frontend architecture
-  - ADR-004: Security architecture
-- Removed infrastructure feature document from /feature experiment
-  - Cleaned slate for proper /scaffold → /feature → /architect workflow testing
 
 ## [0.2.0] - 2025-09-18
 
@@ -40,15 +32,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Example app vision document for multi-user todo application
 - Template validation project initiated through /vision workflow
 - Complete vision framework with success metrics and feature definitions
-- Foundational architecture decisions for example todo application:
-  - ADR-001: NextJS + SQLite full-stack architecture
-  - ADR-002: Prisma ORM selection with comprehensive schema design
-  - ADR-003: React built-in state management and hybrid RSC/Client architecture
-  - ADR-004: Security architecture with bcrypt, JWT, and Zod validation
 
 ### Fixed
-
-- Fix critical bug in user authentication
 
 ### Changed
 
@@ -67,4 +52,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
-- Initial release ag
+- Initial release version after much random prototyping and experimentation

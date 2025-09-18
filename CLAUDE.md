@@ -25,7 +25,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## Core Workflow
 
-**Primary**: `/vision` → `/feature` → `/architect` → `/plan` → `/develop`
+**Primary**: `/design` → `/architect` → `/plan` → `/develop`
 
 **Complete Reference**: [docs/ai-tools/reference/commands.md](./docs/ai-tools/reference/commands.md)
 

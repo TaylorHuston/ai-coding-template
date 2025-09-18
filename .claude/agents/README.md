@@ -1,6 +1,6 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-09-17 **Status**: Active - Enhanced with Vision Integration **Target Audience**: AI Assistants, Development Teams **Total Agents**: 19 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-09-18 **Status**: Active - Updated for 4-Phase Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 19 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 
@@ -265,10 +265,8 @@ task_type_mapping:
 
 #### **By Project Phase**
 
-- **Vision**: vision-strategist, project-manager
-- **Scaffold**: devops-engineer, database-specialist, code-architect (foundation focus)
-- **Feature**: business-analyst patterns through feature-focused conversations
-- **Architecture**: code-architect, api-designer, security-auditor (feature implementation focus)
+- **Design**: vision-strategist, project-manager (vision + feature planning)
+- **Architecture**: code-architect, devops-engineer, database-specialist, api-designer, security-auditor (tech stack + feature implementation)
 - **Planning**: project-manager, context-analyzer
 - **Development**: frontend-specialist, backend-specialist, database-specialist
 - **Quality Assurance**: code-reviewer, test-engineer, security-auditor
