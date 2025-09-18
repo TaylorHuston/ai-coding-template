@@ -79,21 +79,18 @@ tags: ["status", "project-memory", "context"]
 
 ## Active Development Areas
 
-### In Progress (2 active)
+### In Progress (1 active)
 | Feature/Component | Progress | Priority | Owner | Next Steps |
 |-------------------|----------|----------|--------|------------|
-| [Feature Name] | ████████▒▒ 80% | P0 | [Name] | [Specific next action] |
-| [Component Name] | ███▒▒▒▒▒▒▒ 30% | P1 | [Name] | [Specific next action] |
+| Example Todo App | ██▒▒▒▒▒▒▒▒ 20% | P1 | Template Team | Execute /feature phase to define user stories |
 
 ### Blocked/Waiting (1 blocked)
 | Item | Blocked On | Blocking Since | Resolution ETA | Impact |
 |------|------------|----------------|----------------|--------|
 | [Blocked Feature] | [External dependency] | [Date] | [Expected date] | High/Medium/Low |
 
-### Ready to Start (3 ready)
-- **P0**: [High priority item ready to begin] - [Brief scope]
-- **P1**: [Medium priority item] - [Brief scope]
-- **P2**: [Low priority item] - [Brief scope]
+### Ready to Start (1 ready)
+- **P1**: Feature Definition Phase - Define user stories and requirements for todo app based on vision
 
 ## Technical Context
 
@@ -148,12 +145,13 @@ tags: ["status", "project-memory", "context"]
 ## Team Context
 
 ### Recent Decisions Made
-- [Decision made in last sprint/week]
-- [Context around why it was decided]
+- Created example app vision for multi-user todo application - 2025-09-17
+- Chose todo app domain for template validation due to familiar UX with sufficient complexity
 
 ### Upcoming Decisions Needed
-- [Decision that needs to be made]
-- [Timeline and stakeholders involved]
+- Frontend framework selection for example app (React/Vue/Angular)
+- Data persistence approach (localStorage vs IndexedDB)
+- Testing strategy and coverage targets
 
 ## Development Environment
 
@@ -173,13 +171,14 @@ tags: ["status", "project-memory", "context"]
 ## Next Session Planning
 
 ### Immediate Next Steps (Next 1-2 Sessions)
-1. [Specific task with clear acceptance criteria]
-2. [Another specific task]
-3. [Third task]
+1. Execute /feature command to define user stories and requirements
+2. Proceed through /architect phase for technical architecture decisions
+3. Create implementation plan through /plan phase
 
 ### This Week's Goals
-- [Weekly goal 1]
-- [Weekly goal 2]
+- Complete feature definition phase (/feature)
+- Begin architecture design phase (/architect)
+- Validate agent coordination patterns through example development
 
 ### Dependencies to Resolve
 - [External dependency or decision needed]
@@ -188,10 +187,10 @@ tags: ["status", "project-memory", "context"]
 ## Quick Reference
 
 ### Important File Locations
-- Configuration: `[path/to/config]`
-- Main entry point: `[path/to/main]`
-- Test files: `[test/path]`
-- Documentation: `[docs/path]`
+- Vision Document: `docs/vision.md`
+- Example App Source: `src/` (to be created)
+- Template Documentation: `docs/ai-tools/`
+- Agent Definitions: `.claude/agents/`
 
 ### Key Commands
 ```bash

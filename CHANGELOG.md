@@ -1,17 +1,24 @@
 # Changelog
 
+_These is the changes for the example app in the src/ directory, not the template itself, in order to test that the workflows update it appropriately_ 
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Added
+- Example app vision document for multi-user todo application
+- Template validation project initiated through /vision workflow
+- Complete vision framework with success metrics and feature definitions
+
 ### Fixed
 - Fix critical bug in user authentication
 
-
-### Added
-- Initial project setup
+### Changed
+- Initiated example application development to validate template workflows
 
 ## [0.1.0] - 2025-09-18
 
