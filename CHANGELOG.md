@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.5.3] - 2025-09-19
+
+### Fixed
+
+- **MCP Configuration**: Ensured `.mcp.json` file is properly included in NPM package
+  - Verified template manifest categorization is working correctly
+  - Fixed issue where `.mcp.json` was not being copied to new projects
+  - MCP servers (context7, sequential-thinking, playwright, serena) now properly configured
+
 ## [0.5.2] - 2025-09-19
 
 ### Fixed
