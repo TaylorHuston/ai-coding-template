@@ -1,0 +1,59 @@
+# Template Distribution Ignore File
+# Files and directories to exclude from template distribution
+
+# Development and testing
+workbench/
+example/
+node_modules/
+*.log
+
+# Git and version control
+.git/
+.gitattributes
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build and cache files
+dist/
+build/
+.cache/
+*.tmp
+
+# Environment and secrets
+.env.local
+.env.production
+.env.staging
+*.key
+*.pem
+
+# Documentation build artifacts
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# Development-specific files
+DEVELOPMENT.md
+CONTRIBUTORS.md
+TODO.md
+
+# Package manager files (for template distribution)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Test coverage and reports
+coverage/
+.nyc_output/
+test-results/
+
+# Template development artifacts
+TEMPLATE-DISTRIBUTION-PLAN.md

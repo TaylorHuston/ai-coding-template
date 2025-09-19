@@ -42,7 +42,8 @@
         ".githooks/**/*",
         ".resources/examples/**/*",
         "STATUS.md",
-        "CHANGELOG.md"
+        "CHANGELOG.md",
+        ".template-manifest.json"
       ]
     },
     "configuration": {
