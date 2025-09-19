@@ -1,0 +1,72 @@
+{
+  "name": "ai-assisted-template",
+  "version": "0.5.0",
+  "description": "Comprehensive AI-assisted development template with Claude Code integration",
+  "main": "cli/index-npm.js",
+  "bin": {
+    "ai-template": "cli/index-npm.js"
+  },
+  "scripts": {
+    "test": "node scripts/template/test-categorization.js && node scripts/template/validate-manifest-simple.js",
+    "validate": "node cli/index-simple.js validate",
+    "status": "node cli/index-simple.js status",
+    "info": "node cli/index-simple.js info",
+    "prepublishOnly": "npm run test"
+  },
+  "keywords": [
+    "template",
+    "ai",
+    "claude-code",
+    "development",
+    "workflow",
+    "automation",
+    "ai-assistant"
+  ],
+  "author": "AI Coding Template Project",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TaylorHuston/ai-coding-template.git"
+  },
+  "homepage": "https://github.com/TaylorHuston/ai-coding-template#readme",
+  "bugs": {
+    "url": "https://github.com/TaylorHuston/ai-coding-template/issues"
+  },
+  "files": [
+    ".claude/",
+    ".resources/",
+    "docs/development/",
+    "docs/ai-tools/",
+    "docs/technical/",
+    "cli/",
+    "scripts/template/",
+    ".template-manifest.json",
+    "CLAUDE.md",
+    ".gitignore",
+    ".markdownlint.json",
+    "README.md",
+    "README-TEMPLATE.md"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "commander": "^9.0.0"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.8.0"
+  },
+  "templateConfig": {
+    "manifestFile": ".template-manifest.json",
+    "cliCommand": "ai-template",
+    "supportedProjectTypes": [
+      "web-app",
+      "api-service",
+      "cli-tool",
+      "library",
+      "mobile-app",
+      "enterprise"
+    ]
+  }
+}
