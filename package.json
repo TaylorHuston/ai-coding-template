@@ -1,6 +1,6 @@
 {
   "name": "ai-assisted-template",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Comprehensive AI-assisted development template with Claude Code integration",
   "main": "cli/index-npm.js",
   "bin": {
