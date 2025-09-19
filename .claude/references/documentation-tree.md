@@ -87,6 +87,7 @@ docs/ai-tools/
 │   ├── ai-collaboration-guide.md      # AI-human collaboration patterns and best practices
 │   ├── collaborative-workflow-guide.md # Collaborative development workflow patterns
 │   ├── comprehensive-agent-guide.md   # Complete agent usage and coordination guide
+│   ├── design-workflow-examples.md    # Examples for the /design command workflow
 │   └── multi-model-consultation-guide.md  # Multi-model AI consultation and cross-validation
 ├── reference/
 │   ├── README.md                      # Reference documentation index and navigation
@@ -130,25 +131,11 @@ docs/development/
 │   ├── security-implementation.md     # Security implementation patterns and procedures
 │   ├── security-implementation-core.md # Core security implementation principles
 │   ├── security-principles.md         # Security design principles and threat modeling
+│   ├── testing-guidelines.md          # Deprecated testing guidelines, redirects to new files
 │   ├── testing-implementation.md      # Testing implementation patterns and examples
-│   ├── testing-principles.md          # Core testing principles and philosophy
-│   ├── visual-documentation.md        # Diagram and visual documentation standards
-│   └── legacy/
-│       ├── README.md                  # Legacy guidelines archive index
-│       ├── api-design-guidelines.md   # Archived API design guidelines
-│       └── security-guidelines.md     # Archived security guidelines
+│   └── testing-principles.md          # Core testing principles and philosophy
 ├── setup/
 │   └── environment-setup.md           # Development environment configuration guide
-├── templates/
-│   ├── README.md                      # Development templates overview
-│   ├── yaml-frontmatter-schema.md     # YAML frontmatter schema and validation
-│   ├── api.template.md                # API specification template
-│   ├── standard/
-│   │   ├── feature.template.md        # Standard feature specification template
-│   │   └── deliverable.template.md    # Standard deliverable template
-│   └── simple/
-│       ├── feature-simple.template.md # Simple feature specification template
-│       └── deliverable-simple.template.md # Simple deliverable template
 └── workflows/
     ├── README.md                      # Development workflows overview
     ├── benchmarking.md                # Performance measurement and validation workflows
@@ -166,6 +153,9 @@ docs/technical/
 ├── architecture/
 │   ├── README.md                      # Architecture documentation overview
 │   ├── c4-overview.md                 # C4 model architectural documentation
+│   ├── examples/
+│   │   ├── README.md                  # Example architecture docs
+│   │   └── architecture-template.md   # Template for architecture docs
 │   └── auto-generated/
 │       ├── README.md                  # Auto-generated documentation index
 │       ├── dependency-graph.md        # Project dependency analysis and visualization
@@ -175,13 +165,15 @@ docs/technical/
 │   └── README.md                      # Database design and schema documentation
 ├── decisions/
 │   ├── README.md                      # Architecture Decision Records index
-│   ├── template.md                    # ADR template for consistent decision documentation
+│   ├── adr-001-adopt-automatic-documentation-generation.md # ADR for auto-doc generation
 │   └── explorations/
 │       ├── README.md                  # Decision exploration sessions index
+│       ├── sessions-index.yml         # Index of all exploration sessions
 │       └── 20250116-103045-graphql-migration/
 │           ├── conversation.md        # Exploration conversation log
 │           ├── notes.md               # Decision exploration notes
-│           └── specialist-inputs.md   # Specialist agent consultation inputs
+│           ├── specialist-inputs.md   # Specialist agent consultation inputs
+│           └── state.yml              # State of the exploration session
 ├── features/
 │   ├── README.md                      # Feature documentation index and standards
 │   └── sample-user-authentication.md # Example feature specification document
@@ -193,13 +185,7 @@ docs/technical/
 
 ```
 docs/archived/
-├── README.md                           # Archived documentation index and migration notes
-└── ai-collaboration/
-    ├── README.md                      # Archived AI collaboration documentation index
-    ├── ai-architecture-patterns.md    # Legacy AI architecture patterns
-    ├── ai-branching-strategy.md       # Legacy AI branching strategy documentation
-    ├── context-engineering.md         # Legacy context engineering techniques
-    └── prompting.md                   # Legacy prompting strategies and techniques
+└── README.md                           # Archived documentation index and migration notes
 ```
 
 

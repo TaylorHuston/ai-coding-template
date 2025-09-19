@@ -1,7 +1,7 @@
 ---
 description: Enhanced project status with intelligent context analysis
 argument-hint: [--format FORMAT] [--scope SCOPE] [--ai-format] [--detailed]
-allowed-tools: Read, Write, Edit, Bash, Grep, Glob, TodoWrite, Task
+allowed-tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
 model: sonnet
 ---
 

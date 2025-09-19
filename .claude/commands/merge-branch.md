@@ -1,7 +1,7 @@
 ---
 description: Safe branch merging with deployment validation
 argument-hint: Optional target branch or merge options
-allowed-tools: Bash(git *), Bash(npm *), Bash(pnpm *), Bash(yarn *), Read, Edit, Grep, Glob, TodoWrite, Task
+allowed-tools: ["Bash(git *)", "Bash(npm *)", "Bash(pnpm *)", "Bash(yarn *)", "Read", "Edit", "Grep", "Glob", "TodoWrite", "Task"]
 model: sonnet
 ---
 

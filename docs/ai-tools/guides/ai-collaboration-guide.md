@@ -26,12 +26,16 @@ Essential patterns and practices for effective AI-assisted development. This gui
 - **Review**: "Use code-reviewer agent to assess this implementation"
 - **Safety**: "Show me the changes before committing to this branch"
 
-### Foundation-First Workflow
+### Epic-Driven Workflow
 
-**Enhanced workflow pattern** for new projects:
-- `/vision` → `/architect --decision "foundational tech stack"` → `/feature` → `/architect [feature]` → `/plan` → `/develop`
+**Complete 4-phase workflow pattern** for all development:
+- `/design` → `/architect` → `/plan` → `/develop`
 
-**Key principle**: Establish foundational technical decisions before defining specific features to ensure architectural consistency.
+**Key principles**:
+- **Epic Structure**: Progressive task discovery with X.Y.Z numbering across all phases
+- **Test-First Development**: Comprehensive testing integration with 95%+ coverage targets
+- **Hierarchical Branching**: Epic branches (`epic/[name]`) containing task branches (`task/###-[name]`)
+- **3-Tier Architecture Decisions**: Quick Mode (5-10 min) vs Deep Mode (20+ min) with appropriate agent consultation
 
 ## Effective AI Communication
 
@@ -459,10 +463,11 @@ interface UserCreateResponse {
 - **Minimal instruction overhead**: Verbose commands degrade AI performance by 15-20%
 - **Trust AI capabilities**: Provide guidance without constraining natural problem-solving abilities
 
-#### Foundation-First Development
-- **Establish tech stack before features**: Make foundational architecture decisions during vision phase
-- **Early specialist consultation**: Include domain experts in decision-making, not just implementation
-- **Document architectural rationale**: Create ADRs with specialist input for all foundational choices
+#### Epic-Driven Development
+- **Complete workflow phases**: Use `/design` → `/architect` → `/plan` → `/develop` for consistent results
+- **Progressive task discovery**: X.Y.Z numbering allows task addition during any phase without disrupting structure
+- **Test-first enforcement**: Comprehensive testing integration with auto-invoked test-engineer
+- **Hierarchical epic structure**: `epics/[name]/EPIC.md` with task directories for TASK.md, HANDOFF.yml, RESEARCH.md
 - **Validate decisions holistically**: Consider security, performance, and maintainability perspectives together
 
 #### Quality Through Simplicity

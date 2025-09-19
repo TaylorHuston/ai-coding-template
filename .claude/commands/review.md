@@ -1,7 +1,7 @@
 ---
 description: Comprehensive code review with multi-dimensional analysis
 argument-hint: --scope SCOPE --focus FOCUS --depth DEPTH --output FORMAT
-allowed-tools: Read, Bash, Grep, Glob, TodoWrite, Task
+allowed-tools: ["Read", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
 model: sonnet
 ---
 

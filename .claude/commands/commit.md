@@ -1,7 +1,7 @@
 ---
 description: Create a proper git commit with quality checks and conventional message
 argument-hint: Optional commit message or files to include
-allowed-tools: Bash(git *), Bash(npm run *), Bash(pnpm *), Bash(yarn *), Read, Grep, Glob
+allowed-tools: ["Bash(git *)", "Bash(npm run *)", "Bash(pnpm *)", "Bash(yarn *)", "Read", "Grep", "Glob"]
 model: sonnet
 ---
 

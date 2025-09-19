@@ -1,7 +1,7 @@
 ---
 description: Unified documentation management with intelligent agent coordination
 argument-hint: [generate|validate|sync|health|auto] [--type TYPE] [--scope SCOPE]
-allowed-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
+allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
 model: sonnet
 ---
 

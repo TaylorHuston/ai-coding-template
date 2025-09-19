@@ -22,7 +22,7 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 | Command | Purpose | Usage | Model |
 |---------|---------|-------|-------|
 | 📝 `/design` | Vision, features, and requirements (combines vision + feature planning) | `/design --new "PROJECT" \| --feature "FEATURE" \| --update` | opus |
-| 🏗️ `/architect` | Technical architecture and technology decisions (combines scaffold + architectural design) | `/architect FEATURE \| --tech-stack \| --decision "DECISION"` | opus |
+| 🏗️ `/architect` | Technical architecture and technology decisions (Quick Mode: 5-10 min, Deep Mode: 20+ min) | `/architect FEATURE \| --deep \| --tech-stack \| --decision "DECISION"` | opus |
 | 📋 `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
 | ⚡ `/develop` | Development execution | `/develop [TASK-ID] [--force] [--instruct]` | sonnet |
 
@@ -32,16 +32,13 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 |---------|---------|-------|-------|
 | **Core Workflow** | | | |
 | `/design` | Vision, features, and requirements | `/design --new "PROJECT" \| --feature "FEATURE" \| --update` | opus |
-| `/architect` | Technical architecture and technology decisions | `/architect FEATURE \| --tech-stack \| --decision "DECISION"` | opus |
+| `/architect` | Technical architecture and technology decisions | `/architect FEATURE \| --deep \| --tech-stack \| --decision "DECISION"` | opus |
 | `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
 | `/develop` | Development execution | `/develop [TASK-ID] [--force] [--instruct]` | sonnet |
 | **Development & Quality** | | | |
 | `/commit` | Git commit with quality checks | `/commit [scope/files]` | sonnet |
-| `/feature-development` | End-to-end feature implementation | `/feature-development --issue KEY --type TYPE` | opus |
-| `/feature-plan` | Comprehensive feature planning | `/feature-plan --issue KEY --deliverable NAME` | opus |
-| `/health-check` | Project health assessment | `/health-check [scope]` | sonnet |
+| `/quality` | Comprehensive quality assessment | `/quality assess [--scope SCOPE]` | sonnet |
 | `/merge-branch` | Safe branch merging with validation | `/merge-branch [target]` | sonnet |
-| `/progress` | Progress validation and tracking | `/progress --mode validate\|update [issue]` | sonnet |
 | `/refresh` | Context refresh with git awareness | `/refresh [area]` | haiku |
 | `/review` | Comprehensive code review | `/review --scope SCOPE --focus FOCUS` | sonnet |
 | `/security-audit` | OWASP security assessment | `/security-audit --scope SCOPE --depth DEPTH` | opus |
@@ -112,6 +109,74 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 ---
 
+### 🏗️ `/architect` - Quick Mode & Deep Mode Technical Architecture
+
+**Purpose**: Make comprehensive technical decisions through collaborative exploration with optimized Quick Mode (default) and Deep Mode options
+
+**Usage**:
+```bash
+/architect FEATURE                    # Quick Mode (5-10 min, 90% of cases)
+/architect --deep FEATURE             # Deep Mode (20+ min, complex decisions)
+/architect --tech-stack                # Technology stack decisions
+/architect --decision "DECISION"       # Direct architectural questions
+/architect "NextJS or React for this?" # Direct questions (Quick Mode)
+```
+
+**Mode Selection**:
+
+#### **Quick Mode (Default - 90% of decisions)**
+- **Duration**: 5-10 minutes
+- **Use For**: Standard architectural decisions, technology choices, pattern selection
+- **Output**: Fast Track ADR (streamlined format)
+- **Agent System**: 3-tier optimization (reduced from 9 agents)
+  - **Tier 1**: Core technical decisions (code-architect, api-designer)
+  - **Tier 2**: Specialized review (security-auditor, performance-optimizer)
+  - **Tier 3**: Implementation focus (database-specialist)
+
+#### **Deep Mode (--deep flag - 10% of decisions)**
+- **Duration**: 20+ minutes
+- **Use For**: Complex architectural decisions, system-wide changes, critical infrastructure
+- **Output**: Detailed ADR (comprehensive analysis)
+- **Agent System**: Full multi-agent consultation with extended analysis
+- **Includes**: Alternative analysis, risk assessment, migration planning
+
+**Direct Questions**:
+```bash
+/architect "Should we use GraphQL or REST for this API?"
+/architect "PostgreSQL vs MongoDB for user data?"
+/architect "Microservices or monolith for this scale?"
+```
+
+**3-Tier Agent Optimization**:
+- **Streamlined Consultation**: Focused agent involvement based on decision complexity
+- **Faster Execution**: Reduced coordination overhead for standard decisions
+- **Quality Maintained**: Full Deep Mode available for complex scenarios
+
+**ADR Generation**:
+- **Fast Track ADR**: Streamlined format for Quick Mode decisions
+- **Detailed ADR**: Comprehensive format for Deep Mode decisions
+- **Automatic Filing**: ADRs filed in `docs/technical/decisions/`
+
+**Integration with Workflow**:
+- **Vision Alignment**: Automatically references `docs/vision.md` for context
+- **Epic Context**: Integrates with epic-driven development structure
+- **Progressive Discovery**: Can create additional tasks during analysis
+
+**Example Workflow**:
+```bash
+# Standard decision (Quick Mode)
+/architect "authentication approach for user management"
+# → 5-10 minute analysis with Fast Track ADR
+
+# Complex decision (Deep Mode)
+/architect --deep "microservices architecture migration"
+# → 20+ minute comprehensive analysis with Detailed ADR
+```
+
+**Tools**: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
+
+---
+
 ### 📋 `/plan` - Sequential Multi-Agent Planning
 
 **Purpose**: Transform architectural decisions into expertly-reviewed implementation plans through sequential multi-agent analysis
@@ -153,71 +218,40 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 ---
 
-### `/feature-development` - End-to-End Feature Implementation
 
-**Purpose**: Complete feature development workflow with TDD and quality gates
+### `/develop` - Streamlined Task Execution (Optimized from 253 to 78 lines)
 
-**Usage**: `/feature-development --issue KEY --type TYPE --complexity LEVEL --testing APPROACH`
-
-**Parameters**:
-- `--issue`: Issue or ticket identifier
-- `--type`: Feature type (component, api, integration, etc.)
-- `--complexity`: simple, standard, complex
-- `--testing`: unit, integration, e2e, comprehensive
-
-**Features**:
-- Test-driven development workflow
-- Comprehensive quality validation
-- Automated testing and documentation
-- Multi-agent coordination for complex features
-
-**Example**:
-```bash
-/feature-development --issue AUTH-123 --type authentication --complexity standard --testing comprehensive
-```
-
-**Tools**: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
-
----
-
-### `/develop` - Workflow Task Execution
-
-**Purpose**: Execute tasks from PLAN.md files with multi-agent coordination
+**Purpose**: Execute tasks from PLAN.md with test-first enforcement and streamlined 4-step execution flow
 
 **Usage**:
 ```bash
-/develop                    # Execute next unchecked task in current phase
-/develop P2.3.0            # Execute specific task P2.3.0
-/develop 1.4.0             # Execute specific task (P prefix optional)
+/develop                    # Execute next unchecked task with auto-testing
+/develop TASK-001:1.2.3    # Execute specific X.Y.Z implementation
+/develop --test-first      # Enforce TDD with test-engineer auto-invocation
 ```
 
-**Orchestrator Architecture**:
-- Acts as orchestrator for multi-agent coordination (respects Claude Code sub-agent isolation)
-- Reads HANDOFF.yml and RESEARCH.md for complete context
-- Constructs comprehensive prompts with all relevant information
-- Passes context explicitly to agents via Task tool prompts
-- Updates coordination files after agent completion (agents don't write files)
+**Streamlined 4-Step Execution Flow**:
+1. **Test-First Validation**: Auto-invokes test-engineer for TDD/BDD approach
+2. **Task Execution**: Intelligent agent selection based on X.Y.Z task context
+3. **Quality Integration**: Built-in testing with 95%+ coverage enforcement
+4. **Progress Tracking**: Updates epic structure with implementation status
 
-**Behavior**:
-- Automatically finds PLAN.md in current directory or nearest parent
-- Identifies next unchecked task in active phase (first phase with incomplete tasks)
-- Validates agent hint from HTML comment (e.g., `<!--agent:backend-specialist-->`)
-- Runs quality gate validation: `.resources/scripts/validate-quality-gates.sh`
-- Constructs comprehensive context from HANDOFF.yml and RESEARCH.md
-- Calls agent via Task tool with complete context in prompt
-- Parses agent output and updates PLAN.md checkbox when task completes
-- Creates new HANDOFF.yml entry with agent's technical specifications
-- Updates RESEARCH.md if new findings discovered
-- Updates CHANGELOG.md if user-facing changes made
-- Updates STATUS.md with phase summary when phase completes
-- Runs quality gates before phase transitions
+**Epic-Driven Integration**:
+- **Progressive Task Discovery**: Tasks numbered by discovery order (X.Y.Z format)
+- **Epic Structure**: Works with `epics/[name]/TASK-###.md` format
+- **Testing Tasks**: Dedicated testing tasks created during /plan phase
+- **BDD Scenarios**: Generated from acceptance criteria during planning
 
-**Phase Completion Flow**:
-1. Completes final task in phase (e.g., P2.6.0)
-2. Runs comprehensive quality validation: `.resources/scripts/validate-quality-gates.sh`
-3. Updates STATUS.md with phase summary
-4. Prompts: "Phase 2 complete. Quality gates passed. Run `/commit` to commit changes?"
-5. Next `/iterate` starts next phase (P3.1.0)
+**Test-First Enforcement**:
+- **Auto-Testing**: Automatic test-engineer invocation for all development tasks
+- **TDD/BDD Hybrid**: Enforces test-first with BDD scenarios for acceptance criteria
+- **Coverage Goals**: 95%+ test coverage enforced across all implementation phases
+- **Testing Templates**: Uses comprehensive testing task templates from epic structure
+
+**Epic Branch Management**:
+- **Hierarchical Branching**: Epic branches (`epic/[name]`) contain task branches (`task/###-[name]`)
+- **Integration with /merge-branch**: Automated epic/task branch workflow
+- **Progressive Discovery**: New tasks can be added during any phase without disrupting numbering
 
 **Error Handling**:
 - **Malformed HANDOFF.yml**: Reports parsing error, suggests validation, continues with empty context
@@ -231,12 +265,12 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 - No PLAN.md found: "No PLAN.md file found in current directory or parent directories."
 - Task validation failure: Prompts for correction before proceeding
 
-**Example Workflow**:
+**Example Epic-Driven Workflow**:
 ```bash
-/develop        # Executes P1.1.0 with context-analyzer
-/develop        # Executes P1.2.0 with test-engineer
-/develop P1.4.0 # Jumps to P1.4.0 with code-reviewer
-/develop        # Continues with P1.5.0
+/develop        # Executes TASK-001:1.1.0 with test-engineer auto-invocation
+/develop        # Executes TASK-001:1.2.0 with implementation specialist
+/develop TASK-002:2.1.0 # Jump to specific task implementation
+/develop --test-first   # Enforce TDD for current task
 ```
 
 **Tools**: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
@@ -321,33 +355,6 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 ---
 
-### `/health-check` - Project Health Assessment
-
-**Purpose**: Multi-dimensional project health evaluation and reporting
-
-**Usage**: `/health-check [scope]`
-
-**Scope Options**:
-- `dependencies`: Package and dependency analysis
-- `security`: Security posture assessment
-- `performance`: Performance metrics and bottlenecks
-- `quality`: Code quality and technical debt
-- `all`: Comprehensive health assessment (default)
-
-**Features**:
-- Dependency vulnerability scanning
-- Performance bottleneck identification
-- Code quality metrics
-- Technical debt assessment
-
-**Example**:
-```bash
-/health-check
-/health-check security
-/health-check dependencies
-```
-
-**Tools**: Read, Bash, Grep, Glob, TodoWrite, Task
 
 ## Planning & Architecture Commands
 
@@ -434,11 +441,11 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 ## Project Management Commands
 
-### `/progress` - Progress Validation and Tracking
+### `/status --detailed` - Progress Validation and Tracking
 
 **Purpose**: Validate progress claims and update status with mandatory evidence verification
 
-**Usage**: `/progress --mode validate|update|both [issue key or progress details]`
+**Usage**: `/status --detailed --mode validate|update|both [issue key or progress details]`
 
 **Modes**:
 - `validate`: Verify claimed progress against actual implementation
@@ -453,9 +460,9 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 **Example**:
 ```bash
-/progress --mode validate AUTH-123
-/progress --mode update "Completed user login implementation"
-/progress --mode both
+/status --detailed --mode validate AUTH-123
+/status --detailed --mode update "Completed user login implementation"
+/status --detailed --mode both
 ```
 
 **Tools**: Read, Write, Edit, Grep, Glob, TodoWrite, Task
@@ -536,7 +543,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 **Example Sequence**:
 ```bash
 /plan --issue AUTH-123           # Set up issue structure and branch
-/health-check                    # Assess current state
+/quality assess                    # Assess current state
 /feature-plan --issue AUTH-123   # Detailed planning (for complex features)
 /security-audit --scope feature  # Security requirements
 ```
@@ -549,7 +556,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 **Example Sequence**:
 ```bash
 /iterate                         # Execute tasks from PLAN.md
-/feature-development --issue AUTH-123 --type authentication  # Complex implementation
+/develop --issue AUTH-123 --type authentication  # Complex implementation
 /review --scope feature --focus quality
 /iterate                         # Continue with next tasks
 /test-fix
@@ -563,7 +570,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 **Example Sequence**:
 ```bash
 /security-audit --scope full --depth comprehensive
-/health-check
+/quality assess
 /review --scope project --focus maintainability
 ```
 
@@ -576,7 +583,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 ```bash
 /commit
 /merge-branch main
-/health-check
+/quality assess
 ```
 
 ### By Complexity Level
@@ -584,18 +591,18 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 #### High Complexity
 - `/security-audit` - Comprehensive security assessment
 - `/feature-plan` - System-wide planning
-- `/feature-development` (complex) - Multi-system features
+- `/develop` (complex) - Multi-system features
 
 #### Medium Complexity
-- `/feature-development` (standard) - Single-system features
-- `/health-check` - Project health analysis
+- `/develop` (standard) - Single-system features
+- `/quality assess` - Project health analysis
 - `/review` - Quality assessment
 - `/iterate` - Code improvement
 
 #### Low Complexity
 - `/commit` - Git commit workflow
 - `/refresh` - Context refresh
-- `/progress` - Status updates
+- `/status --detailed` - Status updates
 - `/test-fix` - Test failure resolution
 
 ## Command Selection Guide
@@ -610,17 +617,17 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 **Code Quality Improvement**:
 - Review: `/review`
 - Improvement: `/iterate` → `/review`
-- Analysis: `/health-check` → `/review`
+- Analysis: `/quality assess` → `/review`
 
 **Security-Focused Work**:
 - Assessment: `/security-audit`
 - Compliance: `/security-audit` → `/review`
-- Hardening: `/security-audit` → `/feature-development`
+- Hardening: `/security-audit` → `/develop`
 
 **Project Management**:
 - Issue Setup: `/plan`
 - Planning: `/feature-plan` (for complex features)
-- Progress Tracking: `/progress`
+- Progress Tracking: `/status --detailed`
 - Context Updates: `/refresh`
 - Branch Management: `/merge-branch`
 
@@ -643,7 +650,7 @@ Chain related commands for comprehensive workflows:
 ```bash
 /plan --issue AUTH-123
 /feature-plan --issue AUTH-123 --complexity complex
-/feature-development --issue AUTH-123 --type authentication --testing comprehensive
+/develop --issue AUTH-123 --type authentication --testing comprehensive
 /security-audit --scope feature --depth standard
 /review --scope feature --focus security
 /commit
@@ -663,7 +670,7 @@ Use specific parameters for better results:
 Use `/refresh` before complex operations:
 ```bash
 /refresh git
-/feature-development --issue NEW-456
+/develop --issue NEW-456
 ```
 
 ---

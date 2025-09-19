@@ -94,6 +94,49 @@ Request these explicitly for specialized work:
 | "Get the technical-writer" | `technical-writer` | Documentation creation |
 | "Need the data-analyst" | `data-analyst` | Data insights |
 
+## 3-Tier Agent System for `/architect` Command
+
+The `/architect` command uses an optimized 3-tier agent consultation system to balance speed with thoroughness:
+
+### **Tier 1: Always Consulted (Core Decisions)**
+- **`code-architect`** - Primary system design and technology decisions
+- **`api-designer`** - API architecture and integration patterns
+
+*Always activated for every architectural decision, regardless of Quick or Deep Mode.*
+
+### **Tier 2: Context-Based Consultation (Specialized Review)**
+- **`security-auditor`** - Security implications and compliance requirements
+- **`performance-optimizer`** - Performance impact and optimization considerations
+
+*Activated based on decision context (e.g., security-auditor for authentication decisions).*
+
+### **Tier 3: On-Demand Consultation (Implementation Focus)**
+- **`database-specialist`** - Data architecture and persistence patterns
+- **`devops-engineer`** - Infrastructure and deployment considerations
+- **`frontend-specialist`** - User interface architectural patterns
+
+*Activated only when specifically relevant or in Deep Mode (`/architect --deep`).*
+
+### **Mode Selection:**
+
+#### **Quick Mode (Default - 90% of decisions)**
+- **Duration**: 5-10 minutes
+- **Agents**: Tier 1 + context-relevant Tier 2
+- **Output**: Fast Track ADR
+- **Use For**: Standard architectural decisions, technology choices
+
+#### **Deep Mode (`--deep` flag - 10% of decisions)**
+- **Duration**: 20+ minutes
+- **Agents**: All tiers with extended analysis
+- **Output**: Detailed ADR with comprehensive analysis
+- **Use For**: Complex system-wide decisions, critical infrastructure choices
+
+### **Benefits of 3-Tier System:**
+- **Faster Decisions**: Reduced coordination overhead for standard decisions
+- **Maintained Quality**: Full expert consultation still available when needed
+- **Context-Aware**: Intelligent agent selection based on decision type
+- **Scalable Complexity**: Appropriate depth for each decision's importance
+
 ## Effective Usage Patterns
 
 ### 1. Let Agents Activate Naturally

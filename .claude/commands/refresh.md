@@ -1,7 +1,7 @@
 ---
 description: Intelligent project context refresh using structured documentation and git awareness
 argument-hint: Optional specific area to refresh (status, agents, workflow, technical)
-allowed-tools: Read, Bash(git), Task
+allowed-tools: ["Read", "Bash(git)", "Task"]
 model: sonnet
 ---
 

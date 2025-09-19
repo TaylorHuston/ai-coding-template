@@ -8,7 +8,7 @@ This is an attempt to add structure and guidance around ai-assisted coding. It i
 
 ## Transform AI into Your Architectural Partner
 
-From simple code generator to intelligent development partner through the a streamlined /design → /architect → /plan → /develop workflow.
+From simple code generator to intelligent development partner through the streamlined 4-phase epic-driven /design → /architect → /plan → /develop workflow.
 
 ---
 
@@ -25,6 +25,7 @@ From simple code generator to intelligent development partner through the a stre
 - **[🔧 All Commands](./docs/ai-tools/reference/commands.md)** - Complete command reference
 - **[🤖 17 Specialist Agents](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Your expert team
 - **[🏗️ Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration guide
+- **[📋 AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Epic workflow patterns and best practices
 
 ### **🚀 Getting Started**
 
@@ -72,39 +73,45 @@ graph LR
     V --> V3[Context Preservation]
 ```
 
-#### 1. 📝 `/design` - Vision, Features, and Requirements
+#### 1. 📝 `/design` - Vision, Epics, and Requirements
 
-Define all non-technical aspects - from product vision to detailed user stories:
+Define all non-technical aspects - from project vision to epic-driven development structure:
 
-- **Vision Documents**: Problem definition, solution strategy, and success metrics
-- **Feature Specifications**: Detailed feature requirements and user workflows
-- **User Stories**: Specific use cases with acceptance criteria
-- **Business Context**: Target audience and value propositions
+- **Vision Documents**: Project purpose, goals, and success metrics
+- **Epic Structure**: Organized development units with clear scope and business context
+- **User Stories**: Individual TASK files with user workflows and acceptance criteria
+- **Business Context**: Problem statements, target audience, and value propositions
+- **Test Scenarios**: BDD-style Given-When-Then scenarios derived from requirements
 
-#### 2. 🏗️ `/architect` - Technical Architecture and Infrastructure
+#### 2. 🏗️ `/architect` - Technical Architecture and Infrastructure (Quick Mode: 5-10 min, Deep Mode: 20+ min)
 
-Make comprehensive technical decisions through collaborative exploration:
+Make comprehensive technical decisions through optimized collaborative exploration:
 
-- **Technology Foundation**: Framework, database, and infrastructure choices
-- **Architecture Patterns**: Component design, API structure, and integration approaches
-- **Development Environment**: Containerization, build tools, and deployment architecture
-- **Decision Documentation**: Create ADRs with rationale and alternatives considered
+- **Quick Mode (Default)**: Standard architectural decisions with Fast Track ADRs (90% of cases)
+- **Deep Mode (--deep)**: Complex decisions with comprehensive analysis (10% of cases)
+- **3-Tier Agent System**: Streamlined consultation (Always/Context-based/On-demand agents)
+- **Direct Questions**: `/architect "NextJS or React for this?"` for immediate guidance
+- **Decision Documentation**: Automatic ADR generation with appropriate detail level
 
-#### 3. 📋 `/plan` - Implementation Planning
+#### 3. 📋 `/plan` - Epic-Driven Implementation Planning
 
-Break down architecture into executable tasks with context preservation:
+Break down architecture into executable tasks with epic structure and progressive discovery:
 
-- **Context Integration**: Builds on design and architecture documentation
-- **Task Decomposition**: Generates P1.X.X, P2.X.X, P3.X.X phased tasks
-- **Agent Selection**: Intelligent assignment based on task requirements
+- **Epic Structure**: Creates `epics/[name]/EPIC.md` with task directories and `resources/`
+- **Progressive Task Discovery**: Tasks numbered by discovery order (X.Y.Z format) across all workflow phases
+- **X.Y.Z Implementation**: Task directories with TASK.md, HANDOFF.yml, RESEARCH.md
+- **Testing Integration**: Dedicated testing tasks with 95%+ coverage requirements and BDD scenarios
+- **Agent Selection**: Intelligent assignment based on task requirements with agent hints
 
-#### 4. ⚡ `/develop` - Development Execution
+#### 4. ⚡ `/develop` - Streamlined Development Execution (Optimized from 253 to 78 lines)
 
-Execute implementation tasks with AI agent orchestration:
+Execute implementation tasks with test-first enforcement and epic integration:
 
-- **Orchestrator Model**: Main Claude coordinates specialized agents
-- **Context Preservation**: Complete handoff context across all tasks
-- **Quality Gates**: Validation between phases with smart recovery
+- **Test-First Enforcement**: Auto-invoked test-engineer with TDD/BDD approach
+- **4-Step Execution Flow**: Test validation → Task execution → Quality integration → Progress tracking
+- **Epic Branch Management**: Hierarchical branching with `epic/[name]` containing `task/###-[name]`
+- **X.Y.Z Implementation**: Precise task referencing with progressive discovery support
+- **Comprehensive Testing Integration**: Hybrid TDD/BDD strategy with 95%+ coverage targets
 
 ### Why This Workflow Matters
 
@@ -168,6 +175,7 @@ cd my-project
 - VS Code or preferred editor
 - AI assistant account (Claude Code, Claude, etc.)
 - **[uv](https://github.com/astral-sh/uv)** - Python package manager for semantic code analysis
+
   ```bash
   # Install uv (required for Serena semantic tools)
   curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -215,19 +223,19 @@ cd my-project
 
 ### 2. Experience the Workflow
 
-**Try the complete workflow with a simple feature:**
+**Try the complete epic-driven workflow:**
 
 ```bash
-# FEATURE: Define what and why
-/feature --new "User Data Validation"
+# DESIGN: Define vision, features, and requirements
+/design --epic "user-data-validation"
 
-# ARCHITECT: Decide how
+# ARCHITECT: Quick Mode architectural decisions
 /architect data-validation
 
-# PLAN: Create implementation plan
+# PLAN: Create epic structure with task discovery
 /plan --issue VALIDATION-001
 
-# DEVELOP: Run through the tasks
+# DEVELOP: Execute tasks with test-first approach
 /develop
 ```
 
@@ -245,13 +253,19 @@ cd my-project
 
 ### Workflow-Optimized Project Structure
 
-```
+```text
 my-project/
 ├── .claude/                    # Workflow Orchestration System
-│   ├── commands/               # /feature, /architect, /plan, /develop implementations
+│   ├── commands/               # /design, /architect, /plan, /develop implementations
 │   └── agents/                # 17 specialized experts for each workflow phase
-├── deliverables/              # /plan Output: Organized implementation tracking
-│   └── [feature]/issues/      # PLAN.md, HANDOFF.yml, RESEARCH.md per issue
+├── epics/                     # /plan Output: Epic-driven task organization
+│   └── [name]/                # Epic directory with EPIC.md and task directories
+│       ├── EPIC.md            # Epic overview and task tracking
+│       ├── TASK-001/          # Individual task directories
+│       │   ├── TASK.md        # X.Y.Z task implementation details
+│       │   ├── HANDOFF.yml    # Agent-to-agent context passing
+│       │   └── RESEARCH.md    # Accumulated knowledge
+│       └── resources/         # Epic-specific resources and templates
 ├── docs/                      # Workflow Documentation Integration
 │   ├── technical/decisions/   # /architect Output: ADRs and technical decisions
 │   ├── technical/architecture/ # Auto-generated from implementations
@@ -280,10 +294,10 @@ Everything is designed to enhance the core workflow:
 
 **Intelligent Command System**:
 
-- `/feature` - Feature definition and requirements
-- `/architect` - Technical architecture design and ADRs
-- `/plan` - Sequential multi-agent planning with intelligent agent selection
-- `/develop` - Orchestrated task execution with automatic script integration via agents
+- `/design` - Vision, features, and requirements definition
+- `/architect` - Technical architecture design with Quick/Deep Mode
+- `/plan` - Sequential multi-agent planning with epic structure
+- `/develop` - Orchestrated task execution with test-first enforcement
 - `/docs` - Unified documentation coordination (replaces manual script usage)
 - `/quality` - Comprehensive quality assessment with multi-agent script orchestration
 - `/status` - Enhanced project intelligence (powered by `context-analyzer` + `ai-status.sh`)
@@ -294,10 +308,10 @@ The template provides **11 intelligently integrated commands** that orchestrate 
 
 **🌟 Core Workflow Commands:**
 
-- **`/feature`** - Feature definition and requirements
-- **`/architect`** - Technical architecture design and ADRs
-- **`/plan`** - Sequential multi-agent planning with intelligent agent selection
-- **`/develop`** - Orchestrated task execution with automatic script integration via agents
+- **`/design`** - Vision, features, and requirements definition
+- **`/architect`** - Technical architecture design with Quick/Deep Mode optimization
+- **`/plan`** - Sequential multi-agent planning with epic structure and X.Y.Z task numbering
+- **`/develop`** - Orchestrated task execution with test-first enforcement and epic integration
 
 **🔧 Unified Intelligence Commands:**
 
@@ -316,20 +330,20 @@ The template provides **11 intelligently integrated commands** that orchestrate 
 **Enhanced Workflow Examples:**
 
 ```bash
-# Quality-focused development with intelligent coordination
-/feature --new "Secure File Uploads"
+# Quality-focused development with epic-driven workflow
+/design --feature "Secure File Uploads"
 /architect secure-uploads
 /plan --issue UPLOAD-123
-/develop                          # Execute core tasks with automatic script integration
+/develop                          # Execute core tasks with test-first enforcement
 /quality audit --focus security   # Multi-agent security assessment
 /docs sync                        # Intelligent documentation updates
 /commit                          # Quality commit
 
-# Daily development workflow with unified commands
+# Daily development workflow with epic integration
 /status --ai-format              # Intelligent context analysis
 /quality validate --scope current-phase  # Automated quality gates
 /docs validate                   # Documentation health check
-/develop                         # Continue current work
+/develop                         # Continue current epic task
 ```
 
 **→ [Complete Commands Reference](./docs/ai-tools/reference/commands.md)** - Detailed usage guide for all integrated commands
@@ -437,7 +451,7 @@ The template system provides **fill-in-the-blank starting points** and **working
 
 ```bash
 # Start the AI workflow - no templates needed
-/feature "your feature description"
+/design --epic "your-epic-name"
 
 # Copy a template to start fresh
 cp .resources/templates/docs/features/feature.template.md docs/my-feature.md
@@ -450,11 +464,11 @@ cat .resources/examples/code/patterns/api-user-service.example.ts
 
 ## Contributing to the Workflow
 
-Help improve the /feature → /architect → /plan → /develop workflow for everyone:
+Help improve the /design → /architect → /plan → /develop workflow for everyone:
 
 ### Workflow Improvements
 
-- 🎯 **Enhance Commands**: Improve `/feature`, `/architect`, `/plan`, or `/develop` functionality
+- 🎯 **Enhance Commands**: Improve `/design`, `/architect`, `/plan`, or `/develop` functionality
 - 🤖 **Agent Optimization**: Make agents more effective at their specializations
 - 📋 **Planning Templates**: Create better task generation patterns
 - 🔍 **Quality Gates**: Add validation that prevents common issues

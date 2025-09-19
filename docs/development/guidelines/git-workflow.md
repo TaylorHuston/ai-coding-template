@@ -37,7 +37,30 @@ estimated_time: "30 min"
 
 ## Branching Strategy
 
-### **GitFlow Model (Recommended)**
+### **Epic-Driven Branching Model (Recommended)**
+
+Hierarchical branching structure aligned with epic-driven development workflow:
+
+```
+main (production)
+├── develop (integration)
+│   ├── epic/user-authentication
+│   │   ├── task/001-database-setup
+│   │   ├── task/002-user-registration
+│   │   ├── task/003-redis-setup (discovered during /architect)
+│   │   ├── task/004-validation-helpers (discovered during /develop)
+│   │   └── task/005-comprehensive-testing (dedicated testing task)
+│   ├── epic/payment-processing
+│   │   ├── task/001-stripe-integration
+│   │   └── task/002-payment-validation
+│   └── epic/reporting-dashboard
+├── release/v1.2.0
+└── hotfix/v1.1.1-critical-security-fix
+```
+
+### **Traditional GitFlow Model (Legacy)**
+
+*For reference - superseded by Epic-Driven model above*
 
 ```
 main (production)
@@ -55,20 +78,35 @@ main (production)
 - **`main`**: Production-ready code only
 - **`develop`**: Integration branch for features
 
-#### **Supporting Branches**
-- **`feature/*`**: New features and enhancements
-- **`bugfix/*`**: Non-critical bug fixes
+#### **Epic-Driven Branches**
+- **`epic/*`**: Development units containing related tasks
+- **`task/*`**: Individual implementation tasks within epics
+- **`bugfix/*`**: Non-critical bug fixes (can branch from epic or develop)
 - **`hotfix/*`**: Critical production fixes
 - **`release/*`**: Release preparation
 - **`experimental/*`**: Proof of concepts and experiments
 
+#### **Legacy Supporting Branches**
+- **`feature/*`**: New features and enhancements (superseded by epic/task structure)
+
 ### **Branch Naming Conventions**
 
+#### **Epic-Driven Naming (Current)**
+
 ```bash
-# Feature branches
-feature/ISSUE-123-short-description
-feature/AUTH-456-oauth-integration
-feature/UI-789-mobile-responsive-design
+# Epic branches
+epic/[epic-name]
+epic/user-authentication
+epic/payment-processing
+epic/reporting-dashboard
+
+# Task branches (within epics)
+task/[###]-[task-name]
+task/001-database-setup
+task/002-user-registration
+task/003-redis-setup
+task/004-validation-helpers
+task/005-comprehensive-testing
 
 # Bug fix branches
 bugfix/BUG-123-short-description
@@ -88,7 +126,76 @@ experimental/graphql-migration
 experimental/new-architecture-poc
 ```
 
+#### **Legacy Naming (Reference)**
+
+```bash
+# Feature branches (superseded by epic/task structure)
+feature/ISSUE-123-short-description
+feature/AUTH-456-oauth-integration
+feature/UI-789-mobile-responsive-design
+```
+
 ### **Branch Lifecycle**
+
+#### **Epic-Driven Workflow (Current)**
+
+```bash
+# 1. Create epic branch from develop
+git checkout develop
+git pull origin develop
+git checkout -b epic/user-authentication
+
+# 2. Create task branch from epic
+git checkout epic/user-authentication
+git pull origin epic/user-authentication
+git checkout -b task/001-database-setup
+
+# 3. Work on task with test-first development
+git add .
+git commit -m "feat(auth): implement database schema for user authentication
+
+- Create users table with proper indexing
+- Add authentication fields (email, password_hash, etc.)
+- Implement database migrations
+- Add comprehensive test coverage (97%)
+
+Resolves: TASK-001 in epic/user-authentication
+TDD approach with full test coverage
+AI-assisted implementation
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# 4. Push task branch and create PR to epic
+git push -u origin task/001-database-setup
+# Create PR: task/001-database-setup → epic/user-authentication
+
+# 5. After review and approval, merge task to epic
+# Task branch is deleted after merge
+
+# 6. Repeat for additional tasks (002, 003, etc.)
+# Tasks can be developed in parallel by different developers
+
+# 7. When epic is complete, merge epic to develop
+# Create PR: epic/user-authentication → develop
+# Delete epic branch after successful merge
+```
+
+#### **Progressive Task Discovery**
+
+```bash
+# During /architect phase, discover need for Redis setup
+git checkout epic/user-authentication
+git checkout -b task/003-redis-setup
+
+# During /develop phase, discover need for validation helpers
+git checkout epic/user-authentication
+git checkout -b task/004-validation-helpers
+
+# Task numbering follows discovery order, not execution order
+# EPIC.md maintains execution order for dependencies
+```
+
+#### **Legacy Feature Branch Workflow (Reference)**
 
 ```bash
 # Create feature branch
@@ -98,23 +205,12 @@ git checkout -b feature/AUTH-123-user-authentication
 
 # Work on feature
 git add .
-git commit -m "feat(auth): implement OAuth2 authentication flow
-
-- Add OAuth2 service provider integration
-- Implement token validation middleware
-- Add user session management
-- Include comprehensive error handling
-
-Resolves: AUTH-123
-AI-assisted implementation
-
-Co-Authored-By: Claude <noreply@anthropic.com>"
+git commit -m "feat(auth): implement OAuth2 authentication flow"
 
 # Push and create pull request
 git push -u origin feature/AUTH-123-user-authentication
 
 # After review and approval, merge via PR
-# Delete feature branch after merge
 git branch -d feature/AUTH-123-user-authentication
 git push origin --delete feature/AUTH-123-user-authentication
 ```
@@ -122,6 +218,18 @@ git push origin --delete feature/AUTH-123-user-authentication
 ## Commit Conventions
 
 ### **Conventional Commits Format**
+
+#### **Epic-Driven Format (Current)**
+
+```
+<type>(<scope>): <subject> [EPIC:<epic-name>/TASK:<###>]
+
+<body>
+
+<footer>
+```
+
+#### **Legacy Format (Reference)**
 
 ```
 <type>(<scope>): <subject>
@@ -133,19 +241,19 @@ git push origin --delete feature/AUTH-123-user-authentication
 
 ### **Commit Types**
 
-| Type | Description | Example |
-|------|-------------|---------|
-| `feat` | New feature | `feat(auth): add OAuth2 authentication` |
-| `fix` | Bug fix | `fix(api): resolve user validation error` |
-| `docs` | Documentation | `docs(readme): update installation guide` |
-| `style` | Code style/formatting | `style(components): fix ESLint warnings` |
-| `refactor` | Code refactoring | `refactor(utils): simplify date helper functions` |
-| `test` | Add/update tests | `test(auth): add OAuth2 integration tests` |
-| `chore` | Maintenance tasks | `chore(deps): update dependencies to latest` |
-| `perf` | Performance improvements | `perf(api): optimize database queries` |
-| `ci` | CI/CD changes | `ci(github): add automated deployment workflow` |
-| `build` | Build system changes | `build(webpack): update configuration for prod` |
-| `revert` | Revert previous commit | `revert: "feat(auth): add OAuth2 authentication"` |
+| Type | Description | Epic-Driven Example | Legacy Example |
+|------|-------------|---------------------|----------------|
+| `feat` | New feature | `feat(auth): add OAuth2 authentication [EPIC:user-auth/TASK:002]` | `feat(auth): add OAuth2 authentication` |
+| `fix` | Bug fix | `fix(api): resolve user validation error [EPIC:user-auth/TASK:004]` | `fix(api): resolve user validation error` |
+| `docs` | Documentation | `docs(readme): update installation guide` | `docs(readme): update installation guide` |
+| `style` | Code style/formatting | `style(components): fix ESLint warnings` | `style(components): fix ESLint warnings` |
+| `refactor` | Code refactoring | `refactor(utils): simplify date helper functions` | `refactor(utils): simplify date helper functions` |
+| `test` | Add/update tests | `test(auth): add OAuth2 integration tests [EPIC:user-auth/TASK:005]` | `test(auth): add OAuth2 integration tests` |
+| `chore` | Maintenance tasks | `chore(deps): update dependencies to latest` | `chore(deps): update dependencies to latest` |
+| `perf` | Performance improvements | `perf(api): optimize database queries` | `perf(api): optimize database queries` |
+| `ci` | CI/CD changes | `ci(github): add automated deployment workflow` | `ci(github): add automated deployment workflow` |
+| `build` | Build system changes | `build(webpack): update configuration for prod` | `build(webpack): update configuration for prod` |
+| `revert` | Revert previous commit | `revert: "feat(auth): add OAuth2 authentication"` | `revert: "feat(auth): add OAuth2 authentication"` |
 
 ### **Scope Guidelines**
 
@@ -160,18 +268,33 @@ Common scopes by domain:
 ### **Commit Message Examples**
 
 ```bash
-# Feature implementation
+# Epic-driven feature implementation (current)
+git commit -m "feat(auth): implement JWT token authentication [EPIC:user-auth/TASK:002]
+
+- Add JWT token generation and validation
+- Implement refresh token mechanism
+- Add middleware for protected routes
+- Include comprehensive error handling for auth failures
+- Achieve 97% test coverage with TDD approach
+
+The implementation follows OAuth2 best practices and includes:
+- Secure token storage
+- Automatic token refresh
+- Proper error handling and user feedback
+
+Resolves: TASK-002 in epic/user-authentication
+Testing: TDD approach with comprehensive test suite (97% coverage)
+AI-assisted implementation with security review
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# Legacy feature implementation (reference)
 git commit -m "feat(auth): implement JWT token authentication
 
 - Add JWT token generation and validation
 - Implement refresh token mechanism
 - Add middleware for protected routes
 - Include comprehensive error handling for auth failures
-
-The implementation follows OAuth2 best practices and includes:
-- Secure token storage
-- Automatic token refresh
-- Proper error handling and user feedback
 
 Resolves: AUTH-123
 Tested: Manual testing and automated test suite

@@ -1,7 +1,7 @@
 ---
 description: Automatic test failure detection and resolution
 argument-hint: Optional test pattern or files to focus on
-allowed-tools: Bash(npm run *), Bash(pnpm *), Bash(yarn *), Read, Edit, MultiEdit, Grep, Glob, TodoWrite, Task
+allowed-tools: ["Bash(npm run *)", "Bash(pnpm *)", "Bash(yarn *)", "Read", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
 model: sonnet
 ---
 
