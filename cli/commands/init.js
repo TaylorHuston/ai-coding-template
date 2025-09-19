@@ -87,6 +87,12 @@ class TemplateInitializer {
   loadTemplate() {
     const manifestPath = path.join(this.templatePath, '.template-manifest.json');
 
+    if (this.verbose) {
+      console.log(`🔍 Template path: ${this.templatePath}`);
+      console.log(`🔍 Manifest path: ${manifestPath}`);
+      console.log(`🔍 Manifest exists: ${fs.existsSync(manifestPath)}`);
+    }
+
     if (!fs.existsSync(manifestPath)) {
       throw new Error(`Template manifest not found at: ${manifestPath}. Make sure you're in a template directory or have installed the package.`);
     }
@@ -105,10 +111,21 @@ class TemplateInitializer {
     // Get files by category
     const categories = ['core', 'reference', 'optional', 'configuration'];
 
+    if (this.verbose) {
+      console.log(`🔍 Available categories: ${Object.keys(categorizer.manifest.categories)}`);
+    }
+
     for (const categoryName of categories) {
       try {
         const files = categorizer.getFilesInCategory(categoryName);
         const category = categorizer.manifest.categories[categoryName];
+
+        if (this.verbose) {
+          console.log(`🔍 Category ${categoryName}: ${files.length} files`);
+          if (files.length > 0) {
+            console.log(`   First few files: ${files.slice(0, 3).join(', ')}`);
+          }
+        }
 
         for (const file of files) {
           const sourcePath = path.join(this.templatePath, file);
