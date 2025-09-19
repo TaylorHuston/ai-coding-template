@@ -1,10 +1,10 @@
 {
-  "name": "@ai-template/core",
+  "name": "ai-assisted-template",
   "version": "2.1.0",
   "description": "Comprehensive AI-assisted development template with Claude Code integration",
-  "main": "cli/index.js",
+  "main": "cli/index-npm.js",
   "bin": {
-    "ai-template": "./cli/index.js"
+    "ai-template": "./cli/index-npm.js"
   },
   "scripts": {
     "test": "node scripts/template/test-categorization.js && node scripts/template/validate-manifest-simple.js",
@@ -26,11 +26,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/ai-coding-template.git"
+    "url": "https://github.com/TaylorHuston/ai-coding-template.git"
   },
-  "homepage": "https://github.com/yourusername/ai-coding-template#readme",
+  "homepage": "https://github.com/TaylorHuston/ai-coding-template#readme",
   "bugs": {
-    "url": "https://github.com/yourusername/ai-coding-template/issues"
+    "url": "https://github.com/TaylorHuston/ai-coding-template/issues"
   },
   "files": [
     ".claude/",
@@ -50,9 +50,6 @@
     "node": ">=18.0.0"
   },
   "preferGlobal": true,
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
     "commander": "^9.0.0"
   },
