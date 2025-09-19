@@ -145,6 +145,7 @@ For more comprehensive setup options:
 - **[Full Setup Guide](./README.md)** - Complete setup workflows
 - **[Integration Guide](./integration-guide.md)** - Add to existing projects
 - **[MCP Setup](./mcp-setup.md)** - Enhanced AI capabilities and tools
+- **[Metrics System](../analytics/metrics-system.md)** - Analytics and workflow optimization
 - **[Deployment Guide](./deployment-guide.md)** - Production setup
 
 ## Support

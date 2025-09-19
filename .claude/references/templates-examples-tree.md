@@ -40,7 +40,7 @@ maintainer: "technical-writer"
 │   ├── README.md                       # Development templates overview
 │   └── yaml-frontmatter-schema.md     # YAML frontmatter schema specification
 └── project/
-    ├── vision.template.md              # Project vision template
+    ├── project-brief.template.md       # Project brief template
     ├── library.template.md             # Library/package project README template
     ├── enterprise.template.md          # Enterprise application README template
     ├── mobile-app.template.md          # Mobile application README template

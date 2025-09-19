@@ -136,7 +136,8 @@
               "AUTHORS",
               "CLAUDE",
               "STATUS",
-              "TODO"
+              "TODO",
+              "START-HERE"
             ],
             "allow-templates": true,
             "template-pattern": "^[a-z0-9-]+\\.template$"

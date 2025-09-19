@@ -19,12 +19,12 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 **The four-phase workflow that transforms AI from code generator to architectural partner:**
 
-| Command | Purpose | Usage | Model |
-|---------|---------|-------|-------|
-| 📝 `/design` | Vision, features, and requirements (combines vision + feature planning) | `/design --new "PROJECT" \| --feature "FEATURE" \| --update` | opus |
-| 🏗️ `/architect` | Technical architecture and technology decisions (Quick Mode: 5-10 min, Deep Mode: 20+ min) | `/architect FEATURE \| --deep \| --tech-stack \| --decision "DECISION"` | opus |
-| 📋 `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus |
-| ⚡ `/develop` | Development execution | `/develop [TASK-ID] [--force] [--instruct]` | sonnet |
+| Command | Purpose | Usage | Model | 📊 Metrics Tracked |
+|---------|---------|-------|-------|-------------------|
+| 📝 `/design` | Vision, features, and requirements (combines vision + feature planning) | `/design --new "PROJECT" \| --feature "FEATURE" \| --update` | opus | Feature scope, requirements complexity, iteration cycles |
+| 🏗️ `/architect` | Technical architecture and technology decisions (Quick Mode: 5-10 min, Deep Mode: 20+ min) | `/architect FEATURE \| --deep \| --tech-stack \| --decision "DECISION"` | opus | Decision time, consultation patterns, ADR generation |
+| 📋 `/plan` | Sequential multi-agent planning | `/plan --issue KEY [--deliverable NAME]` | opus | Task breakdown accuracy, agent selection, dependency mapping |
+| ⚡ `/develop` | Development execution | `/develop [TASK-ID] [--force] [--instruct]` | sonnet | Implementation speed, quality gates, testing integration |
 
 ## All Available Commands
 
@@ -673,11 +673,133 @@ Use `/refresh` before complex operations:
 /develop --issue NEW-456
 ```
 
+## 📊 Metrics Integration
+
+All commands automatically collect detailed metrics for workflow optimization and performance analysis.
+
+### Automatic Metrics Collection
+
+Every command execution tracks:
+- **Performance**: Execution time, success/failure rates, resource usage
+- **Context**: Workflow phase, epic/task correlation, agent involvement
+- **Dependencies**: Agent invocations, script executions, tool usage
+- **Quality**: Testing integration, validation outcomes, error patterns
+
+### Command-Specific Metrics
+
+#### Core Workflow Commands
+
+**`/design`**:
+```bash
+# Metrics tracked:
+# - Feature scope complexity (simple/medium/complex)
+# - Requirements iteration cycles
+# - Vision document generation time
+# - Epic creation patterns
+```
+
+**`/architect`**:
+```bash
+# Metrics tracked:
+# - Decision exploration time (Quick vs Deep mode)
+# - Agent consultation patterns
+# - ADR generation success rates
+# - Technology decision complexity
+```
+
+**`/plan`**:
+```bash
+# Metrics tracked:
+# - Task breakdown accuracy and completeness
+# - Agent selection effectiveness
+# - Dependency mapping precision
+# - Epic structuring patterns
+```
+
+**`/develop`**:
+```bash
+# Metrics tracked:
+# - Implementation velocity (tasks per hour)
+# - Quality gate success rates
+# - Testing integration effectiveness
+# - Code generation vs modification ratios
+```
+
+### Using Metrics for Optimization
+
+#### View Command Effectiveness
+```bash
+# Analyze command success patterns
+./.resources/scripts/metrics/query-metrics.sh --type command --stats --range 30d
+
+# Sample insights:
+# - /architect: 95% success rate, 12 min avg duration
+# - /plan: 87% success rate, 25 min avg duration (optimization opportunity)
+# - /develop: 92% success rate, 45 min avg duration
+```
+
+#### Identify Workflow Bottlenecks
+```bash
+# Find slowest workflow phases
+./.resources/scripts/metrics/generate-report.sh --period 7d --type detailed | grep -A5 "Command Analysis"
+
+# Optimization actions:
+# - If /plan is slow: Improve task breakdown templates
+# - If /architect takes long: Use Quick mode for simpler decisions
+# - If /develop fails often: Add more validation in planning
+```
+
+#### Track Agent Performance in Commands
+```bash
+# See which agents are most effective during command execution
+./.resources/scripts/metrics/query-metrics.sh --type agent --triggered-by command --stats
+
+# Decision framework:
+# - High-usage agents: Optimize for speed and accuracy
+# - Low-success agents: Improve prompts or training
+# - Underused valuable agents: Increase adoption
+```
+
+### Privacy & Configuration
+
+- **Local Storage**: All metrics stay on your machine
+- **Configurable**: Adjust collection levels in `.claude/metrics/config.yml`
+- **No Code Content**: Only metadata and performance metrics collected
+
+```yaml
+# Example configuration
+collection:
+  enabled: true
+  level: "detailed"  # basic|detailed|debug
+  collectors:
+    commands: true    # Track command execution
+    agents: true      # Track agent performance
+    workflows: true   # Track workflow patterns
+```
+
+### Metrics-Driven Command Selection
+
+Use metrics to choose optimal commands for your team:
+
+```bash
+# Weekly command effectiveness report
+./.resources/scripts/metrics/generate-report.sh --period 7d --type summary
+
+# Use insights for:
+# - Choosing between /architect quick vs deep mode
+# - Optimizing /plan task breakdown strategies
+# - Improving /develop execution patterns
+# - Validating quality gate effectiveness
+```
+
+**📈 Pro Tip**: Review metrics weekly to identify patterns and optimize your team's AI-assisted development workflow.
+
 ---
 
 **Related Documentation**:
-- [Using Agents Guide](../guides/using-agents.md) - How to work with AI agents
-- [AI Collaboration Guide](../guides/ai-collaboration-guide.md) - Advanced AI workflows
-- [MCP Setup Guide](../setup/mcp-setup.md) - Enhanced tool capabilities
+- **[Metrics System Guide](../analytics/metrics-system.md)** - Comprehensive metrics documentation
+- **[Agent Performance Guide](../guides/comprehensive-agent-guide.md)** - Agent optimization using metrics
+- **[AI Collaboration Guide](../guides/ai-collaboration-guide.md)** - Advanced AI workflows
+- **[MCP Setup Guide](../setup/mcp-setup.md)** - Enhanced tool capabilities
 
 **Technical Details**: See `.claude/commands/` directory for complete command specifications and implementation details.

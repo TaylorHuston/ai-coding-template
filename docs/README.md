@@ -1,7 +1,7 @@
 ---
 version: "0.1.0"
 created: "2025-08-22"
-last_updated: "2025-09-15"
+last_updated: "2025-09-18"
 status: "active"
 target_audience: ["developers", "project-managers", "ai-assistants"]
 document_type: "guide"

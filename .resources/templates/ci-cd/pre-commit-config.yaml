@@ -1,0 +1,53 @@
+# Pre-commit configuration for link validation
+# Save as: .pre-commit-config.yaml
+# Install: pip install pre-commit && pre-commit install
+
+repos:
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  # Local hooks for project-specific validation
+  - repo: local
+    hooks:
+      # Link validation hook
+      - id: validate-links
+        name: Validate Documentation Links
+        entry: .resources/scripts/hooks/pre-commit-link-validation.sh
+        language: script
+        files: \.md$
+        pass_filenames: false
+        stages: [commit]
+
+      # Template usage validation
+      - id: validate-templates
+        name: Validate Template Usage
+        entry: .resources/scripts/validation/template-usage-check.sh
+        language: script
+        files: ^workbench/.*\.(md)$
+        pass_filenames: false
+        stages: [commit]
+
+      # Quality gates (optional - can be resource intensive)
+      - id: quality-gates
+        name: Quality Gate Validation
+        entry: .resources/scripts/quality/validate-quality-gates.sh
+        args: [--continue-on-failure]
+        language: script
+        pass_filenames: false
+        stages: [push]  # Only run on push, not every commit
+
+# Configuration
+default_stages: [commit, push]
+fail_fast: false  # Continue checking all hooks even if one fails
+
+# Optional: Configure specific hook behavior
+# ci:
+#   autofix_commit_msg: 'style: auto fixes from pre-commit hooks'
+#   autofix_prs: false
+#   autoupdate_commit_msg: 'chore: pre-commit autoupdate'
