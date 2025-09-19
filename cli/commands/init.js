@@ -12,9 +12,20 @@ class TemplateInitializer {
     this.targetDir = options.targetDir || '.';
     this.projectName = options.projectName || path.basename(process.cwd());
     this.projectType = options.projectType || 'web-app';
-    this.templatePath = options.templatePath || process.cwd(); // For development mode
+    this.templatePath = options.templatePath || this.detectTemplatePath();
     this.dryRun = options.dryRun || false;
     this.verbose = options.verbose || false;
+  }
+
+  detectTemplatePath() {
+    // For NPM package installs, use the package directory
+    const packagePath = path.join(__dirname, '../..');
+    if (fs.existsSync(path.join(packagePath, '.template-manifest.json'))) {
+      return packagePath;
+    }
+
+    // Fall back to current directory (development mode)
+    return process.cwd();
   }
 
   async initialize() {
@@ -74,16 +85,10 @@ class TemplateInitializer {
   }
 
   loadTemplate() {
-    // Try to load from current directory (development) or node_modules (NPM install)
-    let manifestPath = path.join(this.templatePath, '.template-manifest.json');
+    const manifestPath = path.join(this.templatePath, '.template-manifest.json');
 
     if (!fs.existsSync(manifestPath)) {
-      // Try NPM package location
-      manifestPath = path.join(__dirname, '../../.template-manifest.json');
-    }
-
-    if (!fs.existsSync(manifestPath)) {
-      throw new Error('Template manifest not found. Make sure you\'re in a template directory or have installed the package.');
+      throw new Error(`Template manifest not found at: ${manifestPath}. Make sure you're in a template directory or have installed the package.`);
     }
 
     return new FileCategorizer(manifestPath);
