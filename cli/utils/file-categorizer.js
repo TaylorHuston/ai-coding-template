@@ -7,8 +7,9 @@ const fs = require('fs');
 const path = require('path');
 
 class FileCategorizer {
-  constructor(manifestPath = '.template-manifest.json') {
+  constructor(manifestPath = '.template-manifest.json', baseDir = null) {
     this.manifestPath = manifestPath;
+    this.baseDir = baseDir || path.dirname(manifestPath);
     this.manifest = null;
     this.loadManifest();
   }
@@ -88,7 +89,7 @@ class FileCategorizer {
     summary.uncategorized = { count: 0, files: [], strategy: 'unknown' };
 
     // Get all files and categorize them
-    const allFiles = this.getAllFiles();
+    const allFiles = this.getAllFiles(this.baseDir);
 
     for (const file of allFiles) {
       const category = this.categorizeFile(file);
@@ -134,7 +135,7 @@ class FileCategorizer {
    */
   expandPattern(pattern) {
     const matches = [];
-    const allFiles = this.getAllFiles();
+    const allFiles = this.getAllFiles(this.baseDir);
 
     for (const file of allFiles) {
       if (this.matchesPattern(file, pattern)) {
@@ -151,12 +152,16 @@ class FileCategorizer {
    * @param {Array} fileList - Accumulator for file paths
    * @returns {Array} - Array of all file paths
    */
-  getAllFiles(dir = '.', fileList = []) {
+  getAllFiles(dir = '.', fileList = [], baseDir = null) {
+    if (baseDir === null) {
+      baseDir = dir;
+    }
+
     const files = fs.readdirSync(dir);
 
     for (const file of files) {
       const fullPath = path.join(dir, file);
-      const relativePath = fullPath.replace(/\\/g, '/').replace(/^\.\//, '');
+      const relativePath = path.relative(baseDir, fullPath).replace(/\\/g, '/');
 
       // Skip common directories we don't want to scan
       if (['node_modules', '.git'].includes(file)) {
@@ -164,7 +169,7 @@ class FileCategorizer {
       }
 
       if (fs.statSync(fullPath).isDirectory()) {
-        this.getAllFiles(fullPath, fileList);
+        this.getAllFiles(fullPath, fileList, baseDir);
       } else {
         fileList.push(relativePath);
       }
@@ -186,7 +191,7 @@ class FileCategorizer {
     };
 
     // Check for overlapping patterns
-    const allFiles = this.getAllFiles();
+    const allFiles = this.getAllFiles(this.baseDir);
     for (const file of allFiles) {
       const matches = [];
       for (const [categoryName, category] of Object.entries(this.manifest.categories)) {

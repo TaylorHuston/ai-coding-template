@@ -97,7 +97,7 @@ class TemplateInitializer {
       throw new Error(`Template manifest not found at: ${manifestPath}. Make sure you're in a template directory or have installed the package.`);
     }
 
-    return new FileCategorizer(manifestPath);
+    return new FileCategorizer(manifestPath, this.templatePath);
   }
 
   createInstallationPlan(categorizer) {
