@@ -6,7 +6,9 @@
     "mcp__context7__get-library-docs",
     "mcp__sequential-thinking__sequentialthinking",
     "mcp__gemini-cli__prompt",
-    "mcp__magic__*",
+    "mcp__gemini-cli__*",
+    "mcp__codex__prompt",
+    "mcp__codex__*",
     "mcp__playwright__browser_navigate",
     "mcp__playwright__browser_click",
     "mcp__playwright__browser_type",
@@ -60,7 +62,7 @@
     "context7",
     "sequential-thinking",
     "gemini-cli",
-    "magic",
+    "codex",
     "playwright",
     "shadcn-ui-server"
   ]

@@ -1,11 +1,11 @@
 ---
 name: project-manager
 description: PROACTIVELY orchestrates multiple specialized agents for complex, multi-domain tasks AND serves as a general-purpose agent when no specialist is suitable. Use for feature development, system-wide changes, multi-domain tasks, or general research and analysis. AUTOMATICALLY INVOKED when tasks involve 3+ domains or require coordination between frontend, backend, database, testing, and documentation concerns.
-tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking, mcp__gemini-cli__prompt
+tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking
 model: opus
 color: blue
 coordination:
-  hands_off_to: [frontend-specialist, backend-specialist, database-specialist, api-designer, test-engineer, code-reviewer, security-auditor, devops-engineer, technical-writer, docs-sync-agent]
+  hands_off_to: [frontend-specialist, backend-specialist, database-specialist, api-designer, test-engineer, code-reviewer, security-auditor, devops-engineer, technical-writer, technical-writer]
   receives_from: [context-analyzer]
   parallel_with: [context-analyzer, performance-optimizer]
 ---
@@ -96,6 +96,7 @@ When orchestrating agents, always consider:
 - **Testing framework** and coverage requirements
 - **Deployment platform** and infrastructure constraints
 - **Team size and expertise** levels
+- **Project vision and goals** from docs/vision.md or project-vision.md
 
 ### Quality Standards Coordination
 - **Code Quality**: Coordinate code-reviewer for all implementations
@@ -156,6 +157,9 @@ When delegating to agents, provide:
 ```markdown
 ## Context
 [Relevant background from context-analyzer or user]
+
+## Vision Alignment
+[How this task supports project vision and goals]
 
 ## Specific Task
 [Clear, actionable task description]

@@ -1,0 +1,754 @@
+# CI/CD Testing Configuration Examples
+#
+# Comprehensive examples for automating testing in CI/CD pipelines
+# across different platforms and testing types
+#
+# Features:
+# - Multi-stage testing pipelines
+# - Parallel test execution
+# - Test result reporting
+# - Coverage collection
+# - Cross-browser testing
+# - Database testing with services
+
+# GitHub Actions Workflow
+name: Comprehensive Test Suite
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NODE_VERSION: '18'
+  POSTGRES_VERSION: '13'
+
+jobs:
+  # Unit and Integration Tests
+  test-unit-integration:
+    name: Unit & Integration Tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      redis:
+        image: redis:6
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Run type checking
+        run: npm run typecheck
+
+      - name: Setup test database
+        run: |
+          npm run db:migrate
+          npm run db:seed
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
+          REDIS_URL: redis://localhost:6379
+
+      - name: Run unit tests
+        run: npm run test:unit -- --coverage
+        env:
+          NODE_ENV: test
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
+          REDIS_URL: redis://localhost:6379
+
+      - name: Run integration tests
+        run: npm run test:integration -- --coverage
+        env:
+          NODE_ENV: test
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
+          REDIS_URL: redis://localhost:6379
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results-${{ matrix.node-version }}
+          path: |
+            coverage/
+            test-results.xml
+
+  # End-to-End Tests
+  test-e2e:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    needs: test-unit-integration
+
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Build application
+        run: npm run build
+
+      - name: Start application
+        run: |
+          npm run start:test &
+          npx wait-on http://localhost:3000
+        env:
+          NODE_ENV: test
+
+      - name: Run E2E tests
+        run: npx playwright test --project=${{ matrix.browser }}
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: http://localhost:3000
+
+      - name: Upload E2E test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: e2e-results-${{ matrix.browser }}
+          path: |
+            test-results/
+            playwright-report/
+
+  # Performance Tests
+  test-performance:
+    name: Performance Tests
+    runs-on: ubuntu-latest
+    needs: test-unit-integration
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Start application
+        run: |
+          npm run start:test &
+          npx wait-on http://localhost:3000
+        env:
+          NODE_ENV: test
+
+      - name: Run performance tests
+        run: npm run test:performance
+
+      - name: Run load tests with k6
+        uses: grafana/k6-action@v0.3.0
+        with:
+          filename: tests/load/api-load-test.js
+          flags: --out json=results.json
+
+      - name: Upload performance results
+        uses: actions/upload-artifact@v3
+        with:
+          name: performance-results
+          path: |
+            performance-results.json
+            results.json
+
+  # Security Tests
+  test-security:
+    name: Security Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run security audit
+        run: npm audit --audit-level moderate
+
+      - name: Run CodeQL analysis
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v2
+
+      - name: Run OWASP ZAP security scan
+        uses: zaproxy/action-baseline@v0.7.0
+        with:
+          target: 'http://localhost:3000'
+
+  # Mobile Testing
+  test-mobile:
+    name: Mobile Tests
+    runs-on: ubuntu-latest
+    needs: test-unit-integration
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Build application
+        run: npm run build
+
+      - name: Start application
+        run: |
+          npm run start:test &
+          npx wait-on http://localhost:3000
+
+      - name: Run mobile responsive tests
+        run: npx playwright test --project=mobile
+
+      - name: Upload mobile test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: mobile-test-results
+          path: test-results/
+
+  # Test Results Summary
+  test-summary:
+    name: Test Summary
+    runs-on: ubuntu-latest
+    needs: [test-unit-integration, test-e2e, test-performance, test-security, test-mobile]
+    if: always()
+
+    steps:
+      - name: Download all test artifacts
+        uses: actions/download-artifact@v3
+
+      - name: Generate test summary
+        run: |
+          echo "# Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Unit & Integration Tests: ${{ needs.test-unit-integration.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- E2E Tests: ${{ needs.test-e2e.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Performance Tests: ${{ needs.test-performance.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Security Tests: ${{ needs.test-security.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Mobile Tests: ${{ needs.test-mobile.result }}" >> $GITHUB_STEP_SUMMARY
+
+---
+
+# GitLab CI/CD Configuration
+# File: .gitlab-ci.yml
+
+stages:
+  - test
+  - security
+  - performance
+  - deploy
+
+variables:
+  NODE_VERSION: "18"
+  POSTGRES_VERSION: "13"
+  POSTGRES_DB: "test_db"
+  POSTGRES_USER: "postgres"
+  POSTGRES_PASSWORD: "postgres"
+
+# Templates
+.node_template: &node_template
+  image: node:${NODE_VERSION}
+  cache:
+    paths:
+      - node_modules/
+  before_script:
+    - npm ci
+
+.postgres_template: &postgres_template
+  services:
+    - name: postgres:${POSTGRES_VERSION}
+      alias: postgres
+    - name: redis:6
+      alias: redis
+
+# Unit Tests
+unit_tests:
+  <<: *node_template
+  <<: *postgres_template
+  stage: test
+  parallel:
+    matrix:
+      - NODE_VERSION: ["16", "18", "20"]
+  script:
+    - npm run lint
+    - npm run typecheck
+    - npm run test:unit -- --coverage
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+  artifacts:
+    reports:
+      junit: test-results.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+    paths:
+      - coverage/
+    expire_in: 1 week
+
+# Integration Tests
+integration_tests:
+  <<: *node_template
+  <<: *postgres_template
+  stage: test
+  script:
+    - npm run db:migrate
+    - npm run db:seed
+    - npm run test:integration -- --coverage
+  artifacts:
+    reports:
+      junit: integration-test-results.xml
+    paths:
+      - coverage/
+    expire_in: 1 week
+
+# E2E Tests
+e2e_tests:
+  <<: *node_template
+  stage: test
+  parallel:
+    matrix:
+      - BROWSER: ["chromium", "firefox"]
+  script:
+    - npx playwright install --with-deps ${BROWSER}
+    - npm run build
+    - npm run start:test &
+    - npx wait-on http://localhost:3000
+    - npx playwright test --project=${BROWSER}
+  artifacts:
+    when: always
+    paths:
+      - test-results/
+      - playwright-report/
+    expire_in: 1 week
+  allow_failure: true
+
+# Security Tests
+security_audit:
+  <<: *node_template
+  stage: security
+  script:
+    - npm audit --audit-level moderate
+    - npm run test:security
+  artifacts:
+    reports:
+      junit: security-test-results.xml
+  allow_failure: false
+
+# Performance Tests
+performance_tests:
+  <<: *node_template
+  stage: performance
+  script:
+    - npm run build
+    - npm run start:test &
+    - npx wait-on http://localhost:3000
+    - npm run test:performance
+  artifacts:
+    paths:
+      - performance-results.json
+    expire_in: 1 week
+
+# Load Tests
+load_tests:
+  image: grafana/k6:latest
+  stage: performance
+  script:
+    - k6 run tests/load/api-load-test.js --out json=load-test-results.json
+  artifacts:
+    paths:
+      - load-test-results.json
+    expire_in: 1 week
+  allow_failure: true
+
+---
+
+# Azure DevOps Pipeline
+# File: azure-pipelines.yml
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  nodeVersion: '18'
+  postgresVersion: '13'
+
+stages:
+- stage: Test
+  displayName: 'Test Stage'
+  jobs:
+  - job: UnitTests
+    displayName: 'Unit Tests'
+    strategy:
+      matrix:
+        Node16:
+          nodeVersion: '16'
+        Node18:
+          nodeVersion: '18'
+        Node20:
+          nodeVersion: '20'
+
+    services:
+      postgres: postgres:$(postgresVersion)
+      redis: redis:6
+
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '$(nodeVersion)'
+      displayName: 'Install Node.js'
+
+    - script: npm ci
+      displayName: 'Install dependencies'
+
+    - script: npm run lint
+      displayName: 'Run linting'
+
+    - script: npm run test:unit -- --coverage --reporter=junit
+      displayName: 'Run unit tests'
+      env:
+        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
+
+    - task: PublishTestResults@2
+      condition: succeededOrFailed()
+      inputs:
+        testRunner: JUnit
+        testResultsFiles: 'test-results.xml'
+
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: Cobertura
+        summaryFileLocation: 'coverage/cobertura-coverage.xml'
+
+  - job: E2ETests
+    displayName: 'E2E Tests'
+    dependsOn: UnitTests
+    strategy:
+      matrix:
+        Chromium:
+          browserName: 'chromium'
+        Firefox:
+          browserName: 'firefox'
+
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '$(nodeVersion)'
+
+    - script: npm ci
+      displayName: 'Install dependencies'
+
+    - script: npx playwright install --with-deps $(browserName)
+      displayName: 'Install Playwright browsers'
+
+    - script: |
+        npm run build
+        npm run start:test &
+        npx wait-on http://localhost:3000
+      displayName: 'Build and start application'
+
+    - script: npx playwright test --project=$(browserName)
+      displayName: 'Run E2E tests'
+
+    - task: PublishTestResults@2
+      condition: succeededOrFailed()
+      inputs:
+        testRunner: JUnit
+        testResultsFiles: 'test-results/results.xml'
+
+- stage: Security
+  displayName: 'Security Tests'
+  dependsOn: Test
+  jobs:
+  - job: SecurityAudit
+    displayName: 'Security Audit'
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '$(nodeVersion)'
+
+    - script: npm ci
+      displayName: 'Install dependencies'
+
+    - script: npm audit --audit-level moderate
+      displayName: 'Run security audit'
+
+    - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-credscan.CredScan@3
+      displayName: 'Run Credential Scanner'
+
+- stage: Performance
+  displayName: 'Performance Tests'
+  dependsOn: Test
+  jobs:
+  - job: PerformanceTests
+    displayName: 'Performance Tests'
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '$(nodeVersion)'
+
+    - script: npm ci
+      displayName: 'Install dependencies'
+
+    - script: |
+        npm run build
+        npm run start:test &
+        npx wait-on http://localhost:3000
+        npm run test:performance
+      displayName: 'Run performance tests'
+
+---
+
+# Docker Compose for Local Testing
+# File: docker-compose.test.yml
+
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=test
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/test_db
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=test_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:6
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    environment:
+      - NODE_ENV=test
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/test_db
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      app:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run test:all
+
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.40.0-focal
+    environment:
+      - PLAYWRIGHT_TEST_BASE_URL=http://app:3000
+    depends_on:
+      - app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    command: npx playwright test
+
+---
+
+# Test Configuration Files
+
+# Jest Configuration
+# File: jest.config.js
+module.exports = {
+  testEnvironment: 'node',
+  collectCoverageFrom: [
+    'src/**/*.{js,ts}',
+    '!src/**/*.d.ts',
+    '!src/tests/**',
+  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov', 'html', 'cobertura'],
+  coverageThreshold: {
+    global: {
+      branches: 75,
+      functions: 80,
+      lines: 80,
+      statements: 80,
+    },
+  },
+  testMatch: [
+    '**/__tests__/**/*.(js|ts)',
+    '**/*.(test|spec).(js|ts)',
+  ],
+  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
+  testTimeout: 30000,
+  reporters: [
+    'default',
+    ['jest-junit', {
+      outputDirectory: '.',
+      outputName: 'test-results.xml',
+    }],
+  ],
+};
+
+# Playwright Configuration
+# File: playwright.config.js
+module.exports = {
+  testDir: './tests/e2e',
+  timeout: 30000,
+  expect: {
+    timeout: 5000,
+  },
+  fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 2 : 0,
+  workers: process.env.CI ? 1 : undefined,
+  reporter: [
+    ['html'],
+    ['junit', { outputFile: 'test-results/results.xml' }],
+  ],
+  use: {
+    baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL || 'http://localhost:3000',
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+    {
+      name: 'mobile',
+      use: { ...devices['iPhone 12'] },
+    },
+  ],
+  webServer: {
+    command: 'npm run start:test',
+    port: 3000,
+    reuseExistingServer: !process.env.CI,
+  },
+};

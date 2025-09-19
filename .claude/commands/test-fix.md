@@ -1,12 +1,7 @@
 ---
-command: "/test-fix"
 description: Automatic test failure detection and resolution
-category: "Testing & Quality"
-purpose: "Automated test failure detection, analysis, and resolution"
-wave-enabled: false
-performance-profile: "standard"
 argument-hint: Optional test pattern or files to focus on
-allowed-tools: Bash(npm run *), Bash(pnpm *), Bash(yarn *), Read, Edit, MultiEdit, Grep, Glob, TodoWrite, Task
+allowed-tools: ["Bash(npm run *)", "Bash(pnpm *)", "Bash(yarn *)", "Read", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
 model: sonnet
 ---
 

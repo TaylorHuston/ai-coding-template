@@ -1,12 +1,7 @@
 ---
-command: "/review"
 description: Comprehensive code review with multi-dimensional analysis
-category: "Quality & Security"
-purpose: "Multi-dimensional code quality assessment with detailed feedback"
-wave-enabled: true
-performance-profile: "standard"
 argument-hint: --scope SCOPE --focus FOCUS --depth DEPTH --output FORMAT
-allowed-tools: Read, Bash, Grep, Glob, TodoWrite, Task
+allowed-tools: ["Read", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
 model: sonnet
 ---
 

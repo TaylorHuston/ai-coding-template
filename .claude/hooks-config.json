@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-hooks.json",
+  "description": "Claude Code hooks configuration for plan → iterate workflow enforcement",
+  "hooks": [
+    {
+      "event": "PreToolUse",
+      "matcher": {
+        "tool": "Task"
+      },
+      "command": "scripts/hooks/pre-task-validation.sh",
+      "description": "Validate context and workflow state before agent execution",
+      "enabled": true
+    },
+    {
+      "event": "PostToolUse",
+      "matcher": {
+        "tool": "Task"
+      },
+      "command": "scripts/hooks/post-agent-validation.sh",
+      "description": "Validate agent output and update coordination files",
+      "enabled": true
+    },
+    {
+      "event": "PreToolUse",
+      "matcher": {
+        "tool": ["Edit", "Write", "MultiEdit"]
+      },
+      "command": "scripts/hooks/pre-edit-validation.sh",
+      "description": "Quality gates and TDD validation before code changes",
+      "enabled": true
+    },
+    {
+      "event": "UserPromptSubmit",
+      "matcher": {
+        "pattern": "/(iterate|plan)"
+      },
+      "command": "scripts/hooks/workflow-state-check.sh",
+      "description": "Validate workflow state on iterate/plan commands",
+      "enabled": false,
+      "note": "Disabled by default - enable if needed for strict workflow enforcement"
+    }
+  ],
+  "settings": {
+    "log_level": "info",
+    "fail_fast": true,
+    "timeout_seconds": 30
+  },
+  "documentation": {
+    "setup_instructions": [
+      "1. Copy this file to your Claude Code settings directory",
+      "2. Update file paths if needed for your environment",
+      "3. Enable/disable hooks as needed for your workflow",
+      "4. Test with a simple /iterate command to verify hooks work"
+    ],
+    "hook_descriptions": {
+      "pre-task-validation": "Ensures HANDOFF.yml and RESEARCH.md are valid before agent execution",
+      "post-agent-validation": "Validates agent output structure and runs basic quality gates",
+      "pre-edit-validation": "Enforces TDD and checks quality gates before code changes",
+      "workflow-state-check": "Optional workflow state validation on command submission"
+    },
+    "troubleshooting": {
+      "hook_failures": "Check script permissions and file paths",
+      "timeout_issues": "Increase timeout_seconds in settings",
+      "path_problems": "Ensure scripts are executable and paths are correct"
+    }
+  }
+}

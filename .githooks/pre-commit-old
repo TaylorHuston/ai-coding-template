@@ -1,0 +1,329 @@
+#!/bin/bash
+
+# AI Coding Template Pre-Commit Hook - Context-Aware & User-Friendly
+# Version: 0.2.0
+# Description: Intelligent pre-commit validation with context awareness
+
+set -euo pipefail
+
+# Colors for output
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Configuration
+CONFIG_FILE=".githooks.json"
+CI_MODE=${CI:-false}
+FORCE_COMMIT=${FORCE_COMMIT:-false}
+
+# Progress tracking
+CHECKS_TOTAL=0
+CHECKS_PASSED=0
+CHECKS_WARNED=0
+CHECKS_FAILED=0
+
+# Load configuration with fallback
+load_config() {
+    if [[ -f "$CONFIG_FILE" ]] && command -v jq >/dev/null 2>&1; then
+        CONFIG=$(cat "$CONFIG_FILE")
+    else
+        echo -e "${YELLOW}Warning: .githooks.json not found or jq not available, using minimal defaults${NC}"
+        CONFIG='{"pre-commit":{"enabled":true,"checks":{},"error-handling":{"continue-on-warning":true}}}'
+    fi
+}
+
+# Get config value with fallback
+get_config() {
+    local path="$1"
+    local default="$2"
+    if command -v jq >/dev/null 2>&1; then
+        echo "$CONFIG" | jq -r "$path // \"$default\""
+    else
+        echo "$default"
+    fi
+}
+
+# Check if feature is enabled
+is_enabled() {
+    local check="$1"
+    local enabled=$(get_config ".\"pre-commit\".checks.\"$check\".enabled" "false")
+    [[ "$enabled" == "true" ]]
+}
+
+# Progress indicator
+show_progress() {
+    local current="$1"
+    local total="$2"
+    local check_name="$3"
+
+    if [[ "$CI_MODE" != "true" ]]; then
+        local percent=$((current * 100 / total))
+        printf "\r${BLUE}[%d/%d]${NC} %s... " "$current" "$total" "$check_name"
+    else
+        echo "Running check: $check_name"
+    fi
+}
+
+# Log results
+log_result() {
+    local level="$1"
+    local message="$2"
+
+    case "$level" in
+        "pass")
+            CHECKS_PASSED=$((CHECKS_PASSED + 1))
+            if [[ "$CI_MODE" != "true" ]]; then
+                echo -e "${GREEN}✓${NC} $message"
+            else
+                echo "PASS: $message"
+            fi
+            ;;
+        "warn")
+            CHECKS_WARNED=$((CHECKS_WARNED + 1))
+            if [[ "$CI_MODE" != "true" ]]; then
+                echo -e "${YELLOW}⚠${NC} $message"
+            else
+                echo "WARN: $message"
+            fi
+            ;;
+        "fail")
+            CHECKS_FAILED=$((CHECKS_FAILED + 1))
+            if [[ "$CI_MODE" != "true" ]]; then
+                echo -e "${RED}✗${NC} $message"
+            else
+                echo "FAIL: $message"
+            fi
+            ;;
+    esac
+}
+
+# Get staged files with context awareness
+get_staged_files() {
+    git diff --cached --name-only --diff-filter=ACMR
+}
+
+# Check if file should be excluded based on patterns
+is_excluded_file() {
+    local file="$1"
+    local exclude_patterns="$2"
+
+    if [[ -z "$exclude_patterns" || "$exclude_patterns" == "null" ]]; then
+        return 1
+    fi
+
+    echo "$exclude_patterns" | jq -r '.[]?' 2>/dev/null | while read -r pattern; do
+        if [[ "$file" =~ $pattern ]]; then
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+# Function to check if current branch is protected
+check_protected_branch() {
+    local current_branch=$(git rev-parse --abbrev-ref HEAD)
+    
+    for protected in "${PROTECTED_BRANCHES[@]}"; do
+        if [[ "$current_branch" == "$protected" ]]; then
+            echo -e "${RED}❌ ERROR: Direct commits to '$current_branch' are not allowed${NC}"
+            echo -e "${YELLOW}💡 Please create a feature branch:${NC}"
+            echo "   git checkout -b feature/your-feature-name"
+            echo "   git checkout -b fix/your-fix-name"
+            echo "   git checkout -b docs/your-doc-change"
+            return 1
+        fi
+    done
+    
+    echo -e "${GREEN}✅ Branch check passed${NC}"
+    return 0
+}
+
+# Function to validate AI assistance documentation
+check_ai_documentation() {
+    if ! $AI_INDICATOR_REQUIRED; then
+        return 0
+    fi
+    
+    # Check if commit message contains AI assistance indicator
+    local commit_msg_file=".git/COMMIT_EDITMSG"
+    if [[ -f "$commit_msg_file" ]]; then
+        if ! grep -q "🤖 Generated with" "$commit_msg_file" && 
+           ! grep -q "Co-Authored-By: Claude" "$commit_msg_file" &&
+           ! grep -q "AI-Assisted:" "$commit_msg_file"; then
+            echo -e "${YELLOW}⚠️  WARNING: No AI assistance indicator found in commit message${NC}"
+            echo -e "${BLUE}💡 Consider adding one of these if AI was used:${NC}"
+            echo "   🤖 Generated with [Claude Code](https://claude.ai/code)"
+            echo "   Co-Authored-By: Claude <noreply@anthropic.com>"
+            echo "   AI-Assisted: [Brief description of AI help]"
+            echo ""
+            echo -e "${YELLOW}Continue anyway? (y/N)${NC}"
+            read -r response
+            if [[ ! "$response" =~ ^[Yy]$ ]]; then
+                return 1
+            fi
+        fi
+    fi
+    
+    echo -e "${GREEN}✅ AI documentation check passed${NC}"
+    return 0
+}
+
+# Function to check documentation updates
+check_documentation_updates() {
+    if ! $DOCUMENTATION_CHECK; then
+        return 0
+    fi
+    
+    # Check if code files changed but STATUS.md wasn't updated
+    local code_changed=false
+    local status_updated=false
+    
+    # Check for changed code files
+    while IFS= read -r file; do
+        if [[ "$file" =~ \.(js|ts|jsx|tsx|py|java|cpp|c|go|rs|php)$ ]]; then
+            code_changed=true
+            break
+        fi
+    done < <(git diff --cached --name-only)
+    
+    # Check if STATUS.md was updated
+    if git diff --cached --name-only | grep -q "STATUS.md"; then
+        status_updated=true
+    fi
+    
+    # Warn if significant code changes without status update
+    if $code_changed && ! $status_updated; then
+        echo -e "${YELLOW}⚠️  WARNING: Code files changed but STATUS.md not updated${NC}"
+        echo -e "${BLUE}💡 Consider updating STATUS.md if this represents significant progress${NC}"
+        echo ""
+        echo -e "${YELLOW}Continue without updating STATUS.md? (y/N)${NC}"
+        read -r response
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            echo -e "${BLUE}💡 Edit STATUS.md and run 'git add STATUS.md' then commit again${NC}"
+            return 1
+        fi
+    fi
+    
+    echo -e "${GREEN}✅ Documentation check passed${NC}"
+    return 0
+}
+
+# Function to scan for security issues
+check_security() {
+    if ! $SECURITY_SCAN; then
+        return 0
+    fi
+    
+    local security_issues=false
+    
+    # Patterns to look for (secrets, keys, etc.)
+    local patterns=(
+        "api[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
+        "secret[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
+        "password[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
+        "token[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
+        "private[_-]?key[[:space:]]*[:=]"
+        "-----BEGIN (RSA |DSA )?PRIVATE KEY-----"
+        "sk_live_[0-9a-zA-Z]{24,}"
+        "pk_live_[0-9a-zA-Z]{24,}"
+    )
+    
+    echo "🔍 Scanning for security issues..."
+    
+    # Check staged files for security patterns
+    while IFS= read -r file; do
+        if [[ -f "$file" ]]; then
+            for pattern in "${patterns[@]}"; do
+                if git show ":$file" | grep -iE "$pattern" > /dev/null; then
+                    echo -e "${RED}❌ SECURITY: Potential secret found in $file${NC}"
+                    echo -e "${RED}   Pattern: $pattern${NC}"
+                    security_issues=true
+                fi
+            done
+        fi
+    done < <(git diff --cached --name-only)
+    
+    # Check for common filename patterns that might contain secrets
+    local sensitive_files=(
+        ".env"
+        "secrets.json"
+        "credentials.json"
+        "private.key"
+        "id_rsa"
+        "id_dsa"
+    )
+    
+    for file in "${sensitive_files[@]}"; do
+        if git diff --cached --name-only | grep -q "$file"; then
+            echo -e "${RED}❌ SECURITY: Sensitive file '$file' being committed${NC}"
+            security_issues=true
+        fi
+    done
+    
+    if $security_issues; then
+        echo -e "${RED}❌ Security scan failed${NC}"
+        echo -e "${YELLOW}💡 Please remove sensitive information before committing${NC}"
+        return 1
+    fi
+    
+    echo -e "${GREEN}✅ Security scan passed${NC}"
+    return 0
+}
+
+# Function to validate file naming conventions
+check_file_naming() {
+    local naming_issues=false
+    
+    echo "📝 Checking file naming conventions..."
+    
+    # Check documentation files for kebab-case
+    while IFS= read -r file; do
+        if [[ "$file" =~ docs/.*\.md$ ]]; then
+            local basename=$(basename "$file" .md)
+            # Allow exceptions for standard files
+            if [[ ! "$basename" =~ ^(README|CONTRIBUTING|CHANGELOG|CODE_OF_CONDUCT|LICENSE)$ ]]; then
+                if [[ ! "$basename" =~ ^[a-z0-9-]+$ ]]; then
+                    echo -e "${RED}❌ NAMING: Documentation file '$file' should use lowercase-kebab-case${NC}"
+                    naming_issues=true
+                fi
+            fi
+        fi
+    done < <(git diff --cached --name-only)
+    
+    if $naming_issues; then
+        echo -e "${RED}❌ File naming check failed${NC}"
+        echo -e "${YELLOW}💡 See docs/documentation-standards.md for naming conventions${NC}"
+        return 1
+    fi
+    
+    echo -e "${GREEN}✅ File naming check passed${NC}"
+    return 0
+}
+
+# Main execution
+main() {
+    local exit_code=0
+    
+    # Run all checks
+    check_protected_branch || exit_code=1
+    check_ai_documentation || exit_code=1
+    check_documentation_updates || exit_code=1
+    check_security || exit_code=1
+    check_file_naming || exit_code=1
+    
+    if [[ $exit_code -eq 0 ]]; then
+        echo -e "${GREEN}🎉 All pre-commit checks passed!${NC}"
+        echo -e "${BLUE}💡 Remember: With great AI power comes great responsibility${NC}"
+    else
+        echo -e "${RED}❌ Pre-commit checks failed${NC}"
+        echo -e "${YELLOW}💡 Fix the issues above and try committing again${NC}"
+    fi
+    
+    return $exit_code
+}
+
+# Run the main function
+main "$@"

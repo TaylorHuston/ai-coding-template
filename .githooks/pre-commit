@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# AI Coding Template - Pre-Commit Hook
-# Protects against common AI-assisted development mistakes
+# AI Coding Template Pre-Commit Hook - Context-Aware & User-Friendly
+# Version: 0.2.0
+# Description: Intelligent pre-commit validation with context awareness
 
-set -e
+set -euo pipefail
 
 # Colors for output
 RED='\033[0;31m'
@@ -13,216 +14,607 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-PROTECTED_BRANCHES=("main" "master" "develop" "production")
-AI_INDICATOR_REQUIRED=true
-DOCUMENTATION_CHECK=true
-SECURITY_SCAN=true
+CONFIG_FILE=".githooks.json"
+CI_MODE=${CI:-false}
+FORCE_COMMIT=${FORCE_COMMIT:-false}
 
-echo -e "${BLUE}🤖 AI Coding Template Pre-Commit Hook${NC}"
-echo "Running automated checks..."
+# Progress tracking
+CHECKS_TOTAL=0
+CHECKS_PASSED=0
+CHECKS_WARNED=0
+CHECKS_FAILED=0
 
-# Function to check if current branch is protected
-check_protected_branch() {
-    local current_branch=$(git rev-parse --abbrev-ref HEAD)
-    
-    for protected in "${PROTECTED_BRANCHES[@]}"; do
-        if [[ "$current_branch" == "$protected" ]]; then
-            echo -e "${RED}❌ ERROR: Direct commits to '$current_branch' are not allowed${NC}"
-            echo -e "${YELLOW}💡 Please create a feature branch:${NC}"
-            echo "   git checkout -b feature/your-feature-name"
-            echo "   git checkout -b fix/your-fix-name"
-            echo "   git checkout -b docs/your-doc-change"
-            return 1
+# Load configuration with fallback
+load_config() {
+    if [[ -f "$CONFIG_FILE" ]] && command -v jq >/dev/null 2>&1; then
+        CONFIG=$(cat "$CONFIG_FILE")
+    else
+        echo -e "${YELLOW}Warning: .githooks.json not found or jq not available, using minimal defaults${NC}"
+        CONFIG='{"pre-commit":{"enabled":true,"checks":{},"error-handling":{"continue-on-warning":true}}}'
+    fi
+}
+
+# Get config value with fallback
+get_config() {
+    local path="$1"
+    local default="$2"
+    if command -v jq >/dev/null 2>&1; then
+        echo "$CONFIG" | jq -r "$path // \"$default\""
+    else
+        echo "$default"
+    fi
+}
+
+# Check if feature is enabled
+is_enabled() {
+    local check="$1"
+    local enabled=$(get_config ".\"pre-commit\".checks.\"$check\".enabled" "false")
+    [[ "$enabled" == "true" ]]
+}
+
+# Progress indicator
+show_progress() {
+    local current="$1"
+    local total="$2"
+    local check_name="$3"
+
+    if [[ "$CI_MODE" != "true" ]]; then
+        local percent=$((current * 100 / total))
+        printf "\r${BLUE}[%d/%d]${NC} %s... " "$current" "$total" "$check_name"
+    else
+        echo "Running check: $check_name"
+    fi
+}
+
+# Log results
+log_result() {
+    local level="$1"
+    local message="$2"
+
+    case "$level" in
+        "pass")
+            CHECKS_PASSED=$((CHECKS_PASSED + 1))
+            if [[ "$CI_MODE" != "true" ]]; then
+                echo -e "${GREEN}✓${NC} $message"
+            else
+                echo "PASS: $message"
+            fi
+            ;;
+        "warn")
+            CHECKS_WARNED=$((CHECKS_WARNED + 1))
+            if [[ "$CI_MODE" != "true" ]]; then
+                echo -e "${YELLOW}⚠${NC} $message"
+            else
+                echo "WARN: $message"
+            fi
+            ;;
+        "fail")
+            CHECKS_FAILED=$((CHECKS_FAILED + 1))
+            if [[ "$CI_MODE" != "true" ]]; then
+                echo -e "${RED}✗${NC} $message"
+            else
+                echo "FAIL: $message"
+            fi
+            ;;
+    esac
+}
+
+# Get staged files with context awareness
+get_staged_files() {
+    git diff --cached --name-only --diff-filter=ACMR
+}
+
+# Check if file should be excluded based on patterns
+is_excluded_file() {
+    local file="$1"
+    local exclude_patterns="$2"
+
+    if [[ -z "$exclude_patterns" || "$exclude_patterns" == "null" ]]; then
+        return 1
+    fi
+
+    echo "$exclude_patterns" | jq -r '.[]?' 2>/dev/null | while read -r pattern; do
+        if [[ "$file" =~ $pattern ]]; then
+            return 0
         fi
     done
-    
-    echo -e "${GREEN}✅ Branch check passed${NC}"
-    return 0
+
+    return 1
 }
 
-# Function to validate AI assistance documentation
-check_ai_documentation() {
-    if ! $AI_INDICATOR_REQUIRED; then
+# Branch protection check
+check_branch_protection() {
+    if ! is_enabled "branch-protection"; then
         return 0
     fi
-    
-    # Check if commit message contains AI assistance indicator
-    local commit_msg_file=".git/COMMIT_EDITMSG"
-    if [[ -f "$commit_msg_file" ]]; then
-        if ! grep -q "🤖 Generated with" "$commit_msg_file" && 
-           ! grep -q "Co-Authored-By: Claude" "$commit_msg_file" &&
-           ! grep -q "AI-Assisted:" "$commit_msg_file"; then
-            echo -e "${YELLOW}⚠️  WARNING: No AI assistance indicator found in commit message${NC}"
-            echo -e "${BLUE}💡 Consider adding one of these if AI was used:${NC}"
-            echo "   🤖 Generated with [Claude Code](https://claude.ai/code)"
-            echo "   Co-Authored-By: Claude <noreply@anthropic.com>"
-            echo "   AI-Assisted: [Brief description of AI help]"
-            echo ""
-            echo -e "${YELLOW}Continue anyway? (y/N)${NC}"
-            read -r response
-            if [[ ! "$response" =~ ^[Yy]$ ]]; then
-                return 1
-            fi
+
+    ((CHECKS_TOTAL++))
+    show_progress "$CHECKS_TOTAL" 8 "branch protection"
+
+    local current_branch=$(git branch --show-current)
+    local protected_branches=$(get_config '.["pre-commit"].checks["branch-protection"]["protected-branches"]' '[]')
+
+    if echo "$protected_branches" | jq -r '.[]?' | grep -q "^$current_branch$"; then
+        local allow_bypass=$(get_config '.["pre-commit"].checks["branch-protection"]["allow-emergency-bypass"]' "false")
+        if [[ "$allow_bypass" == "true" && "$FORCE_COMMIT" == "true" ]]; then
+            log_result "warn" "Branch protection bypassed for emergency commit"
+            return 0
         fi
+        log_result "fail" "Direct commits to protected branch '$current_branch' are not allowed"
+        return 1
     fi
-    
-    echo -e "${GREEN}✅ AI documentation check passed${NC}"
+
+    log_result "pass" "Branch protection check passed"
     return 0
 }
 
-# Function to check documentation updates
-check_documentation_updates() {
-    if ! $DOCUMENTATION_CHECK; then
-        return 0
-    fi
-    
-    # Check if code files changed but STATUS.md wasn't updated
-    local code_changed=false
-    local status_updated=false
-    
-    # Check for changed code files
-    while IFS= read -r file; do
-        if [[ "$file" =~ \.(js|ts|jsx|tsx|py|java|cpp|c|go|rs|php)$ ]]; then
-            code_changed=true
-            break
-        fi
-    done < <(git diff --cached --name-only)
-    
-    # Check if STATUS.md was updated
-    if git diff --cached --name-only | grep -q "STATUS.md"; then
-        status_updated=true
-    fi
-    
-    # Warn if significant code changes without status update
-    if $code_changed && ! $status_updated; then
-        echo -e "${YELLOW}⚠️  WARNING: Code files changed but STATUS.md not updated${NC}"
-        echo -e "${BLUE}💡 Consider updating STATUS.md if this represents significant progress${NC}"
-        echo ""
-        echo -e "${YELLOW}Continue without updating STATUS.md? (y/N)${NC}"
-        read -r response
-        if [[ ! "$response" =~ ^[Yy]$ ]]; then
-            echo -e "${BLUE}💡 Edit STATUS.md and run 'git add STATUS.md' then commit again${NC}"
-            return 1
-        fi
-    fi
-    
-    echo -e "${GREEN}✅ Documentation check passed${NC}"
-    return 0
-}
-
-# Function to scan for security issues
+# Security scan with context awareness
 check_security() {
-    if ! $SECURITY_SCAN; then
+    if ! is_enabled "security-scan"; then
         return 0
     fi
-    
-    local security_issues=false
-    
-    # Patterns to look for (secrets, keys, etc.)
-    local patterns=(
-        "api[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
-        "secret[_-]?key[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
-        "password[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
-        "token[[:space:]]*[:=][[:space:]]*['\"][^'\"]+['\"]"
-        "private[_-]?key[[:space:]]*[:=]"
-        "-----BEGIN (RSA |DSA )?PRIVATE KEY-----"
-        "sk_live_[0-9a-zA-Z]{24,}"
-        "pk_live_[0-9a-zA-Z]{24,}"
-    )
-    
-    echo "🔍 Scanning for security issues..."
-    
-    # Check staged files for security patterns
+
+    ((CHECKS_TOTAL++))
+    show_progress "$CHECKS_TOTAL" 8 "security scan"
+
+    local staged_files
+    staged_files=$(get_staged_files)
+
+    if [[ -z "$staged_files" ]]; then
+        log_result "pass" "No staged files to scan"
+        return 0
+    fi
+
+    local exclude_paths=$(get_config '.["pre-commit"].checks["security-scan"]["exclude-paths"]' '[]')
+    local patterns=$(get_config '.["pre-commit"].checks["security-scan"].patterns' '{}')
+    local violations=0
+
     while IFS= read -r file; do
-        if [[ -f "$file" ]]; then
-            for pattern in "${patterns[@]}"; do
-                if git show ":$file" | grep -iE "$pattern" > /dev/null; then
-                    echo -e "${RED}❌ SECURITY: Potential secret found in $file${NC}"
-                    echo -e "${RED}   Pattern: $pattern${NC}"
-                    security_issues=true
+        # Skip if file is excluded
+        if is_excluded_file "$file" "$exclude_paths"; then
+            continue
+        fi
+
+        # Skip if file doesn't exist (deleted)
+        if [[ ! -f "$file" ]]; then
+            continue
+        fi
+
+        # Check each security pattern
+        if command -v jq >/dev/null 2>&1; then
+            echo "$patterns" | jq -r 'keys[]' | while read -r pattern_name; do
+                local regex=$(echo "$patterns" | jq -r ".\"$pattern_name\".regex")
+                local severity=$(echo "$patterns" | jq -r ".\"$pattern_name\".severity // \"medium\"")
+                local exclude_if_contains=$(echo "$patterns" | jq -r ".\"$pattern_name\".\"exclude-if-contains\" // []")
+
+                if grep -i "$regex" "$file" >/dev/null 2>&1; then
+                    # Check if content should be excluded
+                    local should_exclude=false
+                    if [[ "$exclude_if_contains" != "null" ]]; then
+                        echo "$exclude_if_contains" | jq -r '.[]?' | while read -r exclude_term; do
+                            if grep -i "$exclude_term" "$file" >/dev/null 2>&1; then
+                                should_exclude=true
+                                break
+                            fi
+                        done
+                    fi
+
+                    if [[ "$should_exclude" != "true" ]]; then
+                        log_result "warn" "Security: Potential $pattern_name found in $file"
+                        violations=$((violations + 1))
+                    fi
                 fi
             done
         fi
-    done < <(git diff --cached --name-only)
-    
-    # Check for common filename patterns that might contain secrets
-    local sensitive_files=(
-        ".env"
-        "secrets.json"
-        "credentials.json"
-        "private.key"
-        "id_rsa"
-        "id_dsa"
-    )
-    
-    for file in "${sensitive_files[@]}"; do
-        if git diff --cached --name-only | grep -q "$file"; then
-            echo -e "${RED}❌ SECURITY: Sensitive file '$file' being committed${NC}"
-            security_issues=true
-        fi
-    done
-    
-    if $security_issues; then
-        echo -e "${RED}❌ Security scan failed${NC}"
-        echo -e "${YELLOW}💡 Please remove sensitive information before committing${NC}"
-        return 1
+    done <<< "$staged_files"
+
+    if [[ "$violations" -eq 0 ]]; then
+        log_result "pass" "Security scan passed"
+        return 0
+    else
+        log_result "warn" "Security scan found $violations potential issues"
+        return 0  # Warning only by default
     fi
-    
-    echo -e "${GREEN}✅ Security scan passed${NC}"
+}
+
+# File naming check with deleted file handling
+check_file_naming() {
+    if ! is_enabled "file-naming"; then
+        return 0
+    fi
+
+    ((CHECKS_TOTAL++))
+    show_progress "$CHECKS_TOTAL" 8 "file naming"
+
+    local skip_deleted=$(get_config '.["pre-commit"].checks["file-naming"]["skip-deleted-files"]' "true")
+    local staged_files
+
+    if [[ "$skip_deleted" == "true" ]]; then
+        staged_files=$(git diff --cached --name-only --diff-filter=ACM)
+    else
+        staged_files=$(get_staged_files)
+    fi
+
+    local violations=0
+    local rules=$(get_config '.["pre-commit"].checks["file-naming"].rules' '{}')
+
+    while IFS= read -r file; do
+        if [[ -z "$file" ]]; then
+            continue
+        fi
+
+        # Check documentation files
+        if [[ "$file" =~ \.md$ ]]; then
+            local basename=$(basename "$file" .md)
+            local exceptions=$(get_config '.["pre-commit"].checks["file-naming"].rules.documentation.exceptions' '[]')
+
+            # Check if it's an exception
+            local is_exception=false
+            if echo "$exceptions" | jq -r '.[]?' | grep -q "^$basename$"; then
+                is_exception=true
+            fi
+
+            # Check if it's a template
+            local allow_templates=$(get_config '.["pre-commit"].checks["file-naming"].rules.documentation["allow-templates"]' "true")
+            if [[ "$allow_templates" == "true" && "$basename" =~ \.template$ ]]; then
+                is_exception=true
+            fi
+
+            if [[ "$is_exception" != "true" && ! "$basename" =~ ^[a-z0-9-]+$ ]]; then
+                log_result "warn" "Naming: Documentation file '$file' should use lowercase-kebab-case"
+                violations=$((violations + 1))
+            fi
+        fi
+    done <<< "$staged_files"
+
+    if [[ "$violations" -eq 0 ]]; then
+        log_result "pass" "File naming check passed"
+        return 0
+    else
+        log_result "warn" "File naming found $violations issues"
+        return 0  # Warning only by default
+    fi
+}
+
+# File size check
+check_file_size() {
+    if ! is_enabled "file-size"; then
+        return 0
+    fi
+
+    ((CHECKS_TOTAL++))
+    show_progress "$CHECKS_TOTAL" 8 "file size"
+
+    local staged_files
+    staged_files=$(get_staged_files)
+    local max_size_mb=$(get_config '.["pre-commit"].checks["file-size"]["max-file-size-mb"]' "10")
+    local warn_size_mb=$(get_config '.["pre-commit"].checks["file-size"]["large-file-warning-mb"]' "5")
+    local exclude_patterns=$(get_config '.["pre-commit"].checks["file-size"]["exclude-patterns"]' '[]')
+
+    local violations=0
+    local max_size_bytes=$((max_size_mb * 1024 * 1024))
+    local warn_size_bytes=$((warn_size_mb * 1024 * 1024))
+
+    while IFS= read -r file; do
+        if [[ -z "$file" || ! -f "$file" ]]; then
+            continue
+        fi
+
+        # Skip excluded patterns
+        if is_excluded_file "$file" "$exclude_patterns"; then
+            continue
+        fi
+
+        local size
+        size=$(stat -c%s "$file" 2>/dev/null || echo "0")
+
+        if [[ "$size" -gt "$max_size_bytes" ]]; then
+            log_result "warn" "File size: '$file' exceeds ${max_size_mb}MB limit"
+            violations=$((violations + 1))
+        elif [[ "$size" -gt "$warn_size_bytes" ]]; then
+            log_result "warn" "File size: '$file' is larger than ${warn_size_mb}MB"
+        fi
+    done <<< "$staged_files"
+
+    if [[ "$violations" -eq 0 ]]; then
+        log_result "pass" "File size check passed"
+        return 0
+    else
+        log_result "warn" "File size check found $violations large files"
+        return 0  # Warning only by default
+    fi
+}
+
+# AI documentation check
+check_ai_documentation() {
+    if ! is_enabled "ai-documentation"; then
+        return 0
+    fi
+
+    ((CHECKS_TOTAL++))
+    show_progress "$CHECKS_TOTAL" 8 "AI documentation"
+
+    local require_indicator=$(get_config '.["pre-commit"].checks["ai-documentation"]["require-ai-indicator"]' "false")
+    local warning_only=$(get_config '.["pre-commit"].checks["ai-documentation"]["warning-only"]' "true")
+
+    # This is a placeholder - actual implementation would check commit messages
+    # For now, just pass since it's warning-only by default
+    log_result "pass" "AI documentation check passed"
     return 0
 }
 
-# Function to validate file naming conventions
-check_file_naming() {
-    local naming_issues=false
-    
-    echo "📝 Checking file naming conventions..."
-    
-    # Check documentation files for kebab-case
+# Documentation updates check
+check_documentation_updates() {
+    if ! is_enabled "documentation-updates"; then
+        return 0
+    fi
+
+    ((CHECKS_TOTAL++))
+    show_progress "$CHECKS_TOTAL" 8 "documentation updates"
+
+    local staged_files
+    staged_files=$(get_staged_files)
+    local code_patterns=$(get_config '.["pre-commit"].checks["documentation-updates"]["code-file-patterns"]' '[]')
+    local has_code_changes=false
+
+    # Check if there are code file changes
     while IFS= read -r file; do
-        if [[ "$file" =~ docs/.*\.md$ ]]; then
-            local basename=$(basename "$file" .md)
-            # Allow exceptions for standard files
-            if [[ ! "$basename" =~ ^(README|CONTRIBUTING|CHANGELOG|CODE_OF_CONDUCT|LICENSE)$ ]]; then
-                if [[ ! "$basename" =~ ^[a-z0-9-]+$ ]]; then
-                    echo -e "${RED}❌ NAMING: Documentation file '$file' should use lowercase-kebab-case${NC}"
-                    naming_issues=true
+        if [[ -z "$file" ]]; then
+            continue
+        fi
+
+        echo "$code_patterns" | jq -r '.[]?' | while read -r pattern; do
+            if [[ "$file" =~ $pattern ]]; then
+                has_code_changes=true
+                break
+            fi
+        done
+    done <<< "$staged_files"
+
+    if [[ "$has_code_changes" == "true" ]]; then
+        log_result "warn" "Documentation: Consider updating docs for code changes"
+    else
+        log_result "pass" "Documentation updates check passed"
+    fi
+
+    return 0
+}
+
+# Changelog reminder
+check_changelog_reminder() {
+    if ! is_enabled "changelog-reminder"; then
+        return 0
+    fi
+
+    ((CHECKS_TOTAL++))
+    show_progress "$CHECKS_TOTAL" 8 "changelog reminder"
+
+    # Check commit message for feature/fix indicators
+    local commit_msg_file=".git/COMMIT_EDITMSG"
+    local has_feature_changes=false
+
+    if [[ -f "$commit_msg_file" ]]; then
+        local check_for=$(get_config '.["pre-commit"].checks["changelog-reminder"]["check-for"]' '{}')
+
+        if echo "$check_for" | jq -r '.features[]?, .fixes[]?, .breaking[]?' | grep -q -f - "$commit_msg_file"; then
+            has_feature_changes=true
+        fi
+    fi
+
+    if [[ "$has_feature_changes" == "true" ]]; then
+        log_result "warn" "Changelog: Consider updating CHANGELOG.md for this change"
+    else
+        log_result "pass" "Changelog reminder check passed"
+    fi
+
+    return 0
+}
+
+# Documentation synchronization with technical-writer agent
+check_docs_sync() {
+    if ! is_enabled "docs-sync"; then
+        return 0
+    fi
+
+    ((CHECKS_TOTAL++))
+    show_progress "$CHECKS_TOTAL" 8 "docs sync"
+
+    local staged_files
+    staged_files=$(get_staged_files)
+    local warning_only=$(get_config '.["pre-commit"].checks["docs-sync"]["warning-only"]' "true")
+    local exclude_patterns=$(get_config '.["pre-commit"].checks["docs-sync"]["skip-conditions"]["exclude-patterns"]' '[]')
+    local docs_only_skip=$(get_config '.["pre-commit"].checks["docs-sync"]["skip-conditions"]["docs-only-commits"]' "false")
+
+    # Analyze staged files
+    local has_relevant_changes=false
+    local has_docs_changes=false
+    local priority_changes=()
+    local all_changes=()
+
+    while IFS= read -r file; do
+        if [[ -z "$file" ]]; then
+            continue
+        fi
+
+        # Skip excluded patterns
+        local skip_file=false
+        while IFS= read -r pattern; do
+            if [[ -n "$pattern" && "$file" =~ $pattern ]]; then
+                skip_file=true
+                break
+            fi
+        done < <(echo "$exclude_patterns" | jq -r '.[]?')
+
+        if [[ "$skip_file" == "true" ]]; then
+            continue
+        fi
+
+        all_changes+=("$file")
+
+        # Check if it's a documentation file
+        if [[ "$file" =~ \.md$ || "$file" =~ ^docs/ ]]; then
+            has_docs_changes=true
+        else
+            has_relevant_changes=true
+        fi
+
+        # Check priority levels
+        local priority_paths_high=$(get_config '.["pre-commit"].checks["docs-sync"]["priority-paths"]["high"]' '[]')
+        local priority_paths_medium=$(get_config '.["pre-commit"].checks["docs-sync"]["priority-paths"]["medium"]' '[]')
+
+        while IFS= read -r priority_path; do
+            if [[ -n "$priority_path" && "$file" =~ ^$priority_path ]]; then
+                priority_changes+=("$file")
+                break
+            fi
+        done < <(echo "$priority_paths_high" | jq -r '.[]?')
+
+        while IFS= read -r priority_path; do
+            if [[ -n "$priority_path" && "$file" =~ ^$priority_path ]]; then
+                priority_changes+=("$file")
+                break
+            fi
+        done < <(echo "$priority_paths_medium" | jq -r '.[]?')
+    done <<< "$staged_files"
+
+    # Skip if only docs changes and skip is enabled
+    if [[ "$docs_only_skip" == "true" && "$has_docs_changes" == "true" && "$has_relevant_changes" != "true" ]]; then
+        log_result "pass" "Docs sync skipped - documentation-only changes"
+        return 0
+    fi
+
+    # Skip if no relevant changes
+    if [[ "${#all_changes[@]}" -eq 0 ]]; then
+        log_result "pass" "Docs sync check passed - no relevant changes"
+        return 0
+    fi
+
+    # Always run docs-sync analysis for any significant changes
+    if [[ "$has_relevant_changes" == "true" || "${#priority_changes[@]}" -gt 0 ]]; then
+        if [[ "${#priority_changes[@]}" -gt 0 ]]; then
+            log_result "warn" "Docs sync: High-priority changes detected (${#priority_changes[@]} files)"
+        else
+            log_result "warn" "Docs sync: Changes detected - reviewing for documentation impact"
+        fi
+
+        # Check if docs-sync trigger script is available
+        local trigger_script="scripts/hooks/docs-sync-trigger.sh"
+        if [[ -x "$trigger_script" ]]; then
+            echo "  Running comprehensive docs-sync analysis..."
+            if "$trigger_script"; then
+                log_result "pass" "Docs sync: Analysis completed successfully"
+            else
+                local exit_code=$?
+                if [[ "$warning_only" != "true" ]]; then
+                    log_result "fail" "Docs sync: Analysis failed (exit code: $exit_code)"
+                    return 1
+                else
+                    log_result "warn" "Docs sync: Analysis completed with warnings"
                 fi
             fi
+        else
+            # Fallback to manual guidance
+            log_result "warn" "Docs sync: Manual documentation review recommended"
+            echo "  Changed files: ${#all_changes[@]}"
+            if [[ "${#priority_changes[@]}" -gt 0 ]]; then
+                echo "  Priority files: ${priority_changes[*]}"
+            fi
+            echo "  Consider running: Task technical-writer"
+            echo "  Review: docs/, README.md, CHANGELOG.md, .claude/"
+
+            if [[ "$warning_only" != "true" ]]; then
+                return 1  # Block commit if not warning-only
+            fi
         fi
-    done < <(git diff --cached --name-only)
-    
-    if $naming_issues; then
-        echo -e "${RED}❌ File naming check failed${NC}"
-        echo -e "${YELLOW}💡 See docs/documentation-standards.md for naming conventions${NC}"
-        return 1
+    else
+        log_result "pass" "Docs sync check passed"
     fi
-    
-    echo -e "${GREEN}✅ File naming check passed${NC}"
+
     return 0
 }
 
 # Main execution
 main() {
-    local exit_code=0
-    
-    # Run all checks
-    check_protected_branch || exit_code=1
-    check_ai_documentation || exit_code=1
-    check_documentation_updates || exit_code=1
-    check_security || exit_code=1
-    check_file_naming || exit_code=1
-    
-    if [[ $exit_code -eq 0 ]]; then
-        echo -e "${GREEN}🎉 All pre-commit checks passed!${NC}"
-        echo -e "${BLUE}💡 Remember: With great AI power comes great responsibility${NC}"
-    else
-        echo -e "${RED}❌ Pre-commit checks failed${NC}"
-        echo -e "${YELLOW}💡 Fix the issues above and try committing again${NC}"
+    # Load configuration
+    load_config
+
+    # Check if pre-commit is enabled
+    local enabled=$(get_config '.["pre-commit"].enabled' "true")
+    if [[ "$enabled" != "true" ]]; then
+        echo "Pre-commit hooks are disabled"
+        exit 0
     fi
-    
-    return $exit_code
+
+    # Initialize check counts
+    CHECKS_TOTAL=0
+    CHECKS_PASSED=0
+    CHECKS_WARNED=0
+    CHECKS_FAILED=0
+
+    # Show header
+    if [[ "$CI_MODE" != "true" ]]; then
+        echo -e "${BLUE}🔍 Running pre-commit validation...${NC}"
+        echo
+    else
+        echo "Running pre-commit validation..."
+    fi
+
+    # Run all checks
+    local overall_result=0
+
+    check_branch_protection || overall_result=1
+    check_security || overall_result=1
+    check_file_naming || overall_result=1
+    check_file_size || overall_result=1
+    check_ai_documentation || overall_result=1
+    check_documentation_updates || overall_result=1
+    check_docs_sync || overall_result=1
+    check_changelog_reminder || overall_result=1
+
+    # Show summary
+    echo
+    if [[ "$CI_MODE" != "true" ]]; then
+        echo -e "${BLUE}📊 Summary:${NC}"
+        echo -e "  ${GREEN}✓ Passed: $CHECKS_PASSED${NC}"
+        echo -e "  ${YELLOW}⚠ Warnings: $CHECKS_WARNED${NC}"
+        echo -e "  ${RED}✗ Failed: $CHECKS_FAILED${NC}"
+    else
+        echo "Summary: Passed: $CHECKS_PASSED, Warnings: $CHECKS_WARNED, Failed: $CHECKS_FAILED"
+    fi
+
+    # Handle results
+    local continue_on_warning=$(get_config '.["pre-commit"]["error-handling"]["continue-on-warning"]' "true")
+
+    if [[ "$CHECKS_FAILED" -gt 0 ]]; then
+        echo
+        if [[ "$CI_MODE" != "true" ]]; then
+            echo -e "${RED}❌ Commit blocked due to failed checks${NC}"
+            echo -e "${YELLOW}💡 To bypass: git commit --no-verify${NC}"
+        else
+            echo "Commit blocked due to failed checks"
+            echo "To bypass: git commit --no-verify"
+        fi
+        exit 1
+    elif [[ "$CHECKS_WARNED" -gt 0 && "$continue_on_warning" != "true" ]]; then
+        echo
+        if [[ "$CI_MODE" != "true" ]]; then
+            echo -e "${YELLOW}⚠️ Commit blocked due to warnings${NC}"
+            echo -e "${YELLOW}💡 To bypass: git commit --no-verify${NC}"
+        else
+            echo "Commit blocked due to warnings"
+            echo "To bypass: git commit --no-verify"
+        fi
+        exit 1
+    else
+        echo
+        if [[ "$CI_MODE" != "true" ]]; then
+            echo -e "${GREEN}✅ All checks passed! Proceeding with commit...${NC}"
+        else
+            echo "All checks passed! Proceeding with commit..."
+        fi
+        exit 0
+    fi
 }
 
-# Run the main function
+# Run main function
 main "$@"

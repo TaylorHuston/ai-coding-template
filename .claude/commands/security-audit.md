@@ -1,12 +1,7 @@
 ---
-command: "/security-audit"
 description: OWASP-compliant security assessment with vulnerability remediation
-category: "Security & Compliance"
-purpose: "OWASP-compliant security assessment with vulnerability remediation"
-wave-enabled: true
-performance-profile: "complex"
 argument-hint: --scope SCOPE --depth DEPTH --compliance FRAMEWORK --output FORMAT
-allowed-tools: Read, Bash, Grep, Glob, TodoWrite, Task
+allowed-tools: ["Read", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
 model: opus
 ---
 

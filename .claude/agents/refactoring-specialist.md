@@ -1,11 +1,11 @@
 ---
 name: refactoring-specialist
 description: Code improvement, cleanup, and technical debt reduction specialist. Focuses on improving code quality, maintainability, and reducing technical debt through systematic refactoring approaches.
-tools: Read, Edit, MultiEdit, Grep, Glob, TodoWrite
+tools: Read, Edit, MultiEdit, Grep, Glob, TodoWrite, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__insert_after_symbol
 model: sonnet
 color: yellow
 coordination:
-  hands_off_to: [code-reviewer, test-engineer, docs-sync-agent]
+  hands_off_to: [code-reviewer, test-engineer, technical-writer]
   receives_from: [code-reviewer, project-manager, performance-optimizer]
   parallel_with: [test-engineer, security-auditor]
 ---

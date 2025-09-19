@@ -1,0 +1,93 @@
+project_context:
+  issue_id: SAMPLE-AUTH-001
+  feature: User Authentication System
+  feature_doc: docs/technical/features/sample-user-authentication.md
+  architecture_doc: docs/technical/architecture/auth-system-architecture.md
+  status: planning_complete
+  phase: P1.1.0
+  last_updated: 2025-09-17T12:00:00Z
+
+agent_handoffs:
+  - agent: context-analyzer
+    timestamp: 2025-09-17T11:30:00Z
+    task: Initial context analysis and feature review
+    key_findings:
+      - Feature requires JWT-based authentication
+      - External dependencies on Redis and email service
+      - Security requirements include rate limiting and password hashing
+      - Performance target is < 200ms login response time
+    recommendations:
+      - Use bcrypt for password hashing
+      - Implement Redis for session storage and rate limiting
+      - Consider OAuth integration for future enhancement
+    next_agent: database-specialist
+
+  - agent: database-specialist
+    timestamp: 2025-09-17T11:45:00Z
+    task: Database schema design for authentication
+    status: pending
+    context_needed:
+      - User data requirements from feature context
+      - Security constraints for password storage
+      - Indexing strategy for authentication queries
+    deliverables:
+      - User table schema with security fields
+      - Migration scripts for authentication tables
+      - Performance optimization recommendations
+
+current_task:
+  id: P1.1.0
+  description: Database Schema Design
+  assigned_agent: database-specialist
+  status: ready
+  context: |
+    Design user authentication database schema based on feature requirements.
+    Must include secure password storage, email verification, and session management.
+    Consider indexing for performance and GDPR compliance for data handling.
+
+technical_decisions:
+  - decision: JWT token strategy
+    status: pending_architecture_phase
+    considerations:
+      - Token expiration strategy
+      - Refresh token implementation
+      - Storage location (httpOnly cookies vs localStorage)
+
+  - decision: Password security
+    status: decided
+    choice: bcrypt with 12 rounds
+    rationale: Industry standard with good security/performance balance
+
+  - decision: Rate limiting strategy
+    status: pending
+    options:
+      - Redis-based sliding window
+      - In-memory token bucket
+      - Database-based counting
+
+integration_points:
+  external_services:
+    - redis: Session storage and rate limiting
+    - email_service: Password reset and verification emails
+    - monitoring: Authentication event logging
+
+  internal_systems:
+    - user_management: Profile data integration
+    - authorization: Role-based access control (future)
+    - logging: Security event tracking
+
+quality_requirements:
+  performance:
+    - login_response_time: < 200ms
+    - registration_response_time: < 500ms
+    - concurrent_users: 1000+ simultaneous sessions
+
+  security:
+    - password_hashing: bcrypt with salt
+    - rate_limiting: 5 attempts per 10 minutes
+    - token_expiration: 30 days with refresh
+
+  reliability:
+    - uptime: 99.9%
+    - error_rate: < 0.1%
+    - data_backup: Automated user data backup

@@ -1,7 +1,7 @@
 ---
 name: context-analyzer
 description: AUTOMATICALLY INVOKED before complex tasks to gather comprehensive project context including documentation, architecture patterns, existing code, and project status. This agent MUST BE USED PROACTIVELY before implementing features, making architectural changes, or starting multi-step development work. Provides enriched context to other agents for better decision-making.
-tools: Read, Grep, Glob, TodoWrite
+tools: Read, Grep, Glob, TodoWrite, mcp__serena__get_symbols_overview, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__search_for_pattern
 model: haiku
 color: green
 coordination:
@@ -30,6 +30,8 @@ Priority 1 (Always Read):
 - CLAUDE.md - AI assistant instructions and patterns
 - docs/technical.md - System architecture and specifications
 - README.md - Project overview and setup
+- docs/vision.md / project-vision.md - Project vision and goals
+- docs/vision-template.md - Vision template for new projects
 
 Priority 2 (Conditional):
 - package.json / requirements.txt - Dependencies and scripts
@@ -49,6 +51,12 @@ Framework Detection:
 - Identify primary framework (React, Django, Express, etc.)
 - Find framework-specific patterns and conventions
 - Locate framework configuration files
+
+Semantic Analysis (via Serena):
+- Use mcp__serena__get_symbols_overview for intelligent code structure analysis
+- Analyze component relationships and dependencies semantically
+- Understand data flow patterns through semantic code analysis
+- Discover usage patterns and architectural conventions
 ```
 
 ### 2. Context Synthesis Process
@@ -61,17 +69,25 @@ project_analysis:
     framework: [detected from dependencies/structure]
     database: [detected from config/dependencies]
     testing_framework: [detected from test files]
-    
+
   project_maturity:
     development_phase: [startup/growth/maintenance]
     code_quality: [estimated from patterns]
     documentation_health: [from docs/ analysis]
     test_coverage: [estimated from test structure]
-    
+
   current_priorities:
     active_work: [from STATUS.md]
     immediate_goals: [from STATUS.md]
     blocking_issues: [from STATUS.md]
+
+  vision_context:
+    problem_statement: [from vision document]
+    solution_approach: [from vision document]
+    target_audience: [from vision document]
+    core_features: [from vision document]
+    success_metrics: [from vision document]
+    differentiators: [from vision document]
 ```
 
 #### Step 2: Pattern Recognition
@@ -125,6 +141,12 @@ enriched_context:
 ```markdown
 ## Project Context Summary for [Agent Name]
 
+### Vision Alignment
+- **Problem Being Solved**: [From vision document]
+- **Target Audience**: [From vision document]
+- **Key Differentiators**: [From vision document]
+- **Success Metrics**: [From vision document]
+
 ### Technology Stack
 - **Primary**: [Language/Framework]
 - **Database**: [Database technology]
@@ -152,6 +174,7 @@ enriched_context:
 - [Specific technical constraints]
 - [Team/process constraints]
 - [Performance/security requirements]
+- [Vision-driven requirements and priorities]
 ```
 
 ### For Architecture Agents
@@ -226,14 +249,38 @@ find . -type d -name "*test*" -o -name "*spec*" | head -5
 
 ### Pattern Discovery
 ```bash
-# Common naming patterns
+# Traditional text-based discovery
 find . -name "*.js" -o -name "*.ts" -o -name "*.py" | head -20 | xargs basename -s
-
-# Import/export patterns
 grep -r "import\|require\|from" --include="*.js" --include="*.ts" . | head -10
-
-# Configuration patterns
 find . -name ".*rc" -o -name "*.config.*" -o -name "config.*" | head -10
+```
+
+### Semantic Pattern Discovery (Enhanced with Serena)
+```yaml
+semantic_analysis_workflow:
+  code_structure_analysis:
+    - Use mcp__serena__get_symbols_overview on key source files
+    - Identify main classes, functions, and modules semantically
+    - Map component hierarchies and relationships
+    - Understand inheritance and composition patterns
+
+  dependency_analysis:
+    - Use mcp__serena__find_referencing_symbols to map usage patterns
+    - Trace data flow through semantic relationships
+    - Identify coupling and cohesion patterns
+    - Map API usage and integration points
+
+  architectural_pattern_detection:
+    - Use mcp__serena__search_for_pattern for architectural patterns
+    - Detect MVC, MVVM, Clean Architecture implementations
+    - Identify design patterns (Factory, Observer, Strategy, etc.)
+    - Map service layer and business logic organization
+
+  integration_pattern_analysis:
+    - Analyze database integration patterns through semantic search
+    - Map API client/server patterns and implementations
+    - Understand error handling and logging patterns
+    - Identify testing and mocking strategies
 ```
 
 ## Integration with Agent Workflows

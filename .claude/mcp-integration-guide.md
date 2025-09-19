@@ -45,11 +45,24 @@ MCP (Model Context Protocol) servers extend Claude Code's capabilities by provid
 - **Tools**: `mcp__playwright__browser_*` (navigate, click, type, wait_for, etc.)
 - **Best For**: Web applications, UI testing
 
-#### **magic** - UI Component Generation
-- **Purpose**: Modern UI component generation with design system integration
-- **Use Cases**: Component development, design system implementation, responsive design
-- **Tools**: `mcp__magic__*`
-- **Best For**: Frontend projects, UI-heavy applications
+#### **serena** - Semantic Code Intelligence
+- **Purpose**: Semantic code analysis using Language Server Protocol (LSP)
+- **Use Cases**:
+  - Precise symbol location and analysis
+  - Impact assessment for code changes
+  - Token-efficient code understanding
+  - Cross-language semantic operations
+- **Tools**:
+  - `mcp__serena__find_symbol` - Locate symbols by name or pattern
+  - `mcp__serena__find_referencing_symbols` - Find all references to a symbol
+  - `mcp__serena__insert_after_symbol` - Context-aware code insertion
+- **Benefits**:
+  - **Token Efficiency**: Only retrieve relevant code sections instead of entire files
+  - **Semantic Precision**: LSP-based understanding of code relationships
+  - **Multi-Language Support**: Works with any language that has LSP support
+  - **Architectural Intelligence**: Understand code structure and dependencies
+- **Best For**: Large codebases, refactoring, architectural analysis, complex projects
+- **Supported Languages**: TypeScript/JavaScript, Python, Java, Go, Rust, C#, and more
 
 ## Configuration Setup
 
@@ -73,9 +86,8 @@ Edit `.claude/settings.local.json` to:
 ```json
 "enabledMcpjsonServers": [
   "context7",
-  "sequential-thinking", 
+  "sequential-thinking",
   "gemini-cli",
-  "magic",
   "playwright"
 ]
 ```
@@ -95,9 +107,8 @@ Edit `.claude/settings.local.json` to:
 ```json
 "enabledMcpjsonServers": [
   "context7",
-  "sequential-thinking", 
+  "sequential-thinking",
   "gemini-cli",
-  "magic",
   "playwright",
   "database-server"
 ]
@@ -161,7 +172,6 @@ Consider: service boundaries, data consistency, communication patterns, failure 
 #### **Frontend Development**
 ```json
 "allow": [
-  "mcp__magic__*",
   "mcp__playwright__browser_*",
   "WebFetch(domain:developer.mozilla.org)"
 ]
@@ -255,10 +265,9 @@ Error: Google Cloud authentication required
 
 ### Component Development Template
 ```typescript
-// 1. Magic for component generation
-// 2. Context7 for framework best practices
-// 3. Playwright for testing integration
-// 4. Gemini validation for accessibility and performance
+// 1. Context7 for framework best practices and component patterns
+// 2. Playwright for testing integration
+// 3. Gemini validation for accessibility and performance
 ```
 
 ---
