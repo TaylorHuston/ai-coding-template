@@ -15,7 +15,7 @@
 ### Option 1: NPM Package (Recommended)
 
 ```bash
-npx @ai-template/core init my-project
+npx ai-assisted-template init my-project
 cd my-project
 ```
 
@@ -37,10 +37,10 @@ rm -rf .git && git init
 
 ```bash
 # Check template status
-ai-template status
+npx ai-assisted-template status
 
 # Validate installation
-ai-template validate
+npx ai-assisted-template validate
 
 # See available commands
 ls .claude/commands/
