@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.5.1] - 2025-09-19
+
+### Fixed
+
+- **NPM Binary Execution Issue**: Fixed CLI binary not executable in published NPM package
+  - Added execute permissions to `cli/index-npm.js` (changed from 644 to 755)
+  - Resolved "ai-template: not found" error when using `npx ai-assisted-template` commands
+  - NPM package now properly executes CLI commands: init, status, validate, info
+  - Binary file now includes correct shebang and executable permissions for cross-platform compatibility
+  - Confirmed working with `npx ai-assisted-template@0.5.1 init` command
+
 ## [0.5.0] - 2025-09-19
 
 ### Fixed
