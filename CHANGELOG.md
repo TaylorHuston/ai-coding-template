@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.4.1] - 2025-09-19
+
+### Fixed
+
+- **Critical NPM Package Installation Issue**: Fixed FileCategorizer baseDir handling for NPM package installations
+  - Resolved issue where template installation was copying 0 files instead of expected 367 files
+  - Fixed template path detection to correctly scan NPM package directory instead of user's working directory
+  - Added baseDir parameter to FileCategorizer constructor and updated all file scanning methods
+  - NPM package now successfully installs complete template with all 367 files (306 copied + 60 merged + 1 configured)
+  - Confirmed working with `npx ai-assisted-template@0.4.1 init my-project` command
+  - Package name changed from `@ai-template/core` to `ai-assisted-template` for simpler distribution
+
 ## [0.4.0] - 2025-09-19
 
 ### Added

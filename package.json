@@ -1,6 +1,6 @@
 {
   "name": "ai-assisted-template",
-  "version": "0.4.3",
+  "version": "0.4.1",
   "description": "Comprehensive AI-assisted development template with Claude Code integration",
   "main": "cli/index-npm.js",
   "bin": {
@@ -51,6 +51,7 @@
   },
   "preferGlobal": true,
   "dependencies": {
+    "ai-assisted-template": "^0.4.3",
     "commander": "^9.0.0"
   },
   "devDependencies": {
