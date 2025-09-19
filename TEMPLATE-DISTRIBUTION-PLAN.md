@@ -29,8 +29,8 @@ This plan implements a comprehensive template distribution system while preservi
 - [ ] **1.2.1** Create `example/` directory for user testing scenarios
 - [ ] **1.2.2** Add `.templateignore` file for distribution exclusions
 - [ ] **1.2.3** Organize template-specific documentation in `docs/template/`
-- [ ] **1.2.4** Create `cli/` directory for distribution tools
-- [ ] **1.2.5** Add `scripts/template/` for template management automation
+- [x] **1.2.4** Create `cli/` directory for distribution tools ✅
+- [x] **1.2.5** Add `scripts/template/` for template management automation ✅
 
 ### 1.3 Documentation Foundation
 - [ ] **1.3.1** Create `README-TEMPLATE.md` for end users
