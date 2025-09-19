@@ -44,6 +44,7 @@
     "CLAUDE.md",
     ".gitignore",
     ".markdownlint.json",
+    "README.md",
     "README-TEMPLATE.md"
   ],
   "engines": {
@@ -51,7 +52,6 @@
   },
   "preferGlobal": true,
   "dependencies": {
-    "ai-assisted-template": "^0.4.3",
     "commander": "^9.0.0"
   },
   "devDependencies": {

@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Confirmed working with `npx ai-assisted-template@0.4.1 init my-project` command
   - Package name changed from `@ai-template/core` to `ai-assisted-template` for simpler distribution
 
+- **NPM Package Documentation**: Updated README.md with correct NPM package name and commands
+  - Fixed installation command from `npx @ai-template/core` to `npx ai-assisted-template`
+  - Updated status and validate commands to use NPM package format
+  - Added README.md to NPM package files for proper documentation display
+  - Removed circular dependency from package.json
+
 ## [0.4.0] - 2025-09-19
 
 ### Added
