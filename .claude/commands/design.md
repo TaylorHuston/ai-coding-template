@@ -7,7 +7,7 @@ target_audience: ["ai-assistants"]
 document_type: "command"
 tags: ["workflow", "design", "vision", "features", "non-technical", "epic"]
 allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "TodoWrite"]
-argument-hint: "[--vision|--epic \"name\"|--task \"name\" [--epic \"epic-name\"]|--review]"
+argument-hint: "[--brief|--epic \"name\"|--task \"name\" [--epic \"epic-name\"]|--review]"
 description: "Create and document non-technical project aspects from vision to epic structure with user stories"
 model: "claude-opus-4-1"
 ---
@@ -19,7 +19,7 @@ model: "claude-opus-4-1"
 ## Usage
 
 ```bash
-/design --vision              # Create/update project vision
+/design --brief               # Create/update project brief
 /design --epic "name"         # Create epic-driven development structure
 /design --task "name"         # Create user story/task within current or specified epic
 /design --task "name" --epic "epic-name"  # Create task in specific epic
@@ -32,7 +32,7 @@ model: "claude-opus-4-1"
 
 **Core Outcomes**:
 
-1. **Vision Documents**: Project purpose, goals, and success metrics
+1. **Project Brief Documents**: Project purpose, goals, and success metrics
 2. **Epic Structure**: Organized development units with clear scope and business context
 3. **User Stories**: Individual TASK files with user stories and acceptance criteria
 4. **Business Context**: Problem statements, target audience, and value propositions
@@ -43,7 +43,7 @@ model: "claude-opus-4-1"
 
 **Flexible scope design** - use for any level of non-technical planning:
 
-- **Project Vision**: Overall product strategy and goals
+- **Project Brief**: Overall product strategy and goals
 - **Epic Development**: Organized work units that align with project management tools
 - **User Stories**: Individual tasks with user workflows and acceptance criteria
 - **Business Requirements**: User needs, constraints, and success criteria
@@ -53,14 +53,14 @@ model: "claude-opus-4-1"
 
 ## Design Levels
 
-- **Vision**: Problem statement, solution approach, target audience, success metrics
+- **Brief**: Problem statement, solution approach, target audience, success metrics
 - **Epic**: Organized work units with scope, planned tasks, and external PM tool links
 - **Task**: Individual user stories with acceptance criteria and business value
 - **Requirements Only**: No implementation details (those belong in `/plan`)
 
 ## File Structure
 
-**Vision**: `docs/vision.md` - Problem, solution, audience, success metrics
+**Brief**: `docs/project-brief.md` - Problem, solution, audience, success metrics
 
 **Epic**: `epics/[name]/EPIC.md` - Overview, scope, planned tasks, external refs, status management, dependencies
 
@@ -86,7 +86,7 @@ model: "claude-opus-4-1"
 
 **Flexible Usage**:
 
-- Start new projects with vision-level design
+- Start new projects with project-brief-level design
 - Add features with feature-level design
 - Break down complex features with story-level design
 - Use at any granularity that makes sense for your project
@@ -99,7 +99,7 @@ model: "claude-opus-4-1"
 - Specific target users and use cases
 - Measurable success criteria or acceptance criteria
 - Actionable requirements for implementation
-- Alignment between vision, features, and stories
+- Alignment between project brief, features, and stories
 
 **Quality Indicators**:
 
@@ -143,7 +143,7 @@ model: "claude-opus-4-1"
 
 ## Quick Examples
 
-**Create project vision**: `/design --vision`
+**Create project brief**: `/design --brief`
 **Create epic with planned tasks**: `/design --epic "user-authentication"`
 **Add user story to epic**: `/design --task "User Registration" --epic "user-authentication"`
 

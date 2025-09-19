@@ -6,9 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+- **Terminology Standardization**: Unified project planning terminology from "vision" to "project-brief"
+  - Updated `/design --vision` to `/design --brief` for improved clarity and consistency
+  - Renamed vision-strategist agent to brief-strategist agent
+  - Updated all template files: vision.template.md → project-brief.template.md
+  - Standardized all documentation references to use "project-brief" terminology
+  - Updated workflow scripts and validation tools to use consistent naming
+
 ## [0.3.0] - 2025-09-18
 
-### Added
+### Added in v0.3.0
 
 - **Epic-Driven Workflow**: New epic-driven development workflow with progressive task discovery
 
@@ -63,15 +72,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [0.2.0] - 2025-09-18
 
-### Added
+### Added in v0.2.0
 
 - Example app vision document for multi-user todo application
 - Template validation project initiated through /vision workflow
 - Complete vision framework with success metrics and feature definitions
 
-### Fixed
+### Fixed in v0.2.0
 
-### Changed
+### Changed in v0.2.0
 
 - **MAJOR**: Consolidated `docs-sync-agent` into `technical-writer` agent for streamlined documentation workflow
   - Single comprehensive documentation agent handling creation, maintenance, and synchronization
@@ -86,6 +95,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [0.1.0] - 2025-09-18
 
-### Added
+### Added in v0.1.0
 
 - Initial release version after much random prototyping and experimentation

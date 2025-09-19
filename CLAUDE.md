@@ -1,7 +1,7 @@
 ---
 version: "0.2.0"
 created: "2025-08-21"
-last_updated: "2025-09-17"
+last_updated: "2025-09-18"
 status: "active"
 target_audience: ["ai-assistants"]
 document_type: "specification"
@@ -18,7 +18,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 - **Project Structure**: Dual-purpose repository containing both AI workflow template (root) and example application code (`src/`)
 - **Tech Stack**: [Add the high level details of your tech stack here]
 - **External Links**: Project Management: [Add link to Jira/Linear/etc], Wiki: [Add link to Confluence/Notion/etc]
-- **Project Vision**: `docs/vision.md` or `project-vision.md` - Contains problem statement, solution approach, and core features
+- **Project Brief**: `docs/project-brief.md` - Contains problem statement, solution approach, and core features
 - **Documentation Structure**: Three-tier system (docs/technical/, docs/development/, docs/ai-tools/)
 - **Application Code**: All implementation code resides in `src/` following standard project structure
 - **Active Development Context**: `.claude/working/[issue-id]/` contains ephemeral work artifacts

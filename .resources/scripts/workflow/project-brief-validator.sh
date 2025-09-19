@@ -1,7 +1,7 @@
 #!/bin/bash
-# Vision Validation Script
-# Purpose: Validate features, architecture, and plans against project vision
-# Usage: ./scripts/workflow/vision-validator.sh [options]
+# Project Brief Validation Script
+# Purpose: Validate features, architecture, and plans against project brief
+# Usage: ./scripts/workflow/project-brief-validator.sh [options]
 
 set -euo pipefail
 

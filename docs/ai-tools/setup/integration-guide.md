@@ -49,16 +49,19 @@ chmod +x scripts/ai-status.sh
 For teams wanting to slowly adopt AI-assisted development:
 
 #### Phase 1: Core AI Context (Week 1)
+
 - Add `.claude/` directory with essential agents
 - Create `CLAUDE.md`, `STATUS.md`, `docs/technical.md`
 - Start using AI agents for code review
 
 #### Phase 2: Workflow Integration (Week 2-3)
+
 - Add deliverables system for issue tracking
 - Integrate AI status dashboard
 - Use specialized agents for features
 
 #### Phase 3: Full Automation (Week 4+)
+
 - Complete script infrastructure
 - Implement quality gates
 - Team-wide adoption
@@ -217,6 +220,7 @@ echo "## Python Environment
 ## Team Adoption Guide
 
 ### Week 1: Introduction
+
 - Introduce AI agent concept
 - Add basic context files
 - Start with code review agent
@@ -235,6 +239,7 @@ EOF
 ```
 
 ### Week 3: Feature Development
+
 - Use project-manager for planning
 - Implement with specialist agents
 - Review before PR submission
@@ -300,11 +305,13 @@ find scripts/ -name "*.sh" -exec chmod +x {} \;
 ## Success Metrics
 
 ### Week 1
+
 - AI agents recognized by assistant
 - Basic context files working
 - Team aware of new tools
 
 ### Ongoing
+
 - Reduced code review time
 - Improved documentation quality
 - Faster feature development
@@ -328,6 +335,7 @@ find scripts/ -name "*.sh" -exec chmod +x {} \;
 ## Next Steps
 
 After successful integration:
+
 1. Review the [AI Agents Guide](./ai-agents-guide.md)
 2. Read [Common Workflows](./workflows/README.md)
 3. Check [Troubleshooting Guide](./troubleshooting.md)
