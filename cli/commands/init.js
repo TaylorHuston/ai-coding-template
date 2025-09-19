@@ -41,6 +41,9 @@ class TemplateInitializer {
       // Execute the installation
       const results = await this.executeInstallation(plan);
 
+      // Initialize git repository if needed
+      await this.initializeGitRepository();
+
       // Report results
       this.reportResults(results);
 
@@ -253,6 +256,53 @@ class TemplateInitializer {
     }
   }
 
+  async initializeGitRepository() {
+    const { exec } = require('child_process');
+    const { promisify } = require('util');
+    const execAsync = promisify(exec);
+
+    try {
+      // Check if already in a git repository
+      const gitDir = path.join(this.targetDir, '.git');
+      if (fs.existsSync(gitDir)) {
+        if (this.verbose) {
+          console.log('   📝 Git repository already exists, skipping initialization');
+        }
+        return;
+      }
+
+      // Check if we inherited git from parent directory
+      try {
+        await execAsync('git rev-parse --git-dir', { cwd: this.targetDir });
+
+        // We're in a git repo (probably inherited from template)
+        console.log('   🔄 Initializing separate git repository...');
+
+        // Initialize new git repo
+        await execAsync('git init', { cwd: this.targetDir });
+        await execAsync('git add .', { cwd: this.targetDir });
+        await execAsync('git commit -m "Initial commit from AI template"', { cwd: this.targetDir });
+
+        console.log('   ✅ Git repository initialized with initial commit');
+      } catch (error) {
+        // Not in a git repo, initialize normally
+        if (this.verbose) {
+          console.log('   📝 Initializing git repository...');
+        }
+
+        await execAsync('git init', { cwd: this.targetDir });
+        await execAsync('git add .', { cwd: this.targetDir });
+        await execAsync('git commit -m "Initial commit from AI template"', { cwd: this.targetDir });
+
+        console.log('   ✅ Git repository initialized');
+      }
+    } catch (error) {
+      if (this.verbose) {
+        console.log(`   ⚠️  Git initialization failed: ${error.message}`);
+      }
+    }
+  }
+
   reportResults(results) {
     console.log('\n📊 Installation Results:');
     console.log('═'.repeat(50));
@@ -273,6 +323,7 @@ class TemplateInitializer {
       console.log('   2. Customize CLAUDE.md for your project');
       console.log('   3. Update docs/project-brief.md with your project details');
       console.log('   4. Run: ai-template status');
+      console.log('   5. Initialize development mode: ai-template dev enable <template-path>');
     }
   }
 }

@@ -41,9 +41,9 @@
       "files": [
         ".githooks/**/*",
         ".resources/examples/**/*",
-        "STATUS.md",
         "CHANGELOG.md",
-        ".template-manifest.json"
+        ".template-manifest.json",
+        "README-TEMPLATE.md"
       ]
     },
     "configuration": {

@@ -22,7 +22,7 @@ function testCategorization() {
       { path: 'src/example.js', expectedCategory: 'user' },
       { path: 'workbench/misc/test.md', expectedCategory: 'ignore' },
       { path: 'package.json', expectedCategory: 'configuration' },
-      { path: '.template-manifest.json', expectedCategory: 'uncategorized' } // Not in any category yet
+      { path: '.template-manifest.json', expectedCategory: 'optional' } // Users should see the manifest
     ];
 
     console.log('🔍 Testing individual file categorization:');

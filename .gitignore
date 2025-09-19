@@ -73,3 +73,6 @@ temp/
 
 # Local development files
 *.local
+
+# Example installations (generated during testing/development)
+example/

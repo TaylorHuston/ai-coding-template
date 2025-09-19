@@ -56,4 +56,5 @@ coverage/
 test-results/
 
 # Template development artifacts
-TEMPLATE-DISTRIBUTION-PLAN.md
+docs/development/TEMPLATE-DISTRIBUTION-PLAN.md
+README-DEV.md

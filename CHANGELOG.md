@@ -8,6 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
+- **Template Distribution System**: Complete NPM package distribution with development sync capabilities
+  - NPM package `@ai-template/core` for easy template installation via `npx @ai-template/core init`
+  - CLI tools with commands: init, status, validate, dev enable/disable, sync pull/push
+  - File categorization system with 6 categories (core, reference, optional, configuration, user, ignore)
+  - Bidirectional development sync for template contributors working with live projects
+  - Automatic git repository isolation for template installations to prevent inheritance issues
+  - Example directory structure with working web-app template installation (370+ files)
+  - Template manifest system (.template-manifest.json) for intelligent file handling
+  - Successfully tested: template installation, development mode sync (both push/pull directions)
+
 - **Comprehensive Metrics Collection System**: Advanced analytics for commands, agents, and scripts
   - Unified metrics schema tracking execution patterns, performance, and dependencies
   - JSONL-based storage with configurable retention and privacy controls
