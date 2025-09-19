@@ -20,6 +20,17 @@ You are working with an AI coding template repository designed to optimize AI-as
 - YAGNI (You Aren't Going To Need It)
 - SOLID
 - Single Source Of Truth
+- NEVER CLAIM TO HAVE FIXED AN ISSUE OR HAVE COMPLETED A TASK UNTIL YOU HAVE A > 95% LEVEL OF CONFIDENCE THAT YOU'VE DONE SO
+
+## Critical Rules
+
+1. **Commit Approval**: Never commit without explicit user approval first, never release without explicit user approval first, never NPM publish without explicit approval first
+2. **Deletion Approval**: Always ask before any file/branch deletions
+3. **Test First**: Follow strict BDD/TDD guidelines
+4. **Branch First**: Never work directly on main branches
+5. **File Naming**: Use lowercase-kebab-case for documentation files
+6. **No Assumptions**: Always check existing patterns and code, run tests, ask user if any ambiguity
+7. **Ask Questions Often and Early**: Clarify ambiguity before implementation
 
 ## Project Context
 
@@ -40,16 +51,6 @@ You are working with an AI coding template repository designed to optimize AI-as
 **Automation Scripts**: 20+ specialized scripts for documentation, validation, setup, metrics, changelog management
 
 **Complete Reference**: [docs/ai-tools/reference/commands.md](./docs/ai-tools/reference/commands.md)
-
-## Critical Rules
-
-1. **Commit Approval**: Never commit without explicit user approval first
-2. **Deletion Approval**: Always ask before any file/branch deletions
-3. **Test First**: Follow strict BDD/TDD guidelines
-4. **Branch First**: Never work directly on main branches
-5. **File Naming**: Use lowercase-kebab-case for documentation files
-6. **No Assumptions**: Always check existing patterns and code, run tests, ask user if any ambiguity
-7. **Ask Questions Often and Early**: Clarify ambiguity before implementation
 
 ## AI Autonomy Matrix
 
@@ -127,11 +128,13 @@ You are working with an AI coding template repository designed to optimize AI-as
 ### **Tool Selection Priority**
 
 1. **Serena MCP**: Pattern analysis, symbol search, cross-references
+
    - **Use for**: Finding duplicates, analyzing structure, mapping relationships, multi-file changes
    - **Ask**: "Could pattern search reveal this systematically instead of manual analysis?"
    - **Examples**: Consolidating files, finding references, analyzing code structure
 
 2. **Context7 MCP**: Library documentation and examples
+
    - **Use for**: Understanding best practices, finding canonical examples, external patterns
    - **Ask**: "Are there established patterns or documentation for this approach?"
    - **Examples**: API design patterns, framework usage, library integration

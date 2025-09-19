@@ -6,14 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.5.4] - 2025-09-19
+
+### Fixed
+
+- **NPM Package Distribution**: Fixed `.mcp.json` and other configuration files missing from NPM package installations
+  - **Root Cause**: Files were categorized correctly in template manifest but missing from package.json "files" field
+  - **Solution**: Added `.mcp.json`, `.env.example`, `.githooks/`, and `.githooks.json` to NPM package "files" array
+  - **Result**: MCP servers (context7, sequential-thinking, playwright, serena) now properly included in new projects
+  - All configuration files now correctly distributed with NPM package
+
 ## [0.5.3] - 2025-09-19
 
 ### Fixed
 
-- **MCP Configuration**: Ensured `.mcp.json` file is properly included in NPM package
-  - Verified template manifest categorization is working correctly
-  - Fixed issue where `.mcp.json` was not being copied to new projects
-  - MCP servers (context7, sequential-thinking, playwright, serena) now properly configured
+- **MCP Configuration**: Fixed `.mcp.json` file and other configuration files missing from NPM package installations
+  - **Root Cause**: Files were properly categorized in template manifest but missing from package.json "files" field
+  - **Solution**: Added `.mcp.json`, `.env.example`, `.githooks/`, and `.githooks.json` to NPM package distribution
+  - **Result**: MCP servers (context7, sequential-thinking, playwright, serena) now properly included in new projects
+  - Template manifest categorization was already correct; issue was at NPM packaging layer
 
 ## [0.5.2] - 2025-09-19
 
