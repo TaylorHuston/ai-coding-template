@@ -83,6 +83,11 @@ Streamlined catalog of Claude Code slash commands centered around the **4-phase 
   - _Usage_: `/refresh [specific area]`
   - _Model_: sonnet | _Tools_: Read, Bash(git), Task
 
+- **[/update-docs](./update-docs.md)** - Comprehensive documentation accuracy validation and updates
+  - _Purpose_: Systematic documentation tree traversal with technical-writer agent coordination
+  - _Usage_: `/update-docs [scope: all|docs|claude|resources|specific paths]`
+  - _Model_: sonnet | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
+
 ---
 
 ## 🚀 Epic Workflow Usage Patterns
@@ -190,6 +195,6 @@ time_investment: "5-10 minutes for standard decisions"
 ### Updated Command Surface
 
 **Before**: 17 commands with overlapping functionality
-**After**: 14 commands with clear separation of concerns and epic workflow alignment
+**After**: 15 commands with clear separation of concerns and epic workflow alignment
 
 All remaining commands have been verified to work with the epic-based development approach and provide unique, non-overlapping functionality.

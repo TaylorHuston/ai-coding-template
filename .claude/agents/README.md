@@ -1,6 +1,6 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-09-18 **Status**: Active - Updated for 4-Phase Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 19 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-09-18 **Status**: Active - Updated for Epic-Driven Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 18 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 
@@ -10,11 +10,11 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
 
 #### **Architecture & Planning**
 
-- **[vision-strategist](./vision-strategist.md)** - Product vision and strategic planning
+- **[brief-strategist](./brief-strategist.md)** - Product brief and strategic planning
 
-  - _Capabilities_: Vision creation, strategic analysis, business model design, success metrics
-  - _Best For_: Product vision development, strategic decisions, market positioning
-  - _Model_: opus | _Color_: purple | _Auto-Invoked_: Vision and strategic planning tasks
+  - _Capabilities_: Brief creation, strategic analysis, business model design, success metrics
+  - _Best For_: Product brief development, strategic decisions, market positioning
+  - _Model_: opus | _Color_: purple | _Auto-Invoked_: Brief and strategic planning tasks
 
 - **[code-architect](./code-architect.md)** - System design and long-term architecture
 
@@ -112,16 +112,11 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
 
 #### **Documentation & Communication**
 
-- **[technical-writer](./technical-writer.md)** - Documentation synchronization and maintenance
+- **[technical-writer](./technical-writer.md)** - Documentation creation and maintenance specialist
 
-  - _Capabilities_: Documentation updates, consistency maintenance, link validation
-  - _Best For_: Keeping docs current with code changes, maintaining accuracy
-  - _Model_: haiku | _Color_: blue | _Auto-Invoked_: After code changes
-
-- **[technical-writer](./technical-writer.md)** - New documentation creation
-  - _Capabilities_: Technical writing, API docs, user guides, tutorials
-  - _Best For_: Creating new documentation, comprehensive guides, content strategy
-  - _Model_: opus | _Color_: teal | _Auto-Invoked_: Documentation creation requests
+  - _Capabilities_: Documentation creation, updates, synchronization, maintenance, link validation, technical writing
+  - _Best For_: All documentation needs - creation, updates, maintenance, API docs, user guides, tutorials
+  - _Model_: opus | _Color_: blue | _Auto-Invoked_: After code changes affecting documentation and documentation creation requests
 
 ## Agent Usage Patterns
 
@@ -138,7 +133,7 @@ These agents activate automatically based on context and task requirements:
 7. **code-reviewer** - Post-implementation quality reviews
 8. **technical-writer** - After code changes affecting documentation
 
-### **On-Demand Specialists** (10 agents)
+### **On-Demand Specialists** (9 agents)
 
 These are invoked for specific domains or specialized work:
 
@@ -148,10 +143,9 @@ These are invoked for specific domains or specialized work:
 4. **security-auditor** - Security audits and compliance validation
 5. **devops-engineer** - Infrastructure and deployment automation
 6. **performance-optimizer** - Performance analysis and optimization
-7. **technical-writer** - New documentation creation
-8. **refactoring-specialist** - Code improvement and technical debt reduction
-9. **migration-specialist** - Version upgrades and framework migrations
-10. **data-analyst** - Data processing, analysis, and reporting
+7. **refactoring-specialist** - Code improvement and technical debt reduction
+8. **migration-specialist** - Version upgrades and framework migrations
+9. **data-analyst** - Data processing, analysis, and reporting
 
 ### By Task Complexity
 
@@ -161,7 +155,7 @@ These are invoked for specific domains or specialized work:
 - **ai-llm-expert** - AI/LLM architecture and implementation optimization
 - **project-manager** - Multi-agent orchestration and complex coordination
 - **security-auditor** - Critical security analysis and compliance
-- **technical-writer** - Content creation and technical writing
+- **technical-writer** - Comprehensive documentation creation and maintenance
 
 #### **Medium Complexity (Sonnet Model)**
 
@@ -180,7 +174,7 @@ These are invoked for specific domains or specialized work:
 
 #### **Low Complexity (Haiku Model)**
 
-- **technical-writer** - Documentation maintenance and synchronization
+- None currently - all agents upgraded to Sonnet or Opus models for better quality
 
 ### By Usage Frequency
 
@@ -190,7 +184,7 @@ These are invoked for specific domains or specialized work:
 2. **backend-specialist** - Server-side implementation and business logic
 3. **database-specialist** - Data modeling and query optimization
 4. **code-reviewer** - Quality assurance and best practices
-5. **technical-writer** - Documentation maintenance
+5. **technical-writer** - Documentation creation and maintenance
 
 #### **Strategic Agents** (Weekly/project milestones)
 
@@ -205,10 +199,9 @@ These are invoked for specific domains or specialized work:
 2. **context-analyzer** - Investigation and troubleshooting
 3. **api-designer** - API architecture and design
 4. **test-engineer** - Test strategy and comprehensive testing
-5. **technical-writer** - New documentation creation
-6. **refactoring-specialist** - Code quality improvement and technical debt
-7. **migration-specialist** - Framework upgrades and system modernization
-8. **data-analyst** - Data processing and business intelligence
+5. **refactoring-specialist** - Code quality improvement and technical debt
+6. **migration-specialist** - Framework upgrades and system modernization
+7. **data-analyst** - Data processing and business intelligence
 
 ## Agent Selection Guidelines
 
@@ -265,7 +258,7 @@ task_type_mapping:
 
 #### **By Project Phase**
 
-- **Design**: vision-strategist, project-manager (vision + feature planning)
+- **Design**: brief-strategist, project-manager (brief + feature planning)
 - **Architecture**: code-architect, devops-engineer, database-specialist, api-designer, security-auditor (tech stack + feature implementation)
 - **Planning**: project-manager, context-analyzer
 - **Development**: frontend-specialist, backend-specialist, database-specialist
@@ -461,7 +454,6 @@ performance_metrics:
 | **devops-engineer** | ⚠️ Build | ⚠️ Build | ❌ | ✅ Primary | ⚠️ Ops | ⚠️ E2E | ✅ Primary |
 | **performance-optimizer** | ✅ Perf | ✅ Perf | ✅ Queries | ⚠️ Perf | ❌ | ✅ Perf Tests | ⚠️ Perf |
 | **technical-writer** | ❌ | ❌ | ❌ | ❌ | ✅ Primary | ❌ | ❌ |
-| **technical-writer** | ❌ | ❌ | ❌ | ❌ | ✅ Primary | ❌ | ❌ |
 | **refactoring-specialist** | ✅ Refactor | ✅ Refactor | ⚠️ Schema | ⚠️ Config | ❌ | ⚠️ Test Refactor | ❌ |
 | **migration-specialist** | ✅ Migrations | ✅ Migrations | ✅ Migrations | ✅ Migrations | ⚠️ Migration | ⚠️ Migration | ✅ Migrations |
 | **data-analyst** | ⚠️ Analytics | ✅ Analytics | ✅ Queries | ⚠️ Analytics | ⚠️ Reports | ❌ | ❌ |
@@ -478,7 +470,7 @@ performance_metrics:
 | **API Development** | api-designer | backend-specialist, frontend-specialist, test-engineer | api-designer → backend → frontend → test-engineer |
 | **Quality Assurance** | test-engineer, code-reviewer | security-auditor, performance-optimizer | test-engineer → code-reviewer → security → performance |
 | **Infrastructure** | devops-engineer | security-auditor, performance-optimizer, migration-specialist | devops → security → performance → migration |
-| **Documentation** | technical-writer, technical-writer | All domain specialists | docs-sync → technical-writer → domain-specialist |
+| **Documentation** | technical-writer | All domain specialists | technical-writer → domain-specialist |
 | **Code Quality** | refactoring-specialist, code-reviewer | performance-optimizer, security-auditor | code-reviewer → refactoring → performance → security |
 | **System Migration** | migration-specialist | code-architect, devops-engineer, database-specialist | migration → architect → devops → database |
 | **Data & Analytics** | data-analyst | database-specialist, backend-specialist | data-analyst → database → backend |

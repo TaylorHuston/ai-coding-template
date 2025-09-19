@@ -1,0 +1,43 @@
+# Security Policy Framework Example
+
+security_policies:
+  password_policy:
+    minimum_length: 12
+    complexity_requirements:
+      - uppercase_letters
+      - lowercase_letters
+      - numbers
+      - special_characters
+    expiration_period: 90_days
+    history_prevention: 12
+    lockout_threshold: 5
+    lockout_duration: 30_minutes
+
+  data_classification:
+    levels:
+      - public
+      - internal
+      - confidential
+      - restricted
+    handling_requirements:
+      confidential:
+        encryption: required
+        access_logging: required
+        retention_period: 7_years
+      restricted:
+        encryption: required
+        access_logging: required
+        approval_required: true
+        retention_period: 10_years
+
+  incident_response:
+    classification_levels:
+      - low
+      - medium
+      - high
+      - critical
+    response_times:
+      critical: 1_hour
+      high: 4_hours
+      medium: 24_hours
+      low: 72_hours

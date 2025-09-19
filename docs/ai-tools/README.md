@@ -22,7 +22,7 @@ This directory contains all documentation for AI tools and systems. This is the 
 
 ### `/guides/`
 **Comprehensive guides and patterns**
-- **comprehensive-agent-guide.md** - Complete guide to the 17-agent system and practical usage
+- **comprehensive-agent-guide.md** - Complete guide to the 18-agent system and practical usage
 - **ai-collaboration-guide.md** - Patterns for effective AI collaboration
 - **multi-model-consultation-guide.md** - Advanced multi-model AI consultation patterns
 
@@ -43,14 +43,19 @@ This directory contains all documentation for AI tools and systems. This is the 
 - **tool-selection.md** - Choosing the right tools for tasks
 - **troubleshooting.md** - Comprehensive troubleshooting guide
 
+### `/analytics/`
+**Performance tracking and optimization**
+- **[metrics-system.md](./analytics/metrics-system.md)** - **NEW: Comprehensive usage analytics and workflow optimization**
+
 ## Key Features of This Template
 
-### 17 Specialized AI Agents
+### 18 Specialized AI Agents
 - **Architecture**: code-architect, project-manager, context-analyzer
 - **Development**: frontend-specialist, backend-specialist, database-specialist, api-designer
 - **Quality**: test-engineer, code-reviewer, security-auditor, refactoring-specialist
 - **Operations**: devops-engineer, performance-optimizer, migration-specialist
-- **Documentation**: technical-writer, technical-writer, data-analyst
+- **Documentation**: technical-writer, data-analyst
+- **Strategy**: brief-strategist, ai-llm-expert
 
 ### Smart Context Management
 - Preserve project knowledge across AI sessions
@@ -61,6 +66,11 @@ This directory contains all documentation for AI tools and systems. This is the 
 - Pre-commit hooks for quality validation
 - Automated testing and linting integration
 - Security scanning and compliance checks
+
+### Performance Analytics & Optimization
+- Comprehensive metrics collection for commands, agents, and scripts
+- Usage pattern analysis and workflow optimization insights
+- Privacy-first local analytics with configurable data collection
 
 ### Template Integration
 - Works with new projects or existing codebases
@@ -133,6 +143,7 @@ This directory contains all documentation for AI tools and systems. This is the 
 - Start with troubleshooting guides in `/reference/`
 - Check agent-specific documentation in `/agents/`
 - Review integration guides in `/setup/`
+- For metrics issues, see `/analytics/` and metrics troubleshooting in `/reference/troubleshooting.md`
 
 ## Template Philosophy
 

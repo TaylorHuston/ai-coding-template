@@ -35,18 +35,21 @@ rm -rf src/*  # Clear example application code
 6. **Template Preservation** - All guidance moved to `docs/ai-tools/`
 
 ### 🚀 **Path 3: Try the AI Workflow** (15 minutes)
-*"I want to experience the /vision → /feature → /architect → /plan → /develop flow"*
+*"I want to experience the /design → /architect → /plan → /develop epic-driven workflow"*
 
 ```bash
 # After project setup, try your first complete AI workflow
-/vision --create
-# → Define product vision, problem, solution, and success metrics
-
-/feature --new "User Authentication"
-# → Captures business context, requirements, success criteria
+/design --epic "user-authentication"
+# → Define epic structure, user stories, and acceptance criteria
 
 /architect user-authentication
 # → Explore approaches, select patterns/tech, capture ADR
+
+/plan --issue AUTH-123
+# → Create comprehensive implementation plan with task breakdown
+
+/develop
+# → Execute tasks with test-first enforcement and quality gates
 ```
 
 ### 📚 **Path 4: Learn the System** (30 minutes)
@@ -90,34 +93,29 @@ git clone template → manually replace README → guess configuration → lose 
 - **📋 Professional Docs**: Generates industry-standard README tailored to your exact project type
 - **🧠 Preserved Knowledge**: Template docs safely moved to `docs/ai-tools/` for reference
 
-## 📋 **The Magic: 5-Phase Workflow**
+## 📋 **The Magic: 4-Phase Epic-Driven Workflow**
 
-Instead of "AI, write me some code," you get a structured, context-preserving flow:
+Instead of "AI, write me some code," you get a structured, context-preserving epic-driven flow:
 
-### 0. 🎯 **Vision** (`/vision`)
-- Define WHY you're building and WHAT success looks like
-- Problem validation and solution strategy
-- Success framework with measurable metrics
-
-### 1. 💡 **Feature** (`/feature`)
-- Define what and why (business context, users, requirements)
-- Identify dependencies and success criteria
-- Link to external issue trackers when available
+### 1. 📝 **Design** (`/design`)
+- Define epic structure with user stories and acceptance criteria
+- Create task directories with BDD scenarios
+- Establish business context and feature requirements
 
 ### 2. 🏗️ **Architect** (`/architect`)
+- Quick Mode (5-10 min) or Deep Mode (20+ min) technical decisions
 - Explore alternatives and select patterns/tech
-- Document trade-offs with ADRs
-- Align with constraints and non-functionals
+- Document trade-offs with Fast Track or comprehensive ADRs
 
 ### 3. 📋 **Plan** (`/plan`)
-- Sequential multi-agent planning by specialists
-- Phased roadmap (P1 → P2 → P3) with dependencies
-- Coordination files: PLAN.md, HANDOFF.yml, RESEARCH.md
+- Multi-agent epic planning with X.Y.Z task numbering
+- Progressive task discovery across all phases
+- Create TASK.md, HANDOFF.yml, RESEARCH.md for each task
 
 ### 4. ⚡ **Develop** (`/develop`)
-- Execute tasks with the right specialist agents
-- Enforce quality gates between phases
-- Preserve and update context and documentation
+- Execute tasks with test-first enforcement
+- Hierarchical epic/task branch management
+- Quality gates and comprehensive testing integration
 
 ---
 
@@ -126,29 +124,25 @@ Instead of "AI, write me some code," you get a structured, context-preserving fl
 Here's what a real workflow looks like:
 
 ```bash
-# 0. VISION: Define why the product exists
-/vision --create
-# → Establishes product vision, problem statement, success metrics
+# 1. DESIGN: Define epic structure and user stories
+/design --epic "user-authentication"
+# → Creates epic structure with user stories and acceptance criteria
 
-# 1. FEATURE: Define what and why
-/feature --new "User Authentication"
-# → Captures business context, requirements, success criteria (aligned with vision)
-
-# 2. ARCHITECT: Decide how
+# 2. ARCHITECT: Quick Mode technical decisions
 /architect user-authentication
-# → Explore JWT vs sessions, security, data model → ADR (supports vision)
+# → Explore JWT vs sessions, security, data model → Fast Track ADR
 
-# 3. PLAN: Expert analysis and task breakdown
+# 3. PLAN: Multi-agent epic planning and task breakdown
 /plan --issue AUTH-123
-# → Specialists analyze (security, backend, frontend, DB, testing)
-# → 12 tasks across 3 phases with quality gates
+# → Multi-agent analysis (security, backend, frontend, DB, testing)
+# → X.Y.Z task numbering with progressive discovery
 
-# 4. DEVELOP: Execute with quality and memory
+# 4. DEVELOP: Execute with test-first enforcement
 /develop
-# → P1.1.0 ✅ → P1.2.0 ✅ → P1.3.0 ✅ (Phase 1 complete)
-# → P2.1.0 ✅ → P2.2.0 ✅ → P2.3.0 ✅ (Phase 2 complete)
-# → P3.1.0 ✅ → P3.2.0 ✅ → P3.3.0 ✅ (Phase 3 complete)
-# Result: Production-ready feature with full documentation and vision alignment
+# → TASK-001:1.2.3 ✅ → TASK-002:1.2.4 ✅ → TASK-003:1.2.5 ✅
+# → Hierarchical epic/task branching with quality gates
+# → 95%+ test coverage and comprehensive testing integration
+# Result: Production-ready epic with full documentation and testing
 ```
 
 **Total time: 30 minutes of guided work vs. 3 hours of back-and-forth**
@@ -158,16 +152,16 @@ Here's what a real workflow looks like:
 ## 🧭 **Navigation Help**
 
 ### **Essential Files to Know**
-- **[📋 Quick Reference Index](./TEMPLATES-EXAMPLES-INDEX.md)** - Find any template or example
+- **[📋 Reference Tree](./.claude/references/documentation-tree.md)** - Complete documentation navigation
 - **[📖 Complete README](./README.md)** - Full system documentation
 - **[⚙️ Setup Guide](./docs/ai-tools/setup/quick-start.md)** - Detailed installation
 - **[🔧 Commands Reference](./docs/ai-tools/reference/commands.md)** - All available commands
 
 ### **Key Directories**
-- **`templates/`** - Fill-in-the-blank starting points for any task
-- **`examples/`** - Working code examples to study and adapt
-- **`.claude/agents/`** - 19 specialist agents for every domain
-- **`scripts/`** - 20+ automation scripts for development workflow
+- **`.resources/templates/`** - Fill-in-the-blank starting points for any task
+- **`.resources/examples/`** - Working code examples to study and adapt
+- **`.claude/agents/`** - 18 specialist agents for every domain
+- **`.resources/scripts/`** - 20+ automation scripts for development workflow
 
 ### **Quick Commands**
 ```bash
@@ -175,7 +169,7 @@ Here's what a real workflow looks like:
 ./.resources/scripts/ai-status.sh
 
 # Find the right template or example
-cat TEMPLATES-EXAMPLES-INDEX.md
+cat .claude/references/templates-examples-tree.md
 
 # Generate documentation automatically
 /docs generate --type all
@@ -193,14 +187,14 @@ cat TEMPLATES-EXAMPLES-INDEX.md
 
 ### **Quick Answers**
 - **"What commands are available?"** → `./docs/ai-tools/reference/commands.md`
-- **"How do I start a new feature?"** → `/feature --new "Describe your feature"`
-- **"Where are the templates?"** → `TEMPLATES-EXAMPLES-INDEX.md`
+- **"How do I start a new epic?"** → `/design --epic "epic-name"`
+- **"Where are the templates?"** → `.claude/references/templates-examples-tree.md`
 - **"Something's broken?"** → `./docs/ai-tools/reference/troubleshooting.md`
 
 ### **Common First Steps**
-1. **For new features**: Start with `/feature`, then `/architect`
+1. **For new epics**: Start with `/design`, then `/architect`
 2. **For existing code**: Use `/quality assess` to understand current state
-3. **For documentation**: Check `TEMPLATES-EXAMPLES-INDEX.md` for the right template
+3. **For documentation**: Check `.claude/references/templates-examples-tree.md` for the right template
 4. **For bugs**: Use `/plan --issue BUG-001` to systematically approach fixes
 
 ---

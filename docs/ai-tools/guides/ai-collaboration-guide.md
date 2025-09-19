@@ -476,12 +476,23 @@ interface UserCreateResponse {
 - **Enable iterative refinement**: Allow natural back-and-forth rather than forced dialogue patterns
 - **Measure effectiveness**: Track workflow efficiency and adjust based on real usage patterns
 
+#### Data-Driven Optimization
+- **Use metrics for decisions**: Review weekly metrics reports to identify workflow bottlenecks and optimization opportunities
+- **Track agent effectiveness**: Monitor which AI agents provide the most value for your team's specific work patterns
+- **Measure command success**: Analyze command execution patterns to optimize workflow phases and reduce failure rates
+- **Correlate quality vs velocity**: Use metrics to find the optimal balance between development speed and quality gates
+
 ## Related Documentation
 
 ### Core Project Files
 - [Comprehensive AI Agents Guide](./comprehensive-agent-guide.md) - Complete agent system reference
+- [Metrics System Guide](../analytics/metrics-system.md) - Workflow analytics and optimization insights
 - [Quality Standards](../../development/guidelines/quality-standards.md) - Development requirements
 - [System Guidelines](../../../CLAUDE.md) - AI assistant instructions
+
+### Workflow Optimization
+- [Commands Reference](../reference/commands.md) - Command metrics and integration patterns
+- [Troubleshooting Guide](../reference/troubleshooting.md) - Metrics system troubleshooting
 
 ---
 

@@ -37,17 +37,7 @@ This guide provides comprehensive instructions for maintaining the project CHANG
 ./.resources/scripts/release.sh X.Y.Z
 ```
 
-### Initial Setup
-
-1. **Copy the CHANGELOG template:**
-```bash
-cp .resources/templates/CHANGELOG.template.md CHANGELOG.md
-```
-
-2. **Make scripts executable:**
-```bash
-chmod +x .resources/scripts/check-changelog.sh .resources/scripts/ai-update-changelog.sh .resources/scripts/ai-changelog-audit.sh .resources/scripts/release.sh
-```
+**Initial Setup**: Copy template (`cp .resources/templates/CHANGELOG.template.md CHANGELOG.md`) and make scripts executable (`chmod +x .resources/scripts/*.sh`)
 
 3. **Configure git hooks (optional):**
 ```bash
@@ -90,70 +80,27 @@ chmod +x .git/hooks/pre-commit
 
 ### Entry Categories
 
-| Category | Description | Example |
-|----------|-------------|---------|
-| **Added** | New features | `- [ISSUE-001] User authentication system` |
-| **Changed** | Modifications | `- [ISSUE-002] Refactored database pooling` |
-| **Fixed** | Bug fixes | `- [BUG-005] Fixed memory leak in worker` |
-| **Security** | Security fixes | `- [SEC-001] Patched XSS vulnerability` |
-| **Deprecated** | Marked for removal | `- [TASK-003] Deprecated legacy endpoints` |
-| **Removed** | Deleted features | `- [ISSUE-004] Removed unused dependencies` |
+**Added**: New features · **Changed**: Modifications · **Fixed**: Bug fixes · **Security**: Security fixes · **Deprecated**: Marked for removal · **Removed**: Deleted features
 
-### Entry Format
+**Format**: `- [REFERENCE] Description of change`
 
-```markdown
-# Basic format
-- [REFERENCE] Description of change
-
-# Breaking change
-- **BREAKING**: [REFERENCE] Description of breaking change
-  - Migration: Steps to update existing code
-
-# AI-assisted development
-- [ISSUE-001] Implemented OAuth2 authentication (AI-assisted)
-
-# Multiple related changes
-- [ISSUE-002] Redesigned user dashboard
-  - Added real-time analytics widget
-  - Improved mobile responsiveness
-  - Fixed chart rendering issues
-```
+**Special Formats**:
+- **Breaking**: `- **BREAKING**: [REFERENCE] Description (with migration steps)`
+- **AI-assisted**: `- [REFERENCE] Description (AI-assisted)`
+- **Multiple related**: Use sub-bullets for related changes
 
 ## AI Assistant Guidelines
 
 ### When to Update CHANGELOG
 
-**Always update for:**
-- ✅ New features (Added)
-- ✅ Bug fixes (Fixed)
-- ✅ Breaking changes (**BREAKING**)
-- ✅ Security fixes (Security)
-- ✅ User-facing changes
-- ✅ API modifications
-- ✅ Deprecations
+**Always update**: New features, bug fixes, breaking changes, security fixes, user-facing changes, API modifications, deprecations
+**Skip updates**: Internal refactoring (no user impact), documentation-only changes, development tool updates, test additions
 
-**Skip updates for:**
-- ❌ Internal refactoring (no user impact)
-- ❌ Documentation-only changes
-- ❌ Development tool updates
-- ❌ Test additions (unless new framework)
+### AI Attribution and Session Protocol
 
-### AI Attribution
+**AI Attribution**: Use `(AI-assisted)` suffix for AI-contributed changes
 
-When AI assists with changes:
-
-```markdown
-### Added
-- [ISSUE-001] Implemented real-time collaboration features (AI-assisted)
-  - WebSocket-based synchronization
-  - Conflict resolution algorithm
-  - Presence indicators
-```
-
-### Session Completion Protocol
-
-AI assistants MUST:
-
+**Session Completion** - AI assistants MUST:
 1. Update `STATUS.md` with progress
 2. Update issue/bug/task PLAN files
 3. **Update CHANGELOG.md with completed work**

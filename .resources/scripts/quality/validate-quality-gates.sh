@@ -251,6 +251,37 @@ check_security_basics() {
     fi
 }
 
+check_documentation_links() {
+    log_info "Checking documentation links..."
+
+    # Find the link validator script
+    LINK_VALIDATOR=""
+    if [ -f ".resources/scripts/docs/link-validator.sh" ]; then
+        LINK_VALIDATOR=".resources/scripts/docs/link-validator.sh"
+    elif [ -f "scripts/docs/link-validator.sh" ]; then
+        LINK_VALIDATOR="scripts/docs/link-validator.sh"
+    fi
+
+    if [ -z "$LINK_VALIDATOR" ]; then
+        log_warn "Link validator not found - skipping documentation link validation"
+        return 0
+    fi
+
+    # Run link validation in CI mode (fast, no external validation)
+    log_info "Running: $LINK_VALIDATOR --ci --fast --no-report"
+    if "$LINK_VALIDATOR" --ci --fast --no-report > /tmp/link_validation.log 2>&1; then
+        log_info "✅ Documentation links are valid"
+        return 0
+    else
+        log_error "❌ Broken documentation links found"
+        if [ "$QUIET" != true ]; then
+            echo "Link validation output:"
+            cat /tmp/link_validation.log
+        fi
+        return 1
+    fi
+}
+
 # Main execution
 log_info "Starting quality gate validation..."
 
@@ -269,6 +300,10 @@ if ! check_security_basics; then
     ((CRITICAL_FAILURES++))
 fi
 
+if ! check_documentation_links; then
+    ((CRITICAL_FAILURES++))
+fi
+
 # Optional quality gates (enforced in strict mode)
 if [ "$STRICT_MODE" == true ]; then
     log_info "=== OPTIONAL QUALITY GATES (Strict Mode) ==="
@@ -283,7 +318,7 @@ log_info "=== ADVISORY CHECKS ==="
 check_git_status
 
 # Cleanup
-rm -f /tmp/test_output.log /tmp/lint_output.log /tmp/build_output.log
+rm -f /tmp/test_output.log /tmp/lint_output.log /tmp/build_output.log /tmp/link_validation.log
 
 # Summary
 echo ""

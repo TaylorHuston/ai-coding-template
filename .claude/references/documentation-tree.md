@@ -71,7 +71,7 @@ maintainer: "technical-writer"
 ```
 docs/
 ├── README.md                           # Documentation overview and navigation guide
-├── vision-template.md                  # Project vision document template for new projects
+├── project-brief-template.md           # Project brief document template for new projects
 └── reports/
     └── documentation-health.md         # Automated documentation health status report
 ```

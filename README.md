@@ -23,7 +23,7 @@ From simple code generator to intelligent development partner through the stream
 ### **📚 Essential Navigation**
 
 - **[🔧 All Commands](./docs/ai-tools/reference/commands.md)** - Complete command reference
-- **[🤖 17 Specialist Agents](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Your expert team
+- **[🤖 18 Specialist Agents](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Your expert team
 - **[🏗️ Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration guide
 - **[📋 AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Epic workflow patterns and best practices
 
@@ -32,7 +32,7 @@ From simple code generator to intelligent development partner through the stream
 1. **[👋 START HERE](./START-HERE.md)** - 5-minute guided introduction
 2. **[⚡ Quick Demo](#quick-demo)** - See the workflow in action
 3. **[🏗️ Setup Guide](./docs/ai-tools/setup/quick-start.md)** - Complete configuration
-4. **[🤖 Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - 17 specialist team
+4. **[🤖 Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - 18 specialist team
 5. **[🤖 AI Commands](./docs/ai-tools/reference/commands.md)** - Start your AI-assisted workflow
 
 ---
@@ -115,7 +115,7 @@ Execute implementation tasks with test-first enforcement and epic integration:
 
 ### Why This Workflow Matters
 
-**🎯 Architectural Quality**: Decisions are thoroughly explored before any code is written **🧠 Perfect Memory**: Context is preserved across sessions, agents, and phases **👥 Multi-Expert Coordination**: 17 specialized agents work together seamlessly **⚡ Quality Assurance**: Built-in gates ensure standards are maintained throughout **📈 Scalable Complexity**: Works for simple features to complex system redesigns
+**🎯 Architectural Quality**: Decisions are thoroughly explored before any code is written **🧠 Perfect Memory**: Context is preserved across sessions, agents, and phases **👥 Multi-Expert Coordination**: 18 specialized agents work together seamlessly **⚡ Quality Assurance**: Built-in gates ensure standards are maintained throughout **📈 Scalable Complexity**: Works for simple features to complex system redesigns
 
 ### Key Innovation: Agent-First Architecture
 
@@ -247,7 +247,7 @@ cd my-project
 
 ### 3. Learn the System
 
-**→ [Commands Reference](./docs/ai-tools/reference/commands.md)** - Master the four phases **→ [Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Understand your 17 specialists **→ [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Advanced AI patterns **→ [Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration options
+**→ [Commands Reference](./docs/ai-tools/reference/commands.md)** - Master the four phases **→ [Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Understand your 18 specialists **→ [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Advanced AI patterns **→ [Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration options
 
 ## How the Template Supports the Workflow
 
@@ -257,7 +257,13 @@ cd my-project
 my-project/
 ├── .claude/                    # Workflow Orchestration System
 │   ├── commands/               # /design, /architect, /plan, /develop implementations
-│   └── agents/                # 17 specialized experts for each workflow phase
+│   ├── agents/                 # 18 specialized experts for each workflow phase
+│   └── metrics/                # Usage analytics and performance tracking
+│       ├── config.yml          # Metrics collection configuration
+│       ├── schema.json         # Data validation schema
+│       ├── commands.jsonl      # Command execution metrics
+│       ├── agents.jsonl        # Agent performance metrics
+│       └── scripts.jsonl       # Script automation metrics
 ├── epics/                     # /plan Output: Epic-driven task organization
 │   └── [name]/                # Epic directory with EPIC.md and task directories
 │       ├── EPIC.md            # Epic overview and task tracking
@@ -272,12 +278,16 @@ my-project/
 │   └── ai-tools/              # Workflow guides and references
 ├── .resources/scripts/                   # Workflow Automation Support
 │   ├── docs-manager.sh        # ADR generation, auto-documentation
-│   └── quality-gates.sh       # /develop quality validation
+│   ├── quality-gates.sh       # /develop quality validation
+│   └── metrics/               # Analytics and insights tools
+│       ├── generate-report.sh # Usage analytics and insights
+│       ├── query-metrics.sh   # Data exploration and filtering
+│       └── README.md          # Complete metrics documentation
 ├── CLAUDE.md                  # AI instructions centered on workflow
 └── STATUS.md                  # Cross-session context preservation
 ```
 
-### 17 AI Specialist Agents
+### 18 AI Specialist Agents
 
 Expert AI agents automatically coordinate throughout the workflow:
 
@@ -379,8 +389,54 @@ Essential scripts for workflow automation:
 - **Documentation**: `./.resources/scripts/docs-manager.sh auto-docs all` - Generate documentation
 - **Status**: `./.resources/scripts/ai-status.sh` - Project health dashboard
 - **Quality**: `./.resources/scripts/validate-quality-gates.sh` - Validate between phases
+- **Metrics**: `./.resources/scripts/metrics/generate-report.sh` - Analytics and insights
 
 **[Complete Scripts Reference →](./.resources/scripts/README.md)**
+
+## 📊 Metrics & Analytics System
+
+**Transform usage patterns into actionable insights** for continuous workflow optimization.
+
+### What Gets Measured
+
+The comprehensive metrics system automatically tracks:
+
+- **🎯 Command Effectiveness**: Success rates, execution patterns, workflow progression for `/design`, `/architect`, `/plan`, `/develop`
+- **🤖 Agent Performance**: Utilization patterns, task completion rates, model usage for all 18 specialized agents
+- **⚙️ Script Automation**: Execution frequency, resource usage, integration patterns for all workflow scripts
+- **📈 Workflow Analytics**: Cross-phase dependencies, bottleneck identification, optimization opportunities
+
+### Quick Metrics Start
+
+```bash
+# Enable metrics (enabled by default)
+# Configuration: .claude/metrics/config.yml
+
+# Generate weekly insights report
+./.resources/scripts/metrics/generate-report.sh --period 7d --type summary
+
+# Query specific patterns
+./.resources/scripts/metrics/query-metrics.sh --type command --range 30d --stats
+
+# Analyze agent effectiveness
+./.resources/scripts/metrics/query-metrics.sh --type agent --stats --format json
+```
+
+### Actionable Insights
+
+**📊 Workflow Optimization**: Identify which commands and agents provide the most value
+**🎯 Performance Monitoring**: Track execution times, success rates, and resource utilization
+**🔍 Bottleneck Detection**: Discover workflow phases that need optimization
+**📈 Decision Support**: Data-driven insights for tool and process improvements
+
+### Privacy & Security
+
+- **🛡️ Local Storage**: All data stays on your machine
+- **🔒 No Code Content**: Only metadata and performance metrics collected
+- **⚙️ Configurable Collection**: Adjust data collection levels and exclusions
+- **📋 JSONL Format**: Structured, queryable data for custom analysis
+
+**[Complete Metrics Guide →](./.resources/scripts/metrics/README.md)**
 
 ## Add to Existing Projects
 

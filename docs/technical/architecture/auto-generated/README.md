@@ -48,13 +48,25 @@ This auto-generated documentation provides the **factual foundation** that manua
 This directory follows the template's three-tier documentation model:
 
 ```
-docs/
-├── technical/              # Tier 1: YOUR project's technical documentation
-│   └── architecture/
-│       ├── auto-generated/ # 🤖 Factual data extraction (this directory)
-│       └── *.md           # 📝 Manual architecture decisions and design
-├── development/           # Tier 2: Team processes & guidelines
-└── ai-tools/             # Tier 3: AI template usage documentation
+project-root/
+├── .claude/               # AI workflow orchestration
+│   ├── commands/          # Slash command implementations
+│   ├── agents/            # 17 specialized AI agents
+│   └── metrics/           # 📊 Usage analytics and performance tracking
+│       ├── config.yml     # Metrics collection configuration
+│       ├── schema.json    # Data validation schema
+│       ├── commands.jsonl # Command execution metrics
+│       ├── agents.jsonl   # Agent performance metrics
+│       └── scripts.jsonl  # Script automation metrics
+├── docs/
+│   ├── technical/              # Tier 1: YOUR project's technical documentation
+│   │   └── architecture/
+│   │       ├── auto-generated/ # 🤖 Factual data extraction (this directory)
+│   │       └── *.md           # 📝 Manual architecture decisions and design
+│   ├── development/           # Tier 2: Team processes & guidelines
+│   └── ai-tools/             # Tier 3: AI template usage documentation
+│       └── analytics/        # 📊 Metrics system documentation
+└── .resources/scripts/metrics/ # Analytics tools and reporting
 ```
 
 ## Automation Details

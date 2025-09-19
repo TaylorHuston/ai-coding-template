@@ -1,0 +1,28 @@
+# .github/workflows/code-review.yml
+name: Automated Code Review
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Security Scan
+        uses: securecodewarrior/github-action-add-sarif@v1
+        with:
+          sarif-file: security-scan-results.sarif
+
+      - name: Code Quality Analysis
+        uses: sonarcloud-quality-gate-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Performance Analysis
+        run: |
+          npm run analyze:performance
+          npm run lighthouse:ci
