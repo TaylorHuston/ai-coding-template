@@ -1,7 +1,7 @@
 ---
-version: "0.2.0"
+version: "0.2.1"
 created: "2025-09-17"
-last_updated: "2025-09-18"
+last_updated: "2025-09-19"
 status: "active"
 target_audience: ["ai-assistants", "developers", "technical-writer"]
 document_type: "reference"
@@ -22,10 +22,29 @@ maintainer: "technical-writer"
 .resources/templates/
 ├── README.md                           # Master template system overview and usage guide
 ├── template-format-reference.md       # Template formatting standards and variable syntax
+├── architecture/                      # Architecture decision templates
+├── ci-cd/                             # CI/CD pipeline templates
 ├── code/                              # Code implementation templates
+├── config/                            # Configuration and settings templates
 ├── docs/                              # Project and technical documentation templates
-├── workflow/                          # Development workflow templates
-└── config/                            # Configuration and settings templates
+├── generation/                        # Auto-generation utility templates
+└── workflow/                          # Development workflow templates
+```
+
+## Architecture Templates
+
+```text
+.resources/templates/architecture/
+├── adr-detailed.template.md            # Detailed Architecture Decision Record template
+└── adr-fast-track.template.md          # Fast-track ADR template for quick decisions
+```
+
+## CI/CD Templates
+
+```text
+.resources/templates/ci-cd/
+├── github-actions-link-validation.yml  # GitHub Actions workflow for link validation
+└── gitlab-ci-link-validation.yml       # GitLab CI pipeline for link validation
 ```
 
 ## Documentation Templates
@@ -39,17 +58,11 @@ maintainer: "technical-writer"
 ├── development/
 │   ├── README.md                       # Development templates overview
 │   └── yaml-frontmatter-schema.md     # YAML frontmatter schema specification
-└── project/
-    ├── project-brief.template.md       # Project brief template
-    ├── library.template.md             # Library/package project README template
-    ├── enterprise.template.md          # Enterprise application README template
-    ├── mobile-app.template.md          # Mobile application README template
-    ├── api-service.template.md         # API service project README template
-    ├── cli-tool.template.md            # Command-line tool project README template
-    ├── standard-readme.template.md     # Standard project README template
-    ├── web-app.template.md             # Web application README template
-    ├── project-readme.template.md      # Generic project README template
-    └── CHANGELOG.template.md           # Project changelog template following Keep a Changelog
+├── project/
+│   ├── CHANGELOG.template.md           # Project changelog template following Keep a Changelog
+│   └── project-brief.template.md       # Project brief template
+└── technical/
+    └── api-reference.template.md       # Technical API reference template
 ```
 
 ## Workflow Templates
@@ -60,20 +73,10 @@ maintainer: "technical-writer"
 .resources/templates/workflow/epic/
 ├── adr.template.md                     # Architecture Decision Record template for epics
 ├── epic.template.md                    # Main epic planning document template
+├── handoff.template.yml                # Epic handoff configuration template
 ├── research.template.md                # Research document for epic-level tasks
 ├── task.template.md                    # Individual task template within an epic
-└── testing-task.template.md          # Dedicated testing task template for epics
-```
-
-### Feature Development Templates
-
-```text
-.resources/templates/workflow/feature/
-├── README.md                           # Feature template usage guide and selection criteria
-├── feature-minimal.template.md         # Lightweight feature specification template
-├── feature-standard.template.md        # Standard feature specification template
-├── feature-comprehensive.template.md   # Comprehensive feature specification template
-└── feature.template.md                 # Generic feature template
+└── testing-task.template.md           # Dedicated testing task template for epics
 ```
 
 ### Architecture Templates
@@ -83,12 +86,12 @@ maintainer: "technical-writer"
 └── architecture.template.md            # Architecture decision and design template
 ```
 
-### Planning and Coordination Templates
+### Bug Templates
 
 ```text
-.resources/templates/workflow/planning/
-├── plan.template.md                    # Implementation plan template for /plan workflow
-└── research.template.md                # Research document template for context gathering
+.resources/templates/workflow/bugs/
+├── bug.template.md                     # Bug report and tracking template
+└── handoff.template.yml               # Bug handoff configuration template
 ```
 
 ### Exploration Templates
@@ -97,15 +100,15 @@ maintainer: "technical-writer"
 .resources/templates/workflow/exploration/
 ├── conversation.template.md            # Decision exploration conversation template
 ├── notes.template.md                   # Exploration notes and insights template
-└── specialist-inputs.template.md       # Specialist agent consultation inputs template
+├── specialist-inputs.template.md       # Specialist agent consultation inputs template
+└── state.template.yml                 # Exploration state tracking template
 ```
 
 ### Deliverable Templates
 
 ```text
 .resources/templates/workflow/deliverables/
-├── deliverable.template.md             # Standard deliverable template
-└── deliverable-simple.template.md      # Simple deliverable template
+└── deliverable.template.md             # Standard deliverable template
 ```
 
 ### Implementation Templates
@@ -119,7 +122,8 @@ maintainer: "technical-writer"
 
 ```text
 .resources/templates/workflow/
-└── context-management.template.md      # Template for managing context across sessions
+├── context-management.template.md      # Template for managing context across sessions
+└── decision-ledger.template.yml        # Decision tracking and ledger template
 ```
 
 ## Code Templates
@@ -127,9 +131,11 @@ maintainer: "technical-writer"
 ```text
 .resources/templates/code/
 ├── api/
-│   └── service.template.ts                 # TypeScript API service template with best practices
-└── components/
-    └── component.template.tsx              # React component template with TypeScript
+│   └── service.template.ts             # TypeScript API service template with best practices
+├── components/
+│   └── component.template.tsx          # React component template with TypeScript
+├── configs/                           # Configuration code templates (empty)
+└── tests/                             # Test code templates (empty)
 ```
 
 ## Configuration Templates
@@ -146,7 +152,51 @@ maintainer: "technical-writer"
 ```text
 .resources/examples/
 ├── README.md                           # Examples system overview and navigation guide
-└── [category directories]/             # Organized example collections by type
+├── api/                               # API-specific examples and patterns
+├── architecture/                      # Architectural pattern examples
+├── code/                              # Code implementation examples
+├── code-review/                       # Code review process examples
+├── docs/                              # Documentation examples
+└── workflow/                          # Workflow examples
+```
+
+### API Examples
+
+```text
+.resources/examples/api/
+├── deprecation-middleware.js           # API deprecation handling middleware
+├── http-headers-versioning.md          # HTTP header versioning documentation
+├── jwt-authentication.js              # JWT authentication implementation
+├── rest-controller.js                  # REST API controller patterns
+└── url-structure.md                   # API URL structure guidelines
+```
+
+### Architecture Examples
+
+```text
+.resources/examples/architecture/
+├── kiss-principle.js                   # KISS principle implementation example
+├── principle-conflicts.js              # Handling architectural principle conflicts
+└── solid-srp.ts                       # SOLID Single Responsibility Principle example
+```
+
+### Code Review Examples
+
+```text
+.resources/examples/code-review/
+├── ai-generated-code-example.js        # Example of AI-generated code for review
+├── ai-review-feedback.md               # AI code review feedback template
+├── ci-workflow.yml                     # CI workflow for automated code review
+├── code-structure-examples.js          # Code structure examples for review
+├── error-handling-examples.js          # Error handling review examples
+├── feedback-templates.md               # Code review feedback templates
+├── input-validation-examples.js        # Input validation review examples
+├── performance-review-template.md      # Performance review template
+├── response-template.md                # Code review response template
+├── review-metrics.js                   # Code review metrics tracking
+├── review-retrospective.md             # Review process retrospective template
+├── security-review-template.md         # Security review template
+└── testing-examples.js                # Testing review examples
 ```
 
 ### Workflow Examples
@@ -162,6 +212,8 @@ maintainer: "technical-writer"
 
 ```text
 .resources/examples/code/patterns/
+├── advanced-testing.example.js         # Advanced testing techniques and patterns
+├── ai-ml-integration.example.js        # AI/ML integration patterns
 ├── api-auth.example.js                 # Authentication implementation patterns
 ├── api-error-handling.example.js       # Error handling patterns and best practices
 ├── api-file-upload.example.js          # File upload handling patterns
@@ -171,8 +223,27 @@ maintainer: "technical-writer"
 ├── api-response.example.js             # API response format standardization
 ├── api-user-service.example.ts         # Complete user service implementation
 ├── api-validation.example.js           # Input validation patterns and middleware
+├── api-versioning.example.js           # API versioning implementation patterns
+├── caching-strategies.example.js       # Caching implementation strategies
+├── circuit-breaker.example.js          # Circuit breaker pattern implementation
+├── class-naming.ts                     # Class naming conventions and patterns
+├── cloud-native.example.js             # Cloud-native development patterns
+├── comments-documentation.js           # Code commenting and documentation patterns
 ├── component-user-card.example.tsx     # React component implementation example
-└── test-user-service.example.test.ts   # Comprehensive testing patterns
+├── error-handling.js                   # General error handling patterns
+├── event-sourcing.example.js           # Event sourcing implementation patterns
+├── file-organization.js                # File organization and structure patterns
+├── function-organization.js            # Function organization patterns
+├── graphql-api.example.js              # GraphQL API implementation patterns
+├── logging-standards.js                # Logging standards and patterns
+├── message-queue.example.js            # Message queue implementation patterns
+├── monitoring-observability.example.js # Monitoring and observability patterns
+├── naming-conventions.js               # General naming convention patterns
+├── performance-optimization.example.js # Performance optimization techniques
+├── performance-patterns.js             # Performance-focused coding patterns
+├── security-standards.js               # Security coding standards
+├── test-user-service.example.test.ts   # Comprehensive testing patterns
+└── testable-code.js                    # Writing testable code patterns
 ```
 
 ### Authentication Examples
@@ -182,6 +253,7 @@ maintainer: "technical-writer"
 ├── abac-authorization.example.js       # Attribute-based access control implementation
 ├── jwt-security.example.js             # JWT token security and validation
 ├── mfa-implementation.example.js       # Multi-factor authentication patterns
+├── oauth2-flows.example.js             # OAuth2 flow implementations
 ├── password-security.example.js        # Password hashing and security
 ├── rate-limiting.example.js            # Authentication rate limiting
 ├── rbac-authorization.example.js       # Role-based access control implementation
@@ -196,17 +268,22 @@ maintainer: "technical-writer"
 ├── api-security.example.js             # API security implementation
 ├── compliance-governance.example.js    # Compliance and governance patterns
 ├── data-encryption.example.js          # Data encryption and protection
-├── encryption-data-protection.example.js # Advanced encryption patterns
 ├── file-upload-security.example.js     # Secure file upload handling
 ├── governance-principles.example.js    # Security governance principles
 ├── input-validation.example.js         # Input validation and sanitization
-├── jwt-api-security.example.js         # JWT API security implementation
+├── policy/                             # Security policy implementations
+│   ├── attack-surface-analysis.js      # Attack surface analysis implementation
+│   ├── compliance-monitoring.js        # Compliance monitoring systems
+│   ├── detective-controls.js           # Detective security controls
+│   ├── preventive-controls.js          # Preventive security controls
+│   ├── responsive-controls.js          # Responsive security controls
+│   ├── risk-management.js              # Risk management implementation
+│   ├── security-metrics.js             # Security metrics and monitoring
+│   └── threat-modeling.js              # Threat modeling implementation
 ├── security-controls.example.js        # Security controls and measures
 ├── security-monitoring.example.js      # Security monitoring and logging
 ├── security-testing.example.test.js    # Security testing patterns
-├── semantic-security-analysis.example.js # Semantic security analysis
-├── session-management.example.js       # Secure session management
-└── session-security.example.js         # Advanced session security
+└── semantic-security-analysis.example.js # Semantic security analysis
 ```
 
 ### Testing Examples
@@ -233,6 +310,11 @@ maintainer: "technical-writer"
 
 ```text
 .resources/examples/docs/
-├── completed/                          # Completed documentation examples
-└── references/                        # Reference documentation examples
+├── completed/                          # Completed documentation examples (empty)
+├── references/                        # Reference documentation examples (empty)
+├── document-length-guidelines.md       # Guidelines for document length and structure
+├── file-structure.md                   # Documentation file structure guidelines
+├── plan-template.md                    # Planning document template example
+├── readme-template.md                  # README file template example
+└── yaml-frontmatter.md                # YAML frontmatter usage examples
 ```

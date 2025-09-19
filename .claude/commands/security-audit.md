@@ -2,7 +2,7 @@
 description: OWASP-compliant security assessment with vulnerability remediation
 argument-hint: --scope SCOPE --depth DEPTH --compliance FRAMEWORK --output FORMAT
 allowed-tools: ["Read", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: opus
+model: "claude-opus-4-1"
 ---
 
 Comprehensive security assessment workflow:

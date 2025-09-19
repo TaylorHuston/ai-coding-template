@@ -2,7 +2,7 @@
 description: Safe branch merging with deployment validation
 argument-hint: Optional target branch or merge options
 allowed-tools: ["Bash(git *)", "Bash(npm *)", "Bash(pnpm *)", "Bash(yarn *)", "Read", "Edit", "Grep", "Glob", "TodoWrite", "Task"]
-model: sonnet
+model: "claude-3-5-sonnet-20241022"
 ---
 
 Safely merge current feature branch into target branch by:

@@ -6,6 +6,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.5.2] - 2025-09-19
+
+### Fixed
+
+- **Command Model Specifications**: Fixed incorrect model specifications in 11 Claude Code commands
+  - Fixed 10 commands using `model: sonnet` to use `model: "claude-3-5-sonnet-20241022"`
+  - Fixed 1 command using `model: opus` to use `model: "claude-opus-4-1"`
+  - Resolved 404 errors preventing commands from executing (update-docs, refresh, review, etc.)
+  - All custom commands now properly specify their required models with full model identifiers
+
+### Removed
+
+- **Template Cleanup**: Reduced template file count by 16.6% for cleaner installations
+  - Removed 61 obsolete and duplicate files from template structure
+  - Deleted deprecated feature workflow templates (replaced by epic-driven workflow)
+  - Removed template's own development artifacts not needed by end users
+  - Consolidated duplicate example files and testing patterns
+  - Removed obsolete `.claude/working/` directory from previous workflow system
+  - Deleted duplicate documentation files (MCP guide, collaborative workflow guide)
+  - Reorganized `.resources/` directory structure for better organization
+  - Template now installs 306 files instead of 367 (exceeded target of ~290 files)
+
+### Changed
+
+- **Documentation Consolidation**: Streamlined documentation structure
+  - Consolidated MCP documentation to single authoritative source in `docs/ai-tools/setup/mcp-setup.md`
+  - Removed references to deprecated `/feature-development` workflow
+  - Updated design command to explicitly reference correct template location
+  - Updated all file path references in documentation to reflect reorganized structure
+  - Refreshed `.claude/references/` documentation trees to maintain accuracy
+
+### Added
+
+- **MCP Configuration**: Fixed `.mcp.json` file categorization in template manifest
+  - File now properly included in configuration category with smart-merge strategy
+  - Ensures MCP server configurations are included in new projects
+  - Enables out-of-the-box integration with context7, sequential-thinking, playwright, and serena MCP servers
+
 ## [0.5.1] - 2025-09-19
 
 ### Fixed
@@ -22,6 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 - **Critical NPM Package Installation Issue**: Fixed FileCategorizer baseDir handling for NPM package installations
+
   - Resolved issue where template installation was copying 0 files instead of expected 367 files
   - Fixed template path detection to correctly scan NPM package directory instead of user's working directory
   - Added baseDir parameter to FileCategorizer constructor and updated all file scanning methods
@@ -40,6 +79,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - **Template Distribution System**: Complete NPM package distribution with development sync capabilities
+
   - NPM package `@ai-template/core` for easy template installation via `npx @ai-template/core init`
   - CLI tools with commands: init, status, validate, dev enable/disable, sync pull/push
   - File categorization system with 6 categories (core, reference, optional, configuration, user, ignore)
@@ -50,6 +90,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Successfully tested: template installation, development mode sync (both push/pull directions)
 
 - **Comprehensive Metrics Collection System**: Advanced analytics for commands, agents, and scripts
+
   - Unified metrics schema tracking execution patterns, performance, and dependencies
   - JSONL-based storage with configurable retention and privacy controls
   - Real-time collection hooks for commands, agents, and script executions
@@ -58,6 +99,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Actionable insights for system optimization and usage pattern analysis
 
 - **Terminology Standardization**: Unified project planning terminology from "vision" to "project-brief"
+
   - Updated `/design --vision` to `/design --brief` for improved clarity and consistency
   - Renamed vision-strategist agent to brief-strategist agent
   - Updated all template files: vision.template.md → project-brief.template.md
@@ -75,6 +117,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - **Refresh Command Performance**: Optimized `/refresh` command for dramatically improved context efficiency
+
   - Reduced context consumption from 58k tokens to ~300 tokens (194x improvement)
   - Changed from direct file reading to subagent delegation pattern using context-analyzer
   - Moved static capability information to CLAUDE.md to avoid redundant loading
@@ -82,6 +125,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Maintained complete functionality while achieving massive efficiency gains
 
 - **Plan Command Enhancement**: Restructured `/plan` command for interactive planning and workbench organization
+
   - Added interactive standalone task support with `/plan --misc "task name"` and `/plan --bug "description"`
   - Implemented auto-incrementing ID system (MISC-### and BUG-###) based on existing task numbers
   - Added conversational requirements gathering to eliminate ambiguity through back-and-forth dialogue

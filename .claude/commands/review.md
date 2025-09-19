@@ -2,7 +2,7 @@
 description: Comprehensive code review with multi-dimensional analysis
 argument-hint: --scope SCOPE --focus FOCUS --depth DEPTH --output FORMAT
 allowed-tools: ["Read", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: sonnet
+model: "claude-3-5-sonnet-20241022"
 ---
 
 Comprehensive code review workflow:

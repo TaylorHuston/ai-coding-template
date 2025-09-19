@@ -54,7 +54,8 @@
         "package.json",
         ".gitignore",
         ".markdownlint.json",
-        "tsconfig.json"
+        "tsconfig.json",
+        ".mcp.json"
       ]
     },
     "user": {

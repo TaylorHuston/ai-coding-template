@@ -61,6 +61,7 @@ model: "claude-opus-4-1"
 ## File Structure
 
 **Brief**: `docs/project-brief.md` - Problem, solution, audience, success metrics
+*Uses template: `.resources/templates/docs/project/project-brief.template.md`*
 
 **Epic**: `epics/[name]/EPIC.md` - Overview, scope, planned tasks, external refs, status management, dependencies
 

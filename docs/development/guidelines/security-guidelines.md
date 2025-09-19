@@ -281,4 +281,4 @@ Controls that respond to and recover from security incidents:
 - **[API Security Guidelines](./api-guidelines.md)** - API-specific security patterns and controls
 - **[Testing Standards](./testing-standards.md)** - Security testing strategies and implementation
 - **[Code Review Guidelines](./code-review-guidelines.md)** - Security-focused code review processes
-- **Implementation Examples**: See `.resources/examples/security/` for working code examples
+- **Implementation Examples**: See `.resources/examples/code/security/` for working code examples and policy guidelines

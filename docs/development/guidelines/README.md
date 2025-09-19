@@ -66,9 +66,9 @@ tags: ["guidelines", "standards", "documentation", "navigation"]
 All guidelines now include references to working code examples in `.resources/examples/`:
 
 - **API Examples**: `.resources/examples/api/` - REST controllers, GraphQL schemas, authentication, versioning
-- **Security Examples**: `.resources/examples/security/` - Threat modeling, controls, compliance, risk management
-- **Testing Examples**: `.resources/examples/testing/` - Unit tests, integration tests, E2E tests, mocking patterns
-- **Documentation Examples**: `.resources/examples/documentation/` - Templates, frontmatter, structure patterns
+- **Security Examples**: `.resources/examples/code/security/` - Implementation examples and policy guidelines
+- **Testing Examples**: `.resources/examples/code/testing/` - Unit tests, integration tests, E2E tests, mocking patterns
+- **Documentation Examples**: `.resources/examples/docs/` - Templates, frontmatter, structure patterns
 
 ## Navigation
 

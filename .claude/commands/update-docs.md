@@ -2,7 +2,7 @@
 description: Comprehensive documentation accuracy validation and updates using technical-writer agent
 argument-hint: Optional scope or specific documentation areas to focus on
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: sonnet
+model: "claude-3-5-sonnet-20241022"
 ---
 
 Perform comprehensive documentation accuracy validation and updates by:

@@ -2,7 +2,7 @@
 description: Context-efficient project refresh using intelligent subagent delegation
 argument-hint: Optional mode (--analysis, --focus [area]) or default lightning refresh
 allowed-tools: ["Bash(git)", "Task"]
-model: sonnet
+model: "claude-3-5-sonnet-20241022"
 ---
 
 Provide context refresh focused on dynamic project state while preserving main conversation tokens. Assumes CLAUDE.md capabilities context already available.

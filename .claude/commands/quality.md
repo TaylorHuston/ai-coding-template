@@ -2,7 +2,7 @@
 description: Comprehensive quality assessment with multi-agent coordination
 argument-hint: [assess|validate|audit|fix] [--scope SCOPE] [--depth DEPTH] [--focus FOCUS]
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: sonnet
+model: "claude-3-5-sonnet-20241022"
 ---
 
 # Quality Assessment Command

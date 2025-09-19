@@ -330,7 +330,7 @@ tags: ["testing", "quality", "automation", "tdd", "principles"]
 
 ## Related Guidelines
 
-- **Implementation Examples**: See `.resources/examples/testing/` for working code examples
+- **Implementation Examples**: See `.resources/examples/code/testing/` for working code examples
 - **API Testing**: See `api-guidelines.md` for API-specific testing patterns
 - **Security Testing**: See `security-guidelines.md` for security testing strategies
 - **Quality Standards**: See `quality-standards.md` for comprehensive quality requirements

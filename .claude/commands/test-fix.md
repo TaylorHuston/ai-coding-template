@@ -2,7 +2,7 @@
 description: Automatic test failure detection and resolution
 argument-hint: Optional test pattern or files to focus on
 allowed-tools: ["Bash(npm run *)", "Bash(pnpm *)", "Bash(yarn *)", "Read", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
-model: sonnet
+model: "claude-3-5-sonnet-20241022"
 ---
 
 Automatically detect and resolve test failures by:

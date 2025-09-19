@@ -352,7 +352,7 @@ workbench/                    # Active work area
 
 ## Related Guidelines
 
-- **Implementation Examples**: See `.resources/examples/documentation/` for working templates and examples
+- **Implementation Examples**: See `.resources/examples/docs/` for working templates and examples
 - **Architecture Documentation**: See `docs/architecture/` for C4 model and decision record patterns
 - **Quality Standards**: See `quality-standards.md` for comprehensive quality requirements
 - **Development Workflow**: See `git-workflow.md` for documentation integration with development processes

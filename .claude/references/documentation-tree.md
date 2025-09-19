@@ -39,7 +39,6 @@ maintainer: "technical-writer"
 .claude/
 ├── agent-best-practices.md             # Guidelines for effective AI agent usage patterns
 ├── integration.md                      # AI system integration patterns and procedures
-├── mcp-integration-guide.md            # MCP server setup and configuration guide
 ├── precedence.md                       # AI instruction precedence and conflict resolution
 ├── agents/
 │   ├── README.md                       # Complete agent catalog and selection guide
@@ -60,10 +59,7 @@ maintainer: "technical-writer"
 │   ├── security-auditor.md            # Security assessment and compliance specialist
 │   ├── technical-writer.md            # Technical documentation creation and maintenance specialist
 │   ├── test-engineer.md               # Testing strategy and quality assurance specialist
-│   └── vision-strategist.md           # Product vision and strategic planning specialist
-└── working/                            # Active development workspace and coordination files
-    ├── README.md                       # Working directory usage and structure guide
-    └── [issue-directories]/            # Issue-specific PLAN.md, RESEARCH.md, HANDOFF.yml files
+│   └── brief-strategist.md            # Product brief and strategic planning specialist
 ```
 
 ## Main Documentation Hub
@@ -85,7 +81,6 @@ docs/ai-tools/
 ├── system-context.md                  # System-wide context and integration patterns
 ├── guides/
 │   ├── ai-collaboration-guide.md      # AI-human collaboration patterns and best practices
-│   ├── collaborative-workflow-guide.md # Collaborative development workflow patterns
 │   ├── comprehensive-agent-guide.md   # Complete agent usage and coordination guide
 │   ├── design-workflow-examples.md    # Examples for the /design command workflow
 │   └── multi-model-consultation-guide.md  # Multi-model AI consultation and cross-validation
