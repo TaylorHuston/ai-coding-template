@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
+- **Comprehensive Metrics Collection System**: Advanced analytics for commands, agents, and scripts
+  - Unified metrics schema tracking execution patterns, performance, and dependencies
+  - JSONL-based storage with configurable retention and privacy controls
+  - Real-time collection hooks for commands, agents, and script executions
+  - Analytics tools: report generation, query interface, and statistics dashboard
+  - Integration-ready with existing CI/CD, pre-commit hooks, and automation workflows
+  - Actionable insights for system optimization and usage pattern analysis
+
 - **Terminology Standardization**: Unified project planning terminology from "vision" to "project-brief"
   - Updated `/design --vision` to `/design --brief` for improved clarity and consistency
   - Renamed vision-strategist agent to brief-strategist agent

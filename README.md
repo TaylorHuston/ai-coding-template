@@ -257,7 +257,13 @@ cd my-project
 my-project/
 ├── .claude/                    # Workflow Orchestration System
 │   ├── commands/               # /design, /architect, /plan, /develop implementations
-│   └── agents/                # 17 specialized experts for each workflow phase
+│   ├── agents/                 # 17 specialized experts for each workflow phase
+│   └── metrics/                # Usage analytics and performance tracking
+│       ├── config.yml          # Metrics collection configuration
+│       ├── schema.json         # Data validation schema
+│       ├── commands.jsonl      # Command execution metrics
+│       ├── agents.jsonl        # Agent performance metrics
+│       └── scripts.jsonl       # Script automation metrics
 ├── epics/                     # /plan Output: Epic-driven task organization
 │   └── [name]/                # Epic directory with EPIC.md and task directories
 │       ├── EPIC.md            # Epic overview and task tracking
@@ -272,7 +278,11 @@ my-project/
 │   └── ai-tools/              # Workflow guides and references
 ├── .resources/scripts/                   # Workflow Automation Support
 │   ├── docs-manager.sh        # ADR generation, auto-documentation
-│   └── quality-gates.sh       # /develop quality validation
+│   ├── quality-gates.sh       # /develop quality validation
+│   └── metrics/               # Analytics and insights tools
+│       ├── generate-report.sh # Usage analytics and insights
+│       ├── query-metrics.sh   # Data exploration and filtering
+│       └── README.md          # Complete metrics documentation
 ├── CLAUDE.md                  # AI instructions centered on workflow
 └── STATUS.md                  # Cross-session context preservation
 ```
@@ -379,8 +389,54 @@ Essential scripts for workflow automation:
 - **Documentation**: `./.resources/scripts/docs-manager.sh auto-docs all` - Generate documentation
 - **Status**: `./.resources/scripts/ai-status.sh` - Project health dashboard
 - **Quality**: `./.resources/scripts/validate-quality-gates.sh` - Validate between phases
+- **Metrics**: `./.resources/scripts/metrics/generate-report.sh` - Analytics and insights
 
 **[Complete Scripts Reference →](./.resources/scripts/README.md)**
+
+## 📊 Metrics & Analytics System
+
+**Transform usage patterns into actionable insights** for continuous workflow optimization.
+
+### What Gets Measured
+
+The comprehensive metrics system automatically tracks:
+
+- **🎯 Command Effectiveness**: Success rates, execution patterns, workflow progression for `/design`, `/architect`, `/plan`, `/develop`
+- **🤖 Agent Performance**: Utilization patterns, task completion rates, model usage for all 17 specialized agents
+- **⚙️ Script Automation**: Execution frequency, resource usage, integration patterns for all workflow scripts
+- **📈 Workflow Analytics**: Cross-phase dependencies, bottleneck identification, optimization opportunities
+
+### Quick Metrics Start
+
+```bash
+# Enable metrics (enabled by default)
+# Configuration: .claude/metrics/config.yml
+
+# Generate weekly insights report
+./.resources/scripts/metrics/generate-report.sh --period 7d --type summary
+
+# Query specific patterns
+./.resources/scripts/metrics/query-metrics.sh --type command --range 30d --stats
+
+# Analyze agent effectiveness
+./.resources/scripts/metrics/query-metrics.sh --type agent --stats --format json
+```
+
+### Actionable Insights
+
+**📊 Workflow Optimization**: Identify which commands and agents provide the most value
+**🎯 Performance Monitoring**: Track execution times, success rates, and resource utilization
+**🔍 Bottleneck Detection**: Discover workflow phases that need optimization
+**📈 Decision Support**: Data-driven insights for tool and process improvements
+
+### Privacy & Security
+
+- **🛡️ Local Storage**: All data stays on your machine
+- **🔒 No Code Content**: Only metadata and performance metrics collected
+- **⚙️ Configurable Collection**: Adjust data collection levels and exclusions
+- **📋 JSONL Format**: Structured, queryable data for custom analysis
+
+**[Complete Metrics Guide →](./.resources/scripts/metrics/README.md)**
 
 ## Add to Existing Projects
 

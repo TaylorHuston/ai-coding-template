@@ -98,6 +98,280 @@ git log --oneline -10
 3. Use context-analyzer: "Analyze existing authentication patterns"
 ```
 
+### 📊 Metrics System Issues
+
+#### No Metrics Data Collected
+
+**Problem**: Empty metrics files or no data in `.claude/metrics/*.jsonl`
+
+**Diagnosis**:
+```bash
+# Check if metrics are enabled
+grep "enabled:" .claude/metrics/config.yml
+
+# Verify metrics directory exists
+ls -la .claude/metrics/
+
+# Check file permissions
+ls -la .claude/metrics/*.jsonl
+
+# Test JSON validity
+jq . .claude/metrics/*.jsonl > /dev/null
+```
+
+**Solutions**:
+1. **Enable Metrics Collection**:
+   ```bash
+   # Edit config file
+   sed -i 's/enabled: false/enabled: true/' .claude/metrics/config.yml
+   ```
+
+2. **Fix Directory Permissions**:
+   ```bash
+   # Ensure proper permissions
+   chmod 755 .claude/metrics/
+   chmod 644 .claude/metrics/*.jsonl
+   chmod 644 .claude/metrics/config.yml
+   ```
+
+3. **Initialize Missing Files**:
+   ```bash
+   # Create missing JSONL files
+   touch .claude/metrics/{commands,agents,scripts}.jsonl
+
+   # Verify configuration exists
+   test -f .claude/metrics/config.yml || echo "Config file missing"
+   ```
+
+#### Metrics Collection Performance Impact
+
+**Problem**: Commands running slowly due to metrics collection
+
+**Symptoms**:
+- Commands take significantly longer to execute
+- System shows high I/O usage during command execution
+- Memory usage increases during metrics collection
+
+**Solutions**:
+1. **Reduce Collection Level**:
+   ```yaml
+   # In .claude/metrics/config.yml
+   collection:
+     level: "basic"  # Change from "detailed" to "basic"
+     sampling_rate: 0.5  # Collect only 50% of events
+   ```
+
+2. **Disable Heavy Collectors**:
+   ```yaml
+   collection:
+     collectors:
+       commands: true
+       agents: true
+       scripts: false  # Disable if not needed
+       workflows: false
+   ```
+
+3. **Optimize Storage Settings**:
+   ```yaml
+   storage:
+     retention_days: 30  # Reduce from 90 days
+     max_size_mb: 50     # Reduce from 100MB
+     flush_interval_seconds: 60  # Increase from 30
+   ```
+
+#### Corrupted Metrics Data
+
+**Problem**: JSON parsing errors or invalid data in metrics files
+
+**Diagnosis**:
+```bash
+# Find corrupted lines
+for file in .claude/metrics/*.jsonl; do
+    echo "Checking $file:"
+    cat -n "$file" | while read line; do
+        echo "$line" | cut -f2- | jq . >/dev/null 2>&1 || echo "Invalid JSON at line: $line"
+    done
+done
+```
+
+**Solutions**:
+1. **Clean Corrupted Files**:
+   ```bash
+   # Backup and clean corrupted files
+   cp .claude/metrics/commands.jsonl .claude/metrics/commands.jsonl.backup
+
+   # Remove invalid lines (recreates file with only valid JSON)
+   jq -c . .claude/metrics/commands.jsonl.backup > .claude/metrics/commands.jsonl.temp
+   mv .claude/metrics/commands.jsonl.temp .claude/metrics/commands.jsonl
+   ```
+
+2. **Reset Metrics Data**:
+   ```bash
+   # Complete reset (loses historical data)
+   rm .claude/metrics/*.jsonl
+   touch .claude/metrics/{commands,agents,scripts}.jsonl
+   ```
+
+#### Metrics Query Issues
+
+**Problem**: Query scripts return no results or errors
+
+**Diagnosis**:
+```bash
+# Test basic query functionality
+./.resources/scripts/metrics/query-metrics.sh --type command --limit 1
+
+# Check script permissions
+ls -la .resources/scripts/metrics/query-metrics.sh
+
+# Verify dependencies
+which jq || echo "jq not installed"
+which bash || echo "bash not available"
+```
+
+**Solutions**:
+1. **Install Missing Dependencies**:
+   ```bash
+   # Ubuntu/Debian
+   sudo apt-get install jq
+
+   # macOS
+   brew install jq
+
+   # Alpine
+   apk add jq
+   ```
+
+2. **Fix Script Permissions**:
+   ```bash
+   chmod +x .resources/scripts/metrics/*.sh
+   ```
+
+3. **Test with Simple Query**:
+   ```bash
+   # Start with basic test
+   echo '{"test": "data"}' | jq .
+
+   # Then test metrics query
+   ./.resources/scripts/metrics/query-metrics.sh --help
+   ```
+
+#### Metrics Storage Issues
+
+**Problem**: Metrics files growing too large or running out of disk space
+
+**Symptoms**:
+- Large `.claude/metrics/*.jsonl` files
+- Disk space warnings
+- Slow query performance
+
+**Solutions**:
+1. **Configure Retention Policies**:
+   ```yaml
+   # In .claude/metrics/config.yml
+   storage:
+     retention_days: 30
+     max_size_mb: 50
+     rotation: "daily"
+   ```
+
+2. **Manual Cleanup**:
+   ```bash
+   # Archive old data
+   mkdir -p .claude/metrics/archive/$(date +%Y-%m)
+   mv .claude/metrics/*.jsonl .claude/metrics/archive/$(date +%Y-%m)/
+   touch .claude/metrics/{commands,agents,scripts}.jsonl
+   ```
+
+3. **Optimize Data Collection**:
+   ```yaml
+   performance:
+     batch_size: 20          # Increase batch size
+     flush_interval_seconds: 60  # Reduce flush frequency
+     sampling_rate: 0.8      # Reduce collection rate
+   ```
+
+#### Agent Metrics Not Recording
+
+**Problem**: Agent invocations not appearing in metrics
+
+**Diagnosis**:
+```bash
+# Check if agent collector is enabled
+grep -A5 "collectors:" .claude/metrics/config.yml
+
+# Test agent metric recording
+source .resources/scripts/metrics/agent-metrics.sh
+track_agent_start "test-agent" "Test task" "manual" "test"
+track_agent_end "completed" "none" '[]' 0
+
+# Check if data was recorded
+tail -1 .claude/metrics/agents.jsonl | jq .
+```
+
+**Solutions**:
+1. **Enable Agent Collection**:
+   ```yaml
+   # In config.yml
+   collectors:
+     agents: true
+   ```
+
+2. **Verify Integration**:
+   ```bash
+   # Check if agent hooks are properly integrated
+   grep -r "agent-metrics.sh" .claude/commands/
+   ```
+
+3. **Manual Testing**:
+   ```bash
+   # Test agent metrics collection manually
+   source .resources/scripts/metrics/agent-metrics.sh
+   track_agent_start "manual-test" "Testing metrics" "user" "troubleshooting"
+   # ... do some work ...
+   track_agent_end "completed" "opus" '["Read", "Edit"]' 1500
+   ```
+
+#### Report Generation Failures
+
+**Problem**: `generate-report.sh` script fails or produces empty reports
+
+**Diagnosis**:
+```bash
+# Test report generation with debug output
+bash -x ./.resources/scripts/metrics/generate-report.sh --period 1d --type summary
+
+# Check if data exists for the period
+./.resources/scripts/metrics/query-metrics.sh --range 1d --limit 5
+```
+
+**Solutions**:
+1. **Verify Data Availability**:
+   ```bash
+   # Check if any data exists
+   wc -l .claude/metrics/*.jsonl
+
+   # Check data from last 24 hours
+   ./.resources/scripts/metrics/query-metrics.sh --range 1d --stats
+   ```
+
+2. **Test with Different Periods**:
+   ```bash
+   # Try longer period
+   ./.resources/scripts/metrics/generate-report.sh --period 7d --type summary
+
+   # Try basic format
+   ./.resources/scripts/metrics/generate-report.sh --format text
+   ```
+
+3. **Manual Report Testing**:
+   ```bash
+   # Create simple manual report
+   echo "=== Manual Metrics Report ===" > test-report.txt
+   echo "Commands in last 7 days:" >> test-report.txt
+   ./.resources/scripts/metrics/query-metrics.sh --type command --range 7d --format csv >> test-report.txt
+   ```
+
 ### Script and Tool Issues
 
 #### Scripts Not Executing

@@ -75,16 +75,16 @@ AI agents are specialized AI assistants with domain expertise that automatically
 
 These activate automatically when you mention relevant work:
 
-| When you say... | Agent that activates | What they do |
-|----------------|---------------------|--------------|
-| "Create a login form" | `frontend-specialist` | UI/UX development |
-| "Build an API endpoint" | `backend-specialist` | Server-side logic |
-| "Design user schema" | `database-specialist` | Data modeling |
-| "Write unit tests" | `test-engineer` | Test creation |
-| "Review this code" | `code-reviewer` | Quality analysis |
-| "Complex feature coordination" | `project-manager` | Multi-domain orchestration |
-| "Investigate this bug" | `context-analyzer` | Root cause analysis |
-| "Update the docs" | `technical-writer` | Documentation sync |
+| When you say... | Agent that activates | What they do | 📊 Metrics Tracked |
+|----------------|---------------------|--------------|-------------------|
+| "Create a login form" | `frontend-specialist` | UI/UX development | Component complexity, reusability patterns |
+| "Build an API endpoint" | `backend-specialist` | Server-side logic | Endpoint performance, error handling |
+| "Design user schema" | `database-specialist` | Data modeling | Schema complexity, query optimization |
+| "Write unit tests" | `test-engineer` | Test creation | Coverage improvement, test effectiveness |
+| "Review this code" | `code-reviewer` | Quality analysis | Issues found, improvement suggestions |
+| "Complex feature coordination" | `project-manager` | Multi-domain orchestration | Coordination effectiveness, delivery timing |
+| "Investigate this bug" | `context-analyzer` | Root cause analysis | Investigation depth, resolution accuracy |
+| "Update the docs" | `technical-writer` | Documentation sync | Documentation completeness, accuracy |
 
 ### On-Demand Agents (9 agents)
 
@@ -443,12 +443,141 @@ Multiple team members can work with agents:
 3. **Train Team**: Ensure everyone understands agent capabilities
 4. **Iterate**: Continuously improve agent effectiveness
 
+## 📊 Agent Performance Metrics
+
+All agent interactions are automatically tracked to help optimize team productivity and agent effectiveness.
+
+### What Gets Measured
+
+For each agent invocation, the system tracks:
+- **Performance**: Execution time, success/failure rates, accuracy
+- **Context**: Triggering conditions, command integration, workflow phase
+- **Value**: Problem resolution effectiveness, output quality
+- **Usage**: Frequency patterns, team adoption rates
+
+### Agent-Specific Metrics
+
+#### Development Agents
+```bash
+# Track development agent effectiveness
+./.resources/scripts/metrics/query-metrics.sh --type agent --name "*specialist" --stats
+
+# Key metrics:
+# - frontend-specialist: UI component reusability, accessibility compliance
+# - backend-specialist: API endpoint performance, error handling coverage
+# - database-specialist: Query optimization success, schema evolution
+```
+
+#### Quality Agents
+```bash
+# Analyze quality improvement impact
+./.resources/scripts/metrics/query-metrics.sh --type agent --name "*reviewer,*auditor,*engineer" --stats
+
+# Insights:
+# - test-engineer: Coverage improvement rates, test effectiveness
+# - code-reviewer: Issues identified, improvement suggestions adopted
+# - security-auditor: Vulnerabilities found, compliance success
+```
+
+#### Architecture Agents
+```bash
+# Review architectural decision support
+./.resources/scripts/metrics/query-metrics.sh --type agent --name "*architect,*manager,*analyzer" --stats
+
+# Analysis:
+# - code-architect: Decision quality, ADR generation success
+# - project-manager: Coordination effectiveness, delivery accuracy
+# - context-analyzer: Investigation depth, root cause accuracy
+```
+
+### Using Metrics for Agent Optimization
+
+#### Identify High-Value Agents
+```bash
+# Find agents with best ROI
+./.resources/scripts/metrics/generate-report.sh --period 30d --type agent-effectiveness
+
+# Optimization strategies:
+# - High usage + High success = Expand adoption
+# - Low usage + High value = Increase team awareness
+# - High usage + Low success = Improve agent prompts
+```
+
+#### Improve Agent Selection
+```bash
+# Analyze agent effectiveness by context
+./.resources/scripts/metrics/query-metrics.sh --type agent --stats | \
+    jq '.[] | select(.triggered_by == "command") | {agent: .name, command_success: .command_correlation}'
+
+# Use insights to:
+# - Choose optimal agent combinations
+# - Improve automatic agent selection
+# - Reduce redundant agent invocations
+```
+
+#### Team Performance Analysis
+```bash
+# Weekly agent utilization report
+./.resources/scripts/metrics/generate-report.sh --period 7d --format agent-summary
+
+# Team insights:
+# - Which agents does your team use most?
+# - Are specialized agents being underutilized?
+# - What's the success rate correlation between agents?
+```
+
+### Agent Effectiveness Patterns
+
+#### High-Performance Patterns
+- **Complementary Pairs**: `frontend-specialist` + `backend-specialist` for full-stack features
+- **Quality Chains**: `code-reviewer` → `security-auditor` → `performance-optimizer`
+- **Investigation Sequence**: `context-analyzer` → `refactoring-specialist` → `test-engineer`
+
+#### Optimization Opportunities
+- **Single-Agent Tasks**: High-success, low-complexity work that can be streamlined
+- **Multi-Agent Coordination**: Complex tasks where agent handoff can be improved
+- **Workflow Integration**: Agents that should be more tightly integrated with commands
+
+### Metrics-Driven Agent Selection
+
+Use data to make informed agent choices:
+
+```bash
+# Compare agent effectiveness for similar tasks
+./.resources/scripts/metrics/query-metrics.sh --type agent --task-similarity high --stats
+
+# Decision framework:
+# - Similar tasks with different agents = benchmark performance
+# - Failed agent patterns = identify improvement opportunities
+# - Successful combinations = create reusable patterns
+```
+
+### Privacy & Agent Data
+
+- **No Code Content**: Agent metrics never include source code or sensitive data
+- **Context Only**: Tracks agent selection, performance, and effectiveness patterns
+- **Local Storage**: All agent performance data stays on your machine
+- **Configurable**: Adjust agent tracking levels in metrics configuration
+
+```yaml
+# Agent-specific metrics configuration
+collection:
+  agents:
+    track_performance: true
+    track_combinations: true
+    track_context: true
+    exclude_sensitive: true
+```
+
+**🎯 Pro Tip**: Review agent metrics monthly to identify which specialists provide the most value for your team's specific work patterns and optimize agent selection accordingly.
+
 ---
 
 **Related Guides:**
 
-- [AI Collaboration Guide](./ai-collaboration-guide.md) - Advanced AI workflow patterns and context management
-- [Commands Reference](../reference/commands.md) - Slash commands for agent coordination
-- [Troubleshooting](../reference/troubleshooting.md) - Solve agent-related issues
+- **[Metrics System Guide](../analytics/metrics-system.md)** - Comprehensive agent performance tracking
+- **[AI Collaboration Guide](./ai-collaboration-guide.md)** - Advanced AI workflow patterns and context management
+- **[Commands Reference](../reference/commands.md)** - Slash commands for agent coordination
+- **[Troubleshooting](../reference/troubleshooting.md)** - Solve agent-related issues
 
 **Technical Details:** See `.claude/agents/README.md` for complete agent specifications and technical configuration.

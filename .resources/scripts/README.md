@@ -219,6 +219,105 @@ node .resources/scripts/generate-doc.js --list
 - Automatic directory creation
 - Template variable extraction and defaults
 
+### 📊 Analytics & Metrics Scripts
+
+#### 📈 `metrics/generate-report.sh` - Metrics Analytics and Reporting
+Generates comprehensive analytics reports from collected usage metrics to provide actionable insights for workflow optimization.
+
+**Purpose**: Transform raw metrics data into actionable insights for improving AI-assisted development workflows.
+
+**Usage**:
+```bash
+# Generate weekly summary report
+./resources/scripts/metrics/generate-report.sh --period 7d --type summary
+
+# Detailed monthly analysis with JSON output
+./resources/scripts/metrics/generate-report.sh --period 30d --type detailed --format json
+
+# Export metrics to file for external analysis
+./resources/scripts/metrics/generate-report.sh --output team-metrics.html --format html
+
+# Agent-specific performance report
+./resources/scripts/metrics/generate-report.sh --type agent-effectiveness --period 30d
+```
+
+**Features**:
+- Multiple output formats (text, JSON, CSV, HTML)
+- Configurable time periods (1d, 7d, 30d, 90d)
+- Command, agent, and script effectiveness analysis
+- Workflow bottleneck identification
+- Team productivity insights
+
+#### 🔍 `metrics/query-metrics.sh` - Metrics Data Exploration
+Flexible querying tool for exploring and filtering metrics data with statistical analysis capabilities.
+
+**Purpose**: Enable detailed exploration and analysis of collected metrics data for optimization insights.
+
+**Usage**:
+```bash
+# Query command metrics from last 30 days
+./resources/scripts/metrics/query-metrics.sh --type command --range 30d --stats
+
+# Analyze failed operations
+./resources/scripts/metrics/query-metrics.sh --status failed --range 7d --format csv
+
+# Agent utilization analysis
+./resources/scripts/metrics/query-metrics.sh --type agent --stats --format json
+
+# Top 10 most used commands
+./resources/scripts/metrics/query-metrics.sh --type command --limit 10 --sort usage
+```
+
+**Features**:
+- Flexible filtering by type, status, date range
+- Statistical analysis with averages and percentiles
+- Multiple output formats for integration
+- Complex queries for pattern analysis
+- Performance and usage trend identification
+
+#### 🎯 `metrics/wrap-script.sh` - Script Execution Tracker
+Wraps any script execution with comprehensive metrics collection for automation insights.
+
+**Purpose**: Automatically collect performance and execution metrics for any script to optimize automation workflows.
+
+**Usage**:
+```bash
+# Wrap setup script with metrics
+./resources/scripts/metrics/wrap-script.sh setup ./setup-project.sh
+
+# Track quality validation with category
+./resources/scripts/metrics/wrap-script.sh quality ./validate-code.sh --strict
+
+# Monitor CI/CD scripts
+./resources/scripts/metrics/wrap-script.sh ci-build npm run build
+```
+
+**Features**:
+- Automatic execution time tracking
+- Success/failure rate monitoring
+- Resource usage measurement
+- Exit code and error pattern analysis
+- Integration with metrics database
+
+#### ⚙️ `metrics/metrics-collector.sh` - Core Metrics Infrastructure
+Core metrics collection functions and utilities used by all other metrics scripts for consistent data gathering.
+
+**Purpose**: Provide centralized, consistent metrics collection infrastructure for commands, agents, and scripts.
+
+**Features**:
+- Session ID management for correlation
+- Standardized JSON schema validation
+- Configurable collection levels (basic/detailed/debug)
+- Privacy controls and data exclusion patterns
+- Automatic data cleanup and retention management
+
+**Usage**: Typically sourced by other scripts rather than called directly:
+```bash
+# In command or agent scripts
+source .resources/scripts/metrics/metrics-collector.sh
+collect_metrics "command" "/architect" "completed" 12500 '["opus"]' '["code-architect"]'
+```
+
 ### Workflow & Planning Scripts
 
 #### 🔄 `init-workflow.sh` - Workflow Structure Initialization
