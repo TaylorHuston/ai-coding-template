@@ -23,7 +23,7 @@ From simple code generator to intelligent development partner through the stream
 ### **📚 Essential Navigation**
 
 - **[🔧 All Commands](./docs/ai-tools/reference/commands.md)** - Complete command reference
-- **[🤖 17 Specialist Agents](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Your expert team
+- **[🤖 18 Specialist Agents](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Your expert team
 - **[🏗️ Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration guide
 - **[📋 AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Epic workflow patterns and best practices
 
@@ -32,7 +32,7 @@ From simple code generator to intelligent development partner through the stream
 1. **[👋 START HERE](./START-HERE.md)** - 5-minute guided introduction
 2. **[⚡ Quick Demo](#quick-demo)** - See the workflow in action
 3. **[🏗️ Setup Guide](./docs/ai-tools/setup/quick-start.md)** - Complete configuration
-4. **[🤖 Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - 17 specialist team
+4. **[🤖 Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - 18 specialist team
 5. **[🤖 AI Commands](./docs/ai-tools/reference/commands.md)** - Start your AI-assisted workflow
 
 ---
@@ -115,7 +115,7 @@ Execute implementation tasks with test-first enforcement and epic integration:
 
 ### Why This Workflow Matters
 
-**🎯 Architectural Quality**: Decisions are thoroughly explored before any code is written **🧠 Perfect Memory**: Context is preserved across sessions, agents, and phases **👥 Multi-Expert Coordination**: 17 specialized agents work together seamlessly **⚡ Quality Assurance**: Built-in gates ensure standards are maintained throughout **📈 Scalable Complexity**: Works for simple features to complex system redesigns
+**🎯 Architectural Quality**: Decisions are thoroughly explored before any code is written **🧠 Perfect Memory**: Context is preserved across sessions, agents, and phases **👥 Multi-Expert Coordination**: 18 specialized agents work together seamlessly **⚡ Quality Assurance**: Built-in gates ensure standards are maintained throughout **📈 Scalable Complexity**: Works for simple features to complex system redesigns
 
 ### Key Innovation: Agent-First Architecture
 
@@ -247,7 +247,7 @@ cd my-project
 
 ### 3. Learn the System
 
-**→ [Commands Reference](./docs/ai-tools/reference/commands.md)** - Master the four phases **→ [Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Understand your 17 specialists **→ [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Advanced AI patterns **→ [Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration options
+**→ [Commands Reference](./docs/ai-tools/reference/commands.md)** - Master the four phases **→ [Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Understand your 18 specialists **→ [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Advanced AI patterns **→ [Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration options
 
 ## How the Template Supports the Workflow
 
@@ -257,7 +257,7 @@ cd my-project
 my-project/
 ├── .claude/                    # Workflow Orchestration System
 │   ├── commands/               # /design, /architect, /plan, /develop implementations
-│   ├── agents/                 # 17 specialized experts for each workflow phase
+│   ├── agents/                 # 18 specialized experts for each workflow phase
 │   └── metrics/                # Usage analytics and performance tracking
 │       ├── config.yml          # Metrics collection configuration
 │       ├── schema.json         # Data validation schema
@@ -287,7 +287,7 @@ my-project/
 └── STATUS.md                  # Cross-session context preservation
 ```
 
-### 17 AI Specialist Agents
+### 18 AI Specialist Agents
 
 Expert AI agents automatically coordinate throughout the workflow:
 
@@ -402,7 +402,7 @@ Essential scripts for workflow automation:
 The comprehensive metrics system automatically tracks:
 
 - **🎯 Command Effectiveness**: Success rates, execution patterns, workflow progression for `/design`, `/architect`, `/plan`, `/develop`
-- **🤖 Agent Performance**: Utilization patterns, task completion rates, model usage for all 17 specialized agents
+- **🤖 Agent Performance**: Utilization patterns, task completion rates, model usage for all 18 specialized agents
 - **⚙️ Script Automation**: Execution frequency, resource usage, integration patterns for all workflow scripts
 - **📈 Workflow Analytics**: Cross-phase dependencies, bottleneck identification, optimization opportunities
 

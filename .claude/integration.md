@@ -21,7 +21,7 @@ This integration system provides:
 ```text
 Project Root
 ├── .claude/                    # AI assistant configuration
-│   ├── agents/                 # 17 specialized AI agents
+│   ├── agents/                 # 18 specialized AI agents
 │   ├── commands/               # Epic-driven workflow commands
 │   ├── working/                # Active development workspace
 │   ├── precedence.md          # Configuration precedence rules

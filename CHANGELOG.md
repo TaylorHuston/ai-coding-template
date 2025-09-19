@@ -23,6 +23,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Standardized all documentation references to use "project-brief" terminology
   - Updated workflow scripts and validation tools to use consistent naming
 
+- **Documentation System Optimization**: Comprehensive optimization of development guidelines and documentation structure
+  - Consolidated 19 guideline files down to 12 files (37% reduction) for improved AI processing efficiency
+  - Extracted code examples from guidelines to `.resources/examples/` directory with organized subdirectories
+  - Streamlined git-workflow.md from 913 to 308 lines (66% reduction) focusing on project-specific workflows
+  - Added MCP Tool Decision Framework to CLAUDE.md to prevent manual analysis when systematic tools are available
+  - Updated all cross-references and agent guideline mappings to reflect consolidated structure
+  - All guideline files now under 400 lines for optimal AI context usage
+
+### Changed
+
+- **Refresh Command Performance**: Optimized `/refresh` command for dramatically improved context efficiency
+  - Reduced context consumption from 58k tokens to ~300 tokens (194x improvement)
+  - Changed from direct file reading to subagent delegation pattern using context-analyzer
+  - Moved static capability information to CLAUDE.md to avoid redundant loading
+  - Implemented just-in-time guideline loading system to prevent context waste
+  - Maintained complete functionality while achieving massive efficiency gains
+
 ## [0.3.0] - 2025-09-18
 
 ### Added in v0.3.0

@@ -19,7 +19,7 @@ This directory contains documentation about how your development team works toge
 ### `/guidelines/`
 **Code quality, documentation, and project standards**
 - **quality-standards.md** - Comprehensive quality requirements and validation protocols
-- **documentation-guidelines.md** - Documentation writing and maintenance standards
+- **documentation-standards.md** - Documentation writing and maintenance standards
 - **documentation-maintenance.md** - Processes for keeping documentation current
 - **changelog-maintenance.md** - Changelog management and release documentation
 - **visual-documentation.md** - Guidelines for diagrams, screenshots, and visual content
@@ -66,7 +66,7 @@ This directory contains documentation about how your development team works toge
 
 ### Quality First
 - All code must meet standards in `guidelines/quality-standards.md`
-- Documentation must follow `guidelines/documentation-guidelines.md`
+- Documentation must follow `guidelines/documentation-standards.md`
 - Testing follows `workflows/tdd-strategy.md`
 
 ### Consistency

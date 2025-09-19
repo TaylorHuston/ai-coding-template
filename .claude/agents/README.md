@@ -1,6 +1,6 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-09-18 **Status**: Active - Updated for Epic-Driven Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 17 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-09-18 **Status**: Active - Updated for Epic-Driven Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 18 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 

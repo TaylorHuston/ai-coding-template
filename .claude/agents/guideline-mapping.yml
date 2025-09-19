@@ -1,0 +1,154 @@
+---
+# Agent-Specific Guideline Mapping
+# Maps each agent to their relevant development guidelines for just-in-time loading
+version: "0.2.0"
+created: "2025-01-09"
+last_updated: "2025-09-18"
+purpose: "Define which guidelines each agent should load when starting work"
+
+# Core principle: Only load guidelines relevant to the agent's domain
+# This prevents context waste and information overload
+
+agents:
+  api-designer:
+    guidelines:
+      - api-guidelines.md
+      - architectural-principles.md
+    description: "API architecture, design patterns, and documentation standards"
+
+  security-auditor:
+    guidelines:
+      - security-guidelines.md
+      - authentication-authorization.md
+      - coding-standards.md
+    description: "Security assessment, vulnerability detection, auth patterns"
+
+  test-engineer:
+    guidelines:
+      - testing-standards.md
+      - quality-standards.md
+      - code-review-guidelines.md
+    description: "Test creation, TDD/BDD, quality assurance"
+
+  technical-writer:
+    guidelines:
+      - documentation-standards.md
+      - visual-documentation.md
+      - changelog-maintenance.md
+    description: "Documentation creation, maintenance, standards"
+
+  code-architect:
+    guidelines:
+      - architectural-principles.md
+      - api-guidelines.md
+      - security-guidelines.md
+      - quality-standards.md
+    description: "System design, architecture decisions, technical planning"
+
+  code-reviewer:
+    guidelines:
+      - code-review-guidelines.md
+      - quality-standards.md
+      - coding-standards.md
+      - security-guidelines.md
+      - testing-standards.md
+    description: "Code quality assessment, review standards, best practices"
+
+  frontend-specialist:
+    guidelines:
+      - coding-standards.md
+      - quality-standards.md
+      - testing-standards.md
+      - api-guidelines.md
+    description: "Frontend development, UI/UX, client-side patterns"
+
+  backend-specialist:
+    guidelines:
+      - coding-standards.md
+      - api-guidelines.md
+      - security-guidelines.md
+      - testing-standards.md
+      - quality-standards.md
+    description: "Server-side development, business logic, API implementation"
+
+  database-specialist:
+    guidelines:
+      - quality-standards.md
+      - security-guidelines.md
+      - coding-standards.md
+      - testing-standards.md
+    description: "Database design, optimization, data security"
+
+  devops-engineer:
+    guidelines:
+      - security-guidelines.md
+      - quality-standards.md
+      - git-workflow.md
+    description: "Infrastructure, deployment, CI/CD, security hardening"
+
+  performance-optimizer:
+    guidelines:
+      - quality-standards.md
+      - testing-standards.md
+      - coding-standards.md
+    description: "Performance analysis, optimization, monitoring"
+
+  refactoring-specialist:
+    guidelines:
+      - code-review-guidelines.md
+      - coding-standards.md
+      - quality-standards.md
+      - testing-standards.md
+    description: "Code improvement, technical debt reduction"
+
+  migration-specialist:
+    guidelines:
+      - quality-standards.md
+      - testing-standards.md
+      - git-workflow.md
+      - security-guidelines.md
+    description: "Framework upgrades, dependency updates, safe migrations"
+
+  data-analyst:
+    guidelines:
+      - quality-standards.md
+      - security-guidelines.md
+      - coding-standards.md
+    description: "Data processing, analysis, reporting, insights"
+
+  # Meta-agents that coordinate others
+  project-manager:
+    guidelines:
+      - quality-standards.md
+      - git-workflow.md
+      - changelog-maintenance.md
+    description: "Multi-agent coordination, project orchestration"
+
+  context-analyzer:
+    guidelines: []
+    description: "Project analysis and investigation - uses all guidelines contextually"
+
+  ai-llm-expert:
+    guidelines:
+      - coding-standards.md
+      - quality-standards.md
+      - api-guidelines.md
+    description: "AI/LLM architecture, implementation, optimization"
+
+# Universal guidelines that all agents should be aware of (loaded via CLAUDE.md):
+# - Universal quality standards (patterns, conventions, changelog updates)
+# - Critical rules (commit approval, test-first, branch-first)
+# - Response protocol (concise, explicit, incremental, transparent)
+
+# Optimization Summary (v0.2.0):
+# - Consolidated 19 guideline files down to 12 files (37% reduction)
+# - Extracted code examples to .resources/examples/ directory
+# - Streamlined git-workflow.md from 913 to 308 lines (66% reduction)
+# - All guideline files now under 400 lines for optimal AI processing
+# - Maintained complete domain coverage with improved focus
+
+# Usage pattern:
+# 1. Agent starts work
+# 2. Agent loads its mapped guidelines from docs/development/guidelines/
+# 3. Agent applies domain-specific knowledge to task
+# 4. Universal rules from CLAUDE.md always apply

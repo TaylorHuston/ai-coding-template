@@ -22,7 +22,7 @@ This directory contains all documentation for AI tools and systems. This is the 
 
 ### `/guides/`
 **Comprehensive guides and patterns**
-- **comprehensive-agent-guide.md** - Complete guide to the 17-agent system and practical usage
+- **comprehensive-agent-guide.md** - Complete guide to the 18-agent system and practical usage
 - **ai-collaboration-guide.md** - Patterns for effective AI collaboration
 - **multi-model-consultation-guide.md** - Advanced multi-model AI consultation patterns
 
@@ -49,12 +49,13 @@ This directory contains all documentation for AI tools and systems. This is the 
 
 ## Key Features of This Template
 
-### 17 Specialized AI Agents
+### 18 Specialized AI Agents
 - **Architecture**: code-architect, project-manager, context-analyzer
 - **Development**: frontend-specialist, backend-specialist, database-specialist, api-designer
 - **Quality**: test-engineer, code-reviewer, security-auditor, refactoring-specialist
 - **Operations**: devops-engineer, performance-optimizer, migration-specialist
-- **Documentation**: technical-writer, technical-writer, data-analyst
+- **Documentation**: technical-writer, data-analyst
+- **Strategy**: brief-strategist, ai-llm-expert
 
 ### Smart Context Management
 - Preserve project knowledge across AI sessions

@@ -1,58 +1,72 @@
 ---
-description: Intelligent project context refresh using structured documentation and git awareness
-argument-hint: Optional specific area to refresh (status, agents, workflow, technical)
-allowed-tools: ["Read", "Bash(git)", "Task"]
+description: Context-efficient project refresh using intelligent subagent delegation
+argument-hint: Optional mode (--analysis, --focus [area]) or default lightning refresh
+allowed-tools: ["Bash(git)", "Task"]
 model: sonnet
 ---
 
-Intelligent project context refresh using our structured documentation system:
+Provide context refresh focused on dynamic project state while preserving main conversation tokens. Assumes CLAUDE.md capabilities context already available.
 
-## Core Context Gathering
+## Execution Strategy
 
-1. **Project Overview**:
+**Parse Arguments**:
 
-   - Read README.md for project introduction and goals
-   - Read START-HERE.md if it exists for guided introduction
-   - Read CLAUDE.md for AI instructions and project context
+- No arguments or default: Execute Lightning Mode
+- `--analysis`: Execute Analysis Mode with context-analyzer subagent
+- `--focus [area]`: Execute targeted analysis for specific domain
 
-2. **Current State Analysis**:
+## Lightning Mode (Default)
 
-   - Read STATUS.md for current project state and AI context
-   - Check git status and recent commits (last 3-5) for development activity
-   - Read CHANGELOG.md for recent changes and updates
-   - Review any uncommitted changes indicating work in progress
+Execute minimal dynamic state refresh:
 
-3. **AI Framework Context**:
+1. **Refresh Capabilities**: Read CLAUDE.md for capabilities
+2. **Get git status**: `git status --porcelain` (show modified files)
+3. **Get current branch**: `git branch --show-current`
+4. **Get recent commits**: `git log --oneline -3`
+5. **Get current status**: Read STATUS.md and unstaged/uncommitted files
+6. **Generate summary**: Format as structured output referencing CLAUDE.md for capabilities
 
-   - Read .claude/references/documentation-tree.md for comprehensive documentation index
-   - Read .claude/agents/README.md for agent capabilities and coordination
-   - Read .claude/commands/README.md for command reference and usage
-   - Read .resources/scripts/README.md for automation capabilities
+**Target**: <500 tokens total
 
-4. **Development Context**:
-   - Read docs/ai-tools/system-context.md for system-wide integration patterns
-   - Read docs/development/guidelines/\*.md for development best practices
-   - Read docs/development/workflows/\*.md for development workflows
+## Analysis Mode (--analysis)
 
-## Intelligent Analysis
+Delegate dynamic state analysis to context-analyzer subagent:
 
-Use the Task tool with context-analyzer agent to:
+1. **Quick git orientation**: Basic git status in main conversation
+2. **Launch subagent**: Use Task tool with context-analyzer
+3. **Subagent task**: "Analyze current project dynamic state by reading: (1) Current state: STATUS.md, CHANGELOG.md recent changes; (2) Active work: git status, recent commits, uncommitted changes; (3) Progress assessment: current development phase, active tasks, recent activity. Focus on what has changed since last session. Capabilities are already known from CLAUDE.md. Return structured summary with current focus, recent progress, and immediate next steps."
+4. **Return summary**: Subagent provides optimized 2-3k token summary
+5. **Generate summary**: Format as structured output referencing CLAUDE.md for capabilities
 
-- Synthesize all gathered information into coherent project understanding
-- Identify current development phase and priorities
-- Highlight any blocking issues, incomplete work, or urgent tasks
-- Assess project health and documentation currency
-- Recommend next actions based on current state
+## Focus Mode (--focus [area])
+
+Execute targeted dynamic analysis for specific domain:
+
+**Areas**: status, git, progress, current
+
+1. **Quick orientation**: Minimal git status
+2. **Launch focused subagent**: Context-analyzer with domain-specific task
+3. **Domain tasks**:
+   - `status`: Read STATUS.md and assess current development state
+   - `git`: Analyze git history, branches, and recent commits
+   - `progress`: Review CHANGELOG.md and assess completion status
+   - `current`: Focus on immediate active work and next steps
 
 ## Output Format
 
-Provide structured context summary:
+**Lightning Mode**: Concise 3-line summary:
 
-- **Project Phase**: Current development stage and focus area
-- **Recent Activity**: Summary of latest changes and commits
-- **Active Work**: Current tasks, working directories, and progress
-- **Available Tools**: Key scripts, agents, and automation capabilities
-- **Priorities**: Immediate next steps and any blocking issues
-- **Quick Reference**: Links to key documentation for current work
+- 🌟 Project: [Name] | Branch: [current] | Status: [focus]
+- 📊 Progress: [%] | Modified: [files] | Recent: [commit]
+- ⚡ Next: [recommended action] | Capabilities: See CLAUDE.md
 
-Arguments: $ARGUMENTS (focus areas: status, agents, workflow, technical, all)
+**Analysis Mode**: Present subagent's dynamic state analysis unchanged
+
+**Focus Mode**: Present subagent's domain-specific insights unchanged
+
+## Context Efficiency
+
+- Lightning: ~300 tokens (0.15% context)
+- Analysis: ~2-3k tokens (1.5% context)
+- Focus: ~1-2k tokens (1% context)
+- Previous approach: 58k tokens (29% context)

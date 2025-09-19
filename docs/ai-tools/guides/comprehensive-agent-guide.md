@@ -12,7 +12,7 @@ tags: ["ai-agents", "system-overview", "workflows", "ai-collaboration"]
 
 # Comprehensive AI Agents Guide
 
-**Your team of 17 specialized AI experts that automatically activate based on your work context.**
+**Your team of 18 specialized AI experts that automatically activate based on your work context.**
 
 This comprehensive guide covers both the conceptual understanding of the AI agent system and practical guidance for effective usage.
 
@@ -36,11 +36,13 @@ AI agents are specialized AI assistants with domain expertise that automatically
 - Coordinated workflows between multiple specialties
 - Consistent quality standards and best practices
 
-## Complete 17-Agent System
+## Complete 18-Agent System
 
-### Architecture & Planning (3 agents)
+### Architecture & Planning (5 agents)
 
+- **`brief-strategist`** - Product vision and strategic planning
 - **`code-architect`** - System design and technology decisions
+- **`ai-llm-expert`** - AI/LLM architecture and implementation guidance
 - **`project-manager`** - Complex task coordination and orchestration
 - **`context-analyzer`** - Project investigation and root cause analysis
 
