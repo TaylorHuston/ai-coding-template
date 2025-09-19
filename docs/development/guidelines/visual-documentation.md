@@ -370,6 +370,6 @@ When creating or updating documentation:
 
 ## See Also
 
-- [Documentation Guidelines](../documentation-guidelines.md) - Overall documentation guidelines
-- [Architecture Documentation](../architecture/README.md) - System architecture patterns
-- [Status Management](../STATUS.md) - Project status tracking
+- [Documentation Standards](./documentation-standards.md) - Overall documentation guidelines
+- [Architecture Documentation](../../technical/architecture/README.md) - System architecture patterns
+- [Status Management](../../../STATUS.md) - Project status tracking

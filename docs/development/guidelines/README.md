@@ -1,7 +1,7 @@
 ---
 version: "1.0.0"
 created: "2025-09-15"
-last_updated: "2025-09-18"
+last_updated: "2025-09-19"
 status: "active"
 target_audience: ["developers", "technical-writers", "ai-assistants"]
 document_type: "index"
@@ -21,6 +21,7 @@ tags: ["guidelines", "standards", "documentation", "navigation"]
 ### **Core Development Guidelines**
 
 - **[Quality Standards](./quality-standards.md)** - Comprehensive quality requirements and validation protocols for AI-assisted development
+- **[Code Quality](./code-quality.md)** - Code quality principles, metrics, and modern quality assurance approaches
 - **[Coding Standards](./coding-standards.md)** - Language-agnostic coding conventions, naming patterns, and best practices
 
 ### **Consolidated Guidelines**
@@ -32,6 +33,7 @@ tags: ["guidelines", "standards", "documentation", "navigation"]
 
 ### **Specialized Guidelines**
 
+- **[AI Collaboration Standards](./ai-collaboration-standards.md)** - Advanced AI collaboration patterns, multi-agent coordination, and human-AI partnership strategies
 - **[Authentication & Authorization](./authentication-authorization.md)** - Identity management, RBAC/ABAC, MFA, and session security
 - **[Git Workflow](./git-workflow.md)** - Branching strategies, commit conventions, and version control best practices
 - **[Code Review Guidelines](./code-review-guidelines.md)** - Review processes, quality checklists, and AI collaboration standards
@@ -51,7 +53,8 @@ tags: ["guidelines", "standards", "documentation", "navigation"]
 ### **Looking for Specific Guidelines?**
 
 - **Architecture & Principles**: [Architectural Principles](./architectural-principles.md) for DRY, KISS, YAGNI, SOLID fundamentals
-- **Code Quality**: [Coding Standards](./coding-standards.md) and [Code Review Guidelines](./code-review-guidelines.md)
+- **AI Collaboration**: [AI Collaboration Standards](./ai-collaboration-standards.md) for advanced human-AI partnership patterns and multi-agent coordination
+- **Code Quality**: [Code Quality](./code-quality.md) for quality principles and metrics, [Coding Standards](./coding-standards.md) for conventions, and [Code Review Guidelines](./code-review-guidelines.md) for review processes
 - **Testing**: [Testing Standards](./testing-standards.md) for comprehensive testing strategies and implementation patterns
 - **API Development**: [API Guidelines](./api-guidelines.md) for complete REST/GraphQL design, documentation, and implementation
 - **Security**: [Security Guidelines](./security-guidelines.md) for comprehensive security framework and [Authentication & Authorization](./authentication-authorization.md) for identity management

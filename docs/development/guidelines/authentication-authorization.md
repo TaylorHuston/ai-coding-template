@@ -17,23 +17,20 @@ tags: ["authentication", "authorization", "jwt", "mfa", "rbac", "abac", "session
 
 ### Multi-Factor Authentication (MFA) Strategy
 
-#### When to Require MFA
-
+**When to Require MFA**:
 - **High-Value Accounts**: Administrative users, financial access, sensitive data handlers
 - **Sensitive Operations**: Password changes, account settings, data exports, privilege escalation
 - **Risk-Based Triggers**: Unusual login patterns, new devices, geographic anomalies
 - **Compliance Requirements**: Regulatory mandates (SOX, HIPAA, PCI-DSS)
 
-#### MFA Method Selection
-
+**MFA Method Selection**:
 - **TOTP (Time-based)**: Preferred for technical users, offline capability, no SMS vulnerabilities
 - **SMS**: Convenient but vulnerable to SIM swapping, use only for low-risk scenarios
 - **Email**: Backup method, suitable for account recovery flows
 - **WebAuthn/FIDO2**: Highest security, phishing-resistant, hardware-based authentication
 - **Push Notifications**: User-friendly, real-time validation, requires internet connectivity
 
-#### Implementation Principles
-
+**Implementation Principles**:
 - **Clock Skew Tolerance**: Allow 30-60 second window for TOTP validation
 - **Token Reuse Prevention**: Track and reject previously used tokens within validity window
 - **Backup Codes**: Provide single-use recovery codes for device loss scenarios
@@ -42,8 +39,7 @@ tags: ["authentication", "authorization", "jwt", "mfa", "rbac", "abac", "session
 
 ### Password Security Framework
 
-#### Password Requirements Strategy
-
+**Password Requirements**:
 - **Minimum Length**: 12 characters minimum, 16+ recommended for high-security accounts
 - **Maximum Length**: 128 characters to prevent DoS attacks during hashing
 - **Character Complexity**: Require mix of uppercase, lowercase, numbers, special characters
@@ -51,22 +47,19 @@ tags: ["authentication", "authorization", "jwt", "mfa", "rbac", "abac", "session
 - **Common Password Prevention**: Block passwords from breach databases and common lists
 - **Personal Information Restriction**: Prevent use of user's personal data in passwords
 
-#### Hashing and Storage Principles
-
+**Hashing and Storage**:
 - **Algorithm Selection**: bcrypt with cost factor 12+ (adjust based on hardware capabilities)
 - **Salt Generation**: Unique cryptographic salt per password, handled automatically by bcrypt
 - **Timing Attack Prevention**: Constant-time comparison and consistent delay patterns
 - **Upgrade Path**: Plan for algorithm migration (bcrypt → scrypt → Argon2)
 
-#### Password Policy Enforcement
-
+**Password Policy Enforcement**:
 - **Client-Side Validation**: User experience only, never rely for security
 - **Server-Side Validation**: Primary enforcement point, comprehensive checks
 - **Real-Time Feedback**: Password strength meter without revealing specific requirements
 - **Grace Periods**: Allow existing users time to upgrade to new requirements
 
-#### Password Reset Security
-
+**Password Reset Security**:
 - **Token-Based Reset**: Cryptographically secure random tokens
 - **Time-Limited Tokens**: 15-30 minute expiration for reset links
 - **Single-Use Tokens**: Invalidate immediately after use or new token generation
@@ -368,9 +361,7 @@ tags: ["authentication", "authorization", "jwt", "mfa", "rbac", "abac", "session
 
 ## Related Guidelines
 
-- **[Security Principles](./security-principles.md)** - Core security concepts, threat modeling, and governance framework
-- **[Security Implementation](./security-implementation.md)** - Practical security implementation patterns and decision frameworks
-- **[API Implementation Patterns](./api-implementation-patterns.md)** - API authentication and authorization patterns
+- **[Security Guidelines](./security-guidelines.md)** - Core security concepts, threat modeling, and governance framework
 - **[Quality Standards](./quality-standards.md)** - Security requirements within quality standards
 - **[Code Review Guidelines](./code-review-guidelines.md)** - Security-focused code review processes
 
@@ -388,9 +379,7 @@ All implementation examples and working code patterns are available in:
 
 ## Related Security Guidelines
 
-- **[Security Principles](./security-principles.md)** - Core security concepts and governance philosophy
-- **[Security Implementation Guide](./security-implementation.md)** - Comprehensive security patterns and practices
-- **[Core Security Patterns](./security-implementation-core.md)** - Essential security implementation patterns
+- **[Security Guidelines](./security-guidelines.md)** - Core security concepts and governance philosophy
 
 ## Navigation
 

@@ -1,17 +1,17 @@
 ---
-version: "1.0.0"
+version: "1.1.0"
 created: "2025-09-18"
-last_updated: "2025-09-18"
+last_updated: "2025-09-19"
 status: "active"
 target_audience: ["developers", "ai-assistants", "security-engineers", "architects"]
 document_type: "guide"
 priority: "critical"
-tags: ["security", "principles", "threat-modeling", "compliance", "implementation"]
+tags: ["security", "principles", "threat-modeling", "compliance", "implementation", "supply-chain", "zero-trust", "devsecops"]
 ---
 
 # Security Guidelines
 
-**Purpose**: Comprehensive security principles, implementation patterns, and governance frameworks for building secure, compliant, and resilient systems. This guide consolidates security philosophy, threat modeling, implementation practices, and compliance requirements.
+**Purpose**: Comprehensive security principles, implementation patterns, and governance frameworks for building secure, compliant, and resilient systems. This guide consolidates security philosophy, threat modeling, implementation practices, compliance requirements, and modern security considerations.
 
 ## Security Philosophy
 
@@ -19,13 +19,20 @@ tags: ["security", "principles", "threat-modeling", "compliance", "implementatio
 - Security considerations integrated from project inception
 - Threat modeling conducted for all major features
 - Defense in depth strategy with multiple security layers
-- Zero trust architecture principles applied
+- Zero trust architecture principles applied consistently
 
 ### Proactive Security
 - Regular security assessments and penetration testing
 - Continuous monitoring and threat detection
 - Automated security scanning in CI/CD pipelines
 - Incident response procedures documented and tested
+
+### Security as Code (DevSecOps)
+- Security controls defined and managed as code
+- Automated security policy enforcement
+- Security metrics integrated into development workflows
+- Shift-left security testing and validation
+- Infrastructure security configurations version-controlled
 
 ### AI-Assisted Security
 - AI-generated code receives enhanced security review
@@ -36,7 +43,6 @@ tags: ["security", "principles", "threat-modeling", "compliance", "implementatio
 ## Core Security Principles
 
 ### Principle of Least Privilege
-
 **Core Concept**: Users, applications, and systems should have only the minimum access necessary to perform their functions.
 
 **Implementation Strategy**:
@@ -49,11 +55,10 @@ tags: ["security", "principles", "threat-modeling", "compliance", "implementatio
 **Key Benefits**: Reduces attack surface, limits blast radius of compromised accounts, ensures compliance with access control requirements.
 
 ### Defense in Depth
-
 **Core Concept**: Multiple layers of security controls to protect against various attack vectors. No single security measure should be relied upon.
 
 **Security Layers**:
-- **Network Layer**: Firewalls, intrusion detection, DDoS protection
+- **Network Layer**: Firewalls, intrusion detection, DDoS protection, network segmentation
 - **Application Layer**: Input validation, output encoding, CSRF protection, rate limiting
 - **Authentication Layer**: Multi-factor authentication, password policies, session management
 - **Authorization Layer**: Role-based access, attribute-based access, resource permissions
@@ -63,21 +68,23 @@ tags: ["security", "principles", "threat-modeling", "compliance", "implementatio
 **Strategy**: Each layer should be independent and provide protection even if other layers fail. Design for redundancy and overlapping controls.
 
 ### Zero Trust Architecture
-
 **Core Concept**: Never trust, always verify - assume no implicit trust based on network location or previous authentication.
 
+**Zero Trust Principles**:
+- **Verify Explicitly**: Always authenticate and authorize based on available data points
+- **Least Privileged Access**: Limit user access with just-in-time and just-enough-access principles
+- **Assume Breach**: Minimize blast radius and segment access to verify end-to-end encryption
+
 **Verification Framework**:
-- **Identity Verification**: Multi-factor authentication, continuous identity validation
-- **Device Verification**: Device fingerprinting, device trust scoring, known device tracking
-- **Location Verification**: Geographic analysis, VPN detection, unusual location flagging
-- **Behavior Verification**: User behavior analysis, anomaly detection, pattern recognition
-- **Resource Verification**: Resource sensitivity assessment, access pattern analysis
-- **Context Verification**: Time-based access, request context analysis
+- **Identity Verification**: Continuous authentication, multi-factor validation, behavioral analysis
+- **Device Verification**: Device compliance, trust scoring, certificate-based authentication
+- **Network Verification**: Micro-segmentation, encrypted connections, traffic inspection
+- **Application Verification**: Application-layer security, API security, code integrity
+- **Data Verification**: Data classification, encryption, access logging, loss prevention
 
 **Trust Scoring**: Combine verification results into weighted trust scores that determine access levels and additional security controls.
 
 ### Fail Secure
-
 **Core Concept**: When systems fail, they should fail to a secure state rather than an open state. Default to denying access when in doubt.
 
 **Implementation Principles**:
@@ -87,189 +94,171 @@ tags: ["security", "principles", "threat-modeling", "compliance", "implementatio
 - **Comprehensive Logging**: Log all failures for security monitoring and analysis
 - **Fallback Mechanisms**: Design secure fallbacks for critical system failures
 
-**Security Benefits**: Prevents unauthorized access during system failures, maintains security posture during outages, provides clear audit trails for investigation.
+## Modern Security Considerations
+
+### Supply Chain Security
+**Core Concept**: Secure the entire software supply chain from development to deployment to prevent malicious code injection and unauthorized modifications.
+
+**Supply Chain Protection**:
+- **Dependency Management**: Pin dependency versions, verify checksums, monitor for vulnerabilities
+- **Code Provenance**: Sign commits, verify contributor identity, maintain audit trails
+- **Build Security**: Secure build environments, reproducible builds, artifact signing
+- **Third-Party Risk**: Vendor security assessments, SLA security requirements, exit strategies
+
+**Software Bill of Materials (SBOM)**:
+- Document all software components and dependencies
+- Track component versions and known vulnerabilities
+- Automate SBOM generation and distribution
+- Monitor for security advisories and updates
+
+### Container and Deployment Security
+**Container Security Principles**:
+- **Minimal Base Images**: Use distroless or minimal base images, remove unnecessary packages
+- **Image Scanning**: Scan for vulnerabilities, malware, and misconfigurations before deployment
+- **Runtime Security**: Monitor container behavior, detect anomalies, enforce security policies
+- **Secret Management**: Never embed secrets in images, use external secret management systems
+
+**Deployment Security**:
+- **Infrastructure as Code**: Define security configurations declaratively, version control all changes
+- **Immutable Infrastructure**: Replace rather than update, maintain consistent security posture
+- **Secure Defaults**: Apply security hardening by default, minimize manual configuration
+- **Environment Isolation**: Separate development, staging, and production environments
+
+### Security Testing Integration
+**Shift-Left Security Testing**:
+- **IDE Integration**: Real-time security feedback during development
+- **Pre-Commit Hooks**: Automated security checks before code commits
+- **Pull Request Security**: Automated security review for all code changes
+- **Development Training**: Security awareness integrated into developer workflows
+
+**Automated Security Testing**:
+- **SAST Integration**: Static analysis in CI/CD pipelines with quality gates
+- **DAST Automation**: Dynamic testing for runtime vulnerabilities
+- **SCA (Software Composition Analysis)**: Dependency vulnerability scanning
+- **IaC Security**: Infrastructure configuration security validation
 
 ## Threat Modeling
 
 ### STRIDE Methodology
-
 Systematic approach to identifying security threats:
-- **Spoofing**: Identity verification attacks
-- **Tampering**: Unauthorized data modification
-- **Repudiation**: Denying actions performed
-- **Information Disclosure**: Unauthorized data access
-- **Denial of Service**: System availability attacks
-- **Elevation of Privilege**: Unauthorized access escalation
+- **Spoofing**: Identity verification attacks, impersonation threats
+- **Tampering**: Unauthorized data modification, integrity violations
+- **Repudiation**: Denying actions performed, non-repudiation failures
+- **Information Disclosure**: Unauthorized data access, privacy breaches
+- **Denial of Service**: System availability attacks, resource exhaustion
+- **Elevation of Privilege**: Unauthorized access escalation, privilege abuse
 
 ### Attack Surface Analysis
-
 **Surface Components**:
-- **Network Surface**: Open ports, network protocols, external interfaces
-- **Web Surface**: Endpoints, static assets, client-side vulnerabilities
-- **API Surface**: Authentication requirements, input validation, rate limiting
-- **Data Surface**: Data stores, transmission methods, encryption status
-- **Infrastructure Surface**: Server configurations, cloud services, dependencies
+- **Network Surface**: Open ports, network protocols, external interfaces, cloud services
+- **Web Surface**: Endpoints, static assets, client-side vulnerabilities, third-party scripts
+- **API Surface**: Authentication requirements, input validation, rate limiting, versioning
+- **Data Surface**: Data stores, transmission methods, encryption status, backup locations
+- **Infrastructure Surface**: Server configurations, cloud services, dependencies, supply chain
 
 **Analysis Process**: Map all attack vectors, assess risk levels for each component, prioritize security controls based on risk assessment, and implement monitoring for high-risk surfaces.
 
 ## Security Controls Framework
 
 ### Preventive Controls
-
 Controls that prevent security incidents from occurring:
-- **Input Sanitization**: Validate and sanitize all user inputs for HTML, SQL, shell injection prevention
+- **Input Sanitization**: Validate and sanitize all user inputs for injection attack prevention
 - **Access Control**: Enforce role-based and resource-based permissions at every access point
-- **Secure Configuration**: Validate encryption settings, password policies, network security, and logging configuration
+- **Secure Configuration**: Validate encryption settings, password policies, network security configurations
 - **Secure Development**: Code review processes, static analysis, dependency scanning, secure coding standards
 
 ### Detective Controls
-
 Controls that detect security incidents as they occur:
-- **Anomaly Detection**: Monitor user activity patterns for location, time, volume, and behavior anomalies
-- **System Integrity Monitoring**: Check file integrity, configuration changes, unauthorized access, and system resources
-- **Security Information and Event Management (SIEM)**: Centralized logging, correlation rules, threat intelligence, automated alerting
-- **Vulnerability Scanning**: Regular security assessments, penetration testing, dependency vulnerability monitoring
+- **Anomaly Detection**: Monitor user activity patterns for behavioral, location, and volume anomalies
+- **System Integrity Monitoring**: Check file integrity, configuration changes, unauthorized access
+- **Security Information and Event Management (SIEM)**: Centralized logging, correlation rules, threat intelligence
+- **Vulnerability Scanning**: Regular security assessments, penetration testing, dependency monitoring
 
 ### Responsive Controls
-
 Controls that respond to and recover from security incidents:
-- **Incident Response**: Threat containment, investigation procedures, remediation processes, system recovery
+- **Incident Response**: Threat containment, investigation procedures, remediation processes
 - **Automated Response**: Account lockouts, IP blocking, service isolation, alert escalation
-- **Business Continuity**: Backup procedures, disaster recovery, communication plans, stakeholder notification
-- **Post-Incident**: Root cause analysis, security improvements, lessons learned, process updates
-
-## Security Governance
-
-### Security Policies
-
-**Password Policy Framework**:
-- Minimum length requirements with complexity rules
-- Expiration periods and history prevention
-- Account lockout thresholds and duration
-- Multi-factor authentication requirements
-
-**Data Classification Framework**:
-- Classification levels: Public, Internal, Confidential, Restricted
-- Handling requirements for each classification level
-- Encryption and access logging requirements
-- Retention periods and disposal procedures
-
-**Incident Response Framework**:
-- Classification levels: Low, Medium, High, Critical
-- Response time requirements for each level
-- Escalation procedures and communication protocols
-- Documentation and reporting requirements
-
-### Compliance Requirements
-
-**GDPR Compliance Assessment**:
-- Data processing legality verification
-- Consent management implementation
-- Data subject rights fulfillment
-- Data portability and breach notification procedures
-- Privacy by design implementation
-
-**SOC 2 Compliance Controls**:
-- Security controls for confidentiality and integrity
-- Availability controls for system uptime
-- Processing integrity for data accuracy
-- Confidentiality controls for data protection
-- Privacy controls for personal information
-
-## Risk Management
-
-### Risk Assessment Framework
-
-**Risk Calculation**: Risk = Probability × Impact
-- **Threat Probability**: Assess threat actor capability, motivation, vulnerability exploitability, and existing control effectiveness
-- **Business Impact**: Evaluate financial, operational, reputational, and regulatory implications
-- **Risk Categorization**: Low, Medium, High, Critical based on calculated risk scores
-- **Mitigation Strategies**: Risk acceptance, mitigation, transfer, or avoidance decisions
-
-### Security Metrics and KPIs
-
-**Incident Metrics**:
-- Total incidents by type and severity
-- Mean Time to Detection (MTTD)
-- Mean Time to Response (MTTR)
-- Mean Time to Recovery (MTTRec)
-
-**Vulnerability Metrics**:
-- Total vulnerabilities by severity level
-- Mean Time to Remediation for vulnerabilities
-- Patch compliance rates
-- Security testing coverage
-
-**Security Awareness Metrics**:
-- Training completion rates
-- Phishing test results and improvement trends
-- Security incident reporting rates
-- Security culture assessment scores
+- **Business Continuity**: Backup procedures, disaster recovery, communication plans
+- **Post-Incident**: Root cause analysis, security improvements, lessons learned documentation
 
 ## Authentication and Authorization
 
-### Authentication Strategies
+**Reference**: See `authentication-authorization.md` for comprehensive authentication and authorization patterns, implementation strategies, and decision frameworks.
 
-**Multi-Factor Authentication (MFA)**:
-- Something you know (password, PIN)
-- Something you have (token, smartphone, smart card)
-- Something you are (biometrics, behavioral patterns)
-- Contextual factors (location, device, time)
+### Modern Authentication Patterns
+**Passwordless Authentication**:
+- WebAuthn/FIDO2 for phishing-resistant authentication
+- Biometric authentication with secure enclave storage
+- Magic links with time-limited, single-use tokens
+- Certificate-based authentication for high-security environments
 
-**Token-Based Authentication**:
-- **JWT Tokens**: Stateless authentication with cryptographic signatures, short-lived access tokens, secure refresh token rotation
-- **API Keys**: Service-to-service authentication with scoped permissions and regular rotation
-- **OAuth 2.0/OpenID Connect**: Standardized authorization framework with scope-based permissions
-
-### Authorization Patterns
-
-**Role-Based Access Control (RBAC)**:
-- Predefined roles with specific permissions
-- Role hierarchy and inheritance
-- Separation of duties enforcement
-- Regular access reviews and certifications
-
-**Attribute-Based Access Control (ABAC)**:
-- Dynamic permission evaluation based on attributes
-- Context-aware access decisions
-- Fine-grained authorization policies
-- Real-time policy evaluation
+**Adaptive Authentication**:
+- Risk-based authentication decisions
+- Contextual access controls
+- Behavioral biometrics analysis
+- Machine learning-based anomaly detection
 
 ## Data Protection
 
 ### Encryption Standards
+**Data at Rest**: AES-256 encryption for stored data, database-level encryption, file system encryption, hardware security modules
+**Data in Transit**: TLS 1.3 for all communications, certificate management, mutual TLS for service-to-service
+**Key Management**: Hardware Security Modules (HSMs), key rotation policies, secure key derivation, access logging
 
-**Data at Rest**: AES-256 encryption for stored data, database-level encryption, file system encryption, key management best practices
-
-**Data in Transit**: TLS 1.3 for all communications, certificate management, secure API communication, VPN for internal traffic
-
-**Key Management**: Hardware Security Modules (HSMs), key rotation policies, secure key storage, access logging and auditing
-
-### Privacy Compliance
-
-**Data Minimization**: Collect only necessary data, implement retention policies, secure data disposal, regular data inventory audits
-
-**Consent Management**: Clear consent mechanisms, granular consent options, consent withdrawal processes, consent audit trails
-
-**Data Subject Rights**: Right to access, rectification, erasure, portability, restriction of processing, objection
+### Privacy by Design
+**Data Minimization**: Collect only necessary data, implement retention policies, secure disposal procedures
+**Purpose Limitation**: Use data only for stated purposes, implement data usage controls
+**Consent Management**: Granular consent mechanisms, withdrawal processes, audit trails
+**Data Subject Rights**: Access, rectification, erasure, portability, processing restriction rights
 
 ## Secure Development Practices
 
-### Secure Code Review
+### Security Testing Integration
+**CI/CD Security Pipeline**:
+- **Static Analysis**: SAST tools integrated with quality gates and failure thresholds
+- **Dependency Scanning**: SCA tools monitoring for vulnerable components
+- **Secret Detection**: Automated scanning for exposed credentials and API keys
+- **Infrastructure Scanning**: IaC security validation and compliance checking
 
-**Review Process**: Mandatory security review for all code changes, automated static analysis integration, manual review for security-critical components, security-focused code review checklists
+**Security Testing Strategy**:
+- **Unit Security Tests**: Security-specific test cases for critical functions
+- **Integration Security Tests**: End-to-end security scenario validation
+- **Penetration Testing**: Regular third-party security assessments
+- **Red Team Exercises**: Adversarial security testing and incident response validation
 
-**Common Vulnerabilities**: SQL injection prevention, Cross-Site Scripting (XSS) protection, Cross-Site Request Forgery (CSRF) prevention, insecure direct object references, security misconfiguration
+### Security Code Review
+**Review Process**: Mandatory security review for all code changes, automated static analysis integration, manual review for security-critical components
+**Security Checklist**: Input validation, authentication, authorization, error handling, logging, encryption
+**Threat-Specific Reviews**: Focus on OWASP Top 10, injection attacks, authentication bypass, privilege escalation
 
-### Security Testing
+## Risk Management
 
-**Static Application Security Testing (SAST)**: Code analysis for vulnerabilities, dependency vulnerability scanning, security rule enforcement, integration with CI/CD pipelines
+### Risk Assessment Framework
+**Risk Calculation**: Risk = Probability × Impact × Exposure
+- **Threat Probability**: Assess threat actor capability, motivation, vulnerability exploitability
+- **Business Impact**: Evaluate financial, operational, reputational, and regulatory implications
+- **Exposure Assessment**: Consider attack surface, control effectiveness, threat landscape
+- **Mitigation Strategies**: Risk acceptance, mitigation, transfer, or avoidance decisions
 
-**Dynamic Application Security Testing (DAST)**: Runtime vulnerability testing, penetration testing automation, API security testing, web application scanning
+### Security Metrics and KPIs
+**Incident Metrics**: Mean Time to Detection (MTTD), Mean Time to Response (MTTR), incident frequency trends
+**Vulnerability Metrics**: Vulnerability density, remediation time, patch compliance rates
+**Security Awareness**: Training completion, phishing test results, security culture assessment
+**Supply Chain Metrics**: Dependency update frequency, vulnerability scanning coverage, SBOM completeness
 
-**Interactive Application Security Testing (IAST)**: Real-time vulnerability detection, code instrumentation, runtime protection, comprehensive coverage analysis
+## Compliance and Governance
 
-## Best Practices
+### Security Policies
+**Password Policy Framework**: Minimum length, complexity requirements, account lockout thresholds, MFA requirements
+**Data Classification Framework**: Public, Internal, Confidential, Restricted classifications with handling requirements
+**Incident Response Framework**: Classification levels, response time requirements, escalation procedures
+
+### Compliance Requirements
+**GDPR Compliance**: Data processing legality, consent management, data subject rights, privacy by design
+**SOC 2 Compliance**: Security, availability, processing integrity, confidentiality, privacy controls
+**Industry Standards**: ISO 27001, NIST Cybersecurity Framework, industry-specific regulations
+
+## Implementation Strategy
 
 ### Security Implementation Process
 1. **Security Requirements**: Define security requirements early in development cycle
@@ -281,14 +270,15 @@ Controls that respond to and recover from security incidents:
 7. **Monitoring**: Continuous security monitoring and incident response
 8. **Maintenance**: Regular security updates and vulnerability management
 
-### Security Culture
-- **Training and Awareness**: Regular security training, phishing simulations, security culture assessment
-- **Incident Response**: Clear procedures, regular drills, post-incident reviews
-- **Continuous Improvement**: Learn from incidents, update procedures, share lessons learned
+### Security Culture and Training
+**Developer Security Training**: Secure coding practices, threat awareness, incident response procedures
+**Security Champions**: Embedded security expertise within development teams
+**Continuous Learning**: Regular security updates, threat landscape awareness, lessons learned sharing
 
 ## Related Guidelines
 
+- **[Authentication & Authorization](./authentication-authorization.md)** - Comprehensive identity management patterns and strategies
+- **[API Security Guidelines](./api-guidelines.md)** - API-specific security patterns and controls
+- **[Testing Standards](./testing-standards.md)** - Security testing strategies and implementation
+- **[Code Review Guidelines](./code-review-guidelines.md)** - Security-focused code review processes
 - **Implementation Examples**: See `.resources/examples/security/` for working code examples
-- **API Security**: See `api-guidelines.md` for API-specific security patterns
-- **Testing Guidelines**: See `testing-principles.md` and `testing-implementation.md` for security testing strategies
-- **Compliance Documentation**: See `authentication-authorization.md` for detailed identity management patterns

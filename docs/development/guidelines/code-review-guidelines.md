@@ -312,8 +312,8 @@ When reviewing AI-generated code, use specific feedback:
 
 - **[Quality Standards](./quality-standards.md)** - Overall quality requirements and validation protocols
 - **[Coding Standards](./coding-standards.md)** - Code style and consistency requirements
-- **[Security Principles](./security-principles.md)** - Security-focused review criteria
-- **[Testing Principles](./testing-principles.md)** - Test review and validation requirements
+- **[Security Guidelines](./security-guidelines.md)** - Security-focused review criteria
+- **[Testing Standards](./testing-standards.md)** - Test review and validation requirements
 - **[Git Workflow](./git-workflow.md)** - Version control and collaboration processes
 
 ---

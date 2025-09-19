@@ -152,6 +152,7 @@ When you encounter these task types, **ALWAYS use MCP tools first**:
 - "analyze structure" → Serena symbol analysis
 - "understand patterns" → Context7 + Serena combination
 - "complex problem" → Sequential thinking decomposition
+- **"create new files" → ALWAYS search for templates first using Serena or Glob**
 
 ### **Pre-Task Analysis Checklist**
 
@@ -162,6 +163,7 @@ Before starting any significant task:
 - [ ] Would cross-reference mapping prevent errors?
 - [ ] Could automation find what I might miss manually?
 - [ ] Should I decompose this systematically first?
+- [ ] **Are there existing templates I should use instead of creating from scratch?**
 
 **Default Principle**: Choose systematic tool-based approach over manual analysis
 

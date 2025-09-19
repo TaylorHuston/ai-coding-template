@@ -40,6 +40,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Implemented just-in-time guideline loading system to prevent context waste
   - Maintained complete functionality while achieving massive efficiency gains
 
+- **Plan Command Enhancement**: Restructured `/plan` command for interactive planning and workbench organization
+  - Added interactive standalone task support with `/plan --misc "task name"` and `/plan --bug "description"`
+  - Implemented auto-incrementing ID system (MISC-### and BUG-###) based on existing task numbers
+  - Added conversational requirements gathering to eliminate ambiguity through back-and-forth dialogue
+  - Created workbench structure: `workbench/epics/`, `workbench/misc/`, and `workbench/bugs/`
+  - Enhanced task template generation with kebab-case directory formatting and comprehensive HANDOFF.yml
+
+- **Development Command Enhancements**: Enhanced `/develop` command with enforced coordination and teaching capabilities
+  - **HANDOFF.yml Enforcement**: Mandatory agent coordination tracking with 5 enforcement checkpoints
+  - **Structured handoff chain**: Real-time agent transitions with timestamps and deliverable documentation
+  - **Validation requirements**: Complete handoff verification before task completion
+  - **Restored `--guided` flag**: Teaching mode with code suggestions instead of direct modifications
+  - **Enhanced user control**: Learning-focused development with explanation and review cycles
+
 ## [0.3.0] - 2025-09-18
 
 ### Added in v0.3.0

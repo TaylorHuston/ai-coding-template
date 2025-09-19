@@ -18,12 +18,14 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### Core Principles
 
 #### Minimal and Practical
+
 - **Just enough documentation** for developers and AI to work effectively
 - **Code examples over lengthy explanations** for practical learning
 - **Clear boundaries** between planning documentation and implementation guides
 - **Complement, not replace** project management tools and external documentation systems
 
 #### Developer-Focused Approach
+
 - **Docs as Code** philosophy with version control and review processes
 - **Template-driven consistency** for predictable documentation structure
 - **AI-assistant friendly** formatting and organization patterns
@@ -32,12 +34,14 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### Documentation vs External Tools
 
 **Repository Documentation** (What we maintain):
+
 - Technical implementation details and code patterns
 - AI assistant instructions and workflow automation
 - Architecture decisions and system design rationale
 - Quick reference guides and troubleshooting information
 
 **External Tool Documentation** (What we reference):
+
 - Project management tracking (Jira, Linear, Asana)
 - Business requirements and stakeholder communication (Confluence, Notion)
 - Team collaboration and knowledge sharing (Slack, Teams)
@@ -48,16 +52,19 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### Three-Tier Documentation System
 
 #### Tier 1: Project Level
+
 **Location**: Repository root and `docs/` directory
 **Purpose**: Project-wide context, architecture, and cross-cutting concerns
 **Maintenance**: Updated during major releases and architectural changes
 
 #### Tier 2: Feature Level (Deliverables)
+
 **Location**: `deliverables/[FEATURE]/` directories
 **Purpose**: Epic-level work packages with business context and scope
 **Maintenance**: Updated during feature development lifecycle
 
 #### Tier 3: Task Level (Issues)
+
 **Location**: `deliverables/[FEATURE]/issues/[TASK]/` directories
 **Purpose**: Specific implementation tasks with detailed technical guidance
 **Maintenance**: Updated during active development work
@@ -65,18 +72,21 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### Directory Organization Standards
 
 #### Project Documentation (`docs/`)
+
 - **`architecture/`**: Technical architecture and C4 model documentation
 - **`api/`**: API specifications and interface documentation (when applicable)
 - **`guides/`**: How-to guides and procedural documentation
 - **`templates/`**: Document templates and boilerplate content
 
 #### Architecture Documentation Structure
+
 - **C4 Model Organization**: System context, container architecture, component details, workflow diagrams
 - **Decision Records**: Architecture decision records (ADRs) for significant technical choices
 - **Integration Patterns**: Service integration and communication patterns
 - **Security Architecture**: Security controls and compliance frameworks
 
 #### Deliverable Documentation Structure
+
 - **Epic Overview**: Business goals, scope, and success metrics in deliverable README
 - **Issue Planning**: Task orchestration and progress tracking in PLAN.md files
 - **Implementation Guides**: Technical implementation details in issue README files
@@ -86,6 +96,7 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### YAML Frontmatter Requirements
 
 **Required Fields for All Documents**:
+
 - `version`: Semantic versioning for document evolution tracking
 - `created`: ISO 8601 creation date for document lifecycle management
 - `last_updated`: ISO 8601 modification date for freshness indicators
@@ -93,6 +104,7 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 - `target_audience`: Array of intended audiences for context-appropriate content
 
 **Optional Fields for Enhanced Metadata**:
+
 - `document_type`: Specification, guide, reference, plan for content categorization
 - `priority`: Critical, high, medium, low for maintenance prioritization
 - `tags`: Array of topics for discoverability and organization
@@ -101,28 +113,81 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 
 ### File Naming Conventions
 
-**Consistent Naming Standards**:
-- **lowercase-kebab-case** exclusively for all documentation files
-- **Descriptive but concise** names that clearly indicate content purpose
-- **No redundant suffixes** (avoid "guide" in guides/ directory)
-- **README.md standardization** for all directory documentation
-- **No alternative index files** (never use INDEX.md or similar variations)
+#### Standard Documentation Files
 
-**Benefits**: GitHub auto-rendering, developer familiarity, predictable navigation, AI-friendly file discovery.
+**Repository Root Special Files** (ALLCAPS):
+
+- `README.md` - Project overview and getting started guide
+- `CHANGELOG.md` - Version history and release notes
+- `CONTRIBUTING.md` - Contribution guidelines and processes
+- `LICENSE` - Legal licensing information
+- `CLAUDE.md` - AI assistant instructions and project context
+- `SECURITY.md` - Security policies and vulnerability reporting
+
+**Regular Documentation Files** (lowercase-kebab-case):
+
+- `api-guidelines.md` - API design and development standards
+- `testing-standards.md` - Testing approaches and quality requirements
+- `deployment-guide.md` - Deployment procedures and configuration
+- `architecture-overview.md` - System architecture documentation
+
+#### Working and Ephemeral Files
+
+**Working Directory Structure**:
+
+```
+workbench/                    # Active work area
+├── category/                 # Type classification (epic, misc, bug)
+│   └── ID-description/       # Unique identifier + description
+│       ├── TASK.md          # Task definition and scope
+│       ├── RESEARCH.md      # Research findings and analysis
+│       ├── FINDINGS.md      # Investigation results
+│       ├── HANDOFF.yml      # Coordination metadata
+│       └── NOTES.md         # Working notes and scratch space
+└── archive/                 # Completed work storage
+```
+
+**Working File Conventions** (ALLCAPS for standardized types):
+
+- `TASK.md` - Task definition, scope, and requirements
+- `RESEARCH.md` - Research findings and external validation
+- `FINDINGS.md` - Analysis results and recommendations
+- `HANDOFF.yml` - Agent coordination and workflow metadata
+- `NOTES.md` - Working notes and temporary documentation
+- `STATUS.md` - Progress tracking and current state
+
+#### Naming Rationale
+
+**ALLCAPS Usage**:
+
+- **Root special files**: GitHub/platform recognition and visibility
+- **Working file types**: Standardized ephemeral document classification
+- **Historical convention**: UNIX tradition for high-visibility files
+
+**lowercase-kebab-case Usage**:
+
+- **Regular documentation**: Cross-platform compatibility and web-friendliness
+- **Content files**: Clear semantic naming without platform conflicts
+- **URL compatibility**: Web-based documentation hosting requirements
+
+**Benefits**: GitHub auto-rendering, developer familiarity, predictable navigation, AI-friendly file discovery, clear distinction between permanent and ephemeral content.
 
 ### Document Length Optimization
 
 #### Optimal Length Targets
+
 - **300-500 lines**: Ideal for AI context window processing efficiency
 - **Sweet spot benefit**: Complete document processing in single AI context
 - **Human comprehension**: Manageable length with focused topic coverage
 
 #### Length Management Strategy
+
 - **~1000 lines**: Consider splitting for multiple distinct topics
 - **1400+ lines**: Required split for AI context management
 - **2000+ lines**: Critical threshold requiring immediate attention
 
 #### Document Splitting Best Practices
+
 - **Logical separation**: Split along natural topic boundaries (principles vs implementation)
 - **Self-contained documents**: Each split should be independently usable
 - **Comprehensive cross-references**: Link related documents with clear navigation
@@ -138,6 +203,7 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 **Content Exclusions**: Implementation details, code examples, detailed explanations
 
 **Template Structure**:
+
 - Goal statement (1-2 sentences)
 - Task checklist with progress indicators
 - Acceptance criteria with clear verification steps
@@ -151,6 +217,7 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 **Content Exclusions**: Status tracking, project management, high-level planning
 
 **Template Structure**:
+
 - Quick start section with essential commands
 - Implementation section with working examples
 - Testing and validation procedures
@@ -168,12 +235,14 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### Maintenance Strategies
 
 #### Automated Maintenance
+
 - **Link validation**: Automated checking for broken internal and external links
 - **Content synchronization**: Automatic updates when referenced code changes
 - **Freshness monitoring**: Alerts for documents exceeding update thresholds
 - **Consistency checking**: Automated validation of formatting and structure standards
 
 #### Manual Maintenance Cycles
+
 - **Quarterly reviews**: Comprehensive accuracy and relevance assessment
 - **Release-based updates**: Documentation updates aligned with software releases
 - **Triggered maintenance**: Updates based on significant code or process changes
@@ -182,12 +251,14 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### Maintenance Quality Standards
 
 #### Content Accuracy
+
 - **Code example validation**: All code examples must be functional and tested
 - **Link verification**: Internal and external links checked for validity
 - **Information currency**: Technical information reflects current implementation
 - **Version synchronization**: Documentation version aligns with software version
 
 #### Structural Integrity
+
 - **Consistent formatting**: Adherence to established templates and style guides
 - **Logical organization**: Clear information hierarchy and navigation structure
 - **Complete metadata**: All required frontmatter fields properly populated
@@ -198,12 +269,14 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### Documentation Review Process
 
 #### Review Criteria
+
 - **Technical accuracy**: Information matches current implementation
 - **Clarity and usability**: Instructions are clear and actionable
 - **Completeness**: All necessary information is present and organized
 - **Consistency**: Formatting and style match established standards
 
 #### Review Workflow
+
 - **Author review**: Self-review for completeness and accuracy
 - **Technical review**: Expert validation of technical content
 - **Editorial review**: Style, clarity, and consistency checking
@@ -212,12 +285,14 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### Quality Metrics
 
 #### Quantitative Metrics
+
 - **Document freshness**: Age since last meaningful update
 - **Link health**: Percentage of valid internal and external links
 - **Coverage completeness**: Documentation coverage of implemented features
 - **Usage analytics**: Access patterns and popular content identification
 
 #### Qualitative Assessment
+
 - **User feedback**: Developer and AI assistant experience reports
 - **Maintenance burden**: Effort required to keep documentation current
 - **Effectiveness measurement**: Documentation success in achieving intended outcomes
@@ -228,12 +303,14 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### AI Assistant Optimization
 
 #### Structure for AI Processing
+
 - **Clear hierarchical organization** with consistent heading structures
 - **Explicit relationship indicators** between related concepts and documents
 - **Working code examples** that AI can understand and adapt
 - **Contextual metadata** in frontmatter for appropriate content selection
 
 #### AI Collaboration Patterns
+
 - **Template consistency** for pattern recognition and automated updates
 - **Standardized terminology** for clear AI understanding and communication
 - **Modular content organization** for efficient AI context management
@@ -242,12 +319,14 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ### Content Guidelines for AI
 
 #### Writing Style
+
 - **Clear, direct language** without unnecessary complexity or ambiguity
 - **Consistent terminology** throughout related documents
 - **Explicit rather than implicit** relationships and dependencies
 - **Action-oriented instructions** with specific, measurable outcomes
 
 #### Example Quality
+
 - **Complete, functional examples** that can be executed without modification
 - **Real-world scenarios** rather than trivial or abstract examples
 - **Error handling demonstrations** showing both success and failure cases
@@ -256,6 +335,7 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 ## Best Practices
 
 ### Documentation Development Process
+
 1. **Requirements Analysis**: Identify documentation needs and target audience
 2. **Template Selection**: Choose appropriate template for content type and purpose
 3. **Content Creation**: Develop content following established standards and guidelines
@@ -264,6 +344,7 @@ tags: ["documentation", "standards", "workflow", "structure", "maintenance"]
 6. **Maintenance Planning**: Establish update schedule and responsibility assignment
 
 ### Documentation Culture
+
 - **Documentation as Code**: Version control, review processes, and quality standards
 - **Continuous Improvement**: Regular assessment and enhancement of documentation practices
 - **Knowledge Sharing**: Cross-team collaboration on documentation standards and best practices

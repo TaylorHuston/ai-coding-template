@@ -1,9 +1,9 @@
 ---
 # Agent-Specific Guideline Mapping
 # Maps each agent to their relevant development guidelines for just-in-time loading
-version: "0.2.0"
+version: "0.3.0"
 created: "2025-01-09"
-last_updated: "2025-09-18"
+last_updated: "2025-09-19"
 purpose: "Define which guidelines each agent should load when starting work"
 
 # Core principle: Only load guidelines relevant to the agent's domain
@@ -14,6 +14,7 @@ agents:
     guidelines:
       - api-guidelines.md
       - architectural-principles.md
+      - code-quality.md
     description: "API architecture, design patterns, and documentation standards"
 
   security-auditor:
@@ -21,6 +22,7 @@ agents:
       - security-guidelines.md
       - authentication-authorization.md
       - coding-standards.md
+      - code-quality.md
     description: "Security assessment, vulnerability detection, auth patterns"
 
   test-engineer:
@@ -28,6 +30,7 @@ agents:
       - testing-standards.md
       - quality-standards.md
       - code-review-guidelines.md
+      - code-quality.md
     description: "Test creation, TDD/BDD, quality assurance"
 
   technical-writer:
@@ -35,7 +38,8 @@ agents:
       - documentation-standards.md
       - visual-documentation.md
       - changelog-maintenance.md
-    description: "Documentation creation, maintenance, standards"
+      - ai-collaboration-standards.md
+    description: "Documentation creation, maintenance, standards, AI collaboration docs"
 
   code-architect:
     guidelines:
@@ -43,7 +47,9 @@ agents:
       - api-guidelines.md
       - security-guidelines.md
       - quality-standards.md
-    description: "System design, architecture decisions, technical planning"
+      - code-quality.md
+      - ai-collaboration-standards.md
+    description: "System design, architecture decisions, technical planning, AI workflow design"
 
   code-reviewer:
     guidelines:
@@ -52,6 +58,7 @@ agents:
       - coding-standards.md
       - security-guidelines.md
       - testing-standards.md
+      - code-quality.md
     description: "Code quality assessment, review standards, best practices"
 
   frontend-specialist:
@@ -60,6 +67,7 @@ agents:
       - quality-standards.md
       - testing-standards.md
       - api-guidelines.md
+      - code-quality.md
     description: "Frontend development, UI/UX, client-side patterns"
 
   backend-specialist:
@@ -69,6 +77,7 @@ agents:
       - security-guidelines.md
       - testing-standards.md
       - quality-standards.md
+      - code-quality.md
     description: "Server-side development, business logic, API implementation"
 
   database-specialist:
@@ -77,6 +86,7 @@ agents:
       - security-guidelines.md
       - coding-standards.md
       - testing-standards.md
+      - code-quality.md
     description: "Database design, optimization, data security"
 
   devops-engineer:
@@ -84,6 +94,7 @@ agents:
       - security-guidelines.md
       - quality-standards.md
       - git-workflow.md
+      - code-quality.md
     description: "Infrastructure, deployment, CI/CD, security hardening"
 
   performance-optimizer:
@@ -91,6 +102,7 @@ agents:
       - quality-standards.md
       - testing-standards.md
       - coding-standards.md
+      - code-quality.md
     description: "Performance analysis, optimization, monitoring"
 
   refactoring-specialist:
@@ -99,6 +111,7 @@ agents:
       - coding-standards.md
       - quality-standards.md
       - testing-standards.md
+      - code-quality.md
     description: "Code improvement, technical debt reduction"
 
   migration-specialist:
@@ -107,6 +120,7 @@ agents:
       - testing-standards.md
       - git-workflow.md
       - security-guidelines.md
+      - code-quality.md
     description: "Framework upgrades, dependency updates, safe migrations"
 
   data-analyst:
@@ -114,6 +128,7 @@ agents:
       - quality-standards.md
       - security-guidelines.md
       - coding-standards.md
+      - code-quality.md
     description: "Data processing, analysis, reporting, insights"
 
   # Meta-agents that coordinate others
@@ -122,30 +137,36 @@ agents:
       - quality-standards.md
       - git-workflow.md
       - changelog-maintenance.md
-    description: "Multi-agent coordination, project orchestration"
+      - ai-collaboration-standards.md
+    description: "Multi-agent coordination, project orchestration, AI workflow management"
 
   context-analyzer:
-    guidelines: []
-    description: "Project analysis and investigation - uses all guidelines contextually"
+    guidelines:
+      - ai-collaboration-standards.md
+    description: "Project analysis and investigation - enhanced with AI collaboration patterns"
 
   ai-llm-expert:
     guidelines:
       - coding-standards.md
       - quality-standards.md
       - api-guidelines.md
-    description: "AI/LLM architecture, implementation, optimization"
+      - ai-collaboration-standards.md
+      - code-quality.md
+    description: "AI/LLM architecture, implementation, optimization, AI collaboration systems"
 
 # Universal guidelines that all agents should be aware of (loaded via CLAUDE.md):
 # - Universal quality standards (patterns, conventions, changelog updates)
 # - Critical rules (commit approval, test-first, branch-first)
 # - Response protocol (concise, explicit, incremental, transparent)
 
-# Optimization Summary (v0.2.0):
-# - Consolidated 19 guideline files down to 12 files (37% reduction)
+# Optimization Summary (v0.3.0):
+# - Consolidated 19 guideline files down to 14 files with 2 new specialized files
+# - Enhanced files: architectural-principles.md, authentication-authorization.md,
+#   code-review-guidelines.md, git-workflow.md, quality-standards.md
+# - New files: ai-collaboration-standards.md, code-quality.md
 # - Extracted code examples to .resources/examples/ directory
-# - Streamlined git-workflow.md from 913 to 308 lines (66% reduction)
-# - All guideline files now under 400 lines for optimal AI processing
-# - Maintained complete domain coverage with improved focus
+# - All guideline files optimized for AI processing (under 400 lines)
+# - Complete agent coverage with specialized AI collaboration standards
 
 # Usage pattern:
 # 1. Agent starts work

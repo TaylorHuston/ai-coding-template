@@ -235,9 +235,9 @@ tags: ["quality", "standards", "validation", "testing"]
 
 ## Related Guidelines
 
-- **[Documentation Guidelines](./documentation-guidelines.md)** - Documentation standards and quality requirements
-- **[Testing Principles](./testing-principles.md)** - Testing strategies and coverage requirements
-- **[Security Principles](./security-principles.md)** - Security standards and validation protocols
+- **[Documentation Standards](./documentation-standards.md)** - Documentation standards and quality requirements
+- **[Testing Standards](./testing-standards.md)** - Testing strategies and coverage requirements
+- **[Security Guidelines](./security-guidelines.md)** - Security standards and validation protocols
 - **[Changelog Maintenance](./changelog-maintenance.md)** - Version history and change tracking
 
 ## Related Workflows

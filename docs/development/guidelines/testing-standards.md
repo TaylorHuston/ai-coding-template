@@ -25,6 +25,7 @@ tags: ["testing", "quality", "automation", "tdd", "principles"]
 - **Unit Tests** (70%): Fast, isolated, comprehensive coverage of individual components
 - **Integration Tests** (20%): Component interactions and interface contracts
 - **End-to-End Tests** (10%): Critical user journeys and business flows
+- **Exploratory Testing**: Human-driven investigation for edge cases and usability insights
 
 ### AI Collaboration Ready
 - Clear, descriptive test names that AI can understand and maintain
@@ -151,6 +152,32 @@ tags: ["testing", "quality", "automation", "tdd", "principles"]
 
 ## Testing Strategies
 
+### Application-Specific Testing Approaches
+
+**Web Applications**:
+- Frontend component testing with user interaction simulation
+- Cross-browser compatibility validation
+- Responsive design and mobile testing
+- Performance testing for page load times and user experience
+
+**API Services**:
+- Contract testing for API specifications
+- Authentication and authorization flows
+- Rate limiting and error handling
+- Data validation and transformation testing
+
+**Data Processing Systems**:
+- Data pipeline validation with sample datasets
+- Schema evolution and migration testing
+- Performance testing with production-scale data
+- Data quality and integrity validation
+
+**Mobile Applications**:
+- Device-specific testing across platforms
+- Offline functionality and sync testing
+- Battery usage and performance optimization
+- App store compliance and accessibility
+
 ### Test-Driven Development (TDD)
 
 **Red-Green-Refactor Cycle**:
@@ -172,6 +199,16 @@ tags: ["testing", "quality", "automation", "tdd", "principles"]
 **Benefits**: Business-readable specifications, shared understanding between stakeholders, executable documentation, focus on user value.
 
 **When to Use BDD**: Complex business rules, stakeholder collaboration requirements, user story implementation, acceptance criteria validation.
+
+### Testing Strategy Selection
+
+**Start Simple**: Begin with basic unit tests and expand testing complexity as application requirements and team capabilities grow.
+
+**Context-Driven Testing**: Adapt testing strategies based on project constraints, team skills, business requirements, and risk tolerance.
+
+**Incremental Adoption**: Introduce new testing practices gradually, allowing teams to build competency and establish sustainable testing habits.
+
+**Tool-Agnostic Principles**: Focus on testing concepts and patterns that transcend specific tools or frameworks, enabling flexibility in technology choices.
 
 ## Performance Testing
 
@@ -195,21 +232,57 @@ tags: ["testing", "quality", "automation", "tdd", "principles"]
 
 **Scalability**: Performance degradation under load, auto-scaling effectiveness, resource efficiency.
 
-## Continuous Integration Testing
+## Test Automation Philosophy
 
-### CI/CD Pipeline Integration
+### Automation Strategy Principles
 
-**Test Automation**: All tests run automatically on code changes, parallel test execution for faster feedback, test result reporting and notifications.
+**Strategic Automation**: Focus automation on repetitive, error-prone, and high-value test scenarios rather than automating everything.
 
-**Quality Gates**: Test coverage thresholds, performance benchmarks, security scan requirements, code quality metrics.
+**Maintainable Test Code**: Treat test code with same quality standards as production code, including refactoring, documentation, and code review.
 
-**Deployment Testing**: Smoke tests after deployment, health checks for critical services, rollback procedures for test failures.
+**Feedback Loops**: Design tests to provide fast, actionable feedback that guides development decisions and prevents regression.
 
-### Test Environment Management
+**Risk-Based Testing**: Prioritize testing efforts based on business impact, change frequency, and failure consequences.
 
-**Environment Parity**: Production-like test environments, consistent configuration management, data privacy and masking.
+### CI/CD Integration Approaches
 
-**Test Data Management**: Automated test data setup and teardown, data versioning and migration testing, environment reset procedures.
+**Progressive Testing**: Layer tests throughout the pipeline from fast unit tests to comprehensive integration and deployment validation.
+
+**Parallel Execution**: Design tests for parallel execution to minimize feedback time while maintaining test isolation and reliability.
+
+**Environment Promotion**: Test environment configurations and deployment processes alongside application code for consistency.
+
+**Failure Recovery**: Build resilient test pipelines that gracefully handle test environment failures and provide meaningful error reporting.
+
+### Test Environment Strategy
+
+**Environment as Code**: Version control environment configurations and automate environment provisioning for consistency.
+
+**Data Management**: Implement strategies for test data creation, isolation, and cleanup that support parallel test execution.
+
+**Service Virtualization**: Use service mocking and virtualization to reduce external dependencies and improve test reliability.
+
+## Accessibility Testing
+
+### Inclusive Design Testing
+
+**Automated Accessibility**: Integrate accessibility scanning tools into CI/CD pipelines to catch common accessibility violations early.
+
+**Manual Accessibility Testing**: Combine automated tools with manual testing using screen readers, keyboard navigation, and voice controls.
+
+**User Experience Testing**: Include users with disabilities in testing processes to validate real-world accessibility and usability.
+
+**Progressive Enhancement**: Test functionality across different assistive technologies and ensure graceful degradation.
+
+### Accessibility Test Scenarios
+
+**Keyboard Navigation**: Verify all interactive elements are accessible via keyboard, logical tab order, and visible focus indicators.
+
+**Screen Reader Compatibility**: Test with popular screen readers to ensure proper semantic markup and meaningful content structure.
+
+**Visual Accessibility**: Validate color contrast ratios, text scaling capabilities, and support for high contrast modes.
+
+**Cognitive Accessibility**: Test for clear navigation, consistent interactions, and appropriate error messaging and recovery.
 
 ## Security Testing
 
@@ -245,11 +318,15 @@ tags: ["testing", "quality", "automation", "tdd", "principles"]
 5. **Test Maintenance**: Update tests as code evolves
 6. **Quality Monitoring**: Track metrics and improve test effectiveness
 
-### Testing Culture
-- **Test Ownership**: Developers responsible for test quality and maintenance
-- **Continuous Learning**: Regular testing technique education and improvement
-- **Collaboration**: Cross-team knowledge sharing and testing best practices
-- **Quality Focus**: Testing seen as quality investment, not development overhead
+### Quality Enablement Culture
+
+**Testing as Enablement**: Position testing as a development enabler that increases confidence, reduces bugs, and accelerates delivery rather than as a gate or bottleneck.
+
+**Shared Quality Responsibility**: Foster collective ownership where all team members contribute to quality through testing, code review, and quality improvement initiatives.
+
+**Learning-Oriented Testing**: Encourage experimentation with testing approaches and learning from test failures to improve both testing strategy and product quality.
+
+**Continuous Improvement**: Regularly retrospect on testing effectiveness and adapt strategies based on project needs, team capabilities, and quality outcomes.
 
 ## Related Guidelines
 

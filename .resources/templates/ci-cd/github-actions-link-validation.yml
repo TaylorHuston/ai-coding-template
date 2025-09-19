@@ -1,0 +1,160 @@
+# GitHub Actions workflow for automated link validation
+# Save as: .github/workflows/link-validation.yml
+
+name: Documentation Link Validation
+
+on:
+  # Run on every push to main and pull requests
+  push:
+    branches: [ main, master ]
+    paths:
+      - '**/*.md'
+      - '.resources/scripts/docs/**'
+      - '.github/workflows/link-validation.yml'
+
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - '**/*.md'
+      - '.resources/scripts/docs/**'
+      - '.github/workflows/link-validation.yml'
+
+  # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      validate_external:
+        description: 'Validate external links'
+        type: boolean
+        default: false
+      generate_report:
+        description: 'Generate detailed report'
+        type: boolean
+        default: true
+
+jobs:
+  validate-links:
+    name: Validate Documentation Links
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        # Fetch full history for accurate link validation
+        fetch-depth: 0
+
+    - name: Setup validation environment
+      run: |
+        # Install required tools
+        sudo apt-get update
+        sudo apt-get install -y curl
+
+        # Make scripts executable
+        chmod +x .resources/scripts/docs/link-validator.sh
+        chmod +x .resources/scripts/validation/validate-links-ci.sh
+
+    - name: Validate internal links (fast)
+      id: validate-internal
+      run: |
+        echo "Running internal link validation..."
+        .resources/scripts/validation/validate-links-ci.sh --no-report --verbose
+
+    - name: Validate external links (if requested)
+      id: validate-external
+      if: github.event.inputs.validate_external == 'true'
+      run: |
+        echo "Running external link validation..."
+        .resources/scripts/validation/validate-links-ci.sh --external --verbose
+
+    - name: Generate detailed report
+      id: generate-report
+      if: failure() && github.event.inputs.generate_report != 'false'
+      run: |
+        echo "Generating detailed link validation report..."
+        .resources/scripts/docs/link-validator.sh --ci
+
+    - name: Upload link validation report
+      if: failure() && steps.generate-report.outcome == 'success'
+      uses: actions/upload-artifact@v4
+      with:
+        name: link-validation-report
+        path: .claude/working/broken-links-report.md
+        retention-days: 30
+
+    - name: Comment on PR with validation results
+      if: failure() && github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const path = '.claude/working/broken-links-report.md';
+
+          let comment = '## 🔗 Link Validation Failed\n\n';
+          comment += 'The documentation link validation found broken links in this PR.\n\n';
+
+          if (fs.existsSync(path)) {
+            const report = fs.readFileSync(path, 'utf8');
+
+            // Extract statistics section
+            const statsMatch = report.match(/## Statistics\n([\s\S]*?)(?=\n## |$)/);
+            if (statsMatch) {
+              comment += '### Summary\n\n';
+              comment += statsMatch[1].trim() + '\n\n';
+            }
+
+            comment += '### 📋 Full Report\n\n';
+            comment += 'A detailed report has been uploaded as an artifact. ';
+            comment += 'You can download it from the workflow run to see all broken links.\n\n';
+          }
+
+          comment += '### 🛠️ How to Fix\n\n';
+          comment += '1. Run `.resources/scripts/docs/link-validator.sh` locally\n';
+          comment += '2. Fix the broken links identified in the report\n';
+          comment += '3. Re-run validation to confirm fixes\n';
+          comment += '4. Push your changes to update this PR\n\n';
+          comment += '💡 **Tip**: Use `--help` flag with the link validator for more options.';
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
+  # Optional: Comprehensive validation job for scheduled runs
+  comprehensive-validation:
+    name: Comprehensive Link Validation
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.event.inputs.validate_external == 'true')
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y curl
+        chmod +x .resources/scripts/docs/link-validator.sh
+        chmod +x .resources/scripts/validation/validate-links-ci.sh
+
+    - name: Run comprehensive validation
+      run: |
+        echo "Running comprehensive link validation (including external links)..."
+        .resources/scripts/validation/validate-links-ci.sh --external --verbose
+
+    - name: Upload comprehensive report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: comprehensive-link-validation-report
+        path: .claude/working/broken-links-report.md
+        retention-days: 90
+
+# Optional: Schedule weekly comprehensive validation
+# Uncomment the following to enable scheduled runs:
+#
+# on:
+#   schedule:
+#     # Run every Sunday at 2 AM UTC
+#     - cron: '0 2 * * 0'
