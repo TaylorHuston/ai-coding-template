@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- **Interactive Project Brief Creation**: Fixed `/design --brief` command to conduct proper interactive discovery
+  - **Problem**: Command was jumping straight to document generation instead of asking discovery questions
+  - **Root Cause**: Agent system wasn't recognizing `brief-strategist` due to incorrect YAML frontmatter format
+  - **Solution**:
+    - Converted `brief-strategist.md` from markdown headers to proper YAML frontmatter format
+    - Updated `design.md` command to explicitly mandate brief-strategist agent for `--brief` flag
+    - Added 6-step interactive discovery process with structured questioning
+  - **Result**: `/design --brief` now asks questions one at a time and only generates project brief after complete discovery
+
 ## [0.6.4] - 2025-09-19
 
 ### Fixed

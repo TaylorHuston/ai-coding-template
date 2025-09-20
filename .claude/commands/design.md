@@ -111,10 +111,18 @@ model: "claude-opus-4-1"
 
 ## Agent Coordination
 
+**Agent Usage by Command Mode**:
+
+### `/design --brief` (Project Brief Creation)
+**ALWAYS invoke brief-strategist agent** - Mandatory for all project brief creation
+- **brief-strategist**: Conducts interactive discovery process with structured questioning
+- **Workflow**: Agent asks one question at a time, waits for responses, completes all 6 discovery phases before generating brief
+- **NO direct generation**: Brief must only be created after complete interactive discovery
+
+### `/design --epic` and `/design --task` (Epic/Task Creation)
 **Primary Approach**: Direct conversation with user, no specific agents required
 
 **Supporting Consultation** (when beneficial):
-
 - **project-manager**: For complex multi-feature design coordination
 - **context-analyzer**: For understanding existing system requirements (skip on fresh template installations)
 - Any domain specialists for requirement validation and feasibility input
