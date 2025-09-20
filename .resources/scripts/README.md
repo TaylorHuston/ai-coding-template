@@ -1,7 +1,7 @@
 ---
-version: "0.2.0"
+version: "0.2.1"
 created: "2025-08-21"
-last_updated: "2025-08-22"
+last_updated: "2025-09-19"
 status: "active"
 target_audience: ["developers", "devops", "ai-assistants"]
 document_type: "reference"
@@ -320,82 +320,98 @@ collect_metrics "command" "/architect" "completed" 12500 '["opus"]' '["code-arch
 
 ### Workflow & Planning Scripts
 
-#### 🔄 `init-workflow.sh` - Workflow Structure Initialization
-Sets up proper workflow structure for plan → iterate coordination with deliverables tracking.
+#### 🧠 `smart-task-decomposition.sh` - Intelligent Task Complexity Analysis & Breakdown
+Advanced task analysis with automatic complexity scoring and context-aware decomposition patterns, integrated with `/plan` and `/develop` commands for seamless workflow optimization.
 
-**Purpose**: Initialize workflow directory structure and files for issue tracking and agent coordination.
+**Purpose**: Automatically detect task complexity, suggest decomposition strategies, and provide recovery recommendations during development failures.
 
-**Usage**:
+**Enhanced Usage (v0.2.0)**:
 ```bash
-# Initialize workflow for an issue
-./.resources/scripts/init-workflow.sh --issue AUTH-123
+# Standalone complexity analysis
+./.resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --description "Implement user auth"
 
-# Specify custom deliverable name
-./.resources/scripts/init-workflow.sh --issue AUTH-123 --deliverable user-management
+# Integration with /plan command (automatic)
+./.resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --plan-integration --description "Multi-domain task"
 
-# Force overwrite existing files
-./.resources/scripts/init-workflow.sh --issue AUTH-123 --force
+# Integration with /develop command for failure recovery (automatic)
+./.resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --develop-integration --failure-reason "too complex"
+
+# Auto-decomposition with immediate PLAN.md updates
+./.resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --auto-decompose
 ```
 
-**Features**:
-- Creates deliverables/[DELIVERABLE]/issues/[ISSUE-KEY] structure
-- Generates initial PLAN.md, HANDOFF.yml, and RESEARCH.md files
-- Validates issue key format and deliverable naming
-- Integrates with /plan and /iterate workflow commands
+**🎯 Enhanced Features (v0.2.0)**:
 
-#### 🧠 `smart-task-decomposition.sh` - Intelligent Task Breakdown
-Breaks down complex tasks into manageable, sequential steps with agent assignment hints.
+#### **Intelligent Complexity Scoring System**
+- **Multi-domain integration** (+3 points): API + Database + Frontend combinations
+- **Security implementation** (+2 points): Authentication, authorization, encryption
+- **Database schema changes** (+2 points): Migrations, schema modifications
+- **External integrations** (+2 points): Third-party services, API connections
+- **Performance optimization** (+2 points): Scaling, bottleneck resolution
+- **UI/UX implementation** (+1 point): Component design, user interface
+- **Testing requirements** (+1 point): Test implementation and validation
 
-**Purpose**: Decompose large features or complex requirements into actionable tasks for the /iterate workflow.
+#### **Command Integration Modes**
+- **`--plan-integration`**: Proactive complexity assessment during planning phase
+  - **High complexity (≥5)**: "Break into subtasks before development"
+  - **Medium complexity (3-4)**: "Consider 2-3 focused subtasks"
+  - **Appropriate complexity (<3)**: "Well-scoped for single agent execution"
 
-**Usage**:
-```bash
-# Decompose a feature description
-./.resources/scripts/smart-task-decomposition.sh --feature "User authentication system"
+- **`--develop-integration`**: Reactive failure recovery during development
+  - **High complexity confirmed**: "Pause and decompose immediately"
+  - **Medium complexity**: "Consider agent handoff or subtask breakdown"
+  - **Complexity not the issue**: "Investigate other failure causes"
 
-# Decompose from issue file
-./.resources/scripts/smart-task-decomposition.sh --from-file deliverables/auth/issues/001/requirements.md
+#### **Context-Aware Decomposition Patterns**
+- **API Implementation**: Design → Core Logic → Auth/Validation → Testing
+- **Database Work**: Schema Design → Data Access → Validation → Performance
+- **Frontend Components**: Architecture → UI Implementation → State Management → Responsive Design
+- **Security Features**: Threat Analysis → Implementation → Authorization → Security Testing
+- **Integrations**: Research/Planning → Client Implementation → Error Handling → Integration Testing
 
-# Specify complexity level
-./.resources/scripts/smart-task-decomposition.sh --feature "API redesign" --complexity high
+#### **Automatic Agent Assignment**
+- Subtasks include `<!--agent:specialist-name-->` hints for optimal agent selection
+- Domain-specific specialist recommendations based on task type
+- Integration with existing agent coordination system
 
-# Generate phases for large projects
-./.resources/scripts/smart-task-decomposition.sh --feature "Microservices migration" --phases 3
-```
-
-**Features**:
-- AI-powered task decomposition using intelligent analysis
-- Agent assignment hints for each task (<!--agent:agent-name-->)
+**Legacy Features** (maintained for backward compatibility):
 - Phase-based organization (P1.X.X, P2.X.X, P3.X.X)
 - Dependency analysis and sequencing
-- Integration with PLAN.md format for /iterate execution
+- Integration with PLAN.md format for development execution
+- Manual feature decomposition from descriptions
 
-#### 🎯 `distill-context.sh` - Agent Context Preparation
-Generates focused, agent-specific context from verbose HANDOFF.yml and RESEARCH.md files.
+**Integration Benefits**:
+- **Proactive Planning**: Complexity detected during `/plan` prevents development failures
+- **Smart Recovery**: Failed `/develop` tasks automatically analyzed for recovery options
+- **Seamless Workflow**: No manual intervention required for complexity analysis
+- **Quality Improvement**: Better task scoping leads to higher success rates
 
-**Purpose**: Prepare concise, relevant context for agent execution during /iterate workflow.
+#### 💡 `remediation-advisor.sh` - Issue Resolution Assistant
+Suggests fixes and remediation steps for common validation failures and workflow issues.
+
+**Purpose**: Provide intelligent suggestions for resolving workflow and validation issues.
 
 **Usage**:
 ```bash
-# Prepare context for specific agent
-./.resources/scripts/distill-context.sh --agent backend-specialist --task P1.3.0
+# Analyze current issues and suggest fixes
+./.resources/scripts/workflow/remediation-advisor.sh
 
-# Generate context for Claude Code hooks
-./.resources/scripts/distill-context.sh --agent test-engineer --prepare
+# Get remediation for specific error
+./.resources/scripts/workflow/remediation-advisor.sh --error "validation-failed"
 
-# Output to specific file
-./.resources/scripts/distill-context.sh --agent frontend-specialist --output /tmp/context.md
+# Analyze specific file for issues
+./.resources/scripts/workflow/remediation-advisor.sh --file output.md
 
-# Quiet mode for automation
-./.resources/scripts/distill-context.sh --agent database-specialist --task P2.1.0 --quiet
+# Generate remediation report
+./.resources/scripts/workflow/remediation-advisor.sh --report remediation-plan.md
 ```
 
 **Features**:
-- Agent-specific context filtering and summarization
-- Task-specific context extraction
-- Integration with Claude Code hooks system
-- Reduces context window usage while preserving critical information
-- Supports all 18 agent types in the framework
+- Intelligent error analysis and categorization
+- Step-by-step remediation instructions
+- Integration with validation scripts
+- Common issue pattern recognition
+- Automated fix suggestions where possible
 
 ### Changelog & Release Management
 
@@ -516,7 +532,7 @@ Automates the complete release process from changelog to git tagging and publish
 #### 🛡️ `validate-quality-gates.sh` - Workflow Quality Gate Validator
 Validates quality gates between workflow phases to ensure standards compliance.
 
-**Purpose**: Enforce quality standards at each phase boundary in the /iterate workflow.
+**Purpose**: Enforce quality standards at each phase boundary in the development workflow.
 
 **Usage**:
 ```bash
@@ -539,7 +555,7 @@ Validates quality gates between workflow phases to ensure standards compliance.
 - Code quality metrics checking
 - Documentation completeness validation
 - Security compliance verification
-- Integration with /iterate workflow
+- Integration with development workflow
 
 #### 🔎 `validate-agent-output.sh` - Agent Response Validator
 Validates agent outputs for completeness, format, and quality standards.
@@ -595,32 +611,6 @@ Validates HANDOFF.yml and RESEARCH.md files for proper format and completeness.
 - Cross-reference validation between files
 - Integration with workflow state management
 
-#### 💡 `remediation-advisor.sh` - Issue Resolution Assistant
-Suggests fixes and remediation steps for common validation failures and workflow issues.
-
-**Purpose**: Provide intelligent suggestions for resolving workflow and validation issues.
-
-**Usage**:
-```bash
-# Analyze current issues and suggest fixes
-./.resources/scripts/remediation-advisor.sh
-
-# Get remediation for specific error
-./.resources/scripts/remediation-advisor.sh --error "validation-failed"
-
-# Analyze specific file for issues
-./.resources/scripts/remediation-advisor.sh --file HANDOFF.yml
-
-# Generate remediation report
-./.resources/scripts/remediation-advisor.sh --report remediation-plan.md
-```
-
-**Features**:
-- Intelligent error analysis and categorization
-- Step-by-step remediation instructions
-- Integration with validation scripts
-- Common issue pattern recognition
-- Automated fix suggestions where possible
 
 ### Setup & Configuration Scripts
 
@@ -686,7 +676,7 @@ node .resources/scripts/auto-docs-generator.js --type all --output docs/generate
 The `hooks/` subdirectory contains specialized validation scripts that integrate with git hooks for automated quality enforcement:
 
 #### 🔒 `hooks/pre-task-validation.sh` - Pre-Task Execution Validator
-Validates system state and requirements before task execution in /iterate workflow.
+Validates system state and requirements before task execution in development workflow.
 
 **Purpose**: Ensure proper setup and context before agent task execution.
 
@@ -718,16 +708,6 @@ Validates agent outputs and updates workflow state after agent completion.
 - Quality gate enforcement
 - HANDOFF.yml updates
 
-#### 🔄 `hooks/workflow-state-check.sh` - Workflow State Consistency Checker
-Validates workflow state consistency across all coordination files.
-
-**Purpose**: Maintain consistency between PLAN.md, HANDOFF.yml, and RESEARCH.md.
-
-**Features**:
-- Cross-file consistency validation
-- State synchronization checking
-- Progress tracking validation
-- Workflow integrity enforcement
 
 ### Support Libraries
 

@@ -1,7 +1,7 @@
 ---
-version: "0.2.0"
+version: "0.2.1"
 created: "2025-09-15"
-last_updated: "2025-09-18"
+last_updated: "2025-09-19"
 status: "active"
 target_audience: ["developers", "ai-assistants", "team-leads"]
 document_type: "reference"
@@ -177,19 +177,194 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 ---
 
-### 📋 `/plan` - Sequential Multi-Agent Planning
+### 📋 `/plan` - Intelligent Sequential Multi-Agent Planning
 
-**Purpose**: Transform architectural decisions into expertly-reviewed implementation plans through sequential multi-agent analysis
+**Purpose**: Transform architectural decisions into expertly-reviewed implementation plans through sequential multi-agent analysis with automatic task complexity assessment and smart decomposition recommendations
 
-**[Detailed documentation continues as existing...]**
+**Usage**:
+```bash
+/plan --issue ISSUE-KEY [--deliverable DELIVERABLE-NAME] [--branch BRANCH-NAME] [--agents LIST] [--review-agent AGENT] [--review-plan] [--init]
+```
+
+**Enhanced Features (v0.2.0)**:
+
+#### **🧠 Intelligent Task Complexity Analysis**
+- **Automatic Assessment**: Every planned task automatically analyzed for complexity using multi-domain scoring system
+- **Complexity Scoring**: Multi-domain (+3), Security (+2), Database (+2), External integrations (+2), Performance (+2), UI/UX (+1), Testing (+1)
+- **Smart Recommendations**: Tasks scoring ≥5 points automatically flagged for decomposition before development begins
+- **Proactive Guidance**: Prevents complex task failures by identifying decomposition opportunities during planning phase
+
+#### **🎯 Smart Decomposition Integration**
+- **Auto-Detection**: `smart-task-decomposition.sh` automatically invoked with `--plan-integration` flag for high-complexity tasks
+- **Context-Aware Patterns**: Decomposition patterns adapt based on task domain (API, database, frontend, security, integration)
+- **Agent Assignment**: Subtasks automatically assigned to appropriate specialist agents via HTML comment hints
+- **Seamless Workflow**: Decomposition recommendations integrated directly into planning output with user approval
+
+**Orchestrator Architecture**:
+- Acts as orchestrator reading RESEARCH.md and passing context to agents
+- Constructs detailed prompts with accumulated findings for each agent
+- Updates RESEARCH.md with agent findings after each execution
+- Generates technical specifications for clear implementation guidance
+- **NEW**: Integrates complexity analysis results into task breakdown decisions
+
+**Parameters**:
+- `--issue`: Issue key identifier (required, e.g., AUTH-123, BUG-456)
+- `--deliverable`: Deliverable name (auto-detected from existing deliverables or issue prefix)
+- `--branch`: Branch name (auto-generated as feature/ISSUE-KEY if not provided)
+- `--agents`: Comma-separated list to override auto-selection (e.g., "context-analyzer,security-auditor,test-engineer")
+- `--skip-branch`: Skip branch creation/checkout (use current branch)
+- `--template`: Custom template path (default: template-deliverable)
+
+**Special Modes**:
+- `--init`: Initialize directory structure and template files only (no planning analysis)
+- `--review-agent AGENT`: Add specific agent review to existing plan (e.g., "security-auditor")
+- `--review-plan`: Comprehensive plan review with recommendations for user approval (no automatic updates)
+
+**Enhanced Workflow**:
+
+1. **Context Analysis**: Gathers existing project context and issue requirements
+2. **Agent Coordination**: Sequential execution of selected specialist agents with cumulative context building
+3. **Task Generation**: Creates implementation tasks based on accumulated agent findings
+4. **⭐ Complexity Assessment**: Each task automatically analyzed for complexity using domain-aware scoring
+5. **⭐ Smart Decomposition**: High-complexity tasks (≥5 points) automatically flagged with decomposition suggestions
+6. **Plan Finalization**: Generates comprehensive PLAN.md with optimally-scoped tasks and agent assignments
+
+**Example Workflow**:
+```bash
+# Standard planning with automatic complexity analysis
+/plan --issue AUTH-123
+# → Agents analyze requirements
+# → Tasks generated and scored for complexity
+# → High-complexity tasks flagged for decomposition
+# → User presented with optimized task breakdown
+
+# Complex feature with proactive decomposition
+/plan --issue INTEGRATION-456
+# → Complexity analysis detects multi-domain task (score: 7)
+# → Auto-suggests API design + implementation + testing subtasks
+# → Each subtask assigned to appropriate specialist agent
+```
+
+**Integration Benefits**:
+- **Reduced Development Failures**: Proactive complexity assessment prevents task execution failures
+- **Better Agent Utilization**: Tasks properly scoped for individual agent capabilities
+- **Improved Quality**: Complex tasks broken into focused, testable components
+- **Faster Resolution**: Issues identified and resolved during planning rather than development
+
+**Tools**: Read, Write, Edit, MultiEdit, Bash(git), Grep, Glob, TodoWrite, Task
 
 ---
 
-### ⚡ `/develop` - Orchestrated Task Execution
+### ⚡ `/develop` - Intelligent Task Execution with Context Distillation
 
-**Purpose**: Execute tasks from PLAN.md with intelligent agent coordination and context preservation
+**Purpose**: Execute tasks from PLAN.md with intelligent agent coordination, context preservation, and domain-aware context distillation for optimal specialist performance
 
-**[Detailed documentation continues as existing...]**
+**Usage**:
+```bash
+/develop                    # Execute next unchecked task with auto-testing
+/develop TASK-001:1.2.3    # Execute specific X.Y.Z implementation
+/develop --test-first      # Enforce TDD with test-engineer auto-invocation
+/develop --force           # Force execution despite warnings
+/develop --instruct        # Interactive mode with step-by-step guidance
+```
+
+**Enhanced Features (v0.2.0)**:
+
+#### **🎯 Intelligent Context Distillation**
+- **Domain-Aware Filtering**: Context automatically filtered based on task type and assigned agent for optimal performance
+- **Agent-Specific Briefings**: Each specialist receives focused, actionable context tailored to their domain expertise
+- **Dynamic Context Loading**: Relevant information from HANDOFF.yml, RESEARCH.md, and ADRs automatically integrated
+- **Performance Optimization**: Focused context delivery reduces noise and improves agent decision-making accuracy
+
+#### **🔄 Smart Failure Recovery**
+- **Automatic Complexity Detection**: Failed tasks automatically analyzed using `smart-task-decomposition.sh --develop-integration`
+- **Failure Pattern Analysis**: Failure reasons categorized (timeout, complexity, dependencies, quality) for targeted recovery
+- **Recovery Recommendations**: Context-aware suggestions for task decomposition, agent switching, or approach modification
+- **Seamless Integration**: Recovery options presented immediately without workflow disruption
+
+**Specialized Agent Context Briefings**:
+
+| Agent Type | Context Focus | Information Sources |
+|------------|---------------|-------------------|
+| **Frontend Specialist** | UI patterns, component architecture, state management, styling frameworks | Design specs, component libraries, user stories |
+| **Backend Specialist** | API contracts, business logic, data flow, integration patterns | API specs, database schemas, service architectures |
+| **Database Specialist** | Schema design, query optimization, migration strategies, data integrity | ERDs, performance requirements, existing schemas |
+| **Security Auditor** | Threat models, compliance requirements, vulnerability patterns | Security policies, auth flows, risk assessments |
+| **Test Engineer** | Testing strategies, coverage requirements, quality gates | Test plans, acceptance criteria, quality standards |
+| **Performance Optimizer** | Bottlenecks, optimization targets, scalability requirements | Performance baselines, load requirements, metrics |
+
+**Enhanced 4-Step Execution Flow**:
+
+1. **⭐ Context Distillation**: Automatically filters and focuses context based on task domain and assigned specialist agent
+2. **Test-First Validation**: Auto-invokes test-engineer for TDD/BDD approach with relevant testing context
+3. **Agent Execution**: Selected specialist receives focused briefing with domain-specific context and implementation guidance
+4. **Progress Tracking**: Updates epic structure with implementation status and captures execution context for future tasks
+
+**Smart Failure Recovery Integration**:
+```bash
+# Task fails due to complexity
+/develop TASK-001:2.1.0
+# → Automatic complexity analysis triggered
+# → smart-task-decomposition.sh --develop-integration --failure-reason "too complex"
+# → Recovery options presented:
+#   • Auto-decompose into subtasks
+#   • Try different specialist agent
+#   • Adjust implementation approach
+```
+
+**Context Distillation Examples**:
+
+**Frontend Task Context**:
+```yaml
+# Automatically filtered for frontend-specialist
+context:
+  design_specs: "Component wireframes and interaction patterns"
+  style_guide: "Design system tokens and component library"
+  state_management: "Redux store structure and data flow"
+  api_contracts: "Relevant endpoint specifications for data integration"
+  user_stories: "Acceptance criteria and user interaction requirements"
+  # Excludes: Database schemas, server configurations, deployment details
+```
+
+**Backend Task Context**:
+```yaml
+# Automatically filtered for backend-specialist
+context:
+  api_specifications: "OpenAPI/Swagger definitions and contracts"
+  business_logic: "Domain rules and validation requirements"
+  data_models: "Entity relationships and persistence patterns"
+  integration_patterns: "Service communication and messaging"
+  security_requirements: "Authentication and authorization needs"
+  # Excludes: UI patterns, styling, frontend state management
+```
+
+**Error Handling & Recovery**:
+- **Malformed HANDOFF.yml**: Reports parsing error, suggests validation, continues with empty context
+- **Missing Agent Reference**: Reports missing `<!--agent:name-->` comment, prompts for manual agent selection
+- **Invalid Task Number**: "Task P2.8.0 not found in PLAN.md" - suggests available tasks with complexity scores
+- **Agent Validation**: Checks if referenced agent exists in `.claude/agents/` directory
+- **Context Overload**: Automatically trims context when approaching agent processing limits
+
+**Integration Benefits**:
+- **Faster Execution**: Agents receive focused, relevant context without information overload
+- **Better Quality**: Domain-specific context improves specialist decision-making accuracy
+- **Reduced Failures**: Proactive complexity detection and recovery prevents task execution deadlocks
+- **Improved Learning**: Context distillation patterns improve over time based on successful executions
+
+**Example Enhanced Workflow**:
+```bash
+/develop TASK-001:1.1.0    # API design task
+# → Context distilled for api-designer: API specs, business rules, integration patterns
+# → Agent receives focused briefing on endpoint design requirements
+# → Executes with optimal context for API specification creation
+
+/develop TASK-001:1.2.0    # Database implementation task
+# → Context distilled for database-specialist: Schema requirements, data relationships, performance needs
+# → Agent receives focused briefing on database design and optimization
+# → Executes with optimal context for database implementation
+```
+
+**Tools**: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
 ---
 
@@ -219,61 +394,6 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 ---
 
 
-### `/develop` - Streamlined Task Execution (Optimized from 253 to 78 lines)
-
-**Purpose**: Execute tasks from PLAN.md with test-first enforcement and streamlined 4-step execution flow
-
-**Usage**:
-```bash
-/develop                    # Execute next unchecked task with auto-testing
-/develop TASK-001:1.2.3    # Execute specific X.Y.Z implementation
-/develop --test-first      # Enforce TDD with test-engineer auto-invocation
-```
-
-**Streamlined 4-Step Execution Flow**:
-1. **Test-First Validation**: Auto-invokes test-engineer for TDD/BDD approach
-2. **Task Execution**: Intelligent agent selection based on X.Y.Z task context
-3. **Quality Integration**: Built-in testing with 95%+ coverage enforcement
-4. **Progress Tracking**: Updates epic structure with implementation status
-
-**Epic-Driven Integration**:
-- **Progressive Task Discovery**: Tasks numbered by discovery order (X.Y.Z format)
-- **Epic Structure**: Works with `epics/[name]/TASK-###.md` format
-- **Testing Tasks**: Dedicated testing tasks created during /plan phase
-- **BDD Scenarios**: Generated from acceptance criteria during planning
-
-**Test-First Enforcement**:
-- **Auto-Testing**: Automatic test-engineer invocation for all development tasks
-- **TDD/BDD Hybrid**: Enforces test-first with BDD scenarios for acceptance criteria
-- **Coverage Goals**: 95%+ test coverage enforced across all implementation phases
-- **Testing Templates**: Uses comprehensive testing task templates from epic structure
-
-**Epic Branch Management**:
-- **Hierarchical Branching**: Epic branches (`epic/[name]`) contain task branches (`task/###-[name]`)
-- **Integration with /merge-branch**: Automated epic/task branch workflow
-- **Progressive Discovery**: New tasks can be added during any phase without disrupting numbering
-
-**Error Handling**:
-- **Malformed HANDOFF.yml**: Reports parsing error, suggests validation, continues with empty context
-- **Missing Agent Reference**: Reports missing `<!--agent:name-->` comment, prompts for manual agent selection
-- **Invalid Task Number**: "Task P2.8.0 not found in PLAN.md" - suggests available tasks
-- **Agent Validation**: Checks if referenced agent exists in `.claude/agents/` directory
-- **File Corruption**: Reports missing/corrupted files, suggests recovery procedures
-
-**End States**:
-- All phases complete: "All phases complete! Issue ready for final review."
-- No PLAN.md found: "No PLAN.md file found in current directory or parent directories."
-- Task validation failure: Prompts for correction before proceeding
-
-**Example Epic-Driven Workflow**:
-```bash
-/develop        # Executes TASK-001:1.1.0 with test-engineer auto-invocation
-/develop        # Executes TASK-001:1.2.0 with implementation specialist
-/develop TASK-002:2.1.0 # Jump to specific task implementation
-/develop --test-first   # Enforce TDD for current task
-```
-
-**Tools**: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
 ## Quality & Security Commands
 
@@ -491,6 +611,86 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 ---
 
+### `/docs` - Unified Documentation Management
+
+**Purpose**: Comprehensive documentation management with technical-writer agent coordination for accuracy validation, updates, and synchronization
+
+**Usage**:
+```bash
+/docs update [scope]        # Update existing documentation based on code changes
+/docs generate [type]       # Generate new documentation from templates
+/docs validate             # Validate documentation accuracy and link integrity
+/docs sync                 # Synchronize documentation with code changes
+/docs health               # Analyze documentation health and completeness
+/docs auto                 # Automated documentation generation from codebase
+```
+
+**Enhanced Features (v0.2.0)**:
+- **Unified Command Structure**: Replaces legacy `/update-docs` with comprehensive subcommand system
+- **Automatic Synchronization**: Detects code changes and updates relevant documentation
+- **Link Validation**: Comprehensive internal and external link checking
+- **Health Analytics**: Documentation coverage and freshness analysis
+- **Template Integration**: Automated generation using project-specific templates
+
+**Subcommands**:
+
+#### `/docs update [scope]`
+- **Purpose**: Update existing documentation based on recent code or configuration changes
+- **Scope Options**: `all`, `api`, `scripts`, `commands`, `guides`, `specific-paths`
+- **Features**: Change detection, selective updates, version synchronization
+
+#### `/docs generate [type]`
+- **Purpose**: Generate new documentation from templates and codebase analysis
+- **Type Options**: `api-reference`, `script-docs`, `architecture-overview`, `tech-stack`
+- **Features**: Template-based generation, automatic content extraction
+
+#### `/docs validate`
+- **Purpose**: Comprehensive validation of documentation accuracy and integrity
+- **Features**: Link checking, content accuracy verification, format validation
+
+#### `/docs sync`
+- **Purpose**: Bidirectional synchronization between code and documentation
+- **Features**: Automatic updates on code changes, cross-reference validation
+
+#### `/docs health`
+- **Purpose**: Analyze documentation health metrics and identify improvement areas
+- **Features**: Coverage analysis, freshness tracking, usage analytics
+
+#### `/docs auto`
+- **Purpose**: Automated documentation generation with minimal manual intervention
+- **Features**: Smart content extraction, dependency analysis, automated updates
+
+**Integration with Workflow**:
+- **Git Hooks**: Automatic documentation updates on code changes
+- **Technical Writer Agent**: Specialized agent coordination for quality assurance
+- **Template System**: Consistent documentation structure and formatting
+- **Version Control**: Documentation versioning aligned with code releases
+
+**Example Workflows**:
+```bash
+# Comprehensive documentation update after major code changes
+/docs update all
+
+# Generate API documentation from code annotations
+/docs generate api-reference
+
+# Validate all documentation before release
+/docs validate
+
+# Automated maintenance workflow
+/docs health && /docs sync && /docs validate
+```
+
+**Quality Assurance**:
+- **Content Accuracy**: Verification against actual codebase implementation
+- **Link Integrity**: Automated checking of internal and external references
+- **Template Compliance**: Adherence to project documentation standards
+- **Freshness Monitoring**: Identification of outdated or stale content
+
+**Tools**: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
+
+---
+
 ### `/refresh` - Context Refresh
 
 **Purpose**: Quick context refresh for AI assistants on project state and conventions
@@ -532,7 +732,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 ```bash
 /idea --start "Should we implement microservices architecture?"  # Explore decision
 /plan --issue ARCH-123           # Plan implementation
-/iterate                         # Execute tasks
+/develop                         # Execute tasks
 ```
 
 #### Planning Phase
@@ -555,10 +755,10 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 
 **Example Sequence**:
 ```bash
-/iterate                         # Execute tasks from PLAN.md
+/develop                         # Execute tasks from PLAN.md
 /develop --issue AUTH-123 --type authentication  # Complex implementation
 /review --scope feature --focus quality
-/iterate                         # Continue with next tasks
+/develop                         # Continue with next tasks
 /test-fix
 ```
 
@@ -597,7 +797,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 - `/develop` (standard) - Single-system features
 - `/quality assess` - Project health analysis
 - `/review` - Quality assessment
-- `/iterate` - Code improvement
+- `/develop` - Code improvement
 
 #### Low Complexity
 - `/commit` - Git commit workflow
@@ -610,13 +810,13 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 ### Decision Matrix
 
 **New Feature Development**:
-- Simple: `/idea` → `/plan` → `/iterate` → `/commit`
-- Standard: `/idea` → `/plan` → `/iterate` → `/review` → `/commit`
-- Complex: `/idea` → `/plan` → `/feature-plan` → `/iterate` → `/security-audit`
+- Simple: `/idea` → `/plan` → `/develop` → `/commit`
+- Standard: `/idea` → `/plan` → `/develop` → `/review` → `/commit`
+- Complex: `/idea` → `/plan` → `/feature-plan` → `/develop` → `/security-audit`
 
 **Code Quality Improvement**:
 - Review: `/review`
-- Improvement: `/iterate` → `/review`
+- Improvement: `/develop` → `/review`
 - Analysis: `/quality assess` → `/review`
 
 **Security-Focused Work**:
@@ -640,8 +840,8 @@ Chain related commands for comprehensive workflows:
 ```bash
 /idea --start "How should we implement user authentication?"  # Explore decision
 /plan --issue AUTH-123          # Plan implementation
-/iterate                        # Execute phase 1 tasks
-/iterate                        # Execute phase 2 tasks
+/develop                        # Execute phase 1 tasks
+/develop                        # Execute phase 2 tasks
 /review --scope feature --focus security
 /commit
 ```

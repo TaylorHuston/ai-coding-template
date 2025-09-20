@@ -108,7 +108,7 @@ tags: ["status", "project-memory", "context"]
 - [x] ~~Phase 1 Multi-Model Agent Enhancement - Enhanced 5 Tier 1 agents with Gemini cross-validation~~ - 2025-09-17
 - [x] ~~Multi-Model Intelligence Integration - Enhanced AI workflow with Gemini CLI cross-validation~~ - 2025-09-17
 - [x] ~~Template & Example Standardization - Unified system with 22 standardized templates~~ - 2025-09-17
-- [x] ~~--instruct flag for /iterate - Added tutoring mode for interactive learning~~ - 2025-09-17
+- [x] ~~--instruct flag for development commands - Added tutoring mode for interactive learning~~ - 2025-09-17
 
 ### Upcoming Milestones
 | Milestone | Target Date | Progress | Status |

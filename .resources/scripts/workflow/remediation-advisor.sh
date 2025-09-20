@@ -104,17 +104,17 @@ analyze_failures() {
             echo "Next task should focus on stabilizing core functionality"
 
             if $test_failed; then
-                echo "• Consider: /iterate --agent test-engineer [current-task]"
+                echo "• Consider: /develop --agent test-engineer [current-task]"
             fi
             if $build_failed; then
-                echo "• Consider: /iterate --agent devops-engineer [current-task]"
+                echo "• Consider: /develop --agent devops-engineer [current-task]"
             fi
         elif $lint_failed; then
             echo -e "${YELLOW}MEDIUM:${NC} Address code quality issues"
-            echo "• Consider: /iterate --agent code-reviewer [current-task]"
+            echo "• Consider: /develop --agent code-reviewer [current-task]"
         elif $security_failed; then
             echo -e "${RED}HIGH:${NC} Address security vulnerabilities immediately"
-            echo "• Consider: /iterate --agent security-auditor [current-task]"
+            echo "• Consider: /develop --agent security-auditor [current-task]"
         else
             echo -e "${GREEN}✅ Quality gates passed - proceed with next task${NC}"
         fi
@@ -183,6 +183,6 @@ suggest_agents
 
 echo ""
 echo -e "${BLUE}💡 Pro Tips:${NC}"
-echo "• Use /iterate --agent AGENT-NAME to override default agent selection"
+echo "• Use /develop --agent AGENT-NAME to override default agent selection"
 echo "• Run this script after any quality gate failures for guidance"
 echo "• Consider task decomposition if multiple areas are failing"

@@ -1,7 +1,7 @@
 ---
 version: "0.2.1"
 created: "2025-08-21"
-last_updated: "2025-09-18"
+last_updated: "2025-09-19"
 status: "active"
 target_audience: ["ai-assistants"]
 document_type: "specification"
@@ -46,7 +46,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 **Primary**: `/design` → `/architect` → `/plan` → `/develop`
 
-**Available Commands**: 14 total - Core workflow (design, architect, plan, develop), Quality (quality, review, security-audit, test-fix), Development (commit, merge-branch), Management (status, docs, refresh, update-docs)
+**Available Commands**: 13 total - Core workflow (design, architect, plan, develop), Quality (quality, review, security-audit, test-fix), Development (commit, merge-branch), Management (status, docs, refresh)
 
 **Automation Scripts**: 20+ specialized scripts for documentation, validation, setup, metrics, changelog management
 

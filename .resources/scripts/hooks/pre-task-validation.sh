@@ -113,19 +113,8 @@ extract_agent_type() {
     fi
 }
 
-# Prepare context for agent (if distill script exists)
-prepare_agent_context() {
-    local agent_type
-    agent_type=$(extract_agent_type)
-
-    if [ "$agent_type" != "unknown" ] && [ -f "../../scripts/distill-context.sh" ]; then
-        log_info "Preparing context for agent: $agent_type"
-        ../../scripts/distill-context.sh --agent "$agent_type" --prepare
-    elif [ "$agent_type" != "unknown" ] && [ -f "../../../scripts/distill-context.sh" ]; then
-        log_info "Preparing context for agent: $agent_type"
-        ../../../scripts/distill-context.sh --agent "$agent_type" --prepare
-    fi
-}
+# Context preparation is now handled automatically by the /develop command
+# No additional preparation needed in hooks
 
 # Main execution
 main() {

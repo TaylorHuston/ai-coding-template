@@ -155,7 +155,7 @@ quality_dimensions:
 
 The `/quality` command integrates seamlessly with the core workflow:
 
-### During `/iterate` Phase
+### During `/develop` Phase
 - Automatic quality validation between tasks
 - Progressive quality gate enforcement
 - Context-aware quality recommendations
