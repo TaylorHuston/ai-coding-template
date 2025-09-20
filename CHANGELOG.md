@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.6.3] - 2025-09-19
+
+### Simplified
+
+- **Simplified Serena MCP Handling**: Removed Serena from default template, added as optional enhancement
+  - **Problem**: Previous versions included invalid JSON with commented-out sections, causing parsing errors
+  - **Solution**: Removed Serena entirely from default `.mcp.json` template, provide clear addition guide
+  - **Benefits**: Clean, valid JSON configuration files; no confusing commented sections; clear upgrade path
+  - **Documentation**: Updated all references to reflect Serena as optional enhancement for complex projects (20+ files)
+  - **Result**: New projects start immediately with essential MCP servers, can add Serena when beneficial
+
 ## [0.6.2] - 2025-09-19
 
 ### Fixed

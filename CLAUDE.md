@@ -123,48 +123,36 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## MCP Tool Decision Framework
 
-**Select appropriate tools based on project complexity and available MCP servers:**
+**Use available MCP tools efficiently based on task complexity:**
 
-### **Tool Selection by Project Maturity**
+### **Core MCP Tools Available**
 
-**Fresh/Small Projects** (minimal implementation code):
-- **File Discovery**: Use Glob for template/file finding
-- **Code Analysis**: Use Grep for basic text search
-- **Template Search**: Always use Glob
-- **Reasoning**: Serena provides limited value for minimal projects (per Serena documentation)
+- **Context7**: Library documentation and examples
+- **Sequential Thinking**: Complex problem decomposition
+- **Playwright**: Browser automation for testing
+- **Serena**: Semantic code analysis (optional - see [Adding Serena Guide](./docs/ai-tools/setup/adding-serena.md))
 
-**Growing Projects** (developing codebase):
-- **File Discovery**: Primarily Glob, consider activating Serena for complex analysis
-- **Code Analysis**: Grep for simple tasks, Serena for semantic understanding when beneficial
-- **Template Search**: Always use Glob
+### **Tool Selection Guidelines**
 
-**Complex Projects** (substantial codebase with 20+ files):
-- **File Discovery**: Serena for semantic analysis and pattern detection
-- **Code Analysis**: Serena for cross-references, structure analysis, and complex operations
-- **Template Search**: Always use Glob
+**For File Operations**:
+- **Template Search**: Always use Glob first
+- **Simple Search**: Use Grep for basic text search
+- **Complex Analysis**: Consider adding Serena for projects with 20+ implementation files
 
-### **Serena Activation Strategy**
-
-**Default for New Projects**: Serena is commented out in `.mcp.json` to avoid indexing overhead
-
-**When to Activate Serena**:
-- Project has 20+ implementation files
-- Complex code structure needing semantic analysis
-- Refactoring tasks requiring cross-reference analysis
-
-**How to Activate**: See [Serena Activation Guide](./docs/ai-tools/setup/serena-activation.md)
+**For Problem Solving**:
+- **Library Integration**: Use Context7 for documentation and best practices
+- **Complex Planning**: Use Sequential Thinking for multi-step decomposition
+- **Web Testing**: Use Playwright for browser automation
 
 ### **MCP Tool Triggers**
 
-- "across multiple files" → Use Glob/Grep for small projects, Serena for complex projects
-- "find all instances" → Use appropriate search tool based on project complexity
-- "consolidate" or "merge" → Serena if available and beneficial, Grep for simple cases
-- "analyze structure" → Serena for complex projects, Glob/Grep for simple projects
-- "understand patterns" → Context7 + appropriate analysis tool
+- "across multiple files" → Glob/Grep (or Serena if available)
+- "find all instances" → Grep (or Serena for semantic search)
+- "understand patterns" → Context7 + search tools
 - "complex problem" → Sequential thinking decomposition
 - **"create new files" → Always search for templates using Glob first**
 
-**Default Principle**: Start simple (Glob/Grep), upgrade to semantic analysis (Serena) when project complexity justifies it
+**Default Principle**: Start with essential tools (Glob/Grep/Context7), add specialized tools as project complexity grows
 
 ## Security & Quality Compliance
 

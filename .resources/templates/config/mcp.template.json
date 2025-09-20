@@ -12,21 +12,5 @@
       "command": "npx",
       "args": ["-y", "@playwright/mcp"]
     }
-
-    // Serena MCP Server (Semantic Code Analysis)
-    //
-    // Uncomment when your project has substantial code (20+ implementation files)
-    // Serena provides powerful semantic analysis but adds indexing overhead for minimal projects
-    //
-    // To activate:
-    // 1. Uncomment the "serena" section below
-    // 2. Restart Claude Code to begin indexing
-    // 3. Use semantic tools: find_symbol, find_referencing_symbols, etc.
-    //
-    // "serena": {
-    //   "command": "uvx",
-    //   "args": ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context", "ide-assistant"],
-    //   "env": {}
-    // }
   }
 }

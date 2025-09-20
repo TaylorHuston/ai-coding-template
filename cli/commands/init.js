@@ -269,7 +269,7 @@ class TemplateInitializer {
       }
     }
 
-    // Special handling for .mcp.json - use template version with Serena commented out
+    // Special handling for .mcp.json - use template version
     try {
       const mcpTemplateSource = path.join(this.templatePath, '.resources/templates/config/mcp.template.json');
       const mcpTarget = path.join(this.targetDir, '.mcp.json');
@@ -280,7 +280,7 @@ class TemplateInitializer {
         results.configured++;
 
         if (this.verbose) {
-          console.log(`   ⚙️  Configured: .mcp.json (using template with Serena commented out)`);
+          console.log(`   ⚙️  Configured: .mcp.json (essential MCP servers)`);
         }
       }
     } catch (error) {

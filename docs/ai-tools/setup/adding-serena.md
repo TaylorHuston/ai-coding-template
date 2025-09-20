@@ -9,17 +9,17 @@ priority: "medium"
 tags: ["serena", "mcp", "semantic-analysis", "activation"]
 ---
 
-# Serena MCP Server Activation Guide
+# Adding Serena MCP Server
 
-**When and how to activate Serena's semantic code analysis for your project.**
+**When and how to add Serena's semantic code analysis to your project.**
 
 ## Overview
 
-Serena MCP Server provides powerful semantic code analysis but adds indexing overhead. New projects have Serena commented out by default to avoid delays during initial development.
+Serena MCP Server provides powerful semantic code analysis but adds indexing overhead. New projects start with essential MCP servers only. Add Serena when your project grows in complexity.
 
-## When to Activate Serena
+## When to Add Serena
 
-### Recommended Activation Threshold
+### Recommended Addition Threshold
 - **20+ implementation files** in your `src/` directory
 - **Complex code structure** with multiple modules/components
 - **Need for semantic analysis** (finding references, understanding relationships)
@@ -30,11 +30,11 @@ Serena MCP Server provides powerful semantic code analysis but adds indexing ove
 - Refactoring needs that benefit from semantic understanding
 - Code review processes that need architectural analysis
 
-## How to Activate Serena
+## How to Add Serena
 
 ### Step 1: Edit `.mcp.json`
 
-Open your project's `.mcp.json` file and uncomment the Serena section:
+Open your project's `.mcp.json` file and add the Serena configuration to the `mcpServers` section:
 
 ```json
 {
@@ -62,7 +62,7 @@ Open your project's `.mcp.json` file and uncomment the Serena section:
 
 ### Step 2: Restart Claude Code
 
-After uncommenting Serena, restart Claude Code to:
+After adding Serena, restart Claude Code to:
 - Initialize the Serena MCP server
 - Begin LSP indexing of your codebase
 - Enable semantic analysis tools

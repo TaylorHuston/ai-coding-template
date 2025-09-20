@@ -59,7 +59,7 @@ cp .claude/mcp-permissions/basic.json .claude/settings.local.json
 ./scripts/setup-manager.sh check
 ```
 
-The `uv` package manager is required for Serena semantic code analysis. Serena is pre-configured and will download automatically when first used.
+Essential MCP servers (context7, sequential-thinking, playwright) are pre-configured. Optional servers like Serena can be added as your project grows.
 
 ### 3. Essential MCP Tools
 
@@ -81,26 +81,31 @@ These are automatically included in all setups:
 - **Example**: "Review this entire codebase and suggest improvements"
 - **Prerequisites**: Requires [Gemini CLI](https://github.com/google-gemini/gemini-cli) installation (see README)
 
-#### **serena** - Semantic Code Intelligence
+#### **serena** - Semantic Code Intelligence (Optional Enhancement)
 - **What it does**: Provides semantic code analysis and LSP-based intelligent code manipulation
-- **Why you need it**: Token-efficient semantic code understanding, precise symbol-level editing
+- **When to add**: Projects with 20+ implementation files requiring cross-reference analysis
 - **Example**: "Find all references to the Authentication class and analyze dependencies"
-- **Prerequisites**: Requires `uv` package manager (template prerequisite)
+- **Setup Guide**: See [Adding Serena Guide](./adding-serena.md)
 
 ### 3. Optional Tools by Project Type
 
-#### All Projects Benefit From:
-- **serena** - Semantic code analysis for any language with LSP support
+#### All Projects Start With:
+- **context7** - Library documentation and examples
+- **sequential-thinking** - Complex problem decomposition
+- **playwright** - Browser automation and testing
 
-#### Frontend Projects Add:
-- **playwright** - Browser testing and automation
+#### Complex Projects Can Add:
+- **serena** - Semantic code analysis when codebase grows (20+ files)
+
+#### Frontend Projects Benefit From:
+- **playwright** (already included) - Browser testing and automation
 
 #### Backend Projects Add:
 - **database** tools for schema management
 - **api-testing** tools for endpoint validation
 
-#### Large/Complex Projects Add:
-- **serena** (essential) - Handles complex codebases with semantic precision
+#### Large/Complex Projects Should Consider:
+- **serena** (optional enhancement) - Add when project reaches 20+ implementation files
 
 ## Getting Started
 
