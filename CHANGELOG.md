@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.6.1] - 2025-09-19
+
 ### Enhanced
 
 - **Smart Serena Activation**: Implemented optional Serena MCP activation for new projects
