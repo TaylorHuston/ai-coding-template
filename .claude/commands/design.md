@@ -116,7 +116,7 @@ model: "claude-opus-4-1"
 **Supporting Consultation** (when beneficial):
 
 - **project-manager**: For complex multi-feature design coordination
-- **context-analyzer**: For understanding existing system requirements
+- **context-analyzer**: For understanding existing system requirements (skip on fresh template installations)
 - Any domain specialists for requirement validation and feasibility input
 
 **Key Principle**: Keep design phase non-technical - save implementation details for `/architect` phase.

@@ -100,7 +100,7 @@ Streamlined catalog of Claude Code slash commands centered around the **4-phase 
 ### The Complete Epic Workflow (Recommended for All Features)
 
 ```yaml
-# Standard Epic Development Workflow
+# Complete Epic Development Workflow
 core_workflow: "/design → /architect → /plan → /develop"
 
 # Epic Structure Creation

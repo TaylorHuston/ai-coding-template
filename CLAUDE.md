@@ -123,52 +123,48 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## MCP Tool Decision Framework
 
-**Before any multi-file analysis or refactoring task, ALWAYS consider MCP tools first:**
+**Select appropriate tools based on project complexity and available MCP servers:**
 
-### **Tool Selection Priority**
+### **Tool Selection by Project Maturity**
 
-1. **Serena MCP**: Pattern analysis, symbol search, cross-references
+**Fresh/Small Projects** (minimal implementation code):
+- **File Discovery**: Use Glob for template/file finding
+- **Code Analysis**: Use Grep for basic text search
+- **Template Search**: Always use Glob
+- **Reasoning**: Serena provides limited value for minimal projects (per Serena documentation)
 
-   - **Use for**: Finding duplicates, analyzing structure, mapping relationships, multi-file changes
-   - **Ask**: "Could pattern search reveal this systematically instead of manual analysis?"
-   - **Examples**: Consolidating files, finding references, analyzing code structure
+**Growing Projects** (developing codebase):
+- **File Discovery**: Primarily Glob, consider activating Serena for complex analysis
+- **Code Analysis**: Grep for simple tasks, Serena for semantic understanding when beneficial
+- **Template Search**: Always use Glob
 
-2. **Context7 MCP**: Library documentation and examples
+**Complex Projects** (substantial codebase with 20+ files):
+- **File Discovery**: Serena for semantic analysis and pattern detection
+- **Code Analysis**: Serena for cross-references, structure analysis, and complex operations
+- **Template Search**: Always use Glob
 
-   - **Use for**: Understanding best practices, finding canonical examples, external patterns
-   - **Ask**: "Are there established patterns or documentation for this approach?"
-   - **Examples**: API design patterns, framework usage, library integration
+### **Serena Activation Strategy**
 
-3. **Sequential Thinking MCP**: Complex problem decomposition
-   - **Use for**: Breaking down multi-step optimization tasks, systematic analysis
-   - **Ask**: "Should I think through this systematically before acting?"
-   - **Examples**: Architecture refactoring, workflow optimization, complex debugging
+**Default for New Projects**: Serena is commented out in `.mcp.json` to avoid indexing overhead
+
+**When to Activate Serena**:
+- Project has 20+ implementation files
+- Complex code structure needing semantic analysis
+- Refactoring tasks requiring cross-reference analysis
+
+**How to Activate**: See [Serena Activation Guide](./docs/ai-tools/setup/serena-activation.md)
 
 ### **MCP Tool Triggers**
 
-When you encounter these task types, **ALWAYS use MCP tools first**:
-
-- "across multiple files" → Serena pattern search
-- "find all instances" → Serena `search_for_pattern`
-- "consolidate" or "merge" → Serena duplication analysis
-- "update references" → Serena cross-reference mapping
-- "analyze structure" → Serena symbol analysis
-- "understand patterns" → Context7 + Serena combination
+- "across multiple files" → Use Glob/Grep for small projects, Serena for complex projects
+- "find all instances" → Use appropriate search tool based on project complexity
+- "consolidate" or "merge" → Serena if available and beneficial, Grep for simple cases
+- "analyze structure" → Serena for complex projects, Glob/Grep for simple projects
+- "understand patterns" → Context7 + appropriate analysis tool
 - "complex problem" → Sequential thinking decomposition
-- **"create new files" → ALWAYS search for templates first using Serena or Glob**
+- **"create new files" → Always search for templates using Glob first**
 
-### **Pre-Task Analysis Checklist**
-
-Before starting any significant task:
-
-- [ ] What MCP tools could provide systematic analysis?
-- [ ] Is this a pattern search problem disguised as manual work?
-- [ ] Would cross-reference mapping prevent errors?
-- [ ] Could automation find what I might miss manually?
-- [ ] Should I decompose this systematically first?
-- [ ] **Are there existing templates I should use instead of creating from scratch?**
-
-**Default Principle**: Choose systematic tool-based approach over manual analysis
+**Default Principle**: Start simple (Glob/Grep), upgrade to semantic analysis (Serena) when project complexity justifies it
 
 ## Security & Quality Compliance
 

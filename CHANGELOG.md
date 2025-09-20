@@ -8,6 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Enhanced
 
+- **Smart Serena Activation**: Implemented optional Serena MCP activation for new projects
+  - **Problem**: Fresh template installations experienced indexing delays from Serena on minimal codebases
+  - **Solution**: New projects get Serena commented out in `.mcp.json` template by default
+  - **User Control**: Users activate Serena when project reaches 20+ implementation files
+  - **Benefits**: Immediate productivity for new projects, semantic analysis when beneficial
+  - **Documentation**: Added comprehensive Serena activation guide and updated tool selection framework
+
+## [0.6.0] - 2025-09-19
+
+### Enhanced
+
 - **Intelligent Task Complexity Analysis**: Integrated automatic complexity assessment into `/plan` command
   - **Complexity Scoring System**: Multi-domain integration (+3), Security implementation (+2), Database changes (+2), External integrations (+2), Performance optimization (+2), UI/UX (+1), Testing (+1)
   - **Smart Decomposition Recommendations**: High complexity (≥5 points) triggers automatic subtask suggestions with agent assignments
