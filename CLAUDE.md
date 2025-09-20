@@ -46,7 +46,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 **Primary**: `/design` → `/architect` → `/plan` → `/develop`
 
-**Available Commands**: 13 total - Core workflow (design, architect, plan, develop), Quality (quality, review, security-audit, test-fix), Development (commit, merge-branch), Management (status, docs, refresh)
+**Available Commands**: 15 total - Core workflow (design, architect, plan, develop), Quality (quality, review, security-audit, test-fix), Development (commit, merge-branch), Management (status, docs, refresh, update-docs), Template (improve)
 
 **Automation Scripts**: 20+ specialized scripts for documentation, validation, setup, metrics, changelog management
 

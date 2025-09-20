@@ -1,6 +1,6 @@
 {
   "name": "ai-assisted-template",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "Comprehensive AI-assisted development template with Claude Code integration",
   "main": "cli/index-npm.js",
   "bin": {
@@ -45,6 +45,7 @@
     "CLAUDE.md",
     ".gitignore",
     ".markdownlint.json",
+    ".mcp.json",
     ".env.example",
     ".githooks/",
     ".githooks.json",

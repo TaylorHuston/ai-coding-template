@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.7.0] - 2025-09-20
+
+### Added
+
+- **Template-Maintainer Agent**: Automated template lifecycle management and self-improvement system
+  - **Purpose**: Monitor user feedback, implement improvements, and automate publishing workflow
+  - **Capabilities**: Feedback analysis, template enhancement, NPM publishing, adoption monitoring
+  - **Command**: New `/improve` command with 4 modes (--feedback, --enhance, --publish, --monitor)
+  - **Intelligence**: Deep understanding of template structure, file categorization, and user propagation
+  - **Automation**: Complete publishing pipeline from user feedback to NPM distribution
+  - **Result**: Template can now evolve itself based on real user patterns and needs
+
 ### Fixed
 
 - **Interactive Project Brief Creation**: Fixed `/design --brief` command to conduct proper interactive discovery
@@ -25,86 +37,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Problem**: `npx ai-assisted-template init` failed with "ai-template: not found" when run from repo subdirectories
   - **Solution**: Added `ai-assisted-template` binary name to package.json alongside existing `ai-template`
   - **Result**: Both commands now work everywhere: `npx ai-assisted-template init` and `npx -p ai-assisted-template ai-template init`
-
-## [0.6.3] - 2025-09-19
-
-### Simplified
-
-- **Simplified Serena MCP Handling**: Removed Serena from default template, added as optional enhancement
-  - **Problem**: Previous versions included invalid JSON with commented-out sections, causing parsing errors
-  - **Solution**: Removed Serena entirely from default `.mcp.json` template, provide clear addition guide
-  - **Benefits**: Clean, valid JSON configuration files; no confusing commented sections; clear upgrade path
-  - **Documentation**: Updated all references to reflect Serena as optional enhancement for complex projects (20+ files)
-  - **Result**: New projects start immediately with essential MCP servers, can add Serena when beneficial
-
-## [0.6.2] - 2025-09-19
-
-### Fixed
-
-- **MCP Configuration**: Fixed NPM package to use correct template `.mcp.json` file for new projects
-  - **Problem**: Package was including template's active `.mcp.json` (with Serena enabled) instead of the template for new projects
-  - **Solution**: Removed `.mcp.json` from NPM package files and added special CLI handling to use `.resources/templates/config/mcp.template.json`
-  - **Result**: New projects now correctly get `.mcp.json` with Serena commented out, preventing indexing delays on fresh installations
-
-## [0.6.1] - 2025-09-19
-
-### Enhanced
-
-- **Smart Serena Activation**: Implemented optional Serena MCP activation for new projects
-  - **Problem**: Fresh template installations experienced indexing delays from Serena on minimal codebases
-  - **Solution**: New projects get Serena commented out in `.mcp.json` template by default
-  - **User Control**: Users activate Serena when project reaches 20+ implementation files
-  - **Benefits**: Immediate productivity for new projects, semantic analysis when beneficial
-  - **Documentation**: Added comprehensive Serena activation guide and updated tool selection framework
-
-## [0.6.0] - 2025-09-19
-
-### Enhanced
-
-- **Intelligent Task Complexity Analysis**: Integrated automatic complexity assessment into `/plan` command
-  - **Complexity Scoring System**: Multi-domain integration (+3), Security implementation (+2), Database changes (+2), External integrations (+2), Performance optimization (+2), UI/UX (+1), Testing (+1)
-  - **Smart Decomposition Recommendations**: High complexity (≥5 points) triggers automatic subtask suggestions with agent assignments
-  - **Auto-decomposition Patterns**: Context-aware breakdown for API tasks, Database tasks, Frontend tasks, Security tasks, Integration tasks
-  - **Proactive Planning**: Prevents complex task failures by identifying decomposition needs during planning phase
-
-- **Intelligent Context Distillation**: Enhanced `/develop` command with domain-aware context filtering
-  - **Agent-Specific Context Briefings**: Backend specialists receive API contracts/security requirements, Frontend specialists get component specs/UI patterns, Test engineers get coverage targets/validation strategies
-  - **Dynamic Context Loading**: Real-time parsing of HANDOFF.yml, RESEARCH.md, and ADRs to extract only domain-relevant sections
-  - **Performance Optimization**: Agents receive focused, actionable context without information overload
-  - **6 Specialist Context Patterns**: Backend, Frontend, Test, Security, Database, and Performance optimization contexts
-
-- **Enhanced `smart-task-decomposition.sh`**: Improved integration with core workflow commands
-  - **Integration Modes**: `--plan-integration` for proactive analysis, `--develop-integration` for failure recovery
-  - **Contextual Recommendations**: Different messaging and suggestions based on whether called from `/plan` or `/develop`
-  - **Flexible Input**: Accepts direct task descriptions via `--description` parameter or extracts from workflow files
-  - **Better Error Recovery**: Provides specific guidance for task failure scenarios with complexity-based recommendations
-
-### Improved
-
-- **Workflow Command Integration**: Complexity analysis and context distillation now seamlessly integrated into core commands
-  - **Automatic Invocation**: No manual script execution required - functionality triggers automatically when needed
-  - **Contextual Adaptation**: Different behavior patterns for planning vs development phases
-  - **Enhanced Agent Coordination**: Improved agent selection and briefing based on task complexity and domain requirements
-
-### Improved
-
-- **Documentation Command Consolidation**: Merged `/update-docs` functionality into unified `/docs` command
-  - **New `/docs update` Subcommand**: Comprehensive documentation accuracy validation and updates
-  - **Unified Interface**: Single command for all documentation operations (generate, validate, sync, health, update, auto)
-  - **Enhanced Functionality**: Combined the best features of both commands with improved agent coordination
-  - **Cleaner Command Structure**: Reduced from 14 to 13 total commands while maintaining all functionality
-
-### Removed
-
-- **Legacy Context Distillation**: Removed standalone `distill-context.sh` script functionality
-  - **Functionality Preserved**: All context distillation capabilities moved to `/develop` command with enhanced features
-  - **Cleaner Architecture**: Eliminated redundant standalone scripts while improving core workflow integration
-  - **Updated Documentation**: Removed references to obsolete context preparation scripts in hooks and setup guides
-
-- **Redundant Documentation Command**: Removed `/update-docs` command after merging into `/docs update`
-  - **Functionality Preserved**: All update-docs capabilities now available via `/docs update` subcommand
-  - **Unified Documentation Management**: Single entry point for all documentation operations
-  - **Enhanced Integration**: Better coordination with technical-writer agent and documentation scripts
 
 ## [0.5.4] - 2025-09-19
 
