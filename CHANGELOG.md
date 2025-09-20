@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.6.4] - 2025-09-19
+
+### Fixed
+
+- **NPM Binary Resolution**: Fixed npx command not working from within repository directories
+  - **Problem**: `npx ai-assisted-template init` failed with "ai-template: not found" when run from repo subdirectories
+  - **Solution**: Added `ai-assisted-template` binary name to package.json alongside existing `ai-template`
+  - **Result**: Both commands now work everywhere: `npx ai-assisted-template init` and `npx -p ai-assisted-template ai-template init`
+
 ## [0.6.3] - 2025-09-19
 
 ### Simplified

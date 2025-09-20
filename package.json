@@ -1,10 +1,11 @@
 {
   "name": "ai-assisted-template",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Comprehensive AI-assisted development template with Claude Code integration",
   "main": "cli/index-npm.js",
   "bin": {
-    "ai-template": "cli/index-npm.js"
+    "ai-template": "cli/index-npm.js",
+    "ai-assisted-template": "cli/index-npm.js"
   },
   "scripts": {
     "test": "node scripts/template/test-categorization.js && node scripts/template/validate-manifest-simple.js",
