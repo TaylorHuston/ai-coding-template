@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.6.2] - 2025-09-19
+
+### Fixed
+
+- **MCP Configuration**: Fixed NPM package to use correct template `.mcp.json` file for new projects
+  - **Problem**: Package was including template's active `.mcp.json` (with Serena enabled) instead of the template for new projects
+  - **Solution**: Removed `.mcp.json` from NPM package files and added special CLI handling to use `.resources/templates/config/mcp.template.json`
+  - **Result**: New projects now correctly get `.mcp.json` with Serena commented out, preventing indexing delays on fresh installations
+
 ## [0.6.1] - 2025-09-19
 
 ### Enhanced
