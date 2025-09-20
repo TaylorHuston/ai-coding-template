@@ -10,7 +10,7 @@ tags: ["claude-code", "hooks", "automation", "workflow"]
 
 # Claude Code Hooks Setup Guide
 
-**Automatic workflow enforcement using Claude Code's built-in hooks system for the plan → iterate workflow.**
+**Automatic workflow enforcement using Claude Code's built-in hooks system for the design → architect → plan → develop workflow.**
 
 ## Overview
 
@@ -51,7 +51,7 @@ chmod +x .resources/scripts/hooks/*.sh
 Test with a simple command to verify hooks are working:
 
 ```bash
-# This should trigger the workflow-state-check hook
+# This should trigger validation hooks if enabled
 /plan --help
 ```
 
@@ -70,7 +70,7 @@ The configuration includes these workflow enforcement hooks:
 - **Behavior**:
   - Finds workflow directory (PLAN.md, HANDOFF.yml)
   - Validates YAML structure and context integrity
-  - Prepares agent-specific context if distillation script available
+  - Context distillation handled automatically by /develop command
   - **Blocks execution** if validation fails
 
 #### 2. Post-Agent Validation Hook
@@ -93,15 +93,6 @@ The configuration includes these workflow enforcement hooks:
   - **Quality Gates**: Runs non-blocking quality checks
   - Supports `--force` override for TDD enforcement
 
-#### 4. Workflow State Check Hook (Optional)
-- **Event**: `UserPromptSubmit` for `/iterate` or `/plan` commands
-- **Purpose**: Validate workflow readiness before command execution
-- **Script**: `.resources/scripts/hooks/workflow-state-check.sh`
-- **Behavior**:
-  - Checks workflow directory structure
-  - Validates context file integrity
-  - Provides workflow guidance and tips
-  - **Non-blocking** - warns but allows execution
 
 ### Hook Configuration File
 
@@ -150,14 +141,12 @@ With hooks enabled, the workflow automatically enforces:
 # 1. Setup workflow
 /plan --issue AUTH-123
 
-# Hook: workflow-state-check validates setup readiness
 
 # 2. Execute tasks
-/iterate
+/develop
 
 # Hook: pre-task-validation validates context
-# Hook: distill-context prepares focused context for agent
-# Agent executes with focused context
+# Agent executes with project context
 # Hook: post-agent-validation validates output and updates files
 
 # 3. Edit implementation files
@@ -165,22 +154,6 @@ With hooks enabled, the workflow automatically enforces:
 ```
 
 ## Hook Script Details
-
-### Context Distillation
-
-The `.resources/scripts/distill-context.sh` script creates focused, agent-specific context:
-
-```bash
-# Generate backend-specific context
-.resources/scripts/distill-context.sh --agent backend-specialist --task P1.3.0
-
-# Output includes:
-# - Technical stack & patterns
-# - API contracts & integration
-# - Security & performance requirements
-# - Implementation patterns to follow
-# - Database & environment context
-```
 
 ### TDD Enforcement
 
@@ -218,8 +191,8 @@ Edit the hooks configuration to enable/disable specific hooks:
 ```json
 {
   "event": "UserPromptSubmit",
-  "matcher": {"pattern": "/(iterate|plan)"},
-  "command": ".resources/scripts/hooks/workflow-state-check.sh",
+  "matcher": {"pattern": "/(develop|plan)"},
+  "command": ".resources/scripts/hooks/pre-task-validation.sh",
   "enabled": false,  // Disable this hook
   "note": "Enable for strict workflow enforcement"
 }
@@ -297,10 +270,9 @@ Create additional hooks for project needs:
 Hooks can work together for comprehensive validation:
 
 1. **Pre-task** validates context
-2. **Context distillation** prepares focused context
-3. **Agent execution** with validated context
-4. **Post-task** validates output and updates files
-5. **Pre-edit** enforces quality before file changes
+2. **Agent execution** with automatic context distillation by /develop command
+3. **Post-task** validates output and updates files
+4. **Pre-edit** enforces quality before file changes
 
 ### Integration with CI/CD
 

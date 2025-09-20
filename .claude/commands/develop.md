@@ -85,7 +85,14 @@ When `--guided` flag is used, enforce **teaching mode** behavior:
 
 ### 3. Agent Task Execution
 - **Agent selection**: Choose specialist based on task domain and HANDOFF.yml assignments
-- **Context provision**: Full epic goals, ADRs, acceptance criteria, and coordination state
+- **Intelligent context distillation**: Filter and prepare domain-specific context for the selected agent
+  - **Backend specialists**: Technical stack, API contracts, security requirements, database patterns
+  - **Frontend specialists**: Component architecture, state patterns, UI/UX requirements, responsive design
+  - **Test engineers**: Coverage requirements, validation patterns, quality gates, testing methodologies
+  - **Security auditors**: Threat models, authentication patterns, authorization requirements, compliance
+  - **Database specialists**: Schema patterns, migration strategies, performance constraints, data validation
+  - **Performance optimizers**: Scaling requirements, performance targets, bottleneck patterns, optimization opportunities
+- **Context provision**: Distilled domain-specific context from epic goals, ADRs, acceptance criteria, and coordination state
 - **Mode awareness**: If `--guided` flag present, agents operate in teaching mode
 - **Subtask execution**: Execute X.Y.Z implementation tasks with test-first approach
   - **Normal mode**: Direct implementation with file changes
@@ -112,6 +119,35 @@ When implementation reveals new work:
 - Creates new `TASK-###-name/` directory with templates
 - Updates EPIC.md task list in appropriate execution order
 - Adjusts dependencies and timeline as needed
+
+## Intelligent Context Distillation
+
+The `/develop` command uses domain-aware context filtering to optimize agent performance:
+
+### **Context Filtering Patterns**
+- **Technical Stack Extraction**: Framework choices, database patterns, library usage from ADRs
+- **API Contract Focus**: Endpoint specifications, request/response formats, integration requirements
+- **Security Context**: Authentication patterns, authorization models, threat considerations
+- **Performance Context**: Scaling requirements, optimization targets, bottleneck patterns
+- **Testing Context**: Coverage expectations, validation strategies, quality gate requirements
+
+### **Agent-Specific Context Briefings**
+Instead of overwhelming agents with full epic context, provide filtered, relevant information:
+
+- **Backend Specialists** receive: API contracts, database schemas, security requirements, performance targets
+- **Frontend Specialists** receive: Component specifications, state management patterns, UI/UX requirements
+- **Test Engineers** receive: Coverage targets, validation patterns, quality gates, existing test structure
+- **Security Auditors** receive: Threat models, authentication flows, authorization requirements, compliance needs
+- **Database Specialists** receive: Schema requirements, migration patterns, performance constraints, data validation
+- **Performance Optimizers** receive: Performance targets, current bottlenecks, scaling requirements, optimization opportunities
+
+### **Dynamic Context Loading**
+- Parse HANDOFF.yml, RESEARCH.md, and ADR files in real-time
+- Extract only domain-relevant sections for the selected agent
+- Combine with task-specific requirements from TASK.md
+- Present concise, actionable context that eliminates noise
+
+**Benefit**: Agents focus on relevant information without context overload, improving decision quality and execution speed.
 
 ## Quality Gates
 

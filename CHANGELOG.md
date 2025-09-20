@@ -6,6 +6,53 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Enhanced
+
+- **Intelligent Task Complexity Analysis**: Integrated automatic complexity assessment into `/plan` command
+  - **Complexity Scoring System**: Multi-domain integration (+3), Security implementation (+2), Database changes (+2), External integrations (+2), Performance optimization (+2), UI/UX (+1), Testing (+1)
+  - **Smart Decomposition Recommendations**: High complexity (≥5 points) triggers automatic subtask suggestions with agent assignments
+  - **Auto-decomposition Patterns**: Context-aware breakdown for API tasks, Database tasks, Frontend tasks, Security tasks, Integration tasks
+  - **Proactive Planning**: Prevents complex task failures by identifying decomposition needs during planning phase
+
+- **Intelligent Context Distillation**: Enhanced `/develop` command with domain-aware context filtering
+  - **Agent-Specific Context Briefings**: Backend specialists receive API contracts/security requirements, Frontend specialists get component specs/UI patterns, Test engineers get coverage targets/validation strategies
+  - **Dynamic Context Loading**: Real-time parsing of HANDOFF.yml, RESEARCH.md, and ADRs to extract only domain-relevant sections
+  - **Performance Optimization**: Agents receive focused, actionable context without information overload
+  - **6 Specialist Context Patterns**: Backend, Frontend, Test, Security, Database, and Performance optimization contexts
+
+- **Enhanced `smart-task-decomposition.sh`**: Improved integration with core workflow commands
+  - **Integration Modes**: `--plan-integration` for proactive analysis, `--develop-integration` for failure recovery
+  - **Contextual Recommendations**: Different messaging and suggestions based on whether called from `/plan` or `/develop`
+  - **Flexible Input**: Accepts direct task descriptions via `--description` parameter or extracts from workflow files
+  - **Better Error Recovery**: Provides specific guidance for task failure scenarios with complexity-based recommendations
+
+### Improved
+
+- **Workflow Command Integration**: Complexity analysis and context distillation now seamlessly integrated into core commands
+  - **Automatic Invocation**: No manual script execution required - functionality triggers automatically when needed
+  - **Contextual Adaptation**: Different behavior patterns for planning vs development phases
+  - **Enhanced Agent Coordination**: Improved agent selection and briefing based on task complexity and domain requirements
+
+### Improved
+
+- **Documentation Command Consolidation**: Merged `/update-docs` functionality into unified `/docs` command
+  - **New `/docs update` Subcommand**: Comprehensive documentation accuracy validation and updates
+  - **Unified Interface**: Single command for all documentation operations (generate, validate, sync, health, update, auto)
+  - **Enhanced Functionality**: Combined the best features of both commands with improved agent coordination
+  - **Cleaner Command Structure**: Reduced from 14 to 13 total commands while maintaining all functionality
+
+### Removed
+
+- **Legacy Context Distillation**: Removed standalone `distill-context.sh` script functionality
+  - **Functionality Preserved**: All context distillation capabilities moved to `/develop` command with enhanced features
+  - **Cleaner Architecture**: Eliminated redundant standalone scripts while improving core workflow integration
+  - **Updated Documentation**: Removed references to obsolete context preparation scripts in hooks and setup guides
+
+- **Redundant Documentation Command**: Removed `/update-docs` command after merging into `/docs update`
+  - **Functionality Preserved**: All update-docs capabilities now available via `/docs update` subcommand
+  - **Unified Documentation Management**: Single entry point for all documentation operations
+  - **Enhanced Integration**: Better coordination with technical-writer agent and documentation scripts
+
 ## [0.5.4] - 2025-09-19
 
 ### Fixed

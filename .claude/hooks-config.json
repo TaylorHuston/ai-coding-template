@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-hooks.json",
-  "description": "Claude Code hooks configuration for plan → iterate workflow enforcement",
+  "description": "Claude Code hooks configuration for development workflow enforcement",
   "hooks": [
     {
       "event": "PreToolUse",
@@ -29,16 +29,6 @@
       "description": "Quality gates and TDD validation before code changes",
       "enabled": true
     },
-    {
-      "event": "UserPromptSubmit",
-      "matcher": {
-        "pattern": "/(iterate|plan)"
-      },
-      "command": "scripts/hooks/workflow-state-check.sh",
-      "description": "Validate workflow state on iterate/plan commands",
-      "enabled": false,
-      "note": "Disabled by default - enable if needed for strict workflow enforcement"
-    }
   ],
   "settings": {
     "log_level": "info",
@@ -50,13 +40,12 @@
       "1. Copy this file to your Claude Code settings directory",
       "2. Update file paths if needed for your environment",
       "3. Enable/disable hooks as needed for your workflow",
-      "4. Test with a simple /iterate command to verify hooks work"
+      "4. Test with development commands to verify hooks work"
     ],
     "hook_descriptions": {
-      "pre-task-validation": "Ensures HANDOFF.yml and RESEARCH.md are valid before agent execution",
+      "pre-task-validation": "Ensures proper context validation before agent execution",
       "post-agent-validation": "Validates agent output structure and runs basic quality gates",
-      "pre-edit-validation": "Enforces TDD and checks quality gates before code changes",
-      "workflow-state-check": "Optional workflow state validation on command submission"
+      "pre-edit-validation": "Enforces TDD and checks quality gates before code changes"
     },
     "troubleshooting": {
       "hook_failures": "Check script permissions and file paths",

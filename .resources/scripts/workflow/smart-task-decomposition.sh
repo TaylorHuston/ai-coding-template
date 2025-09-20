@@ -15,6 +15,9 @@ NC='\033[0m'
 TASK_ID=""
 FAILURE_REASON=""
 AUTO_DECOMPOSE=false
+PLAN_INTEGRATION=false
+DEVELOP_INTEGRATION=false
+TASK_DESCRIPTION=""
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -30,9 +33,33 @@ while [[ $# -gt 0 ]]; do
             AUTO_DECOMPOSE=true
             shift
             ;;
+        --plan-integration)
+            PLAN_INTEGRATION=true
+            shift
+            ;;
+        --develop-integration)
+            DEVELOP_INTEGRATION=true
+            shift
+            ;;
+        --description)
+            TASK_DESCRIPTION="$2"
+            shift 2
+            ;;
         -h|--help)
-            echo "Usage: $0 --task TASK-ID [--failure-reason REASON] [--auto-decompose]"
+            echo "Usage: $0 --task TASK-ID [OPTIONS]"
+            echo ""
             echo "Analyzes task complexity and suggests decomposition"
+            echo ""
+            echo "Options:"
+            echo "  --failure-reason REASON    Reason for task failure (for /develop integration)"
+            echo "  --auto-decompose          Automatically apply decomposition suggestions"
+            echo "  --plan-integration        Called from /plan command for proactive analysis"
+            echo "  --develop-integration     Called from /develop command for failure recovery"
+            echo "  --description TEXT        Task description for complexity analysis"
+            echo ""
+            echo "Examples:"
+            echo "  $0 --task P1.3.1 --plan-integration --description \"Implement user auth\""
+            echo "  $0 --task P1.3.1 --develop-integration --failure-reason \"too complex\""
             exit 0
             ;;
         *)
@@ -143,16 +170,53 @@ analyze_complexity() {
 
     echo ""
 
-    # Recommend decomposition based on score
-    if [ $complexity_score -ge 5 ]; then
-        echo -e "${RED}HIGH COMPLEXITY: Strong decomposition recommended${NC}"
-        return 2
-    elif [ $complexity_score -ge 3 ]; then
-        echo -e "${YELLOW}MEDIUM COMPLEXITY: Consider decomposition${NC}"
-        return 1
+    # Integration-specific recommendations
+    if [ "$PLAN_INTEGRATION" = true ]; then
+        # For /plan integration - proactive decomposition suggestions
+        if [ $complexity_score -ge 5 ]; then
+            echo -e "${RED}HIGH COMPLEXITY DETECTED${NC}"
+            echo "📋 /plan recommendation: Break this task into smaller subtasks before development"
+            echo "🎯 Suggested approach: Use auto-decomposition patterns based on domain complexity"
+            return 2
+        elif [ $complexity_score -ge 3 ]; then
+            echo -e "${YELLOW}MEDIUM COMPLEXITY DETECTED${NC}"
+            echo "📋 /plan recommendation: Consider breaking into 2-3 focused subtasks"
+            echo "🎯 This complexity level may benefit from specialized agent coordination"
+            return 1
+        else
+            echo -e "${GREEN}APPROPRIATE COMPLEXITY${NC}"
+            echo "📋 /plan confirmation: Task is well-scoped for single agent execution"
+            return 0
+        fi
+    elif [ "$DEVELOP_INTEGRATION" = true ]; then
+        # For /develop integration - failure recovery recommendations
+        if [ $complexity_score -ge 5 ]; then
+            echo -e "${RED}HIGH COMPLEXITY CONFIRMED${NC}"
+            echo "🔧 /develop recommendation: Pause current task and decompose immediately"
+            echo "🎯 Recovery approach: Break into focused subtasks with clear handoffs"
+            return 2
+        elif [ $complexity_score -ge 3 ]; then
+            echo -e "${YELLOW}MEDIUM COMPLEXITY IDENTIFIED${NC}"
+            echo "🔧 /develop recommendation: Consider agent handoff or subtask breakdown"
+            echo "🎯 Alternative: Try different specialist agent for current approach"
+            return 1
+        else
+            echo -e "${GREEN}COMPLEXITY NOT THE ISSUE${NC}"
+            echo "🔧 /develop analysis: Task complexity is appropriate - investigate other failure causes"
+            return 0
+        fi
     else
-        echo -e "${GREEN}LOW COMPLEXITY: Task is appropriately scoped${NC}"
-        return 0
+        # Standard standalone analysis
+        if [ $complexity_score -ge 5 ]; then
+            echo -e "${RED}HIGH COMPLEXITY: Strong decomposition recommended${NC}"
+            return 2
+        elif [ $complexity_score -ge 3 ]; then
+            echo -e "${YELLOW}MEDIUM COMPLEXITY: Consider decomposition${NC}"
+            return 1
+        else
+            echo -e "${GREEN}LOW COMPLEXITY: Task is appropriately scoped${NC}"
+            return 0
+        fi
     fi
 }
 
@@ -244,7 +308,7 @@ auto_decompose_task() {
         echo ""
         echo -e "${BLUE}Next steps:${NC}"
         echo "1. Review the decomposed tasks in PLAN.md"
-        echo "2. Run: /iterate (will start with first subtask)"
+        echo "2. Run: /develop (will start with first subtask)"
         echo "3. Use: git diff to see the changes made"
         echo ""
         echo -e "${YELLOW}To rollback:${NC} cp ${PLAN_FILE}.backup.* PLAN.md"
@@ -261,7 +325,14 @@ auto_decompose_task() {
 echo -e "${BLUE}Smart Task Decomposition for: $TASK_ID${NC}"
 echo ""
 
-task_description=$(extract_task_details)
+# Get task description - use provided description or extract from files
+if [ -n "$TASK_DESCRIPTION" ]; then
+    task_description="$TASK_DESCRIPTION"
+    echo -e "${GREEN}Using provided task description for analysis${NC}"
+else
+    task_description=$(extract_task_details)
+    echo -e "${BLUE}Extracted task description from workflow files${NC}"
+fi
 
 # Analyze complexity
 complexity_result=0
@@ -312,5 +383,5 @@ else
     echo -e "${BLUE}Alternative approaches if task is failing:${NC}"
     echo "• Try different agent: /develop --agent DIFFERENT-AGENT $TASK_ID"
     echo "• Force retry: /develop --force $TASK_ID"
-    echo "• Get more context: scripts/distill-context.sh --agent AGENT --task $TASK_ID"
+    echo "• Get more context: /refresh --task $TASK_ID"
 fi

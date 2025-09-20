@@ -29,6 +29,9 @@ Unified documentation management that orchestrates documentation agents and scri
 # Comprehensive documentation health check
 /docs health
 
+# Update and validate all documentation accuracy
+/docs update
+
 # Interactive documentation generation
 /docs auto
 ```
@@ -94,6 +97,32 @@ Comprehensive health analysis with detailed reporting and maintenance recommenda
 **Agent Integration:**
 - Uses **technical-writer** for health analysis coordination
 - Automatically invokes `docs-health.js` for metrics
+
+### `update` - Comprehensive Documentation Accuracy Validation and Updates
+
+Performs comprehensive documentation accuracy validation and updates across the entire project documentation.
+
+**Features:**
+- Reviews documentation guidelines and standards
+- Systematically traverses entire documentation tree
+- Identifies outdated information, broken links, inconsistent formatting
+- Updates documentation to reflect current project state
+- Validates cross-references, dates, version numbers, and content accuracy
+- Ensures bidirectional sync between code changes and documentation
+- Generates summary report of all changes made
+
+**Process:**
+- Reviews docs/development/guidelines/documentation-guidelines.md
+- Analyzes .claude/references/ structure files for complete understanding
+- Traverses all documentation directories: docs/, .claude/, .resources/, project root
+- Validates all cross-references and links for accuracy
+- Updates any outdated information discovered during traversal
+- Maintains documentation standards and formatting consistency
+
+**Agent Integration:**
+- Uses **technical-writer** as primary coordinator for comprehensive analysis
+- Automatic adherence to documentation-guidelines.md standards
+- Systematic coverage of all project documentation areas
 - Generates detailed markdown reports
 
 ### `auto` - Interactive Documentation Assistant
@@ -172,7 +201,7 @@ The `/docs` command uses intelligent agent coordination:
 ## Benefits Over Manual Scripts
 
 ✅ **Intelligent Coordination**: Agents understand context and make smart decisions
-✅ **Integrated Workflow**: Works seamlessly with /idea → /plan → /iterate
+✅ **Integrated Workflow**: Works seamlessly with /design → /architect → /plan → /develop
 ✅ **Quality Assurance**: Built-in validation and quality checks
 ✅ **Context Awareness**: Understands project structure and requirements
 ✅ **Unified Interface**: Single command for all documentation needs

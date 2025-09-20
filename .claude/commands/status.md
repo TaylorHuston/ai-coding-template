@@ -233,7 +233,7 @@ The context-analyzer agent provides enhanced insights:
 - Complexity assessment validation
 - Implementation readiness check
 
-### During `/iterate` Phase
+### During `/develop` Phase
 - Progress tracking with velocity insights
 - Quality gate effectiveness monitoring
 - Blocker identification and resolution suggestions

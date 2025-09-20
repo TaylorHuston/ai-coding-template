@@ -9,21 +9,25 @@ Streamlined catalog of Claude Code slash commands centered around the **4-phase 
 **THE 4-PHASE EPIC WORKFLOW: From vision to validated execution**
 
 ### 📝 **/design** - Vision, Epics, and Requirements
+
 - _Purpose_: Create and document non-technical project aspects from vision to epic structure
 - _Usage_: `/design --vision | --epic "name" | --task "name" | --review`
 - _Workflow Phase_: **1. Design** - Vision documents, epic structure, user stories, business context
 
 ### 🏗️ **/architect** - Technical Architecture and Infrastructure
+
 - _Purpose_: Design technical solutions through Quick Mode (5-10 min) or Deep Mode (20+ min) exploration
 - _Usage_: `/architect epic-name | --deep | "direct question"`
 - _Workflow Phase_: **2. Architecture** - Technical decisions, ADRs, Fast Track vs comprehensive analysis
 
 ### 📋 **/plan** - Epic-Driven Implementation Planning
+
 - _Purpose_: Create epic structure with progressive task discovery and X.Y.Z implementation tasks
 - _Usage_: `/plan --epic "name" --issue KEY | --review | --init`
 - _Workflow Phase_: **3. Planning** - Epic directories, TASK-### numbering, agent assignment, testing integration
 
 ### ⚡ **/develop** - Streamlined Development Execution
+
 - _Purpose_: Execute implementation tasks with test-first enforcement and epic integration
 - _Usage_: `/develop | /develop --task TASK-### | --epic "name"`
 - _Workflow Phase_: **4. Execution** - Test-first development, 95%+ coverage, hierarchical branching
@@ -35,16 +39,19 @@ Streamlined catalog of Claude Code slash commands centered around the **4-phase 
 ### **Quality & Security**
 
 - **[/quality](./quality.md)** - Comprehensive quality assessment with multi-agent coordination
+
   - _Purpose_: Multi-dimensional quality analysis using specialized agents
   - _Usage_: `/quality assess|validate|audit|fix [--scope SCOPE] [--depth DEPTH] [--focus FOCUS]`
   - _Model_: sonnet | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
 - **[/review](./review.md)** - Comprehensive code review with multi-dimensional analysis
+
   - _Purpose_: Multi-dimensional code quality assessment with detailed feedback
   - _Usage_: `/review --scope SCOPE --focus FOCUS --depth DEPTH --output FORMAT`
   - _Model_: sonnet | _Tools_: Read, Bash, Grep, Glob, TodoWrite, Task
 
 - **[/security-audit](./security-audit.md)** - OWASP-compliant security assessment
+
   - _Purpose_: OWASP-compliant security assessment with vulnerability remediation
   - _Usage_: `/security-audit --scope SCOPE --depth DEPTH --compliance FRAMEWORK --output FORMAT`
   - _Model_: opus | _Tools_: Read, Bash, Grep, Glob, TodoWrite, Task
@@ -57,6 +64,7 @@ Streamlined catalog of Claude Code slash commands centered around the **4-phase 
 ### **Development Support**
 
 - **[/commit](./commit.md)** - Git commit with quality checks and conventional messages
+
   - _Purpose_: Create proper commits with pre-commit validation
   - _Usage_: `/commit [scope or files]`
   - _Model_: sonnet | _Tools_: Bash(git), npm/pnpm/yarn, Read, Grep, Glob
@@ -69,11 +77,13 @@ Streamlined catalog of Claude Code slash commands centered around the **4-phase 
 ### **Project Management**
 
 - **[/status](./status.md)** - Enhanced project status with intelligent context analysis
+
   - _Purpose_: Enhanced project status dashboard with context-analyzer agent integration
   - _Usage_: `/status [--format FORMAT] [--scope SCOPE] [--ai-format] [--detailed]`
   - _Model_: sonnet | _Tools_: Read, Write, Edit, Bash, Grep, Glob, TodoWrite, Task
 
 - **[/docs](./docs.md)** - Unified documentation management with intelligent agent coordination
+
   - _Purpose_: Intelligent documentation coordination with technical-writer agent
   - _Usage_: `/docs generate|validate|sync [--type TYPE] [--scope SCOPE]`
   - _Model_: sonnet | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
@@ -82,11 +92,6 @@ Streamlined catalog of Claude Code slash commands centered around the **4-phase 
   - _Purpose_: Quick context refresh for AI assistants on project state and conventions
   - _Usage_: `/refresh [specific area]`
   - _Model_: sonnet | _Tools_: Read, Bash(git), Task
-
-- **[/update-docs](./update-docs.md)** - Comprehensive documentation accuracy validation and updates
-  - _Purpose_: Systematic documentation tree traversal with technical-writer agent coordination
-  - _Usage_: `/update-docs [scope: all|docs|claude|resources|specific paths]`
-  - _Model_: sonnet | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
 
 ---
 
@@ -164,37 +169,3 @@ time_investment: "5-10 minutes for standard decisions"
 ```
 
 ---
-
-## 📈 Key Improvements
-
-### Epic-Driven Development Benefits
-
-- **🎯 Organized Structure**: Epic directories with task discovery and resources
-- **🧠 Perfect Memory**: Context preserved via HANDOFF.yml, RESEARCH.md, STATUS.md
-- **👥 Multi-Expert Coordination**: 17 specialized agents work together seamlessly
-- **⚡ Quality Assurance**: Built-in 95%+ test coverage requirement with TDD/BDD
-- **📈 Progressive Discovery**: Tasks numbered by discovery order across all phases
-
-### Command Optimization Results
-
-- **Streamlined Commands**: Reduced from 17 to 14 commands (18% reduction)
-- **Eliminated Redundancy**: Removed duplicate functionality
-- **Epic Integration**: All commands support epic-driven development
-- **Clear Documentation**: Accurate command reference matching implementation
-
----
-
-## 🔄 Migration from Previous Workflows
-
-### Deprecated Commands (Removed)
-
-- ~~`/feature-development`~~ → Use epic workflow: `/design → /architect → /plan → /develop`
-- ~~`/health-check`~~ → Use `/quality assess` for comprehensive health analysis
-- ~~`/progress`~~ → Use `/status --detailed` for progress tracking with evidence
-
-### Updated Command Surface
-
-**Before**: 17 commands with overlapping functionality
-**After**: 15 commands with clear separation of concerns and epic workflow alignment
-
-All remaining commands have been verified to work with the epic-based development approach and provide unique, non-overlapping functionality.
