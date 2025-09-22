@@ -38,6 +38,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Solution**: Added `ai-assisted-template` binary name to package.json alongside existing `ai-template`
   - **Result**: Both commands now work everywhere: `npx ai-assisted-template init` and `npx -p ai-assisted-template ai-template init`
 
+## [0.6.0] - [0.6.3] - 2025-09-19
+
+Missing, issues with Claude Code prematurely publishing NPM versions and burning these version numbers.
+
 ## [0.5.4] - 2025-09-19
 
 ### Fixed
