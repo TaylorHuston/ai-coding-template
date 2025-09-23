@@ -29,9 +29,9 @@ source "$SCRIPT_DIR/../lib/logging.sh" 2>/dev/null || {
 
 # Configuration
 VISION_FILE=""
-FEATURE_DIR="$PROJECT_ROOT/docs/technical/features"
-ARCHITECTURE_DIR="$PROJECT_ROOT/docs/technical/architecture"
-DECISIONS_DIR="$PROJECT_ROOT/docs/technical/decisions"
+FEATURE_DIR="$PROJECT_ROOT/docs/project/features"
+ARCHITECTURE_DIR="$PROJECT_ROOT/docs/project/architecture"
+DECISIONS_DIR="$PROJECT_ROOT/docs/project/decisions"
 OUTPUT_FORMAT="text"
 VALIDATION_MODE="all"
 QUIET=false

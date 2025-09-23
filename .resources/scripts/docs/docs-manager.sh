@@ -350,7 +350,7 @@ create_decision_record() {
 
     local date_stamp=$(date +%Y-%m-%d)
     local filename="adr-$(date +%s | tail -c 4)-$(echo "$decision_title" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/-$//' | sed 's/^-//').md"
-    local decisions_dir="$PROJECT_ROOT/docs/technical/decisions"
+    local decisions_dir="$PROJECT_ROOT/docs/project/decisions"
     local decision_file="$decisions_dir/$filename"
 
     # Ensure decisions directory exists

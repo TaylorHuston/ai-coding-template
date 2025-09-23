@@ -28,7 +28,7 @@ Document the **technical implementation details** of your project:
 ```
 📁 Architecture Documentation (Following Three-Tier Structure):
 
-docs/technical/architecture/    # Technical Architecture (Tier 1)
+docs/project/architecture/    # Technical Architecture (Tier 1)
 ├── README.md                   # This guide
 ├── c4-overview.md             # C4 methodology guide
 ├── system-design.md           # Manual: High-level architecture decisions
@@ -57,7 +57,7 @@ docs/technical/architecture/    # Technical Architecture (Tier 1)
 ./scripts/docs-manager.sh auto-docs system-overview # System structure overview
 ./scripts/docs-manager.sh auto-docs dependencies    # Dependency graph
 
-# The auto-generated files will be placed in docs/technical/architecture/auto-generated/
+# The auto-generated files will be placed in docs/project/architecture/auto-generated/
 ```
 
 ### 2. **For Overall System Architecture**

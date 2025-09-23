@@ -62,4 +62,4 @@ When working with AI assistants on your project:
 
 ---
 
-**Note**: This documentation is separate from the AI tools documentation (found in `../ai-tools/`) and development process documentation (found in `../development/`).
+**Note**: This documentation is separate from the AI tools documentation (found in `../ai-toolkit/`) and development process documentation (found in `../development/`).

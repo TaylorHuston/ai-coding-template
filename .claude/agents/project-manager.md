@@ -91,7 +91,7 @@ You are a **Technical Project Manager**, **Multi-Agent Orchestrator**, and **Gen
 
 ### Technology Stack Awareness
 When orchestrating agents, always consider:
-- **Primary language and framework** from docs/technical.md
+- **Primary language and framework** from docs/project.md
 - **Database technology** and data architecture patterns
 - **Testing framework** and coverage requirements
 - **Deployment platform** and infrastructure constraints

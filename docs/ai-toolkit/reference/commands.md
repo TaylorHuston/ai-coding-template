@@ -75,7 +75,7 @@ Claude Code slash commands provide structured, reusable workflows with proper ar
 
 **Session Management**:
 ```
-docs/technical/decisions/explorations/
+docs/project/decisions/explorations/
 ├── {SESSION-ID}/
 │   ├── conversation.md          # Live conversation log
 │   ├── state.yml               # Current session state
@@ -155,7 +155,7 @@ Upon finalization, creates comprehensive Architecture Decision Record:
 **ADR Generation**:
 - **Fast Track ADR**: Streamlined format for Quick Mode decisions
 - **Detailed ADR**: Comprehensive format for Deep Mode decisions
-- **Automatic Filing**: ADRs filed in `docs/technical/decisions/`
+- **Automatic Filing**: ADRs filed in `docs/project/decisions/`
 
 **Integration with Workflow**:
 - **Vision Alignment**: Automatically references `docs/vision.md` for context

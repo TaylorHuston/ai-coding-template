@@ -76,9 +76,9 @@ my-project/
 ## Documentation
 
 - **[Template User Guide](./README-TEMPLATE.md)** - Detailed onboarding and usage
-- **[AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Working with AI effectively
-- **[Commands Reference](./docs/ai-tools/reference/commands.md)** - All available slash commands
-- **[Agent Guide](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Using specialized AI agents
+- **[AI Collaboration Guide](./docs/ai-toolkit/guides/ai-collaboration-guide.md)** - Working with AI effectively
+- **[Commands Reference](./docs/ai-toolkit/reference/commands.md)** - All available slash commands
+- **[Agent Guide](./docs/ai-toolkit/guides/comprehensive-agent-guide.md)** - Using specialized AI agents
 
 ## Examples
 

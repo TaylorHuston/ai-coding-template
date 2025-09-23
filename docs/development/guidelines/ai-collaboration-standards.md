@@ -233,8 +233,8 @@ effective_prompt_structure:
 - [Architectural Principles](./architectural-principles.md) - DRY, KISS, YAGNI, SOLID foundations for AI collaboration
 
 ### **External References**
-- [AI Collaboration Guide](../../ai-tools/guides/ai-collaboration-guide.md) - Essential AI collaboration patterns and practices
-- [Comprehensive Agent Guide](../../ai-tools/guides/comprehensive-agent-guide.md) - Complete multi-agent system reference
+- [AI Collaboration Guide](../../ai-toolkit/guides/ai-collaboration-guide.md) - Essential AI collaboration patterns and practices
+- [Comprehensive Agent Guide](../../ai-toolkit/guides/comprehensive-agent-guide.md) - Complete multi-agent system reference
 - [System Guidelines](../../../CLAUDE.md) - Project-specific AI assistant instructions
 
 ---

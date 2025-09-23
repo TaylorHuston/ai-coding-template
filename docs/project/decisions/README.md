@@ -91,7 +91,7 @@ Use the `/idea` command for collaborative architectural decision-making:
 
 1. **Copy the template**:
    ```bash
-   cp docs/technical/decisions/template.md docs/technical/decisions/001-your-decision.md
+   cp docs/project/decisions/template.md docs/project/decisions/001-your-decision.md
    ```
 
 2. **Fill in the template**:

@@ -106,7 +106,7 @@ Transform the template into your real project with AI-guided setup.
 2. **Project Discovery**: Guided questions about project type and context
 3. **External Integration**: Configures PM and documentation systems
 4. **Professional Documentation**: Generates project-specific README and vision
-5. **Template Preservation**: Moves template docs to `docs/ai-tools/`
+5. **Template Preservation**: Moves template docs to `docs/ai-toolkit/`
 6. **AI Configuration**: Updates CLAUDE.md with project context
 
 **Options:**
@@ -192,7 +192,7 @@ my-awesome-project/
 ├── docs/
 │   ├── technical/
 │   │   └── project-vision.md    # Comprehensive project vision
-│   └── ai-tools/
+│   └── ai-toolkit/
 │       ├── template-documentation.md     # Archived template README
 │       ├── getting-started-with-template.md  # Archived START-HERE
 │       └── templates-and-examples.md     # Archived template index
@@ -384,7 +384,7 @@ Wiki: [Confluence](https://company.atlassian.net/wiki)
 
 ### Team Onboarding
 1. **Share Context**: The generated project-vision.md helps new team members
-2. **Preserve Knowledge**: Template docs in docs/ai-tools/ provide ongoing reference
+2. **Preserve Knowledge**: Template docs in docs/ai-toolkit/ provide ongoing reference
 3. **Update STATUS.md**: Keep project memory current for AI assistants
 
 ### Existing Projects

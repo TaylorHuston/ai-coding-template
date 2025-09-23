@@ -143,7 +143,7 @@ Task technical-writer "Review .claude/ changes and sync documentation"
 
 # Or manually review affected documentation
 # - README.md
-# - docs/ai-tools/
+# - docs/ai-toolkit/
 # - .claude/commands/README.md
 ```
 

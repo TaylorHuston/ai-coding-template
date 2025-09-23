@@ -170,7 +170,7 @@ ai-coding-template/
 ├── docs/
 │   ├── template/               # Template-specific documentation
 │   ├── development/            # Development guidelines (part of template)
-│   └── ai-tools/              # AI tools documentation (part of template)
+│   └── ai-toolkit/              # AI tools documentation (part of template)
 ├── example/                    # Testing directory for template validation
 ├── scripts/template/           # Template management automation
 ├── src/                        # Example application code (ignore in distribution)
@@ -204,7 +204,7 @@ ai-coding-template/
       "description": "Reference documentation that may be customized",
       "files": [
         "docs/development/guidelines/**/*",
-        "docs/ai-tools/**/*"
+        "docs/ai-toolkit/**/*"
       ]
     },
     "optional": {

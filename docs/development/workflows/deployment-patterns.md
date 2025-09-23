@@ -702,7 +702,7 @@ deployment_strategy_selection:
 
 - **[← Back to Workflows](./README.md)** - All development workflow documentation
 - **[Guidelines](../guidelines/README.md)** - Development standards and practices
-- **[AI Tools Setup](../../ai-tools/setup/README.md)** - AI assistant and template setup
+- **[AI Tools Setup](../../ai-toolkit/setup/README.md)** - AI assistant and template setup
 
 ---
 

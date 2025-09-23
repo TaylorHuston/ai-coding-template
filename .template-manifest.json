@@ -30,8 +30,8 @@
       "backup": true,
       "files": [
         "docs/development/guidelines/",
-        "docs/ai-tools/",
-        "docs/technical/"
+        "docs/ai-toolkit/",
+        "docs/project/"
       ]
     },
     "optional": {

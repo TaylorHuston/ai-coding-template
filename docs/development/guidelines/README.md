@@ -73,8 +73,8 @@ All guidelines now include references to working code examples in `.resources/ex
 ## Navigation
 
 - **[← Back to Development Docs](../README.md)** - All development documentation overview
-- **[AI Tools Documentation](../../ai-tools/README.md)** - AI assistance and template documentation
-- **[Technical Documentation](../../technical/README.md)** - System architecture and decisions
+- **[AI Tools Documentation](../../ai-toolkit/README.md)** - AI assistance and template documentation
+- **[Technical Documentation](../../project/README.md)** - System architecture and decisions
 
 ---
 

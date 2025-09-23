@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- **Documentation Structure Reorganization**: Improved documentation organization for better clarity and discoverability
+  - **Directory Renaming**:
+    - `docs/ai-tools/` → `docs/ai-toolkit/` - Better reflects the comprehensive AI development toolkit nature
+    - `docs/technical/` → `docs/project/` - More intuitive naming for project-specific documentation
+  - **Path Updates**: Updated all 50+ file references across codebase to use new directory structure
+  - **Cross-Reference Integrity**: Maintained all internal links and cross-references during restructuring
+  - **Package Distribution**: Updated NPM package configuration to include new documentation paths
+  - **Result**: Clearer documentation hierarchy with improved discoverability and more intuitive naming
+
 ## [0.7.0] - 2025-09-20
 
 ### Added
@@ -87,7 +98,7 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 ### Changed
 
 - **Documentation Consolidation**: Streamlined documentation structure
-  - Consolidated MCP documentation to single authoritative source in `docs/ai-tools/setup/mcp-setup.md`
+  - Consolidated MCP documentation to single authoritative source in `docs/ai-toolkit/setup/mcp-setup.md`
   - Removed references to deprecated `/feature-development` workflow
   - Updated design command to explicitly reference correct template location
   - Updated all file path references in documentation to reflect reorganized structure

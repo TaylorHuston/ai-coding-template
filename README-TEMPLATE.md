@@ -32,7 +32,7 @@ rm -rf src/*  # Clear example application code
 3. **Business Context** - B2B SaaS, consumer, internal, open-source
 4. **External Integrations** - Connects Jira, Linear, Confluence, Notion
 5. **Professional README** - Industry-standard docs tailored to your project
-6. **Template Preservation** - All guidance moved to `docs/ai-tools/`
+6. **Template Preservation** - All guidance moved to `docs/ai-toolkit/`
 
 ### 🚀 **Path 3: Try the AI Workflow** (15 minutes)
 *"I want to experience the /design → /architect → /plan → /develop epic-driven workflow"*
@@ -55,7 +55,7 @@ rm -rf src/*  # Clear example application code
 ### 📚 **Path 4: Learn the System** (30 minutes)
 *"I want to understand how this works"*
 
-→ **[Complete System Guide](./docs/ai-tools/guides/workflow-guide.md)**
+→ **[Complete System Guide](./docs/ai-toolkit/guides/workflow-guide.md)**
 
 ---
 
@@ -91,7 +91,7 @@ git clone template → manually replace README → guess configuration → lose 
 - **👥 Team Integration**: Adapts to solo developer vs small team vs enterprise
 - **🔗 Tool Connection**: Integrates with Jira, Linear, GitHub Issues, Confluence, Notion
 - **📋 Professional Docs**: Generates industry-standard README tailored to your exact project type
-- **🧠 Preserved Knowledge**: Template docs safely moved to `docs/ai-tools/` for reference
+- **🧠 Preserved Knowledge**: Template docs safely moved to `docs/ai-toolkit/` for reference
 
 ## 📋 **The Magic: 4-Phase Epic-Driven Workflow**
 
@@ -154,8 +154,8 @@ Here's what a real workflow looks like:
 ### **Essential Files to Know**
 - **[📋 Reference Tree](./.claude/references/documentation-tree.md)** - Complete documentation navigation
 - **[📖 Complete README](./README.md)** - Full system documentation
-- **[⚙️ Setup Guide](./docs/ai-tools/setup/quick-start.md)** - Detailed installation
-- **[🔧 Commands Reference](./docs/ai-tools/reference/commands.md)** - All available commands
+- **[⚙️ Setup Guide](./docs/ai-toolkit/setup/quick-start.md)** - Detailed installation
+- **[🔧 Commands Reference](./docs/ai-toolkit/reference/commands.md)** - All available commands
 
 ### **Key Directories**
 - **`.resources/templates/`** - Fill-in-the-blank starting points for any task
@@ -186,10 +186,10 @@ cat .claude/references/templates-examples-tree.md
 ## 🆘 **Need Help?**
 
 ### **Quick Answers**
-- **"What commands are available?"** → `./docs/ai-tools/reference/commands.md`
+- **"What commands are available?"** → `./docs/ai-toolkit/reference/commands.md`
 - **"How do I start a new epic?"** → `/design --epic "epic-name"`
 - **"Where are the templates?"** → `.claude/references/templates-examples-tree.md`
-- **"Something's broken?"** → `./docs/ai-tools/reference/troubleshooting.md`
+- **"Something's broken?"** → `./docs/ai-toolkit/reference/troubleshooting.md`
 
 ### **Common First Steps**
 1. **For new epics**: Start with `/design`, then `/architect`

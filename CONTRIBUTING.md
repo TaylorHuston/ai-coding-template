@@ -6,7 +6,7 @@ Thank you for your interest in contributing to the AI Coding Template project! T
 
 1. **Read the Documentation**: Start with [START-HERE.md](./START-HERE.md) for project overview
 2. **Review Guidelines**: Check [docs/development/guidelines/](./docs/development/guidelines/) for detailed standards
-3. **Understand the Workflow**: Familiarize yourself with our [5-phase workflow](./docs/ai-tools/reference/commands.md)
+3. **Understand the Workflow**: Familiarize yourself with our [5-phase workflow](./docs/ai-toolkit/reference/commands.md)
 
 ## Types of Contributions
 
@@ -21,7 +21,7 @@ Thank you for your interest in contributing to the AI Coding Template project! T
 - Include use cases and implementation considerations
 
 ### 📖 Documentation Improvements
-- Follow our [3-tier documentation system](./docs/ai-tools/system-context.md)
+- Follow our [3-tier documentation system](./docs/ai-toolkit/system-context.md)
 - Use the established [metadata headers](./docs/development/guidelines/quality-standards.md)
 - Test all links using `./.resources/scripts/docs/link-validator.sh`
 
