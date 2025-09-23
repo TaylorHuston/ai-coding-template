@@ -9,7 +9,7 @@ tags: ["workflow", "architecture", "decisions"]
 description: "Technical architecture decisions with Quick Mode (5-10 min) and Deep Mode (20+ min) options"
 argument-hint: "[epic-name] [--deep] [\"direct question\"]"
 allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-opus-4-1"
+model: "claude-opus-4"
 ---
 
 # /architect Command

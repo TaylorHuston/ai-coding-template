@@ -43,7 +43,7 @@
         ".resources/examples/**/*",
         "CHANGELOG.md",
         ".template-manifest.json",
-        "README-TEMPLATE.md"
+        "docs/ai-toolkit/README.md"
       ]
     },
     "configuration": {

@@ -1,11 +1,18 @@
 ---
-description: Enhanced project status with intelligent context analysis
-argument-hint: [--format FORMAT] [--scope SCOPE] [--ai-format] [--detailed]
+version: "0.3.0"
+created: "2025-09-17"
+last_updated: "2025-09-22"
+status: "active"
+target_audience: ["ai-assistants"]
+document_type: "command"
+tags: ["workflow", "status", "analysis", "context"]
+description: "Enhanced project status with intelligent context analysis"
+argument-hint: "[--format FORMAT] [--scope SCOPE] [--ai-format] [--detailed]"
 allowed-tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-3-5-sonnet-20241022"
+model: "claude-sonnet-4"
 ---
 
-# Project Status Command
+# /status Command
 
 Enhanced project status dashboard with intelligent analysis using context-analyzer agent and ai-status.sh integration.
 
@@ -32,6 +39,12 @@ Enhanced project status dashboard with intelligent analysis using context-analyz
 # JSON output for programmatic use
 /status --format json
 ```
+
+## Agent Coordination
+
+**Primary**: context-analyzer (intelligent analysis and pattern recognition beyond basic status)
+**Supporting**: data-analyst (metrics and trend analysis), technical-writer (status report formatting)
+**Integration**: Orchestrates ai-status.sh script with agent-enhanced insights
 
 ## Features
 

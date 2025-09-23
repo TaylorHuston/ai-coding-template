@@ -1,19 +1,19 @@
 ---
-version: "0.2.1"
+version: "0.3.0"
 created: "2025-09-15"
-last_updated: "2025-09-19"
+last_updated: "2025-09-22"
 status: "active"
 target_audience: ["developers", "ai-assistants", "team-leads"]
 document_type: "reference"
 priority: "high"
-tags: ["commands", "slash-commands", "workflows", "ai-automation"]
+tags: ["commands", "slash-commands", "workflows", "ai-automation", "standardized-headers"]
 ---
 
 # Slash Commands Reference
 
 **Comprehensive catalog of AI-powered slash commands for development workflows.**
 
-Claude Code slash commands provide structured, reusable workflows with proper argument handling, tool restrictions, and agent coordination for AI-assisted development.
+Claude Code slash commands provide structured, reusable workflows with standardized YAML frontmatter, consistent header formats, agent coordination specifications, and comprehensive documentation for AI-assisted development.
 
 ## Core Workflow Commands ⭐
 
@@ -1001,5 +1001,45 @@ Use metrics to choose optimal commands for your team:
 - **[Agent Performance Guide](../guides/comprehensive-agent-guide.md)** - Agent optimization using metrics
 - **[AI Collaboration Guide](../guides/ai-collaboration-guide.md)** - Advanced AI workflows
 - **[MCP Setup Guide](../setup/mcp-setup.md)** - Enhanced tool capabilities
+
+## Command Format Standards (v0.3.0)
+
+All commands now follow a standardized format for consistency and predictability:
+
+### **Standardized YAML Frontmatter**
+```yaml
+---
+version: "X.Y.Z"
+created: "YYYY-MM-DD"
+last_updated: "YYYY-MM-DD"
+status: "active"
+target_audience: ["ai-assistants"]
+document_type: "command"
+tags: ["relevant", "category", "tags"]
+description: "Clear, concise command description"
+argument-hint: "[--flag|value] [optional-args]"
+allowed-tools: ["Tool1", "Tool2", "Tool3"]
+model: "claude-opus-4-1|claude-3-5-sonnet-20241022"
+---
+```
+
+### **Consistent Content Structure**
+1. **Command Title** (`# /command-name Command`)
+2. **Purpose Statement** (brief description)
+3. **Usage Examples** (bash code blocks)
+4. **Agent Coordination** (mandatory section)
+5. **Process Documentation** (how it works)
+6. **Examples** (practical use cases)
+
+### **Agent Coordination Requirements**
+Every command includes a standardized Agent Coordination section specifying:
+- **Primary**: Main agents responsible for execution
+- **Supporting**: Helper agents for specific aspects
+- **Quality/Integration**: Cross-cutting concerns
+
+### **Model Assignment Standards**
+- **Core workflow commands** (design, architect, plan): `claude-opus-4-1`
+- **Execution commands** (develop, commit, merge-branch): `claude-3-5-sonnet-20241022`
+- **Analysis/utility commands** (status, docs, quality): `claude-3-5-sonnet-20241022`
 
 **Technical Details**: See `.claude/commands/` directory for complete command specifications and implementation details.

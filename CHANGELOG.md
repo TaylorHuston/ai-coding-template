@@ -6,16 +6,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- **README Documentation Accuracy**: Fixed multiple incorrect commands and references in project documentation
+  - **Root README.md**: Fixed non-existent `npx ai-assisted-template setup` command references and updated GitHub URLs from placeholder "yourusername" to "TaylorHuston"
+  - **Usage Guide**: Fixed incorrect script paths and GitHub URL placeholders in `docs/ai-toolkit/README.md`:
+    - Updated GitHub URLs from "yourusername" to "TaylorHuston"
+    - Replaced non-existent `npm run demo` with `npx ai-assisted-template status`
+    - Fixed script paths: `setup-manager.sh` → `setup/setup-manager.sh`, `ai-status.sh` → `status/ai-status.sh`
+  - **Result**: All documentation now contains only valid commands and accurate file paths
+
 ### Changed
 
 - **Documentation Structure Reorganization**: Improved documentation organization for better clarity and discoverability
+
   - **Directory Renaming**:
     - `docs/ai-tools/` → `docs/ai-toolkit/` - Better reflects the comprehensive AI development toolkit nature
     - `docs/technical/` → `docs/project/` - More intuitive naming for project-specific documentation
   - **Path Updates**: Updated all 50+ file references across codebase to use new directory structure
   - **Cross-Reference Integrity**: Maintained all internal links and cross-references during restructuring
   - **Package Distribution**: Updated NPM package configuration to include new documentation paths
-  - **Result**: Clearer documentation hierarchy with improved discoverability and more intuitive naming
+
+- **Command Header Standardization**: Implemented consistent header format across all custom commands for improved maintainability
+  - **Standardized YAML Frontmatter**: Unified structure with version, dates, status, audience, and model specifications
+  - **Agent Coordination Sections**: Clear specification of primary, supporting, and quality gate agents for each command
+  - **Consistent Titles**: Unified `/command-name Command` format across all 14 commands
+  - **Usage Documentation**: Standardized argument hints, examples, and usage patterns
+
+### Added
 
 ## [0.7.0] - 2025-09-20
 

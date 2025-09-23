@@ -9,7 +9,7 @@ tags: ["workflow", "development", "execution"]
 description: "Execute implementation tasks with test-first enforcement and epic integration"
 argument-hint: "[--epic \"name\"] [--task \"###\"] [--review] [--guided]"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-3-5-sonnet-20241022"
+model: "claude-sonnet-4"
 ---
 
 # /develop Command
@@ -25,6 +25,12 @@ Execute epic tasks with full context awareness and intelligent agent coordinatio
 /develop --discover "task-name" --epic "name" # Add discovered task
 /develop --guided [other flags]               # Teaching mode: suggest code, don't change directly
 ```
+
+## Agent Coordination
+
+**Primary**: Domain specialists (frontend-specialist, backend-specialist, database-specialist) based on task type
+**Supporting**: test-engineer (mandatory for 95%+ coverage), code-reviewer (quality validation), security-auditor (security-sensitive tasks)
+**Coordination**: HANDOFF.yml enforcement for real-time agent tracking and deliverable documentation
 
 ## Core Principles
 

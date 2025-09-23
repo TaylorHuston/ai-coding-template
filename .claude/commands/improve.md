@@ -9,12 +9,18 @@ tags: ["template", "improvement", "feedback", "publishing"]
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "WebSearch", "WebFetch"]
 argument-hint: "[--feedback|--enhance|--publish|--monitor]"
 description: "Improve the template based on user feedback and publish enhancements"
-model: "claude-opus-4-1"
+model: "claude-opus-4"
 ---
 
 # /improve Command
 
 **ALWAYS invoke template-maintainer agent** - Template improvement specialist.
+
+## Agent Coordination
+
+**Primary**: template-maintainer (mandatory for all template improvement workflows)
+**Supporting**: test-engineer (enhancement testing), devops-engineer (publishing), data-analyst (monitoring)
+**Quality**: security-auditor (security validation), technical-writer (documentation updates)
 
 ## Command Modes
 

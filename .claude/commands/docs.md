@@ -1,11 +1,18 @@
 ---
-description: Unified documentation management with intelligent agent coordination
-argument-hint: [generate|validate|sync|health|auto] [--type TYPE] [--scope SCOPE]
+version: "0.3.0"
+created: "2025-09-17"
+last_updated: "2025-09-22"
+status: "active"
+target_audience: ["ai-assistants"]
+document_type: "command"
+tags: ["workflow", "documentation", "management", "automation"]
+description: "Unified documentation management with intelligent agent coordination"
+argument-hint: "[generate|validate|sync|health|auto] [--type TYPE] [--scope SCOPE]"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-3-5-sonnet-20241022"
+model: "claude-sonnet-4"
 ---
 
-# Documentation Management Command
+# /docs Command
 
 Unified documentation management that orchestrates documentation agents and scripts intelligently.
 

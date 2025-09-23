@@ -33,7 +33,7 @@ This plan implements a comprehensive template distribution system while preservi
 - [x] **1.2.5** Add `scripts/template/` for template management automation ✅
 
 ### 1.3 Documentation Foundation
-- [ ] **1.3.1** Create `README-TEMPLATE.md` for end users
+- [x] **1.3.1** Create comprehensive usage guide in `docs/ai-toolkit/README.md` for end users ✅
 - [ ] **1.3.2** Document template installation methods
 - [ ] **1.3.3** Create upgrade and update procedures guide
 - [ ] **1.3.4** Write template customization guidelines
@@ -177,7 +177,7 @@ ai-coding-template/
 ├── workbench/                  # Development workspace (ignore in distribution)
 ├── CLAUDE.md                   # Core template configuration
 ├── README.md                   # Development repository documentation
-├── README-TEMPLATE.md          # Template user documentation
+├── docs/ai-toolkit/README.md    # Template user documentation
 └── package.json               # NPM distribution configuration
 ```
 

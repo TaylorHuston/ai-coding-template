@@ -50,7 +50,7 @@
     ".githooks/",
     ".githooks.json",
     "README.md",
-    "README-TEMPLATE.md"
+    "docs/ai-toolkit/README.md"
   ],
   "engines": {
     "node": ">=18.0.0"
