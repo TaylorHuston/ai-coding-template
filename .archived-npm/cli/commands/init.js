@@ -271,7 +271,7 @@ class TemplateInitializer {
 
     // Special handling for .mcp.json - use template version
     try {
-      const mcpTemplateSource = path.join(this.templatePath, '.resources/templates/config/mcp.template.json');
+      const mcpTemplateSource = path.join(this.templatePath, '.claude/resources/templates/config/mcp.template.json');
       const mcpTarget = path.join(this.targetDir, '.mcp.json');
 
       if (fs.existsSync(mcpTemplateSource) && !fs.existsSync(mcpTarget)) {

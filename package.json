@@ -2,17 +2,12 @@
   "name": "ai-assisted-template",
   "version": "0.7.0",
   "description": "Comprehensive AI-assisted development template with Claude Code integration",
-  "main": "cli/index-npm.js",
-  "bin": {
-    "ai-template": "cli/index-npm.js",
-    "ai-assisted-template": "cli/index-npm.js"
-  },
+  "private": true,
   "scripts": {
     "test": "node scripts/template/test-categorization.js && node scripts/template/validate-manifest-simple.js",
     "validate": "node cli/index-simple.js validate",
     "status": "node cli/index-simple.js status",
-    "info": "node cli/index-simple.js info",
-    "prepublishOnly": "npm run test"
+    "info": "node cli/index-simple.js info"
   },
   "keywords": [
     "template",
@@ -33,29 +28,9 @@
   "bugs": {
     "url": "https://github.com/TaylorHuston/ai-coding-template/issues"
   },
-  "files": [
-    ".claude/",
-    ".resources/",
-    "docs/development/",
-    "docs/ai-toolkit/",
-    "docs/project/",
-    "cli/",
-    "scripts/template/",
-    ".template-manifest.json",
-    "CLAUDE.md",
-    ".gitignore",
-    ".markdownlint.json",
-    ".mcp.json",
-    ".env.example",
-    ".githooks/",
-    ".githooks.json",
-    "README.md",
-    "docs/ai-toolkit/README.md"
-  ],
   "engines": {
     "node": ">=18.0.0"
   },
-  "preferGlobal": true,
   "dependencies": {
     "commander": "^9.0.0"
   },
