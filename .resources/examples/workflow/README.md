@@ -174,9 +174,9 @@ Coming soon:
 - [Templates Master Index](../../TEMPLATES-EXAMPLES-INDEX.md)
 
 ### AI Workflow Documentation
-- [AI Collaboration Guide](../../docs/ai-tools/guides/ai-collaboration-guide.md)
-- [Using Agents Guide](../../docs/ai-tools/guides/using-agents.md)
-- [Command Reference](../../docs/ai-tools/reference/commands.md)
+- [AI Collaboration Guide](../../docs/ai-toolkit/guides/ai-collaboration-guide.md)
+- [Using Agents Guide](../../docs/ai-toolkit/guides/using-agents.md)
+- [Command Reference](../../docs/ai-toolkit/reference/commands.md)
 
 ### Development Guidelines
 - [Quality Standards](../../docs/development/guidelines/quality-standards.md)

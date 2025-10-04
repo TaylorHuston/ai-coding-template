@@ -166,7 +166,7 @@ This document maps the dependencies between agents, commands, scripts, and templ
 | **adr-fast-track.template.md** | /architect | code-architect | architecture/ | Quick architecture decisions |
 | **architecture.template.md** | /architect | code-architect | workflow/architecture/ | Architecture documentation |
 | **api.template.md** | /docs | technical-writer | docs/api/ | API documentation |
-| **api-reference.template.md** | /docs | technical-writer | docs/technical/ | API reference docs |
+| **api-reference.template.md** | /docs | technical-writer | docs/project/ | API reference docs |
 
 ### Project Management Templates
 

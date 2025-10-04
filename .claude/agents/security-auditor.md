@@ -2,7 +2,7 @@
 name: security-auditor
 description: Security assessment, vulnerability detection, and compliance validation. Use for security audits, authentication/authorization reviews, data protection assessment, and security policy enforcement. Focus on identifying and preventing security vulnerabilities and ensuring compliance with security standards.
 tools: Read, Grep, Glob, Bash, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking, mcp__gemini-cli__prompt, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols
-model: opus
+model: claude-opus-4-0
 color: red
 coordination:
   hands_off_to: [devops-engineer, backend-specialist, technical-writer]

@@ -31,7 +31,7 @@ Create standardized documentation:
 - **`/decisions/`** - ADR and decision documentation templates
 - **`/development/`** - Development process and guideline templates
 - **`/project/`** - Project README, vision, and changelog templates
-- **`/technical/`** - Architecture, design, and technical docs
+- **`/project/`** - Architecture, design, and technical docs
 
 ### Workflow Templates (`/workflow/`)
 Structure development workflows:
@@ -107,7 +107,7 @@ This is a {{PROJECT_NAME}} implementation by {{AUTHOR_NAME}}.
 | **API Endpoint** | `endpoint.template.ts` | `/code/api/` |
 | **React Component** | `component.template.tsx` | `/code/components/` |
 | **Test File** | `test.template.js` | `/code/tests/` |
-| **Architecture Doc** | `architecture.template.md` | `/docs/technical/` |
+| **Architecture Doc** | `architecture.template.md` | `/docs/project/` |
 | **ADR** | `decision.template.md` | `/docs/decisions/` |
 | **Deliverable** | `deliverable.template.md` | `/workflow/deliverables/` |
 
@@ -115,7 +115,7 @@ This is a {{PROJECT_NAME}} implementation by {{AUTHOR_NAME}}.
 
 ```
 📝 Creating Documentation?
-├── 📊 Technical/Architecture → `/docs/technical/`
+├── 📊 Technical/Architecture → `/docs/project/`
 ├── 🎯 Feature Specification → `/docs/features/`
 ├── 🛡️ Decision Record → `/docs/decisions/`
 └── 🔌 API Documentation → `/docs/api/`

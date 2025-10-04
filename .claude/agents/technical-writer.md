@@ -6,7 +6,7 @@ script_integration:
   primary_scripts: [docs/docs-tool.js]
   supporting_scripts: [docs/docs-manager.sh, quality/validate.js]
   invocation: "Automatically invoke scripts as needed during task execution"
-model: opus
+model: claude-opus-4-0
 color: teal
 coordination:
   hands_off_to: [code-reviewer, project-manager]

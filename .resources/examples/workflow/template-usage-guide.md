@@ -51,12 +51,12 @@ A practical guide to using the consolidated template system for efficient, consi
 ```bash
 # Step 1: Define the feature
 /feature --standard "user authentication system"
-# Creates: docs/technical/features/user-authentication-system.md
+# Creates: docs/project/features/user-authentication-system.md
 
 # Step 2: Design the architecture
 /architect user-authentication-system
-# Creates: docs/technical/architecture/user-authentication-architecture.md
-# Creates: docs/technical/decisions/ADR-001-authentication-strategy.md
+# Creates: docs/project/architecture/user-authentication-architecture.md
+# Creates: docs/project/decisions/ADR-001-authentication-strategy.md
 
 # Step 3: Plan implementation
 /plan --issue AUTH-123
@@ -75,7 +75,7 @@ A practical guide to using the consolidated template system for efficient, consi
 
 ```bash
 # Copy template
-cp templates/workflow/feature/feature-minimal.template.md docs/technical/features/quick-feature.md
+cp templates/workflow/feature/feature-minimal.template.md docs/project/features/quick-feature.md
 
 # Fill in placeholders
 # {{FEATURE_NAME}} → User Profile Management
@@ -214,7 +214,7 @@ alias new-component="cp templates/code/components/component.template.tsx"
 alias new-service="cp templates/code/api/service.template.ts"
 
 # Usage
-new-feature docs/technical/features/my-feature.md
+new-feature docs/project/features/my-feature.md
 new-component src/components/MyComponent.tsx
 ```
 

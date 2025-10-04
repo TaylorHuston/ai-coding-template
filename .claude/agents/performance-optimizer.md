@@ -2,7 +2,7 @@
 name: performance-optimizer
 description: Performance analysis and optimization specialist focused on identifying bottlenecks, improving system efficiency, and ensuring optimal user experience. Auto-invoked for performance bottlenecks, slow queries, and optimization requests.
 tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking, mcp__gemini-cli__prompt, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__insert_after_symbol
-model: sonnet
+model: claude-sonnet-4-5
 color: orange
 coordination:
   hands_off_to: [database-specialist, devops-engineer, technical-writer]

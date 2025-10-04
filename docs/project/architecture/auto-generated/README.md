@@ -64,7 +64,7 @@ project-root/
 │   │       ├── auto-generated/ # 🤖 Factual data extraction (this directory)
 │   │       └── *.md           # 📝 Manual architecture decisions and design
 │   ├── development/           # Tier 2: Team processes & guidelines
-│   └── ai-tools/             # Tier 3: AI template usage documentation
+│   └── ai-toolkit/             # Tier 3: AI template usage documentation
 │       └── analytics/        # 📊 Metrics system documentation
 └── .resources/scripts/metrics/ # Analytics tools and reporting
 ```

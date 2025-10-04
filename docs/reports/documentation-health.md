@@ -96,7 +96,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/README.md
+#### docs/ai-toolkit/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 148 lines, 27 headers
 - **Elements**: 0 code blocks
@@ -105,7 +105,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/ai-collaboration-guide.md
+#### docs/ai-toolkit/guides/ai-collaboration-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 430 lines, 63 headers
 - **Elements**: 25 code blocks
@@ -114,7 +114,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/comprehensive-agent-guide.md
+#### docs/ai-toolkit/guides/comprehensive-agent-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 357 lines, 49 headers
 - **Elements**: 21 code blocks
@@ -123,7 +123,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/multi-model-consultation-guide.md
+#### docs/ai-toolkit/guides/multi-model-consultation-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 316 lines, 56 headers
 - **Elements**: 9 code blocks
@@ -132,7 +132,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/README.md
+#### docs/ai-toolkit/reference/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 164 lines, 27 headers
 - **Elements**: 0 code blocks
@@ -141,7 +141,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/ai-assistant-guide.md
+#### docs/ai-toolkit/reference/ai-assistant-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 207 lines, 37 headers
 - **Elements**: 9 code blocks
@@ -150,7 +150,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/commands.md
+#### docs/ai-toolkit/reference/commands.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 676 lines, 47 headers
 - **Elements**: 25 code blocks
@@ -159,7 +159,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/development-commands.md
+#### docs/ai-toolkit/reference/development-commands.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 383 lines, 96 headers
 - **Elements**: 25 code blocks
@@ -168,7 +168,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/serena-semantic-tools.md
+#### docs/ai-toolkit/reference/serena-semantic-tools.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 303 lines, 32 headers
 - **Elements**: 13 code blocks
@@ -177,7 +177,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/setup-manager.md
+#### docs/ai-toolkit/reference/setup-manager.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 387 lines, 75 headers
 - **Elements**: 17 code blocks
@@ -186,7 +186,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/tool-selection.md
+#### docs/ai-toolkit/reference/tool-selection.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 216 lines, 25 headers
 - **Elements**: 6 code blocks
@@ -195,7 +195,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/troubleshooting.md
+#### docs/ai-toolkit/reference/troubleshooting.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 964 lines, 228 headers
 - **Elements**: 47 code blocks
@@ -204,7 +204,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/claude-code-hooks-setup.md
+#### docs/ai-toolkit/setup/claude-code-hooks-setup.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 363 lines, 77 headers
 - **Elements**: 12 code blocks
@@ -213,7 +213,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/integration-guide.md
+#### docs/ai-toolkit/setup/integration-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 338 lines, 78 headers
 - **Elements**: 13 code blocks
@@ -222,7 +222,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/mcp-setup.md
+#### docs/ai-toolkit/setup/mcp-setup.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 239 lines, 43 headers
 - **Elements**: 13 code blocks
@@ -231,7 +231,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/project-management-integration.md
+#### docs/ai-toolkit/setup/project-management-integration.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 636 lines, 53 headers
 - **Elements**: 26 code blocks
@@ -240,7 +240,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/quick-start.md
+#### docs/ai-toolkit/setup/quick-start.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 157 lines, 31 headers
 - **Elements**: 8 code blocks
@@ -249,7 +249,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/rag-setup.md
+#### docs/ai-toolkit/setup/rag-setup.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 643 lines, 28 headers
 - **Elements**: 15 code blocks
@@ -258,7 +258,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/system-context.md
+#### docs/ai-toolkit/system-context.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 334 lines, 45 headers
 - **Elements**: 4 code blocks
@@ -582,7 +582,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/README.md
+#### docs/project/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 65 lines, 9 headers
 - **Elements**: 0 code blocks
@@ -591,7 +591,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/api/README.md
+#### docs/project/api/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 63 lines, 10 headers
 - **Elements**: 2 code blocks
@@ -600,7 +600,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/README.md
+#### docs/project/architecture/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 168 lines, 40 headers
 - **Elements**: 5 code blocks
@@ -609,7 +609,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/auto-generated/README.md
+#### docs/project/architecture/auto-generated/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 69 lines, 9 headers
 - **Elements**: 2 code blocks
@@ -618,7 +618,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/auto-generated/dependency-graph.md
+#### docs/project/architecture/auto-generated/dependency-graph.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 31 lines, 4 headers
 - **Elements**: 0 code blocks
@@ -627,7 +627,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/auto-generated/system-overview.md
+#### docs/project/architecture/auto-generated/system-overview.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 33 lines, 5 headers
 - **Elements**: 1 code blocks
@@ -636,7 +636,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/auto-generated/tech-stack.md
+#### docs/project/architecture/auto-generated/tech-stack.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 50 lines, 9 headers
 - **Elements**: 0 code blocks
@@ -645,7 +645,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/c4-overview.md
+#### docs/project/architecture/c4-overview.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 107 lines, 13 headers
 - **Elements**: 1 code blocks
@@ -654,7 +654,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/examples/README.md
+#### docs/project/architecture/examples/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 88 lines, 15 headers
 - **Elements**: 0 code blocks
@@ -663,7 +663,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/examples/architecture-template.md
+#### docs/project/architecture/examples/architecture-template.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 363 lines, 54 headers
 - **Elements**: 14 code blocks
@@ -672,7 +672,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/database/README.md
+#### docs/project/database/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 67 lines, 8 headers
 - **Elements**: 1 code blocks
@@ -681,7 +681,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/README.md
+#### docs/project/decisions/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 176 lines, 27 headers
 - **Elements**: 3 code blocks
@@ -690,7 +690,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/adr-001-adopt-automatic-documentation-generation.md
+#### docs/project/decisions/adr-001-adopt-automatic-documentation-generation.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 113 lines, 15 headers
 - **Elements**: 0 code blocks
@@ -699,7 +699,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/20250116-103045-graphql-migration/conversation.md
+#### docs/project/decisions/explorations/20250116-103045-graphql-migration/conversation.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 239 lines, 17 headers
 - **Elements**: 0 code blocks
@@ -708,7 +708,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/20250116-103045-graphql-migration/notes.md
+#### docs/project/decisions/explorations/20250116-103045-graphql-migration/notes.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 217 lines, 39 headers
 - **Elements**: 3 code blocks
@@ -717,7 +717,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/20250116-103045-graphql-migration/specialist-inputs.md
+#### docs/project/decisions/explorations/20250116-103045-graphql-migration/specialist-inputs.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 319 lines, 58 headers
 - **Elements**: 0 code blocks
@@ -726,7 +726,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/README.md
+#### docs/project/decisions/explorations/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 255 lines, 48 headers
 - **Elements**: 5 code blocks
@@ -735,7 +735,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/templates/conversation-template.md
+#### docs/project/decisions/explorations/templates/conversation-template.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 73 lines, 10 headers
 - **Elements**: 0 code blocks
@@ -744,7 +744,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/templates/notes-template.md
+#### docs/project/decisions/explorations/templates/notes-template.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 172 lines, 38 headers
 - **Elements**: 3 code blocks
@@ -753,7 +753,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/templates/specialist-inputs-template.md
+#### docs/project/decisions/explorations/templates/specialist-inputs-template.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 122 lines, 27 headers
 - **Elements**: 0 code blocks
@@ -762,7 +762,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/template.md
+#### docs/project/decisions/template.md
 - **Health**: [█████] 98% 98/100
 - **Size**: 111 lines, 15 headers
 - **Elements**: 0 code blocks
@@ -771,7 +771,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/features/README.md
+#### docs/project/features/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 136 lines, 20 headers
 - **Elements**: 2 code blocks
@@ -780,7 +780,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/features/sample-user-authentication.md
+#### docs/project/features/sample-user-authentication.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 63 lines, 8 headers
 - **Elements**: 0 code blocks
@@ -789,7 +789,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/implementations/README.md
+#### docs/project/implementations/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 196 lines, 34 headers
 - **Elements**: 4 code blocks
@@ -816,7 +816,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/README.md
+#### docs/ai-toolkit/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 148 lines, 27 headers
 - **Elements**: 0 code blocks
@@ -825,7 +825,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/ai-collaboration-guide.md
+#### docs/ai-toolkit/guides/ai-collaboration-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 430 lines, 63 headers
 - **Elements**: 25 code blocks
@@ -834,7 +834,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/comprehensive-agent-guide.md
+#### docs/ai-toolkit/guides/comprehensive-agent-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 357 lines, 49 headers
 - **Elements**: 21 code blocks
@@ -843,7 +843,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/guides/multi-model-consultation-guide.md
+#### docs/ai-toolkit/guides/multi-model-consultation-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 316 lines, 56 headers
 - **Elements**: 9 code blocks
@@ -852,7 +852,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/README.md
+#### docs/ai-toolkit/reference/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 164 lines, 27 headers
 - **Elements**: 0 code blocks
@@ -861,7 +861,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/ai-assistant-guide.md
+#### docs/ai-toolkit/reference/ai-assistant-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 207 lines, 37 headers
 - **Elements**: 9 code blocks
@@ -870,7 +870,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/commands.md
+#### docs/ai-toolkit/reference/commands.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 676 lines, 47 headers
 - **Elements**: 25 code blocks
@@ -879,7 +879,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/development-commands.md
+#### docs/ai-toolkit/reference/development-commands.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 383 lines, 96 headers
 - **Elements**: 25 code blocks
@@ -888,7 +888,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/serena-semantic-tools.md
+#### docs/ai-toolkit/reference/serena-semantic-tools.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 303 lines, 32 headers
 - **Elements**: 13 code blocks
@@ -897,7 +897,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/setup-manager.md
+#### docs/ai-toolkit/reference/setup-manager.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 387 lines, 75 headers
 - **Elements**: 17 code blocks
@@ -906,7 +906,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/tool-selection.md
+#### docs/ai-toolkit/reference/tool-selection.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 216 lines, 25 headers
 - **Elements**: 6 code blocks
@@ -915,7 +915,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/reference/troubleshooting.md
+#### docs/ai-toolkit/reference/troubleshooting.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 964 lines, 228 headers
 - **Elements**: 47 code blocks
@@ -924,7 +924,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/claude-code-hooks-setup.md
+#### docs/ai-toolkit/setup/claude-code-hooks-setup.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 363 lines, 77 headers
 - **Elements**: 12 code blocks
@@ -933,7 +933,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/integration-guide.md
+#### docs/ai-toolkit/setup/integration-guide.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 338 lines, 78 headers
 - **Elements**: 13 code blocks
@@ -942,7 +942,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/mcp-setup.md
+#### docs/ai-toolkit/setup/mcp-setup.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 239 lines, 43 headers
 - **Elements**: 13 code blocks
@@ -951,7 +951,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/project-management-integration.md
+#### docs/ai-toolkit/setup/project-management-integration.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 636 lines, 53 headers
 - **Elements**: 26 code blocks
@@ -960,7 +960,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/quick-start.md
+#### docs/ai-toolkit/setup/quick-start.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 157 lines, 31 headers
 - **Elements**: 8 code blocks
@@ -969,7 +969,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/setup/rag-setup.md
+#### docs/ai-toolkit/setup/rag-setup.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 643 lines, 28 headers
 - **Elements**: 15 code blocks
@@ -978,7 +978,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/ai-tools/system-context.md
+#### docs/ai-toolkit/system-context.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 334 lines, 45 headers
 - **Elements**: 4 code blocks
@@ -1302,7 +1302,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/README.md
+#### docs/project/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 65 lines, 9 headers
 - **Elements**: 0 code blocks
@@ -1311,7 +1311,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/api/README.md
+#### docs/project/api/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 63 lines, 10 headers
 - **Elements**: 2 code blocks
@@ -1320,7 +1320,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/README.md
+#### docs/project/architecture/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 168 lines, 40 headers
 - **Elements**: 5 code blocks
@@ -1329,7 +1329,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/auto-generated/README.md
+#### docs/project/architecture/auto-generated/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 69 lines, 9 headers
 - **Elements**: 2 code blocks
@@ -1338,7 +1338,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/auto-generated/dependency-graph.md
+#### docs/project/architecture/auto-generated/dependency-graph.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 31 lines, 4 headers
 - **Elements**: 0 code blocks
@@ -1347,7 +1347,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/auto-generated/system-overview.md
+#### docs/project/architecture/auto-generated/system-overview.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 33 lines, 5 headers
 - **Elements**: 1 code blocks
@@ -1356,7 +1356,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/auto-generated/tech-stack.md
+#### docs/project/architecture/auto-generated/tech-stack.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 50 lines, 9 headers
 - **Elements**: 0 code blocks
@@ -1365,7 +1365,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/c4-overview.md
+#### docs/project/architecture/c4-overview.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 107 lines, 13 headers
 - **Elements**: 1 code blocks
@@ -1374,7 +1374,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/examples/README.md
+#### docs/project/architecture/examples/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 88 lines, 15 headers
 - **Elements**: 0 code blocks
@@ -1383,7 +1383,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/architecture/examples/architecture-template.md
+#### docs/project/architecture/examples/architecture-template.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 363 lines, 54 headers
 - **Elements**: 14 code blocks
@@ -1392,7 +1392,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/database/README.md
+#### docs/project/database/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 67 lines, 8 headers
 - **Elements**: 1 code blocks
@@ -1401,7 +1401,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/README.md
+#### docs/project/decisions/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 176 lines, 27 headers
 - **Elements**: 3 code blocks
@@ -1410,7 +1410,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/adr-001-adopt-automatic-documentation-generation.md
+#### docs/project/decisions/adr-001-adopt-automatic-documentation-generation.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 113 lines, 15 headers
 - **Elements**: 0 code blocks
@@ -1419,7 +1419,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/20250116-103045-graphql-migration/conversation.md
+#### docs/project/decisions/explorations/20250116-103045-graphql-migration/conversation.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 239 lines, 17 headers
 - **Elements**: 0 code blocks
@@ -1428,7 +1428,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/20250116-103045-graphql-migration/notes.md
+#### docs/project/decisions/explorations/20250116-103045-graphql-migration/notes.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 217 lines, 39 headers
 - **Elements**: 3 code blocks
@@ -1437,7 +1437,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/20250116-103045-graphql-migration/specialist-inputs.md
+#### docs/project/decisions/explorations/20250116-103045-graphql-migration/specialist-inputs.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 319 lines, 58 headers
 - **Elements**: 0 code blocks
@@ -1446,7 +1446,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/README.md
+#### docs/project/decisions/explorations/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 255 lines, 48 headers
 - **Elements**: 5 code blocks
@@ -1455,7 +1455,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/templates/conversation-template.md
+#### docs/project/decisions/explorations/templates/conversation-template.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 73 lines, 10 headers
 - **Elements**: 0 code blocks
@@ -1464,7 +1464,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/templates/notes-template.md
+#### docs/project/decisions/explorations/templates/notes-template.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 172 lines, 38 headers
 - **Elements**: 3 code blocks
@@ -1473,7 +1473,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/explorations/templates/specialist-inputs-template.md
+#### docs/project/decisions/explorations/templates/specialist-inputs-template.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 122 lines, 27 headers
 - **Elements**: 0 code blocks
@@ -1482,7 +1482,7 @@
 - **Last Updated**: 2025-09-16 (1 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/decisions/template.md
+#### docs/project/decisions/template.md
 - **Health**: [█████] 98% 98/100
 - **Size**: 111 lines, 15 headers
 - **Elements**: 0 code blocks
@@ -1491,7 +1491,7 @@
 - **Last Updated**: 2025-09-15 (2 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/features/README.md
+#### docs/project/features/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 136 lines, 20 headers
 - **Elements**: 2 code blocks
@@ -1500,7 +1500,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/features/sample-user-authentication.md
+#### docs/project/features/sample-user-authentication.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 63 lines, 8 headers
 - **Elements**: 0 code blocks
@@ -1509,7 +1509,7 @@
 - **Last Updated**: 2025-09-17 (0 days ago)
 - **Freshness**: fresh
 
-#### docs/technical/implementations/README.md
+#### docs/project/implementations/README.md
 - **Health**: [█████] 100% 100/100
 - **Size**: 196 lines, 34 headers
 - **Elements**: 4 code blocks

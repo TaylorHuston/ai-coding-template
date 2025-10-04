@@ -36,7 +36,7 @@ tar -xzf agents.tar.gz
 curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/CLAUDE.md
 curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/STATUS.md
 mkdir -p docs
-curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/docs/technical.md
+curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/docs/project.md
 
 # 5. Create minimal scripts
 mkdir -p scripts
@@ -51,7 +51,7 @@ For teams wanting to slowly adopt AI-assisted development:
 #### Phase 1: Core AI Context (Week 1)
 
 - Add `.claude/` directory with essential agents
-- Create `CLAUDE.md`, `STATUS.md`, `docs/technical.md`
+- Create `CLAUDE.md`, `STATUS.md`, `docs/project.md`
 - Start using AI agents for code review
 
 #### Phase 2: Workflow Integration (Week 2-3)
@@ -126,7 +126,7 @@ cat > CLAUDE.md << 'EOF'
 
 ## Getting Started
 1. Read STATUS.md for current state
-2. Review docs/technical.md for architecture
+2. Review docs/project.md for architecture
 3. Check recent commits for context
 EOF
 ```
@@ -185,7 +185,7 @@ npm pkg set scripts.ai-review="echo 'Use code-reviewer agent'"
 echo "## Frontend Stack
 - Framework: $(grep -o '"react"\|"vue"\|"@angular"' package.json | head -1)
 - Styling: $(grep -o '"styled-components"\|"tailwind"\|"sass"' package.json | head -1)
-- Testing: $(grep -o '"jest"\|"vitest"\|"cypress"' package.json | head -1)" >> docs/technical.md
+- Testing: $(grep -o '"jest"\|"vitest"\|"cypress"' package.json | head -1)" >> docs/project.md
 ```
 
 ### Node.js/Express Backend
@@ -200,7 +200,7 @@ curl -o .claude/agents/security-auditor.md [URL]
 echo "## API Structure
 - Routes: $(find . -name "*route*" -o -name "*controller*" | wc -l) files
 - Middleware: $(find . -name "*middleware*" | wc -l) files
-- Database: $(grep -o 'mongoose\|sequelize\|prisma\|typeorm' package.json | head -1)" >> docs/technical.md
+- Database: $(grep -o 'mongoose\|sequelize\|prisma\|typeorm' package.json | head -1)" >> docs/project.md
 ```
 
 ### Python/Django Projects
@@ -214,7 +214,7 @@ curl -o .claude/agents/database-specialist.md [URL]
 echo "## Python Environment
 - Python: $(python --version)
 - Framework: $(grep -o 'Django\|Flask\|FastAPI' requirements.txt | head -1)
-- Database: $(grep -o 'psycopg2\|pymongo\|sqlalchemy' requirements.txt | head -1)" >> docs/technical.md
+- Database: $(grep -o 'psycopg2\|pymongo\|sqlalchemy' requirements.txt | head -1)" >> docs/project.md
 ```
 
 ## Team Adoption Guide
@@ -255,7 +255,7 @@ cat > scripts/validate-integration.sh << 'EOF'
 echo "🔍 Validating AI template integration..."
 
 # Check essential files
-files=("CLAUDE.md" "STATUS.md" "docs/technical.md" ".claude/agents/README.md")
+files=("CLAUDE.md" "STATUS.md" "docs/project.md" ".claude/agents/README.md")
 for file in "${files[@]}"; do
   if [ -f "$file" ]; then
     echo "✅ $file exists"
@@ -298,7 +298,7 @@ find scripts/ -name "*.sh" -exec chmod +x {} \;
 ```
 
 #### AI Not Recognizing Context
-- Enhance docs/technical.md with patterns
+- Enhance docs/project.md with patterns
 - Update CLAUDE.md with specific instructions
 - Add more project details to STATUS.md
 

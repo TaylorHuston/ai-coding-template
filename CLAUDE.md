@@ -38,7 +38,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 - **Tech Stack**: [Add the high level details of your tech stack here]
 - **External Links**: Project Management: [Add link to Jira/Linear/etc], Wiki: [Add link to Confluence/Notion/etc]
 - **Project Brief**: `docs/project-brief.md` - Contains problem statement, solution approach, and core features
-- **Documentation Structure**: Three-tier system (docs/technical/, docs/development/, docs/ai-tools/)
+- **Documentation Structure**: Three-tier system (docs/project/, docs/development/, docs/ai-toolkit/)
 - **Application Code**: All implementation code resides in `src/` following standard project structure
 - **Active Development Context**: `.claude/working/[issue-id]/` contains ephemeral work artifacts
 
@@ -46,11 +46,11 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 **Primary**: `/design` → `/architect` → `/plan` → `/develop`
 
-**Available Commands**: 15 total - Core workflow (design, architect, plan, develop), Quality (quality, review, security-audit, test-fix), Development (commit, merge-branch), Management (status, docs, refresh, update-docs), Template (improve)
+**Available Commands**: 14 total - Core workflow (design, architect, plan, develop), Quality (quality, review, security-audit, test-fix), Development (commit, merge-branch), Management (status, docs, refresh), Template (improve)
 
 **Automation Scripts**: 20+ specialized scripts for documentation, validation, setup, metrics, changelog management
 
-**Complete Reference**: [docs/ai-tools/reference/commands.md](./docs/ai-tools/reference/commands.md)
+**Complete Reference**: [docs/ai-toolkit/reference/commands.md](./docs/ai-toolkit/reference/commands.md)
 
 ## AI Autonomy Matrix
 
@@ -80,7 +80,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 **Agent Guidelines**: Each agent loads domain-specific guidelines from `docs/development/guidelines/` when starting work. See `.claude/agents/guideline-mapping.yml` for complete agent-to-guideline mappings.
 
-**Complete Guide**: [docs/ai-tools/guides/comprehensive-agent-guide.md](./docs/ai-tools/guides/comprehensive-agent-guide.md)
+**Complete Guide**: [docs/ai-toolkit/guides/comprehensive-agent-guide.md](./docs/ai-toolkit/guides/comprehensive-agent-guide.md)
 
 ## Universal Quality Standards
 
@@ -93,11 +93,11 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## Key References
 
-- **Commands**: [docs/ai-tools/reference/commands.md](./docs/ai-tools/reference/commands.md) - All available slash commands
-- **Agent Usage**: [docs/ai-tools/guides/comprehensive-agent-guide.md](./docs/ai-tools/guides/comprehensive-agent-guide.md) - Complete agent system guide
-- **AI Collaboration**: [docs/ai-tools/guides/ai-collaboration-guide.md](./docs/ai-tools/guides/ai-collaboration-guide.md) - Essential AI development patterns
-- **Tool Selection**: [docs/ai-tools/reference/tool-selection.md](./docs/ai-tools/reference/tool-selection.md) - Choosing the right tools
-- **Troubleshooting**: [docs/ai-tools/reference/troubleshooting.md](./docs/ai-tools/reference/troubleshooting.md) - Comprehensive problem-solving
+- **Commands**: [docs/ai-toolkit/reference/commands.md](./docs/ai-toolkit/reference/commands.md) - All available slash commands
+- **Agent Usage**: [docs/ai-toolkit/guides/comprehensive-agent-guide.md](./docs/ai-toolkit/guides/comprehensive-agent-guide.md) - Complete agent system guide
+- **AI Collaboration**: [docs/ai-toolkit/guides/ai-collaboration-guide.md](./docs/ai-toolkit/guides/ai-collaboration-guide.md) - Essential AI development patterns
+- **Tool Selection**: [docs/ai-toolkit/reference/tool-selection.md](./docs/ai-toolkit/reference/tool-selection.md) - Choosing the right tools
+- **Troubleshooting**: [docs/ai-toolkit/reference/troubleshooting.md](./docs/ai-toolkit/reference/troubleshooting.md) - Comprehensive problem-solving
 - **Current Status**: [STATUS.md](./STATUS.md) - Current project context and state
 
 ## Problem-Solving Framework
@@ -130,7 +130,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 - **Context7**: Library documentation and examples
 - **Sequential Thinking**: Complex problem decomposition
 - **Playwright**: Browser automation for testing
-- **Serena**: Semantic code analysis (optional - see [Adding Serena Guide](./docs/ai-tools/setup/adding-serena.md))
+- **Serena**: Semantic code analysis (optional - see [Adding Serena Guide](./docs/ai-toolkit/setup/adding-serena.md))
 
 ### **Tool Selection Guidelines**
 

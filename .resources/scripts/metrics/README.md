@@ -412,9 +412,9 @@ du -sh .claude/metrics/
 ## Related Documentation
 
 ### Core Workflow Integration
-- **[AI Workflow Commands](../../../docs/ai-tools/reference/commands.md)** - How metrics integrate with `/design`, `/architect`, `/plan`, `/develop`
-- **[Agent System Guide](../../../docs/ai-tools/guides/comprehensive-agent-guide.md)** - Understanding agent metrics and optimization
-- **[AI Collaboration Guide](../../../docs/ai-tools/guides/ai-collaboration-guide.md)** - Workflow patterns and metrics correlation
+- **[AI Workflow Commands](../../../docs/ai-toolkit/reference/commands.md)** - How metrics integrate with `/design`, `/architect`, `/plan`, `/develop`
+- **[Agent System Guide](../../../docs/ai-toolkit/guides/comprehensive-agent-guide.md)** - Understanding agent metrics and optimization
+- **[AI Collaboration Guide](../../../docs/ai-toolkit/guides/ai-collaboration-guide.md)** - Workflow patterns and metrics correlation
 
 ### Technical References
 - **[Script Documentation](../README.md)** - Overview of all automation scripts and their metrics
@@ -422,8 +422,8 @@ du -sh .claude/metrics/
 - **[Quality Standards](../../../docs/development/guidelines/quality-standards.md)** - Quality metrics and validation processes
 
 ### Configuration & Setup
-- **[Quick Start Guide](../../../docs/ai-tools/setup/quick-start.md)** - Initial setup including metrics configuration
-- **[Tool Selection Guide](../../../docs/ai-tools/reference/tool-selection.md)** - Choosing the right tools and tracking their effectiveness
+- **[Quick Start Guide](../../../docs/ai-toolkit/setup/quick-start.md)** - Initial setup including metrics configuration
+- **[Tool Selection Guide](../../../docs/ai-toolkit/reference/tool-selection.md)** - Choosing the right tools and tracking their effectiveness
 
 ## Support & Troubleshooting
 

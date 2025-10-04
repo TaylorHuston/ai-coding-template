@@ -7,7 +7,7 @@ script_integration:
   supporting_scripts: [remediation-advisor.sh, smart-task-decomposition.sh]
   test_automation: [npm test, npm run coverage, custom test scripts]
   invocation: "Automatically invoke validation and testing scripts during task execution"
-model: sonnet
+model: claude-sonnet-4-5
 color: green
 coordination:
   hands_off_to: [code-reviewer, devops-engineer, performance-optimizer]

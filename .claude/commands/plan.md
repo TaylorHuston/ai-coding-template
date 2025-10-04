@@ -9,7 +9,7 @@ tags: ["workflow", "planning", "implementation"]
 description: "Implementation planning for epics, standalone tasks, and bugs with X.Y.Z task structure"
 argument-hint: "[--epic \"name\"] [--task \"###\"] [--misc \"task-id\"] [--bug \"bug-id\"] [--review-epic \"name\"] [--issue KEY]"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-opus-4-1"
+model: claude-opus-4-0
 ---
 
 # /plan Command
@@ -36,6 +36,12 @@ model: "claude-opus-4-1"
 /plan --bug "bug description"        # Create BUG-### with auto-incrementing number and interactive planning
 /plan --bug-review "BUG-001"         # Review existing bug fix plan
 ```
+
+## Agent Coordination
+
+**Primary**: project-manager (epic planning and task sequencing), test-engineer (testing strategy integration)
+**Supporting**: Domain specialists (frontend-specialist, backend-specialist, database-specialist) for complexity assessment
+**Quality**: code-reviewer (implementation validation), security-auditor (security requirements)
 
 ## Approach
 

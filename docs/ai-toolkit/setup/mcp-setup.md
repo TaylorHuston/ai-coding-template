@@ -5,7 +5,7 @@ last_updated: "2025-09-15"
 status: "active"
 target_audience: ["developers", "team-leads"]
 document_type: "setup"
-tags: ["mcp", "setup", "ai-tools"]
+tags: ["mcp", "setup", "ai-toolkit"]
 difficulty: "beginner"
 estimated_time: "5 min"
 ---

@@ -152,7 +152,7 @@ For more comprehensive setup options:
 
 - **Documentation**: [Complete navigation](../README.md)
 - **Troubleshooting**: [Common issues](../troubleshooting.md)
-- **Examples**: [Architecture examples](../../technical/architecture/examples/)
+- **Examples**: [Architecture examples](../../project/architecture/examples/)
 
 ---
 

@@ -606,28 +606,28 @@ init_project() {
 
     log_info "Initializing project..."
 
-    # Create docs/ai-tools directory if it doesn't exist
-    mkdir -p "$PROJECT_ROOT/docs/ai-tools"
+    # Create docs/ai-toolkit directory if it doesn't exist
+    mkdir -p "$PROJECT_ROOT/docs/ai-toolkit"
 
     # 1. Archive template documentation
     log_info "Archiving template documentation..."
 
     # Move README.md to template documentation
     if [[ -f "$PROJECT_ROOT/README.md" ]]; then
-        cp "$PROJECT_ROOT/README.md" "$PROJECT_ROOT/docs/ai-tools/template-documentation.md"
-        log_success "Archived template README → docs/ai-tools/template-documentation.md"
+        cp "$PROJECT_ROOT/README.md" "$PROJECT_ROOT/docs/ai-toolkit/template-documentation.md"
+        log_success "Archived template README → docs/ai-toolkit/template-documentation.md"
     fi
 
     # Move START-HERE.md to getting started guide
     if [[ -f "$PROJECT_ROOT/START-HERE.md" ]]; then
-        cp "$PROJECT_ROOT/START-HERE.md" "$PROJECT_ROOT/docs/ai-tools/getting-started-with-template.md"
-        log_success "Archived START-HERE.md → docs/ai-tools/getting-started-with-template.md"
+        cp "$PROJECT_ROOT/START-HERE.md" "$PROJECT_ROOT/docs/ai-toolkit/getting-started-with-template.md"
+        log_success "Archived START-HERE.md → docs/ai-toolkit/getting-started-with-template.md"
     fi
 
     # Move TEMPLATES-EXAMPLES-INDEX.md
     if [[ -f "$PROJECT_ROOT/TEMPLATES-EXAMPLES-INDEX.md" ]]; then
-        cp "$PROJECT_ROOT/TEMPLATES-EXAMPLES-INDEX.md" "$PROJECT_ROOT/docs/ai-tools/templates-and-examples.md"
-        log_success "Archived templates index → docs/ai-tools/templates-and-examples.md"
+        cp "$PROJECT_ROOT/TEMPLATES-EXAMPLES-INDEX.md" "$PROJECT_ROOT/docs/ai-toolkit/templates-and-examples.md"
+        log_success "Archived templates index → docs/ai-toolkit/templates-and-examples.md"
     fi
 
     # 2. Create standard-readme compliant README.md
@@ -813,7 +813,7 @@ EOF
     log_info "  📝 CHANGELOG.md - Professional change tracking"
     log_info "  🤖 CLAUDE.md - AI assistant instructions"
     log_info "  📊 STATUS.md - Project memory and context"
-    log_info "  📚 docs/ai-tools/ - Template documentation preserved"
+    log_info "  📚 docs/ai-toolkit/ - Template documentation preserved"
     log_info "  🔄 Fresh git history - Ready for your first real commit"
     echo
     log_info "Next steps:"

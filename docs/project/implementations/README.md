@@ -112,7 +112,7 @@ When moving from `.claude/working/` to `implementations/`, the PLAN.md is enhanc
 
 ### Local Implementation Record (Detailed)
 ```yaml
-docs/technical/implementations/2024-01-15-auth-system.md
+docs/project/implementations/2024-01-15-auth-system.md
 - Complete technical implementation steps
 - Exact commands run and results
 - Agent coordination details
