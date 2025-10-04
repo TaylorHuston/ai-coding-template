@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.8.1] - 2025-10-04
+
+### Changed
+
+- **Quick Start Documentation**: Added init-project script to all Quick Start options in README.md
+  - All installation methods (GitHub Template, degit, manual clone) now clearly show the critical initialization step
+  - Updated First Steps section to reflect what init-project creates automatically
+  - Prevents users from skipping transformation step that customizes template for their project
+  - Result: Users understand that init-project is required for ALL installation methods, not just degit
+
 ## [0.8.0] - 2025-10-04
 
 ### Fixed

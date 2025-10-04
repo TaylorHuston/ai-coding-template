@@ -48,10 +48,13 @@ The template works with **any programming language and framework**, focusing on 
 
 1. Click **"Use this template"** button above (or [click here](https://github.com/TaylorHuston/ai-coding-template/generate))
 2. Name your new repository
-3. Clone and start coding:
+3. Clone and initialize:
    ```bash
    git clone https://github.com/YOUR_USERNAME/YOUR_PROJECT.git
    cd YOUR_PROJECT
+
+   # Transform template into YOUR project
+   ./.claude/resources/scripts/setup/setup-manager.sh init-project
    ```
 
 ### Option 2: degit (CLI)
@@ -62,6 +65,9 @@ For CLI enthusiasts:
 npx degit TaylorHuston/ai-coding-template my-project
 cd my-project
 git init
+
+# Transform template into YOUR project
+./.claude/resources/scripts/setup/setup-manager.sh init-project
 ```
 
 ### Option 3: Manual Clone
@@ -70,16 +76,21 @@ git init
 git clone https://github.com/TaylorHuston/ai-coding-template.git my-project
 cd my-project
 rm -rf .git && git init
+
+# Transform template into YOUR project
+./.claude/resources/scripts/setup/setup-manager.sh init-project
 ```
 
 ## Usage
 
 ### First Steps
 
-1. **Customize for your project**:
-   - Update `CLAUDE.md` with your tech stack and project details
-   - Fill in `docs/project-brief.md` with your vision
-   - Configure `.mcp.json` for your AI tools
+1. **After initialization**, the script creates:
+   - ✅ Customized README.md with your project details
+   - ✅ Fresh CHANGELOG.md ready for tracking changes
+   - ✅ Updated CLAUDE.md with your tech stack
+   - ✅ Initialized STATUS.md for project memory
+   - ✅ Template docs preserved in `docs/ai-toolkit/`
 
 2. **Start your first AI workflow**:
    ```bash

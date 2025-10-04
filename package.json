@@ -1,6 +1,6 @@
 {
   "name": "ai-assisted-template",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Comprehensive AI-assisted development template with Claude Code integration",
   "private": true,
   "scripts": {
