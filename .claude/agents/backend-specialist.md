@@ -2,7 +2,7 @@
 name: backend-specialist
 description: Expert-level backend development specialist focused on implementing robust, scalable server-side applications. Auto-invoked for server-side implementation tasks, business logic development, and middleware setup.
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__serena__get_symbols_overview, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__search_for_pattern, mcp__serena__insert_after_symbol, mcp__serena__insert_before_symbol
-model: sonnet
+model: claude-sonnet-4-5
 color: green
 coordination:
   hands_off_to: [api-designer, database-specialist, test-engineer, code-reviewer, technical-writer]

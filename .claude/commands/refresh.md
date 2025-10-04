@@ -1,9 +1,20 @@
 ---
-description: Context-efficient project refresh using intelligent subagent delegation
-argument-hint: Optional mode (--analysis, --focus [area]) or default lightning refresh
-allowed-tools: ["Bash(git)", "Task"]
-model: "claude-3-5-sonnet-20241022"
+version: "0.3.0"
+created: "2025-09-17"
+last_updated: "2025-09-22"
+status: "active"
+target_audience: ["ai-assistants"]
+document_type: "command"
+tags: ["workflow", "context", "refresh", "efficiency"]
+description: "Context-efficient project refresh using intelligent subagent delegation"
+argument-hint: "[--analysis] [--focus AREA]"
+allowed-tools: ["Bash", "Task"]
+model: claude-sonnet-4-5
 ---
+
+# /refresh Command
+
+**Purpose**: Context-efficient project refresh using intelligent subagent delegation.
 
 Provide context refresh focused on dynamic project state while preserving main conversation tokens. Assumes CLAUDE.md capabilities context already available.
 
@@ -64,9 +75,20 @@ Execute targeted dynamic analysis for specific domain:
 
 **Focus Mode**: Present subagent's domain-specific insights unchanged
 
+## Agent Coordination
+
+**Primary**: context-analyzer (for dynamic state analysis and pattern recognition)
+**Mode**: Subagent delegation using Task tool for context efficiency
+
 ## Context Efficiency
 
 - Lightning: ~300 tokens (0.15% context)
 - Analysis: ~2-3k tokens (1.5% context)
 - Focus: ~1-2k tokens (1% context)
 - Previous approach: 58k tokens (29% context)
+
+## Examples
+
+**Quick refresh**: `/refresh` → Lightning mode → Basic status summary
+**Deep analysis**: `/refresh --analysis` → context-analyzer subagent → Comprehensive insights
+**Focused analysis**: `/refresh --focus git` → Targeted git analysis → Specific insights

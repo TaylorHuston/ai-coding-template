@@ -6,6 +6,71 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- **README Documentation Accuracy**: Fixed multiple incorrect commands and references in project documentation
+  - **Root README.md**: Fixed non-existent `npx ai-assisted-template setup` command references and updated GitHub URLs from placeholder "yourusername" to "TaylorHuston"
+  - **Usage Guide**: Fixed incorrect script paths and GitHub URL placeholders in `docs/ai-toolkit/README.md`:
+    - Updated GitHub URLs from "yourusername" to "TaylorHuston"
+    - Replaced non-existent `npm run demo` with `npx ai-assisted-template status`
+    - Fixed script paths: `setup-manager.sh` → `setup/setup-manager.sh`, `ai-status.sh` → `status/ai-status.sh`
+  - **Result**: All documentation now contains only valid commands and accurate file paths
+
+### Changed
+
+- **Documentation Structure Reorganization**: Improved documentation organization for better clarity and discoverability
+
+  - **Directory Renaming**:
+    - `docs/ai-tools/` → `docs/ai-toolkit/` - Better reflects the comprehensive AI development toolkit nature
+    - `docs/technical/` → `docs/project/` - More intuitive naming for project-specific documentation
+  - **Path Updates**: Updated all 50+ file references across codebase to use new directory structure
+  - **Cross-Reference Integrity**: Maintained all internal links and cross-references during restructuring
+  - **Package Distribution**: Updated NPM package configuration to include new documentation paths
+
+- **Command Header Standardization**: Implemented consistent header format across all custom commands for improved maintainability
+  - **Standardized YAML Frontmatter**: Unified structure with version, dates, status, audience, and model specifications
+  - **Agent Coordination Sections**: Clear specification of primary, supporting, and quality gate agents for each command
+  - **Consistent Titles**: Unified `/command-name Command` format across all 14 commands
+  - **Usage Documentation**: Standardized argument hints, examples, and usage patterns
+
+### Added
+
+## [0.7.0] - 2025-09-20
+
+### Added
+
+- **Template-Maintainer Agent**: Automated template lifecycle management and self-improvement system
+  - **Purpose**: Monitor user feedback, implement improvements, and automate publishing workflow
+  - **Capabilities**: Feedback analysis, template enhancement, NPM publishing, adoption monitoring
+  - **Command**: New `/improve` command with 4 modes (--feedback, --enhance, --publish, --monitor)
+  - **Intelligence**: Deep understanding of template structure, file categorization, and user propagation
+  - **Automation**: Complete publishing pipeline from user feedback to NPM distribution
+  - **Result**: Template can now evolve itself based on real user patterns and needs
+
+### Fixed
+
+- **Interactive Project Brief Creation**: Fixed `/design --brief` command to conduct proper interactive discovery
+  - **Problem**: Command was jumping straight to document generation instead of asking discovery questions
+  - **Root Cause**: Agent system wasn't recognizing `brief-strategist` due to incorrect YAML frontmatter format
+  - **Solution**:
+    - Converted `brief-strategist.md` from markdown headers to proper YAML frontmatter format
+    - Updated `design.md` command to explicitly mandate brief-strategist agent for `--brief` flag
+    - Added 6-step interactive discovery process with structured questioning
+  - **Result**: `/design --brief` now asks questions one at a time and only generates project brief after complete discovery
+
+## [0.6.4] - 2025-09-19
+
+### Fixed
+
+- **NPM Binary Resolution**: Fixed npx command not working from within repository directories
+  - **Problem**: `npx ai-assisted-template init` failed with "ai-template: not found" when run from repo subdirectories
+  - **Solution**: Added `ai-assisted-template` binary name to package.json alongside existing `ai-template`
+  - **Result**: Both commands now work everywhere: `npx ai-assisted-template init` and `npx -p ai-assisted-template ai-template init`
+
+## [0.6.0] - [0.6.3] - 2025-09-19
+
+Missing, issues with Claude Code prematurely publishing NPM versions and burning these version numbers.
+
 ## [0.5.4] - 2025-09-19
 
 ### Fixed
@@ -51,7 +116,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - **Documentation Consolidation**: Streamlined documentation structure
-  - Consolidated MCP documentation to single authoritative source in `docs/ai-tools/setup/mcp-setup.md`
+  - Consolidated MCP documentation to single authoritative source in `docs/ai-toolkit/setup/mcp-setup.md`
   - Removed references to deprecated `/feature-development` workflow
   - Updated design command to explicitly reference correct template location
   - Updated all file path references in documentation to reflect reorganized structure

@@ -15,9 +15,9 @@ maintainer: "technical-writer"
 **Purpose**: Comprehensive index of actual documentation files in the repository for efficient navigation and updates.
 
 **Scope**: This tree includes only actual documentation files from the three main documentation directories:
-- `docs/technical/` - Technical documentation (architecture, features, decisions, implementations)
+- `docs/project/` - Technical documentation (architecture, features, decisions, implementations)
 - `docs/development/` - Development processes and guidelines (coding standards, workflows, testing)
-- `docs/ai-tools/` - AI assistant documentation (guides, reference, setup)
+- `docs/ai-toolkit/` - AI assistant documentation (guides, reference, setup)
 
 **Excluded**: Template files (`.resources/templates/`), example files (`.resources/examples/`), and `.claude/` template files are not included in this documentation tree as they serve as templates rather than actual documentation.
 
@@ -76,7 +76,7 @@ docs/
 ## AI Tools Documentation
 
 ```
-docs/ai-tools/
+docs/ai-toolkit/
 ├── README.md                           # AI tools and workflow system overview
 ├── system-context.md                  # System-wide context and integration patterns
 ├── guides/
@@ -141,7 +141,7 @@ docs/development/
 ## Technical Documentation
 
 ```
-docs/technical/
+docs/project/
 ├── README.md                           # Technical documentation overview and organization
 ├── api/
 │   └── README.md                      # API documentation index and standards
@@ -203,8 +203,8 @@ docs/archived/
 
 ### **AI Framework** (Essential for AI Development)
 - `.claude/agents/README.md` - Agent catalog
-- `docs/ai-tools/guides/comprehensive-agent-guide.md` - Complete agent usage guide
-- `docs/ai-tools/reference/commands.md` - Command reference
+- `docs/ai-toolkit/guides/comprehensive-agent-guide.md` - Complete agent usage guide
+- `docs/ai-toolkit/reference/commands.md` - Command reference
 - `CLAUDE.md` - AI instructions
 
 ### **Development Standards** (Quality & Process)
@@ -214,14 +214,14 @@ docs/archived/
 - `docs/development/workflows/README.md` - Development workflows
 
 ### **Technical Reference** (Architecture & Decisions)
-- `docs/technical/README.md` - Technical docs overview
-- `docs/technical/decisions/README.md` - ADR index
-- `docs/technical/architecture/README.md` - Architecture docs
+- `docs/project/README.md` - Technical docs overview
+- `docs/project/decisions/README.md` - ADR index
+- `docs/project/architecture/README.md` - Architecture docs
 - `STATUS.md` - Current project state
 
 ### **Setup & Integration** (Getting Started)
-- `docs/ai-tools/setup/quick-start.md` - Complete setup guide
-- `docs/ai-tools/setup/integration-guide.md` - Existing project integration
+- `docs/ai-toolkit/setup/quick-start.md` - Complete setup guide
+- `docs/ai-toolkit/setup/integration-guide.md` - Existing project integration
 - `.resources/scripts/README.md` - Automation scripts reference
 
 ## Maintenance Notes

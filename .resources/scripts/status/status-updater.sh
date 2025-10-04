@@ -179,7 +179,7 @@ tags: ["status", "project-memory", "context"]
 ## Technical Context
 
 ### Current Architecture Decisions
-- Implemented 3-tier documentation system (technical, development, ai-tools)
+- Implemented 3-tier documentation system (technical, development, ai-toolkit)
 - Standardized on 19 specialized AI agents for comprehensive coverage
 - Adopted 5-phase workflow: vision → feature → architect → plan → develop
 - Integrated multi-model AI consultation (Claude + Gemini) for critical decisions

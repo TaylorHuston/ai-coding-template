@@ -17,23 +17,23 @@ From simple code generator to intelligent development partner through the stream
 ### **🎯 Choose Your Entry Point**
 
 - **[👋 START HERE](./START-HERE.md)** - New user? Your 5-minute guided introduction
-- **[🤖 AI Workflow Commands](./docs/ai-tools/reference/commands.md)** - Let AI handle everything automatically
+- **[🤖 AI Workflow Commands](./docs/ai-toolkit/reference/commands.md)** - Let AI handle everything automatically
 - **[⚡ 2-Minute Demo](#quick-demo)** - See the value immediately
 
 ### **📚 Essential Navigation**
 
-- **[🔧 All Commands](./docs/ai-tools/reference/commands.md)** - Complete command reference
-- **[🤖 18 Specialist Agents](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Your expert team
-- **[🏗️ Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration guide
-- **[📋 AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Epic workflow patterns and best practices
+- **[🔧 All Commands](./docs/ai-toolkit/reference/commands.md)** - Complete command reference
+- **[🤖 18 Specialist Agents](./docs/ai-toolkit/guides/comprehensive-agent-guide.md)** - Your expert team
+- **[🏗️ Complete Setup](./docs/ai-toolkit/setup/quick-start.md)** - Full configuration guide
+- **[📋 AI Collaboration Guide](./docs/ai-toolkit/guides/ai-collaboration-guide.md)** - Epic workflow patterns and best practices
 
 ### **🚀 Getting Started**
 
 1. **[👋 START HERE](./START-HERE.md)** - 5-minute guided introduction
 2. **[⚡ Quick Demo](#quick-demo)** - See the workflow in action
-3. **[🏗️ Setup Guide](./docs/ai-tools/setup/quick-start.md)** - Complete configuration
-4. **[🤖 Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - 18 specialist team
-5. **[🤖 AI Commands](./docs/ai-tools/reference/commands.md)** - Start your AI-assisted workflow
+3. **[🏗️ Setup Guide](./docs/ai-toolkit/setup/quick-start.md)** - Complete configuration
+4. **[🤖 Agent System](./docs/ai-toolkit/guides/comprehensive-agent-guide.md)** - 18 specialist team
+5. **[🤖 AI Commands](./docs/ai-toolkit/reference/commands.md)** - Start your AI-assisted workflow
 
 ---
 
@@ -163,7 +163,7 @@ cd my-project
 - **Tool Integration**: Connects with Jira, Linear, Confluence, Notion
 - **Custom Configuration**: Generates tailored README and AI instructions
 
-**[Complete Setup Guide →](./docs/ai-tools/setup/quick-start.md)**
+**[Complete Setup Guide →](./docs/ai-toolkit/setup/quick-start.md)**
 
 ## Quick Start: Your First Workflow (5 Minutes)
 
@@ -204,7 +204,7 @@ cd my-project
 ./.resources/scripts/setup-manager.sh init-project
 # → Guided setup: project type, business context, external tools
 # → Professional README generation
-# → Template docs preserved in docs/ai-tools/
+# → Template docs preserved in docs/ai-toolkit/
 
 # OR: Quick setup (keeps template as-is)
 ./.resources/scripts/setup-manager.sh quick
@@ -219,7 +219,7 @@ cd my-project
 2. **Discovers your project** through guided questions
 3. **Integrates external tools** (Jira, Confluence, etc.)
 4. **Generates professional docs** tailored to your project type
-5. **Preserves template knowledge** in `docs/ai-tools/`
+5. **Preserves template knowledge** in `docs/ai-toolkit/`
 
 ### 2. Experience the Workflow
 
@@ -247,7 +247,7 @@ cd my-project
 
 ### 3. Learn the System
 
-**→ [Commands Reference](./docs/ai-tools/reference/commands.md)** - Master the four phases **→ [Agent System](./docs/ai-tools/guides/comprehensive-agent-guide.md)** - Understand your 18 specialists **→ [AI Collaboration Guide](./docs/ai-tools/guides/ai-collaboration-guide.md)** - Advanced AI patterns **→ [Complete Setup](./docs/ai-tools/setup/quick-start.md)** - Full configuration options
+**→ [Commands Reference](./docs/ai-toolkit/reference/commands.md)** - Master the four phases **→ [Agent System](./docs/ai-toolkit/guides/comprehensive-agent-guide.md)** - Understand your 18 specialists **→ [AI Collaboration Guide](./docs/ai-toolkit/guides/ai-collaboration-guide.md)** - Advanced AI patterns **→ [Complete Setup](./docs/ai-toolkit/setup/quick-start.md)** - Full configuration options
 
 ## How the Template Supports the Workflow
 
@@ -275,7 +275,7 @@ my-project/
 ├── docs/                      # Workflow Documentation Integration
 │   ├── technical/decisions/   # /architect Output: ADRs and technical decisions
 │   ├── technical/architecture/ # Auto-generated from implementations
-│   └── ai-tools/              # Workflow guides and references
+│   └── ai-toolkit/              # Workflow guides and references
 ├── .resources/scripts/                   # Workflow Automation Support
 │   ├── docs-manager.sh        # ADR generation, auto-documentation
 │   ├── quality-gates.sh       # /develop quality validation
@@ -296,7 +296,7 @@ Expert AI agents automatically coordinate throughout the workflow:
 - **Quality**: test-engineer, code-reviewer, security-auditor, performance-optimizer
 - **Operations**: devops-engineer, technical-writer, migration-specialist, refactoring-specialist, data-analyst, technical-writer
 
-**[Complete Agent Guide →](./docs/ai-tools/guides/comprehensive-agent-guide.md)**
+**[Complete Agent Guide →](./docs/ai-toolkit/guides/comprehensive-agent-guide.md)**
 
 ### Workflow Automation Infrastructure
 
@@ -356,7 +356,7 @@ The template provides **11 intelligently integrated commands** that orchestrate 
 /develop                         # Continue current epic task
 ```
 
-**→ [Complete Commands Reference](./docs/ai-tools/reference/commands.md)** - Detailed usage guide for all integrated commands
+**→ [Complete Commands Reference](./docs/ai-toolkit/reference/commands.md)** - Detailed usage guide for all integrated commands
 
 **Context Management**:
 
@@ -447,7 +447,7 @@ Integrate the workflow progressively into your existing codebase:
 curl -O [template-url]/workflow-integration.tar.gz && tar -xzf workflow-integration.tar.gz
 ```
 
-**[Complete Integration Guide →](./docs/ai-tools/setup/integration-guide.md)**
+**[Complete Integration Guide →](./docs/ai-toolkit/setup/integration-guide.md)**
 
 ## Why Teams Choose This Intelligent Integration
 
@@ -516,7 +516,7 @@ cp .resources/templates/docs/features/feature.template.md docs/my-feature.md
 cat .resources/examples/code/patterns/api-user-service.example.ts
 ```
 
-**[📖 Complete AI Workflow Guide →](./docs/ai-tools/reference/commands.md)**
+**[📖 Complete AI Workflow Guide →](./docs/ai-toolkit/reference/commands.md)**
 
 ## Contributing to the Workflow
 

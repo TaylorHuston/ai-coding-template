@@ -371,5 +371,5 @@ When creating or updating documentation:
 ## See Also
 
 - [Documentation Standards](./documentation-standards.md) - Overall documentation guidelines
-- [Architecture Documentation](../../technical/architecture/README.md) - System architecture patterns
+- [Architecture Documentation](../../project/architecture/README.md) - System architecture patterns
 - [Status Management](../../../STATUS.md) - Project status tracking

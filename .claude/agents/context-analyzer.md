@@ -2,7 +2,7 @@
 name: context-analyzer
 description: AUTOMATICALLY INVOKED before complex tasks to gather comprehensive project context including documentation, architecture patterns, existing code, and project status. This agent MUST BE USED PROACTIVELY before implementing features, making architectural changes, or starting multi-step development work. Provides enriched context to other agents for better decision-making.
 tools: Read, Grep, Glob, TodoWrite, mcp__serena__get_symbols_overview, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__search_for_pattern
-model: haiku
+model: claude-3-5-haiku-latest
 color: green
 coordination:
   hands_off_to: [project-manager, code-architect, frontend-specialist, backend-specialist, database-specialist]
@@ -28,7 +28,7 @@ Systematically discover and catalog:
 Priority 1 (Always Read):
 - STATUS.md - Current project state and priorities
 - CLAUDE.md - AI assistant instructions and patterns
-- docs/technical.md - System architecture and specifications
+- docs/project.md - System architecture and specifications
 - README.md - Project overview and setup
 - docs/vision.md / project-vision.md - Project vision and goals
 - docs/vision-template.md - Vision template for new projects
@@ -188,7 +188,7 @@ enriched_context:
 - **Deployment Architecture**: [How the system is deployed]
 
 ### Existing Architecture Decisions
-- [Key architectural decisions from docs/technical.md]
+- [Key architectural decisions from docs/project.md]
 - [Pattern choices and their rationale]
 - [Technology selection reasoning]
 

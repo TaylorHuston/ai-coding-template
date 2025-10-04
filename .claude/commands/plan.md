@@ -9,7 +9,7 @@ tags: ["workflow", "planning", "implementation"]
 description: "Implementation planning for epics, standalone tasks, and bugs with X.Y.Z task structure"
 argument-hint: "[--epic \"name\"] [--task \"###\"] [--misc \"task-id\"] [--bug \"bug-id\"] [--review-epic \"name\"] [--issue KEY]"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-opus-4-1"
+model: claude-opus-4-0
 ---
 
 # /plan Command
@@ -36,6 +36,12 @@ model: "claude-opus-4-1"
 /plan --bug "bug description"        # Create BUG-### with auto-incrementing number and interactive planning
 /plan --bug-review "BUG-001"         # Review existing bug fix plan
 ```
+
+## Agent Coordination
+
+**Primary**: project-manager (epic planning and task sequencing), test-engineer (testing strategy integration)
+**Supporting**: Domain specialists (frontend-specialist, backend-specialist, database-specialist) for complexity assessment
+**Quality**: code-reviewer (implementation validation), security-auditor (security requirements)
 
 ## Approach
 
@@ -76,11 +82,15 @@ model: "claude-opus-4-1"
 ### **For Epics**
 1. **Analyze epic context**: Review EPIC.md, existing tasks, and resources/ADR-*.md for full picture
 2. **Sequence tasks**: Order tasks by dependencies in EPIC.md "Implementation Phases"
-3. **Add implementation details**: Enhance each TASK.md with X.Y.Z numbered implementation tasks
-4. **Integrate testing strategy**: Add TDD/BDD requirements and create dedicated testing tasks
-5. **Coordinate agents**: Create HANDOFF.yml in each task directory for agent assignments
-6. **Plan quality gates**: Define completion criteria, coverage targets (95%+), and validation approaches
-7. **Discover missing tasks**: Identify coordination, infrastructure, and testing tasks needed
+3. **Assess task complexity**: Analyze each task for complexity indicators and decomposition needs
+   - Multi-domain integration, security requirements, database changes, external integrations
+   - Generate complexity scores and suggest decomposition for high-complexity tasks (≥5 points)
+   - Auto-suggest subtasks with appropriate agent assignments when needed
+4. **Add implementation details**: Enhance each TASK.md with X.Y.Z numbered implementation tasks
+5. **Integrate testing strategy**: Add TDD/BDD requirements and create dedicated testing tasks
+6. **Coordinate agents**: Create HANDOFF.yml in each task directory for agent assignments
+7. **Plan quality gates**: Define completion criteria, coverage targets (95%+), and validation approaches
+8. **Discover missing tasks**: Identify coordination, infrastructure, and testing tasks needed
 
 ### **For Interactive Standalone Tasks (Misc)**
 1. **Auto-generate ID**: Scan workbench/misc/ to find next available MISC-### number
@@ -90,13 +100,17 @@ model: "claude-opus-4-1"
    - Clarify scope, constraints, and acceptance criteria through conversation
    - Identify success metrics and validation approach
    - Determine required resources and dependencies
-4. **MANDATORY: Use templates**: Generate task structure using established templates:
+4. **Assess task complexity**: Analyze clarified requirements for complexity indicators
+   - Multi-domain work, security aspects, performance requirements, integrations
+   - Calculate complexity score and suggest decomposition if needed (≥5 points)
+   - Recommend breaking complex tasks into manageable subtasks with focused agents
+5. **MANDATORY: Use templates**: Generate task structure using established templates:
    - **TASK.md**: Use `.resources/templates/workflow/epic/task.template.md` with placeholder substitution
    - **HANDOFF.yml**: Use agent coordination template patterns
    - **RESEARCH.md**: Use research methodology template
-5. **Create implementation plan**: Develop detailed X.Y.Z task breakdown with checkboxes based on clarified requirements
-6. **Assign agents**: Determine appropriate agent assignments based on task type and complexity
-7. **Finalize planning**: Confirm plan with user and adjust based on feedback
+6. **Create implementation plan**: Develop detailed X.Y.Z task breakdown with checkboxes based on clarified requirements
+7. **Assign agents**: Determine appropriate agent assignments based on task type and complexity analysis
+8. **Finalize planning**: Confirm plan with user and adjust based on feedback
 
 ### **For Interactive Bug Planning**
 1. **Auto-generate ID**: Scan workbench/bugs/ to find next available BUG-### number
@@ -146,6 +160,7 @@ model: "claude-opus-4-1"
 - **After /architect**: Incorporates technical decisions (resources/ADR-*.md) into implementation approach
 - **Before /develop**: Provides detailed, sequenced implementation tasks with agent coordination
 - **Supports discovery**: Can add new tasks discovered during planning phase
+- **Intelligent decomposition**: Uses complexity analysis to suggest task breakdown when needed
 
 ### **Interactive Standalone Task Integration**
 **Position**: On-demand creation and planning, independent of epic workflow
@@ -166,6 +181,33 @@ model: "claude-opus-4-1"
 - **Rapid response**: Bug tracking and resolution planning in single session
 
 **Universal Principle**: All work types benefit from systematic planning and agent coordination.
+
+## Intelligent Task Complexity Analysis
+
+The `/plan` command integrates automatic complexity assessment using proven algorithms:
+
+### **Complexity Scoring System**
+- **Multi-domain integration** (+3 points): API + database, frontend + backend, UI + server
+- **Security implementation** (+2 points): Authentication, authorization, encryption, permissions
+- **Database schema changes** (+2 points): Migrations, schema modifications, data transformations
+- **External integrations** (+2 points): Third-party APIs, service connections, webhooks
+- **Performance optimization** (+2 points): Scaling, optimization, performance tuning
+- **UI/UX implementation** (+1 point): Component creation, interface design, responsive work
+- **Testing requirements** (+1 point): Test creation, validation, quality assurance
+
+### **Decomposition Recommendations**
+- **High complexity (≥5 points)**: Strong decomposition recommended with automatic subtask suggestions
+- **Medium complexity (3-4 points)**: Consider decomposition based on team capacity and timeline
+- **Low complexity (≤2 points)**: Task appropriately scoped for single agent execution
+
+### **Auto-Decomposition Patterns**
+- **API tasks**: Design specs → Business logic → Authentication → Testing
+- **Database tasks**: Schema design → Data access layer → Validation → Performance
+- **Frontend tasks**: Component architecture → UI implementation → State management → Responsive design
+- **Security tasks**: Threat modeling → Authentication → Authorization → Security testing
+- **Integration tasks**: API research → Client implementation → Error handling → Testing
+
+**Integration**: Complexity analysis runs automatically during task creation and provides intelligent agent assignment suggestions based on domain expertise requirements.
 
 ## Examples
 

@@ -105,6 +105,14 @@ agents:
       - code-quality.md
     description: "Performance analysis, optimization, monitoring"
 
+  template-maintainer:
+    guidelines:
+      - quality-standards.md
+      - security-guidelines.md
+      - git-workflow.md
+      - code-quality.md
+    description: "Template lifecycle management, NPM publishing, version management"
+
   refactoring-specialist:
     guidelines:
       - code-review-guidelines.md

@@ -1,11 +1,18 @@
 ---
-description: Comprehensive quality assessment with multi-agent coordination
-argument-hint: [assess|validate|audit|fix] [--scope SCOPE] [--depth DEPTH] [--focus FOCUS]
+version: "0.3.0"
+created: "2025-09-17"
+last_updated: "2025-09-22"
+status: "active"
+target_audience: ["ai-assistants"]
+document_type: "command"
+tags: ["workflow", "quality", "assessment", "validation"]
+description: "Comprehensive quality assessment with multi-agent coordination"
+argument-hint: "[assess|validate|audit|fix] [--scope SCOPE] [--depth DEPTH] [--focus FOCUS]"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-3-5-sonnet-20241022"
+model: claude-sonnet-4-5
 ---
 
-# Quality Assessment Command
+# /quality Command
 
 Unified quality management that orchestrates quality agents and validation scripts intelligently.
 
@@ -27,6 +34,12 @@ Unified quality management that orchestrates quality agents and validation scrip
 # Pre-commit quality check
 /quality validate --scope commit-ready
 ```
+
+## Agent Coordination
+
+**Primary**: code-reviewer (comprehensive quality analysis), security-auditor (security assessment), test-engineer (test validation)
+**Supporting**: performance-optimizer (performance analysis), refactoring-specialist (improvement suggestions), technical-writer (documentation quality)
+**Orchestration**: Intelligent coordination of validation scripts with agent oversight
 
 ## Commands
 
@@ -155,7 +168,7 @@ quality_dimensions:
 
 The `/quality` command integrates seamlessly with the core workflow:
 
-### During `/iterate` Phase
+### During `/develop` Phase
 - Automatic quality validation between tasks
 - Progressive quality gate enforcement
 - Context-aware quality recommendations

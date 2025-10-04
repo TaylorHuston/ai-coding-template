@@ -6,7 +6,7 @@ script_integration:
   primary_scripts: [validate-quality-gates.sh, remediation-advisor.sh]
   supporting_scripts: [validate-context.sh, linting tools, static analysis]
   invocation: "Automatically invoke quality validation scripts during code review"
-model: sonnet
+model: claude-sonnet-4-5
 color: yellow
 coordination:
   hands_off_to: [security-auditor, performance-optimizer, technical-writer, refactoring-specialist]

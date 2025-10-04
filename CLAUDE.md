@@ -1,7 +1,7 @@
 ---
 version: "0.2.1"
 created: "2025-08-21"
-last_updated: "2025-09-18"
+last_updated: "2025-09-19"
 status: "active"
 target_audience: ["ai-assistants"]
 document_type: "specification"
@@ -38,7 +38,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 - **Tech Stack**: [Add the high level details of your tech stack here]
 - **External Links**: Project Management: [Add link to Jira/Linear/etc], Wiki: [Add link to Confluence/Notion/etc]
 - **Project Brief**: `docs/project-brief.md` - Contains problem statement, solution approach, and core features
-- **Documentation Structure**: Three-tier system (docs/technical/, docs/development/, docs/ai-tools/)
+- **Documentation Structure**: Three-tier system (docs/project/, docs/development/, docs/ai-toolkit/)
 - **Application Code**: All implementation code resides in `src/` following standard project structure
 - **Active Development Context**: `.claude/working/[issue-id]/` contains ephemeral work artifacts
 
@@ -46,11 +46,11 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 **Primary**: `/design` → `/architect` → `/plan` → `/develop`
 
-**Available Commands**: 14 total - Core workflow (design, architect, plan, develop), Quality (quality, review, security-audit, test-fix), Development (commit, merge-branch), Management (status, docs, refresh, update-docs)
+**Available Commands**: 14 total - Core workflow (design, architect, plan, develop), Quality (quality, review, security-audit, test-fix), Development (commit, merge-branch), Management (status, docs, refresh), Template (improve)
 
 **Automation Scripts**: 20+ specialized scripts for documentation, validation, setup, metrics, changelog management
 
-**Complete Reference**: [docs/ai-tools/reference/commands.md](./docs/ai-tools/reference/commands.md)
+**Complete Reference**: [docs/ai-toolkit/reference/commands.md](./docs/ai-toolkit/reference/commands.md)
 
 ## AI Autonomy Matrix
 
@@ -80,7 +80,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 **Agent Guidelines**: Each agent loads domain-specific guidelines from `docs/development/guidelines/` when starting work. See `.claude/agents/guideline-mapping.yml` for complete agent-to-guideline mappings.
 
-**Complete Guide**: [docs/ai-tools/guides/comprehensive-agent-guide.md](./docs/ai-tools/guides/comprehensive-agent-guide.md)
+**Complete Guide**: [docs/ai-toolkit/guides/comprehensive-agent-guide.md](./docs/ai-toolkit/guides/comprehensive-agent-guide.md)
 
 ## Universal Quality Standards
 
@@ -93,11 +93,11 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## Key References
 
-- **Commands**: [docs/ai-tools/reference/commands.md](./docs/ai-tools/reference/commands.md) - All available slash commands
-- **Agent Usage**: [docs/ai-tools/guides/comprehensive-agent-guide.md](./docs/ai-tools/guides/comprehensive-agent-guide.md) - Complete agent system guide
-- **AI Collaboration**: [docs/ai-tools/guides/ai-collaboration-guide.md](./docs/ai-tools/guides/ai-collaboration-guide.md) - Essential AI development patterns
-- **Tool Selection**: [docs/ai-tools/reference/tool-selection.md](./docs/ai-tools/reference/tool-selection.md) - Choosing the right tools
-- **Troubleshooting**: [docs/ai-tools/reference/troubleshooting.md](./docs/ai-tools/reference/troubleshooting.md) - Comprehensive problem-solving
+- **Commands**: [docs/ai-toolkit/reference/commands.md](./docs/ai-toolkit/reference/commands.md) - All available slash commands
+- **Agent Usage**: [docs/ai-toolkit/guides/comprehensive-agent-guide.md](./docs/ai-toolkit/guides/comprehensive-agent-guide.md) - Complete agent system guide
+- **AI Collaboration**: [docs/ai-toolkit/guides/ai-collaboration-guide.md](./docs/ai-toolkit/guides/ai-collaboration-guide.md) - Essential AI development patterns
+- **Tool Selection**: [docs/ai-toolkit/reference/tool-selection.md](./docs/ai-toolkit/reference/tool-selection.md) - Choosing the right tools
+- **Troubleshooting**: [docs/ai-toolkit/reference/troubleshooting.md](./docs/ai-toolkit/reference/troubleshooting.md) - Comprehensive problem-solving
 - **Current Status**: [STATUS.md](./STATUS.md) - Current project context and state
 
 ## Problem-Solving Framework
@@ -123,52 +123,36 @@ You are working with an AI coding template repository designed to optimize AI-as
 
 ## MCP Tool Decision Framework
 
-**Before any multi-file analysis or refactoring task, ALWAYS consider MCP tools first:**
+**Use available MCP tools efficiently based on task complexity:**
 
-### **Tool Selection Priority**
+### **Core MCP Tools Available**
 
-1. **Serena MCP**: Pattern analysis, symbol search, cross-references
+- **Context7**: Library documentation and examples
+- **Sequential Thinking**: Complex problem decomposition
+- **Playwright**: Browser automation for testing
+- **Serena**: Semantic code analysis (optional - see [Adding Serena Guide](./docs/ai-toolkit/setup/adding-serena.md))
 
-   - **Use for**: Finding duplicates, analyzing structure, mapping relationships, multi-file changes
-   - **Ask**: "Could pattern search reveal this systematically instead of manual analysis?"
-   - **Examples**: Consolidating files, finding references, analyzing code structure
+### **Tool Selection Guidelines**
 
-2. **Context7 MCP**: Library documentation and examples
+**For File Operations**:
+- **Template Search**: Always use Glob first
+- **Simple Search**: Use Grep for basic text search
+- **Complex Analysis**: Consider adding Serena for projects with 20+ implementation files
 
-   - **Use for**: Understanding best practices, finding canonical examples, external patterns
-   - **Ask**: "Are there established patterns or documentation for this approach?"
-   - **Examples**: API design patterns, framework usage, library integration
-
-3. **Sequential Thinking MCP**: Complex problem decomposition
-   - **Use for**: Breaking down multi-step optimization tasks, systematic analysis
-   - **Ask**: "Should I think through this systematically before acting?"
-   - **Examples**: Architecture refactoring, workflow optimization, complex debugging
+**For Problem Solving**:
+- **Library Integration**: Use Context7 for documentation and best practices
+- **Complex Planning**: Use Sequential Thinking for multi-step decomposition
+- **Web Testing**: Use Playwright for browser automation
 
 ### **MCP Tool Triggers**
 
-When you encounter these task types, **ALWAYS use MCP tools first**:
-
-- "across multiple files" → Serena pattern search
-- "find all instances" → Serena `search_for_pattern`
-- "consolidate" or "merge" → Serena duplication analysis
-- "update references" → Serena cross-reference mapping
-- "analyze structure" → Serena symbol analysis
-- "understand patterns" → Context7 + Serena combination
+- "across multiple files" → Glob/Grep (or Serena if available)
+- "find all instances" → Grep (or Serena for semantic search)
+- "understand patterns" → Context7 + search tools
 - "complex problem" → Sequential thinking decomposition
-- **"create new files" → ALWAYS search for templates first using Serena or Glob**
+- **"create new files" → Always search for templates using Glob first**
 
-### **Pre-Task Analysis Checklist**
-
-Before starting any significant task:
-
-- [ ] What MCP tools could provide systematic analysis?
-- [ ] Is this a pattern search problem disguised as manual work?
-- [ ] Would cross-reference mapping prevent errors?
-- [ ] Could automation find what I might miss manually?
-- [ ] Should I decompose this systematically first?
-- [ ] **Are there existing templates I should use instead of creating from scratch?**
-
-**Default Principle**: Choose systematic tool-based approach over manual analysis
+**Default Principle**: Start with essential tools (Glob/Grep/Context7), add specialized tools as project complexity grows
 
 ## Security & Quality Compliance
 

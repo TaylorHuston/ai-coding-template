@@ -2,7 +2,7 @@
 name: database-specialist
 description: AUTOMATICALLY INVOKED for all database-related work including schema design, query optimization, migrations, performance tuning, and data architecture. Use for database schema changes, complex queries, performance issues, data modeling, and database administration tasks.
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__gemini-cli__prompt, mcp__codex__prompt, mcp__serena__get_symbols_overview, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__search_for_pattern
-model: sonnet
+model: claude-sonnet-4-5
 color: cyan
 coordination:
   hands_off_to: [backend-specialist, test-engineer, code-reviewer, performance-optimizer, migration-specialist]

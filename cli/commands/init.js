@@ -269,6 +269,25 @@ class TemplateInitializer {
       }
     }
 
+    // Special handling for .mcp.json - use template version
+    try {
+      const mcpTemplateSource = path.join(this.templatePath, '.resources/templates/config/mcp.template.json');
+      const mcpTarget = path.join(this.targetDir, '.mcp.json');
+
+      if (fs.existsSync(mcpTemplateSource) && !fs.existsSync(mcpTarget)) {
+        this.ensureDirectoryExists(path.dirname(mcpTarget));
+        fs.copyFileSync(mcpTemplateSource, mcpTarget);
+        results.configured++;
+
+        if (this.verbose) {
+          console.log(`   ⚙️  Configured: .mcp.json (essential MCP servers)`);
+        }
+      }
+    } catch (error) {
+      results.errors.push(`Failed to configure .mcp.json: ${error.message}`);
+      console.log(`   ❌ Failed: .mcp.json`);
+    }
+
     return results;
   }
 

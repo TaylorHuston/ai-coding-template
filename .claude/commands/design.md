@@ -9,7 +9,7 @@ tags: ["workflow", "design", "vision", "features", "non-technical", "epic"]
 allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "TodoWrite"]
 argument-hint: "[--brief|--epic \"name\"|--task \"name\" [--epic \"epic-name\"]|--review]"
 description: "Create and document non-technical project aspects from vision to epic structure with user stories"
-model: "claude-opus-4-1"
+model: claude-opus-4-0
 ---
 
 # /design Command
@@ -111,12 +111,20 @@ model: "claude-opus-4-1"
 
 ## Agent Coordination
 
+**Agent Usage by Command Mode**:
+
+### `/design --brief` (Project Brief Creation)
+**ALWAYS invoke brief-strategist agent** - Mandatory for all project brief creation
+- **brief-strategist**: Conducts interactive discovery process with structured questioning
+- **Workflow**: Agent asks one question at a time, waits for responses, completes all 6 discovery phases before generating brief
+- **NO direct generation**: Brief must only be created after complete interactive discovery
+
+### `/design --epic` and `/design --task` (Epic/Task Creation)
 **Primary Approach**: Direct conversation with user, no specific agents required
 
 **Supporting Consultation** (when beneficial):
-
 - **project-manager**: For complex multi-feature design coordination
-- **context-analyzer**: For understanding existing system requirements
+- **context-analyzer**: For understanding existing system requirements (skip on fresh template installations)
 - Any domain specialists for requirement validation and feasibility input
 
 **Key Principle**: Keep design phase non-technical - save implementation details for `/architect` phase.
@@ -148,7 +156,7 @@ model: "claude-opus-4-1"
 **Create epic with planned tasks**: `/design --epic "user-authentication"`
 **Add user story to epic**: `/design --task "User Registration" --epic "user-authentication"`
 
-*For detailed workflow examples, see [Design Workflow Examples Guide](../../docs/ai-tools/guides/design-workflow-examples.md)*
+*For detailed workflow examples, see [Design Workflow Examples Guide](../../docs/ai-toolkit/guides/design-workflow-examples.md)*
 
 ## Progressive Task Discovery
 
@@ -192,5 +200,5 @@ model: "claude-opus-4-1"
 
 ## Additional Resources
 
-- **[Design Workflow Examples](../../docs/ai-tools/guides/design-workflow-examples.md)** - Detailed epic and task creation examples
+- **[Design Workflow Examples](../../docs/ai-toolkit/guides/design-workflow-examples.md)** - Detailed epic and task creation examples
 - **[Epic Templates](../../.resources/templates/workflow/epic/)** - Template files for consistent structure

@@ -32,7 +32,7 @@ Project Root
 ├── docs/                       # Three-tier documentation system
 │   ├── technical/              # Technical documentation and ADRs
 │   ├── development/            # Development guidelines and workflows
-│   └── ai-tools/               # AI assistant documentation
+│   └── ai-toolkit/               # AI assistant documentation
 ├── STATUS.md                   # Project status and context preservation
 └── CLAUDE.md                  # Main AI assistant instructions
 ```
@@ -284,6 +284,6 @@ agents:
 ### Support Resources
 
 - [Agent Best Practices](agent-best-practices.md)
-- [AI Tools Reference](../docs/ai-tools/reference/)
+- [AI Tools Reference](../docs/ai-toolkit/reference/)
 - [Project Status](../STATUS.md)
-- [Technical Documentation](../docs/technical/)
+- [Technical Documentation](../docs/project/)

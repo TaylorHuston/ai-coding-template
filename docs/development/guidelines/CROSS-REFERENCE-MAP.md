@@ -26,7 +26,7 @@ This document maps all cross-references between guideline files to ensure link i
 
 ### Incorrect Path References (Now Fixed)
 - `../documentation-guidelines.md` → `./documentation-standards.md`
-- `../architecture/README.md` → `../../technical/architecture/README.md`
+- `../architecture/README.md` → `../../project/architecture/README.md`
 - `../STATUS.md` → `../../../STATUS.md`
 
 ## 📊 Current Cross-Reference Matrix
@@ -55,12 +55,12 @@ This document maps all cross-references between guideline files to ensure link i
 
 | Source File | External References |
 |-------------|-------------------|
-| **README.md** | `../README.md`, `../../ai-tools/README.md`, `../../technical/README.md` |
-| **ai-collaboration-standards.md** | `../../ai-tools/guides/ai-collaboration-guide.md`, `../../ai-tools/guides/comprehensive-agent-guide.md`, `../../../CLAUDE.md` |
+| **README.md** | `../README.md`, `../../ai-toolkit/README.md`, `../../project/README.md` |
+| **ai-collaboration-standards.md** | `../../ai-toolkit/guides/ai-collaboration-guide.md`, `../../ai-toolkit/guides/comprehensive-agent-guide.md`, `../../../CLAUDE.md` |
 | **authentication-authorization.md** | `../README.md`, `../../../CLAUDE.md` |
 | **quality-standards.md** | `../workflows/benchmarking.md`, `../workflows/deployment-guide.md`, `../../../CLAUDE.md` |
 | **code-quality.md** | `../workflows/benchmarking.md`, `../workflows/deployment-guide.md`, `../../../CLAUDE.md` |
-| **visual-documentation.md** | `../../technical/architecture/README.md`, `../../../STATUS.md` |
+| **visual-documentation.md** | `../../project/architecture/README.md`, `../../../STATUS.md` |
 | **architectural-principles.md** | `../../../CLAUDE.md` |
 | **coding-standards.md** | `../../../CLAUDE.md` |
 | **git-workflow.md** | `../../../CLAUDE.md` |
@@ -79,10 +79,10 @@ This document maps all cross-references between guideline files to ensure link i
 - No broken internal cross-references remain
 
 ### ✅ All External References Validated
-- `../../technical/architecture/README.md` ✓ exists
+- `../../project/architecture/README.md` ✓ exists
 - `../../../STATUS.md` ✓ exists
 - `../../../CLAUDE.md` ✓ exists
-- All development and ai-tools README.md files ✓ exist
+- All development and ai-toolkit README.md files ✓ exist
 
 ### ✅ All Template References Validated
 - All 6 code review templates in `.resources/examples/code-review/` ✓ exist
@@ -113,7 +113,7 @@ This document maps all cross-references between guideline files to ensure link i
 grep -r "]\([^)]*\.md" docs/development/guidelines/ | grep -v "\.resources"
 
 # Validate external file existence
-ls -la docs/technical/architecture/README.md STATUS.md CLAUDE.md
+ls -la docs/project/architecture/README.md STATUS.md CLAUDE.md
 
 # Check template references
 find .resources/examples/code-review -name "*.md" | wc -l  # Should return 6

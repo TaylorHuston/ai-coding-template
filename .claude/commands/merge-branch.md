@@ -1,9 +1,30 @@
 ---
-description: Safe branch merging with deployment validation
-argument-hint: Optional target branch or merge options
-allowed-tools: ["Bash(git *)", "Bash(npm *)", "Bash(pnpm *)", "Bash(yarn *)", "Read", "Edit", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-3-5-sonnet-20241022"
+version: "0.3.0"
+created: "2025-09-17"
+last_updated: "2025-09-22"
+status: "active"
+target_audience: ["ai-assistants"]
+document_type: "command"
+tags: ["workflow", "git", "merging", "deployment"]
+description: "Safe branch merging with deployment validation"
+argument-hint: "[target-branch] [--strategy STRATEGY]"
+allowed-tools: ["Bash", "Read", "Edit", "Grep", "Glob", "TodoWrite", "Task"]
+model: claude-sonnet-4-5
 ---
+
+# /merge-branch Command
+
+**Purpose**: Safe branch merging with deployment validation and quality gates.
+
+## Usage
+
+```bash
+/merge-branch                        # Merge to main branch
+/merge-branch develop                # Merge to specific branch
+/merge-branch --strategy squash      # Use squash merge strategy
+```
+
+## Process
 
 Safely merge current feature branch into target branch by:
 
@@ -51,14 +72,14 @@ Safely merge current feature branch into target branch by:
 - **Health Verification**: Ensure application functions after merge (if applicable)
 - **Rollback Preparation**: Document rollback procedures if needed
 
-## Process
+## Agent Coordination
 
-- Validate current branch status and uncommitted changes
-- Run comprehensive pre-merge quality checks
-- Execute safe git merge workflow with conflict detection
-- Deploy merged code to appropriate environment (if configured)
-- Verify deployment health and application functionality (if applicable)
-- Update project documentation and close related issues (if configured)
-- Report final status with deployment URLs and next steps
+**Quality**: code-reviewer (pre-merge validation), test-engineer (test validation)
+**Deployment**: devops-engineer (deployment validation and monitoring)
+**Project**: project-manager (documentation updates and issue tracking)
 
-Arguments: $ARGUMENTS (optional target branch name, merge strategy, or deployment environment)
+## Examples
+
+**Basic merge**: `/merge-branch` → Quality checks → Merge to main → Validation
+**Specific target**: `/merge-branch develop` → Merge to develop branch → Deploy to staging
+**Squash merge**: `/merge-branch --strategy squash` → Squash commits → Clean merge

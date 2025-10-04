@@ -9,7 +9,7 @@ tags: ["workflow", "architecture", "decisions"]
 description: "Technical architecture decisions with Quick Mode (5-10 min) and Deep Mode (20+ min) options"
 argument-hint: "[epic-name] [--deep] [\"direct question\"]"
 allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-opus-4-1"
+model: claude-opus-4-0
 ---
 
 # /architect Command
@@ -52,7 +52,7 @@ Full analysis with detailed pros/cons, risks, and comprehensive ADR documentatio
 
 **ADR Locations**:
 - Epic-specific: `epics/[name]/resources/ADR-###-[topic].md`
-- Project-wide: `docs/technical/decisions/ADR-###-[topic].md`
+- Project-wide: `docs/project/decisions/ADR-###-[topic].md`
 
 **Task Discovery**: Creates `TASK-###-[name]/` directories for infrastructure needs
 

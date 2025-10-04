@@ -34,7 +34,7 @@ This example demonstrates the complete AI-assisted development workflow using th
 
 ### Generated Feature Context
 
-**Location**: `docs/technical/features/user-authentication-system.md`
+**Location**: `docs/project/features/user-authentication-system.md`
 
 ```markdown
 # Feature: User Authentication System
@@ -107,7 +107,7 @@ This example demonstrates the complete AI-assisted development workflow using th
 
 ### Generated Architecture Documentation
 
-**Location**: `docs/technical/architecture/user-authentication-architecture.md`
+**Location**: `docs/project/architecture/user-authentication-architecture.md`
 
 ```markdown
 # Architecture: User Authentication System
@@ -238,7 +238,7 @@ interface AuthActions {
 
 ### Generated Architecture Decision Record
 
-**Location**: `docs/technical/decisions/ADR-001-jwt-authentication-strategy.md`
+**Location**: `docs/project/decisions/ADR-001-jwt-authentication-strategy.md`
 
 ```markdown
 # ADR-001: JWT Authentication Strategy
@@ -854,9 +854,9 @@ current_task:
 ### Files Created/Modified
 
 **Documentation Generated**:
-- `docs/technical/features/user-authentication-system.md` (Feature context)
-- `docs/technical/architecture/user-authentication-architecture.md` (Technical design)
-- `docs/technical/decisions/ADR-001-jwt-authentication-strategy.md` (Architecture decision)
+- `docs/project/features/user-authentication-system.md` (Feature context)
+- `docs/project/architecture/user-authentication-architecture.md` (Technical design)
+- `docs/project/decisions/ADR-001-jwt-authentication-strategy.md` (Architecture decision)
 
 **Implementation Planning**:
 - `.claude/working/AUTH-123/PLAN.md` (Phased implementation plan)

@@ -1,6 +1,6 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-09-18 **Status**: Active - Updated for Epic-Driven Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 18 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-09-20 **Status**: Active - Updated for Epic-Driven Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 19 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 
@@ -109,6 +109,11 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
   - _Capabilities_: Safe migrations, compatibility assessment, incremental modernization
   - _Best For_: Framework upgrades, dependency updates, legacy modernization
   - _Model_: sonnet | _Color_: purple | _Auto-Invoked_: On-demand
+
+- **[template-maintainer](./template-maintainer.md)** - Template lifecycle management and automated publishing
+  - _Capabilities_: Feedback monitoring, template enhancement, NPM publishing, version management
+  - _Best For_: Template improvements, automated releases, user feedback analysis, publishing workflow
+  - _Model_: opus | _Color_: green | _Auto-Invoked_: Template enhancement and publishing tasks
 
 #### **Documentation & Communication**
 

@@ -2,7 +2,7 @@
 name: data-analyst
 description: Data processing, analysis, and reporting specialist. Focuses on data transformation, insights generation, and visualization preparation for business intelligence and decision support.
 tools: Read, Write, Bash, Grep, TodoWrite
-model: sonnet
+model: claude-sonnet-4-5
 color: cyan
 coordination:
   hands_off_to: [database-specialist, backend-specialist, technical-writer]
