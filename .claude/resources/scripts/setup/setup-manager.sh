@@ -804,6 +804,8 @@ EOF
     # 9. Clean up template-specific files
     rm -f "$PROJECT_ROOT/START-HERE.md" 2>/dev/null
     rm -f "$PROJECT_ROOT/TEMPLATES-EXAMPLES-INDEX.md" 2>/dev/null
+    rm -f "$PROJECT_ROOT/LICENSE" 2>/dev/null
+    log_success "Removed template LICENSE - add your own if publishing open source"
 
     log_success "Project initialization complete!"
     echo
@@ -817,9 +819,9 @@ EOF
     log_info "  🔄 Fresh git history - Ready for your first real commit"
     echo
     log_info "Next steps:"
-    log_info "  1. Customize README.md for your project"
-    log_info "  2. Start development with the AI workflow"
-    log_info "  3. Use: /vision → /feature → /architect → /plan → /develop"
+    log_info "  1. Add a LICENSE file if publishing as open source (MIT, Apache-2.0, GPL-3.0, etc.)"
+    log_info "  2. Customize README.md for your project"
+    log_info "  3. Start development with the AI workflow: /design → /architect → /plan → /develop"
     echo
     log_success "Happy building! 🚀"
 }
