@@ -172,6 +172,43 @@ Here's what a real workflow looks like:
 
 ---
 
+## 🤖 **Why Intelligent Agent Coordination Matters**
+
+### Before: Manual Script Management
+
+```bash
+# Traditional approach: Manual script coordination
+"Run ./.claude/resources/scripts/docs/docs-manager.sh auto-docs all"
+"Run ./.claude/resources/scripts/quality/validate-quality-gates.sh"
+"Run ./.claude/resources/scripts/docs/check-docs-links.js"
+
+# ❌ No intelligent coordination
+# ❌ Manual script selection
+# ❌ No context-aware execution
+# ❌ Fragmented workflow
+```
+
+### After: Intelligent Agent-Script Integration
+
+```bash
+# Unified intelligent commands
+/docs generate --type all
+# → technical-writer coordinates auto-docs-generator.js
+# → Intelligent content creation with codebase analysis
+
+/quality assess --depth deep
+# → Multi-agent coordination (code-reviewer, security-auditor, test-engineer)
+# → Automatic script orchestration based on context
+
+/status --detailed
+# → context-analyzer processes ai-status.sh output
+# → Intelligent insights and recommendations
+```
+
+**Result:** Intelligent script orchestration, context-aware execution, and unified workflow integration.
+
+---
+
 ## 🤖 **18 Specialized AI Agents**
 
 ### **Architecture & Planning**
