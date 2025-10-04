@@ -1,0 +1,6 @@
+{
+  "templateRepo": "~/dev/ai-coding-template",
+  "autoCommit": false,
+  "defaultMode": "bidirectional",
+  "verbose": false
+}

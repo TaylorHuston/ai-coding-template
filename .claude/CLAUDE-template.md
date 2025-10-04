@@ -1,37 +1,13 @@
 ---
 version: "0.2.1"
 created: "2025-08-21"
-last_updated: "2025-10-03"
+last_updated: "2025-09-19"
 status: "active"
 target_audience: ["ai-assistants"]
 document_type: "specification"
 priority: "critical"
 tags: ["ai-instructions", "workflow", "standards"]
 ---
-
-<!--
-╔══════════════════════════════════════════════════════════════════════╗
-║                    PROJECT-SPECIFIC CLAUDE.MD                        ║
-╚══════════════════════════════════════════════════════════════════════╝
-
-This file is YOUR project's customized CLAUDE.md.
-
-TEMPLATE REFERENCE: .claude/CLAUDE-template.md
-  - Template improvements sync to .claude/CLAUDE-template.md
-  - Compare versions: ./.claude/resources/scripts/template/template-sync.sh claude-diff
-  - Merge template improvements manually to preserve your customizations
-
-CUSTOMIZATION AREAS:
-  - Project Context section (tech stack, external links, etc.)
-  - Custom rules specific to your project
-  - Any project-specific workflows
-
-CORE RULES:
-  - These come from the template and should match .claude/CLAUDE-template.md
-  - When template updates core rules, review and merge manually
-  - Last compared with template: 2025-10-03
-
--->
 
 # CLAUDE.md - AI Assistant Instructions
 
@@ -45,6 +21,7 @@ You are working with an AI coding template repository designed to optimize AI-as
 - SOLID
 - Single Source Of Truth
 - NEVER CLAIM TO HAVE FIXED AN ISSUE OR HAVE COMPLETED A TASK UNTIL YOU HAVE A > 95% LEVEL OF CONFIDENCE THAT YOU'VE DONE SO
+- **TEST IMPROVEMENT**: Always verify fixes with actual tests before claiming completion
 
 ## Critical Rules
 

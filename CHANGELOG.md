@@ -35,6 +35,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
+- **CLAUDE.md Two-File System**: Preserves project customizations while allowing template improvements
+  - **Template Reference**: `.claude/CLAUDE-template.md` syncs with template improvements
+  - **Project Version**: Root `CLAUDE.md` never syncs, preserves customizations
+  - **Helper Commands**: `claude-diff` and `claude-status` for comparing versions
+  - **Tracking Header**: Clear guidance in root CLAUDE.md on template relationship
+  - **Manifest Update**: Root CLAUDE.md moved to "user" category (preserve strategy)
+  - **Result**: Users can customize CLAUDE.md while still receiving template improvements via manual merge
+
+- **Template Development Sync System**: Bidirectional sync for active template development while building real projects
+  - **Manifest-Driven**: Uses `.template-manifest.json` to identify template vs project files
+  - **Sync Commands**: `pull`, `push`, `status`, `diff` for complete workflow
+  - **Smart Detection**: Auto-detects template directory from common locations
+  - **Conflict Handling**: Timestamp-based conflict detection with force override option
+  - **Configuration**: `.template-dev.json` for user-specific settings (git-ignored)
+  - **Documentation**: Comprehensive guide at `docs/ai-toolkit/setup/template-development.md`
+  - **Use Case**: Discover improvements while building projects → sync to template → share across all projects
+  - **Result**: Contributors can actively develop template based on real-world experience
+
+- **GitHub Template Distribution**: Converted from NPM package to GitHub Template primary distribution
+  - **One-Click Setup**: Users click "Use this template" → instant repository creation
+  - **Git Isolation**: Each project gets clean git history, no template repo inheritance
+  - **Simpler Workflow**: No NPM package management, no complex CLI tools
+  - **Alternative: degit**: `npx degit TaylorHuston/ai-coding-template` for CLI users
+  - **Archived NPM**: Moved CLI tools to `.archived-npm/` with detailed README
+  - **Future Updater Tool**: NPM package repurposed for future template updater utility
+  - **Result**: GitHub Template standard for scaffolds, simpler user experience
+
 ## [0.7.0] - 2025-09-20
 
 ### Added
@@ -110,7 +137,7 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
   - Consolidated duplicate example files and testing patterns
   - Removed obsolete `.claude/working/` directory from previous workflow system
   - Deleted duplicate documentation files (MCP guide, collaborative workflow guide)
-  - Reorganized `.resources/` directory structure for better organization
+  - Reorganized `.claude/resources/` directory structure for better organization
   - Template now installs 306 files instead of 367 (exceeded target of ~290 files)
 
 ### Changed
@@ -193,7 +220,7 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 
 - **Documentation System Optimization**: Comprehensive optimization of development guidelines and documentation structure
   - Consolidated 19 guideline files down to 12 files (37% reduction) for improved AI processing efficiency
-  - Extracted code examples from guidelines to `.resources/examples/` directory with organized subdirectories
+  - Extracted code examples from guidelines to `.claude/resources/examples/` directory with organized subdirectories
   - Streamlined git-workflow.md from 913 to 308 lines (66% reduction) focusing on project-specific workflows
   - Added MCP Tool Decision Framework to CLAUDE.md to prevent manual analysis when systematic tools are available
   - Updated all cross-references and agent guideline mappings to reflect consolidated structure
@@ -260,7 +287,7 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 ### Changed
 
 - Templates updated to support epic workflow and task directories
-- Reorganized and consolidated templates, scripts and examples into .resources directory
+- Reorganized and consolidated templates, scripts and examples into .claude/resources directory
 - Standardized template name formats
 
 ### Removed
