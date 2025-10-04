@@ -29,18 +29,18 @@ git branch backup-before-ai-template
 git checkout -b integrate-ai-template
 
 # 3. Download core AI files
-curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/.claude/agents.tar.gz
+curl -O https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/.claude/agents.tar.gz
 tar -xzf agents.tar.gz
 
 # 4. Add context files
-curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/CLAUDE.md
-curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/STATUS.md
+curl -O https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/CLAUDE.md
+curl -O https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/STATUS.md
 mkdir -p docs
-curl -O https://raw.githubusercontent.com/yourusername/ai-coding-template/main/docs/project.md
+curl -O https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/docs/project.md
 
 # 5. Create minimal scripts
 mkdir -p scripts
-curl -o scripts/ai-status.sh https://raw.githubusercontent.com/yourusername/ai-coding-template/main/scripts/ai-status.sh
+curl -o scripts/ai-status.sh https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/scripts/ai-status.sh
 chmod +x scripts/ai-status.sh
 ```
 
@@ -101,11 +101,11 @@ mkdir -p .claude/{agents,commands,rules}
 
 # Download agents
 for agent in context-analyzer frontend-specialist backend-specialist security-auditor code-reviewer project-manager; do
-  curl -o .claude/agents/${agent}.md "https://raw.githubusercontent.com/yourusername/ai-coding-template/main/.claude/agents/${agent}.md"
+  curl -o .claude/agents/${agent}.md "https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/.claude/agents/${agent}.md"
 done
 
 # Get agent index
-curl -o .claude/agents/README.md "https://raw.githubusercontent.com/yourusername/ai-coding-template/main/.claude/agents/README.md"
+curl -o .claude/agents/README.md "https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/.claude/agents/README.md"
 ```
 
 ### Step 3: Create Context Files
@@ -157,11 +157,11 @@ EOF
 mkdir -p scripts/lib
 
 # Add utilities
-curl -o scripts/lib/colors.sh "https://raw.githubusercontent.com/yourusername/ai-coding-template/main/scripts/lib/colors.sh"
-curl -o scripts/lib/logging.sh "https://raw.githubusercontent.com/yourusername/ai-coding-template/main/scripts/lib/logging.sh"
+curl -o scripts/lib/colors.sh "https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/scripts/lib/colors.sh"
+curl -o scripts/lib/logging.sh "https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/scripts/lib/logging.sh"
 
 # Add AI status dashboard
-curl -o scripts/ai-status.sh "https://raw.githubusercontent.com/yourusername/ai-coding-template/main/scripts/ai-status.sh"
+curl -o scripts/ai-status.sh "https://raw.githubusercontent.com/TaylorHuston/ai-coding-template/main/scripts/ai-status.sh"
 chmod +x scripts/ai-status.sh
 
 # Test setup

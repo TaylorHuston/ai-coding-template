@@ -376,7 +376,7 @@ Create predictable interaction models:
 - **Quality Standards**: `quality-standards.md` - Quality metrics and validation approaches
 
 **Reference Materials**:
-- **Implementation Examples**: `.resources/examples/api/` - Working code examples for different API patterns
+- **Implementation Examples**: `.claude/resources/examples/api/` - Working code examples for different API patterns
 - **Cross-Reference Map**: `CROSS-REFERENCE-MAP.md` - Complete guideline interconnections
 - **Visual Documentation**: `visual-documentation.md` - Diagrams and architectural visualizations
 

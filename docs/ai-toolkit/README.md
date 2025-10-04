@@ -21,20 +21,32 @@ This guide provides comprehensive instructions for using the AI Coding Template 
 *"Just show me what this does"*
 
 ```bash
-# Copy this template and see it in action
-git clone https://github.com/TaylorHuston/ai-coding-template.git my-project && cd my-project
-npx ai-assisted-template status
+# Use GitHub Template and see it in action
+# 1. Click "Use this template" → Create repository → Clone
+git clone https://github.com/YOUR_USERNAME/my-project.git && cd my-project
+
+# 2. Or use degit for instant local setup
+npx degit TaylorHuston/ai-coding-template my-project && cd my-project
 ```
 
 ### 🛠️ **Path 2: Create Your Project** (10 minutes)
 *"I want to transform this template into MY project"*
 
 ```bash
-# Transform template into your real project
-git clone https://github.com/TaylorHuston/ai-coding-template.git my-awesome-project
+# Option 1: Use GitHub Template (Recommended)
+# 1. Click "Use this template" button → Create your repository
+# 2. Clone your new repository
+git clone https://github.com/YOUR_USERNAME/my-awesome-project.git
 cd my-awesome-project
+
+# Option 2: Use degit
+npx degit TaylorHuston/ai-coding-template my-awesome-project
+cd my-awesome-project
+git init
+
+# Then customize for your project
 rm -rf src/*  # Clear example application code
-./.resources/scripts/setup/setup-manager.sh init-project
+./.claude/resources/scripts/setup/setup-manager.sh init-project
 ```
 
 **🧠 What happens during setup:**
@@ -93,7 +105,7 @@ rm -rf src/*  # Clear example application code
 git clone template → manually replace README → guess configuration → lose context
 
 # AI Coding Template: Intelligent transformation
-./.resources/scripts/setup/setup-manager.sh init-project
+./.claude/resources/scripts/setup/setup-manager.sh init-project
 ```
 
 **🎯 Intelligence Features:**
@@ -157,6 +169,43 @@ Here's what a real workflow looks like:
 ```
 
 **Total time: 30 minutes of guided work vs. 3 hours of back-and-forth**
+
+---
+
+## 🤖 **Why Intelligent Agent Coordination Matters**
+
+### Before: Manual Script Management
+
+```bash
+# Traditional approach: Manual script coordination
+"Run ./.claude/resources/scripts/docs/docs-manager.sh auto-docs all"
+"Run ./.claude/resources/scripts/quality/validate-quality-gates.sh"
+"Run ./.claude/resources/scripts/docs/check-docs-links.js"
+
+# ❌ No intelligent coordination
+# ❌ Manual script selection
+# ❌ No context-aware execution
+# ❌ Fragmented workflow
+```
+
+### After: Intelligent Agent-Script Integration
+
+```bash
+# Unified intelligent commands
+/docs generate --type all
+# → technical-writer coordinates auto-docs-generator.js
+# → Intelligent content creation with codebase analysis
+
+/quality assess --depth deep
+# → Multi-agent coordination (code-reviewer, security-auditor, test-engineer)
+# → Automatic script orchestration based on context
+
+/status --detailed
+# → context-analyzer processes ai-status.sh output
+# → Intelligent insights and recommendations
+```
+
+**Result:** Intelligent script orchestration, context-aware execution, and unified workflow integration.
 
 ---
 
@@ -232,15 +281,15 @@ Here's what a real workflow looks like:
 - **[🤖 Agent Guide](./guides/comprehensive-agent-guide.md)** - Complete agent system guide
 
 ### **Key Directories**
-- **`.resources/templates/`** - Fill-in-the-blank starting points for any task
-- **`.resources/examples/`** - Working code examples to study and adapt
+- **`.claude/resources/templates/`** - Fill-in-the-blank starting points for any task
+- **`.claude/resources/examples/`** - Working code examples to study and adapt
 - **`.claude/agents/`** - 18 specialist agents for every domain
-- **`.resources/scripts/`** - 20+ automation scripts for development workflow
+- **`.claude/resources/scripts/`** - 20+ automation scripts for development workflow
 
 ### **Quick Commands**
 ```bash
 # Project status and health
-./.resources/scripts/status/ai-status.sh
+./.claude/resources/scripts/status/ai-status.sh
 
 # Find the right template or example
 cat .claude/references/templates-examples-tree.md

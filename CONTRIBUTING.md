@@ -4,9 +4,9 @@ Thank you for your interest in contributing to the AI Coding Template project! T
 
 ## Quick Start
 
-1. **Read the Documentation**: Start with [START-HERE.md](./START-HERE.md) for project overview
+1. **Read the Documentation**: Start with [README.md](./README.md) for project overview
 2. **Review Guidelines**: Check [docs/development/guidelines/](./docs/development/guidelines/) for detailed standards
-3. **Understand the Workflow**: Familiarize yourself with our [5-phase workflow](./docs/ai-toolkit/reference/commands.md)
+3. **Understand the Workflow**: Familiarize yourself with our [4-phase workflow](./docs/ai-toolkit/reference/commands.md)
 
 ## Types of Contributions
 
@@ -23,7 +23,7 @@ Thank you for your interest in contributing to the AI Coding Template project! T
 ### 📖 Documentation Improvements
 - Follow our [3-tier documentation system](./docs/ai-toolkit/system-context.md)
 - Use the established [metadata headers](./docs/development/guidelines/quality-standards.md)
-- Test all links using `./.resources/scripts/docs/link-validator.sh`
+- Test all links using `./.claude/resources/scripts/docs/link-validator.sh`
 
 ### 🔧 Code Contributions
 - Follow the project's established patterns and conventions
@@ -37,7 +37,7 @@ Thank you for your interest in contributing to the AI Coding Template project! T
 # Clone and setup the repository
 git clone <repository-url>
 cd ai-coding-template
-./.resources/scripts/setup/setup-manager.sh
+./.claude/resources/scripts/setup/setup-manager.sh
 ```
 
 ### 2. Workflow
@@ -114,8 +114,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 ### Resources
 - **Documentation**: [docs/](./docs/) directory contains comprehensive guides
-- **Examples**: [.resources/examples/](./.resources/examples/) show implementation patterns
-- **Scripts**: [.resources/scripts/](./.resources/scripts/) provide automation tools
+- **Examples**: [.claude/resources/examples/](./.claude/resources/examples/) show implementation patterns
+- **Scripts**: [.claude/resources/scripts/](./.claude/resources/scripts/) provide automation tools
 
 ### Support Channels
 - **GitHub Issues**: For bugs and feature requests

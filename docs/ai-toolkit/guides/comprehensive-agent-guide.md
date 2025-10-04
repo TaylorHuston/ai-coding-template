@@ -462,7 +462,7 @@ For each agent invocation, the system tracks:
 #### Development Agents
 ```bash
 # Track development agent effectiveness
-./.resources/scripts/metrics/query-metrics.sh --type agent --name "*specialist" --stats
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --name "*specialist" --stats
 
 # Key metrics:
 # - frontend-specialist: UI component reusability, accessibility compliance
@@ -473,7 +473,7 @@ For each agent invocation, the system tracks:
 #### Quality Agents
 ```bash
 # Analyze quality improvement impact
-./.resources/scripts/metrics/query-metrics.sh --type agent --name "*reviewer,*auditor,*engineer" --stats
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --name "*reviewer,*auditor,*engineer" --stats
 
 # Insights:
 # - test-engineer: Coverage improvement rates, test effectiveness
@@ -484,7 +484,7 @@ For each agent invocation, the system tracks:
 #### Architecture Agents
 ```bash
 # Review architectural decision support
-./.resources/scripts/metrics/query-metrics.sh --type agent --name "*architect,*manager,*analyzer" --stats
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --name "*architect,*manager,*analyzer" --stats
 
 # Analysis:
 # - code-architect: Decision quality, ADR generation success
@@ -497,7 +497,7 @@ For each agent invocation, the system tracks:
 #### Identify High-Value Agents
 ```bash
 # Find agents with best ROI
-./.resources/scripts/metrics/generate-report.sh --period 30d --type agent-effectiveness
+./.claude/resources/scripts/metrics/generate-report.sh --period 30d --type agent-effectiveness
 
 # Optimization strategies:
 # - High usage + High success = Expand adoption
@@ -508,7 +508,7 @@ For each agent invocation, the system tracks:
 #### Improve Agent Selection
 ```bash
 # Analyze agent effectiveness by context
-./.resources/scripts/metrics/query-metrics.sh --type agent --stats | \
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --stats | \
     jq '.[] | select(.triggered_by == "command") | {agent: .name, command_success: .command_correlation}'
 
 # Use insights to:
@@ -520,7 +520,7 @@ For each agent invocation, the system tracks:
 #### Team Performance Analysis
 ```bash
 # Weekly agent utilization report
-./.resources/scripts/metrics/generate-report.sh --period 7d --format agent-summary
+./.claude/resources/scripts/metrics/generate-report.sh --period 7d --format agent-summary
 
 # Team insights:
 # - Which agents does your team use most?
@@ -546,7 +546,7 @@ Use data to make informed agent choices:
 
 ```bash
 # Compare agent effectiveness for similar tasks
-./.resources/scripts/metrics/query-metrics.sh --type agent --task-similarity high --stats
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --task-similarity high --stats
 
 # Decision framework:
 # - Similar tasks with different agents = benchmark performance

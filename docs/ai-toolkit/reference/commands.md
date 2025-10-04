@@ -930,7 +930,7 @@ Every command execution tracks:
 #### View Command Effectiveness
 ```bash
 # Analyze command success patterns
-./.resources/scripts/metrics/query-metrics.sh --type command --stats --range 30d
+./.claude/resources/scripts/metrics/query-metrics.sh --type command --stats --range 30d
 
 # Sample insights:
 # - /architect: 95% success rate, 12 min avg duration
@@ -941,7 +941,7 @@ Every command execution tracks:
 #### Identify Workflow Bottlenecks
 ```bash
 # Find slowest workflow phases
-./.resources/scripts/metrics/generate-report.sh --period 7d --type detailed | grep -A5 "Command Analysis"
+./.claude/resources/scripts/metrics/generate-report.sh --period 7d --type detailed | grep -A5 "Command Analysis"
 
 # Optimization actions:
 # - If /plan is slow: Improve task breakdown templates
@@ -952,7 +952,7 @@ Every command execution tracks:
 #### Track Agent Performance in Commands
 ```bash
 # See which agents are most effective during command execution
-./.resources/scripts/metrics/query-metrics.sh --type agent --triggered-by command --stats
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --triggered-by command --stats
 
 # Decision framework:
 # - High-usage agents: Optimize for speed and accuracy
@@ -983,7 +983,7 @@ Use metrics to choose optimal commands for your team:
 
 ```bash
 # Weekly command effectiveness report
-./.resources/scripts/metrics/generate-report.sh --period 7d --type summary
+./.claude/resources/scripts/metrics/generate-report.sh --period 7d --type summary
 
 # Use insights for:
 # - Choosing between /architect quick vs deep mode

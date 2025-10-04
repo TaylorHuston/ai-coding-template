@@ -1,90 +1,91 @@
 # AI Coding Template
 
-## Intro
-
-This is an attempt to add structure and guidance around ai-assisted coding. It is very much in an alpha phase at the moment and I greatly appreciate any feedback on it. This is an experiment, I'm still figuring out the best way to give the AI tools all of the context and guide rails they need to work effectively without being too restrictive or trying to basically replicated Jira in your repo.
-
-[![NPM Version](https://img.shields.io/npm/v/ai-assisted-template)](https://www.npmjs.com/package/ai-assisted-template) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![GitHub Issues](https://img.shields.io/github/issues/TaylorHuston/ai-coding-template)](https://github.com/TaylorHuston/ai-coding-template/issues)
+[![Template](https://img.shields.io/badge/Template-Use%20This-brightgreen?style=for-the-badge)](https://github.com/TaylorHuston/ai-coding-template/generate) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![GitHub Issues](https://img.shields.io/github/issues/TaylorHuston/ai-coding-template)](https://github.com/TaylorHuston/ai-coding-template/issues)
 
 > Transform AI from a simple code generator into your intelligent architectural partner
 
-A comprehensive template system that provides AI assistants with the context, structure, and tools needed for systematic software development. Features 18 specialized AI agents, 4-phase workflow, automated quality gates, and comprehensive documentation systems.
+A comprehensive project template that provides AI assistants with the context, structure, and tools needed for systematic software development. Features 18 specialized AI agents, 4-phase workflow, automated quality gates, and comprehensive documentation systems.
 
 ## Table of Contents
 
 - [Background](#background)
-- [Install](#install)
+- [Quick Start](#quick-start)
 - [Usage](#usage)
-- [API](#api)
+- [Features](#features)
 - [Examples](#examples)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Background
 
-Traditional AI coding assistance lacks context and architectural consistency. Developers often find themselves in repetitive conversations where AI forgets previous decisions and makes isolated recommendations without understanding the broader system.
+### The AI Coding Problem
 
-This template solves these problems by providing:
+Traditional AI development suffers from critical issues:
+
+- **Context Amnesia** - AI forgets decisions and repeats questions across sessions
+- **Architectural Blindness** - No understanding of how pieces fit together in the broader system
+- **Pattern Inconsistency** - Each request generates different approaches without coherent design
+- **Quality Gaps** - No systematic validation between iterations or phases
+
+**Result:** Hours spent in repetitive explanations and inconsistent architectural decisions.
+
+### The Solution
+
+This template transforms AI from a reactive code generator into a proactive architectural partner by providing:
 
 - **Context Preservation** - Structured system for maintaining architectural knowledge across sessions
 - **Specialized Expertise** - 18 domain-specific AI agents for architecture, security, testing, and more
 - **Quality Assurance** - Built-in validation, testing, and compliance checking
 - **Systematic Workflow** - Four-phase development process from design to deployment
 
-The template works with any programming language and framework, focusing on AI collaboration patterns rather than specific technologies.
+The template works with **any programming language and framework**, focusing on AI collaboration patterns rather than specific technologies.
 
-## Install
+## Quick Start
 
-### NPM Package (Recommended)
+### Option 1: GitHub Template (Recommended)
+
+**One-click setup** - No installation required:
+
+1. Click **"Use this template"** button above (or [click here](https://github.com/TaylorHuston/ai-coding-template/generate))
+2. Name your new repository
+3. Clone and start coding:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/YOUR_PROJECT.git
+   cd YOUR_PROJECT
+   ```
+
+### Option 2: degit (CLI)
+
+For CLI enthusiasts:
 
 ```bash
-npx ai-assisted-template init my-project
+npx degit TaylorHuston/ai-coding-template my-project
 cd my-project
+git init
 ```
 
-### GitHub Template
-
-1. Click "Use this template" on GitHub
-2. Clone your new repository
-3. Start using the AI workflow:
-
-```bash
-git clone https://github.com/TaylorHuston/my-project.git
-cd my-project
-npx ai-assisted-template status
-```
-
-### Manual Installation
+### Option 3: Manual Clone
 
 ```bash
 git clone https://github.com/TaylorHuston/ai-coding-template.git my-project
 cd my-project
 rm -rf .git && git init
-npm install
 ```
 
 ## Usage
 
-### Quick Start
+### First Steps
 
-1. **Initialize your project** (transforms template into your project):
+1. **Customize for your project**:
+   - Update `CLAUDE.md` with your tech stack and project details
+   - Fill in `docs/project-brief.md` with your vision
+   - Configure `.mcp.json` for your AI tools
 
+2. **Start your first AI workflow**:
    ```bash
-   npx ai-assisted-template init
-   ```
-
-2. **Verify installation**:
-
-   ```bash
-   npx ai-assisted-template status
-   npx ai-assisted-template validate
-   ```
-
-3. **Start your first AI workflow**:
-   ```bash
-   /design --epic "user-authentication"
+   /design "create epic for user authentication"
    /architect user-authentication
-   /plan --issue AUTH-123
+   /plan "implement login flow"
    /develop
    ```
 
@@ -105,27 +106,31 @@ The template provides a systematic 4-phase development process:
 - **Documentation System** - Three-tier documentation with automated maintenance
 - **Template Library** - Reusable patterns for common development tasks
 
-## API
+## AI Workflow Commands
 
-### Command Line Interface
+Once you've set up the template, use these slash commands within your AI assistant sessions:
 
 ```bash
-# Project initialization and setup
-npx ai-assisted-template init [project-name]
-npx ai-assisted-template setup
-npx ai-assisted-template status
-npx ai-assisted-template validate
+# Core 4-phase workflow
+/design --epic "feature-name"       # Define epic structure and user stories
+/architect [feature-name]           # Explore technical approaches
+/plan --issue [ISSUE-ID]            # Create implementation roadmap
+/develop                            # Execute with quality gates
 
-# Development workflow (used within AI sessions)
-/design --epic "feature-name"
-/architect [feature-name]
-/plan --issue [ISSUE-ID]
-/develop
-/quality assess
-/docs generate
+# Quality and validation
+/quality assess                     # Comprehensive quality check
+/review                            # Code review with analysis
+/security-audit                    # Security assessment
+/test-fix                          # Auto-detect and fix test failures
+
+# Project management
+/status                            # Project status overview
+/docs generate                     # Generate documentation
+/commit                            # Create quality-checked commits
+/merge-branch                      # Safe branch merging
 ```
 
-### AI Agent System
+## AI Agent System
 
 The template provides 18 specialized agents:
 
@@ -169,17 +174,17 @@ The template can be configured through:
 - **`CLAUDE.md`** - AI assistant instructions and project context
 - **`docs/project-brief.md`** - Business requirements and scope
 - **`.claude/agents/`** - Agent-specific configurations and guidelines
-- **`.resources/scripts/`** - Automation and workflow scripts
+- **`.claude/resources/scripts/`** - Automation and workflow scripts
 
 ## Examples
 
-The template includes comprehensive examples in `.resources/examples/`:
+The template includes comprehensive examples in `.claude/resources/examples/`:
 
 ### Complete Workflow Example
 
 ```bash
 # See full epic development cycle
-cat .resources/examples/workflow/complete-feature-workflow-example.md
+cat .claude/resources/examples/workflow/complete-feature-workflow-example.md
 ```
 
 ### Project Types
@@ -198,6 +203,26 @@ cat .resources/examples/workflow/complete-feature-workflow-example.md
 ## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
+
+### Contributing Template Improvements
+
+**Discover improvements while building real projects? Share them back!**
+
+The template includes a bidirectional sync system that lets you contribute improvements you discover while using the template:
+
+```bash
+# Setup (one-time)
+./.claude/resources/scripts/template/template-sync.sh config
+
+# Make improvements in your project, then push to template
+./.claude/resources/scripts/template/template-sync.sh push
+
+# Review and commit in template repo
+cd ~/dev/ai-coding-template
+git commit -m "Improve agent prompts based on real usage"
+```
+
+See [Template Development Guide](./docs/ai-toolkit/setup/template-development.md) for complete workflow.
 
 ### Quick Contributing Steps
 

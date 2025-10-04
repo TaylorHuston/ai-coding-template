@@ -19,7 +19,7 @@ maintainer: "technical-writer"
 ## Root Level Template System
 
 ```text
-.resources/templates/
+.claude/resources/templates/
 ├── README.md                           # Master template system overview and usage guide
 ├── template-format-reference.md       # Template formatting standards and variable syntax
 ├── architecture/                      # Architecture decision templates
@@ -34,7 +34,7 @@ maintainer: "technical-writer"
 ## Architecture Templates
 
 ```text
-.resources/templates/architecture/
+.claude/resources/templates/architecture/
 ├── adr-detailed.template.md            # Detailed Architecture Decision Record template
 └── adr-fast-track.template.md          # Fast-track ADR template for quick decisions
 ```
@@ -42,7 +42,7 @@ maintainer: "technical-writer"
 ## CI/CD Templates
 
 ```text
-.resources/templates/ci-cd/
+.claude/resources/templates/ci-cd/
 ├── github-actions-link-validation.yml  # GitHub Actions workflow for link validation
 └── gitlab-ci-link-validation.yml       # GitLab CI pipeline for link validation
 ```
@@ -50,7 +50,7 @@ maintainer: "technical-writer"
 ## Documentation Templates
 
 ```text
-.resources/templates/docs/
+.claude/resources/templates/docs/
 ├── api/
 │   └── api.template.md                 # API documentation template
 ├── decisions/
@@ -70,7 +70,7 @@ maintainer: "technical-writer"
 ### Epic Templates
 
 ```text
-.resources/templates/workflow/epic/
+.claude/resources/templates/workflow/epic/
 ├── adr.template.md                     # Architecture Decision Record template for epics
 ├── epic.template.md                    # Main epic planning document template
 ├── handoff.template.yml                # Epic handoff configuration template
@@ -82,14 +82,14 @@ maintainer: "technical-writer"
 ### Architecture Templates
 
 ```text
-.resources/templates/workflow/architecture/
+.claude/resources/templates/workflow/architecture/
 └── architecture.template.md            # Architecture decision and design template
 ```
 
 ### Bug Templates
 
 ```text
-.resources/templates/workflow/bugs/
+.claude/resources/templates/workflow/bugs/
 ├── bug.template.md                     # Bug report and tracking template
 └── handoff.template.yml               # Bug handoff configuration template
 ```
@@ -97,7 +97,7 @@ maintainer: "technical-writer"
 ### Exploration Templates
 
 ```text
-.resources/templates/workflow/exploration/
+.claude/resources/templates/workflow/exploration/
 ├── conversation.template.md            # Decision exploration conversation template
 ├── notes.template.md                   # Exploration notes and insights template
 ├── specialist-inputs.template.md       # Specialist agent consultation inputs template
@@ -107,21 +107,21 @@ maintainer: "technical-writer"
 ### Deliverable Templates
 
 ```text
-.resources/templates/workflow/deliverables/
+.claude/resources/templates/workflow/deliverables/
 └── deliverable.template.md             # Standard deliverable template
 ```
 
 ### Implementation Templates
 
 ```text
-.resources/templates/workflow/implementation/
+.claude/resources/templates/workflow/implementation/
 └── implementation-record.template.md   # Implementation record template for completed work
 ```
 
 ### Other Workflow Templates
 
 ```text
-.resources/templates/workflow/
+.claude/resources/templates/workflow/
 ├── context-management.template.md      # Template for managing context across sessions
 └── decision-ledger.template.yml        # Decision tracking and ledger template
 ```
@@ -129,7 +129,7 @@ maintainer: "technical-writer"
 ## Code Templates
 
 ```text
-.resources/templates/code/
+.claude/resources/templates/code/
 ├── api/
 │   └── service.template.ts             # TypeScript API service template with best practices
 ├── components/
@@ -141,7 +141,7 @@ maintainer: "technical-writer"
 ## Configuration Templates
 
 ```text
-.resources/templates/config/
+.claude/resources/templates/config/
 └── claude-settings.template.json       # Claude Code settings template with MCP integration
 ```
 
@@ -150,7 +150,7 @@ maintainer: "technical-writer"
 ### Root Examples System
 
 ```text
-.resources/examples/
+.claude/resources/examples/
 ├── README.md                           # Examples system overview and navigation guide
 ├── api/                               # API-specific examples and patterns
 ├── architecture/                      # Architectural pattern examples
@@ -163,7 +163,7 @@ maintainer: "technical-writer"
 ### API Examples
 
 ```text
-.resources/examples/api/
+.claude/resources/examples/api/
 ├── deprecation-middleware.js           # API deprecation handling middleware
 ├── http-headers-versioning.md          # HTTP header versioning documentation
 ├── jwt-authentication.js              # JWT authentication implementation
@@ -174,7 +174,7 @@ maintainer: "technical-writer"
 ### Architecture Examples
 
 ```text
-.resources/examples/architecture/
+.claude/resources/examples/architecture/
 ├── kiss-principle.js                   # KISS principle implementation example
 ├── principle-conflicts.js              # Handling architectural principle conflicts
 └── solid-srp.ts                       # SOLID Single Responsibility Principle example
@@ -183,7 +183,7 @@ maintainer: "technical-writer"
 ### Code Review Examples
 
 ```text
-.resources/examples/code-review/
+.claude/resources/examples/code-review/
 ├── ai-generated-code-example.js        # Example of AI-generated code for review
 ├── ai-review-feedback.md               # AI code review feedback template
 ├── ci-workflow.yml                     # CI workflow for automated code review
@@ -202,7 +202,7 @@ maintainer: "technical-writer"
 ### Workflow Examples
 
 ```text
-.resources/examples/workflow/
+.claude/resources/examples/workflow/
 ├── README.md                           # Workflow examples overview and usage patterns
 ├── complete-feature-workflow-example.md  # End-to-end feature development example
 └── template-usage-guide.md            # Guide for using templates effectively
@@ -211,7 +211,7 @@ maintainer: "technical-writer"
 ### Code Pattern Examples
 
 ```text
-.resources/examples/code/patterns/
+.claude/resources/examples/code/patterns/
 ├── advanced-testing.example.js         # Advanced testing techniques and patterns
 ├── ai-ml-integration.example.js        # AI/ML integration patterns
 ├── api-auth.example.js                 # Authentication implementation patterns
@@ -249,7 +249,7 @@ maintainer: "technical-writer"
 ### Authentication Examples
 
 ```text
-.resources/examples/code/auth/
+.claude/resources/examples/code/auth/
 ├── abac-authorization.example.js       # Attribute-based access control implementation
 ├── jwt-security.example.js             # JWT token security and validation
 ├── mfa-implementation.example.js       # Multi-factor authentication patterns
@@ -263,7 +263,7 @@ maintainer: "technical-writer"
 ### Security Examples
 
 ```text
-.resources/examples/code/security/
+.claude/resources/examples/code/security/
 ├── ai-security.example.js              # AI-specific security patterns
 ├── api-security.example.js             # API security implementation
 ├── compliance-governance.example.js    # Compliance and governance patterns
@@ -289,7 +289,7 @@ maintainer: "technical-writer"
 ### Testing Examples
 
 ```text
-.resources/examples/code/testing/
+.claude/resources/examples/code/testing/
 ├── ai-testing.example.js               # AI system testing patterns
 ├── ci-cd-testing.example.yml           # CI/CD testing pipeline configuration
 ├── e2e-testing.example.js              # End-to-end testing patterns
@@ -302,14 +302,14 @@ maintainer: "technical-writer"
 ### Configuration Examples
 
 ```text
-.resources/examples/code/configs/
+.claude/resources/examples/code/configs/
 └── config-app-config.example.ts        # Application configuration patterns
 ```
 
 ### Documentation Examples
 
 ```text
-.resources/examples/docs/
+.claude/resources/examples/docs/
 ├── completed/                          # Completed documentation examples (empty)
 ├── references/                        # Reference documentation examples (empty)
 ├── document-length-guidelines.md       # Guidelines for document length and structure

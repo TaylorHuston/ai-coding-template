@@ -52,7 +52,7 @@ tags: ["code-review", "quality", "collaboration", "ai-assistance"]`
 - [ ] Documentation updated if needed
 - [ ] AI assistance properly documented
 
-**Example**: [Pre-review script](./../../../.resources/examples/code-review/pre-review-script-full.sh)
+**Example**: [Pre-review script](./../../../.claude/resources/examples/code-review/pre-review-script-full.sh)
 
 #### **2. Automated Review**
 
@@ -106,7 +106,7 @@ tags: ["code-review", "quality", "collaboration", "ai-assistance"]`
 - [ ] **Consistent Patterns**: Code follows established project patterns
 - [ ] **Minimal Complexity**: Complex logic is broken down into smaller pieces
 
-**Examples**: [Code structure patterns](./../../../.resources/examples/code-review/code-structure-examples.js)
+**Examples**: [Code structure patterns](./../../../.claude/resources/examples/code-review/code-structure-examples.js)
 
 #### **Error Handling and Edge Cases**
 
@@ -116,7 +116,7 @@ tags: ["code-review", "quality", "collaboration", "ai-assistance"]`
 - [ ] **Edge Cases**: Boundary conditions and edge cases are handled
 - [ ] **Graceful Degradation**: System behaves reasonably when dependencies fail
 
-**Examples**: [Error handling patterns](./../../../.resources/examples/code-review/error-handling-examples.js)
+**Examples**: [Error handling patterns](./../../../.claude/resources/examples/code-review/error-handling-examples.js)
 
 #### **Performance Considerations**
 
@@ -136,7 +136,7 @@ tags: ["code-review", "quality", "collaboration", "ai-assistance"]`
 - [ ] **CSRF Protection**: State-changing operations protected
 - [ ] **File Upload Security**: File types and sizes validated
 
-**Examples**: [Input validation patterns](./../../../.resources/examples/code-review/input-validation-examples.js)
+**Examples**: [Input validation patterns](./../../../.claude/resources/examples/code-review/input-validation-examples.js)
 
 #### **Authentication and Authorization**
 
@@ -164,7 +164,7 @@ tags: ["code-review", "quality", "collaboration", "ai-assistance"]`
 - [ ] **Integration Testing**: Tests verify component interactions
 - [ ] **Performance Testing**: Performance requirements validated
 
-**Examples**: [Test coverage patterns](./../../../.resources/examples/code-review/testing-examples.js)
+**Examples**: [Test coverage patterns](./../../../.claude/resources/examples/code-review/testing-examples.js)
 
 #### **Documentation Requirements**
 
@@ -187,13 +187,13 @@ tags: ["code-review", "quality", "collaboration", "ai-assistance"]`
 - [ ] **Documentation**: AI code is properly documented
 - [ ] **Human Understanding**: Code is readable and maintainable by humans
 
-**Examples**: [AI-generated code with validation](./../../../.resources/examples/code-review/ai-generated-code-example.js)
+**Examples**: [AI-generated code with validation](./../../../.claude/resources/examples/code-review/ai-generated-code-example.js)
 
 #### **AI Review Comments**
 
 When reviewing AI-generated code, use specific feedback:
 
-**Examples**: [AI review feedback templates](./../../../.resources/examples/code-review/ai-review-feedback.md)
+**Examples**: [AI review feedback templates](./../../../.claude/resources/examples/code-review/ai-review-feedback.md)
 
 ### **Human Oversight Protocol**
 
@@ -223,7 +223,7 @@ When reviewing AI-generated code, use specific feedback:
 
 #### **Focus on Code, Not Person**
 
-**Examples**: [Constructive feedback templates](./../../../.resources/examples/code-review/feedback-templates.md)
+**Examples**: [Constructive feedback templates](./../../../.claude/resources/examples/code-review/feedback-templates.md)
 
 #### **Provide Specific, Actionable Suggestions**
 
@@ -241,7 +241,7 @@ When reviewing AI-generated code, use specific feedback:
 
 #### **Response Template**
 
-**Examples**: [Review response template](./../../../.resources/examples/code-review/response-template.md)
+**Examples**: [Review response template](./../../../.claude/resources/examples/code-review/response-template.md)
 
 ## Review Tools and Automation
 
@@ -249,21 +249,21 @@ When reviewing AI-generated code, use specific feedback:
 
 #### **Static Analysis Integration**
 
-**Examples**: [CI/CD workflow configuration](./../../../.resources/examples/code-review/ci-workflow.yml)
+**Examples**: [CI/CD workflow configuration](./../../../.claude/resources/examples/code-review/ci-workflow.yml)
 
 #### **Review Metrics Dashboard**
 
-**Examples**: [Review metrics collection](./../../../.resources/examples/code-review/review-metrics.js)
+**Examples**: [Review metrics collection](./../../../.claude/resources/examples/code-review/review-metrics.js)
 
 ### **Review Templates**
 
 #### **Security Review Template**
 
-**Template**: [Security review checklist](./../../../.resources/examples/code-review/security-review-template.md)
+**Template**: [Security review checklist](./../../../.claude/resources/examples/code-review/security-review-template.md)
 
 #### **Performance Review Template**
 
-**Template**: [Performance review checklist](./../../../.resources/examples/code-review/performance-review-template.md)
+**Template**: [Performance review checklist](./../../../.claude/resources/examples/code-review/performance-review-template.md)
 
 ## Review Culture and Best Practices
 
@@ -306,7 +306,7 @@ When reviewing AI-generated code, use specific feedback:
 
 #### **Continuous Improvement**
 
-**Template**: [Review retrospective template](./../../../.resources/examples/code-review/review-retrospective.md)
+**Template**: [Review retrospective template](./../../../.claude/resources/examples/code-review/review-retrospective.md)
 
 ## Related Guidelines
 
