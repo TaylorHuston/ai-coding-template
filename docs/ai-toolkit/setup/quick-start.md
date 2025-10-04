@@ -39,20 +39,20 @@ choco install jq
 
 ```bash
 # 1. Clone the template
-git clone https://github.com/yourusername/ai-coding-template.git my-project
+git clone https://github.com/TaylorHuston/ai-coding-template.git my-project
 cd my-project
 
 # 2. Initialize for your project
 rm -rf .git && git init
 rm -rf src/*  # Clear example application code
-chmod +x scripts/*.sh
-./scripts/setup-manager.sh quick
+chmod +x .claude/resources/scripts/**/*.sh
+./.claude/resources/scripts/setup/setup-manager.sh quick
 
 # 3. Set up CHANGELOG (optional)
-cp templates/CHANGELOG.template.md CHANGELOG.md
+cp .claude/resources/templates/docs/project/CHANGELOG.template.md CHANGELOG.md
 
 # 4. Verify setup
-./scripts/ai-status.sh --check
+./.claude/resources/scripts/status/ai-status.sh --check
 ```
 
 ### First AI Session
@@ -88,9 +88,9 @@ cp templates/CHANGELOG.template.md CHANGELOG.md
 - **`docs/README.md`** - Documentation navigation hub
 
 ### Scripts Available
-- **`./scripts/ai-status.sh`** - Project status dashboard
-- **`./scripts/setup-manager.sh`** - Environment management
-- **`./scripts/docs-manager.sh`** - Documentation tools
+- **`./.claude/resources/scripts/status/ai-status.sh`** - Project status dashboard
+- **`./.claude/resources/scripts/setup/setup-manager.sh`** - Environment management
+- **`./.claude/resources/scripts/docs/docs-manager.sh`** - Documentation tools
 
 ## Next Steps
 
@@ -113,8 +113,7 @@ cp templates/CHANGELOG.template.md CHANGELOG.md
 
 ### Permission Issues
 ```bash
-chmod +x scripts/*.sh
-chmod +x scripts/lib/*.sh
+chmod +x .claude/resources/scripts/**/*.sh
 ```
 
 ### Git Issues
@@ -132,10 +131,10 @@ npm install     # If package.json exists
 ### Script Issues
 ```bash
 # Check script status
-./scripts/ai-status.sh --verbose
+./.claude/resources/scripts/status/ai-status.sh --verbose
 
 # Re-run setup
-./scripts/setup-manager.sh check
+./.claude/resources/scripts/setup/setup-manager.sh check
 ```
 
 ## Advanced Setup

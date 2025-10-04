@@ -220,11 +220,16 @@ No items currently blocked.
 
 ### Immediate Next Steps (Next 1-2 Sessions)
 
-1. **Complete GitHub Template conversion** - Finish updating all documentation references from NPM to GitHub Template
-2. **Deprecate NPM package** - Remove or archive NPM-specific files
-3. **Update package.json** - Prepare for future updater tool development
-4. **Create GitHub Template** - Enable template repository on GitHub
-5. **Test template usage** - Verify "Use this template" workflow works correctly
+1. **Test template sync system** - Verify bidirectional sync workflow between projects and template
+2. **Enable GitHub Template** - Configure repository as GitHub Template on GitHub
+3. **Documentation commands** - Test new /docs commands (docs-generate, docs-update, docs-sync, docs-validate, docs-health)
+4. **Merge feature branches** - Merge npm-archival and other completed work to develop/main
+
+### Recent Completions
+
+- ✅ **GitHub Template conversion** - NPM package archived to `.archived-npm/`, GitHub Template as primary distribution
+- ✅ **Directory reorganization** - `.resources/` moved to `.claude/resources/` for clarity
+- ✅ **Documentation consolidation** - README-DEV.md removed, content preserved in README.md and usage guide
 
 ### This Week's Goals
 
