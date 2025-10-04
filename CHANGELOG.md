@@ -6,6 +6,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.8.2] - 2025-10-04
+
+### Changed
+
+- **Init Script Improvements**: Enhanced project initialization with cleaner output and better file handling
+  - Removed license type prompt (LICENSE file is deleted anyway, users add their own)
+  - STATUS.md now created fresh instead of sed replacements (removes all template development history)
+  - Added .serena/ directory cleanup (template's code analysis cache shouldn't transfer to user projects)
+  - Added CONTRIBUTING.md cleanup (template-specific contributing guidelines don't apply to user projects)
+  - Result: Faster initialization, cleaner project files, no confusing template artifacts
+
+- **Architect Command Enhancement**: Added explicit `--question` flag for direct questions
+  - New flag: `--question "text"` for explicit Direct Question mode
+  - Backward compatible: Quoted strings still work without flag
+  - Eliminates quote-detection ambiguity for clearer user intent
+  - Updated argument-hint to show all available flags and modes
+  - Result: More predictable command parsing, better UX for quick architectural questions
+
+- **Commit Command Enhancement**: Added git workflow flags for common operations
+  - New flag: `--amend` - Amend last commit with safety checks (authorship, push status)
+  - New flag: `--no-verify` - Skip pre-commit hooks for emergency fixes
+  - New flag: `--interactive` - Interactive staging before commit
+  - Safety features: Warns if amending other developer's commits or pushed commits
+  - Result: Common git workflows accessible without remembering bash syntax
+
+- **Test-Fix Command Enhancement**: Added test execution optimization flags
+  - New flag: `--type TYPE` - Run only specific test type (unit/integration/e2e)
+  - New flag: `--failed-only` - Re-run only previously failed tests
+  - New flag: `--watch` - Watch mode for continuous testing on file changes
+  - Flags combinable: `--type unit --failed-only` for fastest iteration
+  - Result: Faster test iterations, developer productivity improvements
+
+### Removed
+
+- **Workbench STATUS.md**: Deleted outdated status file from NPM distribution phase
+  - File was stale and duplicated root STATUS.md
+  - Workbench directory is for active development only
+  - Root STATUS.md remains as authoritative project status
+
 ## [0.8.1] - 2025-10-04
 
 ### Changed

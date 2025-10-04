@@ -533,7 +533,6 @@ init_project() {
     local author_name=""
     local author_email=""
     local repo_url=""
-    local license_type="MIT"
 
     # Get current git user info if available
     if command -v git &> /dev/null; then
@@ -582,12 +581,6 @@ init_project() {
     # Repository URL
     read -p "$(log_color yellow "Repository URL (optional): ")" repo_url
 
-    # License
-    read -p "$(log_color yellow "License [$license_type]: ")" input_license
-    if [[ -n "$input_license" ]]; then
-        license_type="$input_license"
-    fi
-
     echo
     log_info "Project Details:"
     log_info "  Name: $project_name"
@@ -595,7 +588,6 @@ init_project() {
     log_info "  Description: $project_description"
     log_info "  Author: $author_name <$author_email>"
     log_info "  Repository: ${repo_url:-"Not specified"}"
-    log_info "  License: $license_type"
     echo
 
     read -p "$(log_color yellow "Continue with project initialization? [Y/n]: ")" confirm
@@ -654,7 +646,6 @@ init_project() {
         local safe_repo_url=$(escape_sed_replacement "${repo_url:-"https://github.com/yourusername/$project_slug"}")
         local safe_author_name=$(escape_sed_replacement "$author_name")
         local safe_author_email_section=$(escape_sed_replacement "$author_email_section")
-        local safe_license_type=$(escape_sed_replacement "$license_type")
 
         # Apply substitutions safely
         if sed -i \
@@ -666,7 +657,7 @@ init_project() {
             -e "s/{{DEV_COMMANDS}}/npm start/g" \
             -e "s/{{AUTHOR_NAME}}/$safe_author_name/g" \
             -e "s/{{AUTHOR_EMAIL_SECTION}}/$safe_author_email_section/g" \
-            -e "s/{{LICENSE_TYPE}}/$safe_license_type/g" \
+            -e "s/{{LICENSE_TYPE}}/MIT/g" \
             -e "s/{{CURRENT_YEAR}}/$current_year/g" \
             "$temp_file" && mv "$temp_file" "$PROJECT_ROOT/README.md"; then
             log_success "Created standard-readme compliant README.md from template"
@@ -707,7 +698,7 @@ PRs accepted.
 
 ## License
 
-$license_type © $current_year $author_name
+MIT © $current_year $author_name
 EOF
         log_warning "Template not found, created basic README"
     fi
@@ -742,7 +733,9 @@ EOF
     rm -f "$PROJECT_ROOT/START-HERE.md" 2>/dev/null
     rm -f "$PROJECT_ROOT/TEMPLATES-EXAMPLES-INDEX.md" 2>/dev/null
     rm -f "$PROJECT_ROOT/LICENSE" 2>/dev/null
-    log_success "Removed template-specific files (LICENSE, START-HERE.md, etc.)"
+    rm -f "$PROJECT_ROOT/CONTRIBUTING.md" 2>/dev/null
+    rm -rf "$PROJECT_ROOT/.serena" 2>/dev/null
+    log_success "Removed template-specific files (LICENSE, CONTRIBUTING.md, START-HERE.md, .serena/, etc.)"
 
     # 5. Clear git history and reinitialize
     log_info "Clearing git history and reinitializing..."
@@ -787,23 +780,74 @@ EOF
         log_success "Customized CLAUDE.md for your project"
     fi
 
-    # 7. Initialize STATUS.md with project details
-    if [[ -f "$PROJECT_ROOT/STATUS.md" ]]; then
-        log_info "Initializing project memory..."
+    # 7. Create clean STATUS.md for user's project
+    log_info "Creating project status file..."
 
-        local current_date=$(date +"%Y-%m-%d")
-        sed -i.bak \
-            -e "s|\[What you're currently working on\]|Setting up $project_name|g" \
-            -e "s|\[Planning/Development/Testing/Production/Maintenance\]|Development|g" \
-            -e "s|████████▒▒ 85%|██▒▒▒▒▒▒▒▒ 20%|g" \
-            -e "s|Multi-Model Intelligence Integration|$project_name Project Initialization|g" \
-            -e "s|2025-09-17|$current_date|g" \
-            -e "s|Enhanced AI-assisted development with cross-model validation|Initial project setup with AI-assisted development workflow|g" \
-            "$PROJECT_ROOT/STATUS.md"
+    local current_date=$(date +"%Y-%m-%d")
+    cat > "$PROJECT_ROOT/STATUS.md" << EOF
+---
+created: "$current_date"
+last_updated: "$current_date"
+status: "active"
+target_audience: ["developers", "ai-assistants"]
+document_type: "reference"
+priority: "high"
+tags: ["status", "project-memory", "context"]
+---
 
-        rm -f "$PROJECT_ROOT/STATUS.md.bak" 2>/dev/null
-        log_success "Initialized STATUS.md for project tracking"
-    fi
+# Project Status
+
+*This file serves as the project's memory - use it to quickly restore context when AI tools hit their context limits.*
+
+## Current Project State
+
+**Current Focus**: Initial project setup
+
+**Overall Status**: Development
+
+**Overall Progress**: ██▒▒▒▒▒▒▒▒ 20% Complete
+
+## Active Work
+
+### Current Task
+**Project Initialization** - Setting up $project_name
+- **Priority**: P1
+- **Target Date**: TBD
+- **Progress**: ██▒▒▒▒▒▒▒▒ 20% Complete
+- **Status**: In Progress
+- **Description**: Initial project setup with AI-assisted development workflow
+
+## Next Steps
+
+1. **Define project vision** - Create project-brief.md with problem statement and solution approach
+2. **Start first epic** - Use /design to create your first feature epic
+3. **Architecture planning** - Use /architect to explore technical approaches
+4. **Implementation planning** - Use /plan to create detailed task breakdown
+
+## Project Context
+
+**Name**: $project_name
+**Description**: $project_description
+**Started**: $current_date
+
+## Key Information
+
+*Add important project-specific information here as you learn it*
+
+- Architecture decisions tracked in docs/project/decisions/
+- Epic planning in workbench/epics/
+- Task execution follows /design → /architect → /plan → /develop workflow
+
+## Recent Decisions
+
+*Track important decisions here for quick context restoration*
+
+## Notes
+
+*Use this section for temporary notes and reminders*
+EOF
+
+    log_success "Created clean STATUS.md for project tracking"
 
     # 8. Create project tracking marker
     echo "$project_name" > "$PROJECT_ROOT/.template-initialized"
