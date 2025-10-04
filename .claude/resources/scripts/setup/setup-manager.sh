@@ -17,7 +17,7 @@ if [[ -f "$SCRIPTS_ROOT/lib/logging.sh" ]]; then
 fi
 
 # Configuration
-PROJECT_ROOT="$(cd "$SCRIPTS_ROOT/../.." && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPTS_ROOT/../../.." && pwd)"
 ENV_FILE="$PROJECT_ROOT/.env"
 ENV_LOCAL_FILE="$PROJECT_ROOT/.env.local"
 ENV_EXAMPLE="$PROJECT_ROOT/.env.example"
@@ -737,7 +737,14 @@ EOF
         log_warning "CHANGELOG template not found, skipping"
     fi
 
-    # 4. Clear git history and reinitialize
+    # 4. Clean up template-specific files before git commit
+    log_info "Cleaning up template-specific files..."
+    rm -f "$PROJECT_ROOT/START-HERE.md" 2>/dev/null
+    rm -f "$PROJECT_ROOT/TEMPLATES-EXAMPLES-INDEX.md" 2>/dev/null
+    rm -f "$PROJECT_ROOT/LICENSE" 2>/dev/null
+    log_success "Removed template-specific files (LICENSE, START-HERE.md, etc.)"
+
+    # 5. Clear git history and reinitialize
     log_info "Clearing git history and reinitializing..."
 
     if [[ -d "$PROJECT_ROOT/.git" ]]; then
@@ -800,12 +807,6 @@ EOF
 
     # 8. Create project tracking marker
     echo "$project_name" > "$PROJECT_ROOT/.template-initialized"
-
-    # 9. Clean up template-specific files
-    rm -f "$PROJECT_ROOT/START-HERE.md" 2>/dev/null
-    rm -f "$PROJECT_ROOT/TEMPLATES-EXAMPLES-INDEX.md" 2>/dev/null
-    rm -f "$PROJECT_ROOT/LICENSE" 2>/dev/null
-    log_success "Removed template LICENSE - add your own if publishing open source"
 
     log_success "Project initialization complete!"
     echo
