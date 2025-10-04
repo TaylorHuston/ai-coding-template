@@ -18,7 +18,7 @@ repos:
       # Link validation hook
       - id: validate-links
         name: Validate Documentation Links
-        entry: .resources/scripts/hooks/pre-commit-link-validation.sh
+        entry: .claude/resources/scripts/hooks/pre-commit-link-validation.sh
         language: script
         files: \.md$
         pass_filenames: false
@@ -27,7 +27,7 @@ repos:
       # Template usage validation
       - id: validate-templates
         name: Validate Template Usage
-        entry: .resources/scripts/validation/template-usage-check.sh
+        entry: .claude/resources/scripts/validation/template-usage-check.sh
         language: script
         files: ^workbench/.*\.(md)$
         pass_filenames: false
@@ -36,7 +36,7 @@ repos:
       # Quality gates (optional - can be resource intensive)
       - id: quality-gates
         name: Quality Gate Validation
-        entry: .resources/scripts/quality/validate-quality-gates.sh
+        entry: .claude/resources/scripts/quality/validate-quality-gates.sh
         args: [--continue-on-failure]
         language: script
         pass_filenames: false

@@ -28,7 +28,7 @@ The Metrics Collection System provides comprehensive tracking and analytics for 
   - Task completion rates and performance benchmarks
   - Model usage and token consumption analytics
 
-- **⚙️ Scripts**: Automation scripts in `.resources/scripts/`
+- **⚙️ Scripts**: Automation scripts in `.claude/resources/scripts/`
   - Execution frequency and success patterns
   - Resource usage and performance optimization opportunities
   - Integration patterns with commands and agents
@@ -50,20 +50,20 @@ The Metrics Collection System provides comprehensive tracking and analytics for 
 # To disable: set enabled: false in config
 
 # Verify metrics are working
-./.resources/scripts/metrics/generate-report.sh --period 7d --type summary
+./.claude/resources/scripts/metrics/generate-report.sh --period 7d --type summary
 ```
 
 ### Basic Usage
 
 ```bash
 # Generate summary report
-./.resources/scripts/metrics/generate-report.sh
+./.claude/resources/scripts/metrics/generate-report.sh
 
 # Query specific data
-./.resources/scripts/metrics/query-metrics.sh --type command --range 30d
+./.claude/resources/scripts/metrics/query-metrics.sh --type command --range 30d
 
 # Wrap script execution with metrics
-./.resources/scripts/metrics/wrap-script.sh setup ./setup-project.sh
+./.claude/resources/scripts/metrics/wrap-script.sh setup ./setup-project.sh
 ```
 
 ## Architecture
@@ -143,7 +143,7 @@ graph LR
 
 ```bash
 # In a custom command implementation:
-source .resources/scripts/metrics/command-metrics.sh
+source .claude/resources/scripts/metrics/command-metrics.sh
 
 track_command_start "/architect" "--deep epic-name"
 # ... command execution ...
@@ -154,7 +154,7 @@ track_command_end "completed" "opus" '["code-architect", "security-auditor"]' '[
 
 ```bash
 # When invoking agents:
-source .resources/scripts/metrics/agent-metrics.sh
+source .claude/resources/scripts/metrics/agent-metrics.sh
 
 track_agent_start "code-architect" "Design system architecture" "command" "/architect"
 # ... agent execution ...
@@ -165,10 +165,10 @@ track_agent_end "completed" "opus" '["Read", "Write", "Edit"]' 2500
 
 ```bash
 # Automatic wrapping:
-./.resources/scripts/metrics/wrap-script.sh quality ./validate-code.sh
+./.claude/resources/scripts/metrics/wrap-script.sh quality ./validate-code.sh
 
 # Manual tracking:
-source .resources/scripts/metrics/metrics-collector.sh
+source .claude/resources/scripts/metrics/metrics-collector.sh
 execute_with_metrics "./setup-project.sh" "setup" arg1 arg2
 ```
 
@@ -178,29 +178,29 @@ execute_with_metrics "./setup-project.sh" "setup" arg1 arg2
 
 ```bash
 # 7-day summary
-./.resources/scripts/metrics/generate-report.sh --period 7d --type summary
+./.claude/resources/scripts/metrics/generate-report.sh --period 7d --type summary
 
 # Detailed 30-day report in JSON
-./.resources/scripts/metrics/generate-report.sh --period 30d --type detailed --format json
+./.claude/resources/scripts/metrics/generate-report.sh --period 30d --type detailed --format json
 
 # Export to file
-./.resources/scripts/metrics/generate-report.sh --output metrics-report.html --format html
+./.claude/resources/scripts/metrics/generate-report.sh --output metrics-report.html --format html
 ```
 
 ### Query Examples
 
 ```bash
 # All failed executions in last 24 hours
-./.resources/scripts/metrics/query-metrics.sh --status failed --range 1d
+./.claude/resources/scripts/metrics/query-metrics.sh --status failed --range 1d
 
 # Statistics for specific agent
-./.resources/scripts/metrics/query-metrics.sh --type agent --name "code-architect" --stats
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --name "code-architect" --stats
 
 # Top 50 command executions
-./.resources/scripts/metrics/query-metrics.sh --type command --limit 50 --format csv
+./.claude/resources/scripts/metrics/query-metrics.sh --type command --limit 50 --format csv
 
 # Workflow analysis
-./.resources/scripts/metrics/query-metrics.sh --range 30d --stats --format json
+./.claude/resources/scripts/metrics/query-metrics.sh --range 30d --stats --format json
 ```
 
 ## Configuration
@@ -242,7 +242,7 @@ privacy:
 
 ```bash
 # Analyze command success rates and durations
-./.resources/scripts/metrics/query-metrics.sh --type command --stats --range 30d
+./.claude/resources/scripts/metrics/query-metrics.sh --type command --stats --range 30d
 
 # Sample insight: "/architect" has 95% success rate but "/plan" only 78%
 # Action: Investigate /plan command implementation for improvement opportunities
@@ -254,7 +254,7 @@ privacy:
 
 ```bash
 # Get agent utilization and performance metrics
-./.resources/scripts/metrics/query-metrics.sh --type agent --stats --format json | jq '.[]'
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --stats --format json | jq '.[]'
 
 # Sample insight: "code-architect" used 50% of time, "security-auditor" only 5%
 # Action: Focus optimization efforts on high-usage agents like code-architect
@@ -266,7 +266,7 @@ privacy:
 
 ```bash
 # Find operations taking longest to complete
-./.resources/scripts/metrics/query-metrics.sh --stats --sort duration --limit 10
+./.claude/resources/scripts/metrics/query-metrics.sh --stats --sort duration --limit 10
 
 # Sample insight: Database migration scripts average 15 minutes
 # Action: Investigate database optimization or script parallelization
@@ -278,7 +278,7 @@ privacy:
 
 ```bash
 # Analyze failed operations by type and context
-./.resources/scripts/metrics/query-metrics.sh --status failed --range 7d --format csv
+./.claude/resources/scripts/metrics/query-metrics.sh --status failed --range 7d --format csv
 
 # Sample insight: 80% of agent failures occur during "planning" phase
 # Action: Improve planning phase context passing or add validation
@@ -290,7 +290,7 @@ privacy:
 
 ```bash
 # Weekly productivity dashboard
-./.resources/scripts/metrics/generate-report.sh --period 7d --type detailed
+./.claude/resources/scripts/metrics/generate-report.sh --period 7d --type detailed
 
 # Key metrics to track:
 # - Commands executed per day (team velocity)
@@ -303,7 +303,7 @@ privacy:
 
 ```bash
 # Compare manual vs AI-assisted workflows
-./.resources/scripts/metrics/query-metrics.sh --range 30d --stats | \
+./.claude/resources/scripts/metrics/query-metrics.sh --range 30d --stats | \
     jq '.workflow_phases | group_by(.phase) | map({phase: .[0].phase, avg_duration: (map(.duration_ms) | add / length)})'
 
 # Use insights to:
@@ -326,19 +326,19 @@ privacy:
 1. **Weekly Review Cycle**
    ```bash
    # Generate weekly insights report
-   ./.resources/scripts/metrics/generate-report.sh --period 7d --output weekly-insights.html
+   ./.claude/resources/scripts/metrics/generate-report.sh --period 7d --output weekly-insights.html
    ```
 
 2. **Monthly Deep Dive**
    ```bash
    # Comprehensive monthly analysis
-   ./.resources/scripts/metrics/generate-report.sh --period 30d --type detailed --format json
+   ./.claude/resources/scripts/metrics/generate-report.sh --period 30d --type detailed --format json
    ```
 
 3. **Quarterly Strategy Review**
    ```bash
    # Export data for strategic planning
-   ./.resources/scripts/metrics/query-metrics.sh --range 90d --format csv --output quarterly-data.csv
+   ./.claude/resources/scripts/metrics/query-metrics.sh --range 90d --format csv --output quarterly-data.csv
    ```
 
 ## Integration with Existing Systems
@@ -347,7 +347,7 @@ privacy:
 
 ```bash
 # Add to .githooks/pre-commit
-source .resources/scripts/metrics/metrics-collector.sh
+source .claude/resources/scripts/metrics/metrics-collector.sh
 track_script_execution "pre-commit" "hooks" "$@"
 ```
 
@@ -355,14 +355,14 @@ track_script_execution "pre-commit" "hooks" "$@"
 
 ```bash
 # Track deployment metrics
-./.resources/scripts/metrics/wrap-script.sh release ./deploy.sh
+./.claude/resources/scripts/metrics/wrap-script.sh release ./deploy.sh
 ```
 
 ### Monitoring
 
 ```bash
 # Daily metrics summary
-./.resources/scripts/metrics/generate-report.sh --period 1d >> daily-metrics.log
+./.claude/resources/scripts/metrics/generate-report.sh --period 1d >> daily-metrics.log
 ```
 
 ## Troubleshooting
@@ -389,7 +389,7 @@ find .claude/metrics -name "*.jsonl" -exec jq . {} \; > /dev/null
 du -sh .claude/metrics/
 
 # Export for external analysis
-./.resources/scripts/metrics/generate-report.sh --format csv --output data-export.csv
+./.claude/resources/scripts/metrics/generate-report.sh --format csv --output data-export.csv
 ```
 
 ## Privacy and Security

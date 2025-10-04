@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-LINK_VALIDATOR="$PROJECT_ROOT/.resources/scripts/docs/link-validator.sh"
+LINK_VALIDATOR="$PROJECT_ROOT/.claude/resources/scripts/docs/link-validator.sh"
 
 # Logging functions
 log_info() {
@@ -102,7 +102,7 @@ main() {
         cat /tmp/pre-commit-link-validation.log
         echo ""
         log_error "Please fix broken links before committing"
-        log_info "Run '.resources/scripts/docs/link-validator.sh' for detailed analysis"
+        log_info "Run '.claude/resources/scripts/docs/link-validator.sh' for detailed analysis"
     fi
 
     # Cleanup

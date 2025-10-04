@@ -24,8 +24,8 @@ This document maps the dependencies between agents, commands, scripts, and templ
 
 - **Agents**: Specialized AI agents for different domains
 - **Commands**: Slash commands available in Claude Code
-- **Scripts**: Automation scripts in `.resources/scripts/`
-- **Templates**: File templates in `.resources/templates/`
+- **Scripts**: Automation scripts in `.claude/resources/scripts/`
+- **Templates**: File templates in `.claude/resources/templates/`
 
 ## Agent Dependencies
 

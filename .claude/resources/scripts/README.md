@@ -24,21 +24,21 @@ AI-friendly project status dashboard that provides comprehensive project informa
 **Usage**:
 ```bash
 # Basic status check
-./.resources/scripts/ai-status.sh
+./.claude/resources/scripts/ai-status.sh
 
 # AI-optimized format
-./.resources/scripts/ai-status.sh --ai-format
+./.claude/resources/scripts/ai-status.sh --ai-format
 
 # JSON output for programmatic access
-./.resources/scripts/ai-status.sh --json
+./.claude/resources/scripts/ai-status.sh --json
 
 # Markdown format for documentation
-./.resources/scripts/ai-status.sh --markdown --timestamp
+./.claude/resources/scripts/ai-status.sh --markdown --timestamp
 
 # Component-specific checks
-./.resources/scripts/ai-status.sh --git-only
-./.resources/scripts/ai-status.sh --project-only
-./.resources/scripts/ai-status.sh --env-only
+./.claude/resources/scripts/ai-status.sh --git-only
+./.claude/resources/scripts/ai-status.sh --project-only
+./.claude/resources/scripts/ai-status.sh --env-only
 ```
 
 **Features**:
@@ -56,18 +56,18 @@ Unified setup manager that consolidates all setup scripts into a single entry po
 **Usage**:
 ```bash
 # Quick setup with minimal configuration
-./.resources/scripts/setup-manager.sh quick
+./.claude/resources/scripts/setup-manager.sh quick
 
 # Complete development environment setup
-./.resources/scripts/setup-manager.sh full --verbose
+./.claude/resources/scripts/setup-manager.sh full --verbose
 
 # Setup specific components
-./.resources/scripts/setup-manager.sh env --force
-./.resources/scripts/setup-manager.sh git
-./.resources/scripts/setup-manager.sh tools
+./.claude/resources/scripts/setup-manager.sh env --force
+./.claude/resources/scripts/setup-manager.sh git
+./.claude/resources/scripts/setup-manager.sh tools
 
 # Verify setup completeness
-./.resources/scripts/setup-manager.sh check
+./.claude/resources/scripts/setup-manager.sh check
 ```
 
 **Features**:
@@ -85,19 +85,19 @@ Centralizes documentation operations and maintenance tasks.
 **Usage**:
 ```bash
 # Initialize documentation structure
-./.resources/scripts/docs-manager.sh init
+./.claude/resources/scripts/docs-manager.sh init
 
 # Check documentation health
-./.resources/scripts/docs-manager.sh health
+./.claude/resources/scripts/docs-manager.sh health
 
 # Validate documentation for commits
-./.resources/scripts/docs-manager.sh validate
+./.claude/resources/scripts/docs-manager.sh validate
 
 # Check and fix broken links
-./.resources/scripts/docs-manager.sh check --fix-auto --verbose
+./.claude/resources/scripts/docs-manager.sh check --fix-auto --verbose
 
 # Clean generated documentation files
-./.resources/scripts/docs-manager.sh clean
+./.claude/resources/scripts/docs-manager.sh clean
 ```
 
 **Features**:
@@ -116,19 +116,19 @@ Validates internal and external links in documentation files with comprehensive 
 **Usage**:
 ```bash
 # Basic link checking (internal links only)
-node .resources/scripts/check-docs-links.js
+node .claude/resources/scripts/check-docs-links.js
 
 # Check external links (slower but comprehensive)
-node .resources/scripts/check-docs-links.js --external
+node .claude/resources/scripts/check-docs-links.js --external
 
 # Generate JSON report
-node .resources/scripts/check-docs-links.js --format json --output link-report.json
+node .claude/resources/scripts/check-docs-links.js --format json --output link-report.json
 
 # Auto-fix obvious issues
-node .resources/scripts/check-docs-links.js --fix
+node .claude/resources/scripts/check-docs-links.js --fix
 
 # Quiet mode for CI/CD
-node .resources/scripts/check-docs-links.js --quiet
+node .claude/resources/scripts/check-docs-links.js --quiet
 ```
 
 **Features**:
@@ -148,7 +148,7 @@ Comprehensive documentation quality analyzer that generates detailed health repo
 **Usage**:
 ```bash
 # Run complete health analysis
-node .resources/scripts/docs-health.js
+node .claude/resources/scripts/docs-health.js
 ```
 
 **Features**:
@@ -168,16 +168,16 @@ Tracks documentation changes using Git history with detailed analysis.
 **Usage**:
 ```bash
 # Show changes from last 30 days
-node .resources/scripts/docs-changelog.js
+node .claude/resources/scripts/docs-changelog.js
 
 # Custom time range
-node .resources/scripts/docs-changelog.js --since "7 days ago"
+node .claude/resources/scripts/docs-changelog.js --since "7 days ago"
 
 # Filter by author
-node .resources/scripts/docs-changelog.js --author "username"
+node .claude/resources/scripts/docs-changelog.js --author "username"
 
 # Generate detailed report
-node .resources/scripts/docs-changelog.js --detailed --format json --output changelog.json
+node .claude/resources/scripts/docs-changelog.js --detailed --format json --output changelog.json
 ```
 
 **Features**:
@@ -196,19 +196,19 @@ Interactive CLI tool for generating documentation from templates.
 **Usage**:
 ```bash
 # Interactive template selection
-node .resources/scripts/generate-doc.js
+node .claude/resources/scripts/generate-doc.js
 
 # Use specific template
-node .resources/scripts/generate-doc.js --template feature
+node .claude/resources/scripts/generate-doc.js --template feature
 
 # Preview without writing
-node .resources/scripts/generate-doc.js --template api --preview
+node .claude/resources/scripts/generate-doc.js --template api --preview
 
 # Specify output file
-node .resources/scripts/generate-doc.js --template guide --output docs/development/guidelines/my-guide.md
+node .claude/resources/scripts/generate-doc.js --template guide --output docs/development/guidelines/my-guide.md
 
 # List available templates
-node .resources/scripts/generate-doc.js --list
+node .claude/resources/scripts/generate-doc.js --list
 ```
 
 **Features**:
@@ -314,7 +314,7 @@ Core metrics collection functions and utilities used by all other metrics script
 **Usage**: Typically sourced by other scripts rather than called directly:
 ```bash
 # In command or agent scripts
-source .resources/scripts/metrics/metrics-collector.sh
+source .claude/resources/scripts/metrics/metrics-collector.sh
 collect_metrics "command" "/architect" "completed" 12500 '["opus"]' '["code-architect"]'
 ```
 
@@ -328,16 +328,16 @@ Advanced task analysis with automatic complexity scoring and context-aware decom
 **Enhanced Usage (v0.2.0)**:
 ```bash
 # Standalone complexity analysis
-./.resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --description "Implement user auth"
+./.claude/resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --description "Implement user auth"
 
 # Integration with /plan command (automatic)
-./.resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --plan-integration --description "Multi-domain task"
+./.claude/resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --plan-integration --description "Multi-domain task"
 
 # Integration with /develop command for failure recovery (automatic)
-./.resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --develop-integration --failure-reason "too complex"
+./.claude/resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --develop-integration --failure-reason "too complex"
 
 # Auto-decomposition with immediate PLAN.md updates
-./.resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --auto-decompose
+./.claude/resources/scripts/workflow/smart-task-decomposition.sh --task P1.3.1 --auto-decompose
 ```
 
 **🎯 Enhanced Features (v0.2.0)**:
@@ -394,16 +394,16 @@ Suggests fixes and remediation steps for common validation failures and workflow
 **Usage**:
 ```bash
 # Analyze current issues and suggest fixes
-./.resources/scripts/workflow/remediation-advisor.sh
+./.claude/resources/scripts/workflow/remediation-advisor.sh
 
 # Get remediation for specific error
-./.resources/scripts/workflow/remediation-advisor.sh --error "validation-failed"
+./.claude/resources/scripts/workflow/remediation-advisor.sh --error "validation-failed"
 
 # Analyze specific file for issues
-./.resources/scripts/workflow/remediation-advisor.sh --file output.md
+./.claude/resources/scripts/workflow/remediation-advisor.sh --file output.md
 
 # Generate remediation report
-./.resources/scripts/workflow/remediation-advisor.sh --report remediation-plan.md
+./.claude/resources/scripts/workflow/remediation-advisor.sh --report remediation-plan.md
 ```
 
 **Features**:
@@ -423,19 +423,19 @@ Helps AI coding assistants generate and add changelog entries with proper catego
 **Usage**:
 ```bash
 # Analyze recent commits and suggest entries
-./.resources/scripts/ai-update-changelog.sh analyze --since '1 week ago'
+./.claude/resources/scripts/ai-update-changelog.sh analyze --since '1 week ago'
 
 # Add entry interactively
-./.resources/scripts/ai-update-changelog.sh add --category Added --reference ISSUE-001 --message "User authentication system"
+./.claude/resources/scripts/ai-update-changelog.sh add --category Added --reference ISSUE-001 --message "User authentication system"
 
 # Generate entry from specific commit
-./.resources/scripts/ai-update-changelog.sh from-commit HEAD
+./.claude/resources/scripts/ai-update-changelog.sh from-commit HEAD
 
 # Generate from issue file
-./.resources/scripts/ai-update-changelog.sh from-issue deliverables/auth/issues/001/ISSUE-001-plan.md
+./.claude/resources/scripts/ai-update-changelog.sh from-issue deliverables/auth/issues/001/ISSUE-001-plan.md
 
 # Audit for missing entries
-./.resources/scripts/ai-update-changelog.sh audit
+./.claude/resources/scripts/ai-update-changelog.sh audit
 ```
 
 **Features**:
@@ -453,16 +453,16 @@ Audits changelog for missing entries by analyzing git history and commits.
 **Usage**:
 ```bash
 # Basic audit from last release
-./.resources/scripts/ai-changelog-audit.sh
+./.claude/resources/scripts/ai-changelog-audit.sh
 
 # Audit specific time period
-./.resources/scripts/ai-changelog-audit.sh --since "v1.0.0"
+./.claude/resources/scripts/ai-changelog-audit.sh --since "v1.0.0"
 
 # Include all commit types
-./.resources/scripts/ai-changelog-audit.sh --include-all
+./.claude/resources/scripts/ai-changelog-audit.sh --include-all
 
 # Generate audit report
-./.resources/scripts/ai-changelog-audit.sh --report audit-report.md
+./.claude/resources/scripts/ai-changelog-audit.sh --report audit-report.md
 ```
 
 **Features**:
@@ -480,16 +480,16 @@ Validates changelog format, structure, and compliance with Keep a Changelog stan
 **Usage**:
 ```bash
 # Basic format validation
-./.resources/scripts/check-changelog.sh
+./.claude/resources/scripts/check-changelog.sh
 
 # Validate specific changelog file
-./.resources/scripts/check-changelog.sh --file CHANGELOG.md
+./.claude/resources/scripts/check-changelog.sh --file CHANGELOG.md
 
 # Check for unreleased section
-./.resources/scripts/check-changelog.sh --require-unreleased
+./.claude/resources/scripts/check-changelog.sh --require-unreleased
 
 # Validate before release
-./.resources/scripts/check-changelog.sh --validate-release
+./.claude/resources/scripts/check-changelog.sh --validate-release
 ```
 
 **Features**:
@@ -507,16 +507,16 @@ Automates the complete release process from changelog to git tagging and publish
 **Usage**:
 ```bash
 # Create new release
-./.resources/scripts/release.sh 1.2.0
+./.claude/resources/scripts/release.sh 1.2.0
 
 # Preview release without changes
-./.resources/scripts/release.sh 1.2.0 --dry-run
+./.claude/resources/scripts/release.sh 1.2.0 --dry-run
 
 # Release without pushing to remote
-./.resources/scripts/release.sh 1.2.0 --no-push
+./.claude/resources/scripts/release.sh 1.2.0 --no-push
 
 # Skip git tag creation
-./.resources/scripts/release.sh 1.2.0 --no-tag
+./.claude/resources/scripts/release.sh 1.2.0 --no-tag
 ```
 
 **Features**:
@@ -537,16 +537,16 @@ Validates quality gates between workflow phases to ensure standards compliance.
 **Usage**:
 ```bash
 # Validate current phase quality gates
-./.resources/scripts/validate-quality-gates.sh
+./.claude/resources/scripts/validate-quality-gates.sh
 
 # Validate specific phase
-./.resources/scripts/validate-quality-gates.sh --phase P1
+./.claude/resources/scripts/validate-quality-gates.sh --phase P1
 
 # Skip specific checks
-./.resources/scripts/validate-quality-gates.sh --skip-tests
+./.claude/resources/scripts/validate-quality-gates.sh --skip-tests
 
 # Generate validation report
-./.resources/scripts/validate-quality-gates.sh --report quality-report.md
+./.claude/resources/scripts/validate-quality-gates.sh --report quality-report.md
 ```
 
 **Features**:
@@ -565,16 +565,16 @@ Validates agent outputs for completeness, format, and quality standards.
 **Usage**:
 ```bash
 # Validate agent output file
-./.resources/scripts/validate-agent-output.sh --file agent-output.md
+./.claude/resources/scripts/validate-agent-output.sh --file agent-output.md
 
 # Validate specific agent type output
-./.resources/scripts/validate-agent-output.sh --agent backend-specialist --file output.md
+./.claude/resources/scripts/validate-agent-output.sh --agent backend-specialist --file output.md
 
 # Validate HANDOFF.yml entry
-./.resources/scripts/validate-agent-output.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
+./.claude/resources/scripts/validate-agent-output.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
 
 # Strict validation mode
-./.resources/scripts/validate-agent-output.sh --strict --file output.md
+./.claude/resources/scripts/validate-agent-output.sh --strict --file output.md
 ```
 
 **Features**:
@@ -592,16 +592,16 @@ Validates HANDOFF.yml and RESEARCH.md files for proper format and completeness.
 **Usage**:
 ```bash
 # Validate context files in current directory
-./.resources/scripts/validate-context.sh
+./.claude/resources/scripts/validate-context.sh
 
 # Validate specific HANDOFF.yml
-./.resources/scripts/validate-context.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
+./.claude/resources/scripts/validate-context.sh --handoff deliverables/auth/issues/001/HANDOFF.yml
 
 # Validate RESEARCH.md file
-./.resources/scripts/validate-context.sh --research deliverables/auth/issues/001/RESEARCH.md
+./.claude/resources/scripts/validate-context.sh --research deliverables/auth/issues/001/RESEARCH.md
 
 # Validate entire deliverable
-./.resources/scripts/validate-context.sh --deliverable auth/issues/001
+./.claude/resources/scripts/validate-context.sh --deliverable auth/issues/001
 ```
 
 **Features**:
@@ -622,16 +622,16 @@ Configures git hooks for automated validation and workflow enforcement.
 **Usage**:
 ```bash
 # Install all git hooks
-./.resources/scripts/setup-git-hooks.sh
+./.claude/resources/scripts/setup-git-hooks.sh
 
 # Install specific hook type
-./.resources/scripts/setup-git-hooks.sh --type pre-commit
+./.claude/resources/scripts/setup-git-hooks.sh --type pre-commit
 
 # Force overwrite existing hooks
-./.resources/scripts/setup-git-hooks.sh --force
+./.claude/resources/scripts/setup-git-hooks.sh --force
 
 # Uninstall all hooks
-./.resources/scripts/setup-git-hooks.sh --uninstall
+./.claude/resources/scripts/setup-git-hooks.sh --uninstall
 ```
 
 **Features**:
@@ -649,18 +649,18 @@ Generates architectural documentation automatically from codebase analysis and t
 **Usage**:
 ```bash
 # Generate all documentation types
-node .resources/scripts/auto-docs-generator.js --type all
+node .claude/resources/scripts/auto-docs-generator.js --type all
 
 # Generate specific documentation
-node .resources/scripts/auto-docs-generator.js --type tech-stack
-node .resources/scripts/auto-docs-generator.js --type system-overview
-node .resources/scripts/auto-docs-generator.js --type dependencies
+node .claude/resources/scripts/auto-docs-generator.js --type tech-stack
+node .claude/resources/scripts/auto-docs-generator.js --type system-overview
+node .claude/resources/scripts/auto-docs-generator.js --type dependencies
 
 # Use custom template
-node .resources/scripts/auto-docs-generator.js --type tech-stack --template custom-template.md
+node .claude/resources/scripts/auto-docs-generator.js --type tech-stack --template custom-template.md
 
 # Output to specific directory
-node .resources/scripts/auto-docs-generator.js --type all --output docs/generated/
+node .claude/resources/scripts/auto-docs-generator.js --type all --output docs/generated/
 ```
 
 **Features**:
@@ -748,61 +748,61 @@ Comprehensive logging system with multiple levels and output formats.
 ### Quick Start
 ```bash
 # Make scripts executable
-chmod +x .resources/scripts/*.sh
+chmod +x .claude/resources/scripts/*.sh
 
 # Run quick setup
-./.resources/scripts/setup-manager.sh quick
+./.claude/resources/scripts/setup-manager.sh quick
 
 # Check status
-./.resources/scripts/ai-status.sh
+./.claude/resources/scripts/ai-status.sh
 ```
 
 ### Full Development Setup
 ```bash
 # Complete setup with all tools
-./.resources/scripts/setup-manager.sh full --verbose
+./.claude/resources/scripts/setup-manager.sh full --verbose
 
 # Initialize documentation structure
-./.resources/scripts/docs-manager.sh init
+./.claude/resources/scripts/docs-manager.sh init
 
 # Run health checks
-node .resources/scripts/docs-health.js
+node .claude/resources/scripts/docs-health.js
 ```
 
 ## Common Workflows
 
 ### New Project Setup
-1. **Initial Setup**: `./.resources/scripts/setup-manager.sh full`
-2. **Initialize Docs**: `./.resources/scripts/docs-manager.sh init`
-3. **Verify Setup**: `./.resources/scripts/setup-manager.sh check`
-4. **Check Status**: `./.resources/scripts/ai-status.sh`
+1. **Initial Setup**: `./.claude/resources/scripts/setup-manager.sh full`
+2. **Initialize Docs**: `./.claude/resources/scripts/docs-manager.sh init`
+3. **Verify Setup**: `./.claude/resources/scripts/setup-manager.sh check`
+4. **Check Status**: `./.claude/resources/scripts/ai-status.sh`
 
 ### Documentation Maintenance
-1. **Health Check**: `node .resources/scripts/docs-health.js`
-2. **Link Validation**: `node .resources/scripts/check-docs-links.js --external`
-3. **Generate Content**: `node .resources/scripts/generate-doc.js`
-4. **Track Changes**: `node .resources/scripts/docs-changelog.js --since "1 week ago"`
+1. **Health Check**: `node .claude/resources/scripts/docs-health.js`
+2. **Link Validation**: `node .claude/resources/scripts/check-docs-links.js --external`
+3. **Generate Content**: `node .claude/resources/scripts/generate-doc.js`
+4. **Track Changes**: `node .claude/resources/scripts/docs-changelog.js --since "1 week ago"`
 
 ### Pre-Commit Validation
 ```bash
 # Validate documentation before commit
-./.resources/scripts/docs-manager.sh validate
+./.claude/resources/scripts/docs-manager.sh validate
 
 # Check all links
-node .resources/scripts/check-docs-links.js --quiet
+node .claude/resources/scripts/check-docs-links.js --quiet
 
 # Quick status check
-./.resources/scripts/ai-status.sh --git-only
+./.claude/resources/scripts/ai-status.sh --git-only
 ```
 
 ### CI/CD Integration
 ```bash
 # Status check for AI assistants
-./.resources/scripts/ai-status.sh --ai-format
+./.claude/resources/scripts/ai-status.sh --ai-format
 
 # Generate reports for artifacts
-node .resources/scripts/docs-health.js
-node .resources/scripts/check-docs-links.js --format json --output reports/links.json
+node .claude/resources/scripts/docs-health.js
+node .claude/resources/scripts/check-docs-links.js --format json --output reports/links.json
 ```
 
 ## Configuration
@@ -846,8 +846,8 @@ Most scripts support common options:
 #### Permission Denied
 ```bash
 # Make scripts executable
-chmod +x .resources/scripts/*.sh
-chmod +x .resources/scripts/lib/*.sh
+chmod +x .claude/resources/scripts/*.sh
+chmod +x .claude/resources/scripts/lib/*.sh
 ```
 
 #### Node.js Scripts Not Working
@@ -875,14 +875,14 @@ git config user.email "your.email@example.com"
 export COLOR_SUPPORT=true
 
 # Or disable colors
-./.resources/scripts/ai-status.sh --no-color
+./.claude/resources/scripts/ai-status.sh --no-color
 ```
 
 ### Debug Mode
 Enable verbose logging for troubleshooting:
 ```bash
 export LOG_LEVEL=DEBUG
-./.resources/scripts/setup-manager.sh full --verbose
+./.claude/resources/scripts/setup-manager.sh full --verbose
 ```
 
 ## Contributing
@@ -900,7 +900,7 @@ When adding new scripts:
 ```bash
 #!/bin/bash
 # Script description
-# Usage: ./.resources/scripts/script-name.sh [options]
+# Usage: ./.claude/resources/scripts/script-name.sh [options]
 
 set -e
 
@@ -922,7 +922,7 @@ These scripts are designed to work seamlessly with AI coding assistants:
 - **Consistent interfaces** across all scripts
 - **Machine-readable reports** for automated analysis
 
-Use `./.resources/scripts/ai-status.sh --ai-format` to get current project status in a format optimized for AI consumption.
+Use `./.claude/resources/scripts/ai-status.sh --ai-format` to get current project status in a format optimized for AI consumption.
 
 ---
 

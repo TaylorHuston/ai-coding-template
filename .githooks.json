@@ -45,7 +45,7 @@
       },
       "documentation-trigger": {
         "enabled": true,
-        "script": ".resources/scripts/hooks/documentation-trigger.sh",
+        "script": ".claude/resources/scripts/hooks/documentation-trigger.sh",
         "warning-only": true,
         "description": "Remind to use technical-writer agent for new documentation"
       },
@@ -57,8 +57,8 @@
           "tests/",
           "__tests__/",
           "spec/",
-          ".resources/examples/",
-          ".resources/templates/",
+          ".claude/resources/examples/",
+          ".claude/resources/templates/",
           "docs/",
           "*.test.*",
           "*.spec.*",
@@ -143,7 +143,7 @@
             "template-pattern": "^[a-z0-9-]+\\.template$"
           },
           "scripts": {
-            "paths": [".resources/scripts/**/*"],
+            "paths": [".claude/resources/scripts/**/*"],
             "pattern": "^[a-z0-9-]+(\\.sh|\\.js|\\.py)?$",
             "exceptions": []
           }
@@ -166,7 +166,7 @@
           "tests/",
           "docs/",
           ".github/",
-          ".resources/scripts/"
+          ".claude/resources/scripts/"
         ]
       },
       "docs-sync": {
@@ -194,7 +194,7 @@
             ".claude/references/",
             "src/",
             "lib/",
-            ".resources/scripts/"
+            ".claude/resources/scripts/"
           ],
           "medium": [
             "package.json",
@@ -204,7 +204,7 @@
           ],
           "low": [
             "config/",
-            ".resources/examples/"
+            ".claude/resources/examples/"
           ]
         }
       },

@@ -160,7 +160,7 @@ This plan implements a comprehensive template distribution system while preservi
 ```
 ai-coding-template/
 ├── .claude/                     # Core template files (keep in root)
-├── .resources/                  # Template resources and examples
+├── .claude/resources/                  # Template resources and examples
 ├── .template-manifest.json      # Template file ownership and metadata
 ├── .templateignore              # Files to exclude from distribution
 ├── cli/                         # Distribution CLI tools
@@ -196,7 +196,7 @@ ai-coding-template/
       "files": [
         ".claude/**/*",
         "CLAUDE.md",
-        ".resources/scripts/**/*"
+        ".claude/resources/scripts/**/*"
       ]
     },
     "reference": {
@@ -212,7 +212,7 @@ ai-coding-template/
       "description": "Optional components user can choose to include",
       "files": [
         ".githooks/**/*",
-        ".resources/examples/**/*"
+        ".claude/resources/examples/**/*"
       ]
     },
     "user": {

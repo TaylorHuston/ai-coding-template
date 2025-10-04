@@ -42,7 +42,7 @@ Each of the 17 AI agents is automatically monitored:
 
 ```bash
 # View agent utilization patterns
-./.resources/scripts/metrics/query-metrics.sh --type agent --stats --range 30d
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --stats --range 30d
 
 # Example insights:
 # - code-architect: High usage (40%), excellent success rate (95%)
@@ -52,11 +52,11 @@ Each of the 17 AI agents is automatically monitored:
 
 ### Script Automation Analytics
 
-All scripts in `.resources/scripts/` are tracked when executed:
+All scripts in `.claude/resources/scripts/` are tracked when executed:
 
 ```bash
 # Track script effectiveness
-./.resources/scripts/metrics/query-metrics.sh --type script --category quality --stats
+./.claude/resources/scripts/metrics/query-metrics.sh --type script --category quality --stats
 
 # Optimization opportunities:
 # - setup-manager.sh: 98% success rate, consider making it default
@@ -72,7 +72,7 @@ All scripts in `.resources/scripts/` are tracked when executed:
 
 ```bash
 # Analyze workflow phase durations
-./.resources/scripts/metrics/generate-report.sh --period 30d --type detailed
+./.claude/resources/scripts/metrics/generate-report.sh --period 30d --type detailed
 
 # Key insights to look for:
 # - Which workflow phases take longest?
@@ -91,7 +91,7 @@ All scripts in `.resources/scripts/` are tracked when executed:
 
 ```bash
 # Agent performance analysis
-./.resources/scripts/metrics/query-metrics.sh --type agent --stats --format json | \
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --stats --format json | \
     jq '.[] | select(.usage_count > 10) | {name: .name, success_rate: .success_rate, avg_duration: .avg_duration_ms}'
 
 # Decision criteria:
@@ -106,7 +106,7 @@ All scripts in `.resources/scripts/` are tracked when executed:
 
 ```bash
 # Correlate quality gates with development speed
-./.resources/scripts/metrics/query-metrics.sh --range 30d --format csv | \
+./.claude/resources/scripts/metrics/query-metrics.sh --range 30d --format csv | \
     grep -E "(quality-gates|develop)" | sort
 
 # Analysis points:
@@ -153,17 +153,17 @@ Create custom analysis scripts using the query system:
 
 # Weekly productivity report
 echo "=== Weekly Team Productivity ==="
-./.resources/scripts/metrics/query-metrics.sh --range 7d --stats
+./.claude/resources/scripts/metrics/query-metrics.sh --range 7d --stats
 
 # Command effectiveness ranking
 echo "=== Most Effective Commands ==="
-./.resources/scripts/metrics/query-metrics.sh --type command --stats | \
+./.claude/resources/scripts/metrics/query-metrics.sh --type command --stats | \
     jq -r '.[] | "\(.name): \(.success_rate)% success, \(.avg_duration_ms)ms avg"' | \
     sort -rn -k2
 
 # Agent utilization insights
 echo "=== Agent Utilization Analysis ==="
-./.resources/scripts/metrics/query-metrics.sh --type agent --stats | \
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --stats | \
     jq -r '.[] | "\(.name): \(.usage_count) uses, \(.success_rate)% success"'
 ```
 
@@ -207,9 +207,9 @@ privacy:
 # .github/workflows/metrics.yml
 - name: Collect Build Metrics
   run: |
-    ./.resources/scripts/metrics/wrap-script.sh ci-build npm run build
-    ./.resources/scripts/metrics/wrap-script.sh ci-test npm test
-    ./.resources/scripts/metrics/generate-report.sh --period 1d --output build-metrics.json
+    ./.claude/resources/scripts/metrics/wrap-script.sh ci-build npm run build
+    ./.claude/resources/scripts/metrics/wrap-script.sh ci-test npm test
+    ./.claude/resources/scripts/metrics/generate-report.sh --period 1d --output build-metrics.json
 ```
 
 ### Dashboard Integration
@@ -218,10 +218,10 @@ Export data for external analytics platforms:
 
 ```bash
 # Export for Grafana, DataDog, etc.
-./.resources/scripts/metrics/generate-report.sh --format json --output metrics-export.json
+./.claude/resources/scripts/metrics/generate-report.sh --format json --output metrics-export.json
 
 # Custom dashboard data
-./.resources/scripts/metrics/query-metrics.sh --range 30d --format csv --output dashboard-data.csv
+./.claude/resources/scripts/metrics/query-metrics.sh --range 30d --format csv --output dashboard-data.csv
 ```
 
 ## Troubleshooting
@@ -244,7 +244,7 @@ ls -lah .claude/metrics/                  # Check file sizes
 grep "enabled: true" .claude/metrics/config.yml  # Verify enabled
 
 # Test metrics collection
-./.resources/scripts/metrics/wrap-script.sh test echo "Testing metrics"
+./.claude/resources/scripts/metrics/wrap-script.sh test echo "Testing metrics"
 tail -1 .claude/metrics/scripts.jsonl | jq .  # Verify data captured
 ```
 
@@ -270,7 +270,7 @@ tail -1 .claude/metrics/scripts.jsonl | jq .  # Verify data captured
 
 ## Related Documentation
 
-- **[Complete Metrics Guide](../../../.resources/scripts/metrics/README.md)** - Detailed technical documentation
+- **[Complete Metrics Guide](../../../.claude/resources/scripts/metrics/README.md)** - Detailed technical documentation
 - **[AI Workflow Commands](../reference/commands.md)** - How commands integrate with metrics
 - **[Agent System Guide](../guides/comprehensive-agent-guide.md)** - Agent performance optimization
 - **[Tool Selection Guide](../reference/tool-selection.md)** - Using metrics for tool decisions

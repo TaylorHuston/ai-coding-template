@@ -239,7 +239,7 @@ Use project-appropriate formatters:
 
 ## Related Guidelines
 
-- **Implementation Examples**: See `.resources/examples/code/patterns/` for working code examples demonstrating all patterns
+- **Implementation Examples**: See `.claude/resources/examples/code/patterns/` for working code examples demonstrating all patterns
 - **Code Review**: See `code-review-guidelines.md` for review processes and quality checks
 - **Testing Standards**: See `testing-standards.md` for testing patterns and testable code design
 - **Security Guidelines**: See `security-guidelines.md` for comprehensive security practices

@@ -105,7 +105,7 @@ model: claude-opus-4-0
    - Calculate complexity score and suggest decomposition if needed (≥5 points)
    - Recommend breaking complex tasks into manageable subtasks with focused agents
 5. **MANDATORY: Use templates**: Generate task structure using established templates:
-   - **TASK.md**: Use `.resources/templates/workflow/epic/task.template.md` with placeholder substitution
+   - **TASK.md**: Use `.claude/resources/templates/workflow/epic/task.template.md` with placeholder substitution
    - **HANDOFF.yml**: Use agent coordination template patterns
    - **RESEARCH.md**: Use research methodology template
 6. **Create implementation plan**: Develop detailed X.Y.Z task breakdown with checkboxes based on clarified requirements

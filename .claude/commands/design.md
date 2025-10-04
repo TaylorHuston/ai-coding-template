@@ -61,7 +61,7 @@ model: claude-opus-4-0
 ## File Structure
 
 **Brief**: `docs/project-brief.md` - Problem, solution, audience, success metrics
-*Uses template: `.resources/templates/docs/project/project-brief.template.md`*
+*Uses template: `.claude/resources/templates/docs/project/project-brief.template.md`*
 
 **Epic**: `epics/[name]/EPIC.md` - Overview, scope, planned tasks, external refs, status management, dependencies
 
@@ -187,7 +187,7 @@ model: claude-opus-4-0
 
 **Knowledge Capture**: Lessons learned section populated upon epic completion for organizational learning.
 
-*Uses templates from `.resources/templates/workflow/epic/` for consistent structure*
+*Uses templates from `.claude/resources/templates/workflow/epic/` for consistent structure*
 
 ## Tools
 
@@ -201,4 +201,4 @@ model: claude-opus-4-0
 ## Additional Resources
 
 - **[Design Workflow Examples](../../docs/ai-toolkit/guides/design-workflow-examples.md)** - Detailed epic and task creation examples
-- **[Epic Templates](../../.resources/templates/workflow/epic/)** - Template files for consistent structure
+- **[Epic Templates](../../.claude/resources/templates/workflow/epic/)** - Template files for consistent structure

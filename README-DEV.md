@@ -156,7 +156,7 @@ This simulation shows you exactly how the template transforms AI from reactive c
 ```bash
 git clone ai-coding-template.git my-project
 cd my-project
-./.resources/scripts/setup-manager.sh init-project
+./.claude/resources/scripts/setup-manager.sh init-project
 ```
 
 - **Smart Discovery**: Automatically detects project type and business context
@@ -201,16 +201,16 @@ git clone https://github.com/yourusername/ai-coding-template.git my-project
 cd my-project
 
 # 🚀 INTELLIGENT INITIALIZATION (Recommended for new projects)
-./.resources/scripts/setup-manager.sh init-project
+./.claude/resources/scripts/setup-manager.sh init-project
 # → Guided setup: project type, business context, external tools
 # → Professional README generation
 # → Template docs preserved in docs/ai-toolkit/
 
 # OR: Quick setup (keeps template as-is)
-./.resources/scripts/setup-manager.sh quick
+./.claude/resources/scripts/setup-manager.sh quick
 
 # Verify everything is ready
-./.resources/scripts/setup-manager.sh check
+./.claude/resources/scripts/setup-manager.sh check
 ```
 
 **🎯 What `init-project` does:**
@@ -276,7 +276,7 @@ my-project/
 │   ├── technical/decisions/   # /architect Output: ADRs and technical decisions
 │   ├── technical/architecture/ # Auto-generated from implementations
 │   └── ai-toolkit/              # Workflow guides and references
-├── .resources/scripts/                   # Workflow Automation Support
+├── .claude/resources/scripts/                   # Workflow Automation Support
 │   ├── docs-manager.sh        # ADR generation, auto-documentation
 │   ├── quality-gates.sh       # /develop quality validation
 │   └── metrics/               # Analytics and insights tools
@@ -375,7 +375,7 @@ The template provides **11 intelligently integrated commands** that orchestrate 
 - ADR generation from `/architect` technical design
 - Technical decision tracking linked to implementation
 - Auto-generated architecture docs from `/develop` execution
-- **Automatic documentation**: Run `./.resources/scripts/docs-manager.sh auto-docs all` to generate:
+- **Automatic documentation**: Run `./.claude/resources/scripts/docs-manager.sh auto-docs all` to generate:
   - Technology stack documentation
   - System overview diagrams
   - Dependency graphs
@@ -385,13 +385,13 @@ The template provides **11 intelligently integrated commands** that orchestrate 
 
 Essential scripts for workflow automation:
 
-- **Setup**: `./.resources/scripts/setup-manager.sh quick` - Environment setup
-- **Documentation**: `./.resources/scripts/docs-manager.sh auto-docs all` - Generate documentation
-- **Status**: `./.resources/scripts/ai-status.sh` - Project health dashboard
-- **Quality**: `./.resources/scripts/validate-quality-gates.sh` - Validate between phases
-- **Metrics**: `./.resources/scripts/metrics/generate-report.sh` - Analytics and insights
+- **Setup**: `./.claude/resources/scripts/setup-manager.sh quick` - Environment setup
+- **Documentation**: `./.claude/resources/scripts/docs-manager.sh auto-docs all` - Generate documentation
+- **Status**: `./.claude/resources/scripts/ai-status.sh` - Project health dashboard
+- **Quality**: `./.claude/resources/scripts/validate-quality-gates.sh` - Validate between phases
+- **Metrics**: `./.claude/resources/scripts/metrics/generate-report.sh` - Analytics and insights
 
-**[Complete Scripts Reference →](./.resources/scripts/README.md)**
+**[Complete Scripts Reference →](./.claude/resources/scripts/README.md)**
 
 ## 📊 Metrics & Analytics System
 
@@ -413,13 +413,13 @@ The comprehensive metrics system automatically tracks:
 # Configuration: .claude/metrics/config.yml
 
 # Generate weekly insights report
-./.resources/scripts/metrics/generate-report.sh --period 7d --type summary
+./.claude/resources/scripts/metrics/generate-report.sh --period 7d --type summary
 
 # Query specific patterns
-./.resources/scripts/metrics/query-metrics.sh --type command --range 30d --stats
+./.claude/resources/scripts/metrics/query-metrics.sh --type command --range 30d --stats
 
 # Analyze agent effectiveness
-./.resources/scripts/metrics/query-metrics.sh --type agent --stats --format json
+./.claude/resources/scripts/metrics/query-metrics.sh --type agent --stats --format json
 ```
 
 ### Actionable Insights
@@ -436,7 +436,7 @@ The comprehensive metrics system automatically tracks:
 - **⚙️ Configurable Collection**: Adjust data collection levels and exclusions
 - **📋 JSONL Format**: Structured, queryable data for custom analysis
 
-**[Complete Metrics Guide →](./.resources/scripts/metrics/README.md)**
+**[Complete Metrics Guide →](./.claude/resources/scripts/metrics/README.md)**
 
 ## Add to Existing Projects
 
@@ -455,9 +455,9 @@ curl -O [template-url]/workflow-integration.tar.gz && tar -xzf workflow-integrat
 
 ```bash
 # Manual script coordination
-"Run ./.resources/scripts/docs-manager.sh auto-docs all"
-"Run ./.resources/scripts/validate-quality-gates.sh"
-"Run ./.resources/scripts/check-docs-links.js"
+"Run ./.claude/resources/scripts/docs-manager.sh auto-docs all"
+"Run ./.claude/resources/scripts/validate-quality-gates.sh"
+"Run ./.claude/resources/scripts/check-docs-links.js"
 
 # ❌ No intelligent coordination
 # ❌ Manual script selection
@@ -492,16 +492,16 @@ The template system provides **fill-in-the-blank starting points** and **working
 
 **🔍 Quick Discovery**:
 
-- **Need to create a feature?** → [Feature Templates](./.resources/templates/docs/features/)
-- **Building a React component?** → [Component Template](./.resources/templates/code/components/) + [Component Example](./.resources/examples/code/patterns/)
-- **Creating an API service?** → [Service Template](./.resources/templates/code/api/) + [Service Example](./.resources/examples/code/patterns/)
-- **Writing tests?** → [Test Examples](./.resources/examples/code/patterns/)
-- **Documenting an API?** → [API Template](./.resources/templates/docs/api/)
+- **Need to create a feature?** → [Feature Templates](./.claude/resources/templates/docs/features/)
+- **Building a React component?** → [Component Template](./.claude/resources/templates/code/components/) + [Component Example](./.claude/resources/examples/code/patterns/)
+- **Creating an API service?** → [Service Template](./.claude/resources/templates/code/api/) + [Service Example](./.claude/resources/examples/code/patterns/)
+- **Writing tests?** → [Test Examples](./.claude/resources/examples/code/patterns/)
+- **Documenting an API?** → [API Template](./.claude/resources/templates/docs/api/)
 
 **📋 Two Resource Types**:
 
-- **Templates** (`/.resources/templates/`) - Fill-in-the-blank starting points with placeholders
-- **Examples** (`/.resources/examples/`) - Working reference implementations to study and adapt
+- **Templates** (`/.claude/resources/templates/`) - Fill-in-the-blank starting points with placeholders
+- **Examples** (`/.claude/resources/examples/`) - Working reference implementations to study and adapt
 
 **🚀 Get Started**:
 
@@ -510,10 +510,10 @@ The template system provides **fill-in-the-blank starting points** and **working
 /design --epic "your-epic-name"
 
 # Copy a template to start fresh
-cp .resources/templates/docs/features/feature.template.md docs/my-feature.md
+cp .claude/resources/templates/docs/features/feature.template.md docs/my-feature.md
 
 # Study working examples for patterns
-cat .resources/examples/code/patterns/api-user-service.example.ts
+cat .claude/resources/examples/code/patterns/api-user-service.example.ts
 ```
 
 **[📖 Complete AI Workflow Guide →](./docs/ai-toolkit/reference/commands.md)**

@@ -9,14 +9,14 @@ on:
     branches: [ main, master ]
     paths:
       - '**/*.md'
-      - '.resources/scripts/docs/**'
+      - '.claude/resources/scripts/docs/**'
       - '.github/workflows/link-validation.yml'
 
   pull_request:
     branches: [ main, master ]
     paths:
       - '**/*.md'
-      - '.resources/scripts/docs/**'
+      - '.claude/resources/scripts/docs/**'
       - '.github/workflows/link-validation.yml'
 
   # Allow manual triggering
@@ -50,28 +50,28 @@ jobs:
         sudo apt-get install -y curl
 
         # Make scripts executable
-        chmod +x .resources/scripts/docs/link-validator.sh
-        chmod +x .resources/scripts/validation/validate-links-ci.sh
+        chmod +x .claude/resources/scripts/docs/link-validator.sh
+        chmod +x .claude/resources/scripts/validation/validate-links-ci.sh
 
     - name: Validate internal links (fast)
       id: validate-internal
       run: |
         echo "Running internal link validation..."
-        .resources/scripts/validation/validate-links-ci.sh --no-report --verbose
+        .claude/resources/scripts/validation/validate-links-ci.sh --no-report --verbose
 
     - name: Validate external links (if requested)
       id: validate-external
       if: github.event.inputs.validate_external == 'true'
       run: |
         echo "Running external link validation..."
-        .resources/scripts/validation/validate-links-ci.sh --external --verbose
+        .claude/resources/scripts/validation/validate-links-ci.sh --external --verbose
 
     - name: Generate detailed report
       id: generate-report
       if: failure() && github.event.inputs.generate_report != 'false'
       run: |
         echo "Generating detailed link validation report..."
-        .resources/scripts/docs/link-validator.sh --ci
+        .claude/resources/scripts/docs/link-validator.sh --ci
 
     - name: Upload link validation report
       if: failure() && steps.generate-report.outcome == 'success'
@@ -108,7 +108,7 @@ jobs:
           }
 
           comment += '### 🛠️ How to Fix\n\n';
-          comment += '1. Run `.resources/scripts/docs/link-validator.sh` locally\n';
+          comment += '1. Run `.claude/resources/scripts/docs/link-validator.sh` locally\n';
           comment += '2. Fix the broken links identified in the report\n';
           comment += '3. Re-run validation to confirm fixes\n';
           comment += '4. Push your changes to update this PR\n\n';
@@ -135,13 +135,13 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y curl
-        chmod +x .resources/scripts/docs/link-validator.sh
-        chmod +x .resources/scripts/validation/validate-links-ci.sh
+        chmod +x .claude/resources/scripts/docs/link-validator.sh
+        chmod +x .claude/resources/scripts/validation/validate-links-ci.sh
 
     - name: Run comprehensive validation
       run: |
         echo "Running comprehensive link validation (including external links)..."
-        .resources/scripts/validation/validate-links-ci.sh --external --verbose
+        .claude/resources/scripts/validation/validate-links-ci.sh --external --verbose
 
     - name: Upload comprehensive report
       if: always()

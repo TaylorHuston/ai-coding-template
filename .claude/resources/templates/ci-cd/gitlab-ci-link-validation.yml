@@ -15,15 +15,15 @@ link-validation:
   image: ubuntu:latest
   before_script:
     - apt-get update && apt-get install -y curl git
-    - chmod +x .resources/scripts/docs/link-validator.sh
-    - chmod +x .resources/scripts/validation/validate-links-ci.sh
+    - chmod +x .claude/resources/scripts/docs/link-validator.sh
+    - chmod +x .claude/resources/scripts/validation/validate-links-ci.sh
   script:
     - echo "Running link validation..."
-    - .resources/scripts/validation/validate-links-ci.sh --no-report --verbose
+    - .claude/resources/scripts/validation/validate-links-ci.sh --no-report --verbose
   rules:
     - changes:
         - "**/*.md"
-        - ".resources/scripts/docs/**"
+        - ".claude/resources/scripts/docs/**"
   cache:
     key: $VALIDATION_CACHE_KEY
     paths:
@@ -35,11 +35,11 @@ comprehensive-link-validation:
   image: ubuntu:latest
   before_script:
     - apt-get update && apt-get install -y curl git
-    - chmod +x .resources/scripts/docs/link-validator.sh
-    - chmod +x .resources/scripts/validation/validate-links-ci.sh
+    - chmod +x .claude/resources/scripts/docs/link-validator.sh
+    - chmod +x .claude/resources/scripts/validation/validate-links-ci.sh
   script:
     - echo "Running comprehensive link validation..."
-    - .resources/scripts/validation/validate-links-ci.sh --external --verbose
+    - .claude/resources/scripts/validation/validate-links-ci.sh --external --verbose
   artifacts:
     when: always
     paths:
@@ -59,10 +59,10 @@ link-validation-report:
   image: ubuntu:latest
   before_script:
     - apt-get update && apt-get install -y curl git
-    - chmod +x .resources/scripts/docs/link-validator.sh
+    - chmod +x .claude/resources/scripts/docs/link-validator.sh
   script:
     - echo "Generating detailed link validation report..."
-    - .resources/scripts/docs/link-validator.sh --ci
+    - .claude/resources/scripts/docs/link-validator.sh --ci
   artifacts:
     when: on_failure
     paths:

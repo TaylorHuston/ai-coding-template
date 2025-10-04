@@ -256,8 +256,8 @@ check_documentation_links() {
 
     # Find the link validator script
     LINK_VALIDATOR=""
-    if [ -f ".resources/scripts/docs/link-validator.sh" ]; then
-        LINK_VALIDATOR=".resources/scripts/docs/link-validator.sh"
+    if [ -f ".claude/resources/scripts/docs/link-validator.sh" ]; then
+        LINK_VALIDATOR=".claude/resources/scripts/docs/link-validator.sh"
     elif [ -f "scripts/docs/link-validator.sh" ]; then
         LINK_VALIDATOR="scripts/docs/link-validator.sh"
     fi

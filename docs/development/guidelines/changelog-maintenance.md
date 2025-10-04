@@ -22,26 +22,26 @@ This guide provides comprehensive instructions for maintaining the project CHANG
 
 ```bash
 # Check for missing entries
-./.resources/scripts/ai-changelog-audit.sh
+./.claude/resources/scripts/ai-changelog-audit.sh
 
 # Analyze recent commits
-./.resources/scripts/ai-update-changelog.sh analyze
+./.claude/resources/scripts/ai-update-changelog.sh analyze
 
 # Add entry interactively
-./.resources/scripts/ai-update-changelog.sh add
+./.claude/resources/scripts/ai-update-changelog.sh add
 
 # Generate entry from commit
-./.resources/scripts/ai-update-changelog.sh from-commit HEAD
+./.claude/resources/scripts/ai-update-changelog.sh from-commit HEAD
 
 # Create release
-./.resources/scripts/release.sh X.Y.Z
+./.claude/resources/scripts/release.sh X.Y.Z
 ```
 
-**Initial Setup**: Copy template (`cp .resources/templates/CHANGELOG.template.md CHANGELOG.md`) and make scripts executable (`chmod +x .resources/scripts/*.sh`)
+**Initial Setup**: Copy template (`cp .claude/resources/templates/CHANGELOG.template.md CHANGELOG.md`) and make scripts executable (`chmod +x .claude/resources/scripts/*.sh`)
 
 3. **Configure git hooks (optional):**
 ```bash
-cp .resources/scripts/check-changelog.sh .git/hooks/pre-commit
+cp .claude/resources/scripts/check-changelog.sh .git/hooks/pre-commit
 chmod +x .git/hooks/pre-commit
 ```
 
@@ -115,16 +115,16 @@ Comprehensive analysis of changelog completeness:
 
 ```bash
 # Basic audit
-./.resources/scripts/ai-changelog-audit.sh
+./.claude/resources/scripts/ai-changelog-audit.sh
 
 # Verbose mode with details
-./.resources/scripts/ai-changelog-audit.sh --verbose
+./.claude/resources/scripts/ai-changelog-audit.sh --verbose
 
 # Generate AI action report
-./.resources/scripts/ai-changelog-audit.sh --report
+./.claude/resources/scripts/ai-changelog-audit.sh --report
 
 # Analyze specific period
-./.resources/scripts/ai-changelog-audit.sh --since "7 days ago"
+./.claude/resources/scripts/ai-changelog-audit.sh --since "7 days ago"
 ```
 
 ### 2. ai-update-changelog.sh
@@ -133,17 +133,17 @@ Help adding proper changelog entries:
 
 ```bash
 # Analyze and suggest entries
-./.resources/scripts/ai-update-changelog.sh analyze
+./.claude/resources/scripts/ai-update-changelog.sh analyze
 
 # Add entry with parameters
-./.resources/scripts/ai-update-changelog.sh add \
+./.claude/resources/scripts/ai-update-changelog.sh add \
   --category Added \
   --reference ISSUE-001 \
   --message "User authentication system" \
   --breaking
 
 # Extract from deliverable file
-./.resources/scripts/ai-update-changelog.sh from-issue \
+./.claude/resources/scripts/ai-update-changelog.sh from-issue \
   deliverables/auth/issues/001/ISSUE-001-plan.md
 ```
 
@@ -153,7 +153,7 @@ Pre-commit hook that monitors commits:
 
 ```bash
 # Run manually to check
-./.resources/scripts/check-changelog.sh
+./.claude/resources/scripts/check-changelog.sh
 
 # Automatically runs on git commit
 # Provides suggestions based on staged changes
@@ -165,13 +165,13 @@ Automates the release process:
 
 ```bash
 # Preview release
-./.resources/scripts/release.sh 0.2.0 --dry-run
+./.claude/resources/scripts/release.sh 0.2.0 --dry-run
 
 # Create release
-./.resources/scripts/release.sh 0.2.0
+./.claude/resources/scripts/release.sh 0.2.0
 
 # Create local release without pushing
-./.resources/scripts/release.sh 0.2.0 --no-push
+./.claude/resources/scripts/release.sh 0.2.0 --no-push
 ```
 
 ## Workflows
@@ -194,7 +194,7 @@ Automates the release process:
 # ... code changes ...
 
 # 2. Add changelog entry
-./.resources/scripts/ai-update-changelog.sh add \
+./.claude/resources/scripts/ai-update-changelog.sh add \
   --category Added \
   --reference ISSUE-123 \
   --message "Real-time notifications system"
@@ -210,27 +210,27 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ```bash
 # 1. Run comprehensive audit
-./.resources/scripts/ai-changelog-audit.sh --verbose
+./.claude/resources/scripts/ai-changelog-audit.sh --verbose
 
 # 2. Update any missing entries
-./.resources/scripts/ai-update-changelog.sh analyze
+./.claude/resources/scripts/ai-update-changelog.sh analyze
 
 # 3. Generate session report
-./.resources/scripts/ai-changelog-audit.sh --report
+./.claude/resources/scripts/ai-changelog-audit.sh --report
 ```
 
 ### Release Process
 
 ```bash
 # 1. Final audit
-./.resources/scripts/ai-changelog-audit.sh
+./.claude/resources/scripts/ai-changelog-audit.sh
 
 # 2. Review unreleased section
 grep -A 50 "\[Unreleased\]" CHANGELOG.md
 
 # 3. Create release
-./.resources/scripts/release.sh 0.2.0 --dry-run  # Preview
-./.resources/scripts/release.sh 0.2.0            # Execute
+./.claude/resources/scripts/release.sh 0.2.0 --dry-run  # Preview
+./.claude/resources/scripts/release.sh 0.2.0            # Execute
 ```
 
 ## Best Practices
@@ -284,7 +284,7 @@ DOC-XXX    - Documentation updates (if user-facing)
   "pre-commit": {
     "changelog-reminder": {
       "enabled": true,
-      "script": ".resources/scripts/check-changelog.sh",
+      "script": ".claude/resources/scripts/check-changelog.sh",
       "warning-only": true,
       "ai-assistant-mode": true
     }
@@ -298,11 +298,11 @@ Extract entries from issue templates:
 
 ```bash
 # Extract from any deliverable file
-./.resources/scripts/ai-update-changelog.sh from-issue PATH_TO_PLAN
+./.claude/resources/scripts/ai-update-changelog.sh from-issue PATH_TO_PLAN
 
 # Batch process all deliverables
 for file in deliverables/*/issues/*/ISSUE-*-plan.md; do
-  ./.resources/scripts/ai-update-changelog.sh from-issue "$file"
+  ./.claude/resources/scripts/ai-update-changelog.sh from-issue "$file"
 done
 ```
 
@@ -320,7 +320,7 @@ done
 - Solution: Check existing versions and use next available number
 
 **No unreleased changes:**
-- Solution: Add entries with `./.resources/scripts/ai-update-changelog.sh analyze`
+- Solution: Add entries with `./.claude/resources/scripts/ai-update-changelog.sh analyze`
 
 ### Debug Commands
 
@@ -332,23 +332,23 @@ grep -oE "(ISSUE|BUG|TASK)-[0-9]+" CHANGELOG.md | sort -u
 cat .githooks.json | grep changelog
 
 # Test changelog checker
-./.resources/scripts/check-changelog.sh
+./.claude/resources/scripts/check-changelog.sh
 
 # Run verbose audit
-./.resources/scripts/ai-changelog-audit.sh --verbose
+./.claude/resources/scripts/ai-changelog-audit.sh --verbose
 ```
 
 ## Quick Reference
 
 | Task | Command |
 |------|---------|
-| Audit status | `./.resources/scripts/ai-changelog-audit.sh` |
-| Analyze commits | `./.resources/scripts/ai-update-changelog.sh analyze` |
-| Add entry | `./.resources/scripts/ai-update-changelog.sh add` |
-| From commit | `./.resources/scripts/ai-update-changelog.sh from-commit HEAD` |
-| From issue | `./.resources/scripts/ai-update-changelog.sh from-issue FILE` |
-| Check before commit | `./.resources/scripts/check-changelog.sh` |
-| Create release | `./.resources/scripts/release.sh X.Y.Z` |
+| Audit status | `./.claude/resources/scripts/ai-changelog-audit.sh` |
+| Analyze commits | `./.claude/resources/scripts/ai-update-changelog.sh analyze` |
+| Add entry | `./.claude/resources/scripts/ai-update-changelog.sh add` |
+| From commit | `./.claude/resources/scripts/ai-update-changelog.sh from-commit HEAD` |
+| From issue | `./.claude/resources/scripts/ai-update-changelog.sh from-issue FILE` |
+| Check before commit | `./.claude/resources/scripts/check-changelog.sh` |
+| Create release | `./.claude/resources/scripts/release.sh X.Y.Z` |
 
 ### Categories Quick Reference
 

@@ -46,7 +46,7 @@ model: claude-sonnet-4-5
 
 ## Context
 
-- All documentation files across project (`docs/`, `.claude/`, `.resources/`)
+- All documentation files across project (`docs/`, `.claude/`, `.claude/resources/`)
 - Validation scripts: `check-docs-links.js`, `docs-health.js`
 - Documentation guidelines and standards
 - Git history for freshness analysis

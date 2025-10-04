@@ -28,16 +28,16 @@ Implemented comprehensive automated link validation system to prevent cross-refe
 **Usage Options:**
 ```bash
 # Interactive mode with full reporting
-.resources/scripts/docs/link-validator.sh
+.claude/resources/scripts/docs/link-validator.sh
 
 # CI mode - minimal output, exit codes for automation
-.resources/scripts/docs/link-validator.sh --ci --fast --no-report
+.claude/resources/scripts/docs/link-validator.sh --ci --fast --no-report
 
 # Full validation including external links
-.resources/scripts/docs/link-validator.sh --external
+.claude/resources/scripts/docs/link-validator.sh --external
 
 # Help and options
-.resources/scripts/docs/link-validator.sh --help
+.claude/resources/scripts/docs/link-validator.sh --help
 ```
 
 #### 2. CI Validation Script (`validation/validate-links-ci.sh`)
@@ -50,13 +50,13 @@ Implemented comprehensive automated link validation system to prevent cross-refe
 **Usage Options:**
 ```bash
 # Standard CI validation
-.resources/scripts/validation/validate-links-ci.sh
+.claude/resources/scripts/validation/validate-links-ci.sh
 
 # With external link validation
-.resources/scripts/validation/validate-links-ci.sh --external --verbose
+.claude/resources/scripts/validation/validate-links-ci.sh --external --verbose
 
 # Fast validation without reports
-.resources/scripts/validation/validate-links-ci.sh --no-report --fail-fast
+.claude/resources/scripts/validation/validate-links-ci.sh --no-report --fail-fast
 ```
 
 #### 3. Quality Gates Integration
@@ -158,20 +158,20 @@ Successfully tested the complete validation system:
 
 1. **Make scripts executable**:
    ```bash
-   chmod +x .resources/scripts/docs/link-validator.sh
-   chmod +x .resources/scripts/validation/validate-links-ci.sh
-   chmod +x .resources/scripts/hooks/pre-commit-link-validation.sh
+   chmod +x .claude/resources/scripts/docs/link-validator.sh
+   chmod +x .claude/resources/scripts/validation/validate-links-ci.sh
+   chmod +x .claude/resources/scripts/hooks/pre-commit-link-validation.sh
    ```
 
 2. **Add to quality gates** (already integrated):
    ```bash
-   .resources/scripts/quality/validate-quality-gates.sh
+   .claude/resources/scripts/quality/validate-quality-gates.sh
    ```
 
 3. **Setup pre-commit hooks**:
    ```bash
    # Copy pre-commit config
-   cp .resources/templates/ci-cd/pre-commit-config.yaml .pre-commit-config.yaml
+   cp .claude/resources/templates/ci-cd/pre-commit-config.yaml .pre-commit-config.yaml
 
    # Install pre-commit (requires pip install pre-commit)
    pre-commit install
@@ -181,26 +181,26 @@ Successfully tested the complete validation system:
    ```bash
    # For GitHub Actions
    mkdir -p .github/workflows
-   cp .resources/templates/ci-cd/github-actions-link-validation.yml .github/workflows/link-validation.yml
+   cp .claude/resources/templates/ci-cd/github-actions-link-validation.yml .github/workflows/link-validation.yml
 
    # For GitLab CI (add to .gitlab-ci.yml)
-   cat .resources/templates/ci-cd/gitlab-ci-link-validation.yml >> .gitlab-ci.yml
+   cat .claude/resources/templates/ci-cd/gitlab-ci-link-validation.yml >> .gitlab-ci.yml
    ```
 
 ### Validation Commands
 
 ```bash
 # Quick validation for CI
-.resources/scripts/validation/validate-links-ci.sh --no-report
+.claude/resources/scripts/validation/validate-links-ci.sh --no-report
 
 # Full interactive validation
-.resources/scripts/docs/link-validator.sh
+.claude/resources/scripts/docs/link-validator.sh
 
 # Comprehensive validation with external links
-.resources/scripts/validation/validate-links-ci.sh --external --verbose
+.claude/resources/scripts/validation/validate-links-ci.sh --external --verbose
 
 # Pre-commit style validation
-.resources/scripts/hooks/pre-commit-link-validation.sh
+.claude/resources/scripts/hooks/pre-commit-link-validation.sh
 ```
 
 ## Benefits Achieved

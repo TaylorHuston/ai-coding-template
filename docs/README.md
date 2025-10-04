@@ -15,13 +15,13 @@ tags: ["documentation", "hub", "navigation"]
 ### I need to create documentation...
 
 **🔧 For developers and technical implementation?**
-→ [Project Documentation Guide](project/README.md) | [Use Technical Template](../.resources/templates/simple/feature-simple.template.md)
+→ [Project Documentation Guide](project/README.md) | [Use Technical Template](../.claude/resources/templates/simple/feature-simple.template.md)
 
 **📊 For product managers and business stakeholders?**
-→ [Development Guidelines](development/guidelines/) | [Use Simple Template](../.resources/templates/simple/feature-simple.template.md)
+→ [Development Guidelines](development/guidelines/) | [Use Simple Template](../.claude/resources/templates/simple/feature-simple.template.md)
 
 **📝 For comprehensive/enterprise features?**
-→ Use [Standard Technical Template](../.resources/templates/standard/feature.template.md) with comprehensive documentation
+→ Use [Standard Technical Template](../.claude/resources/templates/standard/feature.template.md) with comprehensive documentation
 
 ### I need to understand the system...
 
@@ -91,7 +91,7 @@ tags: ["documentation", "hub", "navigation"]
 
 ### For Simple Features (Most Common)
 
-**Technical**: Use [Simple Technical Template](../.resources/templates/simple/feature-simple.template.md)
+**Technical**: Use [Simple Technical Template](../.claude/resources/templates/simple/feature-simple.template.md)
 - Basic architecture description
 - Key implementation details
 - Essential testing information
@@ -105,7 +105,7 @@ tags: ["documentation", "hub", "navigation"]
 
 ### For Complex/Enterprise Features
 
-**Technical**: Use [Standard Technical Template](../.resources/templates/standard/feature.template.md)
+**Technical**: Use [Standard Technical Template](../.claude/resources/templates/standard/feature.template.md)
 - Comprehensive architecture analysis
 - Detailed implementation specifications
 - Complete testing and security coverage
@@ -136,7 +136,7 @@ tags: ["documentation", "hub", "navigation"]
 ## Getting Started
 
 ### New Technical Document
-1. Copy [Simple Technical Template](../.resources/templates/simple/feature-simple.template.md)
+1. Copy [Simple Technical Template](../.claude/resources/templates/simple/feature-simple.template.md)
 2. Save as `project/architecture/[feature-name]-architecture.md`
 3. Fill in required sections, remove unused sections
 4. Follow [Project Documentation Guide](project/README.md)
@@ -145,7 +145,7 @@ tags: ["documentation", "hub", "navigation"]
 1. Follow [Development Guidelines](development/guidelines/)
 2. Save as `development/workflows/[process-name].md` or `development/guidelines/[guide-name].md`
 3. Fill in required sections, remove unused sections
-4. Use appropriate templates from `../.resources/templates/` directory
+4. Use appropriate templates from `../.claude/resources/templates/` directory
 
 ### Complex Features
 - Start with simple template to outline basics
@@ -184,9 +184,9 @@ Complete integration and setup guidance for new and existing projects.
 | **Troubleshoot issues** | [Troubleshooting Guide](./ai-toolkit/reference/troubleshooting.md) |
 | **Find command references** | [Development Commands](./ai-toolkit/reference/development-commands.md) |
 | **Configure deployment** | [Deployment Guide](./development/workflows/deployment-guide.md) |
-| Create simple technical docs | [Simple Technical Template](.resources/templates/simple/feature-simple.template.md) |
+| Create simple technical docs | [Simple Technical Template](.claude/resources/templates/simple/feature-simple.template.md) |
 | Create process documentation | [Documentation Guidelines](development/guidelines/documentation-guidelines.md) |
-| Create comprehensive docs | [Standard Templates](.resources/templates/standard/) |
+| Create comprehensive docs | [Standard Templates](.claude/resources/templates/standard/) |
 | Understand documentation standards | [Documentation Guidelines](development/guidelines/documentation-guidelines.md) |
 | Understand quality requirements | [Quality Standards](development/guidelines/quality-standards.md) |
 | See examples | [Technical Examples](technical/architecture/examples/) |
@@ -216,7 +216,7 @@ Complete integration and setup guidance for new and existing projects.
 
 - [AI Agent System](./ai-toolkit/guides/ai-agents-guide.md)
 - [System Design](./project/architecture/examples/system-overview.md)
-- [Documentation Templates](./.resources/templates/README.md)
+- [Documentation Templates](./.claude/resources/templates/README.md)
 
 ### Setup & Integration
 
@@ -231,7 +231,7 @@ Complete integration and setup guidance for new and existing projects.
 
 - [Documentation Guidelines](./development/guidelines/documentation-guidelines.md)
 - [Quality Standards](./development/guidelines/quality-standards.md)
-- [Document Templates](./.resources/templates/)
+- [Document Templates](./.claude/resources/templates/)
 - [Changelog Maintenance](./development/guidelines/changelog-maintenance.md)
 
 ## Support

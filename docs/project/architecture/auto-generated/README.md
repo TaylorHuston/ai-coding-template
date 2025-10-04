@@ -66,7 +66,7 @@ project-root/
 │   ├── development/           # Tier 2: Team processes & guidelines
 │   └── ai-toolkit/             # Tier 3: AI template usage documentation
 │       └── analytics/        # 📊 Metrics system documentation
-└── .resources/scripts/metrics/ # Analytics tools and reporting
+└── .claude/resources/scripts/metrics/ # Analytics tools and reporting
 ```
 
 ## Automation Details

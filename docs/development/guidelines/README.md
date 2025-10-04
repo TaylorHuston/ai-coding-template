@@ -63,12 +63,12 @@ tags: ["guidelines", "standards", "documentation", "navigation"]
 
 ## Implementation Examples
 
-All guidelines now include references to working code examples in `.resources/examples/`:
+All guidelines now include references to working code examples in `.claude/resources/examples/`:
 
-- **API Examples**: `.resources/examples/api/` - REST controllers, GraphQL schemas, authentication, versioning
-- **Security Examples**: `.resources/examples/code/security/` - Implementation examples and policy guidelines
-- **Testing Examples**: `.resources/examples/code/testing/` - Unit tests, integration tests, E2E tests, mocking patterns
-- **Documentation Examples**: `.resources/examples/docs/` - Templates, frontmatter, structure patterns
+- **API Examples**: `.claude/resources/examples/api/` - REST controllers, GraphQL schemas, authentication, versioning
+- **Security Examples**: `.claude/resources/examples/code/security/` - Implementation examples and policy guidelines
+- **Testing Examples**: `.claude/resources/examples/code/testing/` - Unit tests, integration tests, E2E tests, mocking patterns
+- **Documentation Examples**: `.claude/resources/examples/docs/` - Templates, frontmatter, structure patterns
 
 ## Navigation
 

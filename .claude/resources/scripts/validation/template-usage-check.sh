@@ -58,6 +58,6 @@ if [[ $validation_errors -eq 0 ]]; then
     exit 0
 else
     echo -e "${RED}❌ Found $validation_errors template validation errors${NC}"
-    echo -e "${YELLOW}💡 Consider using .resources/templates/workflow/epic/task.template.md${NC}"
+    echo -e "${YELLOW}💡 Consider using .claude/resources/templates/workflow/epic/task.template.md${NC}"
     exit 1
 fi

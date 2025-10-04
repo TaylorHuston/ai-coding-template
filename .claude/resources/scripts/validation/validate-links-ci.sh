@@ -15,7 +15,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
-LINK_VALIDATOR="$PROJECT_ROOT/.resources/scripts/docs/link-validator.sh"
+LINK_VALIDATOR="$PROJECT_ROOT/.claude/resources/scripts/docs/link-validator.sh"
 
 # Default options
 VALIDATE_EXTERNAL=false
