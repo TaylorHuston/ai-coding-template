@@ -6,7 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.8.0] - 2025-10-04
+
 ### Fixed
+
+- **Critical Setup Script Bug**: Fixed PROJECT_ROOT path calculation in setup-manager.sh
+  - **Problem**: PROJECT_ROOT was resolving to `.claude/` instead of project root directory
+  - **Root Cause**: Script moved from `scripts/setup/` to `.claude/resources/scripts/setup/` but path calculation not updated
+  - **Impact**: LICENSE deletion, README customization, and git operations were using wrong base directory
+  - **Solution**: Changed `PROJECT_ROOT="$(cd "$SCRIPTS_ROOT/../.." && pwd)"` to `PROJECT_ROOT="$(cd "$SCRIPTS_ROOT/../../.." && pwd)"`
+  - **Result**: All init-project operations now correctly operate on project root
+
+- **Documentation Path Accuracy**: Fixed incorrect script paths across multiple documentation files
+  - **quick-start.md**: Updated 8+ script paths from `.resources/` to `.claude/resources/`
+  - **integration-guide.md**: Fixed placeholder URLs and incorrect file references
+  - **CONTRIBUTING.md**: Updated references to match new directory structure
+  - **STATUS.md**: Refreshed next steps to reflect current project state
+  - **Result**: All documentation paths now accurate after directory reorganization
 
 - **README Documentation Accuracy**: Fixed multiple incorrect commands and references in project documentation
   - **Root README.md**: Fixed non-existent `npx ai-assisted-template setup` command references and updated GitHub URLs from placeholder "yourusername" to "TaylorHuston"
@@ -18,8 +34,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- **Documentation Structure Reorganization**: Improved documentation organization for better clarity and discoverability
+- **Directory Structure Reorganization**: Moved `.resources/` to `.claude/resources/` for consistent .claude/ namespace
+  - **Migration**: 254 files moved from `.resources/` to `.claude/resources/`
+  - **Path Updates**: Updated all script paths, documentation references, and command configurations
+  - **Structure**: All AI toolkit files now under single `.claude/` directory (agents, commands, resources, references)
+  - **Benefits**: Cleaner namespace, consistent organization, easier .claude/ directory management
+  - **Impact**: Updated 50+ file references across codebase to use new paths
 
+- **README Consolidation**: Streamlined root documentation from two files to one
+  - **Removed**: README-DEV.md (alpha-phase version with outdated content)
+  - **Enhanced**: README.md with improved problem/solution framing
+  - **Added**: "Why Intelligent Agent Coordination Matters" section to docs/ai-toolkit/README.md
+  - **Result**: Single authoritative README with clear value proposition and accurate workflows
+
+- **Documentation Structure Reorganization**: Improved documentation organization for better clarity and discoverability
   - **Directory Renaming**:
     - `docs/ai-tools/` → `docs/ai-toolkit/` - Better reflects the comprehensive AI development toolkit nature
     - `docs/technical/` → `docs/project/` - More intuitive naming for project-specific documentation
@@ -32,6 +60,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Agent Coordination Sections**: Clear specification of primary, supporting, and quality gate agents for each command
   - **Consistent Titles**: Unified `/command-name Command` format across all 14 commands
   - **Usage Documentation**: Standardized argument hints, examples, and usage patterns
+
+### Removed
+
+- **LICENSE File from Template**: Removed template LICENSE during project initialization
+  - **Rationale**: Template LICENSE was confusing - users thought it enforced license requirements on their projects
+  - **Implementation**: init-project script now deletes LICENSE before git commit
+  - **Manifest Update**: LICENSE added to "ignore" category (never syncs)
+  - **Guidance**: Users should add their own LICENSE appropriate for their project
+  - **Result**: Clean slate for users to choose their own license without confusion
 
 ### Added
 
