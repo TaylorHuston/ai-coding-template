@@ -192,7 +192,7 @@ During code review, specifically check for architectural principle violations in
 
 ## Related Guidelines
 
-- **Implementation Examples**: See `.resources/examples/architecture/` for working code examples demonstrating each principle
+- **Implementation Examples**: See `.claude/resources/examples/architecture/` for working code examples demonstrating each principle
 - **Code Quality**: See `quality-standards.md` for specific quality metrics and validation
 - **Code Review**: See `code-review-guidelines.md` for principle-based review checklists
 - **Design Patterns**: Reference common design patterns that embody these architectural principles

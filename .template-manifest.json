@@ -19,9 +19,8 @@
       "backup": true,
       "files": [
         ".claude/**/*",
-        "CLAUDE.md",
-        ".resources/scripts/**/*",
-        ".resources/templates/**/*"
+        ".claude/resources/scripts/**/*",
+        ".claude/resources/templates/**/*"
       ]
     },
     "reference": {
@@ -40,7 +39,7 @@
       "backup": true,
       "files": [
         ".githooks/**/*",
-        ".resources/examples/**/*",
+        ".claude/resources/examples/**/*",
         "CHANGELOG.md",
         ".template-manifest.json",
         "docs/ai-toolkit/README.md"
@@ -65,7 +64,8 @@
         "src/",
         ".env*",
         "README.md",
-        "docs/project-brief.md"
+        "docs/project-brief.md",
+        "CLAUDE.md"
       ]
     },
     "ignore": {
@@ -79,7 +79,8 @@
         ".git/",
         "*.log",
         ".DS_Store",
-        "Thumbs.db"
+        "Thumbs.db",
+        "LICENSE"
       ]
     }
   },
@@ -98,11 +99,11 @@
     "allowedModifications": [
       "CLAUDE.md",
       "docs/development/guidelines/**/*",
-      ".resources/examples/**/*"
+      ".claude/resources/examples/**/*"
     ],
     "protectedFiles": [
       ".claude/commands/**/*",
-      ".resources/scripts/**/*"
+      ".claude/resources/scripts/**/*"
     ]
   }
 }

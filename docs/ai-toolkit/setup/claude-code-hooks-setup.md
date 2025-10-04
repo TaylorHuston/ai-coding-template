@@ -43,7 +43,7 @@ cp .claude/hooks-config.json ~/.claude/settings/hooks.json
 Ensure all hook scripts are executable:
 
 ```bash
-chmod +x .resources/scripts/hooks/*.sh
+chmod +x .claude/resources/scripts/hooks/*.sh
 ```
 
 ### 3. Test Hooks
@@ -66,7 +66,7 @@ The configuration includes these workflow enforcement hooks:
 #### 1. Pre-Task Validation Hook
 - **Event**: `PreToolUse` for `Task` tool
 - **Purpose**: Validate context before agent execution
-- **Script**: `.resources/scripts/hooks/pre-task-validation.sh`
+- **Script**: `.claude/resources/scripts/hooks/pre-task-validation.sh`
 - **Behavior**:
   - Finds workflow directory (PLAN.md, HANDOFF.yml)
   - Validates YAML structure and context integrity
@@ -76,7 +76,7 @@ The configuration includes these workflow enforcement hooks:
 #### 2. Post-Agent Validation Hook
 - **Event**: `PostToolUse` for `Task` tool
 - **Purpose**: Validate agent output and update coordination files
-- **Script**: `.resources/scripts/hooks/post-agent-validation.sh`
+- **Script**: `.claude/resources/scripts/hooks/post-agent-validation.sh`
 - **Behavior**:
   - Checks if HANDOFF.yml was updated properly
   - Validates HANDOFF.yml structure and required fields
@@ -86,7 +86,7 @@ The configuration includes these workflow enforcement hooks:
 #### 3. Pre-Edit Validation Hook
 - **Event**: `PreToolUse` for `Edit`/`Write`/`MultiEdit` tools
 - **Purpose**: Enforce TDD and quality gates before code changes
-- **Script**: `.resources/scripts/hooks/pre-edit-validation.sh`
+- **Script**: `.claude/resources/scripts/hooks/pre-edit-validation.sh`
 - **Behavior**:
   - **TDD Enforcement**: Blocks implementation files without tests
   - **Protected Files**: Warns about editing critical files
@@ -102,21 +102,21 @@ The configuration includes these workflow enforcement hooks:
     {
       "event": "PreToolUse",
       "matcher": {"tool": "Task"},
-      "command": ".resources/scripts/hooks/pre-task-validation.sh",
+      "command": ".claude/resources/scripts/hooks/pre-task-validation.sh",
       "description": "Validate context before agent execution",
       "enabled": true
     },
     {
       "event": "PostToolUse",
       "matcher": {"tool": "Task"},
-      "command": ".resources/scripts/hooks/post-agent-validation.sh",
+      "command": ".claude/resources/scripts/hooks/post-agent-validation.sh",
       "description": "Validate agent output and update coordination files",
       "enabled": true
     },
     {
       "event": "PreToolUse",
       "matcher": {"tool": ["Edit", "Write", "MultiEdit"]},
-      "command": ".resources/scripts/hooks/pre-edit-validation.sh",
+      "command": ".claude/resources/scripts/hooks/pre-edit-validation.sh",
       "description": "Quality gates and TDD validation before code changes",
       "enabled": true
     }
@@ -192,7 +192,7 @@ Edit the hooks configuration to enable/disable specific hooks:
 {
   "event": "UserPromptSubmit",
   "matcher": {"pattern": "/(develop|plan)"},
-  "command": ".resources/scripts/hooks/pre-task-validation.sh",
+  "command": ".claude/resources/scripts/hooks/pre-task-validation.sh",
   "enabled": false,  // Disable this hook
   "note": "Enable for strict workflow enforcement"
 }
@@ -204,11 +204,11 @@ Modify hook scripts for project-specific requirements:
 
 ```bash
 # Make TDD enforcement less strict
-# Edit .resources/scripts/hooks/pre-edit-validation.sh
+# Edit .claude/resources/scripts/hooks/pre-edit-validation.sh
 # Change TDD failure from exit 1 to warning only
 
 # Add project-specific quality gates
-# Edit .resources/scripts/hooks/pre-edit-validation.sh
+# Edit .claude/resources/scripts/hooks/pre-edit-validation.sh
 # Add custom validation logic
 ```
 
@@ -220,7 +220,7 @@ Create additional hooks for project needs:
 {
   "event": "PreToolUse",
   "matcher": {"tool": "Bash"},
-  "command": ".resources/scripts/hooks/pre-bash-validation.sh",
+  "command": ".claude/resources/scripts/hooks/pre-bash-validation.sh",
   "description": "Validate bash commands before execution"
 }
 ```
@@ -232,7 +232,7 @@ Create additional hooks for project needs:
 **Symptoms**: Hook scripts not executing
 **Solutions**:
 - Verify hooks configuration is in correct location
-- Check script permissions: `chmod +x .resources/scripts/hooks/*.sh`
+- Check script permissions: `chmod +x .claude/resources/scripts/hooks/*.sh`
 - Verify Claude Code recognizes hooks: check settings
 - Test with simple hook to verify system is working
 
@@ -259,7 +259,7 @@ Create additional hooks for project needs:
 **Symptoms**: Scripts not found or permission errors
 **Solutions**:
 - Use absolute paths in hook commands
-- Ensure scripts are executable: `chmod +x .resources/scripts/hooks/*.sh`
+- Ensure scripts are executable: `chmod +x .claude/resources/scripts/hooks/*.sh`
 - Verify working directory context in hooks
 - Test scripts manually before enabling hooks
 

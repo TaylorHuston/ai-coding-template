@@ -65,11 +65,11 @@ This document maps all cross-references between guideline files to ensure link i
 | **coding-standards.md** | `../../../CLAUDE.md` |
 | **git-workflow.md** | `../../../CLAUDE.md` |
 
-### Template References (.resources/examples/)
+### Template References (.claude/resources/examples/)
 
 | Source File | Template References |
 |-------------|-------------------|
-| **code-review-guidelines.md** | 6 templates in `.resources/examples/code-review/` |
+| **code-review-guidelines.md** | 6 templates in `.claude/resources/examples/code-review/` |
 
 ## 🔗 Reference Validation Status
 
@@ -85,7 +85,7 @@ This document maps all cross-references between guideline files to ensure link i
 - All development and ai-toolkit README.md files ✓ exist
 
 ### ✅ All Template References Validated
-- All 6 code review templates in `.resources/examples/code-review/` ✓ exist
+- All 6 code review templates in `.claude/resources/examples/code-review/` ✓ exist
 
 ## 📋 Maintenance Guidelines
 
@@ -116,7 +116,7 @@ grep -r "]\([^)]*\.md" docs/development/guidelines/ | grep -v "\.resources"
 ls -la docs/project/architecture/README.md STATUS.md CLAUDE.md
 
 # Check template references
-find .resources/examples/code-review -name "*.md" | wc -l  # Should return 6
+find .claude/resources/examples/code-review -name "*.md" | wc -l  # Should return 6
 ```
 
 ## 📈 Reference Statistics

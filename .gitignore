@@ -76,3 +76,6 @@ temp/
 
 # Example installations (generated during testing/development)
 example/
+
+# Template development configuration (user-specific)
+.template-dev.json

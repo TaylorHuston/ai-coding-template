@@ -46,7 +46,7 @@ model: claude-sonnet-4-5
 
 ## Context
 
-- Complete documentation tree: `docs/`, `.claude/`, `.resources/`, project root
+- Complete documentation tree: `docs/`, `.claude/`, `.claude/resources/`, project root
 - Documentation guidelines from `docs/development/guidelines/documentation-guidelines.md`
 - Project structure files from `.claude/references/`
 - Current codebase state and recent changes
@@ -87,7 +87,7 @@ model: claude-sonnet-4-5
 **Maintenance Summary**: Overview of improvements and remaining considerations
 
 **File Locations**:
-- Updated docs: Throughout project (`docs/`, `.claude/`, `.resources/`, root)
+- Updated docs: Throughout project (`docs/`, `.claude/`, `.claude/resources/`, root)
 - Change reports: Comprehensive summary of all maintenance performed
 
 **Related**: `/docs-sync` → **`/docs-update`** → `/docs-validate`

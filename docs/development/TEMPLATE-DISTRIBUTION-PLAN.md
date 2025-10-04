@@ -48,12 +48,14 @@ This plan implements a comprehensive template distribution system while preservi
 - [ ] **2.1.4** Create template cloning and initialization scripts
 - [ ] **2.1.5** Document git-based update workflows
 
-### 2.2 NPM Package Distribution (Secondary)
+### 2.2 NPM Package Distribution (Deprecated/Archived)
 - [x] **2.2.1** Create `package.json` with template file manifest ✅
 - [x] **2.2.2** Design NPM package structure preserving current layout ✅
 - [x] **2.2.3** Implement file filtering for NPM distribution ✅
-- [ ] **2.2.4** Create NPM publishing automation workflow
+- [x] **2.2.4** Archive NPM implementation to `.archived-npm/` ✅
 - [x] **2.2.5** Set up scoped package naming strategy ✅
+
+**Note:** NPM distribution archived as GitHub Template is the standard for project scaffolds. NPM logic preserved for potential future template updater tool.
 
 ### 2.3 CLI Distribution Tools
 - [x] **2.3.1** Create `ai-template` CLI command structure ✅
@@ -160,7 +162,7 @@ This plan implements a comprehensive template distribution system while preservi
 ```
 ai-coding-template/
 ├── .claude/                     # Core template files (keep in root)
-├── .resources/                  # Template resources and examples
+├── .claude/resources/                  # Template resources and examples
 ├── .template-manifest.json      # Template file ownership and metadata
 ├── .templateignore              # Files to exclude from distribution
 ├── cli/                         # Distribution CLI tools
@@ -196,7 +198,7 @@ ai-coding-template/
       "files": [
         ".claude/**/*",
         "CLAUDE.md",
-        ".resources/scripts/**/*"
+        ".claude/resources/scripts/**/*"
       ]
     },
     "reference": {
@@ -212,7 +214,7 @@ ai-coding-template/
       "description": "Optional components user can choose to include",
       "files": [
         ".githooks/**/*",
-        ".resources/examples/**/*"
+        ".claude/resources/examples/**/*"
       ]
     },
     "user": {

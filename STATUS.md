@@ -14,9 +14,9 @@ tags: ["status", "project-memory", "context"]
 
 ## Current Project State
 
-**Current Focus**: NPM Template Distribution System - Complete and Deployed
+**Current Focus**: GitHub Template Distribution - Converting from NPM to GitHub Template
 
-**Overall Status**: Production - v0.5.0 Released and Merged to Main
+**Overall Status**: In Progress - Converting Distribution Method
 
 **Overall Progress**: ██████████ 100% Complete (Template Distribution System)
 
@@ -220,11 +220,16 @@ No items currently blocked.
 
 ### Immediate Next Steps (Next 1-2 Sessions)
 
-1. **Template Distribution System Complete** - NPM package successfully deployed and merged to main
-2. **Push changes to remote** - Sync main branch with GitHub repository
-3. **Return to application development** - Resume todo application development using established template
-4. **Execute /design phase** - Define user stories and requirements for todo application
-5. **Validate template installation** - Test `npx ai-assisted-template init` functionality in practice
+1. **Test template sync system** - Verify bidirectional sync workflow between projects and template
+2. **Enable GitHub Template** - Configure repository as GitHub Template on GitHub
+3. **Documentation commands** - Test new /docs commands (docs-generate, docs-update, docs-sync, docs-validate, docs-health)
+4. **Merge feature branches** - Merge npm-archival and other completed work to develop/main
+
+### Recent Completions
+
+- ✅ **GitHub Template conversion** - NPM package archived to `.archived-npm/`, GitHub Template as primary distribution
+- ✅ **Directory reorganization** - `.resources/` moved to `.claude/resources/` for clarity
+- ✅ **Documentation consolidation** - README-DEV.md removed, content preserved in README.md and usage guide
 
 ### This Week's Goals
 

@@ -207,7 +207,7 @@ epics/user-authentication/
 
 ## Template Usage Examples
 
-The `/design` command leverages templates from `.resources/templates/workflow/epic/`:
+The `/design` command leverages templates from `.claude/resources/templates/workflow/epic/`:
 
 ### Epic Creation
 - `/design --epic "name"` uses `epic.template.md` to create epic overview

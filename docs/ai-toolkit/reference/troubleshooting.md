@@ -26,7 +26,7 @@ This guide combines AI template-specific troubleshooting with systematic debuggi
 ### Common Quick Fixes
 ```bash
 # Make scripts executable
-chmod +x .resources/scripts/*.sh
+chmod +x .claude/resources/scripts/*.sh
 
 # Refresh AI context
 /refresh
@@ -219,10 +219,10 @@ done
 **Diagnosis**:
 ```bash
 # Test basic query functionality
-./.resources/scripts/metrics/query-metrics.sh --type command --limit 1
+./.claude/resources/scripts/metrics/query-metrics.sh --type command --limit 1
 
 # Check script permissions
-ls -la .resources/scripts/metrics/query-metrics.sh
+ls -la .claude/resources/scripts/metrics/query-metrics.sh
 
 # Verify dependencies
 which jq || echo "jq not installed"
@@ -244,7 +244,7 @@ which bash || echo "bash not available"
 
 2. **Fix Script Permissions**:
    ```bash
-   chmod +x .resources/scripts/metrics/*.sh
+   chmod +x .claude/resources/scripts/metrics/*.sh
    ```
 
 3. **Test with Simple Query**:
@@ -253,7 +253,7 @@ which bash || echo "bash not available"
    echo '{"test": "data"}' | jq .
 
    # Then test metrics query
-   ./.resources/scripts/metrics/query-metrics.sh --help
+   ./.claude/resources/scripts/metrics/query-metrics.sh --help
    ```
 
 #### Metrics Storage Issues
@@ -301,7 +301,7 @@ which bash || echo "bash not available"
 grep -A5 "collectors:" .claude/metrics/config.yml
 
 # Test agent metric recording
-source .resources/scripts/metrics/agent-metrics.sh
+source .claude/resources/scripts/metrics/agent-metrics.sh
 track_agent_start "test-agent" "Test task" "manual" "test"
 track_agent_end "completed" "none" '[]' 0
 
@@ -326,7 +326,7 @@ tail -1 .claude/metrics/agents.jsonl | jq .
 3. **Manual Testing**:
    ```bash
    # Test agent metrics collection manually
-   source .resources/scripts/metrics/agent-metrics.sh
+   source .claude/resources/scripts/metrics/agent-metrics.sh
    track_agent_start "manual-test" "Testing metrics" "user" "troubleshooting"
    # ... do some work ...
    track_agent_end "completed" "opus" '["Read", "Edit"]' 1500
@@ -339,10 +339,10 @@ tail -1 .claude/metrics/agents.jsonl | jq .
 **Diagnosis**:
 ```bash
 # Test report generation with debug output
-bash -x ./.resources/scripts/metrics/generate-report.sh --period 1d --type summary
+bash -x ./.claude/resources/scripts/metrics/generate-report.sh --period 1d --type summary
 
 # Check if data exists for the period
-./.resources/scripts/metrics/query-metrics.sh --range 1d --limit 5
+./.claude/resources/scripts/metrics/query-metrics.sh --range 1d --limit 5
 ```
 
 **Solutions**:
@@ -352,16 +352,16 @@ bash -x ./.resources/scripts/metrics/generate-report.sh --period 1d --type summa
    wc -l .claude/metrics/*.jsonl
 
    # Check data from last 24 hours
-   ./.resources/scripts/metrics/query-metrics.sh --range 1d --stats
+   ./.claude/resources/scripts/metrics/query-metrics.sh --range 1d --stats
    ```
 
 2. **Test with Different Periods**:
    ```bash
    # Try longer period
-   ./.resources/scripts/metrics/generate-report.sh --period 7d --type summary
+   ./.claude/resources/scripts/metrics/generate-report.sh --period 7d --type summary
 
    # Try basic format
-   ./.resources/scripts/metrics/generate-report.sh --format text
+   ./.claude/resources/scripts/metrics/generate-report.sh --format text
    ```
 
 3. **Manual Report Testing**:
@@ -369,7 +369,7 @@ bash -x ./.resources/scripts/metrics/generate-report.sh --period 1d --type summa
    # Create simple manual report
    echo "=== Manual Metrics Report ===" > test-report.txt
    echo "Commands in last 7 days:" >> test-report.txt
-   ./.resources/scripts/metrics/query-metrics.sh --type command --range 7d --format csv >> test-report.txt
+   ./.claude/resources/scripts/metrics/query-metrics.sh --type command --range 7d --format csv >> test-report.txt
    ```
 
 ### Script and Tool Issues
@@ -382,11 +382,11 @@ bash -x ./.resources/scripts/metrics/generate-report.sh --period 1d --type summa
 
 ```bash
 # Make all scripts executable
-chmod +x .resources/scripts/*.sh
-chmod +x .resources/scripts/**/*.sh
+chmod +x .claude/resources/scripts/*.sh
+chmod +x .claude/resources/scripts/**/*.sh
 
 # Verify permissions
-ls -la .resources/scripts/
+ls -la .claude/resources/scripts/
 ```
 
 #### Setup Manager Failures
@@ -400,10 +400,10 @@ ls -la .resources/scripts/
 which git node npm
 
 # Run in verbose mode
-./.resources/scripts/setup-manager.sh check --verbose
+./.claude/resources/scripts/setup-manager.sh check --verbose
 
 # Try minimal setup
-./.resources/scripts/setup-manager.sh quick
+./.claude/resources/scripts/setup-manager.sh quick
 ```
 
 **Specific Issue**: Script stops after "Archived template README" or exits with LOG_FILE error at line 617
@@ -413,7 +413,7 @@ which git node npm
 **Solution**: This was fixed in the latest template version. If using an older copy:
 ```bash
 # Ensure you're using the latest template version
-# The fix involves updating all LOG_FILE append operations in .resources/scripts/lib/logging.sh
+# The fix involves updating all LOG_FILE append operations in .claude/resources/scripts/lib/logging.sh
 # from: [[ -n "${LOG_FILE:-}" ]] && echo "text" >> "$LOG_FILE"
 # to: if [[ -n "${LOG_FILE:-}" ]]; then echo "text" >> "${LOG_FILE}"; fi
 ```
@@ -429,7 +429,7 @@ which git node npm
 ls -la CLAUDE.md STATUS.md docs/quality-standards.md
 
 # Run diagnostics
-./.resources/scripts/ai-status.sh --check
+./.claude/resources/scripts/ai-status.sh --check
 
 # Create missing files
 touch STATUS.md
@@ -446,7 +446,7 @@ echo "# Project Status" > STATUS.md
 
 ```bash
 # Check documentation health
-node .resources/scripts/docs-health.js
+node .claude/resources/scripts/docs-health.js
 
 # Request documentation update:
 "Using the technical-writer agent, update docs to match current implementation"
@@ -567,13 +567,13 @@ bundle install
 
 ```bash
 # Use minimal options
-./.resources/scripts/ai-status.sh --minimal
+./.claude/resources/scripts/ai-status.sh --minimal
 
 # Skip expensive checks
-./.resources/scripts/setup-manager.sh quick --skip-validation
+./.claude/resources/scripts/setup-manager.sh quick --skip-validation
 
 # Run specific checks only
-./.resources/scripts/docs-health.js --file README.md
+./.claude/resources/scripts/docs-health.js --file README.md
 ```
 
 #### Large Context Window Issues
@@ -610,14 +610,14 @@ alias find=gfind
 git config --global core.autocrlf input
 
 # Convert scripts to Unix format
-dos2unix .resources/scripts/*.sh
+dos2unix .claude/resources/scripts/*.sh
 ```
 
 #### Permission Issues
 
 ```bash
 # WSL permission fix
-chmod -R 755 .resources/scripts/
+chmod -R 755 .claude/resources/scripts/
 chmod -R 644 docs/
 ```
 
@@ -663,27 +663,27 @@ sudo aa-status
 
 ```bash
 # Most scripts support verbose mode
-./.resources/scripts/setup-manager.sh check --verbose
-./.resources/scripts/ai-status.sh --verbose --debug
+./.claude/resources/scripts/setup-manager.sh check --verbose
+./.claude/resources/scripts/ai-status.sh --verbose --debug
 ```
 
 ### Check Logs
 
 ```bash
 # Check script logs
-tail -f .resources/scripts/logs/setup.log
-tail -f .resources/scripts/logs/ai-status.log
+tail -f .claude/resources/scripts/logs/setup.log
+tail -f .claude/resources/scripts/logs/ai-status.log
 ```
 
 ### Validate Configuration
 
 ```bash
 # Run validation suite
-./.resources/scripts/validate-all.sh
+./.claude/resources/scripts/validate-all.sh
 
 # Check specific components
-./.resources/scripts/validate-agents.sh
-./.resources/scripts/validate-docs.sh
+./.claude/resources/scripts/validate-agents.sh
+./.claude/resources/scripts/validate-docs.sh
 ```
 
 ## Getting Help
@@ -699,8 +699,8 @@ tail -f .resources/scripts/logs/ai-status.log
 2. **Run Diagnostics**:
 
    ```bash
-   ./.resources/scripts/setup-manager.sh check
-   ./.resources/scripts/ai-status.sh --diagnostics
+   ./.claude/resources/scripts/setup-manager.sh check
+   ./.claude/resources/scripts/ai-status.sh --diagnostics
    ```
 
 3. **Ask AI for Help**:
@@ -739,13 +739,13 @@ tail -f .resources/scripts/logs/ai-status.log
 
 ```bash
 # Weekly maintenance
-./.resources/scripts/docs-health.js
-./.resources/scripts/validate-all.sh
+./.claude/resources/scripts/docs-health.js
+./.claude/resources/scripts/validate-all.sh
 git clean -fd  # Remove untracked files
 
 # Monthly maintenance
-./.resources/scripts/cleanup-old-sessions.sh
-./.resources/scripts/optimize-agents.sh
+./.claude/resources/scripts/cleanup-old-sessions.sh
+./.claude/resources/scripts/optimize-agents.sh
 ```
 
 ## Prevention and Monitoring
@@ -1136,18 +1136,18 @@ cp -r . ../project-backup
 # Reset to clean state
 git clean -fdx
 git reset --hard
-./.resources/scripts/setup-manager.sh full
+./.claude/resources/scripts/setup-manager.sh full
 ```
 
 #### Partial Recovery
 ```bash
 # Reset just agents
 rm -rf .claude/agents/
-./.resources/scripts/setup-manager.sh agents-only
+./.claude/resources/scripts/setup-manager.sh agents-only
 
 # Reset just scripts
-rm -rf .resources/scripts/
-./.resources/scripts/setup-manager.sh scripts-only
+rm -rf .claude/resources/scripts/
+./.claude/resources/scripts/setup-manager.sh scripts-only
 ```
 
 ## Frequently Asked Questions

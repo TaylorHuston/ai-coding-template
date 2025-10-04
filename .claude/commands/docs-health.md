@@ -46,7 +46,7 @@ model: claude-sonnet-4-5
 
 ## Context
 
-- All documentation files: `docs/`, `.claude/`, `.resources/`, project root
+- All documentation files: `docs/`, `.claude/`, `.claude/resources/`, project root
 - Health analysis scripts: `docs-health.js`, `docs-manager.sh health`
 - Documentation guidelines and quality standards
 - Project structure for coverage calculation

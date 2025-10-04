@@ -172,7 +172,7 @@ agents:
 # - Enhanced files: architectural-principles.md, authentication-authorization.md,
 #   code-review-guidelines.md, git-workflow.md, quality-standards.md
 # - New files: ai-collaboration-standards.md, code-quality.md
-# - Extracted code examples to .resources/examples/ directory
+# - Extracted code examples to .claude/resources/examples/ directory
 # - All guideline files optimized for AI processing (under 400 lines)
 # - Complete agent coverage with specialized AI collaboration standards
 
