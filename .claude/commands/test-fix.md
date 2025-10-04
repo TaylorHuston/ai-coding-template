@@ -9,7 +9,7 @@ tags: ["workflow", "testing", "debugging", "automation"]
 description: "Automatic test failure detection and resolution"
 argument-hint: "[test-pattern] [--files FILES]"
 allowed-tools: ["Bash", "Read", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-sonnet-4"
+model: claude-sonnet-4-5
 ---
 
 # /test-fix Command

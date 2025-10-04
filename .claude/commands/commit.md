@@ -9,7 +9,7 @@ tags: ["workflow", "git", "commit", "quality"]
 description: "Create a proper git commit with quality checks and conventional message"
 argument-hint: "[message] [--files FILES]"
 allowed-tools: ["Bash", "Read", "Grep", "Glob"]
-model: "claude-sonnet-4"
+model: claude-sonnet-4-5
 ---
 
 # /commit Command

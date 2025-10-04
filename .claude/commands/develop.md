@@ -9,7 +9,7 @@ tags: ["workflow", "development", "execution"]
 description: "Execute implementation tasks with test-first enforcement and epic integration"
 argument-hint: "[--epic \"name\"] [--task \"###\"] [--review] [--guided]"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-sonnet-4"
+model: claude-sonnet-4-5
 ---
 
 # /develop Command

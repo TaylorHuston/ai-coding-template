@@ -9,7 +9,7 @@ tags: ["workflow", "git", "merging", "deployment"]
 description: "Safe branch merging with deployment validation"
 argument-hint: "[target-branch] [--strategy STRATEGY]"
 allowed-tools: ["Bash", "Read", "Edit", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-sonnet-4"
+model: claude-sonnet-4-5
 ---
 
 # /merge-branch Command

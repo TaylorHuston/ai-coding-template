@@ -9,7 +9,7 @@ tags: ["workflow", "planning", "implementation"]
 description: "Implementation planning for epics, standalone tasks, and bugs with X.Y.Z task structure"
 argument-hint: "[--epic \"name\"] [--task \"###\"] [--misc \"task-id\"] [--bug \"bug-id\"] [--review-epic \"name\"] [--issue KEY]"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-opus-4"
+model: claude-opus-4-0
 ---
 
 # /plan Command

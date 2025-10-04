@@ -2,7 +2,7 @@
 name: devops-engineer
 description: Infrastructure specialist and deployment automation expert focused on creating robust, scalable, and secure development and production environments. Auto-invoked for infrastructure setup, deployment automation, and CI/CD pipeline issues.
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
-model: sonnet
+model: claude-sonnet-4-5
 color: cyan
 coordination:
   hands_off_to: [security-auditor, performance-optimizer, technical-writer]

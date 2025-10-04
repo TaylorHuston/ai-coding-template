@@ -9,7 +9,7 @@ tags: ["template", "improvement", "feedback", "publishing"]
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "WebSearch", "WebFetch"]
 argument-hint: "[--feedback|--enhance|--publish|--monitor]"
 description: "Improve the template based on user feedback and publish enhancements"
-model: "claude-opus-4"
+model: claude-opus-4-0
 ---
 
 # /improve Command

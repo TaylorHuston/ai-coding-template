@@ -2,7 +2,7 @@
 name: brief-strategist
 description: Strategic brief specialist focused on product strategy, market positioning, and business model design. AUTOMATICALLY INVOKED for /design --brief commands. Conducts interactive discovery process with structured questioning to gather all project brief elements before generating documents.
 tools: Read, Write, Edit, Grep, Glob, TodoWrite
-model: opus
+model: claude-opus-4-0
 color: purple
 coordination:
   hands_off_to: [project-manager, technical-writer]

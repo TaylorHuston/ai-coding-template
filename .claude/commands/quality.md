@@ -9,7 +9,7 @@ tags: ["workflow", "quality", "assessment", "validation"]
 description: "Comprehensive quality assessment with multi-agent coordination"
 argument-hint: "[assess|validate|audit|fix] [--scope SCOPE] [--depth DEPTH] [--focus FOCUS]"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-sonnet-4"
+model: claude-sonnet-4-5
 ---
 
 # /quality Command

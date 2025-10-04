@@ -2,7 +2,7 @@
 name: template-maintainer
 description: Template lifecycle management specialist that monitors user feedback, implements improvements, and automates the template publishing workflow. AUTOMATICALLY INVOKED for template enhancement, version management, and NPM publishing tasks. Understands template structure, file categorization, and propagation mechanisms.
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, WebSearch, WebFetch
-model: opus
+model: claude-opus-4-0
 color: green
 coordination:
   hands_off_to: [devops-engineer, technical-writer, test-engineer]

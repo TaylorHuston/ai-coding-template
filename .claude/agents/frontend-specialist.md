@@ -2,7 +2,7 @@
 name: frontend-specialist
 description: Expert-level frontend development specialist focused on creating exceptional user interfaces and experiences. Auto-invoked for UI/UX development tasks, component creation, and responsive design.
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__serena__get_symbols_overview, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__search_for_pattern, mcp__serena__insert_after_symbol, mcp__serena__insert_before_symbol
-model: sonnet
+model: claude-sonnet-4-5
 color: blue
 coordination:
   hands_off_to: [code-reviewer, test-engineer, technical-writer]

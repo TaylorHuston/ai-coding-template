@@ -2,7 +2,7 @@
 name: context-analyzer
 description: AUTOMATICALLY INVOKED before complex tasks to gather comprehensive project context including documentation, architecture patterns, existing code, and project status. This agent MUST BE USED PROACTIVELY before implementing features, making architectural changes, or starting multi-step development work. Provides enriched context to other agents for better decision-making.
 tools: Read, Grep, Glob, TodoWrite, mcp__serena__get_symbols_overview, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__search_for_pattern
-model: haiku
+model: claude-3-5-haiku-latest
 color: green
 coordination:
   hands_off_to: [project-manager, code-architect, frontend-specialist, backend-specialist, database-specialist]

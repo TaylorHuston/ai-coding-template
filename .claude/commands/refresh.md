@@ -9,7 +9,7 @@ tags: ["workflow", "context", "refresh", "efficiency"]
 description: "Context-efficient project refresh using intelligent subagent delegation"
 argument-hint: "[--analysis] [--focus AREA]"
 allowed-tools: ["Bash", "Task"]
-model: "claude-sonnet-4"
+model: claude-sonnet-4-5
 ---
 
 # /refresh Command

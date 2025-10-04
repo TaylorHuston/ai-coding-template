@@ -9,7 +9,7 @@ tags: ["workflow", "review", "quality", "analysis"]
 description: "Comprehensive code review with multi-dimensional analysis"
 argument-hint: "[--scope SCOPE] [--focus FOCUS] [--depth DEPTH] [--output FORMAT]"
 allowed-tools: ["Read", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-sonnet-4"
+model: claude-sonnet-4-5
 ---
 
 # /review Command

@@ -9,7 +9,7 @@ tags: ["workflow", "security", "audit", "compliance"]
 description: "OWASP-compliant security assessment with vulnerability remediation"
 argument-hint: "[--scope SCOPE] [--depth DEPTH] [--compliance FRAMEWORK] [--output FORMAT]"
 allowed-tools: ["Read", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-opus-4"
+model: claude-opus-4-0
 ---
 
 # /security-audit Command

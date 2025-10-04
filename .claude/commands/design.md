@@ -9,7 +9,7 @@ tags: ["workflow", "design", "vision", "features", "non-technical", "epic"]
 allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob", "TodoWrite"]
 argument-hint: "[--brief|--epic \"name\"|--task \"name\" [--epic \"epic-name\"]|--review]"
 description: "Create and document non-technical project aspects from vision to epic structure with user stories"
-model: "claude-opus-4"
+model: claude-opus-4-0
 ---
 
 # /design Command

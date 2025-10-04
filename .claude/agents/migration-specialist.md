@@ -2,7 +2,7 @@
 name: migration-specialist
 description: Version upgrades, framework migrations, and dependency updates specialist. Focuses on safe migrations, compatibility assessment, and incremental modernization strategies.
 tools: Read, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite
-model: sonnet
+model: claude-sonnet-4-5
 color: purple
 coordination:
   hands_off_to: [test-engineer, code-reviewer, technical-writer]

@@ -9,7 +9,7 @@ tags: ["workflow", "status", "analysis", "context"]
 description: "Enhanced project status with intelligent context analysis"
 argument-hint: "[--format FORMAT] [--scope SCOPE] [--ai-format] [--detailed]"
 allowed-tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: "claude-sonnet-4"
+model: claude-sonnet-4-5
 ---
 
 # /status Command

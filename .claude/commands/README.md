@@ -1,444 +1,263 @@
-# Claude Code Command Reference
+---
+version: "1.0.0"
+created: "2025-08-21"
+last_updated: "2025-09-23"
+status: "active"
+target_audience: ["ai-assistants", "development-team"]
+document_type: "reference"
+priority: "high"
+tags: ["claude-code", "commands", "workflow", "reference"]
+---
 
-**Created**: 2025-08-21 **Last Updated**: 2025-09-23 **Status**: Active - Claude Code Compatible **Target Audience**: AI Assistants, Development Team
+# Claude Code Command Reference
 
 Streamlined catalog of Claude Code slash commands centered around the **4-phase epic-driven workflow** that transforms AI from code generator to architectural partner.
 
 ## 🌟 Core Workflow Commands (Primary)
 
-**THE 4-PHASE EPIC WORKFLOW: From vision to validated execution**
+**4-Phase Epic Workflow**: From vision to validated execution
 
 ### 📝 **/design** - Vision, Epics, and Requirements
 
 - _Purpose_: Create and document non-technical project aspects from vision to epic structure
-- _Usage_: `/design --vision | --epic "name" | --task "name" | --review`
+- _Usage_: `/design "create project brief" | "design auth epic" | "add user story"`
 - _Workflow Phase_: **1. Design** - Vision documents, epic structure, user stories, business context
 
 ### 🏗️ **/architect** - Technical Architecture and Infrastructure
 
 - _Purpose_: Design technical solutions through Quick Mode (5-10 min) or Deep Mode (20+ min) exploration
-- _Usage_: `/architect epic-name | --deep | "direct question"`
+- _Usage_: `/architect epic-name | epic-name deep | "direct question"`
 - _Workflow Phase_: **2. Architecture** - Technical decisions, ADRs, Fast Track vs comprehensive analysis
 
 ### 📋 **/plan** - Epic-Driven Implementation Planning
 
 - _Purpose_: Create epic structure with progressive task discovery and X.Y.Z implementation tasks
-- _Usage_: `/plan --epic "name" --issue KEY | --review | --init`
+- _Usage_: `/plan epic-name | "review current plan" | "initialize new epic"`
 - _Workflow Phase_: **3. Planning** - Epic directories, TASK-### numbering, agent assignment, testing integration
 
 ### ⚡ **/develop** - Streamlined Development Execution
 
 - _Purpose_: Execute implementation tasks with test-first enforcement and epic integration
-- _Usage_: `/develop | /develop --task TASK-### | --epic "name"`
+- _Usage_: `/develop | epic-name | "continue current task"`
 - _Workflow Phase_: **4. Execution** - Test-first development, 95%+ coverage, hierarchical branching
-
----
 
 ## 🔧 Supporting Commands (By Domain)
 
 ### **Quality & Security**
 
-- **[/quality](./quality.md)** - Comprehensive quality assessment with multi-agent coordination
-
-  - _Purpose_: Multi-dimensional quality analysis using specialized agents
-  - _Usage_: `/quality assess|validate|audit|fix [--scope SCOPE] [--depth DEPTH] [--focus FOCUS]`
-  - _Model_: claude-sonnet-4 | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
-
-- **[/review](./review.md)** - Comprehensive code review with multi-dimensional analysis
-
-  - _Purpose_: Multi-dimensional code quality assessment with detailed feedback
-  - _Usage_: `/review --scope SCOPE --focus FOCUS --depth DEPTH --output FORMAT`
-  - _Model_: claude-sonnet-4 | _Tools_: Read, Bash, Grep, Glob, TodoWrite, Task
-
-- **[/security-audit](./security-audit.md)** - OWASP-compliant security assessment
-
-  - _Purpose_: OWASP-compliant security assessment with vulnerability remediation
-  - _Usage_: `/security-audit --scope SCOPE --depth DEPTH --compliance FRAMEWORK --output FORMAT`
-  - _Model_: claude-opus-4 | _Tools_: Read, Bash, Grep, Glob, TodoWrite, Task
-
-- **[/test-fix](./test-fix.md)** - Automatic test failure detection and resolution
-  - _Purpose_: Automated test failure detection, analysis, and resolution
-  - _Usage_: `/test-fix [test pattern or files]`
-  - _Model_: claude-sonnet-4 | _Tools_: Bash(npm/pnpm/yarn), Read, Edit, MultiEdit, Grep, Glob, TodoWrite, Task
+- **[/quality](./quality.md)** - Multi-dimensional quality analysis using specialized agents
+- **[/review](./review.md)** - Code quality assessment with detailed feedback
+- **[/security-audit](./security-audit.md)** - OWASP-compliant security assessment with vulnerability remediation
+- **[/test-fix](./test-fix.md)** - Automated test failure detection, analysis, and resolution
 
 ### **Development Support**
 
-- **[/commit](./commit.md)** - Git commit with quality checks and conventional messages
+- **[/commit](./commit.md)** - Smart git commits with natural language instructions
+- **[/merge-branch](./merge-branch.md)** - Safe branch merging with automated testing and validation
+- **[/improve](./improve.md)** - Template and project improvement suggestions
 
-  - _Purpose_: Create proper commits with pre-commit validation
-  - _Usage_: `/commit [scope or files]`
-  - _Model_: claude-sonnet-4 | _Tools_: Bash(git), npm/pnpm/yarn, Read, Grep, Glob
+### **Project Management & Documentation**
 
-- **[/merge-branch](./merge-branch.md)** - Safe branch merging with deployment validation
-  - _Purpose_: Safe branch merging with automated testing, deployment, and validation
-  - _Usage_: `/merge-branch [target branch or merge options]`
-  - _Model_: claude-sonnet-4 | _Tools_: Bash(git), Bash(npm/pnpm/yarn), Read, Edit, Grep, Glob, TodoWrite, Task
-
-### **Project Management**
-
-- **[/status](./status.md)** - Enhanced project status with intelligent context analysis
-
-  - _Purpose_: Enhanced project status dashboard with context-analyzer agent integration
-  - _Usage_: `/status [--format FORMAT] [--scope SCOPE] [--ai-format] [--detailed]`
-  - _Model_: claude-sonnet-4 | _Tools_: Read, Write, Edit, Bash, Grep, Glob, TodoWrite, Task
-
-- **[/docs](./docs.md)** - Unified documentation management with intelligent agent coordination
-
-  - _Purpose_: Intelligent documentation coordination with technical-writer agent
-  - _Usage_: `/docs generate|validate|sync [--type TYPE] [--scope SCOPE]`
-  - _Model_: claude-sonnet-4 | _Tools_: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, TodoWrite, Task
-
-- **[/refresh](./refresh.md)** - Intelligent project context refresh with git awareness
-  - _Purpose_: Quick context refresh for AI assistants on project state and conventions
-  - _Usage_: `/refresh [specific area]`
-  - _Model_: claude-sonnet-4 | _Tools_: Read, Bash(git), Task
+- **[/status](./status.md)** - Project status dashboard with context analysis
+- **[/docs-generate](./docs-generate.md)** - Generate comprehensive project documentation
+- **[/docs-validate](./docs-validate.md)** - Validate documentation health and links
+- **[/docs-sync](./docs-sync.md)** - Synchronize documentation with code changes
+- **[/docs-update](./docs-update.md)** - Comprehensive documentation maintenance
+- **[/docs-health](./docs-health.md)** - Documentation health analysis and metrics
+- **[/refresh](./refresh.md)** - Quick context refresh on project state and conventions
 
 ---
 
-## 🚀 Epic Workflow Usage Patterns
+## 📚 Complete Command Index
 
-### The Complete Epic Workflow (Recommended for All Features)
+| Command | Purpose | Usage Pattern |
+|---------|---------|---------------|
+| `/design` | Vision, epics, requirements | Natural language instructions |
+| `/architect` | Technical architecture | `epic-name [deep]` or questions |
+| `/plan` | Implementation planning | `epic-name` or natural language |
+| `/develop` | Development execution | `epic-name` or natural language |
+| `/quality` | Quality assessment | Multi-agent analysis |
+| `/review` | Code review | Detailed feedback |
+| `/security-audit` | Security assessment | OWASP compliance |
+| `/test-fix` | Test failure resolution | Automated detection |
+| `/commit` | Smart git commits | Natural language instructions |
+| `/merge-branch` | Safe branch merging | Automated validation |
+| `/improve` | Template improvements | Suggestions and updates |
+| `/status` | Project dashboard | Context analysis |
+| `/docs-generate` | Documentation creation | Natural language instructions |
+| `/docs-validate` | Documentation validation | Natural language instructions |
+| `/docs-sync` | Documentation synchronization | Natural language instructions |
+| `/docs-update` | Documentation maintenance | Natural language instructions |
+| `/docs-health` | Documentation health analysis | Natural language instructions |
+| `/refresh` | Context refresh | Quick state update |
 
-```yaml
-# Complete Epic Development Workflow
-core_workflow: "/design → /architect → /plan → /develop"
+## Command Creation Best Practices
 
-# Epic Structure Creation
-epic_creation:
-  phase_1_design:
-    command: "design --epic 'epic-name'"
-    purpose: "Non-technical foundation"
-    output: "Vision documents, user stories, business context"
+### Command Structure Template
 
-  phase_2_architecture:
-    command: "architect epic-name"
-    purpose: "Technical decisions"
-    output: "ADRs with Quick Mode (5-10 min) or Deep Mode (20+ min)"
-    modes:
-      quick_mode: "Standard decisions (90% of cases)"
-      deep_mode: "Complex analysis (10% of cases)"
-      direct_questions: "architect 'NextJS or React?'"
-
-  phase_3_planning:
-    command: "plan --epic 'epic-name' --issue KEY"
-    purpose: "Implementation structure"
-    output: "Epic directory with TASK-### progressive discovery"
-    structure:
-      - "epics/epic-name/EPIC.md"
-      - "epics/epic-name/TASK-001/ (with TASK.md, HANDOFF.yml, RESEARCH.md)"
-      - "epics/epic-name/resources/ (ADRs, research, assets)"
-
-  phase_4_execution:
-    command: "develop"
-    purpose: "Test-first implementation"
-    output: "Quality-validated code with 95%+ coverage"
-    features:
-      - "Auto-invoked test-engineer"
-      - "X.Y.Z implementation tasks"
-      - "Hierarchical epic/task branching"
-
-# Progressive Task Discovery
-task_numbering:
-  format: "TASK-###"
-  discovery_order: "Numbered across ALL workflow phases"
-  implementation: "X.Y.Z hierarchical subtasks (e.g., TASK-001:1.2.3)"
-
-# Branching Strategy
-epic_branching:
-  structure: "epic/[name] containing task/###-[name]"
-  workflow: "Task → Epic → Develop merging"
-  local_focus: "No PRs initially, local merging workflow"
-```
-
-### Quality-First Development Pattern
-
-```yaml
-pattern: "design → architect → plan → develop → quality → commit"
-use_case: "Security-critical or high-visibility features"
-additional_validation: [quality, review, security-audit]
-coverage_requirement: "95%+ with TDD/BDD hybrid approach"
-```
-
-### Quick Decision Pattern
-
-```yaml
-pattern: "architect 'direct question' → quick implementation"
-use_case: "Simple architectural decisions"
-example: "architect 'Should we use JWT or sessions?'"
-time_investment: "5-10 minutes for standard decisions"
-```
-
----
-
-## 📝 **Custom Command Best Practices & Guidelines**
-
-### **🎯 Command Structure Requirements**
-
-#### **YAML Frontmatter (Required)**
+**YAML Frontmatter:**
 ```yaml
 ---
-version: "0.3.0"                          # Semantic version
-created: "YYYY-MM-DD"                     # Creation date
-last_updated: "YYYY-MM-DD"                # Last modification
-status: "active"                          # active|deprecated|experimental
-target_audience: ["ai-assistants"]        # Who uses this command
-document_type: "command"                  # Always "command"
-tags: ["workflow", "category"]            # Descriptive tags
-allowed-tools: ["Read", "Write", "Task"]  # Permitted tool names
-argument-hint: "[--flag VALUE]"           # Usage hint for help
-description: "Brief command purpose"      # One-line description
-model: "claude-opus-4|claude-sonnet-4"   # Required model specification
+allowed-tools: ["Read", "Grep", "Glob"]  # Essential tools only
+argument-hint: "[target] [mode] | [\"natural language instruction\"]"  # Expected arguments
+description: "Brief command purpose"     # One-line description
+model: claude-sonnet-4-5                 # Versioned alias (claude-sonnet-4-5, claude-opus-4-0)
 ---
 ```
 
-#### **Content Structure (Standardized)**
+**Content Structure:**
 ```markdown
-# /command-name Command
+## /command-name Command
 
 **Purpose**: Clear, concise purpose statement
 
 ## Usage
-[Usage examples with bash code blocks]
-
-## Agent Coordination
-**Primary Agent**: specific-agent-name
-**Supporting Agents**: agent1, agent2
-**Quality Gates**: validation-agent
-
-## Arguments
-[Detailed argument documentation]
-
-## Examples
-[Practical usage examples]
+```bash
+/command-name target-name         # Basic usage
+/command-name target-name mode    # With mode
+/command-name "direct question"   # Direct question
 ```
 
-### **🤖 Claude 4 Model Strategy**
+### Claude Code Argument System
 
-#### **Claude Opus 4** - Complex Reasoning & Architecture
+**Supported Patterns:**
+- **Positional**: `$1`, `$2`, `$3` for individual arguments
+- **Natural Language**: `$ARGUMENTS` for flexible instructions
+- **NOT supported**: `--flag` syntax (use positional instead)
+
+**Usage Examples:**
+```bash
+# Positional arguments (structured commands)
+/command epic-name        # $1="epic-name"
+/command epic-name deep   # $1="epic-name", $2="deep"
+
+# Natural language (flexible commands)
+/command "all files with message 'feat: add auth'"     # $ARGUMENTS
+/command "only the components we changed for this task" # $ARGUMENTS
+```
+
+**When to Use Each:**
+- **Positional**: Simple, structured commands with predictable patterns
+- **Natural Language**: Complex instructions requiring context and intelligence
+
+## Arguments _(choose approach)_
+
+**Positional Arguments** _(for structured commands)_:
+| Position | Type | Values | Description |
+|----------|------|--------|-------------|
+| `$1` | string | target-name | Primary target |
+| `$2` | string | mode | Optional mode |
+
+**Natural Language** _(for flexible commands)_:
+| Variable | Type | Description |
+|----------|------|-------------|
+| `$ARGUMENTS` | string | Full natural language instruction |
+
+## Agent Coordination _(if multi-agent)_
+**Primary**: agent-name **Supporting**: agent1, agent2
+
+## Context _(if needed)_
+[Files to read for context - e.g., project docs, existing patterns]
+
+## Instructions
+1. Step-by-step numbered list
+2. Clear, actionable items
+3. Expected outcomes
+
+## Output
+[What to return to the user when done]
+
+**Related**: Previous → **This** → Next _(if part of workflow)_
+```
+
+### **🤖 Model Selection Strategy**
+
+#### **Claude Opus 4.1** - Complex Reasoning & Architecture
+
 - **Use For**: Design, architecture, planning, security analysis
-- **Characteristics**: Superior sustained performance, best coding model (72.5% SWE-bench)
+- **Model ID**: `claude-opus-4-1-20250805` (alias: `claude-opus-4-1`)
 - **Commands**: `/design`, `/architect`, `/plan`, `/security-audit`, `/improve`
 - **When**: Complex multi-step reasoning, architectural decisions, strategic planning
 
 #### **Claude Sonnet 4** - Execution & Development
+
 - **Use For**: Development, quality, documentation, operations
-- **Characteristics**: Balanced performance, precise instruction following (72.7% SWE-bench)
+- **Model ID**: `claude-sonnet-4-20250514` (alias: `claude-sonnet-4-0`)
 - **Commands**: `/develop`, `/commit`, `/quality`, `/review`, `/docs`, `/status`
 - **When**: Implementation tasks, code execution, standard operations
 
+#### **Claude Haiku 3.5** - Quick Operations
+
+- **Use For**: Status checks, simple queries, quick operations
+- **Model ID**: `claude-3-5-haiku-20241022` (alias: `claude-3-5-haiku-latest`)
+- **Commands**: `/status`, `/refresh`, simple utility commands
+- **When**: Fast responses, lightweight operations
+
 #### **Model Selection Guidelines**
-- **Complex Strategy**: Use Opus for decisions requiring deep reasoning
-- **Implementation Focus**: Use Sonnet for coding and execution tasks
-- **Hybrid Reasoning**: Both models support near-instant + extended thinking modes
-- **Tool Parallelization**: Both can use multiple tools simultaneously
 
-### **🔧 Tool Permissions Best Practices**
+- **Complex Strategy**: Use Opus 4.1 for decisions requiring deep reasoning
+- **Implementation Focus**: Use Sonnet 4 for coding and execution tasks
+- **Quick Operations**: Use Haiku 3.5 for fast, simple operations
 
-#### **Essential Tools (Always Safe)**
-• `Read` - File reading operations
-• `Grep` - Code search and pattern matching
-• `Glob` - File pattern matching and discovery
+### Migration from Flag-Based Commands
 
-#### **Modification Tools (Use Carefully)**
-• `Edit` - Single file modifications (preferred over Write)
-• `MultiEdit` - Batch file editing for refactoring
-• `Write` - File creation (use sparingly)
+**Converting Existing Commands:**
+```bash
+# OLD (unsupported flags)
+/command --epic "name" --deep
 
-#### **Execution Tools (Specify Scope)**
-• `Bash(git)` - Git operations only
-• `Bash(npm)` - Node.js package management
-• `Bash(test)` - Test execution only
-• `Bash` - General shell access (use carefully)
+# NEW (positional arguments)
+/command epic-name deep
+```
 
-#### **Advanced Tools (Complex Commands)**
-• `Task` - Subagent invocation for multi-agent coordination
-• `TodoWrite` - Progress tracking for multi-step processes
+**Common Conversions:**
+- `--deep` → second argument: `command target deep`
+- `--scope project` → first argument: `command project`
+- `--format json` → second argument: `command target json`
 
-#### **Tool Specification Format**
+### Tool Permissions Guidelines
+
+**Essential Tools**: `Read`, `Grep`, `Glob` - Always safe for file operations
+
+**Modification Tools**: `Edit` (preferred), `MultiEdit`, `Write` (use sparingly)
+
+**Execution Tools**: `Bash` (specify scope when possible)
+
+**Advanced Tools**: `Task` (multi-agent), `TodoWrite` (progress tracking)
+
 ```yaml
-# Preferred: Specific, scoped permissions
-allowed-tools: ["Read", "Bash(git)", "Edit", "Grep", "Task"]
+# Simple commands
+allowed-tools: ["Read", "Grep", "Glob"]
 
-# Acceptable: General but documented
-allowed-tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob"]
+# Commands with modifications
+allowed-tools: ["Read", "Edit", "Bash", "Grep", "Glob"]
 
-# Avoid: Overly broad without justification
-allowed-tools: ["*"]  # Only for specialized meta-commands
-```
+# Complex multi-agent commands
+allowed-tools: ["Read", "Edit", "Bash", "Grep", "Glob", "Task", "TodoWrite"]
+````
 
-### **🎨 Agent Coordination Patterns**
+### Quality Guidelines
 
-#### **Single Agent Pattern**
-```markdown
-## Agent Coordination
-**Primary Agent**: technical-writer
-**Purpose**: Focused domain expertise
-**Best For**: Clear single-specialty tasks
-```
+**Performance Expectations**:
 
-#### **Multi-Agent Workflow**
-```markdown
-## Agent Coordination
-**Primary Agent**: project-manager
-**Supporting Agents**: frontend-specialist, backend-specialist
-**Quality Gates**: code-reviewer, test-engineer
-**Best For**: Complex multi-domain tasks
-```
+- Fast commands (<30s): Status, simple operations
+- Standard commands (1-5min): Code generation, analysis
+- Complex commands (5-15min): Multi-agent coordination
 
-#### **Progressive Specialization**
-```markdown
-## Agent Coordination
-**Phase 1**: context-analyzer (understand scope)
-**Phase 2**: code-architect (design solution)
-**Phase 3**: technical-writer (document results)
-**Best For**: Sequential expertise application
-```
+**Security & Best Practices**:
 
-### **📋 Documentation Standards**
+- Use principle of least privilege for tool permissions
+- Prefer `Read` over `Write`, `Edit` over `MultiEdit`
+- Minimize context loading, use progressive information gathering
+- Validate inputs and handle errors gracefully
 
-#### **Description Guidelines**
-• **One-Line Focus**: Clear, actionable purpose statement
-• **User-Centric**: What the user accomplishes, not internal mechanics
-• **Specific Outcomes**: Concrete deliverables and results
+**Quality Checklist**:
 
-**Good Examples**:
-- "Create comprehensive project brief with business requirements"
-- "Execute test-first development with automated quality gates"
-- "Generate technical documentation with agent coordination"
-
-**Avoid**:
-- "Handle project stuff"
-- "Do development work"
-- "Manage various tasks"
-
-#### **Argument Documentation**
-```yaml
-# Excellent: Clear structure and options
-argument-hint: "[--brief|--epic \"name\"|--task \"name\"]"
-argument-hint: "[--scope SCOPE] [--depth shallow|deep] [--format json|yaml]"
-
-# Good: Simple but clear
-argument-hint: "[--target BRANCH] [--force]"
-
-# Poor: Vague or incomplete
-argument-hint: "[options]"
-argument-hint: "[various flags]"
-```
-
-#### **Usage Examples**
-• **Always use bash code blocks** for consistency
-• **Show multiple patterns** to demonstrate flexibility
-• **Include real scenarios** users will encounter
-• **Demonstrate flag combinations** and their effects
-
-### **⚡ Performance & Security**
-
-#### **Execution Efficiency**
-• **Fast Commands** (<30s): Status checks, simple operations
-• **Standard Commands** (1-5min): Code generation, analysis
-• **Complex Commands** (5-15min): Multi-agent coordination
-
-#### **Security Practices**
-• **Principle of Least Privilege**: Only necessary tool permissions
-• **Bash Command Scoping**: Specify allowed operations when possible
-• **File Access Patterns**: Prefer Read over Write, Edit over MultiEdit
-• **Validation Requirements**: Input sanitization and error handling
-
-#### **Context Management**
-• **Minimize Token Usage**: Load only necessary context
-• **Progressive Loading**: Acquire information as needed
-• **Subagent Delegation**: Use specialized agents for complex analysis
-• **Result Caching**: Store intermediate outputs for reuse
-
-### **🔄 Maintenance & Evolution**
-
-#### **Version Management**
-```yaml
-# Update version for functional changes
-version: "0.2.0"  # Feature additions
-version: "0.1.1"  # Bug fixes
-version: "1.0.0"  # Breaking changes
-
-# Always update last_updated date
-last_updated: "2025-09-23"
-
-# Document status changes
-status: "active"      # Fully supported
-status: "deprecated"  # Scheduled for removal
-status: "experimental" # Testing phase
-```
-
-#### **Deprecation Strategy**
-```yaml
-status: "deprecated"
-deprecated_reason: "Replaced by /new-command with better features"
-removal_date: "2025-12-01"
-migration_path: "Use /new-command --enhanced-mode instead"
-```
-
-### **📊 Quality Checklist**
-
-#### **Before Publishing**
-- [ ] YAML frontmatter validates correctly
+- [ ] YAML front matter validates correctly
 - [ ] All specified tools are actually used
-- [ ] Command works with various argument combinations
-- [ ] Error handling for invalid inputs
-- [ ] Documentation matches actual behavior
-- [ ] Model assignment appropriate for complexity
-- [ ] Examples are practical and helpful
-- [ ] Agent coordination is clearly defined
+- [ ] Works with various argument combinations
+- [ ] Clear purpose and predictable behavior
+- [ ] Practical examples and proper documentation
+- [ ] Appropriate model assignment for complexity
 
-#### **Quality Indicators**
-✅ **Clear Purpose**: User immediately understands command function
-✅ **Predictable Behavior**: Consistent results across similar inputs
-✅ **Appropriate Scope**: Neither too narrow nor overly broad
-✅ **Complete Documentation**: Usage examples and comprehensive guidance
-✅ **Efficient Tool Usage**: Only necessary permissions requested
-✅ **Proper Model Assignment**: Complexity matches Claude 4 capabilities
-
----
-
-## 🚀 **Command Development Template**
-
-```markdown
----
-version: "0.1.0"
-created: "YYYY-MM-DD"
-last_updated: "YYYY-MM-DD"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
-tags: ["category", "purpose"]
-allowed-tools: ["Read", "Edit", "Bash"]
-argument-hint: "[--flag VALUE]"
-description: "Clear one-line purpose statement"
-model: "claude-sonnet-4"
----
-
-# /command-name Command
-
-**Purpose**: What this command accomplishes for the user
-
-## Usage
-```bash
-/command-name --flag value
-```
-
-## Agent Coordination
-**Primary Agent**: agent-name
-**Supporting Agents**: agent1, agent2
-
-## Arguments
-- `--flag`: Description of what this flag does
-
-## Examples
-```bash
-# Basic usage
-/command-name --basic
-
-# Advanced usage
-/command-name --advanced --with-options
-```
-```
-
-This comprehensive guide ensures all custom commands follow Claude 4 best practices while maintaining consistency and quality across the entire command ecosystem.
+This guide ensures all commands follow Claude Code best practices while maintaining consistency and quality.
