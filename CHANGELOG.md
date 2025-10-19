@@ -6,11 +6,86 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.9.0] - 2025-10-19
+
+### Changed
+
+- **BREAKING: Marketplace + Plugin Architecture**: Complete restructuring from GitHub Template to Claude Code Plugin Marketplace
+  - **Marketplace Structure**: Repository now serves as a Claude Code marketplace with embedded plugin
+    - Created `.claude-plugin/marketplace.json` defining marketplace metadata
+    - Plugin located at `plugins/ai-toolkit/` with full plugin structure
+    - Starter template separated to `starter-template/` for project scaffolding
+  - **Plugin Distribution**: AI Toolkit commands and agents now installable as plugin
+    - Install via `/plugin marketplace add taylorh140/ai-coding-template` then `/plugin install ai-toolkit`
+    - 18 slash commands available as plugin (design, architect, plan, develop, quality tools, etc.)
+    - 19 specialized agents included (brief-strategist, code-architect, frontend-specialist, ai-llm-expert, etc.)
+    - All support scripts bundled in plugin using `${CLAUDE_PLUGIN_ROOT}` environment variable
+  - **Plugin Renamed**: Changed from "ai-workflow" to "ai-toolkit" for better clarity
+    - Updated all references in plugin.json, marketplace.json, and documentation
+    - Plugin name better reflects comprehensive toolkit nature
+  - **Local Development**: Marketplace structure enables easy local testing
+    - Test locally with `/plugin marketplace add ./` from repository root
+    - Immediate feedback loop for plugin development without publishing
+    - Clean separation between plugin tooling and project scaffolding
+  - **Bundled MCP Servers**: Plugin now auto-configures essential MCP servers
+    - Bundled servers: context7 (library docs), sequential-thinking (problem solving), playwright (browser automation)
+    - No manual MCP configuration required - tools ready immediately after plugin installation
+    - Serena documented as optional addition for larger codebases (20+ files) in `docs/OPTIONAL-MCP-SERVERS.md`
+    - MCP configuration in `plugins/ai-toolkit/.mcp.json` loads automatically
+  - **Plugin Documentation Reorganization**: Cleaned up documentation structure
+    - Moved `agents/README.md` → `docs/AGENTS.md` (24KB agent catalog)
+    - Moved `commands/README.md` → `docs/COMMANDS.md` (10KB command reference)
+    - Moved `agents/guideline-mapping.yml` → `docs/guideline-mapping.yml`
+    - Created `docs/OPTIONAL-MCP-SERVERS.md` for Serena and other optional tools
+    - Agent and command directories now contain only .md files for proper plugin loading
+  - **Starter Template**: Pre-configured project structure separate from plugin
+    - Template includes: CLAUDE.md, README.md, docs structure, .gitignore
+    - Removed `.claude/cache/` directory (plugins installed globally, not cached per-project)
+    - Users copy `starter-template/` to their project after installing plugin
+    - Documentation moved to `starter-template/docs/` (project, development, ai-toolkit tiers)
+  - **Script Updates**: All core scripts updated for plugin environment
+    - Updated `scripts/lib/logging.sh` to use `${CLAUDE_PLUGIN_ROOT}` with fallback
+    - Updated `scripts/status/ai-status.sh` to work as plugin or standalone
+    - Hooks configuration uses plugin root for script paths
+  - **Semantic Versioning**: Version bumped to 0.9.0 (major architecture change before 1.0.0)
+  - **Rationale**:
+    - Commands are technology-agnostic and reusable across all projects
+    - Plugin distribution provides clean updates via `/plugin update ai-toolkit`
+    - Marketplace enables local testing and development iteration
+    - Separation of tooling (plugin) from scaffolding (template) improves clarity
+  - **Result**: Users get cleaner projects, easier updates, better development workflow
+
+### Removed
+
+- **Old Directory Structures**: Cleaned up root directory from GitHub Template approach
+  - Removed `.claude/` from root (now in `plugins/ai-toolkit/` for plugin)
+  - Removed `example/` (example code not needed in marketplace)
+  - Removed `src/` (example application not needed in marketplace)
+  - Removed `workbench/` (development workspace not needed in marketplace)
+  - Removed `.serena/` (tool-specific cache not needed in marketplace)
+- **GitHub Template Distribution Files**: Removed obsolete template system files
+  - Removed `.template-dev.json.example` (template development config)
+  - Removed `.template-manifest.json` (GitHub template metadata)
+  - Removed `.templateignore` (template file exclusions)
+- **NPM Package Files**: Removed obsolete NPM distribution files
+  - Removed `package.json` and `package-lock.json` (referenced deleted CLI scripts)
+  - Archived `.archived-npm/` directory (old NPM package, now obsolete)
+- **Development Git Hooks**: Removed development-only git configuration
+  - Removed `.githooks/` directory (pre-commit hooks for this repo's development)
+  - Removed `.githooks.json` (hooks configuration)
+  - Removed `.gitmessage` (commit message template)
+- **Miscellaneous Cleanup**: Removed unused configuration files
+  - Removed `README.old.md` (backup file from conversion)
+  - Removed `.env.example` (app-specific environment variables)
+  - Removed root `.mcp.json` (MCP servers now bundled in plugin)
+  - Removed `.claude/cache/` from starter-template (plugins installed globally)
+
 ## [0.8.2] - 2025-10-04
 
 ### Changed
 
 - **Init Script Improvements**: Enhanced project initialization with cleaner output and better file handling
+
   - Removed license type prompt (LICENSE file is deleted anyway, users add their own)
   - STATUS.md now created fresh instead of sed replacements (removes all template development history)
   - Added .serena/ directory cleanup (template's code analysis cache shouldn't transfer to user projects)
@@ -18,6 +93,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Result: Faster initialization, cleaner project files, no confusing template artifacts
 
 - **Architect Command Enhancement**: Added explicit `--question` flag for direct questions
+
   - New flag: `--question "text"` for explicit Direct Question mode
   - Backward compatible: Quoted strings still work without flag
   - Eliminates quote-detection ambiguity for clearer user intent
@@ -25,6 +101,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Result: More predictable command parsing, better UX for quick architectural questions
 
 - **Commit Command Enhancement**: Added git workflow flags for common operations
+
   - New flag: `--amend` - Amend last commit with safety checks (authorship, push status)
   - New flag: `--no-verify` - Skip pre-commit hooks for emergency fixes
   - New flag: `--interactive` - Interactive staging before commit
@@ -60,6 +137,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 - **Critical Setup Script Bug**: Fixed PROJECT_ROOT path calculation in setup-manager.sh
+
   - **Problem**: PROJECT_ROOT was resolving to `.claude/` instead of project root directory
   - **Root Cause**: Script moved from `scripts/setup/` to `.claude/resources/scripts/setup/` but path calculation not updated
   - **Impact**: LICENSE deletion, README customization, and git operations were using wrong base directory
@@ -67,6 +145,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Result**: All init-project operations now correctly operate on project root
 
 - **Documentation Path Accuracy**: Fixed incorrect script paths across multiple documentation files
+
   - **quick-start.md**: Updated 8+ script paths from `.resources/` to `.claude/resources/`
   - **integration-guide.md**: Fixed placeholder URLs and incorrect file references
   - **CONTRIBUTING.md**: Updated references to match new directory structure
@@ -84,6 +163,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - **Directory Structure Reorganization**: Moved `.resources/` to `.claude/resources/` for consistent .claude/ namespace
+
   - **Migration**: 254 files moved from `.resources/` to `.claude/resources/`
   - **Path Updates**: Updated all script paths, documentation references, and command configurations
   - **Structure**: All AI toolkit files now under single `.claude/` directory (agents, commands, resources, references)
@@ -91,12 +171,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Impact**: Updated 50+ file references across codebase to use new paths
 
 - **README Consolidation**: Streamlined root documentation from two files to one
+
   - **Removed**: README-DEV.md (alpha-phase version with outdated content)
   - **Enhanced**: README.md with improved problem/solution framing
   - **Added**: "Why Intelligent Agent Coordination Matters" section to docs/ai-toolkit/README.md
   - **Result**: Single authoritative README with clear value proposition and accurate workflows
 
 - **Documentation Structure Reorganization**: Improved documentation organization for better clarity and discoverability
+
   - **Directory Renaming**:
     - `docs/ai-tools/` → `docs/ai-toolkit/` - Better reflects the comprehensive AI development toolkit nature
     - `docs/technical/` → `docs/project/` - More intuitive naming for project-specific documentation
@@ -122,6 +204,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - **CLAUDE.md Two-File System**: Preserves project customizations while allowing template improvements
+
   - **Template Reference**: `.claude/CLAUDE-template.md` syncs with template improvements
   - **Project Version**: Root `CLAUDE.md` never syncs, preserves customizations
   - **Helper Commands**: `claude-diff` and `claude-status` for comparing versions
@@ -130,6 +213,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Result**: Users can customize CLAUDE.md while still receiving template improvements via manual merge
 
 - **Template Development Sync System**: Bidirectional sync for active template development while building real projects
+
   - **Manifest-Driven**: Uses `.template-manifest.json` to identify template vs project files
   - **Sync Commands**: `pull`, `push`, `status`, `diff` for complete workflow
   - **Smart Detection**: Auto-detects template directory from common locations

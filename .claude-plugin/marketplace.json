@@ -1,0 +1,35 @@
+{
+  "name": "ai-workflow-marketplace",
+  "owner": {
+    "name": "Taylor Huston",
+    "email": "taylor.a.huston@gmail.com",
+    "url": "https://github.com/taylorh140"
+  },
+  "description": "AI-assisted development workflow tools and templates for Claude Code",
+  "homepage": "https://github.com/taylorh140/ai-coding-template",
+  "repository": "https://github.com/taylorh140/ai-coding-template",
+  "plugins": [
+    {
+      "name": "ai-toolkit",
+      "description": "Comprehensive AI-assisted development workflow system with 17 orchestrated commands, 18 specialized agents, and intelligent file-based state management",
+      "source": "./plugins/ai-toolkit",
+      "version": "0.9.0",
+      "author": {
+        "name": "Taylor Huston",
+        "email": "taylor.a.huston@gmail.com",
+        "url": "https://github.com/taylorh140"
+      },
+      "keywords": [
+        "workflow",
+        "ai-assisted",
+        "agents",
+        "tdd",
+        "bdd",
+        "epic-management",
+        "architecture-decisions",
+        "code-review"
+      ],
+      "license": "MIT"
+    }
+  ]
+}
