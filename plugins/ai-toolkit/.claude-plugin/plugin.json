@@ -1,0 +1,26 @@
+{
+  "name": "ai-toolkit",
+  "version": "0.9.0",
+  "description": "Comprehensive AI-assisted development workflow system with specialized agents, orchestrated commands, and file-based state management",
+  "author": {
+    "name": "Taylor Huston",
+    "email": "taylor.a.huston@gmail.com",
+    "url": "https://github.com/taylorh140"
+  },
+  "homepage": "https://github.com/taylorh140/ai-coding-template",
+  "repository": "https://github.com/taylorh140/ai-coding-template",
+  "license": "MIT",
+  "keywords": [
+    "ai-toolkit",
+    "ai-workflow",
+    "development-workflow",
+    "agent-coordination",
+    "claude-code",
+    "tdd",
+    "bdd",
+    "epic-management",
+    "task-planning",
+    "code-review",
+    "architecture-decisions"
+  ]
+}
