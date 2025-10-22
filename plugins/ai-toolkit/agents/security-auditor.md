@@ -31,13 +31,18 @@ You are a **Cybersecurity and Compliance Specialist** responsible for identifyin
 ## Domain-Specific Guidelines
 
 **Before starting security assessment work**, load your domain-specific guidelines:
-- Read `docs/development/guidelines/security-principles.md` for core security philosophy and threat modeling
-- Read `docs/development/guidelines/security-implementation.md` for implementation-specific security patterns
-- Read `docs/development/guidelines/security-implementation-core.md` for fundamental security practices
-- Read `docs/development/guidelines/authentication-authorization.md` for auth-specific security requirements
-- Read `docs/development/guidelines/coding-standards.md` for security-relevant coding standards
 
-These guidelines provide detailed, context-specific security standards for your work domain. Universal rules from CLAUDE.md always apply.
+**Guideline Loading (with fallback)**:
+1. Check for project-specific guidelines: `docs/development/guidelines/{guideline}.md`
+2. If not found, use plugin defaults: `${CLAUDE_PLUGIN_ROOT}/docs/guidelines/{guideline}.md`
+
+**Load these guidelines**:
+- security-guidelines.md - Core security philosophy, threat modeling, and implementation patterns
+- authentication-authorization.md - Auth-specific security requirements
+- coding-standards.md - Security-relevant coding standards
+- code-quality.md - Quality standards for security code
+
+Project guidelines override plugin defaults. These guidelines provide detailed, context-specific security standards for your work domain. Universal rules from CLAUDE.md always apply.
 
 ## Multi-Model Security Validation Framework
 

@@ -6,6 +6,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.9.1] - 2025-10-21
+
+### Added
+
+- **`/toolkit-init` command**: Initialize new or existing projects with minimal ai-toolkit structure
+  - Interactive project customization with prompts for name, tech stack, and external links
+  - Smart conflict resolution for existing files (skip, overwrite, or merge)
+  - **Minimal starter template**: Only 9 essential files (~60K vs previous 1MB)
+  - Includes GETTING-STARTED.md explaining AI-driven documentation approach
+  - Works entirely offline with bundled templates - no git or network dependencies
+  - Customizes CLAUDE.md with project-specific information during initialization
+  - Supports `--force` flag to skip prompts and overwrite existing files
+  - Supports `--dry-run` flag to preview changes without executing
+  - Comprehensive summary report showing created/skipped/customized files
+
+### Changed
+
+- **BREAKING: Simplified Starter Template** - Reduced from 75 files (1MB) to 9 files (60K)
+  - **Philosophy shift**: AI creates structure as you work, not upfront
+  - **Removed**: 60+ placeholder/example files that users rarely needed
+  - **Plugin docs moved**: AI Toolkit guides now in plugin (always up-to-date)
+  - **Guidelines in plugin**: 16 development guidelines now in `plugins/ai-toolkit/docs/guidelines/`
+  - **Examples in plugin**: ADR examples, architecture templates in `plugins/ai-toolkit/docs/examples/`
+  - **Just-in-time docs**: Commands create docs/project/ structure when first needed
+  - **Guideline fallback system**: Agents check project first, fall back to plugin defaults
+  - **Project customization**: Copy guidelines from plugin only when project-specific rules needed
+  - **Clean initialization**: Projects start minimal, grow organically through AI commands
+
+- **Template Distribution**: Moved `starter-template/` to `plugins/ai-toolkit/templates/starter/`
+  - Templates now bundled with plugin for offline initialization
+  - Users no longer need to manually copy starter-template files
+  - Template version stays locked to plugin version for consistency
+  - 94% size reduction (1MB → 60K)
+
 ## [0.9.0] - 2025-10-19
 
 ### Changed

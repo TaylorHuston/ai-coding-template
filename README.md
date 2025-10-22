@@ -6,42 +6,43 @@ A comprehensive AI-assisted development workflow system for Claude Code, providi
 
 This marketplace contains:
 
-- **AI Toolkit Plugin** - Complete workflow system with 17 commands, 18 specialized agents, and intelligent automation
-- **Starter Template** - Pre-configured project structure with documentation, guidelines, and examples
+- **AI Toolkit Plugin** - Complete workflow system with 19 commands, 19 specialized agents, and intelligent automation
+- **Minimal Starter Template** - 9 essential files for clean project initialization via `/toolkit-init`
+- **Guideline Library** - 16 comprehensive development guidelines bundled with plugin
 
 ## Quick Start
 
-### Install the Plugin
+### Install and Initialize
 
 ```bash
-# Add this marketplace
+# 1. Add this marketplace
 /plugin marketplace add taylorh140/ai-coding-template
 
-# Install the AI Toolkit plugin
+# 2. Install the AI Toolkit plugin
 /plugin install ai-toolkit
-```
 
-### Use the Starter Template
+# 3. Initialize your project
+cd your-project
+/toolkit-init
 
-The `starter-template/` directory contains a ready-to-use project structure. Copy it to start a new project:
-
-```bash
-# Copy starter template to your new project
-cp -r starter-template/* /path/to/your/project/
-
-# Navigate to your project
-cd /path/to/your/project/
-
-# Start with the workflow
+# 4. Start developing
 /design --brief
 ```
+
+The `/toolkit-init` command scaffolds your project with:
+- Customized CLAUDE.md (your tech stack and links)
+- Minimal structure (9 essential files, 60K)
+- GETTING-STARTED.md guide
+- Documentation framework (AI creates content as you work)
+- Interactive setup with smart conflict resolution
 
 ## AI Toolkit Plugin
 
 The AI Toolkit plugin provides a complete development workflow system:
 
-### Core Workflow Commands
+### Setup & Core Workflow
 
+- `/toolkit-init` - Initialize project structure with templates
 - `/design` - Create project briefs, epics, and user stories
 - `/architect` - Make technical architecture decisions
 - `/plan` - Break down epics into implementation tasks
@@ -75,7 +76,7 @@ The AI Toolkit plugin provides a complete development workflow system:
 
 ## Key Features
 
-### 18 Specialized Agents
+### 19 Specialized Agents
 
 Domain experts that auto-activate based on task context:
 
@@ -146,20 +147,17 @@ The starter template includes comprehensive documentation:
 ai-coding-template/
 ├── .claude-plugin/
 │   └── marketplace.json          # Marketplace configuration
-├── plugins/
-│   └── ai-toolkit/                # AI Toolkit plugin
-│       ├── .claude-plugin/
-│       │   └── plugin.json
-│       ├── commands/              # 17 slash commands
-│       ├── agents/                # 18 specialized agents
-│       ├── hooks/                 # Automation hooks
-│       ├── scripts/               # Support scripts
-│       └── README.md
-└── starter-template/              # Project template
-    ├── CLAUDE.md                  # Project context template
-    ├── README.md                  # Template usage guide
-    ├── docs/                      # Documentation structure
-    └── .gitignore                 # Git ignore patterns
+└── plugins/
+    └── ai-toolkit/                # AI Toolkit plugin
+        ├── .claude-plugin/
+        │   └── plugin.json
+        ├── commands/              # 19 slash commands
+        ├── agents/                # 19 specialized agents
+        ├── templates/             # Bundled project templates
+        │   └── starter/           # 75 template files
+        ├── hooks/                 # Automation hooks
+        ├── scripts/               # Support scripts
+        └── README.md
 ```
 
 ## Requirements
@@ -189,6 +187,6 @@ MIT License - see `LICENSE` for details.
 
 ## Version
 
-Current version: 0.9.0
+Current version: 0.9.1
 
 See `CHANGELOG.md` for release history and `STATUS.md` for current development status.

@@ -37,12 +37,17 @@ You are an **API Design Specialist** focused on creating robust, intuitive, and 
 ## Domain-Specific Guidelines
 
 **Before starting API design work**, load your domain-specific guidelines:
-- Read `docs/development/guidelines/api-design-principles.md` for core API design philosophy
-- Read `docs/development/guidelines/api-documentation-standards.md` for documentation requirements
-- Read `docs/development/guidelines/api-implementation-patterns.md` for implementation best practices
-- Read `docs/development/guidelines/architectural-principles.md` for system design context
 
-These guidelines provide detailed, context-specific standards for your work domain. Universal rules from CLAUDE.md always apply.
+**Guideline Loading (with fallback)**:
+1. Check for project-specific guidelines: `docs/development/guidelines/{guideline}.md`
+2. If not found, use plugin defaults: `${CLAUDE_PLUGIN_ROOT}/docs/guidelines/{guideline}.md`
+
+**Load these guidelines**:
+- api-guidelines.md - Comprehensive API design principles and patterns
+- architectural-principles.md - System design context
+- code-quality.md - Quality standards for API code
+
+Project guidelines override plugin defaults. These guidelines provide detailed, context-specific standards for your work domain. Universal rules from CLAUDE.md always apply.
 
 ## API Design Principles
 

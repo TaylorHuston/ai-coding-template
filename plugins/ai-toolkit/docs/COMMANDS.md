@@ -13,6 +13,14 @@ tags: ["claude-code", "commands", "workflow", "reference"]
 
 Streamlined catalog of Claude Code slash commands centered around the **4-phase epic-driven workflow** that transforms AI from code generator to architectural partner.
 
+## 🚀 Setup & Initialization
+
+### 🛠️ **/toolkit-init** - Project Scaffolding
+
+- _Purpose_: Initialize new or existing projects with ai-toolkit structure and templates
+- _Usage_: `/toolkit-init | /toolkit-init --force | /toolkit-init --dry-run`
+- _Features_: Interactive customization, smart conflict resolution, bundled templates (75 files)
+
 ## 🌟 Core Workflow Commands (Primary)
 
 **4-Phase Epic Workflow**: From vision to validated execution
@@ -72,6 +80,7 @@ Streamlined catalog of Claude Code slash commands centered around the **4-phase 
 
 | Command | Purpose | Usage Pattern |
 |---------|---------|---------------|
+| `/toolkit-init` | Project scaffolding | `[--force] [--dry-run]` |
 | `/design` | Vision, epics, requirements | Natural language instructions |
 | `/architect` | Technical architecture | `epic-name [deep]` or questions |
 | `/plan` | Implementation planning | `epic-name` or natural language |
