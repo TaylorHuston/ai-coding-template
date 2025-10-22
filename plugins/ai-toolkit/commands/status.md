@@ -14,7 +14,7 @@ model: claude-sonnet-4-5
 
 # /status Command
 
-Enhanced project status dashboard with intelligent analysis using context-analyzer agent and ai-status.sh integration.
+Enhanced project status dashboard with intelligent analysis using context-analyzer agent.
 
 ## Usage
 
@@ -44,7 +44,7 @@ Enhanced project status dashboard with intelligent analysis using context-analyz
 
 **Primary**: context-analyzer (intelligent analysis and pattern recognition beyond basic status)
 **Supporting**: data-analyst (metrics and trend analysis), technical-writer (status report formatting)
-**Integration**: Orchestrates ai-status.sh script with agent-enhanced insights
+**Integration**: Provides comprehensive project status through intelligent agent analysis
 
 ## Features
 
@@ -114,22 +114,22 @@ status_dimensions:
 - API-ready data structure
 - Historical data preservation
 
-## Integration with ai-status.sh
+## AI-Driven Status Analysis
 
-Intelligently orchestrates the existing ai-status.sh script:
+Pure AI agent coordination for comprehensive project status:
 
 ```yaml
-script_integration:
-  basic_data_collection:
-    script: ai-status.sh
-    purpose: "Gather raw project status data"
+agent_analysis:
+  data_collection:
+    approach: AI-driven repository analysis
+    purpose: "Gather comprehensive project status through intelligent inspection"
 
-  intelligent_analysis:
+  pattern_recognition:
     agent: context-analyzer
-    purpose: "Analyze patterns and provide insights"
+    purpose: "Analyze patterns and provide actionable insights"
 
-  enhanced_reporting:
-    coordination: "Agent processes script output for intelligent insights"
+  intelligent_reporting:
+    coordination: "Agents synthesize status with context-aware recommendations"
     format_options: [human, ai-optimized, detailed, json]
 ```
 
@@ -164,7 +164,7 @@ script_integration:
 ### Basic Intelligent Status
 ```bash
 /status
-# → context-analyzer processes ai-status.sh output
+# → context-analyzer performs comprehensive project analysis
 # → Provides intelligent insights on project health
 # → Highlights priority issues and recommendations
 # → Shows workflow state and next suggested actions
@@ -236,7 +236,7 @@ The context-analyzer agent provides enhanced insights:
 
 ## Integration with Core Workflow
 
-### During `/idea` Phase
+### During `/architect` Phase
 - Architecture readiness assessment
 - Technical feasibility insights
 - Risk factor identification
@@ -246,7 +246,7 @@ The context-analyzer agent provides enhanced insights:
 - Complexity assessment validation
 - Implementation readiness check
 
-### During `/develop` Phase
+### During `/implement` Phase
 - Progress tracking with velocity insights
 - Quality gate effectiveness monitoring
 - Blocker identification and resolution suggestions

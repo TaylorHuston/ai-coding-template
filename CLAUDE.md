@@ -1,90 +1,108 @@
 ---
-version: "0.9.0"
+version: "0.9.2"
 created: "2025-08-21"
-last_updated: "2025-10-13"
+last_updated: "2025-10-22"
 status: "active"
 target_audience: ["ai-assistants"]
 document_type: "specification"
 priority: "critical"
-tags: ["ai-instructions", "workflow", "standards"]
+tags: ["plugin-development", "workflow", "standards"]
 ---
 
-<!--
-╔══════════════════════════════════════════════════════════════════════╗
-║                    PROJECT-SPECIFIC CLAUDE.MD                        ║
-╚══════════════════════════════════════════════════════════════════════╝
+# CLAUDE.md - AI Toolkit Plugin Development
 
-This file is YOUR project's customized CLAUDE.md.
-
-TEMPLATE REFERENCE: .claude/CLAUDE-template.md
-  - Template improvements sync to .claude/CLAUDE-template.md
-  - Compare versions: ./.claude/resources/scripts/template/template-sync.sh claude-diff
-  - Merge template improvements manually to preserve your customizations
-
-CUSTOMIZATION AREAS:
-  - Project Context section (tech stack, external links, etc.)
-  - Custom rules specific to your project
-  - Any project-specific workflows
-
-CORE RULES:
-  - These come from the template and should match .claude/CLAUDE-template.md
-  - When template updates core rules, review and merge manually
-  - Last compared with template: 2025-10-03
-
--->
-
-# CLAUDE.md - AI Assistant Instructions
-
-You are working with an AI coding template repository designed to optimize AI-assisted development workflows. Follow these instructions precisely when operating in this codebase.
-
-## Core Principles
-
-- DRY (Don't Repeat Yourself)
-- KISS (Keep It Simple Stupid)
-- YAGNI (You Aren't Going To Need It)
-- SOLID
-- Single Source Of Truth
-- NEVER CLAIM TO HAVE FIXED AN ISSUE OR HAVE COMPLETED A TASK UNTIL YOU HAVE A > 95% LEVEL OF CONFIDENCE THAT YOU'VE DONE SO
-
-## Critical Rules
-
-1. **Commit Approval**: Never commit without explicit user approval first, never release without explicit user approval first, never NPM publish without explicit approval first
-2. **Deletion Approval**: Always ask before any file/branch deletions
-3. **Test First**: Follow strict BDD/TDD guidelines
-4. **Branch First**: Never work directly on main branches
-5. **File Naming**: Use lowercase-kebab-case for documentation files
-6. **No Assumptions**: Always check existing patterns and code, run tests, ask user if any ambiguity
-7. **Ask Questions Often and Early**: Clarify ambiguity before implementation
+You are working on the AI Toolkit plugin repository for Claude Code. This CLAUDE.md provides instructions for **developing and maintaining the plugin itself**, not for using it in projects.
 
 ## Project Context
 
-- **Project Structure**: Dual-purpose repository containing both AI workflow template (root) and example application code (`src/`)
-- **Tech Stack**: [Add the high level details of your tech stack here]
-- **External Links**: Project Management: [Add link to Jira/Linear/etc], Wiki: [Add link to Confluence/Notion/etc]
-- **Project Brief**: `docs/project-brief.md` - Contains problem statement, solution approach, and core features
-- **Documentation Structure**: Three-tier system (docs/project/, docs/development/, docs/ai-toolkit/)
-- **Application Code**: All implementation code resides in `src/` following standard project structure
-- **Active Development Context**: `.claude/working/[issue-id]/` contains ephemeral work artifacts
+- **Repository Type**: Claude Code plugin marketplace
+- **Main Plugin**: AI Toolkit (13 commands, 20 agents, starter templates)
+- **Purpose**: Develop and maintain plugin code, documentation, and templates
+- **Repository Structure**:
+  - `.claude-plugin/marketplace.json` - Marketplace metadata
+  - `plugins/ai-toolkit/` - Plugin source code
+  - `plugins/ai-toolkit/.claude-plugin/plugin.json` - Plugin metadata
+  - `plugins/ai-toolkit/commands/` - 13 command files (.md)
+  - `plugins/ai-toolkit/agents/` - 20 agent files (.md)
+  - `plugins/ai-toolkit/templates/starter/` - Project templates (29 files)
+  - `plugins/ai-toolkit/docs/` - Plugin documentation
 
-## Core Workflow
+## Core Development Principles
 
-**Primary**: `/design` → `/architect` → `/plan` → `/develop`
+- **DRY** (Don't Repeat Yourself)
+- **KISS** (Keep It Simple)
+- **YAGNI** (You Aren't Going To Need It)
+- **SOLID** principles
+- **Single Source Of Truth**
+- **Never claim completion without >95% confidence**
 
-**Available Commands**: 14 total - Core workflow (design, architect, plan, develop), Quality (quality, review, security-audit, test-fix), Development (commit, merge-branch), Management (status, docs, refresh), Template (improve)
+## Critical Rules
 
-**Automation Scripts**: 20+ specialized scripts for documentation, validation, setup, metrics, changelog management
+1. **Commit Approval**: Never commit without explicit user approval
+2. **Deletion Approval**: Always ask before file/branch deletions
+3. **Test Locally**: Test all plugin changes locally before committing
+4. **File Naming**: Use lowercase-kebab-case for all files
+5. **No Assumptions**: Check existing patterns, ask if uncertain
+6. **Documentation**: Update CHANGELOG.md for all user-facing changes
 
-**Complete Reference**: [docs/ai-toolkit/reference/commands.md](./docs/ai-toolkit/reference/commands.md)
+## Plugin Development Workflow
 
-## AI Autonomy Matrix
+### Local Testing
 
-| Action             | Permission    | Example                                   |
-| ------------------ | ------------- | ----------------------------------------- |
-| **Read/Analyze**   | ✅ Autonomous | Reading files, analyzing code, searching  |
-| **Plan/Test**      | ✅ Autonomous | Creating plans, running tests, validation |
-| **Code Changes**   | ⚠️ Show First | Display changes before applying           |
-| **Commits/Merges** | 🛑 Always Ask | Never commit without explicit approval    |
-| **Deletions**      | 🛑 Always Ask | Any file/branch deletions need approval   |
+```bash
+# Install this marketplace locally
+/plugin marketplace add /path/to/ai-coding-template
+
+# Install the plugin
+/plugin install ai-toolkit
+
+# Make changes to commands/agents/templates
+# Changes take effect on next plugin reload
+```
+
+### Editing Plugin Components
+
+- **Commands**: Edit `.md` files in `plugins/ai-toolkit/commands/`
+- **Agents**: Edit `.md` files in `plugins/ai-toolkit/agents/`
+- **Templates**: Modify files in `plugins/ai-toolkit/templates/starter/`
+- **Plugin Docs**: Update `plugins/ai-toolkit/README.md` and `plugins/ai-toolkit/docs/`
+
+### Version Management
+
+- **Format**: Semantic versioning (MAJOR.MINOR.PATCH)
+- **Update In**:
+  - `.claude-plugin/marketplace.json` (marketplace version and plugin version)
+  - `plugins/ai-toolkit/.claude-plugin/plugin.json` (plugin version)
+  - Root `README.md` (version reference)
+- **Document**: Always update CHANGELOG.md following Keep a Changelog format
+- **Tag**: Create git tags for releases (e.g., `v0.9.2`)
+
+## Documentation Standards
+
+### Files to Maintain
+
+- **CHANGELOG.md**: All changes (Added, Changed, Removed, Breaking)
+- **README.md**: Marketplace overview, accurate counts (commands, agents, files)
+- **plugins/ai-toolkit/README.md**: Plugin documentation and usage
+- **plugins/ai-toolkit/docs/COMMANDS.md**: Command reference
+- **plugins/ai-toolkit/docs/AGENTS.md**: Agent reference
+- **STATUS.md**: Current development status and priorities
+
+### Documentation Accuracy
+
+- **Counts Must Match**: Command count, agent count, template file count
+- **No Broken Links**: All file path references must be valid
+- **Consistency**: README, CHANGELOG, and code must align
+- **GitHub Username**: Use "TaylorHuston" consistently (not "taylorh140")
+
+## Quality Standards
+
+- Follow existing patterns in command/agent files
+- Keep documentation synchronized with code changes
+- Test command changes in actual usage scenarios
+- Ensure template files work for project initialization
+- Validate that all references point to existing files
+- Check for outdated information after structural changes
 
 ## Response Protocol
 
@@ -92,109 +110,48 @@ You are working with an AI coding template repository designed to optimize AI-as
 - **Be Explicit**: Confirm understanding before major changes
 - **Be Incremental**: Work in small, atomic commits
 - **Be Transparent**: Report errors immediately with context
-- **Be Evidence-Based**: Support decisions with verifiable information
+- **Be Evidence-Based**: Verify claims with actual file checks
 
-## AI Agent System
+## Common Development Tasks
 
-- **18 specialized agents** available for domain expertise
-- **Auto-activation** based on task context
-- **Agent coordination** through HANDOFF.yml and RESEARCH.md files
+### Adding a New Command
 
-**Core Agents**: brief-strategist, code-architect, frontend-specialist, backend-specialist, database-specialist, test-engineer, code-reviewer, security-auditor, performance-optimizer, devops-engineer, technical-writer, context-analyzer, project-manager, api-designer, refactoring-specialist, migration-specialist, data-analyst, ai-llm-expert
+1. Create `.md` file in `plugins/ai-toolkit/commands/`
+2. Update command count in README.md, plugin.json
+3. Update `plugins/ai-toolkit/docs/COMMANDS.md`
+4. Update CHANGELOG.md
+5. Test locally
 
-**Agent Guidelines**: Each agent loads domain-specific guidelines from `docs/development/guidelines/` when starting work. See `.claude/agents/guideline-mapping.yml` for complete agent-to-guideline mappings.
+### Adding a New Agent
 
-**Complete Guide**: [docs/ai-toolkit/guides/comprehensive-agent-guide.md](./docs/ai-toolkit/guides/comprehensive-agent-guide.md)
+1. Create `.md` file in `plugins/ai-toolkit/agents/`
+2. Update agent count in README.md
+3. Update `plugins/ai-toolkit/docs/AGENTS.md`
+4. Update CHANGELOG.md
+5. Test agent invocation
 
-## Universal Quality Standards
+### Updating Templates
 
-- Follow patterns established in the `.claude/resources/examples/` directory
-- Use existing project patterns and conventions consistently
-- Never duplicate existing functionality without explicit justification
-- **Update CHANGELOG.md** for user-facing changes (features, fixes, breaking changes)
+1. Modify files in `plugins/ai-toolkit/templates/starter/`
+2. Update file count if adding/removing files
+3. Test with `/toolkit-init` in a test project
+4. Update CHANGELOG.md
+5. Update documentation if structure changed
 
-**Domain-Specific Guidelines**: Specialized agents load relevant guidelines from `docs/development/guidelines/` as needed for their work domain (API design, security, testing, documentation, etc.)
+### Making Breaking Changes
 
-## Key References
+1. Mark clearly in CHANGELOG.md as **BREAKING**
+2. Document migration path for users
+3. Update version (increment MAJOR)
+4. Update all affected documentation
+5. Test thoroughly before release
 
-- **Commands**: [docs/ai-toolkit/reference/commands.md](./docs/ai-toolkit/reference/commands.md) - All available slash commands
-- **Agent Usage**: [docs/ai-toolkit/guides/comprehensive-agent-guide.md](./docs/ai-toolkit/guides/comprehensive-agent-guide.md) - Complete agent system guide
-- **AI Collaboration**: [docs/ai-toolkit/guides/ai-collaboration-guide.md](./docs/ai-toolkit/guides/ai-collaboration-guide.md) - Essential AI development patterns
-- **Tool Selection**: [docs/ai-toolkit/reference/tool-selection.md](./docs/ai-toolkit/reference/tool-selection.md) - Choosing the right tools
-- **Troubleshooting**: [docs/ai-toolkit/reference/troubleshooting.md](./docs/ai-toolkit/reference/troubleshooting.md) - Comprehensive problem-solving
-- **Current Status**: [STATUS.md](./STATUS.md) - Current project context and state
+## Priority When Uncertain
 
-## Problem-Solving Framework
+1. Documentation accuracy and completeness
+2. Consistency across all files
+3. No broken references or outdated information
+4. Version number alignment
+5. CHANGELOG completeness
 
-1. **For Architectural Decisions**: Use `/design` → `/architect` workflow with specialist consultation
-2. **For Implementation Planning**: Use `/plan` to get comprehensive multi-agent analysis
-3. **For Execution Issues**: Use appropriate agent for domain expertise
-4. **Check existing patterns** in similar files and components
-5. **Run tests** to validate current assumptions and functionality
-6. **Ask user** for clarification rather than making assumptions
-7. **Document decisions** in appropriate workflow artifacts
-
-## Context-Efficient Workflow
-
-**Just-In-Time Guideline Loading**: Agents load domain-specific guidelines only when needed to prevent context waste:
-
-1. **Agent Selection**: Choose appropriate agent for the task domain
-2. **Guideline Loading**: Agent automatically loads relevant guidelines from `docs/development/guidelines/`
-3. **Domain Focus**: Agent applies specific expertise without irrelevant context
-4. **Universal Rules**: Core rules from CLAUDE.md always apply regardless of domain
-
-**Example**: API work → api-designer agent loads api-guidelines.md and architectural-principles.md (not testing or security guidelines unless needed)
-
-## MCP Tool Decision Framework
-
-**Use available MCP tools efficiently based on task complexity:**
-
-### **Core MCP Tools Available**
-
-- **Context7**: Library documentation and examples
-- **Sequential Thinking**: Complex problem decomposition
-- **Playwright**: Browser automation for testing
-- **Serena**: Semantic code analysis (optional - see [Adding Serena Guide](./docs/ai-toolkit/setup/adding-serena.md))
-
-### **Tool Selection Guidelines**
-
-**For File Operations**:
-- **Template Search**: Always use Glob first
-- **Simple Search**: Use Grep for basic text search
-- **Complex Analysis**: Consider adding Serena for projects with 20+ implementation files
-
-**For Problem Solving**:
-- **Library Integration**: Use Context7 for documentation and best practices
-- **Complex Planning**: Use Sequential Thinking for multi-step decomposition
-- **Web Testing**: Use Playwright for browser automation
-
-### **MCP Tool Triggers**
-
-- "across multiple files" → Glob/Grep (or Serena if available)
-- "find all instances" → Grep (or Serena for semantic search)
-- "understand patterns" → Context7 + search tools
-- "complex problem" → Sequential thinking decomposition
-- **"create new files" → Always search for templates using Glob first**
-
-**Default Principle**: Start with essential tools (Glob/Grep/Context7), add specialized tools as project complexity grows
-
-## Security & Quality Compliance
-
-- Document AI assistance level in all generated code
-- Never compromise security for convenience or development speed
-- All code MUST pass existing linting and formatting standards
-- Tests MUST be written or updated for all functional changes
-
-**Domain-Specific Security**: Security-auditor and relevant agents load security-guidelines.md and authentication-authorization.md when working on security-critical code
-
-## Override Instructions Priority
-
-When in doubt, prioritize:
-
-1. Context preservation and management
-2. Architectural consistency and patterns
-3. Security compliance requirements
-4. Code quality and testing standards
-5. Documentation accuracy and completeness
-
-Follow these instructions precisely to ensure optimal AI-assisted development workflow in this repository.
+Follow these instructions precisely when working on the AI Toolkit plugin repository.

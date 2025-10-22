@@ -58,10 +58,9 @@ Multi-dimensional quality analysis using specialized agents.
 3. **performance-optimizer** - Performance bottlenecks, optimization opportunities
 4. **test-engineer** - Test coverage, quality, effectiveness
 
-**Script Integration:**
-- Automatically invokes `validate-quality-gates.sh` for gate checking
-- Uses `validate-context.sh` for workflow consistency
-- Integrates static analysis and linting tools
+**Integration:**
+- Integrates static analysis and linting tools through AI coordination
+- Provides intelligent quality gate enforcement
 
 ### `validate` - Quality Gate Validation
 
@@ -83,7 +82,7 @@ Validates quality gates for workflow progression with automatic remediation sugg
 - Uses **code-reviewer** for code quality validation
 - Uses **test-engineer** for test coverage analysis
 - Uses **security-auditor** for security compliance
-- Automatically invokes validation scripts with agent oversight
+- AI agents provide intelligent validation and remediation suggestions
 
 ### `audit` - Security and Compliance Audit
 
@@ -136,74 +135,78 @@ quality_dimensions:
   code_quality:
     metrics: [complexity, maintainability, readability, duplication]
     agent: code-reviewer
-    scripts: [linting, static analysis]
+    approach: AI-driven code analysis with integrated linting tools
 
   security:
     metrics: [vulnerabilities, compliance, best practices]
     agent: security-auditor
-    scripts: [security scanners, dependency checks]
+    approach: AI-driven security analysis with dependency scanning
 
   performance:
     metrics: [bottlenecks, optimization, scalability]
     agent: performance-optimizer
-    scripts: [performance profiling, load testing]
+    approach: AI-driven performance analysis with profiling integration
 
   testing:
     metrics: [coverage, effectiveness, reliability]
     agent: test-engineer
-    scripts: [test runners, coverage tools]
+    approach: AI-driven test analysis with coverage tool integration
 
   documentation:
     metrics: [completeness, accuracy, freshness]
     agent: technical-writer
-    scripts: [docs validation, link checking]
+    approach: AI-driven documentation validation and link checking
 
   architecture:
     metrics: [design patterns, coupling, cohesion]
     agent: code-architect
-    scripts: [dependency analysis, architecture validation]
+    approach: AI-driven architectural analysis and pattern recognition
 ```
 
 ## Integration with Workflow
 
 The `/quality` command integrates seamlessly with the core workflow:
 
-### During `/develop` Phase
-- Automatic quality validation between tasks
+### During `/implement` Phase
+- Automatic quality validation between phases
 - Progressive quality gate enforcement
 - Context-aware quality recommendations
 
 ### Pre-Commit Validation
 - Comprehensive quality check before commits
 - Automatic fix suggestions for common issues
-- Integration with git hooks
+- AI-driven validation and remediation
 
 ### Continuous Quality
 - Background quality monitoring
 - Proactive issue detection
 - Quality trend analysis
 
-## Script Orchestration
+## AI Agent Orchestration
 
-Intelligently coordinates existing validation scripts:
+Coordinates specialized agents for comprehensive quality analysis:
 
 ```yaml
-script_orchestration:
-  validate-quality-gates.sh:
+agent_orchestration:
+  quality_gates:
     triggers: [phase transitions, commit preparation]
     coordinating_agent: code-reviewer
+    approach: AI-driven validation with intelligent remediation
 
-  validate-context.sh:
+  context_validation:
     triggers: [workflow state changes]
     coordinating_agent: context-analyzer
+    approach: AI-driven context consistency checking
 
-  validate-agent-output.sh:
+  output_validation:
     triggers: [agent task completion]
     coordinating_agent: project-manager
+    approach: AI-driven quality assurance of agent work
 
-  remediation-advisor.sh:
+  remediation:
     triggers: [validation failures]
     coordinating_agent: refactoring-specialist
+    approach: AI-driven issue analysis and fix suggestions
 ```
 
 ## Examples
@@ -222,7 +225,7 @@ script_orchestration:
 ```bash
 /quality validate --scope commit-ready
 # → Validates all quality gates for commit readiness
-# → Runs validation scripts with agent oversight
+# → AI agents perform comprehensive validation
 # → Provides clear pass/fail status with remediation steps
 ```
 
@@ -272,4 +275,4 @@ report_types:
 ✅ **Context Awareness**: Understands project state and workflow phase
 ✅ **Automated Remediation**: Intelligent fix suggestions and auto-resolution
 ✅ **Progressive Quality**: Enforces quality gates throughout development
-✅ **Script Integration**: Leverages existing tools with agent intelligence
+✅ **Pure AI-Driven**: Flexible natural language approach with integrated tooling

@@ -1,8 +1,27 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-09-20 **Status**: Active - Updated for Epic-Driven Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 19 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-10-22 **Status**: Active - Updated for Epic-Driven Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 20 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
+
+## Understanding the Agent System
+
+AI agents are specialized experts that automatically activate based on your work. Instead of generic AI responses, you get domain-specific expertise tailored to specific tasks (frontend development, security audits, database design, API architecture, etc.).
+
+### How Agents Work
+
+**Automatic Activation**: When you use commands like `/implement` or `/architect`, the appropriate agents activate based on the task. For example, `/implement TASK-001 1.1` might activate the frontend-specialist and test-engineer agents.
+
+**Direct Invocation**: You can also invoke specific agents directly when you need specialized guidance: "Use the security-auditor agent to review this authentication flow."
+
+**Agent Coordination**: Agents work together on complex tasks. The project-manager agent orchestrates multi-agent workflows, and agents use HANDOFF.yml files to transfer context between specialists. For example, the code-architect might hand off to the database-specialist for schema design, who then hands off to the security-auditor for access control review.
+
+### The Value
+
+- **Domain Expertise**: Each agent has deep knowledge in their specialty
+- **Consistent Quality**: Agents follow domain-specific best practices
+- **Efficient Workflows**: Automatic activation means you don't have to think about which expert to consult
+- **Coordinated Work**: Complex tasks get multi-agent collaboration without manual coordination
 
 ## Agent Classification System
 
@@ -37,6 +56,13 @@ Comprehensive catalog of specialized AI agents optimized for modern development 
   - _Capabilities_: LLM architecture design, prompt engineering, context management, AI integration patterns
   - _Best For_: AI/ML decision analysis, LLM implementation guidance, AI architecture optimization
   - _Model_: opus | _Color_: green | _Auto-Invoked_: AI/ML architecture decisions
+
+#### **Design & User Experience**
+
+- **[ui-ux-designer](./ui-ux-designer.md)** - UI/UX design specialist for strategic and tactical design decisions
+  - _Capabilities_: Visual design, color theory, typography, accessibility (WCAG), design systems, Figma/Sketch, user flows
+  - _Best For_: Design decisions, mockups, color schemes, accessibility planning, design system architecture
+  - _Model_: sonnet | _Color_: pink | _Auto-Invoked_: Design decision requests
 
 #### **Development & Implementation**
 
@@ -138,19 +164,21 @@ These agents activate automatically based on context and task requirements:
 7. **code-reviewer** - Post-implementation quality reviews
 8. **technical-writer** - After code changes affecting documentation
 
-### **On-Demand Specialists** (9 agents)
+### **On-Demand Specialists** (11 agents)
 
 These are invoked for specific domains or specialized work:
 
-1. **code-architect** - Architectural decisions and system design
-2. **ai-llm-expert** - AI/LLM architecture and implementation guidance
-3. **api-designer** - API architecture and endpoint design
-4. **security-auditor** - Security audits and compliance validation
-5. **devops-engineer** - Infrastructure and deployment automation
-6. **performance-optimizer** - Performance analysis and optimization
-7. **refactoring-specialist** - Code improvement and technical debt reduction
-8. **migration-specialist** - Version upgrades and framework migrations
-9. **data-analyst** - Data processing, analysis, and reporting
+1. **brief-strategist** - Product brief and strategic planning
+2. **code-architect** - Architectural decisions and system design
+3. **ai-llm-expert** - AI/LLM architecture and implementation guidance
+4. **ui-ux-designer** - Design decisions, mockups, and design systems
+5. **api-designer** - API architecture and endpoint design
+6. **security-auditor** - Security audits and compliance validation
+7. **devops-engineer** - Infrastructure and deployment automation
+8. **performance-optimizer** - Performance analysis and optimization
+9. **refactoring-specialist** - Code improvement and technical debt reduction
+10. **migration-specialist** - Version upgrades and framework migrations
+11. **data-analyst** - Data processing, analysis, and reporting
 
 ### By Task Complexity
 
@@ -164,6 +192,7 @@ These are invoked for specific domains or specialized work:
 
 #### **Medium Complexity (Sonnet Model)**
 
+- **ui-ux-designer** - UI/UX design and design system architecture
 - **frontend-specialist** - Modern frontend development and optimization
 - **backend-specialist** - Server-side implementation and business logic
 - **database-specialist** - Database design and performance optimization
@@ -202,11 +231,12 @@ These are invoked for specific domains or specialized work:
 
 1. **project-manager** - Complex multi-domain coordination
 2. **context-analyzer** - Investigation and troubleshooting
-3. **api-designer** - API architecture and design
-4. **test-engineer** - Test strategy and comprehensive testing
-5. **refactoring-specialist** - Code quality improvement and technical debt
-6. **migration-specialist** - Framework upgrades and system modernization
-7. **data-analyst** - Data processing and business intelligence
+3. **ui-ux-designer** - Design decisions, mockups, and design systems
+4. **api-designer** - API architecture and design
+5. **test-engineer** - Test strategy and comprehensive testing
+6. **refactoring-specialist** - Code quality improvement and technical debt
+7. **migration-specialist** - Framework upgrades and system modernization
+8. **data-analyst** - Data processing and business intelligence
 
 ## Agent Selection Guidelines
 
@@ -214,6 +244,13 @@ These are invoked for specific domains or specialized work:
 
 ```yaml
 task_type_mapping:
+  design_decisions:
+    strategic_design: [ui-ux-designer → /architect for ADRs]
+    mockups_wireframes: [ui-ux-designer]
+    color_schemes: [ui-ux-designer]
+    design_systems: [ui-ux-designer, code-architect]
+    accessibility_planning: [ui-ux-designer]
+
   feature_development:
     frontend_work: [frontend-specialist]
     backend_work: [backend-specialist, database-specialist]
@@ -263,8 +300,9 @@ task_type_mapping:
 
 #### **By Project Phase**
 
-- **Design**: brief-strategist, project-manager (brief + feature planning)
-- **Architecture**: code-architect, devops-engineer, database-specialist, api-designer, security-auditor (tech stack + feature implementation)
+- **Strategy**: brief-strategist, project-manager (product brief + strategic planning)
+- **Design**: ui-ux-designer (design decisions, mockups, design systems)
+- **Architecture**: code-architect, ui-ux-designer, devops-engineer, database-specialist, api-designer, security-auditor (tech stack + design system + feature architecture)
 - **Planning**: project-manager, context-analyzer
 - **Development**: frontend-specialist, backend-specialist, database-specialist
 - **Quality Assurance**: code-reviewer, test-engineer, security-auditor
@@ -447,21 +485,22 @@ performance_metrics:
 
 ### File Type Handling by Agent
 
-| Agent | JavaScript/TS | Python | Database | Config | Docs | Tests | Infrastructure |
-|-------|-------------|---------|----------|--------|------|-------|----------------|
-| **frontend-specialist** | ✅ Primary | ❌ | ❌ | ⚠️ Frontend | ⚠️ Component | ✅ Frontend | ❌ |
-| **backend-specialist** | ✅ Node.js | ✅ Primary | ⚠️ Integration | ✅ Server | ⚠️ API | ✅ Backend | ⚠️ App |
-| **database-specialist** | ⚠️ Queries | ⚠️ Queries | ✅ Primary | ✅ DB Config | ⚠️ Schema | ✅ DB Tests | ⚠️ DB |
-| **api-designer** | ✅ Contracts | ✅ Contracts | ❌ | ✅ API | ✅ API Docs | ⚠️ API Tests | ❌ |
-| **test-engineer** | ✅ Tests | ✅ Tests | ⚠️ Test Data | ✅ Test Config | ⚠️ Test Docs | ✅ Primary | ⚠️ Test Env |
-| **code-reviewer** | ✅ All | ✅ All | ✅ All | ✅ All | ⚠️ Review | ✅ All | ✅ All |
-| **security-auditor** | ✅ Security | ✅ Security | ✅ Security | ✅ Security | ⚠️ Security | ⚠️ Security | ✅ Security |
-| **devops-engineer** | ⚠️ Build | ⚠️ Build | ❌ | ✅ Primary | ⚠️ Ops | ⚠️ E2E | ✅ Primary |
-| **performance-optimizer** | ✅ Perf | ✅ Perf | ✅ Queries | ⚠️ Perf | ❌ | ✅ Perf Tests | ⚠️ Perf |
-| **technical-writer** | ❌ | ❌ | ❌ | ❌ | ✅ Primary | ❌ | ❌ |
-| **refactoring-specialist** | ✅ Refactor | ✅ Refactor | ⚠️ Schema | ⚠️ Config | ❌ | ⚠️ Test Refactor | ❌ |
-| **migration-specialist** | ✅ Migrations | ✅ Migrations | ✅ Migrations | ✅ Migrations | ⚠️ Migration | ⚠️ Migration | ✅ Migrations |
-| **data-analyst** | ⚠️ Analytics | ✅ Analytics | ✅ Queries | ⚠️ Analytics | ⚠️ Reports | ❌ | ❌ |
+| Agent | JavaScript/TS | Python | Database | Config | Docs | Tests | Infrastructure | Design Assets |
+|-------|-------------|---------|----------|--------|------|-------|----------------|---------------|
+| **ui-ux-designer** | ❌ | ❌ | ❌ | ❌ | ✅ Design Docs | ❌ | ❌ | ✅ Primary |
+| **frontend-specialist** | ✅ Primary | ❌ | ❌ | ⚠️ Frontend | ⚠️ Component | ✅ Frontend | ❌ | ⚠️ Implementation |
+| **backend-specialist** | ✅ Node.js | ✅ Primary | ⚠️ Integration | ✅ Server | ⚠️ API | ✅ Backend | ⚠️ App | ❌ |
+| **database-specialist** | ⚠️ Queries | ⚠️ Queries | ✅ Primary | ✅ DB Config | ⚠️ Schema | ✅ DB Tests | ⚠️ DB | ❌ |
+| **api-designer** | ✅ Contracts | ✅ Contracts | ❌ | ✅ API | ✅ API Docs | ⚠️ API Tests | ❌ | ❌ |
+| **test-engineer** | ✅ Tests | ✅ Tests | ⚠️ Test Data | ✅ Test Config | ⚠️ Test Docs | ✅ Primary | ⚠️ Test Env | ❌ |
+| **code-reviewer** | ✅ All | ✅ All | ✅ All | ✅ All | ⚠️ Review | ✅ All | ✅ All | ❌ |
+| **security-auditor** | ✅ Security | ✅ Security | ✅ Security | ✅ Security | ⚠️ Security | ⚠️ Security | ✅ Security | ❌ |
+| **devops-engineer** | ⚠️ Build | ⚠️ Build | ❌ | ✅ Primary | ⚠️ Ops | ⚠️ E2E | ✅ Primary | ❌ |
+| **performance-optimizer** | ✅ Perf | ✅ Perf | ✅ Queries | ⚠️ Perf | ❌ | ✅ Perf Tests | ⚠️ Perf | ❌ |
+| **technical-writer** | ❌ | ❌ | ❌ | ❌ | ✅ Primary | ❌ | ❌ | ⚠️ Docs |
+| **refactoring-specialist** | ✅ Refactor | ✅ Refactor | ⚠️ Schema | ⚠️ Config | ❌ | ⚠️ Test Refactor | ❌ | ❌ |
+| **migration-specialist** | ✅ Migrations | ✅ Migrations | ✅ Migrations | ✅ Migrations | ⚠️ Migration | ⚠️ Migration | ✅ Migrations | ❌ |
+| **data-analyst** | ⚠️ Analytics | ✅ Analytics | ✅ Queries | ⚠️ Analytics | ⚠️ Reports | ❌ | ❌ | ❌ |
 
 **Legend**: ✅ Primary expertise | ⚠️ Secondary/Supporting | ❌ Not applicable
 
@@ -469,7 +508,8 @@ performance_metrics:
 
 | Domain | Primary Agents | Supporting Agents | Typical Workflow |
 |--------|----------------|-------------------|------------------|
-| **Frontend Development** | frontend-specialist | api-designer, test-engineer, code-reviewer | frontend → api-designer → test-engineer → code-reviewer |
+| **UI/UX Design** | ui-ux-designer | code-architect, frontend-specialist, technical-writer | ui-ux-designer → /architect (strategic) → frontend (implementation) → technical-writer (docs) |
+| **Frontend Development** | frontend-specialist | ui-ux-designer, api-designer, test-engineer, code-reviewer | ui-ux-designer → frontend → api-designer → test-engineer → code-reviewer |
 | **Backend Development** | backend-specialist | database-specialist, api-designer, security-auditor | backend → database → api-designer → security-auditor |
 | **Database Management** | database-specialist | backend-specialist, performance-optimizer, migration-specialist | database → backend → performance → migration |
 | **API Development** | api-designer | backend-specialist, frontend-specialist, test-engineer | api-designer → backend → frontend → test-engineer |
@@ -489,16 +529,15 @@ performance_metrics:
 | **Grep/Glob** | All agents | - | Code search and file discovery |
 | **TodoWrite** | All agents | - | Task tracking and coordination |
 | **MultiEdit** | refactoring-specialist, migration-specialist | backend-specialist, frontend-specialist | Bulk code changes |
-| **MCP Context7** | frontend-specialist, backend-specialist, api-designer, database-specialist | code-reviewer, code-architect, security-auditor, performance-optimizer | Framework documentation lookup, library research |
-| **MCP Sequential Thinking** | project-manager, code-reviewer, code-architect, security-auditor, performance-optimizer | - | Complex analysis and systematic reasoning |
+| **MCP Context7** | frontend-specialist, backend-specialist, api-designer, database-specialist, ui-ux-designer | code-reviewer, code-architect, security-auditor, performance-optimizer | Framework documentation lookup, library research, design system docs |
+| **MCP Sequential Thinking** | ui-ux-designer, project-manager, code-reviewer, code-architect, security-auditor, performance-optimizer | - | Complex design analysis, systematic reasoning, decision-making |
 
 ### Model Usage Justification
 
 | Model | Agents | Justification |
 |-------|--------|---------------|
-| **Opus** | code-architect, project-manager, security-auditor, technical-writer | Complex reasoning, strategic decisions, security analysis, content creation |
-| **Sonnet** | Most specialists | Balanced performance for technical implementation tasks |
-| **Haiku** | technical-writer, context-analyzer | Fast, lightweight tasks with clear objectives |
+| **Opus** | code-architect, brief-strategist, project-manager, security-auditor, technical-writer, template-maintainer, ai-llm-expert | Complex reasoning, strategic decisions, security analysis, content creation, AI architecture |
+| **Sonnet** | ui-ux-designer, frontend-specialist, backend-specialist, database-specialist, api-designer, test-engineer, code-reviewer, context-analyzer, devops-engineer, performance-optimizer, refactoring-specialist, migration-specialist, data-analyst | Balanced performance for design work and technical implementation tasks |
 
 ## Best Practices for Agent Management
 

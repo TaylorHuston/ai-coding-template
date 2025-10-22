@@ -3,21 +3,21 @@
   "owner": {
     "name": "Taylor Huston",
     "email": "taylor.a.huston@gmail.com",
-    "url": "https://github.com/taylorh140"
+    "url": "https://github.com/TaylorHuston"
   },
   "description": "AI-assisted development workflow tools and templates for Claude Code",
-  "homepage": "https://github.com/taylorh140/ai-coding-template",
-  "repository": "https://github.com/taylorh140/ai-coding-template",
+  "homepage": "https://github.com/TaylorHuston/ai-coding-template",
+  "repository": "https://github.com/TaylorHuston/ai-coding-template",
   "plugins": [
     {
       "name": "ai-toolkit",
-      "description": "Comprehensive AI-assisted development workflow system with 19 orchestrated commands, 19 specialized agents, and intelligent file-based state management",
+      "description": "Comprehensive AI-assisted development workflow system with 14 orchestrated commands, 20 specialized agents, and intelligent file-based state management",
       "source": "./plugins/ai-toolkit",
-      "version": "0.9.1",
+      "version": "0.10.0",
       "author": {
         "name": "Taylor Huston",
         "email": "taylor.a.huston@gmail.com",
-        "url": "https://github.com/taylorh140"
+        "url": "https://github.com/TaylorHuston"
       },
       "keywords": [
         "workflow",

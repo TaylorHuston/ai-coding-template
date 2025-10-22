@@ -1,192 +1,60 @@
 ---
-version: "0.4.0"
+version: "0.5.0"
 created: "2025-09-17"
-last_updated: "2025-09-18"
+last_updated: "2025-10-22"
 status: "active"
 target_audience: ["ai-assistants"]
 document_type: "command"
 tags: ["workflow", "planning", "implementation"]
-description: "Implementation planning for epics, standalone tasks, and bugs with X.Y.Z task structure"
-argument-hint: "[--epic \"name\"] [--task \"###\"] [--misc \"task-id\"] [--bug \"bug-id\"] [--review-epic \"name\"] [--issue KEY]"
+description: "Add implementation plan with phase-based breakdown to individual tasks and bugs"
+argument-hint: "TASK-### | BUG-###"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
 model: claude-opus-4-0
 ---
 
 # /plan Command
 
-**Purpose**: Add implementation details and sequencing to epics, standalone tasks, and bugs through multi-agent coordination.
+**Purpose**: Add "Plan" section with phase-based breakdown to individual TASK.md or BUG.md files.
 
 ## Usage
 
-### Epic Planning
 ```bash
-/plan --epic "name"                  # Plan all tasks in epic with sequencing and implementation
-/plan --task "###" --epic "name"     # Plan specific task with implementation details
-/plan --review-epic "name"           # Review existing epic implementation plan
+/plan TASK-001    # Add plan to task
+/plan BUG-003     # Add plan to bug
 ```
 
-### Interactive Standalone Task Planning
-```bash
-/plan --misc "task name"             # Create MISC-### with auto-incrementing number and interactive planning
-/plan --misc-review "MISC-001"       # Review existing misc task plan
-```
+**Simple invocation**: Just pass the task/bug ID. Command automatically:
+- Locates file in `pm/issues/` directory (e.g., `pm/issues/TASK-001-*/TASK.md` or `pm/issues/BUG-003-*/BUG.md`)
+- Reads appropriate template (`pm/templates/task.md` or `pm/templates/bug.md`) for structure requirements
+- Reads epic context from `epic:` field in YAML frontmatter (if present)
+- Loads relevant architecture decisions from `docs/architecture/ADR-*.md`
+- Adds or updates "Plan" section with phase-based breakdown following template
+- Creates `HANDOFF.yml` for agent coordination if not exists
+- Performs complexity analysis and suggests decomposition if needed
 
-### Interactive Bug Planning
-```bash
-/plan --bug "bug description"        # Create BUG-### with auto-incrementing number and interactive planning
-/plan --bug-review "BUG-001"         # Review existing bug fix plan
-```
+**Re-running**: Run command again on same ID to update/refine existing plan
 
 ## Agent Coordination
 
-**Primary**: project-manager (epic planning and task sequencing), test-engineer (testing strategy integration)
+**Primary**: project-manager (task analysis and planning), test-engineer (testing strategy integration)
 **Supporting**: Domain specialists (frontend-specialist, backend-specialist, database-specialist) for complexity assessment
 **Quality**: code-reviewer (implementation validation), security-auditor (security requirements)
 
 ## Approach
 
-### **Epic-Driven Planning**
-- Gather context from EPIC.md, task requirements, and architecture decisions (resources/ADR-*.md)
-- Sequence tasks based on dependencies discovered across /design and /architect phases
-- Add X.Y.Z implementation tasks to each TASK.md file with TDD/BDD integration
-- Create dedicated testing tasks for comprehensive coverage (95%+ target)
-- Create agent coordination files (HANDOFF.yml) for each task directory
-- Organize epic execution in logical phases with testing gates
+### **Context Gathering**
+1. **Locate issue**: Use Glob to find `pm/issues/TASK-###-*/` or `pm/issues/BUG-###-*/`
+2. **Read template**: Load `pm/templates/task.md` or `pm/templates/bug.md` to understand structure
+3. **Read issue file**: Load TASK.md or BUG.md with description and acceptance criteria
+4. **Load epic context** (if applicable):
+   - Extract `epic: EPIC-###` from YAML frontmatter
+   - Read `pm/epics/EPIC-###-name.md` for feature context
+5. **Load architecture**: Read relevant `docs/architecture/ADR-*.md` files
+6. **Assess complexity**: Analyze issue for complexity indicators
 
-### **Interactive Standalone Task Planning**
-- Auto-generate MISC-### ID by scanning workbench/misc/ for next available number
-- Create task directory structure: `workbench/misc/MISC-###-task-name/`
-- Interactive requirements gathering through back-and-forth conversation:
-  - Ask for detailed task description and objectives
-  - Clarify any ambiguous requirements or scope
-  - Identify acceptance criteria and success metrics
-  - Determine appropriate methodology and approach
-- Generate comprehensive TASK.md, HANDOFF.yml, and RESEARCH.md
-- Create detailed X.Y.Z implementation breakdown based on clarified requirements
+### **Complexity Analysis**
 
-### **Interactive Bug Planning**
-- Auto-generate BUG-### ID by scanning workbench/bugs/ for next available number
-- Create bug directory structure: `workbench/bugs/BUG-###-bug-description/`
-- Interactive bug analysis through structured conversation:
-  - Ask for detailed reproduction steps and environment details
-  - Clarify expected vs actual behavior
-  - Assess impact and priority level
-  - Identify investigation approach and debugging strategy
-- Generate comprehensive BUG.md, HANDOFF.yml, and RESEARCH.md
-- Create structured investigation and fix plan with X.Y.Z breakdown
-
-**Key principle**: Transform requirements into executable implementation steps regardless of work type.
-
-## Planning Process
-
-### **For Epics**
-1. **Analyze epic context**: Review EPIC.md, existing tasks, and resources/ADR-*.md for full picture
-2. **Sequence tasks**: Order tasks by dependencies in EPIC.md "Implementation Phases"
-3. **Assess task complexity**: Analyze each task for complexity indicators and decomposition needs
-   - Multi-domain integration, security requirements, database changes, external integrations
-   - Generate complexity scores and suggest decomposition for high-complexity tasks (≥5 points)
-   - Auto-suggest subtasks with appropriate agent assignments when needed
-4. **Add implementation details**: Enhance each TASK.md with X.Y.Z numbered implementation tasks
-5. **Integrate testing strategy**: Add TDD/BDD requirements and create dedicated testing tasks
-6. **Coordinate agents**: Create HANDOFF.yml in each task directory for agent assignments
-7. **Plan quality gates**: Define completion criteria, coverage targets (95%+), and validation approaches
-8. **Discover missing tasks**: Identify coordination, infrastructure, and testing tasks needed
-
-### **For Interactive Standalone Tasks (Misc)**
-1. **Auto-generate ID**: Scan workbench/misc/ to find next available MISC-### number
-2. **Create directory**: Create workbench/misc/MISC-###-task-name/ with kebab-case formatting
-3. **Interactive requirements gathering**:
-   - Ask user for detailed task description and objectives
-   - Clarify scope, constraints, and acceptance criteria through conversation
-   - Identify success metrics and validation approach
-   - Determine required resources and dependencies
-4. **Assess task complexity**: Analyze clarified requirements for complexity indicators
-   - Multi-domain work, security aspects, performance requirements, integrations
-   - Calculate complexity score and suggest decomposition if needed (≥5 points)
-   - Recommend breaking complex tasks into manageable subtasks with focused agents
-5. **MANDATORY: Use templates**: Generate task structure using established templates:
-   - **TASK.md**: Use `.claude/resources/templates/workflow/epic/task.template.md` with placeholder substitution
-   - **HANDOFF.yml**: Use agent coordination template patterns
-   - **RESEARCH.md**: Use research methodology template
-6. **Create implementation plan**: Develop detailed X.Y.Z task breakdown with checkboxes based on clarified requirements
-7. **Assign agents**: Determine appropriate agent assignments based on task type and complexity analysis
-8. **Finalize planning**: Confirm plan with user and adjust based on feedback
-
-### **For Interactive Bug Planning**
-1. **Auto-generate ID**: Scan workbench/bugs/ to find next available BUG-### number
-2. **Create directory**: Create workbench/bugs/BUG-###-description/ with kebab-case formatting
-3. **Interactive bug analysis**:
-   - Ask user for detailed reproduction steps and environment information
-   - Clarify expected vs actual behavior through conversation
-   - Assess business impact and priority level
-   - Identify affected systems and potential root causes
-4. **Generate bug structure**: Create BUG.md, HANDOFF.yml, and RESEARCH.md with gathered information
-5. **Plan investigation strategy**: Develop systematic approach for root cause analysis
-6. **Plan fix implementation**: Structure fix approach with X.Y.Z task breakdown
-7. **Define testing and validation**: Plan regression testing and fix verification approach
-8. **Finalize bug plan**: Confirm approach with user and adjust based on feedback
-
-## Outputs
-
-### **For Epics**
-- **EPIC.md**: Updated with "Implementation Phases" section showing task execution order
-- **TASK.md files**: Enhanced with "Implementation Tasks" using X.Y.Z numbering and testing requirements
-- **HANDOFF.yml**: Agent coordination file in each task directory
-- **RESEARCH.md**: Knowledge capture template in each task directory
-- **Testing Tasks**: Dedicated TASK-###-testing directories for comprehensive test coverage
-- **New tasks**: Additional coordination/infrastructure/testing tasks discovered during planning
-
-### **For Interactive Standalone Tasks (Misc)**
-- **Auto-generated directory**: `workbench/misc/MISC-###-task-name/`
-- **TASK.md**: Comprehensive task definition with clarified requirements and X.Y.Z implementation breakdown
-- **HANDOFF.yml**: Agent coordination with assignments based on task complexity and type
-- **RESEARCH.md**: Methodology and approach documentation based on interactive planning
-- **Implementation Plan**: Detailed step-by-step execution plan derived from user conversation
-
-### **For Interactive Bug Planning**
-- **Auto-generated directory**: `workbench/bugs/BUG-###-description/`
-- **BUG.md**: Complete bug report with reproduction steps, impact assessment, and investigation plan
-- **HANDOFF.yml**: Agent coordination with debugging specialists and investigation assignments
-- **RESEARCH.md**: Investigation strategy and findings documentation
-- **Investigation Plan**: Systematic root cause analysis approach
-- **Fix Plan**: Structured implementation and testing strategy
-
-## Integration with Workflow
-
-### **Epic Workflow Integration**
-**Position**: After `/design` and `/architect`, before `/develop`
-
-- **After /design**: Takes user stories and acceptance criteria as input
-- **After /architect**: Incorporates technical decisions (resources/ADR-*.md) into implementation approach
-- **Before /develop**: Provides detailed, sequenced implementation tasks with agent coordination
-- **Supports discovery**: Can add new tasks discovered during planning phase
-- **Intelligent decomposition**: Uses complexity analysis to suggest task breakdown when needed
-
-### **Interactive Standalone Task Integration**
-**Position**: On-demand creation and planning, independent of epic workflow
-
-- **User-initiated**: Triggered by `/plan --misc "task name"` command
-- **Auto-incrementing**: Automatically assigns next available MISC-### number
-- **Conversational planning**: Interactive requirements gathering through back-and-forth dialogue
-- **Immediate execution**: Task ready for `/develop` phase after planning completion
-- **Flexible scope**: Supports any type of standalone work (analysis, development, maintenance, etc.)
-
-### **Interactive Bug Workflow Integration**
-**Position**: Immediate response capability, independent of epic cycles
-
-- **User-initiated**: Triggered by `/plan --bug "bug description"` command
-- **Auto-incrementing**: Automatically assigns next available BUG-### number
-- **Structured analysis**: Interactive bug analysis through guided conversation
-- **Investigation-first**: Emphasizes systematic root cause analysis before fixing
-- **Rapid response**: Bug tracking and resolution planning in single session
-
-**Universal Principle**: All work types benefit from systematic planning and agent coordination.
-
-## Intelligent Task Complexity Analysis
-
-The `/plan` command integrates automatic complexity assessment using proven algorithms:
-
-### **Complexity Scoring System**
+**Scoring System**:
 - **Multi-domain integration** (+3 points): API + database, frontend + backend, UI + server
 - **Security implementation** (+2 points): Authentication, authorization, encryption, permissions
 - **Database schema changes** (+2 points): Migrations, schema modifications, data transformations
@@ -195,110 +63,176 @@ The `/plan` command integrates automatic complexity assessment using proven algo
 - **UI/UX implementation** (+1 point): Component creation, interface design, responsive work
 - **Testing requirements** (+1 point): Test creation, validation, quality assurance
 
-### **Decomposition Recommendations**
-- **High complexity (≥5 points)**: Strong decomposition recommended with automatic subtask suggestions
-- **Medium complexity (3-4 points)**: Consider decomposition based on team capacity and timeline
-- **Low complexity (≤2 points)**: Task appropriately scoped for single agent execution
+**Decomposition Recommendations**:
+- **High complexity (≥5 points)**: Suggest breaking into subtasks with focused responsibilities
+- **Medium complexity (3-4 points)**: Consider decomposition based on timeline
+- **Low complexity (≤2 points)**: Task appropriately scoped
 
-### **Auto-Decomposition Patterns**
-- **API tasks**: Design specs → Business logic → Authentication → Testing
-- **Database tasks**: Schema design → Data access layer → Validation → Performance
-- **Frontend tasks**: Component architecture → UI implementation → State management → Responsive design
-- **Security tasks**: Threat modeling → Authentication → Authorization → Security testing
-- **Integration tasks**: API research → Client implementation → Error handling → Testing
+### **Plan Creation**
 
-**Integration**: Complexity analysis runs automatically during task creation and provides intelligent agent assignment suggestions based on domain expertise requirements.
+1. **Suggest phase structure**: Based on task type, suggest logical phases
+   - **Default for implementation**: Design → Test-Driven Implementation → Integration → Documentation
+   - **Frontend tasks**: Design → Component Tests → Implementation → Responsive/E2E
+   - **Backend tasks**: API Design → Unit Tests → Implementation → Integration Tests
+   - **Bug fixes**: Investigation → Root Cause → Fix → Regression Tests
 
-## Examples
+2. **Add Plan section** to TASK.md/BUG.md:
+   - Phase headers: `### Phase X - <description>`
+   - Checkboxed items: `- [ ] x.x <description>` under each phase
+   - Include test-first patterns (Red-Green-Refactor) when appropriate
+   - Note: "Phases are suggestions. Modify to fit your workflow!"
 
-### **Epic Planning**
-**Plan entire epic**: `/plan --epic "user-authentication"`
-- Sequences all discovered tasks in execution order
-- Adds implementation details to each TASK.md
-- Creates agent coordination files
+3. **Create HANDOFF.yml**: Generate agent coordination file if not exists
+   - Assign appropriate specialists based on complexity analysis
+   - Include handoff state and coordination metadata
 
-**Plan specific task**: `/plan --task "001" --epic "user-authentication"`
-- Focuses on single task implementation breakdown
-- Creates detailed X.Y.Z task structure
+4. **Suggest patterns**: Show alternative test-first patterns as options:
+   - **Strict TDD** (Red-Green-Refactor cycle visible)
+   - **BDD Scenarios** (Given/When/Then → implementation)
+   - **Test Pyramid** (heavy unit, moderate integration, light E2E)
+   - **Pragmatic** (spike/explore → test → implement)
 
-### **Interactive Standalone Task Planning**
-**Create new miscellaneous task**: `/plan --misc "update documentation system"`
+## Outputs
 
-**Conversation flow**:
-```
-AI: I'll create MISC-002-update-documentation-system. Can you provide a detailed
-    description of what needs to be accomplished?
+- **pm/issues/TASK-###-name/TASK.md** or **pm/issues/BUG-###-name/BUG.md**: Enhanced with "Plan" section featuring:
+  - Phase headers with logical grouping
+  - Checkboxed implementation steps
+  - Test-first patterns embedded
+  - Human-AI collaboration friendly (check off manually or via /implement)
 
-User: I want to modernize our documentation system to use better tooling and
-      improve the developer experience.
+- **pm/issues/TASK-###-name/HANDOFF.yml** or **pm/issues/BUG-###-name/HANDOFF.yml**: Agent coordination file (if created)
+  - Current agent assignments
+  - Handoff state tracking
+  - Domain specialist recommendations
 
-AI: To clarify the scope:
-    1. What specific aspects of the current documentation system need improvement?
-    2. Are there particular tools or technologies you want to evaluate?
-    3. What does "better developer experience" mean in this context?
-    4. Is this a research task, implementation task, or both?
+## Integration with Workflow
 
-User: [Provides clarifications...]
+**Position**: After task creation (via /epic or other means), before /implement
 
-AI: Based on our discussion, I'll create a comprehensive task plan with X.Y.Z
-    implementation breakdown and assign appropriate agents.
-```
+- **After task creation**: Takes requirements and acceptance criteria as input
+- **After /architect**: Incorporates technical decisions from ADRs
+- **Before /implement**: Provides detailed implementation roadmap with agent coordination
+- **Complexity-aware**: Suggests decomposition when tasks are too complex
 
-**Review existing task**: `/plan --misc-review "MISC-002"`
+## Example
 
-### **Interactive Bug Planning**
-**Create new bug report**: `/plan --bug "login fails on mobile devices"`
-
-**Conversation flow**:
-```
-AI: I'll create BUG-001-login-fails-on-mobile-devices. Can you provide detailed
-    reproduction steps?
-
-User: Users can't log in using mobile browsers, getting a "session expired" error.
-
-AI: To help plan the investigation:
-    1. Which mobile browsers and versions are affected?
-    2. Does this happen immediately or after some time?
-    3. What's the expected behavior vs what users see?
-    4. How many users are affected?
-    5. Is there a workaround available?
-
-User: [Provides details...]
-
-AI: I'll create a structured investigation plan with systematic root cause
-    analysis and coordinate appropriate debugging specialists.
+### Command Usage
+```bash
+/plan TASK-001
 ```
 
-**Review existing bug**: `/plan --bug-review "BUG-001"`
+### Sample Output (TASK.md with Plan section)
+```markdown
+---
+epic: EPIC-001
+type: user-story
+status: todo
+created: 2025-10-21
+updated: 2025-10-21
+---
 
-### **File Structure Examples**
+# TASK-001: User Registration
+
+## Description
+As a new user, I want to create an account with email and password, So that I can access the application securely.
+
+## Acceptance Criteria
+- [ ] All features covered by tests (aim for 95%+ coverage)
+- [ ] Tests verify behavior, not just execute code
+- [ ] User can register with email and password
+- [ ] Email validation shows inline errors
+- [ ] Password meets security requirements (8+ chars, special chars)
+- [ ] Success redirects to dashboard
+
+<!-- Acceptance Criteria Formats (choose what works for your team):
+- Simple: '- [ ] User can register with email'
+- BDD: '- [ ] Given valid email, When user submits, Then account created'
+- Testable: '- [ ] Should validate email format before submission' -->
+
+## Plan
+
+### Phase 1 - Design
+- [ ] 1.1 Design database schema for users table
+- [ ] 1.2 Design API contract for registration endpoint
+- [ ] 1.3 Design form validation rules
+
+### Phase 2 - Test-Driven Implementation
+- [ ] 2.1 Write failing tests for User model validation (RED)
+- [ ] 2.2 Implement User model to pass tests (GREEN)
+- [ ] 2.3 Refactor User model for clarity (REFACTOR)
+- [ ] 2.4 Write tests for password hashing with bcrypt (RED)
+- [ ] 2.5 Implement password hashing (GREEN)
+- [ ] 2.6 Write tests for registration endpoint (RED)
+- [ ] 2.7 Implement POST /api/auth/register endpoint (GREEN)
+- [ ] 2.8 Write tests for registration form component (RED)
+- [ ] 2.9 Build registration form component (GREEN)
+
+### Phase 3 - Integration & E2E
+- [ ] 3.1 Write integration tests for complete registration flow
+- [ ] 3.2 Write E2E tests for user journey
+- [ ] 3.3 Verify all acceptance criteria met
+
+### Phase 4 - Documentation
+- [ ] 4.1 Update API documentation
+- [ ] 4.2 Add inline code documentation
+
+---
+
+**Note**: Phases are suggestions. Modify to fit your workflow!
+
+**Alternative Patterns**:
+- **Strict TDD**: Red-Green-Refactor cycle visible in every step
+- **BDD Scenarios**: Define Given/When/Then → Implement tests → Build features
+- **Test Pyramid**: Heavy unit, moderate integration, light E2E
+- **Pragmatic**: Spike/explore → Write tests → Implement production code
 ```
-workbench/
-├── epics/[epic-name]/           # Epic-driven development
-├── misc/MISC-001-[task]/        # Standalone miscellaneous tasks
-└── bugs/BUG-001-[description]/  # Bug investigation and fixes
-```
 
-**Interactive Features**:
-- **Auto-incrementing IDs**: Automatically assigns next available number
-- **Conversational planning**: Back-and-forth requirements gathering
-- **Structured outputs**: Comprehensive task/bug documentation
-- **Agent coordination**: Automatic assignment of appropriate specialists
+## Testing Best Practices (Recommendations)
 
-**Reference formats**:
-- Epic tasks: `TASK-001:1.2.3`
-- Misc tasks: `MISC-001:1.2.3` (auto-generated)
-- Bug tasks: `BUG-001:1.2.3` (auto-generated)
+**Focus testing effort on:**
+- ✅ Business logic and algorithms
+- ✅ Complex conditional flows
+- ✅ User-facing features
+- ✅ API contracts and integrations
+- ✅ Security-critical code
 
-## Interactive Planning Implementation
+**Tests may be optional for:**
+- Simple configuration files
+- Trivial property getters/setters
+- One-time migration scripts
+- Pure UI styling (no behavior)
+- Generated/scaffolded code
 
-When implementing `/plan --misc "task name"` or `/plan --bug "description"`:
+**Quality over quantity:**
+- 95% coverage is a guide, not gospel
+- Tests should verify behavior, not just execute code
+- One test that catches real bugs > ten tests that don't
+- Tests are living documentation - make them readable!
 
-1. **Scan for next ID**: Check workbench/misc/ or workbench/bugs/ for highest existing number
-2. **Create directory**: Generate kebab-case directory name with auto-incremented ID
-3. **Start conversation**: Ask initial open-ended question about requirements/details
-4. **Iterative clarification**: Ask follow-up questions to resolve ambiguity
-5. **Generate structure**: Create all necessary files (TASK.md/BUG.md, HANDOFF.yml, RESEARCH.md)
-6. **Confirm plan**: Present final plan to user for approval/adjustments
+**When tests feel painful:**
+- Might indicate design issues (hard to test = hard to use)
+- Consider refactoring code to be more testable
+- Ask: "How would I explain this to a teammate?" → Write that as a test
+- Tests should help you, not slow you down
 
-**Key principle**: Interactive planning ensures comprehensive requirements capture and eliminates ambiguity before implementation begins.
+**AI-Powered Testing Advantage:**
+- AI can generate comprehensive test suites in seconds
+- No more "testing takes too long" objection
+- Tests include explanatory comments for team knowledge sharing
+- Removes friction from TDD/BDD adoption
+
+## Implementation Notes
+
+When implementing `/plan TASK-###` or `/plan BUG-###`:
+
+1. **Validate ID format**: Ensure ID matches `TASK-###` or `BUG-###` pattern
+2. **Find directory**: Use Glob `pm/issues/{TASK|BUG}-###-*/` to locate task directory
+3. **Read existing file**: Load TASK.md or BUG.md to check for existing Plan section
+4. **Parse frontmatter**: Extract `epic:` field if present to load parent context
+5. **Analyze complexity**: Calculate score and suggest decomposition if ≥5 points
+6. **Generate phases**: Create contextually appropriate phase breakdown
+7. **Add/update Plan**: Insert Plan section or update if already exists
+8. **Create HANDOFF.yml**: Generate coordination file if not present
+9. **Confirm with user**: Present plan and ask for modifications
+
+**Key principle**: Transform requirements into executable implementation steps with clear test-first guidance.

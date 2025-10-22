@@ -1,175 +1,208 @@
 # Development Guidelines
 
-This directory is for **project-specific development guidelines** that override plugin defaults.
+This directory contains **project-specific development guidelines** that configure how AI agents and commands behave in your project.
 
 ## How Guidelines Work
 
-The AI Toolkit includes **comprehensive development guidelines** covering:
+Guidelines are **configuration files** (like package.json or tsconfig.json) that tell AI agents how your project works. They use YAML frontmatter for machine-readable settings and markdown for human-readable explanations.
 
-- **Architectural Principles** - DRY, KISS, YAGNI, SOLID
-- **API Guidelines** - REST, GraphQL, versioning, documentation
-- **Security Guidelines** - Authentication, authorization, threat modeling
-- **Testing Standards** - TDD, BDD, coverage requirements
-- **Code Quality** - Metrics, reviews, static analysis
-- **Coding Standards** - Naming, formatting, best practices
-- And 10 more...
+Think of them like the ADR template:
+- `/architect` reads `adr-template.md` to know what ADR sections to create
+- `/implement` reads `testing-standards.md` to know your testing approach
+- All agents read relevant guidelines to adapt to your project's patterns
 
-**These guidelines live in the plugin** at:
+## Template-Driven Configuration
+
+Each guideline has 3 parts:
+
+### 1. YAML Configuration (for AI agents)
+```yaml
+---
+testing_framework: "vitest"
+test_location: "tests/"
+coverage_target: 80
+---
 ```
-${CLAUDE_PLUGIN_ROOT}/docs/guidelines/
+
+### 2. Project Decisions (for humans + AI)
+```markdown
+## Our Testing Philosophy
+We prioritize E2E tests over unit tests...
+
+## Examples
+See tests/e2e/user-flow.test.ts for our testing pattern
 ```
 
-## Why Plugin Defaults?
+### 3. Reference to Generic Knowledge
+```markdown
+For general testing best practices, Claude has extensive knowledge...
+```
 
-**Benefits**:
-- ✅ **Always up-to-date**: Guidelines update with plugin
-- ✅ **Consistent across projects**: Same standards everywhere
-- ✅ **No duplication**: DRY principle for documentation
-- ✅ **Well-maintained**: Community improvements benefit everyone
+## Your Guidelines
 
-**AI agents automatically use plugin guidelines** when working on your project.
+### Core Guidelines (6 files)
+
+1. **api-guidelines.md** - API patterns (REST/GraphQL/tRPC), structure, auth
+2. **testing-standards.md** - Testing frameworks, coverage, strategy
+3. **git-workflow.md** - Branching, commits, PRs, releases
+4. **coding-standards.md** - Naming, formatting, file organization
+5. **security-guidelines.md** - Auth, data protection, vulnerabilities
+6. **architectural-principles.md** - Design philosophy (DRY, SOLID, etc.)
+
+Each guideline starts with TBD placeholders and gets filled in as you make decisions.
+
+## How Guidelines Evolve
+
+### Phase 1: Initialization
+After `/toolkit-init`, guidelines contain mostly TBD placeholders:
+```yaml
+---
+api_pattern: "TBD"
+testing_framework: "TBD"
+---
+```
+
+### Phase 2: Architecture Decisions
+When you run `/architect`, it updates guidelines:
+```
+User: "/architect Should we use REST or tRPC?"
+
+/architect:
+1. Analyzes options
+2. Creates ADR-001-use-trpc.md
+3. Updates api-guidelines.md:
+   - Changes `api_pattern: "TBD"` → `api_pattern: "trpc"`
+   - Adds project-specific patterns
+```
+
+### Phase 3: Implementation
+As you build, agents read guidelines to match your patterns:
+```
+api-designer agent:
+1. Reads api-guidelines.md
+2. Sees `api_pattern: "trpc"`
+3. Creates tRPC router in correct location
+4. Follows existing project patterns
+```
+
+### Phase 4: Enrichment
+Guidelines become living documentation:
+```markdown
+## Examples
+- User API: src/server/api/routers/users.ts
+- Auth flow: src/server/api/routers/auth.ts
+```
 
 ## Customizing Guidelines
 
-Most projects use the plugin defaults. But when you need **project-specific variations**:
+Guidelines are **yours to edit**. Customize them to fit your project:
 
-### Option 1: Copy and Customize
-
-Copy a guideline from the plugin to your project:
-
-```bash
-# Copy the guideline you want to customize
-cp ${CLAUDE_PLUGIN_ROOT}/docs/guidelines/api-guidelines.md docs/development/guidelines/
-
-# Edit for your project
-# AI agents will now use your version instead of plugin default
-```
-
-### Option 2: Create Project-Specific Guidelines
-
-Create new guidelines specific to your project:
-
-```bash
-# Create a new guideline
-docs/development/guidelines/internal-api-standards.md
-```
-
-### Option 3: Extend Plugin Guidelines
-
-Reference plugin defaults and add project-specific rules:
-
+### Add Project-Specific Rules
 ```markdown
-# API Guidelines
-
-See plugin guidelines for standard API design: ${CLAUDE_PLUGIN_ROOT}/docs/guidelines/api-guidelines.md
-
-## Project-Specific API Rules
-
-1. All internal APIs must use gRPC
-2. Public APIs use REST with JSON:API format
-3. ... your specific rules ...
+## Our API Conventions
+- All endpoints return standardized error format (see src/lib/errors.ts)
+- Use Zod for validation (see src/lib/validators/)
+- Rate limit: 100 req/min per user
 ```
 
-## Guideline Precedence
+### Update YAML Configuration
+```yaml
+---
+api_pattern: "trpc"
+api_location: "src/server/api/routers/"
+authentication: "nextauth"
+---
+```
 
-When AI agents load guidelines:
-
-1. **Check project first**: `docs/development/guidelines/{guideline}.md`
-2. **Fall back to plugin**: `${CLAUDE_PLUGIN_ROOT}/docs/guidelines/{guideline}.md`
-3. **Use whichever exists**
-
-Project guidelines always override plugin defaults.
-
-## Available Plugin Guidelines
-
-The plugin includes these guidelines (check plugin docs for complete list):
-
-**Foundation**:
-- architectural-principles.md
-- quality-standards.md
-- code-quality.md
-
-**Development**:
-- coding-standards.md
-- testing-standards.md
-- code-review-guidelines.md
-
-**Domain-Specific**:
-- api-guidelines.md
-- security-guidelines.md
-- authentication-authorization.md
-
-**Process**:
-- git-workflow.md
-- documentation-standards.md
-- changelog-maintenance.md
-
-**AI Collaboration**:
-- ai-collaboration-standards.md
-- visual-documentation.md
-
-## When to Customize
-
-**Use plugin defaults** (90% of projects):
-- Following industry standards
-- Standard tech stack
-- No special compliance requirements
-
-**Customize guidelines** (10% of projects):
-- Unique compliance requirements (HIPAA, PCI-DSS, etc.)
-- Non-standard architecture patterns
-- Legacy system integration constraints
-- Company-specific coding standards
-
+### Add Examples from Your Code
+```markdown
 ## Examples
-
-**Example: Customized Security for Healthcare**
-```bash
-# Copy security guideline
-cp ${CLAUDE_PLUGIN_ROOT}/docs/guidelines/security-guidelines.md docs/development/guidelines/
-
-# Add HIPAA-specific requirements
-# Add encryption requirements
-# Add audit logging standards
+Good API router: src/server/api/routers/users.ts
+Auth middleware: src/server/middleware/auth.ts
 ```
 
-**Example: Project-Specific API Standards**
-```markdown
-# docs/development/guidelines/api-guidelines.md
+## How Commands Use Guidelines
 
-# API Guidelines
+Commands read guidelines before executing:
 
-## Standard Guidelines
-See ${CLAUDE_PLUGIN_ROOT}/docs/guidelines/api-guidelines.md for base API design principles.
+**`/implement TASK-001 1.1`**
+1. Reads `testing-standards.md` → knows to use Vitest
+2. Reads `coding-standards.md` → knows file naming conventions
+3. Reads `api-guidelines.md` → knows API patterns (if building API)
+4. Implements following your project's patterns
 
-## Project-Specific Extensions
+**`/quality`**
+1. Reads `quality-standards.md` → knows your quality bar
+2. Reads `security-guidelines.md` → checks security requirements
+3. Reads `testing-standards.md` → verifies test coverage
 
-### Internal APIs
-- Use gRPC with Protocol Buffers
-- Service mesh: Istio for all internal communication
-
-### Public APIs
-- REST with JSON:API specification
-- Rate limiting: 1000 req/hour for free tier
-- Authentication: OAuth 2.0 + API keys
-```
+**`/commit`**
+1. Reads `git-workflow.md` → knows commit convention
+2. Formats commit message accordingly
 
 ## Best Practices
 
-1. **Start with defaults** - Don't customize until you need to
-2. **Document why** - Add comments explaining project-specific rules
-3. **Reference plugin** - Link to plugin guidelines you're extending
-4. **Keep in sync** - When plugin updates, review your customizations
-5. **Minimize duplication** - Only override what's different
+### 1. Start Minimal
+Don't fill in everything upfront. Let guidelines evolve:
+- Init: Mostly TBDs
+- First decision: Fill in one section
+- As you build: Add examples and patterns
+
+### 2. Be Specific
+Don't write generic advice Claude already knows:
+```markdown
+❌ "Write meaningful variable names"
+✅ "Component files: kebab-case (user-profile.tsx)"
+✅ "See src/components/ui/ for our naming pattern"
+```
+
+### 3. Link to Your Code
+Guidelines are most useful with concrete examples:
+```markdown
+## Good Test Example
+See tests/api/users.test.ts - shows our:
+- Test structure
+- Mocking strategy
+- Assertion style
+```
+
+### 4. Update When Patterns Change
+If you change approach, update guidelines:
+- Switching from Jest to Vitest? Update testing-standards.md
+- New API pattern? Update api-guidelines.md
+- AI and humans stay in sync
+
+### 5. Use for Onboarding
+New team members (human or AI) read guidelines to understand:
+- Why we made certain choices
+- Where things go in the codebase
+- What patterns to follow
+
+## Examples from This Project
+
+The AI Toolkit itself follows these guidelines:
+- **File naming**: kebab-case (testing-standards.md, not TestingStandards.md)
+- **Documentation**: Three-tier structure (docs/project/, docs/development/, plugin docs)
+- **Templates**: YAML frontmatter + markdown (epic.md, task.md, adr-template.md)
+- **Commands**: Read templates/guidelines at runtime to adapt behavior
 
 ## Getting Help
 
-**View plugin guidelines**:
-- Check your Claude Code plugin installation
-- Or browse: `plugins/ai-toolkit/docs/guidelines/`
+**Filling in guidelines**:
+```bash
+/architect "testing strategy"     # Helps decide testing approach
+/architect "API architecture"     # Helps choose API pattern
+/architect "git workflow"         # Helps establish branching strategy
+```
 
-**Questions about customization**:
-- See plugin documentation
-- Check examples in `plugins/ai-toolkit/docs/examples/`
+**Understanding patterns**:
+Ask Claude questions like:
+- "What should go in api-guidelines.md?"
+- "How should I structure testing-standards.md?"
+- "What's a good git workflow for our team size?"
 
-Most projects never need to customize guidelines. The plugin defaults are comprehensive and battle-tested! 🛡️
+Claude will provide guidance based on your project context.
+
+---
+
+**Remember**: Guidelines are configuration files that make AI adapt to YOUR project, not the other way around. Customize them to fit your workflow!

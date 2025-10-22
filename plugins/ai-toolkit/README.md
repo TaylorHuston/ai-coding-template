@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-Comprehensive AI-assisted development workflow system for Claude Code with 19 commands, 19 specialized agents, and intelligent state management.
+Comprehensive AI-assisted development workflow system for Claude Code with 14 commands, 20 specialized agents, and intelligent state management.
 
 ## Quick Start
 
@@ -15,21 +15,19 @@ cd my-project
 /toolkit-init
 
 # 3. Start developing
-/design --brief
-/design --epic "my-feature"
-/architect --epic "my-feature"
-/plan --epic "my-feature"
-/develop --epic "my-feature"
+/project-brief
+/epic
+/plan TASK-001
+/implement TASK-001 1.1
 ```
 
 ## What You Get
 
-- **19 Workflow Commands** - Complete `/design` → `/architect` → `/plan` → `/develop` cycle + `/toolkit-init`
-- **19 Specialized Agents** - Domain experts (frontend, backend, security, testing, etc.)
+- **14 Workflow Commands** - Complete `/project-brief` → `/epic` → `/plan` → `/implement` cycle + utilities
+- **20 Specialized Agents** - Domain experts (frontend, backend, security, testing, etc.)
 - **3 Bundled MCP Servers** - Auto-configured tools (context7, sequential-thinking, playwright)
-- **16 Development Guidelines** - Comprehensive standards (architectural, security, testing, etc.)
 - **Minimal Templates** - 9 essential files for clean starts (AI builds what you need)
-- **File-Based State** - Session continuity via EPIC.md, TASK.md, HANDOFF.yml
+- **File-Based State** - Session continuity via EPIC.md, TASK.md, WORKLOG.md, RESEARCH.md
 - **Technology Agnostic** - Works with any tech stack
 
 ## Bundled MCP Servers
@@ -70,7 +68,7 @@ my-project/
 │   ├── project-brief.md  # Your project vision
 │   ├── project/          # Project-specific docs (created by AI)
 │   └── development/      # Links to plugin guidelines
-└── epics/                # Epic-based work (auto-created)
+└── pm/pm/epics/                # Epic-based work (auto-created)
 ```
 
 **AI creates structure as you work** - no empty placeholders or stale examples!
@@ -78,33 +76,30 @@ my-project/
 ## Core Workflow
 
 ```bash
-/design --brief                    # Define project vision
-/design --epic "user-auth"        # Create epic structure
-/architect --epic "user-auth"      # Technical decisions
-/plan --epic "user-auth"           # Implementation tasks
-/develop --epic "user-auth"        # Execute with agents
+/project-brief                     # Define project vision (interactive)
+/epic                              # Create epic with optional initial tasks
+/epic EPIC-001                     # Refine epic, add more tasks (iterative)
+/plan TASK-001                     # Add implementation plan to task
+/implement TASK-001 1.1            # Execute specific phase with agents
 ```
 
-## All Commands
+## All Commands (14 Total)
 
-**Setup**: `/toolkit-init`
-**Workflow**: `/design`, `/architect`, `/plan`, `/develop`
-**Quality**: `/review`, `/security-audit`, `/test-fix`, `/quality`
-**Development**: `/commit`, `/merge-branch`, `/status`
-**Documentation**: `/docs-generate`, `/docs-validate`, `/docs-sync`
-**Management**: `/refresh`, `/improve`
+**Setup & Strategy**: `/toolkit-init`, `/project-brief`
+**Epic Management**: `/epic`
+**Workflow**: `/architect`, `/plan`, `/implement`
+**Quality**: `/quality`, `/security-audit`, `/test-fix`
+**Development**: `/branch`, `/commit`, `/comment`
+**Documentation & Status**: `/docs`, `/status`
+
+See `docs/COMMANDS.md` for complete command reference.
 
 ## Documentation
 
 **Plugin Documentation:**
-- `docs/COMMANDS.md` - Complete command reference
-- `docs/AGENTS.md` - Agent catalog and capabilities
+- `docs/COMMANDS.md` - Complete command reference with workflow guidance
+- `docs/AGENTS.md` - Agent catalog with system overview
 - `docs/OPTIONAL-MCP-SERVERS.md` - Optional MCP servers for larger projects
-- `docs/guideline-mapping.yml` - Agent-guideline mappings
-
-**Project Documentation** (after using starter template):
-- `docs/ai-toolkit/guides/` - How-to guides
-- `docs/ai-toolkit/reference/` - Extended references
 
 ## Updates
 
@@ -116,8 +111,8 @@ All commands/agents update automatically. Your project files unchanged.
 
 ## Support
 
-- [Issues](https://github.com/taylorh140/ai-coding-template/issues)
-- [Discussions](https://github.com/taylorh140/ai-coding-template/discussions)
+- [Issues](https://github.com/TaylorHuston/ai-coding-template/issues)
+- [Discussions](https://github.com/TaylorHuston/ai-coding-template/discussions)
 
 ## License
 

@@ -1,6 +1,6 @@
-# Project Name
+# {app-name}
 
-> Replace this with your project's name and description
+{description}
 
 ## Quick Start
 
@@ -8,7 +8,7 @@
 
 1. **Install AI Workflow Plugin**:
    ```bash
-   /plugin marketplace add taylorh140/ai-coding-template
+   /plugin marketplace add TaylorHuston/ai-coding-template
    /plugin install ai-workflow
    ```
 
@@ -19,20 +19,17 @@
 ### Start Developing
 
 ```bash
-# 1. Define your project vision
-/design --brief
+# 1. Complete your project brief
+/project-brief
 
 # 2. Create your first epic
-/design --epic "user-authentication"
+/epic
 
-# 3. Make architecture decisions
-/architect --epic "user-authentication"
+# 3. Plan implementation
+/plan TASK-001
 
-# 4. Plan implementation
-/plan --epic "user-authentication"
-
-# 5. Execute tasks
-/develop --epic "user-authentication"
+# 4. Execute tasks
+/implement TASK-001 1.1
 ```
 
 ## Project Structure
@@ -44,10 +41,12 @@ project/
 │   ├── project/           # Project documentation
 │   ├── development/       # Development guidelines
 │   └── ai-toolkit/        # AI collaboration guides
-├── epics/                 # Work organized by epic
-│   └── [epic-name]/
-│       ├── EPIC.md
-│       ├── TASK-###-*/
+├── pm/                     # Project management
+│   ├── epics/              # Feature epics
+│   │   └── EPIC-###-name.md
+│   ├── issues/             # Tasks and bugs
+│   │   └── TASK-###-name/TASK.md
+│   └── templates/          # PM templates
 │       └── resources/
 ├── src/                   # Your application code
 └── .claude/
@@ -60,7 +59,7 @@ project/
 - `/design` - Create briefs, epics, and user stories
 - `/architect` - Make technical architecture decisions
 - `/plan` - Break down epics into implementation tasks
-- `/develop` - Execute tasks with specialized agents
+- `/implement` - Execute specific phases with specialized agents
 
 ### Quality & Review
 - `/review` - Comprehensive code review

@@ -113,9 +113,10 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ## Getting Help
 
 ### Resources
-- **Documentation**: [docs/](./docs/) directory contains comprehensive guides
-- **Examples**: [.claude/resources/examples/](./.claude/resources/examples/) show implementation patterns
-- **Scripts**: [.claude/resources/scripts/](./.claude/resources/scripts/) provide automation tools
+- **Plugin Documentation**: [plugins/ai-toolkit/README.md](./plugins/ai-toolkit/README.md) - Complete plugin documentation
+- **Commands Reference**: [plugins/ai-toolkit/docs/COMMANDS.md](./plugins/ai-toolkit/docs/COMMANDS.md) - All available commands
+- **Agents Reference**: [plugins/ai-toolkit/docs/AGENTS.md](./plugins/ai-toolkit/docs/AGENTS.md) - Specialized agents
+- **Starter Template**: [plugins/ai-toolkit/templates/starter/](./plugins/ai-toolkit/templates/starter/) - Project templates
 
 ### Support Channels
 - **GitHub Issues**: For bugs and feature requests

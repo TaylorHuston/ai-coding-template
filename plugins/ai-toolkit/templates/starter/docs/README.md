@@ -1,108 +1,60 @@
 # Documentation
 
-This directory contains all project documentation using a **three-tier structure** that separates concerns and keeps things organized.
+This directory contains all project documentation, organized by purpose.
 
 ## Structure
 
 ```
 docs/
-├── project-brief.md     # Start here - your project's "why"
-├── project/             # Project-specific documentation
-│   ├── architecture/    # System design, tech stack (created by /architect)
-│   ├── features/        # Feature documentation (created by /design)
-│   ├── decisions/       # ADRs and explorations (created by /architect)
-│   ├── api/             # API documentation (created by agents)
-│   └── database/        # Schema and migrations (created by agents)
-├── development/         # Development practices and guidelines
-│   └── README.md        # Points to plugin guidelines + customization info
-└── reports/             # Generated reports (created by /docs-health, etc.)
+├── project-brief.md         # Start here - your project's vision and goals
+├── project/                 # Project-specific documentation
+│   ├── architecture-overview.md  # Tech stack and system architecture
+│   ├── adrs/                # Architecture Decision Records
+│   └── design/              # Design assets (mockups, color schemes, etc.)
+└── development/             # Development guidelines
+    └── guidelines/          # 6 customizable guideline templates
 ```
 
-## Three-Tier Documentation System
+## How Documentation Works
 
-### Tier 1: Project Documentation (`docs/project/`)
+### Start Minimal
+Your project begins with just `project-brief.md` and guideline templates with TBD placeholders.
 
-**What goes here**: Documentation **specific to your project**
-- Architecture decisions
-- Feature specifications
-- API contracts
-- Database schemas
-- Business logic
+### Grows Organically
+As you work, documentation is created automatically:
+- **ADRs**: Created via `/architect` when making technical decisions
+- **Architecture docs**: Filled in as you make technology choices
+- **Design assets**: Added as you work on UI/UX
+- **Guidelines**: Updated from TBD to actual decisions
 
-**Created by**: AI commands as you work (`/design`, `/architect`, `/plan`)
+### No Empty Placeholders
+Documentation reflects what you've actually built, not aspirational plans.
 
-**Examples**:
-- `project/architecture/system-overview.md` - Your system's architecture
-- `project/features/user-authentication.md` - How auth works in your app
-- `project/decisions/001-database-choice.md` - Why you chose PostgreSQL
+## Key Documents
 
-### Tier 2: Development Guidelines (`docs/development/`)
+### `project-brief.md` - Your North Star
+Run `/project-brief` to create or update your project vision through interactive conversation.
 
-**What goes here**: Development **standards and practices**
-- Coding standards
-- API guidelines
-- Security best practices
-- Testing requirements
-- Code review checklists
+### `project/architecture-overview.md` - Tech Stack Reference
+Comprehensive technical specifications:
+- System architecture
+- Technology stack (frontend, backend, infrastructure)
+- APIs and data models
+- Security and deployment
 
-**Default location**: Plugin guidelines (shared across all projects)
+Update as you make architectural decisions via `/architect`.
 
-**Customization**: Copy to project when you need project-specific variations
+### `project/adrs/` - Decision History
+Architecture Decision Records document important technical choices. Create via `/architect`.
 
-See `development/README.md` for details on customization.
+### `development/guidelines/` - Project Configuration
+6 customizable templates that configure how AI agents work in your project. See `development/README.md` for details.
 
-### Tier 3: AI Toolkit Documentation
+## Commands
 
-**What goes here**: Documentation about **using the AI Toolkit**
-- Command references
-- Agent guides
-- Setup instructions
-- Troubleshooting
+Create and manage documentation using AI commands:
+- `/project-brief` - Create/update project vision
+- `/architect` - Make technical decisions and create ADRs
+- `/docs` - Generate, validate, or sync documentation
 
-**Location**: Lives in the plugin, not your project (stays up-to-date)
-
-**Access**: Check plugin documentation in your Claude Code installation
-
-## How Documentation Grows
-
-Your documentation starts minimal and **grows organically**:
-
-1. **Start**: `project-brief.md` (you write this with `/design --brief`)
-2. **Design Phase**: Feature docs appear in `project/features/`
-3. **Architecture Phase**: ADRs and architecture docs in `project/decisions/` and `project/architecture/`
-4. **Planning Phase**: Implementation docs and test plans
-5. **Development Phase**: API docs, database schemas, generated docs
-
-**No empty placeholders. No stale examples. Just what you actually create.**
-
-## Quick Actions
-
-**Create your project brief**:
-```bash
-/design --brief
-```
-
-**Generate architecture documentation**:
-```bash
-/architect --epic "epic-name"
-```
-
-**Validate documentation health**:
-```bash
-/docs-health
-```
-
-**Synchronize docs with code**:
-```bash
-/docs-sync
-```
-
-## Documentation Philosophy
-
-- **Living Documents**: Docs reflect current reality, not outdated plans
-- **Just-In-Time**: Created when needed, not upfront
-- **AI-Generated**: AI helps maintain accuracy and completeness
-- **Project-Specific**: Only what's unique to your project lives here
-- **Shared Wisdom**: Common practices stay in plugin (DRY principle)
-
-Start with `project-brief.md` and let the AI help you build from there! 📚
+See `GETTING-STARTED.md` for complete workflow.

@@ -64,11 +64,56 @@ Strategic brief specialist focused on product strategy, market positioning, and 
 - Strategic roadmap adjustment and optimization
 - Learning integration and vision improvement
 
+## Invocation Modes
+
+This agent supports three distinct modes of operation based on the task description:
+
+### Mode 1: Full Discovery (Default)
+**Triggered by**: `/design --brief` or `/project-brief` (when no brief exists)
+**Behavior**: Conduct complete 6-phase interactive discovery (see Interactive Discovery Process below)
+**Output**: Generate new comprehensive project brief document
+
+### Mode 2: Section Review
+**Triggered by**: `/project-brief` (when brief exists)
+**Behavior**: Collaborative section-by-section updates
+**Process**:
+1. Read existing brief at `docs/project-brief.md`
+2. For each major section (Executive Summary, Problem Statement, Solution Approach, Target Audience, Success Criteria, Scope and Constraints, Project Phases, Risk Assessment):
+   - Display current section content
+   - Ask: "Would you like to update this section? (yes/no)"
+   - If YES: Ask targeted follow-up questions relevant to that section
+   - If NO: Move to next section
+3. After reviewing all sections, update the file with any changes
+**Output**: Updated project brief with modified sections only
+
+### Mode 3: Review Analysis
+**Triggered by**: `/project-brief --review`
+**Behavior**: Analyze existing brief and provide improvement suggestions
+**Process**:
+1. Read existing brief at `docs/project-brief.md`
+2. Analyze each section for:
+   - Clarity and specificity
+   - Completeness and detail level
+   - Alignment with other sections
+   - Measurability of success criteria
+   - Missing or weak areas
+3. Provide structured feedback with:
+   - Strengths of current brief
+   - Weaknesses and gaps
+   - Specific recommendations
+   - Priority areas for improvement
+**Output**: Comprehensive analysis report (NO edits to the brief file)
+
+**Mode Detection**: Examine the task description to determine which mode to use. Look for keywords:
+- "full discovery", "6-phase", "create project brief" → Full Discovery Mode
+- "section-by-section", "review", "update sections" → Section Review Mode
+- "analyze", "suggestions", "do not edit", "review only" → Review Analysis Mode
+
 ## Interactive Discovery Process
 
 ### Brief Creation Workflow
 
-When invoked for `/design --brief`, ALWAYS use this interactive discovery process before generating any documents:
+When invoked in **Full Discovery Mode** (for `/design --brief` or new project briefs), ALWAYS use this interactive discovery process before generating any documents:
 
 #### **Step 1: Problem Discovery**
 Ask one question at a time, wait for user response before proceeding:
@@ -134,7 +179,8 @@ Ask one question at a time, wait for user response before proceeding:
 ```
 
 ### Auto-Invocation Triggers
-- **`/design --brief`**: Automatically invokes this agent to conduct interactive discovery process
+- **`/design --brief`**: Automatically invokes this agent to conduct interactive discovery process (Full Discovery Mode)
+- **`/project-brief`**: Automatically invokes this agent for brief creation, updates, or review (mode determined by flags)
 - **Project brief creation or updates**: Any task involving project vision and strategy documents
 - **Strategic planning sessions**: When product strategy needs definition or evolution
 

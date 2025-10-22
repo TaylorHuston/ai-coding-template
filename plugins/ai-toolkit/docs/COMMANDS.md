@@ -1,7 +1,7 @@
 ---
-version: "1.0.0"
+version: "2.0.0"
 created: "2025-08-21"
-last_updated: "2025-09-23"
+last_updated: "2025-10-22"
 status: "active"
 target_audience: ["ai-assistants", "development-team"]
 document_type: "reference"
@@ -11,68 +11,103 @@ tags: ["claude-code", "commands", "workflow", "reference"]
 
 # Claude Code Command Reference
 
-Streamlined catalog of Claude Code slash commands centered around the **4-phase epic-driven workflow** that transforms AI from code generator to architectural partner.
+Streamlined catalog of 14 Claude Code slash commands centered around the **3-phase development workflow** plus setup, quality, and support commands.
+
+## How Commands Work Together
+
+The AI Toolkit provides a flexible workflow that adapts to your needs:
+
+### Core Development Flow
+
+1. **Brief/One Pager**: `/project-brief` - Define what you're building and why
+2. **Planning**: `/epic` - Break features into organized work
+3. **Architecture**: `/architect` - Make technical decisions and create ADRs
+4. **Tasks**: `/plan TASK-###` - Break down implementation into phases
+5. **Build**: `/implement TASK-### PHASE` - Execute with specialized agents
+6. **Quality**: `/quality`, `/test-fix`, `/security-audit` - Ensure excellence
+
+### Commands Are Conversational
+
+Each command guides you through its workflow:
+- `/project-brief` asks questions to complete your proejct brief
+- `/epic` helps structure features with acceptance criteria
+- `/architect` explores options before creating ADRs
+- `/plan` breaks work into testable, reviewable phases
+- `/implement` executes with the right domain experts (agents)
+
+### Use Commands Flexibly
+
+You don't have to follow a strict sequence:
+- Jump straight to `/architect` for technical decisions
+- Use `/implement` to quickly build a spike
+- Run `/quality` whenever you want a comprehensive review
+- Invoke `/docs` to generate or validate documentation
+
+The workflow is a guide, not a rigid process.
 
 ## 🚀 Setup & Initialization
 
 ### 🛠️ **/toolkit-init** - Project Scaffolding
 
 - _Purpose_: Initialize new or existing projects with ai-toolkit structure and templates
-- _Usage_: `/toolkit-init | /toolkit-init --force | /toolkit-init --dry-run`
-- _Features_: Interactive customization, smart conflict resolution, bundled templates (75 files)
+- _Usage_: `/toolkit-init`
+- _Features_: Interactive customization (2 questions), smart conflict resolution, minimal templates (9 files)
 
-## 🌟 Core Workflow Commands (Primary)
+### 💡 **/project-brief** - Interactive Project Vision
 
-**4-Phase Epic Workflow**: From vision to validated execution
+- _Purpose_: Create or improve project brief through collaborative Q&A
+- _Usage_: `/project-brief | /project-brief --force | /project-brief --review`
+- _Features_: Gap-driven conversation, section-by-section updates, analysis mode
+- _Modes_: Create (new brief), Update (fill gaps), Review (suggestions only)
 
-### 📝 **/design** - Vision, Epics, and Requirements
+### 🎯 **/epic** - Unified Epic Management
 
-- _Purpose_: Create and document non-technical project aspects from vision to epic structure
-- _Usage_: `/design "create project brief" | "design auth epic" | "add user story"`
-- _Workflow Phase_: **1. Design** - Vision documents, epic structure, user stories, business context
+- _Purpose_: Create new epics or refine existing ones through natural language conversation
+- _Usage_: `/epic | /epic EPIC-###`
+- _Features_: Context-aware (create or refine), conversational interface, lightweight template
+- _Structure_: `pm/epics/EPIC-###-name.md` (single file), `pm/issues/TASK-###-name/` or `BUG-###-name/` (flat directories)
 
-### 🏗️ **/architect** - Technical Architecture and Infrastructure
+## 🌟 Core Workflow Commands
+
+**3-Phase Development Workflow**: From architecture to validated execution
+
+### 🏗️ **/architect** - Technical Architecture
 
 - _Purpose_: Design technical solutions through Quick Mode (5-10 min) or Deep Mode (20+ min) exploration
-- _Usage_: `/architect epic-name | epic-name deep | "direct question"`
-- _Workflow Phase_: **2. Architecture** - Technical decisions, ADRs, Fast Track vs comprehensive analysis
+- _Usage_: `/architect [--epic EPIC-###] | [--foundation] | [--infrastructure] | [--deep] | [--question "text"]`
+- _Workflow Phase_: **1. Architecture** - Technical decisions, ADRs, Fast Track vs comprehensive analysis
 
-### 📋 **/plan** - Epic-Driven Implementation Planning
+### 📋 **/plan** - Task Implementation Planning
 
-- _Purpose_: Create epic structure with progressive task discovery and X.Y.Z implementation tasks
-- _Usage_: `/plan epic-name | "review current plan" | "initialize new epic"`
-- _Workflow Phase_: **3. Planning** - Epic directories, TASK-### numbering, agent assignment, testing integration
+- _Purpose_: Add implementation plan with phase-based breakdown to individual tasks and bugs
+- _Usage_: `/plan TASK-### | /plan BUG-###`
+- _Workflow Phase_: **2. Planning** - Phase-based task breakdown, agent coordination, test-first patterns
 
-### ⚡ **/develop** - Streamlined Development Execution
+### ⚡ **/implement** - Phase-Based Execution
 
-- _Purpose_: Execute implementation tasks with test-first enforcement and epic integration
-- _Usage_: `/develop | epic-name | "continue current task"`
-- _Workflow Phase_: **4. Execution** - Test-first development, 95%+ coverage, hierarchical branching
+- _Purpose_: Execute specific implementation phases from task plans with test-first enforcement
+- _Usage_: `/implement TASK-### PHASE | /implement BUG-### PHASE`
+- _Workflow Phase_: **3. Execution** - Phase-by-phase development, test-first approach, agent coordination
+- _Examples_: `/implement TASK-001 1.1`, `/implement BUG-003 2.2`
 
-## 🔧 Supporting Commands (By Domain)
+## 🔧 Supporting Commands
 
 ### **Quality & Security**
 
 - **[/quality](./quality.md)** - Multi-dimensional quality analysis using specialized agents
-- **[/review](./review.md)** - Code quality assessment with detailed feedback
 - **[/security-audit](./security-audit.md)** - OWASP-compliant security assessment with vulnerability remediation
 - **[/test-fix](./test-fix.md)** - Automated test failure detection, analysis, and resolution
 
 ### **Development Support**
 
-- **[/commit](./commit.md)** - Smart git commits with natural language instructions
-- **[/merge-branch](./merge-branch.md)** - Safe branch merging with automated testing and validation
-- **[/improve](./improve.md)** - Template and project improvement suggestions
+- **[/branch](../commands/branch.md)** - Unified branch operations (create, merge, delete, switch, status) with git-workflow enforcement
+- **[/commit](../commands/commit.md)** - Branch-aware git commits with automatic issue references
+- **[/comment](../commands/comment.md)** - Add timestamped work log entries for human-AI collaboration
 
 ### **Project Management & Documentation**
 
-- **[/status](./status.md)** - Project status dashboard with context analysis
-- **[/docs-generate](./docs-generate.md)** - Generate comprehensive project documentation
-- **[/docs-validate](./docs-validate.md)** - Validate documentation health and links
-- **[/docs-sync](./docs-sync.md)** - Synchronize documentation with code changes
-- **[/docs-update](./docs-update.md)** - Comprehensive documentation maintenance
-- **[/docs-health](./docs-health.md)** - Documentation health analysis and metrics
-- **[/refresh](./refresh.md)** - Quick context refresh on project state and conventions
+- **[/status](./status.md)** - Project status dashboard with intelligent context analysis
+- **[/docs](./docs.md)** - Unified documentation management (generate, validate, sync, update, health)
 
 ---
 
@@ -80,25 +115,20 @@ Streamlined catalog of Claude Code slash commands centered around the **4-phase 
 
 | Command | Purpose | Usage Pattern |
 |---------|---------|---------------|
-| `/toolkit-init` | Project scaffolding | `[--force] [--dry-run]` |
-| `/design` | Vision, epics, requirements | Natural language instructions |
-| `/architect` | Technical architecture | `epic-name [deep]` or questions |
-| `/plan` | Implementation planning | `epic-name` or natural language |
-| `/develop` | Development execution | `epic-name` or natural language |
-| `/quality` | Quality assessment | Multi-agent analysis |
-| `/review` | Code review | Detailed feedback |
-| `/security-audit` | Security assessment | OWASP compliance |
-| `/test-fix` | Test failure resolution | Automated detection |
-| `/commit` | Smart git commits | Natural language instructions |
-| `/merge-branch` | Safe branch merging | Automated validation |
-| `/improve` | Template improvements | Suggestions and updates |
-| `/status` | Project dashboard | Context analysis |
-| `/docs-generate` | Documentation creation | Natural language instructions |
-| `/docs-validate` | Documentation validation | Natural language instructions |
-| `/docs-sync` | Documentation synchronization | Natural language instructions |
-| `/docs-update` | Documentation maintenance | Natural language instructions |
-| `/docs-health` | Documentation health analysis | Natural language instructions |
-| `/refresh` | Context refresh | Quick state update |
+| `/toolkit-init` | Project scaffolding | Interactive (2 questions) |
+| `/project-brief` | Interactive project vision | `[--force] [--review]` |
+| `/epic` | Unified epic management | `[EPIC-###]` (optional) |
+| `/architect` | Technical architecture | Various flags for modes |
+| `/plan` | Task implementation planning | `TASK-###` or `BUG-###` |
+| `/implement` | Phase-based execution | `TASK-### PHASE` or `BUG-### PHASE` |
+| `/quality` | Quality assessment | Subcommands (assess/validate/audit/fix) |
+| `/security-audit` | Security assessment | OWASP compliance analysis |
+| `/test-fix` | Test failure resolution | Automated detection and fixes |
+| `/branch` | Branch operations | `create \| merge \| delete \| switch \| status` |
+| `/commit` | Branch-aware git commits | Natural language instructions |
+| `/comment` | Work log entries | `"your comment text"` |
+| `/status` | Project dashboard | `[--format] [--scope] [--detailed]` |
+| `/docs` | Documentation management | Natural language instructions |
 
 ## Command Creation Best Practices
 
@@ -181,48 +211,25 @@ model: claude-sonnet-4-5                 # Versioned alias (claude-sonnet-4-5, c
 
 ### **🤖 Model Selection Strategy**
 
-#### **Claude Opus 4.1** - Complex Reasoning & Architecture
+#### **Claude Opus 4** - Complex Reasoning & Architecture
 
-- **Use For**: Design, architecture, planning, security analysis
-- **Model ID**: `claude-opus-4-1-20250805` (alias: `claude-opus-4-1`)
-- **Commands**: `/design`, `/architect`, `/plan`, `/security-audit`, `/improve`
+- **Use For**: Architecture, planning, security analysis, strategic decisions
+- **Model ID**: `claude-opus-4-0` (versioned alias)
+- **Commands**: `/architect`, `/plan`, `/security-audit`
 - **When**: Complex multi-step reasoning, architectural decisions, strategic planning
 
-#### **Claude Sonnet 4** - Execution & Development
+#### **Claude Sonnet 4.5** - Execution & Development
 
-- **Use For**: Development, quality, documentation, operations
-- **Model ID**: `claude-sonnet-4-20250514` (alias: `claude-sonnet-4-0`)
-- **Commands**: `/develop`, `/commit`, `/quality`, `/review`, `/docs`, `/status`
+- **Use For**: Development, quality, documentation, operations, most commands
+- **Model ID**: `claude-sonnet-4-5` (versioned alias)
+- **Commands**: `/implement`, `/commit`, `/quality`, `/test-fix`, `/docs`, `/status`, `/epic`, `/project-brief`
 - **When**: Implementation tasks, code execution, standard operations
-
-#### **Claude Haiku 3.5** - Quick Operations
-
-- **Use For**: Status checks, simple queries, quick operations
-- **Model ID**: `claude-3-5-haiku-20241022` (alias: `claude-3-5-haiku-latest`)
-- **Commands**: `/status`, `/refresh`, simple utility commands
-- **When**: Fast responses, lightweight operations
 
 #### **Model Selection Guidelines**
 
-- **Complex Strategy**: Use Opus 4.1 for decisions requiring deep reasoning
-- **Implementation Focus**: Use Sonnet 4 for coding and execution tasks
-- **Quick Operations**: Use Haiku 3.5 for fast, simple operations
-
-### Migration from Flag-Based Commands
-
-**Converting Existing Commands:**
-```bash
-# OLD (unsupported flags)
-/command --epic "name" --deep
-
-# NEW (positional arguments)
-/command epic-name deep
-```
-
-**Common Conversions:**
-- `--deep` → second argument: `command target deep`
-- `--scope project` → first argument: `command project`
-- `--format json` → second argument: `command target json`
+- **Complex Strategy**: Use Opus 4 for decisions requiring deep reasoning
+- **Implementation Focus**: Use Sonnet 4.5 for coding and execution tasks
+- **Default**: Sonnet 4.5 for most commands unless deep reasoning required
 
 ### Tool Permissions Guidelines
 
@@ -243,7 +250,7 @@ allowed-tools: ["Read", "Edit", "Bash", "Grep", "Glob"]
 
 # Complex multi-agent commands
 allowed-tools: ["Read", "Edit", "Bash", "Grep", "Glob", "Task", "TodoWrite"]
-````
+```
 
 ### Quality Guidelines
 

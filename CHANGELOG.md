@@ -6,6 +6,127 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.10.0] - 2025-10-22
+
+### NOTE
+
+This represents a substantial rewrite to this project, with a heavy emphasis on simplifcation and streamlining to make it more of a base template than a prescriptive framework.
+
+### Added
+
+- **`/toolkit-init` Update/Sync Mode**: Intelligent template drift detection and selective updates
+  - **Drift detection**: Compare project files vs latest plugin templates
+  - **Interactive updates**: Choose keep/update/merge/diff/skip for each file
+  - **Smart merge**: Automated section-based merging for markdown files
+  - **Dry run mode**: Preview changes with `--dry-run` flag
+  - **File status indicators**: ✅ Identical, 🔧 Customized, ❌ Missing, ➕ New in plugin
+  - **Preserves customizations**: Never overwrites without user consent
+  - **Use cases**: After plugin updates, periodic drift checks, selective file resets
+
+- **`/comment` command**: Human-AI collaboration through timestamped work log entries
+  - Add manual work notes to WORKLOG.md (e.g., `/comment "Added login button to header"`)
+  - AI offers to update task plan based on human comments
+  - Bidirectional communication channel between developers and AI agents
+  - Accurate timestamps via `date` command (no date estimation)
+
+- **`/branch` command**: Unified branching operations (create, merge, delete, switch, status)
+  - Replaces `/merge-branch` with comprehensive branch management
+  - Merge validation: Tests for `develop`, staging health checks for `main`
+  - Natural language support: `/branch "merge to develop"`
+
+- **Three-branch Git workflow**: Default branching strategy (main ← develop ← work branches)
+  - Strict naming: `feature/TASK-###`, `bugfix/BUG-###`
+  - Production safety: Only `develop` merges to `main` after staging validation
+
+- **`ui-ux-designer` agent**: UI/UX design, accessibility, design systems (20 agents total)
+
+- **`docs/design/` directory**: Structured storage for mockups, screenshots, color schemes, assets
+
+- **`/implement` command**: Phase-based execution with test-first approach (replaces `/develop`)
+
+- **`/docs` command**: Natural language documentation management (consolidates 5 doc commands)
+
+- **ADR template and structure**: Standardized template at `docs/project/adrs/` with best practices guide
+
+- **Architecture Overview template**: Technical specifications document at `docs/project/architecture-overview.md`
+
+### Changed
+
+- **BREAKING: WORKLOG.md replaces HANDOFF.yml** - Narrative work history instead of process metadata
+  - **Old system (HANDOFF.yml)**: Tracked agent handoffs, deliverables, timestamps (process overhead)
+  - **New system (WORKLOG.md)**: Narrative entries with lessons learned, gotchas, context (~500 char entries)
+  - **Format**: `## YYYY-MM-DD HH:MM - agent-name` or `@username` for humans
+  - **Entry order**: Reverse chronological (newest first for easy scanning)
+  - **Accurate timestamps**: Uses `date '+%Y-%m-%d %H:%M'` command (no date estimation)
+  - **Content**: Summary + Gotchas/Lessons + Files changed (helps AI remember context)
+  - **Bidirectional**: Both AI agents (via `/implement`) and humans (via `/comment`) add entries
+  - **Purpose**: Solves "AI forgets context" problem with implementation insights, not just metadata
+  - **Migration**: HANDOFF.yml was never fully adopted, clean break for alpha/beta plugin
+  - **Files**: TASK.md (WHAT), WORKLOG.md (HOW + lessons), RESEARCH.md (WHY)
+
+- **BREAKING: Root CLAUDE.md** - Rewritten for plugin development (was plugin usage)
+  - Focus: Version management, local testing, common dev tasks
+  - Projects get CLAUDE.md from `templates/starter/` via `/toolkit-init`
+
+- **`/toolkit-init` enhanced**: Now supports update/sync mode instead of exiting on re-init
+  - **Old behavior**: Exit with "already initialized" message
+  - **New behavior**: Compare templates, offer selective updates
+  - **Flags added**: `--force` (overwrite all), `--dry-run` (preview only)
+
+- **BREAKING: Command consolidation** - 21 → 14 commands (added `/comment`)
+  - Consolidated: `/docs-*` (5 commands) → `/docs` (natural language)
+  - Removed: `/review` (→ `/quality`), `/refresh` (→ `/status`), `/design` (redundant), `/improve` (obsolete)
+  - Added: `/comment` for human work log entries
+
+- **BREAKING: Scripts removed** - Deleted entire `scripts/` directory (44 files)
+  - Pure AI-driven approach replaces bash/js script enforcement
+
+- **`/toolkit-init`**: Ultra-minimal initialization (2 questions: name + description)
+
+- **`/project-brief`**: Gap-driven conversation to complete brief
+
+- **`/epic`**: Natural language conversation interface
+
+- **BREAKING: `/architect` ADR location** - Single directory `docs/project/adrs/` (was split across multiple locations)
+  - Migration: Move existing ADRs to `docs/project/adrs/` and renumber
+
+- **Phase-based planning**: Test-first patterns in `/epic`, `/plan`, `/implement` (flexible, not required)
+
+- **BREAKING: Guidelines as project configuration** - Minimal templates (6 files) copied to project (was 16 plugin files with fallback)
+  - Location: `docs/development/guidelines/` in project
+  - YAML frontmatter configures AI behavior per project
+
+### Removed
+
+- **BREAKING: `/merge-branch`** → `/branch merge` (part of unified `/branch` command)
+
+- **BREAKING: `/develop`** → `/implement TASK-### PHASE` (phase-based execution)
+
+- **BREAKING: `/docs-*`** → `/docs "natural language"` (5 commands consolidated)
+
+- **Plugin hooks system** - Removed `hooks/` directory (referenced deleted scripts)
+
+- **Plugin docs/guides/** - Deleted 1,645 lines (4 comprehensive guides)
+  - Contradicted MVP philosophy, already outdated, duplicated Claude's knowledge
+  - Added conceptual sections to AGENTS.md and COMMANDS.md instead
+
+- **Plugin docs/examples/** - Removed development artifacts
+  - Moved: architecture-template.md → starter template as architecture-overview.md
+
+- **BREAKING: Flat PM structure** - Two directories: `pm/epics/`, `pm/issues/`
+  - Epic files: `pm/epics/EPIC-###-name.md`
+  - Issue dirs: `pm/issues/TASK-###-name/`, `pm/issues/BUG-###-name/`
+
+- **BREAKING: `/plan` simplified** - Single-ID invocation only (removed `--epic`, `--task`, `--bug` flags)
+
+- **BREAKING: Template-driven PM** - Customizable templates at `pm/templates/` (epic.md, task.md, bug.md)
+
+- **BREAKING: Plugin guidelines** - Removed `docs/guidelines/` (16 files)
+  - Guidelines now in project templates: `templates/starter/docs/development/guidelines/` (6 files)
+
+- **BREAKING: Guideline fallback system** - Removed `guideline-mapping.yml`
+  - Guidelines always at `docs/development/guidelines/` in project
+
 ## [0.9.1] - 2025-10-21
 
 ### Added
@@ -13,7 +134,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **`/toolkit-init` command**: Initialize new or existing projects with minimal ai-toolkit structure
   - Interactive project customization with prompts for name, tech stack, and external links
   - Smart conflict resolution for existing files (skip, overwrite, or merge)
-  - **Minimal starter template**: Only 9 essential files (~60K vs previous 1MB)
   - Includes GETTING-STARTED.md explaining AI-driven documentation approach
   - Works entirely offline with bundled templates - no git or network dependencies
   - Customizes CLAUDE.md with project-specific information during initialization
@@ -50,7 +170,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
     - Plugin located at `plugins/ai-toolkit/` with full plugin structure
     - Starter template separated to `starter-template/` for project scaffolding
   - **Plugin Distribution**: AI Toolkit commands and agents now installable as plugin
-    - Install via `/plugin marketplace add taylorh140/ai-coding-template` then `/plugin install ai-toolkit`
     - 18 slash commands available as plugin (design, architect, plan, develop, quality tools, etc.)
     - 19 specialized agents included (brief-strategist, code-architect, frontend-specialist, ai-llm-expert, etc.)
     - All support scripts bundled in plugin using `${CLAUDE_PLUGIN_ROOT}` environment variable
@@ -97,17 +216,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Removed `src/` (example application not needed in marketplace)
   - Removed `workbench/` (development workspace not needed in marketplace)
   - Removed `.serena/` (tool-specific cache not needed in marketplace)
+
 - **GitHub Template Distribution Files**: Removed obsolete template system files
   - Removed `.template-dev.json.example` (template development config)
   - Removed `.template-manifest.json` (GitHub template metadata)
   - Removed `.templateignore` (template file exclusions)
+
 - **NPM Package Files**: Removed obsolete NPM distribution files
   - Removed `package.json` and `package-lock.json` (referenced deleted CLI scripts)
   - Archived `.archived-npm/` directory (old NPM package, now obsolete)
+
 - **Development Git Hooks**: Removed development-only git configuration
   - Removed `.githooks/` directory (pre-commit hooks for this repo's development)
   - Removed `.githooks.json` (hooks configuration)
   - Removed `.gitmessage` (commit message template)
+
 - **Miscellaneous Cleanup**: Removed unused configuration files
   - Removed `README.old.md` (backup file from conversion)
   - Removed `.env.example` (app-specific environment variables)
@@ -119,7 +242,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - **Init Script Improvements**: Enhanced project initialization with cleaner output and better file handling
-
   - Removed license type prompt (LICENSE file is deleted anyway, users add their own)
   - STATUS.md now created fresh instead of sed replacements (removes all template development history)
   - Added .serena/ directory cleanup (template's code analysis cache shouldn't transfer to user projects)
@@ -127,7 +249,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Result: Faster initialization, cleaner project files, no confusing template artifacts
 
 - **Architect Command Enhancement**: Added explicit `--question` flag for direct questions
-
   - New flag: `--question "text"` for explicit Direct Question mode
   - Backward compatible: Quoted strings still work without flag
   - Eliminates quote-detection ambiguity for clearer user intent
@@ -135,7 +256,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Result: More predictable command parsing, better UX for quick architectural questions
 
 - **Commit Command Enhancement**: Added git workflow flags for common operations
-
   - New flag: `--amend` - Amend last commit with safety checks (authorship, push status)
   - New flag: `--no-verify` - Skip pre-commit hooks for emergency fixes
   - New flag: `--interactive` - Interactive staging before commit
@@ -171,7 +291,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Fixed
 
 - **Critical Setup Script Bug**: Fixed PROJECT_ROOT path calculation in setup-manager.sh
-
   - **Problem**: PROJECT_ROOT was resolving to `.claude/` instead of project root directory
   - **Root Cause**: Script moved from `scripts/setup/` to `.claude/resources/scripts/setup/` but path calculation not updated
   - **Impact**: LICENSE deletion, README customization, and git operations were using wrong base directory
@@ -179,7 +298,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Result**: All init-project operations now correctly operate on project root
 
 - **Documentation Path Accuracy**: Fixed incorrect script paths across multiple documentation files
-
   - **quick-start.md**: Updated 8+ script paths from `.resources/` to `.claude/resources/`
   - **integration-guide.md**: Fixed placeholder URLs and incorrect file references
   - **CONTRIBUTING.md**: Updated references to match new directory structure
@@ -197,7 +315,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - **Directory Structure Reorganization**: Moved `.resources/` to `.claude/resources/` for consistent .claude/ namespace
-
   - **Migration**: 254 files moved from `.resources/` to `.claude/resources/`
   - **Path Updates**: Updated all script paths, documentation references, and command configurations
   - **Structure**: All AI toolkit files now under single `.claude/` directory (agents, commands, resources, references)
@@ -205,14 +322,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Impact**: Updated 50+ file references across codebase to use new paths
 
 - **README Consolidation**: Streamlined root documentation from two files to one
-
   - **Removed**: README-DEV.md (alpha-phase version with outdated content)
   - **Enhanced**: README.md with improved problem/solution framing
   - **Added**: "Why Intelligent Agent Coordination Matters" section to docs/ai-toolkit/README.md
   - **Result**: Single authoritative README with clear value proposition and accurate workflows
 
 - **Documentation Structure Reorganization**: Improved documentation organization for better clarity and discoverability
-
   - **Directory Renaming**:
     - `docs/ai-tools/` → `docs/ai-toolkit/` - Better reflects the comprehensive AI development toolkit nature
     - `docs/technical/` → `docs/project/` - More intuitive naming for project-specific documentation
@@ -238,7 +353,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - **CLAUDE.md Two-File System**: Preserves project customizations while allowing template improvements
-
   - **Template Reference**: `.claude/CLAUDE-template.md` syncs with template improvements
   - **Project Version**: Root `CLAUDE.md` never syncs, preserves customizations
   - **Helper Commands**: `claude-diff` and `claude-status` for comparing versions
@@ -247,7 +361,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - **Result**: Users can customize CLAUDE.md while still receiving template improvements via manual merge
 
 - **Template Development Sync System**: Bidirectional sync for active template development while building real projects
-
   - **Manifest-Driven**: Uses `.template-manifest.json` to identify template vs project files
   - **Sync Commands**: `pull`, `push`, `status`, `diff` for complete workflow
   - **Smart Detection**: Auto-detects template directory from common locations
@@ -376,7 +489,6 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 ### Fixed
 
 - **Critical NPM Package Installation Issue**: Fixed FileCategorizer baseDir handling for NPM package installations
-
   - Resolved issue where template installation was copying 0 files instead of expected 367 files
   - Fixed template path detection to correctly scan NPM package directory instead of user's working directory
   - Added baseDir parameter to FileCategorizer constructor and updated all file scanning methods
@@ -395,7 +507,6 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 ### Added
 
 - **Template Distribution System**: Complete NPM package distribution with development sync capabilities
-
   - NPM package `@ai-template/core` for easy template installation via `npx @ai-template/core init`
   - CLI tools with commands: init, status, validate, dev enable/disable, sync pull/push
   - File categorization system with 6 categories (core, reference, optional, configuration, user, ignore)
@@ -406,7 +517,6 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
   - Successfully tested: template installation, development mode sync (both push/pull directions)
 
 - **Comprehensive Metrics Collection System**: Advanced analytics for commands, agents, and scripts
-
   - Unified metrics schema tracking execution patterns, performance, and dependencies
   - JSONL-based storage with configurable retention and privacy controls
   - Real-time collection hooks for commands, agents, and script executions
@@ -415,7 +525,6 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
   - Actionable insights for system optimization and usage pattern analysis
 
 - **Terminology Standardization**: Unified project planning terminology from "vision" to "project-brief"
-
   - Updated `/design --vision` to `/design --brief` for improved clarity and consistency
   - Renamed vision-strategist agent to brief-strategist agent
   - Updated all template files: vision.template.md → project-brief.template.md
@@ -433,7 +542,6 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 ### Changed
 
 - **Refresh Command Performance**: Optimized `/refresh` command for dramatically improved context efficiency
-
   - Reduced context consumption from 58k tokens to ~300 tokens (194x improvement)
   - Changed from direct file reading to subagent delegation pattern using context-analyzer
   - Moved static capability information to CLAUDE.md to avoid redundant loading
@@ -441,7 +549,6 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
   - Maintained complete functionality while achieving massive efficiency gains
 
 - **Plan Command Enhancement**: Restructured `/plan` command for interactive planning and workbench organization
-
   - Added interactive standalone task support with `/plan --misc "task name"` and `/plan --bug "description"`
   - Implemented auto-incrementing ID system (MISC-### and BUG-###) based on existing task numbers
   - Added conversational requirements gathering to eliminate ambiguity through back-and-forth dialogue
@@ -460,14 +567,12 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 ### Added in v0.3.0
 
 - **Epic-Driven Workflow**: New epic-driven development workflow with progressive task discovery
-
   - Epic structure: `epics/[name]/EPIC.md` with task directories and `resources/` for reference materials
   - Progressive task discovery across all workflow phases with automatic task numbering
   - X.Y.Z implementation task numbering for precise progress tracking (e.g., TASK-001:1.2.3)
   - Task directory structure with TASK.md, HANDOFF.yml, and RESEARCH.md for comprehensive context
 
 - **Comprehensive Testing Integration**: Hybrid TDD/BDD testing strategy with extensive coverage requirements built into the commands and workflow
-
   - 95%+ test coverage target enforced across all development phases
   - BDD test scenarios generated from acceptance criteria in `/design` phase
   - Testing architecture decisions documented in `/architect` phase ADRs
@@ -476,7 +581,6 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
   - New testing-specific templates for comprehensive test planning and execution
 
 - **Epic-Driven Hierarchical Branching Strategy**: Git workflow optimized for epic development structure
-
   - **Epic branches** (`epic/[name]`) contain multiple task branches (`task/###-[name]`)
   - **Progressive task discovery**: Tasks numbered by discovery order across workflow phases
   - **Local merge workflow**: Integration with existing `/merge-branch` command for quality gates
@@ -527,10 +631,12 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
   - Eliminates decision paralysis between overlapping documentation agents
   - Maintains all existing functionality while improving user experience
   - Updated all 31+ references across commands, hooks, and documentation
+
 - **Command Simplification**: Reduced AI workflow command instructions by 77% (2,470 → 575 lines)
   - Eliminated scripted conversation patterns that constrained AI behavior
   - Improved performance by reducing 15-20% AI overhead from excessive instructions
   - Maintained essential objectives while trusting AI's natural capabilities
+
 - Initiated example application development to validate template workflows
 
 ## [0.1.0] - 2025-09-18

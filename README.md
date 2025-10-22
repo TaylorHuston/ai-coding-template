@@ -2,13 +2,16 @@
 
 A comprehensive AI-assisted development workflow system for Claude Code, providing intelligent task orchestration, specialized agent coordination, and file-based state management.
 
+## IMPORTANT
+This is very much an alpha/experiment at this moment. Look at the commit history to see that for yourself XD. Right now it's a lot of throwing lots of things at the wall, seeing what sticks, seeign what doesn't, massively changing things as I go along.
+
 ## What's Included
 
 This marketplace contains:
 
-- **AI Toolkit Plugin** - Complete workflow system with 19 commands, 19 specialized agents, and intelligent automation
-- **Minimal Starter Template** - 9 essential files for clean project initialization via `/toolkit-init`
-- **Guideline Library** - 16 comprehensive development guidelines bundled with plugin
+- **AI Toolkit Plugin** - Complete workflow system with 14 commands, 20 specialized agents, and intelligent automation
+- **Minimal Starter Template** - 29 structured files for clean project initialization via `/toolkit-init`
+- **Guideline Templates** - 6 customizable guideline templates (project configuration files, not plugin docs)
 
 ## Quick Start
 
@@ -16,7 +19,7 @@ This marketplace contains:
 
 ```bash
 # 1. Add this marketplace
-/plugin marketplace add taylorh140/ai-coding-template
+/plugin marketplace add TaylorHuston/ai-coding-template
 
 # 2. Install the AI Toolkit plugin
 /plugin install ai-toolkit
@@ -26,12 +29,12 @@ cd your-project
 /toolkit-init
 
 # 4. Start developing
-/design --brief
+/project-brief
 ```
 
 The `/toolkit-init` command scaffolds your project with:
 - Customized CLAUDE.md (your tech stack and links)
-- Minimal structure (9 essential files, 60K)
+- Structured template (29 files: docs/, pm/, guidelines, templates)
 - GETTING-STARTED.md guide
 - Documentation framework (AI creates content as you work)
 - Interactive setup with smart conflict resolution
@@ -40,47 +43,41 @@ The `/toolkit-init` command scaffolds your project with:
 
 The AI Toolkit plugin provides a complete development workflow system:
 
-### Setup & Core Workflow
+### Setup & Planning Commands
 
 - `/toolkit-init` - Initialize project structure with templates
-- `/design` - Create project briefs, epics, and user stories
-- `/architect` - Make technical architecture decisions
-- `/plan` - Break down epics into implementation tasks
-- `/develop` - Execute tasks with specialized agents
+- `/project-brief` - Create and refine project vision through conversation
+- `/epic` - Create and manage epics through natural language
+- `/architect` - Make technical architecture decisions (ADRs)
+- `/plan` - Break down tasks into implementation phases
 
-### Quality & Review Commands
+### Implementation Commands
 
-- `/review` - Comprehensive code review
+- `/implement` - Execute specific task phases with test-first approach
+
+### Quality & Testing Commands
+
+- `/quality` - Multi-dimensional quality assessment
 - `/security-audit` - OWASP-compliant security assessment
 - `/test-fix` - Automated test failure resolution
-- `/quality` - Multi-dimensional quality assessment
 
-### Development Commands
+### Development Workflow Commands
 
 - `/commit` - Quality-checked git commits
 - `/merge-branch` - Safe branch merging with validation
+
+### Documentation & Status Commands
+
+- `/docs` - Unified documentation management (generate, validate, sync, update)
 - `/status` - Intelligent project status dashboard
-
-### Documentation Commands
-
-- `/docs-generate` - Generate comprehensive documentation
-- `/docs-validate` - Validate documentation health and links
-- `/docs-sync` - Synchronize documentation with code
-- `/docs-update` - Update documentation accuracy
-- `/docs-health` - Documentation health analysis
-
-### Management Commands
-
-- `/refresh` - Context-efficient project refresh
-- `/improve` - Template improvement and enhancement
 
 ## Key Features
 
-### 19 Specialized Agents
+### 20 Specialized Agents
 
 Domain experts that auto-activate based on task context:
 
-- **Strategy & Design**: brief-strategist, code-architect
+- **Strategy & Design**: brief-strategist, code-architect, ui-ux-designer
 - **Implementation**: frontend-specialist, backend-specialist, database-specialist
 - **Quality**: test-engineer, code-reviewer, security-auditor, performance-optimizer
 - **Operations**: devops-engineer, technical-writer
@@ -94,17 +91,8 @@ Seamless session continuity through structured files:
 
 - **EPIC.md** - Epic-level context and progress
 - **TASK-###-*/TASK.md** - Task-specific implementation details
-- **HANDOFF.yml** - Agent coordination and context transfer
-- **RESEARCH.md** - Investigation findings and decisions
-
-### Intelligent Automation
-
-Event-driven hooks for quality enforcement:
-
-- Quality gate validation after code changes
-- Automated testing and linting
-- Documentation synchronization checks
-- Security compliance validation
+- **WORKLOG.md** - Narrative work history with lessons learned
+- **RESEARCH.md** - Investigation findings and technical decisions
 
 ## Local Development
 
@@ -137,9 +125,9 @@ See `plugins/ai-toolkit/README.md` for complete plugin documentation including:
 
 The starter template includes comprehensive documentation:
 
-- **docs/project/** - Project-specific documentation
-- **docs/development/** - Development guidelines and patterns
-- **docs/ai-toolkit/** - AI collaboration guides and references
+- **docs/project/** - Project-specific documentation (ADRs, design assets)
+- **docs/development/** - Development guidelines (customizable templates)
+- **pm/** - Project management (epics, tasks, bugs with templates)
 
 ## Repository Structure
 
@@ -151,12 +139,11 @@ ai-coding-template/
     └── ai-toolkit/                # AI Toolkit plugin
         ├── .claude-plugin/
         │   └── plugin.json
-        ├── commands/              # 19 slash commands
-        ├── agents/                # 19 specialized agents
+        ├── commands/              # 14 slash commands
+        ├── agents/                # 20 specialized agents
         ├── templates/             # Bundled project templates
-        │   └── starter/           # 75 template files
-        ├── hooks/                 # Automation hooks
-        ├── scripts/               # Support scripts
+        │   └── starter/           # 29 template files
+        ├── docs/                  # Plugin documentation
         └── README.md
 ```
 
