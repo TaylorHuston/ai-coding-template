@@ -80,6 +80,36 @@ main (production) ← develop (staging) ← feature/TASK-### (your work)
 - Merging to `main` requires staging validation
 - See `docs/development/guidelines/git-workflow.md` for complete workflow rules
 
+### CHANGELOG Maintenance
+
+**IMPORTANT**: Keep `CHANGELOG.md` updated following [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
+
+**When to update CHANGELOG:**
+- After implementing features (add to "Unreleased > Added")
+- After fixing bugs (add to "Unreleased > Fixed")
+- After making breaking changes (add to "Unreleased > Changed" with BREAKING CHANGE note)
+- Before releases (move Unreleased content to new version section)
+
+**AI agents should:**
+- Remind about CHANGELOG updates after completing work
+- Suggest appropriate category (Added/Changed/Fixed/Removed)
+- Draft changelog entries based on work completed
+- Never commit without CHANGELOG update (unless trivial change)
+
+**Format:**
+```markdown
+## [Unreleased]
+
+### Added
+- New feature description with context
+
+### Changed
+- BREAKING: Description of breaking change
+
+### Fixed
+- Bug fix description with issue reference
+```
+
 ## Development Guidelines
 
 Your project includes **6 customizable guideline templates** in `docs/development/guidelines/`:

@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.10.1] - 2025-10-22
+
+### Added
+
+- **CHANGELOG.md template**: Added to starter template (30 files total, was 29)
+  - Template follows Keep a Changelog format
+  - Initialized with project setup entry
+  - Starter CLAUDE.md includes CHANGELOG maintenance instructions
+  - AI agents instructed to remind about CHANGELOG updates after work completion
+
+### Fixed
+
+- **`/toolkit-init` copy completeness**: Updated documentation to emphasize ALL 30 files must be copied (was 29)
+  - Added complete directory structure visualization (was incomplete)
+  - Added verification steps to check file count after copy
+  - Added critical warnings about hidden files (.gitignore) and .gitkeep files
+  - Added multiple copy methods (cp, rsync, individual writes) with clear requirements
+  - Issue: Command was missing nested directories (guidelines/, adrs/, design/)
+
 ## [0.10.0] - 2025-10-22
 
 ### NOTE

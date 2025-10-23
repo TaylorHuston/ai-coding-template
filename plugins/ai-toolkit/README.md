@@ -26,7 +26,7 @@ cd my-project
 - **14 Workflow Commands** - Complete `/project-brief` → `/epic` → `/plan` → `/implement` cycle + utilities
 - **20 Specialized Agents** - Domain experts (frontend, backend, security, testing, etc.)
 - **3 Bundled MCP Servers** - Auto-configured tools (context7, sequential-thinking, playwright)
-- **Minimal Templates** - 9 essential files for clean starts (AI builds what you need)
+- **Starter Template** - 30 essential files for clean project initialization
 - **File-Based State** - Session continuity via EPIC.md, TASK.md, WORKLOG.md, RESEARCH.md
 - **Technology Agnostic** - Works with any tech stack
 

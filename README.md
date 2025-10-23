@@ -3,14 +3,14 @@
 A comprehensive AI-assisted development workflow system for Claude Code, providing intelligent task orchestration, specialized agent coordination, and file-based state management.
 
 ## IMPORTANT
-This is very much an alpha/experiment at this moment. Look at the commit history to see that for yourself XD. Right now it's a lot of throwing lots of things at the wall, seeing what sticks, seeign what doesn't, massively changing things as I go along.
+This is very much an alpha/experiment at this point. Look at the commit history to see that for yourself. Right now it's a lot of throwing lots of things at the wall, seeing what sticks, seeign what doesn't, massively changing things as I go along.
 
 ## What's Included
 
 This marketplace contains:
 
 - **AI Toolkit Plugin** - Complete workflow system with 14 commands, 20 specialized agents, and intelligent automation
-- **Minimal Starter Template** - 29 structured files for clean project initialization via `/toolkit-init`
+- **Starter Template** - 30 essential files for clean project initialization via `/toolkit-init`
 - **Guideline Templates** - 6 customizable guideline templates (project configuration files, not plugin docs)
 
 ## Quick Start

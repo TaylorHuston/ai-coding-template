@@ -64,6 +64,21 @@ model: claude-sonnet-4-5
 
 ## Command Flow
 
+### CRITICAL: Complete File Copy Required
+
+**The starter template contains 30 files across multiple nested directories. ALL files must be copied, including:**
+- Hidden files (.gitignore)
+- Empty directory markers (.gitkeep files)
+- All nested subdirectories (guidelines/, adrs/, design/)
+- All markdown and configuration files
+
+**Common Issues:**
+- `cp -r` may not copy hidden files - use explicit `.gitignore` copy
+- May need to create nested directories before copying files
+- .gitkeep files are essential for preserving empty directory structure
+
+**Verification is MANDATORY** - Count files after copy to ensure 30 files were created.
+
 ### 1. Pre-Flight Check
 
 **Detect Existing Structure**:
@@ -122,10 +137,28 @@ project-root/
 │   ├── README.md
 │   ├── project-brief.md  (customized with answers)
 │   ├── project/
-│   │   └── README.md
+│   │   ├── README.md
+│   │   ├── architecture-overview.md
+│   │   ├── adrs/
+│   │   │   ├── README.md
+│   │   │   └── adr-template.md
+│   │   └── design/
+│   │       ├── README.md
+│   │       ├── mockups/.gitkeep
+│   │       ├── screenshots/.gitkeep
+│   │       ├── color-schemes/.gitkeep
+│   │       └── assets/.gitkeep
 │   └── development/
-│       └── README.md
+│       ├── README.md
+│       └── guidelines/
+│           ├── api-guidelines.md
+│           ├── architectural-principles.md
+│           ├── coding-standards.md
+│           ├── git-workflow.md
+│           ├── security-guidelines.md
+│           └── testing-standards.md
 ├── .gitignore
+├── CHANGELOG.md  (initialized with project setup)
 ├── CLAUDE.md  (customized with app name)
 ├── README.md  (customized with app name and description)
 └── GETTING-STARTED.md
@@ -133,12 +166,26 @@ project-root/
 
 **Copy Operation**:
 ```bash
-# Use Bash tool to copy starter template
-cp -r /path/to/plugins/ai-toolkit/templates/starter/* .
+# CRITICAL: Must copy ALL files and directories including hidden files
+TEMPLATE_DIR="${CLAUDE_PLUGIN_ROOT}/templates/starter"
 
-# Alternatively, use Write tool for each file
-# (depends on available tools and permissions)
+# Method 1: Recursive copy (preferred if permissions allow)
+cp -r "$TEMPLATE_DIR"/* .
+cp -r "$TEMPLATE_DIR"/.gitignore .  # Hidden files need explicit copy
+
+# Method 2: Use rsync for reliable copying
+rsync -av "$TEMPLATE_DIR"/ . --exclude='.git'
+
+# Method 3: Individual file writes (if bash copy fails)
+# Read each file from template and Write to project
+# IMPORTANT: Must handle all subdirectories and .gitkeep files
 ```
+
+**CRITICAL Requirements**:
+1. **Copy ALL files** - Including .gitkeep files in empty directories
+2. **Preserve directory structure** - All nested directories must be created
+3. **Include hidden files** - Especially .gitignore
+4. **Verify completion** - Check that all 30 template files were copied
 
 ### 4. Customize Files
 
@@ -195,13 +242,39 @@ See [GETTING-STARTED.md](./GETTING-STARTED.md) for AI Toolkit usage.
 [Rest of template...]
 ```
 
-### 5. Success Report
+### 5. Verify Copy Completion
+
+**After copying, verify all 30 files were created:**
+
+```bash
+# Count files (should be 30)
+find . -type f -o -name ".gitkeep" | grep -v ".git" | wc -l
+
+# Verify critical directories exist
+[ -d "docs/development/guidelines" ] && echo "✓ Guidelines" || echo "✗ Missing guidelines"
+[ -d "docs/project/adrs" ] && echo "✓ ADRs" || echo "✗ Missing ADRs"
+[ -d "docs/project/design" ] && echo "✓ Design" || echo "✗ Missing design"
+[ -f "docs/project/architecture-overview.md" ] && echo "✓ Architecture" || echo "✗ Missing architecture"
+```
+
+**If files are missing:**
+```
+⚠️  Template copy incomplete. Retrying with alternative method...
+```
+
+### 6. Success Report
 
 ```
-✓ Created pm/ directory with templates
-✓ Created docs/ structure
+✓ Created 30 template files
+✓ Created pm/ directory with templates (5 files)
+✓ Created docs/ structure (20 files)
+  ├── 6 development guidelines
+  ├── 2 ADR files
+  ├── 5 design directories
+  └── Project brief, architecture overview
 ✓ Initialized project-brief.md with your description
-✓ Customized CLAUDE.md
+✓ Initialized CHANGELOG.md with project setup
+✓ Customized CLAUDE.md (includes CHANGELOG maintenance instructions)
 ✓ Customized README.md
 ✓ Created .gitignore
 
