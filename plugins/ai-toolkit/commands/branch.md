@@ -46,10 +46,18 @@ Unified command for Git branching operations with automatic enforcement of proje
 ### Merge
 1. Read git-workflow.md for merge rules
 2. Apply validation based on target:
-   - **To develop**: Run tests (block if fail)
-   - **To main**: Verify source is develop, run staging health checks
+   - **To develop**: Run tests (BLOCK if fail)
+   - **To main**:
+     - Verify source is `develop` (BLOCK if feature/bugfix branch)
+     - Run staging health checks (BLOCK if fail)
+     - Emergency hotfixes require explicit justification
 3. If validation passes: merge and push
-4. If validation fails: block with error message
+4. If validation fails: block with clear error message
+
+**Critical Rule Enforcement:**
+- ❌ Work branches (feature/*, bugfix/*) CANNOT merge to main
+- ✅ Only develop can merge to main
+- ⚠️ Hotfix branches require ADR documenting emergency justification
 
 ### Delete
 1. Check if branch is fully merged
@@ -88,12 +96,22 @@ merge_rules:
 
 **Defined in git-workflow.md**, enforced by this command:
 
-- Merge to develop: Run tests, block if fail
-- Merge to main: Source must be develop, staging must be validated
-- Branch naming: Follow configured pattern
-- Test execution: Auto-detect framework, run appropriate command
+### Merge to Develop (Staging)
+- ✅ Source: Any work branch (feature/*, bugfix/*)
+- ✅ Validation: All tests MUST pass
+- ❌ BLOCKS merge if tests fail
 
-See `docs/development/guidelines/git-workflow.md` for complete workflow rules and rationale.
+### Merge to Main (Production)
+- ✅ Source: ONLY `develop` branch
+- ❌ BLOCKS work branches (feature/*, bugfix/*)
+- ✅ Validation: Staging health checks MUST pass
+- ⚠️ Exception: hotfix/* branches (requires ADR justification)
+
+### Branch Naming
+- Follow configured pattern (type/ISSUE-ID)
+- Auto-detect test framework and run appropriate commands
+
+**See `docs/development/guidelines/git-workflow.md` for complete workflow rules and rationale.**
 
 ## Agent Coordination
 

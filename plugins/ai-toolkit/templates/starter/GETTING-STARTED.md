@@ -62,14 +62,19 @@ Execute specific phases with specialized AI agents (frontend, backend, test, sec
 The AI Toolkit enforces a **three-branch workflow** for production safety:
 
 ```
-main (production)
+main (production)         # Live environment - ONLY from develop
   ↑
-  └─ develop (staging)
+  └─ develop (staging)    # Pre-production - from feature branches
        ↑
        ├─ feature/TASK-001  (your work)
        ├─ feature/TASK-002
        └─ bugfix/BUG-001
 ```
+
+**CRITICAL RULES:**
+- ✅ Work branches → develop ONLY
+- ✅ Only develop → main
+- ❌ NEVER merge work branches directly to main
 
 ### Branch Management
 
@@ -85,14 +90,20 @@ main (production)
 ```bash
 /branch merge develop
 # → Runs all tests
-# → Blocks if any fail
+# → BLOCKS if any fail
 # → Merges if all pass
+# ✅ feature/* → develop (allowed)
 ```
 
 **Promoting to production (with staging validation):**
 ```bash
+# ❌ WRONG - work branches cannot merge to main:
+# /branch merge main  # BLOCKED by /branch command
+
+# ✅ CORRECT - two-step process via develop:
 /branch switch develop
 /branch merge main
+# → Verifies source is develop (BLOCKS work branches)
 # → Runs staging health checks
 # → Validates deployment
 # → Merges if validated

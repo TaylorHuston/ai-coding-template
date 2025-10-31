@@ -6,7 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.10.5] - 2025-10-30
+
 ### Added
+
+- **Git workflow emergency hotfix documentation**: Rare exception process for critical production fixes
+  - Hotfix branches can bypass staging with ADR justification
+  - Requires immediate backport to develop after main deployment
+  - Post-mortem documentation explaining why normal flow wasn't possible
+  - Should be rare (<5% of cases) - most "urgent" bugs can wait for staging
+  - Added comprehensive documentation to git-workflow.md
 
 - **`plan.md` template**: New template for AI-managed implementation plans (pm/templates/plan.md)
   - Defines PLAN.md structure with phases, complexity analysis, alternative patterns
@@ -15,6 +24,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Starter template now includes 34 files (was 33 in v0.10.4)
 
 ### Changed
+
+- **Git workflow documentation clarified**: Strengthened language around production merge protection
+  - **Branch Merge Rules** section added to git-workflow.md
+  - Made explicit: Work branches (feature/*, bugfix/*) MUST merge to develop ONLY
+  - Made explicit: ONLY develop can merge to main (except emergency hotfixes)
+  - Added ❌/✅ visual indicators for correct/incorrect merge paths
+  - Updated /branch command documentation with enforcement details
+  - Updated CLAUDE.md, GETTING-STARTED.md with clearer rules
+  - Changed "should" to "MUST" and "BLOCKS" throughout for critical rules
 
 - **BREAKING: `/plan` now creates PLAN.md file instead of Plan section in TASK.md**
   - Separates AI-managed implementation details from PM-tool-synced requirements

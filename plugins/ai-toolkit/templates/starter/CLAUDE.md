@@ -71,14 +71,28 @@ This project uses the AI Toolkit plugin for structured development with three-br
 
 ### Git Workflow (Three-Branch Model)
 
+**CRITICAL RULES:**
+- ✅ Work branches (feature/*, bugfix/*) → **develop ONLY**
+- ✅ **Only develop** → main
+- ❌ **NEVER** merge work branches directly to main
+
 ```
-main (production) ← develop (staging) ← feature/TASK-### (your work)
+main (production)         # Live environment - ONLY from develop
+  ↑
+  └─ develop (staging)    # Pre-production - ONLY from feature branches
+       ↑
+       ├─ feature/TASK-001  (your work)
+       └─ bugfix/BUG-003    (your work)
 ```
 
-- Work branches created automatically during `/implement`
-- Merging to `develop` requires all tests to pass
-- Merging to `main` requires staging validation
-- See `docs/development/guidelines/git-workflow.md` for complete workflow rules
+**Merge Gates:**
+- feature/* → develop: All tests MUST pass
+- develop → main: Staging environment MUST be validated
+- feature/* → main: **BLOCKED** (use develop)
+
+**Emergency Hotfixes:** Document in ADR, use hotfix/* prefix, backport to develop
+
+See `docs/development/guidelines/git-workflow.md` for complete workflow rules
 
 ### CHANGELOG Maintenance
 

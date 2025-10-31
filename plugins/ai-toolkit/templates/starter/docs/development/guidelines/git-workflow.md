@@ -100,6 +100,51 @@ bugfix/BUG-003      # Bug fix
 - **Staging**: `develop` - Deployed to staging environment for validation
 - **Work branches**: `type/ISSUE-ID` - Short-lived development branches
 
+## Branch Merge Rules
+
+**CRITICAL**: These rules protect production stability and must be followed.
+
+### Normal Development Flow (95% of cases)
+
+```
+feature/TASK-001 → develop (tests pass) → main (staging validated)
+       ↓              ↓                      ↓
+   your work      staging env          production env
+```
+
+**Rules:**
+1. ✅ **Work branches MUST merge to `develop` only**
+   - feature/* → develop (after tests pass)
+   - bugfix/* → develop (after tests pass)
+   - ❌ **NEVER merge work branches directly to main**
+
+2. ✅ **Only `develop` MUST merge to `main`**
+   - develop → main (after staging validation)
+   - ❌ **NEVER merge work branches to main**
+   - ⚠️ Exception: Emergency hotfixes (see below)
+
+3. ✅ **Environment validation required**
+   - Merge to develop: All tests must pass
+   - Merge to main: Staging environment must be validated
+
+### Emergency Hotfix Flow (rare, <5% of cases)
+
+**When to use:** Critical production bugs requiring immediate fix (security, data loss, total outage)
+
+```
+hotfix/critical-bug → main (emergency only)
+                    ↓
+                 develop (backport)
+```
+
+**Requirements:**
+1. Document in ADR why emergency hotfix was needed
+2. Use `hotfix/*` branch prefix (not `feature/*` or `bugfix/*`)
+3. Backport to develop immediately after main deployment
+4. Create post-mortem explaining why normal flow wasn't possible
+
+**This should be rare.** Most "urgent" bugs can wait for staging validation.
+
 ## Branch Lifecycle
 
 ### Creating Work Branches
@@ -147,6 +192,8 @@ Create the branch explicitly before starting work:
 
 **To develop (staging):**
 
+✅ **This is the ONLY valid destination for work branches** (feature/*, bugfix/*)
+
 ```bash
 /branch merge
 # OR
@@ -154,21 +201,31 @@ Create the branch explicitly before starting work:
 ```
 
 **Merge rules enforced:**
-1. All tests must pass (unit, integration, E2E)
-2. Merge blocked if any test fails
+1. All tests MUST pass (unit, integration, E2E)
+2. Merge BLOCKED if any test fails
 3. Shows test results before merge
 
 **To main (production):**
 
+❌ **Work branches CANNOT merge to main** - You must merge to develop first, then develop to main.
+
 ```bash
+# ❌ WRONG - This will be BLOCKED
+git checkout feature/TASK-001
 /branch merge main
+# Error: Cannot merge work branch to main. Merge to develop first.
+
+# ✅ CORRECT - Two-step process
+/branch merge develop          # Step 1: Work → staging
+git checkout develop           # Step 2: Switch to develop
+/branch merge main             # Step 3: Staging → production (after validation)
 ```
 
 **Merge rules enforced:**
-1. Source branch must be `develop` (not work branches)
-2. Staging deployment health checks must pass
+1. Source branch MUST be `develop` (work branches BLOCKED)
+2. Staging deployment health checks MUST pass
 3. Automated validation of staging environment
-4. Merge blocked if health checks fail
+4. Merge BLOCKED if health checks fail
 
 ### Deleting Work Branches
 
@@ -309,16 +366,22 @@ The `/branch merge` command enforces quality gates based on target branch.
 
 ### Merging to `main` (Production)
 
+⚠️ **CRITICAL**: Source branch MUST be `develop`. Work branches (feature/*, bugfix/*) cannot merge directly to main.
+
 **Required validations:**
-1. ✅ Source branch must be `develop`
-2. ✅ Staging deployment health checks pass
-3. ✅ Automated smoke tests pass
+1. ✅ Source branch MUST be `develop` (enforced - command will block otherwise)
+2. ✅ Staging deployment health checks MUST pass
+3. ✅ Automated smoke tests MUST pass
 4. ✅ No uncommitted changes
 
 **Process:**
 ```bash
+# Switch to develop first
+git checkout develop
+
+# Then merge to main
 /branch merge main
-# 1. Verifies source is develop
+# 1. Verifies source is develop (BLOCKS if not)
 # 2. Runs health checks against staging
 # 3. Validates deployment status
 # 4. Blocks merge if checks fail
@@ -327,9 +390,12 @@ The `/branch merge` command enforces quality gates based on target branch.
 ```
 
 **Why this matters:**
-- Production deploys only from validated staging code
+- Production deploys ONLY from validated staging code
 - Catches environment-specific issues before production
 - Ensures staging and production stay synchronized
+- Prevents untested code from reaching production
+
+**If you need emergency hotfix:** See "Emergency Hotfix Flow" section above for rare exception process.
 
 ## Pull Request Workflow
 
@@ -403,32 +469,40 @@ refactor: simplify database connection logic
 ### Complete Branch Workflow
 
 ```bash
-# 1. Start work on issue
+# 1. Start work on issue (creates feature/TASK-001 from develop)
 /implement TASK-001 1.1
 # → Creates feature/TASK-001 from develop
 # → Executes phase 1.1
 
-# 2. Continue implementation
+# 2. Continue implementation on feature branch
 /implement TASK-001 1.2
 /implement TASK-001 2.1
 
-# 3. Commit work
+# 3. Commit work on feature branch
 /commit "implement authentication logic"
 
-# 4. Merge to staging
+# 4. Merge work branch to develop (staging)
+#    ✅ feature/* → develop (tests must pass)
 /branch merge develop
 # → Runs all tests
+# → BLOCKS if any fail
 # → Merges if tests pass
 # → Deploys to staging
 
-# 5. Validate staging, then promote to production
+# 5. Test in staging environment
+#    (Manual testing, QA, smoke tests on staging)
+
+# 6. Promote develop to production
+#    ✅ develop → main (staging must be validated)
+#    ❌ NEVER feature/* → main
 /branch switch develop
 /branch merge main
 # → Runs staging health checks
+# → BLOCKS if checks fail
 # → Merges if validated
 # → Deploys to production
 
-# 6. Clean up work branch
+# 7. Clean up work branch after successful deploy
 /branch delete feature/TASK-001
 ```
 
