@@ -175,7 +175,7 @@ Start with TBD placeholders, fill in via `/adr` decisions, customize as needed.
 | `/commit` | Branch-aware git commits |
 | `/quality` | Quality assessment |
 | `/test-fix` | Fix failing tests |
-| `/status` | Project status dashboard |
+| `/project-status` | Project status dashboard |
 | `/docs` | Documentation management |
 
 ## Specialized Agents

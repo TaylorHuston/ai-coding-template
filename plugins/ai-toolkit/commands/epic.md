@@ -232,7 +232,7 @@ See pm/README.md for complete patterns and best practices."
 - `/epic EPIC-###` - Refine existing epic (add tasks, update scope)
 - `/plan TASK-###` - Add implementation breakdown to tasks
 - `/implement TASK-### PHASE` - Execute specific phases
-- `/status` - Check progress across all epics
+- `/project-status` - Check progress across all epics
 
 ## Related Guidelines
 

@@ -219,7 +219,7 @@ If no task is currently active, AI will:
 
 **`/implement`** - Reads WORKLOG to understand previous work (including human comments)
 **`/plan`** - Can reference WORKLOG entries when creating implementation plan
-**`/status`** - Shows recent WORKLOG activity in status report
+**`/project-status`** - Shows recent WORKLOG activity in status report
 
 ## Best Practices
 

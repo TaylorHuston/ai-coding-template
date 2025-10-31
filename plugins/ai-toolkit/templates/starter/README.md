@@ -176,7 +176,7 @@ The AI Toolkit provides **14 commands** for structured development:
 
 ### Documentation & Status
 - `/docs` - Unified documentation management
-- `/status` - Project status dashboard with intelligent context
+- `/project-status` - Project status dashboard with intelligent context
 
 See `GETTING-STARTED.md` for detailed workflow guide and command usage examples.
 

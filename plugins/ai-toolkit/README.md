@@ -55,7 +55,7 @@ The AI Toolkit uses different Claude models strategically based on task requirem
 **Used For**:
 - **All specialist agents**: frontend, backend, database, devops, api, performance, ui-ux, data, migration, refactoring
 - **Code-focused agents**: code-architect, test-engineer, code-reviewer, technical-writer
-- **Execution commands**: /implement, /plan, /quality, /branch, /commit, /docs, /status, /test-fix, /toolkit-init, /comment
+- **Execution commands**: /implement, /plan, /quality, /branch, /commit, /docs, /project-status, /test-fix, /toolkit-init, /comment
 
 **Why**: Sonnet 4.5 excels at coding, code generation, documentation, and autonomous operation. Its superior performance at lower cost makes it ideal for hands-on development work.
 
@@ -159,7 +159,7 @@ my-project/
 **Workflow**: `/adr`, `/plan`, `/implement`
 **Quality**: `/quality`, `/security-audit`, `/test-fix`
 **Development**: `/branch`, `/commit`, `/comment`
-**Documentation & Status**: `/docs`, `/status`
+**Documentation & Status**: `/docs`, `/project-status`
 
 See `docs/COMMANDS.md` for complete command reference.
 

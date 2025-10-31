@@ -193,7 +193,7 @@ Commands use different parameter paradigms because **different workflows need di
 
 ### **Project Management & Documentation**
 
-- **[/status](./status.md)** - Project status dashboard with intelligent context analysis
+- **[/project-status](../commands/project-status.md)** - Project status dashboard with intelligent context analysis
 - **[/docs](./docs.md)** - Unified documentation management (generate, validate, sync, update, health)
 
 ---
@@ -214,7 +214,7 @@ Commands use different parameter paradigms because **different workflows need di
 | `/branch` | Branch operations | `create \| merge \| delete \| switch \| status` |
 | `/commit` | Branch-aware git commits | Natural language instructions |
 | `/comment` | Work log entries | `"your comment text"` |
-| `/status` | Project dashboard | `[--format] [--scope] [--detailed]` |
+| `/project-status` | Project dashboard | `[--format] [--scope] [--detailed]` |
 | `/docs` | Documentation management | Natural language instructions |
 
 ## Command Creation Best Practices
@@ -309,7 +309,7 @@ model: claude-sonnet-4-5                 # Versioned alias (claude-sonnet-4-5, c
 
 - **Use For**: Development, quality, documentation, operations, most commands
 - **Model ID**: `claude-sonnet-4-5` (versioned alias)
-- **Commands**: `/implement`, `/commit`, `/quality`, `/test-fix`, `/docs`, `/status`, `/epic`, `/project-brief`
+- **Commands**: `/implement`, `/commit`, `/quality`, `/test-fix`, `/docs`, `/project-status`, `/epic`, `/project-brief`
 - **When**: Implementation tasks, code execution, standard operations
 
 #### **Model Selection Guidelines**

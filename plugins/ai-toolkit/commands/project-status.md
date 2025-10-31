@@ -1,43 +1,45 @@
 ---
-version: "0.3.0"
+version: "0.4.0"
 created: "2025-09-17"
-last_updated: "2025-09-22"
+last_updated: "2025-10-30"
 status: "active"
 target_audience: ["ai-assistants"]
 document_type: "command"
-tags: ["workflow", "status", "analysis", "context"]
-description: "Enhanced project status with intelligent context analysis"
+tags: ["workflow", "project-status", "analysis", "context", "dashboard"]
+description: "Enhanced project status dashboard with intelligent context analysis"
 argument-hint: "[--format FORMAT] [--scope SCOPE] [--ai-format] [--detailed]"
 allowed-tools: ["Read", "Write", "Edit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
 model: claude-sonnet-4-5
 ---
 
-# /status Command
+# /project-status Command
 
 Enhanced project status dashboard with intelligent analysis using context-analyzer agent.
+
+**Note**: Renamed from `/status` to avoid conflict with built-in Claude Code `/status` command.
 
 ## Usage
 
 ```bash
 # Basic intelligent status report
-/status
+/project-status
 
 # AI-optimized format for assistants
-/status --ai-format
+/project-status --ai-format
 
 # Enhanced with memory insights and personalization
-/status --with-memory
+/project-status --with-memory
 
 # Detailed analysis with recommendations
-/status --detailed
+/project-status --detailed
 
 # Specific scope analysis
-/status --scope git
-/status --scope project
-/status --scope environment
+/project-status --scope git
+/project-status --scope project
+/project-status --scope environment
 
 # JSON output for programmatic use
-/status --format json
+/project-status --format json
 ```
 
 ## Agent Coordination
@@ -163,7 +165,7 @@ agent_analysis:
 
 ### Basic Intelligent Status
 ```bash
-/status
+/project-status
 # → context-analyzer performs comprehensive project analysis
 # → Provides intelligent insights on project health
 # → Highlights priority issues and recommendations
@@ -172,7 +174,7 @@ agent_analysis:
 
 ### AI Assistant Context Refresh
 ```bash
-/status --ai-format
+/project-status --ai-format
 # → Optimized format for AI context understanding
 # → Complete project state for session continuity
 # → Integration-ready status information
@@ -181,7 +183,7 @@ agent_analysis:
 
 ### Memory-Enhanced Status
 ```bash
-/status --with-memory
+/project-status --with-memory
 # → Includes user preferences and historical patterns
 # → Agent effectiveness analytics for optimal selection
 # → Cross-project insights and successful patterns
@@ -190,7 +192,7 @@ agent_analysis:
 
 ### Detailed Project Analysis
 ```bash
-/status --detailed
+/project-status --detailed
 # → Comprehensive analysis with historical trends
 # → Risk assessment with mitigation strategies
 # → Productivity insights and optimization suggestions
@@ -199,7 +201,7 @@ agent_analysis:
 
 ### Scope-Specific Analysis
 ```bash
-/status --scope git --detailed
+/project-status --scope git --detailed
 # → Deep git repository analysis
 # → Branch strategy assessment
 # → Commit pattern insights

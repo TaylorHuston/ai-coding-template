@@ -70,7 +70,7 @@ The AI Toolkit plugin provides a complete development workflow system:
 ### Documentation & Status Commands
 
 - `/docs` - Unified documentation management (generate, validate, sync, update)
-- `/status` - Intelligent project status dashboard
+- `/project-status` - Intelligent project status dashboard
 
 ## Key Features
 
@@ -175,6 +175,6 @@ MIT License - see `LICENSE` for details.
 
 ## Version
 
-Current version: 0.10.3
+Current version: 0.10.4
 
 See `CHANGELOG.md` for release history and `STATUS.md` for current development status.

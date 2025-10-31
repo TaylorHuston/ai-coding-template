@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.10.4] - 2025-10-30
+
+### Changed
+
+- **BREAKING: `/status` renamed to `/project-status`**: Avoid conflict with built-in Claude Code `/status` command
+  - All references updated across documentation
+  - Command version bumped to 0.4.0
+  - Usage: `/project-status` instead of `/status`
+  - Users must update any scripts or documentation referencing the old command name
+
 ## [0.10.3] - 2025-10-30
 
 ### Added
