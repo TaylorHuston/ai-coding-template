@@ -1,5 +1,14 @@
 ---
-# Security Configuration (Machine-readable for AI agents)
+# === Metadata ===
+template_type: "guideline"
+version: "1.0.0"
+created: "2025-10-30"
+last_updated: "2025-10-30"
+status: "Optional"
+target_audience: ["AI Assistants", "Security Auditors", "Development Team"]
+description: "Security approach, authentication patterns, and compliance requirements"
+
+# === Security Configuration (Machine-readable for AI agents) ===
 authentication_method: "TBD"   # JWT, session, OAuth2, etc.
 authorization_model: "TBD"     # RBAC, ABAC, simple roles
 sensitive_data_handling: "TBD" # encryption at rest, in transit

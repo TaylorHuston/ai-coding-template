@@ -1,13 +1,15 @@
 ---
-title: "Technical Specifications"
+# === Metadata ===
+template_type: "documentation"
 version: "0.1.0"
 created: "2025-08-21"
-last_updated: "2025-08-21"
+last_updated: "2025-10-30"
 status: "Active"
 target_audience: ["AI Assistants", "Development Team"]
-tags: ["system-architecture", "technical-specifications", "architecture-examples"]
-category: "Architecture"
 description: "Technical details and specifications that AI assistants need to understand the system."
+title: "Technical Specifications"
+category: "Architecture"
+tags: ["system-architecture", "technical-specifications", "architecture-examples"]
 ---
 
 # Technical Specifications

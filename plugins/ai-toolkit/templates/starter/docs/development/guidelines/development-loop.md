@@ -1,5 +1,14 @@
 ---
-# Development Loop Configuration (Machine-readable for AI agents)
+# === Metadata ===
+template_type: "guideline"
+version: "1.0.0"
+created: "2025-10-30"
+last_updated: "2025-10-30"
+status: "Active"
+target_audience: ["AI Assistants", "Development Team"]
+description: "AI-assisted development workflow with test-first approach, continuous code review, and agent coordination"
+
+# === Development Loop Configuration (Machine-readable for AI agents) ===
 loop_approach: "pragmatic-test-first" # pragmatic-test-first, strict-test-first, code-first
 code_review_threshold: 90             # Minimum score to proceed (0-100)
 test_coverage_target: 95              # Coverage percentage goal

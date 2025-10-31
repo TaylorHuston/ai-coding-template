@@ -1,13 +1,15 @@
 ---
-title: "Design System"
+# === Metadata ===
+template_type: "documentation"
 version: "0.1.0"
 created: "2025-10-30"
 last_updated: "2025-10-30"
 status: "Active"
 target_audience: ["AI Assistants", "Development Team", "Design Team"]
-tags: ["design-system", "ui-ux", "visual-design"]
-category: "Design"
 description: "Visual design system defining UI components, patterns, and interaction design."
+title: "Design System"
+category: "Design"
+tags: ["design-system", "ui-ux", "visual-design"]
 ---
 
 # Design System

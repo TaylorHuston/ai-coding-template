@@ -1,5 +1,14 @@
 ---
-# Coding Configuration (Machine-readable for AI agents)
+# === Metadata ===
+template_type: "guideline"
+version: "1.0.0"
+created: "2025-10-30"
+last_updated: "2025-10-30"
+status: "Optional"
+target_audience: ["AI Assistants", "Development Team"]
+description: "Code style, naming conventions, and file organization standards"
+
+# === Coding Configuration (Machine-readable for AI agents) ===
 language: "TBD"                # javascript, typescript, python, go, etc.
 file_naming: "kebab-case"      # kebab-case, camelCase, snake_case, PascalCase
 directory_structure: "TBD"      # feature-based, layer-based, etc.

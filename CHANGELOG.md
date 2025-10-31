@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- **Standardized YAML frontmatter across all template files**: Consistent metadata structure for AI agents
+  - Added `# === Metadata ===` section to all 16 template files
+  - Standardized fields: template_type, version, created, last_updated, status, target_audience, description
+  - **7 guideline files** (git-workflow.md, development-loop.md, api-guidelines.md, coding-standards.md, security-guidelines.md, testing-standards.md, architectural-principles.md)
+    - Added metadata header while preserving existing configuration sections
+    - Configuration sections renamed with `# === [Type] Configuration ===` headers
+  - **5 PM template files** (task.md, bug.md, epic.md, plan.md, adr-template.md)
+    - Added metadata header with `# === Template Configuration ===` for existing fields
+  - **3 documentation files** (architecture-overview.md, design-system.md, writing-style.md)
+    - Reorganized existing frontmatter with metadata header and consistent field order
+  - **1 project brief** (project-brief.md)
+    - Added frontmatter (previously had none)
+  - **Benefits**: Consistent metadata parsing, better AI agent context, standardized template versioning
+
 ## [0.10.5] - 2025-10-30
 
 ### Added

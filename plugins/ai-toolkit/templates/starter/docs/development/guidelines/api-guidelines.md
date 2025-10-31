@@ -1,5 +1,14 @@
 ---
-# API Configuration (Machine-readable for AI agents)
+# === Metadata ===
+template_type: "guideline"
+version: "1.0.0"
+created: "2025-10-30"
+last_updated: "2025-10-30"
+status: "Optional"
+target_audience: ["AI Assistants", "API Designers", "Backend Developers"]
+description: "API design patterns, structure, and conventions - fill in via /adr decisions"
+
+# === API Configuration (Machine-readable for AI agents) ===
 api_pattern: "TBD"            # REST, GraphQL, tRPC, gRPC
 api_location: "TBD"           # src/api/, src/server/api/, etc.
 authentication: "TBD"         # JWT, session, OAuth2, etc.

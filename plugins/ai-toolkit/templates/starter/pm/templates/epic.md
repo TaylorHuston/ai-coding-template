@@ -1,4 +1,14 @@
 ---
+# === Metadata ===
+template_type: "pm-template"
+version: "1.0.0"
+created: "2025-10-30"
+last_updated: "2025-10-30"
+status: "Active"
+target_audience: ["AI Assistants", "Project Management"]
+description: "Epic template for organizing related tasks with definition of done"
+
+# === Template Configuration ===
 type: epic
 sections:
   - name: Name
