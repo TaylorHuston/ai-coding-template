@@ -19,7 +19,7 @@ your-project/
     └── templates/          # Issue templates
 ```
 
-**31 files organized for clarity:**
+**33 files organized for clarity:**
 - **9 core files**: Project essentials (CLAUDE.md, README.md, etc.)
 - **22 structure files**: Guidelines (7), templates (4), documentation (5), placeholders (6)
 

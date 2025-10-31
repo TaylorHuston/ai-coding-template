@@ -6,6 +6,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.10.3] - 2025-10-30
+
+### Added
+
+- **`design-system.md` template**: Visual design source of truth for starter template (532 lines)
+  - Comprehensive UI/UX design system documentation
+  - Foundation (colors, typography, spacing, layout, shadows, borders)
+  - Component specifications (buttons, forms, cards, modals, navigation, tables)
+  - Interaction patterns (animations, micro-interactions, loading states)
+  - Accessibility standards (WCAG 2.1 AA, keyboard nav, screen readers)
+  - Responsive design and dark mode specifications
+  - Design tokens and implementation guidelines
+  - Positioned as visual design equivalent of `architecture-overview.md`
+
+- **`writing-style.md` template**: Optional content/copywriting guidelines (443 lines)
+  - Voice and tone guidelines for brand consistency
+  - Microcopy patterns (buttons, errors, forms, empty states, notifications)
+  - Capitalization, formatting, and grammar conventions
+  - Accessibility considerations (plain language, screen reader text)
+  - Marked as optional - for projects with user-facing content needs
+  - Starter template now includes 33 files (was 31 in v0.10.2)
+
+### Changed
+
+- **`design/README.md` updated**: Added references to new design documentation
+  - Links to `design-system.md` (required visual design spec)
+  - Links to `writing-style.md` (optional content guidelines)
+  - Clear separation: specifications vs. assets vs. implementation
+
 ## [0.10.2] - 2025-10-30
 
 ### Added

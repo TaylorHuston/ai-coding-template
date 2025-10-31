@@ -138,7 +138,7 @@ Commands use different parameter paradigms because **different workflows need di
 
 - _Purpose_: Initialize new or existing projects with ai-toolkit structure and templates
 - _Usage_: `/toolkit-init`
-- _Features_: Interactive customization (2 questions), smart conflict resolution, organized templates (31 files)
+- _Features_: Interactive customization (2 questions), smart conflict resolution, organized templates (33 files)
 
 ### 💡 **/project-brief** - Interactive Project Vision
 
