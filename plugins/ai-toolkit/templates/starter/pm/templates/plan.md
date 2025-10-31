@@ -49,6 +49,7 @@ sections:
 
 ### Phase 1 - {phase_1_name}
 - [ ] 1.1 {step_description}
+  - [ ] 1.1.1 {step_description}
 - [ ] 1.2 {step_description}
 
 ### Phase 2 - {phase_2_name}
