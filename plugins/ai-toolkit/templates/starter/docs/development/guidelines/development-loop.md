@@ -216,14 +216,14 @@ See `coding-standards.md` for specific style and quality expectations.
 ```
 /implement TASK-### PHASE
   ↓
-1. Command reads phase from TASK.md Plan section
+1. Command reads phase from PLAN.md
 2. Command selects specialist based on phase domain
 3. Specialist reads WORKLOG.md for context
 4. Specialist executes phase following development loop
 5. Specialist writes WORKLOG.md entry
 6. Command invokes code-reviewer for quality check
 7. If score < 90: Specialist iterates (back to step 4)
-8. If score ≥ 90: Phase marked complete
+8. If score ≥ 90: Phase marked complete in PLAN.md
 ```
 
 **Key points:**
@@ -250,7 +250,7 @@ This metadata is **documentation only** - it helps humans understand typical age
 User: /implement TASK-001 1.2
 
 /implement command:
-1. Reads TASK-001/TASK.md Plan section → Phase 1.2: "Implement login endpoint"
+1. Reads TASK-001/PLAN.md → Phase 1.2: "Implement login endpoint"
 2. Determines domain: backend → Selects backend-specialist
 3. Invokes backend-specialist with phase context
 

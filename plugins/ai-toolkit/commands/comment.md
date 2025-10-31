@@ -204,7 +204,8 @@ Comments are added to the current task's WORKLOG.md:
 ```
 pm/issues/
   TASK-001-user-authentication/
-    TASK.md          # Plan with checkboxes
+    TASK.md          # Requirements (synced with PM tool)
+    PLAN.md          # Implementation plan with checkboxes
     WORKLOG.md       # Narrative work log (comments go here)
     RESEARCH.md      # Technical decisions
 ```

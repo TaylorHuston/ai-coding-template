@@ -138,7 +138,7 @@ Commands use different parameter paradigms because **different workflows need di
 
 - _Purpose_: Initialize new or existing projects with ai-toolkit structure and templates
 - _Usage_: `/toolkit-init`
-- _Features_: Interactive customization (2 questions), smart conflict resolution, organized templates (33 files)
+- _Features_: Interactive customization (2 questions), smart conflict resolution, organized templates (34 files)
 
 ### 💡 **/project-brief** - Interactive Project Vision
 
@@ -166,9 +166,10 @@ Commands use different parameter paradigms because **different workflows need di
 
 ### 📋 **/plan** - Task Implementation Planning
 
-- _Purpose_: Add implementation plan with phase-based breakdown to individual tasks and bugs
+- _Purpose_: Create PLAN.md file with phase-based breakdown for individual tasks and bugs
 - _Usage_: `/plan TASK-### | /plan BUG-###`
 - _Workflow Phase_: **2. Planning** - Phase-based task breakdown, agent coordination, test-first patterns
+- _Output_: Creates `pm/issues/TASK-###-*/PLAN.md` (keeps TASK.md clean for PM tool sync)
 
 ### ⚡ **/implement** - Phase-Based Execution
 

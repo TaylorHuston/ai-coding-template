@@ -1,12 +1,12 @@
 ---
-version: "0.5.0"
+version: "0.6.0"
 created: "2025-09-17"
-last_updated: "2025-10-22"
+last_updated: "2025-10-30"
 status: "active"
 target_audience: ["ai-assistants"]
 document_type: "command"
 tags: ["workflow", "planning", "implementation"]
-description: "Add implementation plan with phase-based breakdown to individual tasks and bugs"
+description: "Create PLAN.md file with phase-based breakdown for individual tasks and bugs"
 argument-hint: "TASK-### | BUG-###"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
 model: claude-sonnet-4-5
@@ -16,24 +16,31 @@ references_guidelines:
 
 # /plan Command
 
-**Purpose**: Add "Plan" section with phase-based breakdown to individual TASK.md or BUG.md files.
+**Purpose**: Create `PLAN.md` file with phase-based breakdown in task/bug directory.
+
+**Why separate file?** Keeps TASK.md clean for syncing with external PM tools (Jira, Linear, etc.) while AI manages implementation details in PLAN.md.
 
 ## Usage
 
 ```bash
-/plan TASK-001    # Add plan to task
-/plan BUG-003     # Add plan to bug
+/plan TASK-001    # Creates pm/issues/TASK-001-*/PLAN.md
+/plan BUG-003     # Creates pm/issues/BUG-003-*/PLAN.md
 ```
 
 **Simple invocation**: Just pass the task/bug ID. Command automatically:
-- Locates file in `pm/issues/` directory (e.g., `pm/issues/TASK-001-*/TASK.md` or `pm/issues/BUG-003-*/BUG.md`)
-- Reads appropriate template (`pm/templates/task.md` or `pm/templates/bug.md`) for structure requirements
+- Locates directory in `pm/issues/` (e.g., `pm/issues/TASK-001-*/ or `pm/issues/BUG-003-*/`)
+- Reads TASK.md or BUG.md for context (description, acceptance criteria)
 - Reads epic context from `epic:` field in YAML frontmatter (if present)
 - Loads relevant architecture decisions from `docs/project/adrs/ADR-*.md`
-- Adds or updates "Plan" section with phase-based breakdown following template
+- Creates `PLAN.md` file with phase-based breakdown and checkboxed steps
 - Performs complexity analysis and suggests decomposition if needed
 
-**Re-running**: Run command again on same ID to update/refine existing plan
+**Re-running**: Run command again on same ID to update/refine existing PLAN.md
+
+**File separation benefits**:
+- TASK.md stays clean for PM tool sync (Jira, Linear, GitHub Issues)
+- PLAN.md contains AI-managed implementation details
+- No conflicts between external PM updates and internal planning
 
 ## Agent Coordination
 
@@ -44,14 +51,14 @@ references_guidelines:
 ## Approach
 
 ### **Context Gathering**
-1. **Locate issue**: Use Glob to find `pm/issues/TASK-###-*/` or `pm/issues/BUG-###-*/`
-2. **Read template**: Load `pm/templates/task.md` or `pm/templates/bug.md` to understand structure
-3. **Read issue file**: Load TASK.md or BUG.md with description and acceptance criteria
-4. **Load epic context** (if applicable):
+1. **Locate issue directory**: Use Glob to find `pm/issues/TASK-###-*/` or `pm/issues/BUG-###-*/`
+2. **Read issue file**: Load TASK.md or BUG.md with description and acceptance criteria
+3. **Load epic context** (if applicable):
    - Extract `epic: EPIC-###` from YAML frontmatter
    - Read `pm/epics/EPIC-###-name.md` for feature context
-5. **Load architecture**: Read relevant `docs/project/adrs/ADR-*.md` files
-6. **Assess complexity**: Analyze issue for complexity indicators
+4. **Load architecture**: Read relevant `docs/project/adrs/ADR-*.md` files
+5. **Assess complexity**: Analyze issue for complexity indicators
+6. **Check for existing PLAN.md**: Load if exists to update rather than overwrite
 
 ### **Complexity Analysis**
 
@@ -80,7 +87,8 @@ See `docs/development/guidelines/development-loop.md` "Complexity Scoring" secti
    - **Backend tasks**: API Design → Unit Tests → Implementation → Integration Tests
    - **Bug fixes**: Investigation → Root Cause → Fix → Regression Tests
 
-2. **Add Plan section** to TASK.md/BUG.md:
+2. **Create PLAN.md file** in task directory:
+   - YAML frontmatter with metadata (created date, last updated, complexity score)
    - Phase headers: `### Phase X - <description>`
    - Checkboxed items: `- [ ] x.x <description>` under each phase
    - Include test-first patterns (Red-Green-Refactor) when appropriate
@@ -94,11 +102,21 @@ See `docs/development/guidelines/development-loop.md` "Complexity Scoring" secti
 
 ## Outputs
 
-- **pm/issues/TASK-###-name/TASK.md** or **pm/issues/BUG-###-name/BUG.md**: Enhanced with "Plan" section featuring:
+- **pm/issues/TASK-###-name/PLAN.md** or **pm/issues/BUG-###-name/PLAN.md**: New file with:
+  - YAML frontmatter (metadata, complexity score)
   - Phase headers with logical grouping
   - Checkboxed implementation steps
   - Test-first patterns embedded
   - Human-AI collaboration friendly (check off manually or via /implement)
+
+**File structure**:
+```
+pm/issues/TASK-001-user-registration/
+├── TASK.md          # PM tool sync (requirements, acceptance criteria)
+├── PLAN.md          # AI-managed implementation plan
+├── WORKLOG.md       # Implementation history
+└── RESEARCH.md      # Investigation notes
+```
 
 ## Integration with Workflow
 
@@ -116,7 +134,7 @@ See `docs/development/guidelines/development-loop.md` "Complexity Scoring" secti
 /plan TASK-001
 ```
 
-### Sample Output (TASK.md with Plan section)
+### Sample TASK.md (stays clean for PM tool sync)
 ```markdown
 ---
 epic: EPIC-001
@@ -132,19 +150,23 @@ updated: 2025-10-21
 As a new user, I want to create an account with email and password, So that I can access the application securely.
 
 ## Acceptance Criteria
-- [ ] All features covered by tests (aim for 95%+ coverage)
-- [ ] Tests verify behavior, not just execute code
 - [ ] User can register with email and password
 - [ ] Email validation shows inline errors
 - [ ] Password meets security requirements (8+ chars, special chars)
 - [ ] Success redirects to dashboard
+- [ ] All features covered by tests (aim for 95%+ coverage)
+```
 
-<!-- Acceptance Criteria Formats (choose what works for your team):
-- Simple: '- [ ] User can register with email'
-- BDD: '- [ ] Given valid email, When user submits, Then account created'
-- Testable: '- [ ] Should validate email format before submission' -->
+### Sample PLAN.md (AI-managed implementation)
+```markdown
+---
+created: 2025-10-30
+last_updated: 2025-10-30
+complexity_score: 3
+task_id: TASK-001
+---
 
-## Plan
+# Implementation Plan: TASK-001 User Registration
 
 ### Phase 1 - Design
 - [ ] 1.1 Design database schema for users table
@@ -224,11 +246,14 @@ When implementing `/plan TASK-###` or `/plan BUG-###`:
 
 1. **Validate ID format**: Ensure ID matches `TASK-###` or `BUG-###` pattern
 2. **Find directory**: Use Glob `pm/issues/{TASK|BUG}-###-*/` to locate task directory
-3. **Read existing file**: Load TASK.md or BUG.md to check for existing Plan section
-4. **Parse frontmatter**: Extract `epic:` field if present to load parent context
-5. **Analyze complexity**: Calculate score and suggest decomposition if ≥5 points
-6. **Generate phases**: Create contextually appropriate phase breakdown
-7. **Add/update Plan**: Insert Plan section or update if already exists
-8. **Confirm with user**: Present plan and ask for modifications
+3. **Read TASK.md or BUG.md**: Load requirements and acceptance criteria
+4. **Check for existing PLAN.md**: Load if exists for update workflow
+5. **Parse frontmatter**: Extract `epic:` field if present to load parent context
+6. **Analyze complexity**: Calculate score and suggest decomposition if ≥5 points
+7. **Generate phases**: Create contextually appropriate phase breakdown
+8. **Create/update PLAN.md**: Write new file or update existing with phases
+9. **Confirm with user**: Present plan and ask for modifications
 
 **Key principle**: Transform requirements into executable implementation steps with clear test-first guidance.
+
+**File separation rationale**: TASK.md can be synced with external PM tools (Jira, Linear) without conflicts from AI-managed implementation details in PLAN.md.

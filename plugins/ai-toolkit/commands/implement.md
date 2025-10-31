@@ -162,7 +162,7 @@ Following `development-loop.md` philosophy: test-first is preferred when you kno
 - **Get current timestamp**: Run `date '+%Y-%m-%d %H:%M'` (never estimate)
 - **Write WORKLOG entry**: Document what was done following format in `development-loop.md`
 - **Prepend to top**: Add new entry at the beginning (reverse chronological order)
-- **Mark phase complete**: Check off phase in TASK.md Plan section
+- **Mark phase complete**: Check off phase in PLAN.md
 - **Consider RESEARCH.md**: If complex technical decisions were made, create RESEARCH.md section (see criteria in `development-loop.md`)
 
 **See `docs/development/guidelines/development-loop.md` Work Documentation section for:**
@@ -203,7 +203,7 @@ Instead of overwhelming agents with full epic context, provide filtered, relevan
 ### **Dynamic Context Loading**
 - Parse WORKLOG.md, RESEARCH.md, and ADR files in real-time
 - Extract only domain-relevant sections for the selected agent
-- Combine with phase-specific requirements from TASK.md Plan section
+- Combine with phase-specific requirements from PLAN.md
 - Present concise, actionable context that eliminates noise
 - Include lessons learned from previous phases to avoid repeating mistakes
 

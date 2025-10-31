@@ -10,7 +10,7 @@ This is very much an alpha/experiment at this point. Look at the commit history 
 This marketplace contains:
 
 - **AI Toolkit Plugin** - Complete workflow system with 14 commands, 19 specialized agents, and intelligent automation
-- **Starter Template** - 33 essential files for clean project initialization via `/toolkit-init`
+- **Starter Template** - 34 essential files for clean project initialization via `/toolkit-init`
 - **Guideline Templates** - 7 customizable guideline templates (project configuration files, not plugin docs)
 
 ## Quick Start
@@ -34,7 +34,7 @@ cd your-project
 
 The `/toolkit-init` command scaffolds your project with:
 - Customized CLAUDE.md (your tech stack and links)
-- Structured template (33 files: docs/, pm/, guidelines, templates)
+- Structured template (34 files: docs/, pm/, guidelines, templates)
 - GETTING-STARTED.md guide
 - Documentation framework (AI creates content as you work)
 - Interactive setup with smart conflict resolution

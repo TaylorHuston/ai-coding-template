@@ -19,9 +19,9 @@ your-project/
     └── templates/          # Issue templates
 ```
 
-**33 files organized for clarity:**
-- **9 core files**: Project essentials (CLAUDE.md, README.md, etc.)
-- **22 structure files**: Guidelines (7), templates (4), documentation (5), placeholders (6)
+**34 files organized for clarity:**
+- **9 core files**: Project essentials (CLAUDE.md, README.md, CHANGELOG.md, etc.)
+- **25 structure files**: Guidelines (7), templates (5), documentation (7), placeholders (6)
 
 **Why this approach?** Guidelines and templates provide structure without overwhelming you. The AI Toolkit builds content as you work - no stale examples, just living documentation.
 
@@ -220,7 +220,7 @@ Understanding the distinction between **slash commands** and **agents** helps yo
 **Examples:**
 ```bash
 /epic                      # Creates pm/epics/EPIC-###-name.md
-/plan TASK-001             # Adds Plan section to TASK.md
+/plan TASK-001             # Creates pm/issues/TASK-001-*/PLAN.md
 /adr                       # Creates docs/project/adrs/ADR-###.md
 /implement TASK-001 1.1    # Executes phase, updates WORKLOG.md
 ```

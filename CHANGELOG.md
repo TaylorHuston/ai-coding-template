@@ -6,6 +6,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+- **`plan.md` template**: New template for AI-managed implementation plans (pm/templates/plan.md)
+  - Defines PLAN.md structure with phases, complexity analysis, alternative patterns
+  - Used by `/plan` command to create separate PLAN.md files
+  - Includes YAML frontmatter for metadata, complexity scoring, timestamps
+  - Starter template now includes 34 files (was 33 in v0.10.4)
+
+### Changed
+
+- **BREAKING: `/plan` now creates PLAN.md file instead of Plan section in TASK.md**
+  - Separates AI-managed implementation details from PM-tool-synced requirements
+  - TASK.md stays clean for syncing with Jira, Linear, GitHub Issues
+  - PLAN.md contains phase-based breakdown with checkboxes
+  - `/implement` reads from PLAN.md instead of TASK.md Plan section
+  - Command version bumped to 0.6.0
+  - **Migration**: Manually move existing Plan sections from TASK.md/BUG.md to new PLAN.md files
+  - **Benefits**: No conflicts between external PM updates and internal planning
+
+- **task.md template**: Removed Plan section (now in separate PLAN.md)
+  - Added note: "Run `/plan TASK-{id}` to create PLAN.md"
+  - Cleaner structure for PM tool synchronization
+
+- **bug.md template**: Removed Fix Plan section (now in separate PLAN.md)
+  - Added note: "Run `/plan BUG-{id}` to create PLAN.md"
+  - Cleaner structure for PM tool synchronization
+
+- **pm/templates/README.md**: Updated with PLAN.md template documentation
+  - Added "Available Templates" section listing all 4 templates
+  - Added "PLAN.md Template" section explaining separation rationale
+  - Documents why PLAN.md is separate from TASK.md/BUG.md
+
 ## [0.10.4] - 2025-10-30
 
 ### Changed

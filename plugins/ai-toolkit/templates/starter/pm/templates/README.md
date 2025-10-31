@@ -2,9 +2,18 @@
 
 ## Overview
 
-Templates define the structure and required information for epics and issues. Commands read templates to determine what questions to ask and what sections to generate.
+Templates define the structure and required information for epics, issues, and implementation plans. Commands read templates to determine what questions to ask and what sections to generate.
 
 **Key Principle**: Templates define **structure** ("what sections"), commands provide **intelligence** ("how to create good content").
+
+## Available Templates
+
+This directory contains 4 templates:
+
+1. **epic.md** - Feature epics with goals and task lists
+2. **task.md** - User stories and development tasks
+3. **bug.md** - Bug reports with reproduction steps
+4. **plan.md** - Implementation plans (created by `/plan` command)
 
 ## How Templates Work
 
@@ -15,10 +24,24 @@ Commands use convention-based template lookup:
 ```
 TASK-001 → looks for templates/task.md
 BUG-003  → looks for templates/bug.md
-SPIKE-007 → looks for templates/spike.md
+SPIKE-007 → looks for templates/spike.md (custom template you can create)
 ```
 
 The issue prefix (lowercased) determines which template to use.
+
+### PLAN.md Template
+
+The **plan.md** template is special - it's used by the `/plan` command to create separate PLAN.md files:
+
+```
+/plan TASK-001 → creates pm/issues/TASK-001-*/PLAN.md
+/plan BUG-003  → creates pm/issues/BUG-003-*/PLAN.md
+```
+
+**Why separate PLAN.md?**
+- TASK.md/BUG.md stay clean for PM tool sync (Jira, Linear)
+- PLAN.md contains AI-managed implementation details
+- No conflicts between external PM updates and internal planning
 
 ### Template Processing
 

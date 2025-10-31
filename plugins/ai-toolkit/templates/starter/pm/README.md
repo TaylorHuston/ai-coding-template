@@ -57,21 +57,24 @@ pm/
     │
     ├── TASK-003-session-management/
     │   ├── TASK.md
+    │   ├── PLAN.md        # Implementation phases (AI-managed)
     │   ├── WORKLOG.md
     │   └── RESEARCH.md    # Complex caching decision needed deep analysis
     │
     ├── TASK-004-password-reset/
-    │   └── TASK.md        # Plan exists, not started yet (no WORKLOG)
+    │   ├── TASK.md        # Requirements (PM tool synced)
+    │   └── PLAN.md        # Implementation phases (not started yet)
     │
     └── BUG-001-session-timeout/
-        ├── BUG.md         # Bug report and fix plan
+        ├── BUG.md         # Bug report (PM tool synced)
+        ├── PLAN.md        # Fix plan (AI-managed)
         ├── WORKLOG.md     # Fix implementation history
         └── RESEARCH.md    # Root cause analysis
 ```
 
 **File presence indicates progress:**
-- **TASK.md only**: Planned but not started
-- **TASK.md + WORKLOG.md**: Implementation in progress or completed
+- **TASK.md + PLAN.md only**: Planned but not started
+- **+ WORKLOG.md**: Implementation in progress or completed
 - **+ RESEARCH.md**: Complex technical decisions documented
 
 ## Core Workflow

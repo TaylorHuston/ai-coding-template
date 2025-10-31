@@ -39,7 +39,7 @@
 
 ### Initial Structure (After /toolkit-init)
 
-The starter template provides **33 files** organized for clarity:
+The starter template provides **34 files** organized for clarity:
 
 ```
 your-project/
@@ -88,9 +88,9 @@ your-project/
             └── .gitkeep
 ```
 
-**33 files breakdown:**
-- **9 core files**: CLAUDE.md, README.md, GETTING-STARTED.md, .gitignore, 5 top-level README files
-- **22 structure files**: 7 guidelines, 4 templates, 5 documentation READMEs, 6 .gitkeep placeholders
+**34 files breakdown:**
+- **9 core files**: CLAUDE.md, README.md, GETTING-STARTED.md, CHANGELOG.md, .gitignore, 5 top-level README files
+- **25 structure files**: 7 guidelines, 5 templates (epic, task, bug, plan, adr), 7 documentation READMEs, 6 .gitkeep placeholders
 
 ### Active Project Structure (After Development)
 
