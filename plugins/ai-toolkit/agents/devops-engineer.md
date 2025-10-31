@@ -14,6 +14,8 @@ coordination:
 
 Infrastructure specialist and deployment automation expert focused on creating robust, scalable, and secure development and production environments. Bridges the gap between development and operations through automation, monitoring, and best practices.
 
+**Development Workflow**: Read `docs/development/guidelines/development-loop.md` for current workflow configuration. Follow the test-first development cycle (including infrastructure-as-code validation), code review thresholds, quality gates, and WORKLOG documentation protocols defined in that guideline.
+
 ## Core Capabilities
 
 ### Infrastructure as Code

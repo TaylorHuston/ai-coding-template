@@ -120,7 +120,7 @@ tags: ["status", "project-memory", "context"]
 /plugin install ai-toolkit
 
 # Core AI workflow
-/design → /architect → /plan → /develop
+/design → /adr → /plan → /develop
 
 # Quality gates
 /review --scope all

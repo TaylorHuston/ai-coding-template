@@ -10,6 +10,8 @@ description: "Create a proper git commit with quality checks and conventional me
 argument-hint: "[message] [--files FILES] [--amend] [--no-verify] [--interactive]"
 allowed-tools: ["Bash", "Read", "Grep", "Glob"]
 model: claude-sonnet-4-5
+references_guidelines:
+  - docs/development/guidelines/git-workflow.md  # Commit conventions, type inference, branch naming
 ---
 
 # /commit Command
@@ -47,12 +49,11 @@ model: claude-sonnet-4-5
 3. Extract issue ID from branch name (if matches pattern):
    - `feature/TASK-001` → TASK-001
    - `bugfix/BUG-003` → BUG-003
-4. Determine commit type from staged changes:
-   - New files → `feat`
-   - Bug fixes → `fix`
-   - Tests → `test`
-   - Documentation → `docs`
-   - Other → appropriate type
+4. Determine commit type from staged changes using `commit_type_inference` config in git-workflow.md:
+   - Analyzes file patterns (tests, docs, config, source code)
+   - Checks commit message keywords (fix, feature, refactor, etc.)
+   - Applies most specific match or defaults to configured default_type
+   - See git-workflow.md "Commit Type Inference" section for customization
 5. If issue ID extracted and not in user's message:
    - Format as: `type(ISSUE-ID): description`
    - Example: `feat(TASK-001): add user authentication`

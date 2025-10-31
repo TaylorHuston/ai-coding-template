@@ -6,26 +6,73 @@ This directory contains all project management artifacts for planning and tracki
 
 ## Directory Structure
 
+### Initial Structure
+
+After `/toolkit-init`, the pm/ directory contains templates and placeholders:
+
 ```
 pm/
 ├── README.md              # This guide
-├── templates/
+├── templates/             # Issue and epic templates
 │   ├── README.md          # Template customization guide
-│   ├── epic.md           # Epic template (structure + metadata)
-│   ├── task.md           # Task template (structure + metadata)
-│   └── bug.md            # Bug template (structure + metadata)
-├── epics/
-│   └── EPIC-###-name.md  # High-level features and initiatives
-└── issues/
-    ├── TASK-###-name/     # Implementation tasks
-    │   ├── TASK.md        # Task definition and plan
-    │   ├── WORKLOG.md     # Narrative work history (auto-created by /implement)
-    │   └── RESEARCH.md    # Technical decisions and deep dives (optional)
-    └── BUG-###-name/      # Defects and fixes
-        ├── BUG.md         # Bug report and fix plan
-        ├── WORKLOG.md     # Fix implementation history (auto-created by /implement)
-        └── RESEARCH.md    # Root cause analysis and technical investigation (optional)
+│   ├── epic.md            # Epic template (structure + metadata)
+│   ├── task.md            # Task template (structure + metadata)
+│   ├── bug.md             # Bug template (structure + metadata)
+│   └── resources/
+│       └── .gitkeep
+├── epics/                 # Feature epics (empty initially)
+│   └── .gitkeep
+└── issues/                # Tasks and bugs (empty initially)
+    └── .gitkeep
 ```
+
+### Active Project Structure
+
+As you work, the AI creates epics and issues in organized locations:
+
+```
+pm/
+├── README.md
+├── templates/             # Templates remain for reference
+│   ├── README.md
+│   ├── epic.md
+│   ├── task.md
+│   └── bug.md
+│
+├── epics/                 # Created by /epic
+│   ├── EPIC-001-user-authentication.md
+│   ├── EPIC-002-data-management.md
+│   ├── EPIC-003-admin-dashboard.md
+│   └── EPIC-004-api-integration.md
+│
+└── issues/                # Created by /epic and /plan
+    ├── TASK-001-user-registration/
+    │   ├── TASK.md        # Definition, acceptance criteria, plan
+    │   ├── WORKLOG.md     # Auto-created by /implement (reverse chronological)
+    │   └── RESEARCH.md    # Optional technical deep dives
+    │
+    ├── TASK-002-login-flow/
+    │   ├── TASK.md
+    │   └── WORKLOG.md     # Created during implementation
+    │
+    ├── TASK-003-session-management/
+    │   ├── TASK.md
+    │   ├── WORKLOG.md
+    │   └── RESEARCH.md    # Complex caching decision needed deep analysis
+    │
+    ├── TASK-004-password-reset/
+    │   └── TASK.md        # Plan exists, not started yet (no WORKLOG)
+    │
+    └── BUG-001-session-timeout/
+        ├── BUG.md         # Bug report and fix plan
+        ├── WORKLOG.md     # Fix implementation history
+        └── RESEARCH.md    # Root cause analysis
+```
+
+**File presence indicates progress:**
+- **TASK.md only**: Planned but not started
+- **TASK.md + WORKLOG.md**: Implementation in progress or completed
+- **+ RESEARCH.md**: Complex technical decisions documented
 
 ## Core Workflow
 
@@ -100,7 +147,7 @@ Commands automatically reference this structure:
 - `/epic` reads `templates/epic.md` for required sections
 - `/plan` reads issue type template for structure
 - `/implement` executes specific phases from issue plans
-- `/architect` references `epics/` for context
+- `/adr` references `epics/` for context
 - `/design` references `epics/` for strategic alignment
 
 ## File Organization
@@ -120,23 +167,22 @@ Each issue gets a directory containing:
 - Includes acceptance criteria and phase-based breakdown
 
 **WORKLOG.md** (Auto-created)
-- Narrative work history created by `/implement` and `/comment`
-- **Reverse chronological order** (newest entries first for easy scanning)
-- Timestamped entries from AI agents and human developers
-- Documents what was done, lessons learned, gotchas discovered
-- Helps AI and humans understand implementation history
-- Format: ~500 char entries with timestamp, summary, lessons, files changed
+- Narrative work history created automatically by `/implement` after each phase
+- Reverse chronological order (newest entries first)
+- Documents: what was done, lessons learned, gotchas, files changed
+- Format and guidelines: See `docs/development/guidelines/development-loop.md` (Work Documentation section)
 
 **RESEARCH.md** (Optional)
-- Deep technical investigation and decision documentation
-- Created when complex technical decisions need detailed rationale
-- Contains root cause analysis, alternatives considered, trade-offs
-- Referenced from WORKLOG for deeper context ("See RESEARCH.md #section")
+- Deep technical investigations requiring multi-page analysis
+- Created manually when complex decisions need detailed rationale
+- Structure and criteria: See `docs/development/guidelines/development-loop.md` (Work Documentation section)
 
 **File Relationship:**
 - **[TYPE].md**: WHAT to do (plan checklist)
 - **WORKLOG.md**: HOW it was done (narrative history with lessons)
 - **RESEARCH.md**: WHY decisions were made (technical deep dives)
+
+**Complete documentation standards**: `docs/development/guidelines/development-loop.md` contains comprehensive guidance on WORKLOG entry format, when to create RESEARCH.md, best practices, and examples.
 
 ## Customization
 
@@ -170,19 +216,44 @@ See `templates/README.md` for complete customization guide.
 
 ## Git Integration
 
-Branch names align with issue IDs:
+The AI Toolkit uses a **three-branch workflow** with work branches aligned to issue IDs:
+
 ```bash
-# Epic branches
-git checkout -b epic/user-authentication    # EPIC-001
-
-# Task branches (from epic)
-git checkout -b task/001-user-registration  # TASK-001
-
-# Bug branches
-git checkout -b bugfix/003-login-error      # BUG-003
+# Work branches created automatically by /implement or explicitly via /branch
+feature/TASK-001    # Task implementation (TASK-001-user-registration)
+feature/TASK-002    # Another task (TASK-002-login-flow)
+bugfix/BUG-001      # Bug fix (BUG-001-session-timeout)
 ```
 
-See project Git workflow documentation for complete branching strategy.
+**Branch creation:**
+```bash
+# Method 1: Automatic (recommended)
+/implement TASK-001 1.1
+# → Prompts to create feature/TASK-001 if needed
+
+# Method 2: Explicit
+/branch create TASK-001
+# → Creates feature/TASK-001 from develop
+```
+
+**Workflow:**
+```bash
+# Work on task
+/implement TASK-001 1.1
+/commit "implement user registration logic"
+
+# Merge to staging (runs tests)
+/branch merge develop
+
+# Promote to production
+/branch switch develop
+/branch merge main
+
+# Clean up
+/branch delete feature/TASK-001
+```
+
+See `docs/development/guidelines/git-workflow.md` for complete three-branch workflow specification.
 
 ## Related Documentation
 

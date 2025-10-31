@@ -10,6 +10,9 @@ description: "Execute specific implementation phases from task plans with test-f
 argument-hint: "TASK-### PHASE | BUG-### PHASE"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
 model: claude-sonnet-4-5
+references_guidelines:
+  - docs/development/guidelines/development-loop.md  # Test-first approach, quality gates, WORKLOG format
+  - docs/development/guidelines/git-workflow.md  # Branch creation and verification
 ---
 
 # /implement Command
@@ -42,10 +45,16 @@ If parameters are missing or invalid, the command will:
 
 ## Core Principles
 
-- **Test-First**: Auto-invoke test-engineer for all implementation (95%+ coverage)
+- **Test-First**: Auto-invoke test-engineer for all implementation
 - **Phase-Focused**: Execute specific plan phases, not entire tasks
 - **Context-Aware**: Full epic goals, ADRs, dependencies, and task coordination
 - **Quality-Gated**: Validate against acceptance criteria and architectural decisions
+
+**Development Workflow**: Read `docs/development/guidelines/development-loop.md` for:
+- Test-first development cycle configuration
+- Code review thresholds and quality gates
+- Test coverage targets
+- Agent handoff protocol through WORKLOG entries
 
 ## Execution Flow
 
@@ -83,28 +92,31 @@ If parameters are missing or invalid, the command will:
 **Load Task Context:**
 - Read issue file (TASK.md or BUG.md)
 - Load epic context from `epic:` field in frontmatter (if present)
-- Read relevant ADRs from `docs/architecture/`
+- Read relevant ADRs from `docs/project/adrs/`
 - Read WORKLOG.md for work history and lessons learned (if exists)
 - Read RESEARCH.md for technical decisions and rationale (if exists)
 
-**Test-First Check** (gentle prompts, not blocking):
+**Pragmatic Test-First Check** (gentle guidance, never blocking):
+
+Following `development-loop.md` philosophy: test-first is preferred when you know what to build, but code-first is acceptable when discovering unknowns.
+
 - Look for test files related to this phase
 - If phase is implementation (e.g., "2.2 Implement X"):
   - Check if corresponding test phase exists before it (e.g., "2.1 Write tests for X")
   - If test phase exists but unchecked:
-    - **PROMPT**: "TDD workflow: Phase '2.1 Write tests' should be completed first.
+    - **PROMPT**: "Pragmatic test-first: Phase '2.1 Write tests' should typically come first.
 
       Execute 2.1 first? (yes/skip): _"
-  - **NEVER BLOCK**: Always allow skip, just prompt for best practice
+  - **NEVER BLOCK**: Always allow skip - you may be in discovery mode
 - If no tests found AND about to implement code:
   - **PROMPT**: "⚠️ No tests found for this implementation.
 
-    TDD best practice: Write tests first to clarify requirements.
+    Pragmatic test-first: Write tests first when you know what to build.
 
     Options:
-    1. Auto-generate comprehensive test suite from acceptance criteria (RECOMMENDED)
-    2. I'll write tests manually first
-    3. Skip tests for now (can add later)
+    1. Auto-generate comprehensive test suite from acceptance criteria (RECOMMENDED if requirements are clear)
+    2. I'll write tests manually first (good for learning/experimentation)
+    3. Skip tests for now - I'm in discovery mode (must add tests before phase completion)
 
     Choose (1/2/3): _"
   - **DEFAULT** to option 1 if no user input
@@ -119,6 +131,8 @@ If parameters are missing or invalid, the command will:
 - **Note human contributions**: Check for `/comment` entries from human developers
 
 ### 3. Agent Phase Execution
+
+**Agents follow the development loop**: Read `docs/development/guidelines/development-loop.md` for current workflow configuration including test-first cycle, code review thresholds, quality gates, and agent coordination protocols.
 
 - **Agent selection**: Choose specialist based on phase domain and task requirements
 - **Intelligent context distillation**: Filter and prepare domain-specific context for the selected agent, including WORKLOG insights
@@ -145,24 +159,17 @@ If parameters are missing or invalid, the command will:
 ### 4. Post-Phase WORKLOG Entry
 
 **REQUIRED after phase completion:**
-- **Get current timestamp**: Run `date '+%Y-%m-%d %H:%M'` to get accurate timestamp
-- **Write WORKLOG entry**: Document what was done in ~500 char narrative summary
+- **Get current timestamp**: Run `date '+%Y-%m-%d %H:%M'` (never estimate)
+- **Write WORKLOG entry**: Document what was done following format in `development-loop.md`
 - **Prepend to top**: Add new entry at the beginning (reverse chronological order)
-- **Include lessons learned**: Capture gotchas, unexpected issues, alternative approaches tried
-- **Note files changed**: List key files modified for easy reference
 - **Mark phase complete**: Check off phase in TASK.md Plan section
-- **Reference deep rationale**: If complex technical decisions were made, note "See RESEARCH.md #section-ref"
+- **Consider RESEARCH.md**: If complex technical decisions were made, create RESEARCH.md section (see criteria in `development-loop.md`)
 
-**WORKLOG Entry Format (newest entries first):**
-```markdown
-## YYYY-MM-DD HH:MM - agent-name
-Summary of what was implemented (~500 chars).
-Gotcha: [Any unexpected issues encountered]
-Lesson: [What worked well or what to avoid]
-Files: [key/files/changed.js, other/files.ts]
-```
-
-**Note**: Use `date '+%Y-%m-%d %H:%M'` for timestamp - never estimate the date/time.
+**See `docs/development/guidelines/development-loop.md` Work Documentation section for:**
+- Complete WORKLOG entry format and structure
+- When to create RESEARCH.md vs keep in WORKLOG
+- WORKLOG best practices and examples
+- RESEARCH.md structure and anchoring
 
 ### 5. Task Completion Check
 
@@ -204,51 +211,17 @@ Instead of overwhelming agents with full epic context, provide filtered, relevan
 
 ## Quality Gates
 
-- **Acceptance Criteria**: Validate against user stories from task definition
-- **ADR Compliance**: Follow architectural decisions from `docs/architecture/`
-- **Test Coverage**: 95%+ comprehensive test suite (unit, integration, E2E)
-- **Quality Checks**: Linting, security validation, performance requirements
+**Quality gates are configured in** `docs/development/guidelines/development-loop.md`. Read the guideline for current:
+- Per-phase quality gate requirements
+- Code review score thresholds
+- Test coverage targets
+- Security and performance validation rules
 
-## WORKLOG.md Documentation Requirements
-
-### **WORKLOG Entry Guidelines**
-
-Every phase completion must create a WORKLOG.md entry **at the top** (reverse chronological):
-
-**Entry Structure (newest first):**
-```markdown
-## YYYY-MM-DD HH:MM - agent-name
-Brief summary of work completed (~500 chars).
-Gotcha: [Any unexpected issues or important discoveries]
-Lesson: [What worked well or what to avoid in future]
-Files: [path/to/main/file.js, other/modified/file.ts]
-```
-
-**Required Elements:**
-- **Entry Order**: Reverse chronological (newest entries prepended to top)
-- **Timestamp**: Get from system using `date '+%Y-%m-%d %H:%M'` (NEVER guess the date/time)
-- **Agent identifier**: Name of the agent that did the work (or @username for humans)
-- **Summary**: What was done (implementation details, approach taken)
-- **Gotchas**: Unexpected issues, edge cases, important discoveries
-- **Lessons**: What worked well, what to avoid, better approaches found
-- **Files**: Key files modified (helps locate code changes)
-
-**Critical**: Always run `date '+%Y-%m-%d %H:%M'` before creating WORKLOG entries. Do not use estimated dates.
-
-### **WORKLOG Best Practices**
-
-1. **Keep entries scannable**: ~500 chars is ideal, can be longer if needed for critical gotchas
-2. **Focus on insights**: Document WHY things were done certain ways, not just WHAT was done
-3. **Capture alternatives**: "Tried X but Y worked better because..." helps future work
-4. **Reference deep dives**: "See RESEARCH.md #caching-strategy for full rationale"
-5. **Human-friendly**: Write for developers who will read this weeks/months later
-
-### **When WORKLOG Entries Are Created**
-
-- **After each phase completion** via `/implement` - Agent auto-writes entry
-- **When humans add comments** via `/comment` - Human-written entries with @username
-- **At task completion** - Final summary entry documenting overall results
-- **When discoveries are made** - Mid-phase insights can be added to guide future work
+**Always validate:**
+- Acceptance criteria from task definition
+- ADR compliance from `docs/project/adrs/`
+- Comprehensive test suite coverage
+- Security and performance requirements
 
 ## Branch Management Integration
 
@@ -318,16 +291,9 @@ The `/implement` command integrates with `/branch` for seamless work branch mana
 
 1. **All phases checked**: Verify all Plan checkboxes marked complete
 2. **Acceptance criteria met**: Confirm all user stories and requirements satisfied
-3. **WORKLOG documented**: Final entry summarizing overall task completion
+3. **WORKLOG documented**: Final entry summarizing overall task completion (see `development-loop.md` for completeness criteria)
 4. **Tests passing**: All test suites pass with 95%+ coverage
 5. **Epic consistency**: Task completion properly reflected in epic status (if epic exists)
-
-### **WORKLOG Completeness Check**
-
-- **Narrative continuity**: WORKLOG tells coherent story from start to finish
-- **Lessons captured**: Key gotchas and discoveries documented for future reference
-- **File coverage**: Major implementation files referenced in entries
-- **Human contributions**: Any manual work by developers documented via `/comment`
 
 ## Error Handling
 

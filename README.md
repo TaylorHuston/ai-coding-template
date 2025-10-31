@@ -9,9 +9,9 @@ This is very much an alpha/experiment at this point. Look at the commit history 
 
 This marketplace contains:
 
-- **AI Toolkit Plugin** - Complete workflow system with 14 commands, 20 specialized agents, and intelligent automation
-- **Starter Template** - 30 essential files for clean project initialization via `/toolkit-init`
-- **Guideline Templates** - 6 customizable guideline templates (project configuration files, not plugin docs)
+- **AI Toolkit Plugin** - Complete workflow system with 14 commands, 19 specialized agents, and intelligent automation
+- **Starter Template** - 31 essential files for clean project initialization via `/toolkit-init`
+- **Guideline Templates** - 7 customizable guideline templates (project configuration files, not plugin docs)
 
 ## Quick Start
 
@@ -34,7 +34,7 @@ cd your-project
 
 The `/toolkit-init` command scaffolds your project with:
 - Customized CLAUDE.md (your tech stack and links)
-- Structured template (29 files: docs/, pm/, guidelines, templates)
+- Structured template (31 files: docs/, pm/, guidelines, templates)
 - GETTING-STARTED.md guide
 - Documentation framework (AI creates content as you work)
 - Interactive setup with smart conflict resolution
@@ -48,7 +48,7 @@ The AI Toolkit plugin provides a complete development workflow system:
 - `/toolkit-init` - Initialize project structure with templates
 - `/project-brief` - Create and refine project vision through conversation
 - `/epic` - Create and manage epics through natural language
-- `/architect` - Make technical architecture decisions (ADRs)
+- `/adr` - Make technical architecture decisions (ADRs)
 - `/plan` - Break down tasks into implementation phases
 
 ### Implementation Commands
@@ -64,7 +64,8 @@ The AI Toolkit plugin provides a complete development workflow system:
 ### Development Workflow Commands
 
 - `/commit` - Quality-checked git commits
-- `/merge-branch` - Safe branch merging with validation
+- `/branch` - Unified branch operations (create, merge, delete, switch, status)
+- `/comment` - Add timestamped work log entries
 
 ### Documentation & Status Commands
 
@@ -73,7 +74,7 @@ The AI Toolkit plugin provides a complete development workflow system:
 
 ## Key Features
 
-### 20 Specialized Agents
+### 19 Specialized Agents
 
 Domain experts that auto-activate based on task context:
 
@@ -140,9 +141,9 @@ ai-coding-template/
         ├── .claude-plugin/
         │   └── plugin.json
         ├── commands/              # 14 slash commands
-        ├── agents/                # 20 specialized agents
+        ├── agents/                # 19 specialized agents
         ├── templates/             # Bundled project templates
-        │   └── starter/           # 29 template files
+        │   └── starter/           # 31 template files
         ├── docs/                  # Plugin documentation
         └── README.md
 ```
@@ -174,6 +175,6 @@ MIT License - see `LICENSE` for details.
 
 ## Version
 
-Current version: 0.9.1
+Current version: 0.10.2
 
 See `CHANGELOG.md` for release history and `STATUS.md` for current development status.

@@ -2,7 +2,7 @@
 name: code-architect
 description: System-wide design decisions, architectural planning, and cross-cutting concerns. Use for complex features requiring architectural design, system refactoring, technology decisions, or when changes affect multiple system components. Focus on maintainability, scalability, and long-term system health.
 tools: Read, Write, Edit, MultiEdit, Grep, Glob, TodoWrite, mcp__context7__resolve-library-id, mcp__context7__get-library-docs, mcp__sequential-thinking__sequentialthinking, mcp__gemini-cli__prompt, mcp__serena__find_symbol, mcp__serena__find_referencing_symbols, mcp__serena__insert_after_symbol
-model: claude-opus-4-0
+model: claude-sonnet-4-5
 color: purple
 coordination:
   hands_off_to: [project-manager, api-designer, database-specialist, technical-writer, devops-engineer]

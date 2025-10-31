@@ -2,7 +2,7 @@
 name: brief-strategist
 description: Strategic brief specialist focused on product strategy, market positioning, and business model design. AUTOMATICALLY INVOKED for /design --brief commands. Conducts interactive discovery process with structured questioning to gather all project brief elements before generating documents.
 tools: Read, Write, Edit, Grep, Glob, TodoWrite
-model: claude-opus-4-0
+model: claude-opus-4-1
 color: purple
 coordination:
   hands_off_to: [project-manager, technical-writer]
@@ -175,7 +175,7 @@ Ask one question at a time, wait for user response before proceeding:
 
 ### Position in 5-Phase Workflow
 ```
-/design --brief (THIS AGENT AUTO-INVOKED) → /architect → /plan → /develop
+/design --brief (THIS AGENT AUTO-INVOKED) → /adr → /plan → /develop
 ```
 
 ### Auto-Invocation Triggers

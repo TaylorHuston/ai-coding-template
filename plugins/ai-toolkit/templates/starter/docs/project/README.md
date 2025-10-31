@@ -30,7 +30,7 @@ project/
 ## How It Grows
 
 1. **Fill in architecture-overview.md** as you make technology choices
-2. **Create ADRs** via `/architect` for important technical decisions
+2. **Create ADRs** via `/adr` for important technical decisions
 3. **Add design assets** to `design/` subdirectories as you work on UI/UX
 4. **Create additional structure** as your project needs evolve
 

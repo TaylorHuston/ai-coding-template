@@ -6,6 +6,66 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.10.2] - 2025-10-30
+
+### Added
+
+- **`development-loop.md` guideline**: 7th guideline template added to starter template (826 lines)
+  - Comprehensive AI-assisted development workflow guide
+  - Documents WORKLOG.md and RESEARCH.md usage patterns
+  - Test coverage targets (95% default), quality gates, and best practices
+  - Starter template now includes 31 files (was 30 in v0.10.1)
+
+### Removed
+
+- **`template-maintainer` agent**: Removed from agent roster (20 → 19 agents)
+  - Agent count reduced to 19 specialized domain experts
+  - Updated all documentation to reflect accurate agent count
+
+### Changed
+
+- **BREAKING: `/architect` renamed to `/adr`**: Simplified command with natural language interface
+  - **Old**: Complex flags (`--question`, `--epic`, `--foundation`, `--infrastructure`, `--deep`)
+  - **New**: Natural language only (`/adr`, `/adr "database selection"`)
+  - Removed Direct Question mode (just ask questions in normal conversation)
+  - Removed mode distinctions (Quick/Deep) - all ADRs created through same conversational flow
+  - Command ALWAYS creates an ADR through interactive conversation
+  - **8-step process**: Read Context → Understand → Ask → Present → Discuss → Confirm → Create ADR → Update Architecture Overview
+  - **Comprehensive context reading**: Read best practices, template, **all existing ADRs**, and architecture overview before conversation
+  - **Existing ADRs inform decisions**: Understand decision history, avoid conflicts, reference related decisions, build on previous choices
+  - **Architecture overview integration**: Read `architecture-overview.md` at start to understand current architecture, update at end to reflect new decision
+  - **Quality over speed**: Emphasis on taking time, thinking thoroughly, considering long-term implications (1/3/5 years)
+  - **One question at a time**: Never present wall of questions, build understanding progressively
+  - **Leverage specialist agents**: Consult database-specialist, devops-engineer, security-auditor, etc. for expert analysis
+  - Streamlined command file: 407 lines → 197 lines (52% reduction)
+  - Concrete example conversation showing one-at-a-time questioning
+
+- **`/branch` command simplified**: Moved workflow rules to guideline, reduced prescriptive content
+  - Streamlined command file: 519 lines → 148 lines (71% reduction)
+  - Moved workflow rules, validation details, test execution to `git-workflow.md` guideline
+  - Command now references guideline as **source of truth** for all branching rules
+  - Proper separation of concerns: guidelines define rules, commands enforce them
+  - Eliminated duplication between command and guideline
+  - Command emphasizes: "Always read git-workflow.md FIRST"
+  - Clearer focus: command describes WHAT operations do, guideline defines HOW and WHY
+
+- **`/epic` command simplified**: Moved epic patterns and best practices to guideline, removed verbose content
+  - Streamlined command file: 694 lines → 242 lines (65% reduction)
+  - Removed: Verbose creation/refinement flows (210 lines), multiple examples (143 lines), tips/success criteria/common use cases
+  - Moved to: `pm/README.md` (epic patterns, best practices, file organization, ID numbering)
+  - Command now references `pm/templates/epic.md` and `pm/README.md` as sources of truth
+  - Single comprehensive "Command Instructions" block (like /adr pattern)
+  - One concise example conversation instead of three verbose ones
+  - Eliminated: Tools section, Notes section, Implementation Details (redundant with pm/README.md)
+  - Version: 0.2.0 → 1.0.0
+
+- **Comprehensive reference updates**: All agents, templates, and documentation updated
+  - Updated 19 agent files: HANDOFF.yml → WORKLOG.md references
+  - Updated 24 template files: /architect → /adr references
+  - Updated guideline references across commands
+  - Updated pm/README.md with expanded epic patterns and WORKLOG/RESEARCH guidance
+  - Documentation count corrections: 19 agents (was 20), 31 template files (was 30), 7 guidelines (was 6)
+
 ## [0.10.1] - 2025-10-22
 
 ### Added
@@ -106,7 +166,7 @@ This represents a substantial rewrite to this project, with a heavy emphasis on 
 
 - **`/epic`**: Natural language conversation interface
 
-- **BREAKING: `/architect` ADR location** - Single directory `docs/project/adrs/` (was split across multiple locations)
+- **BREAKING: `/adr` ADR location** - Single directory `docs/project/adrs/` (was split across multiple locations)
   - Migration: Move existing ADRs to `docs/project/adrs/` and renumber
 
 - **Phase-based planning**: Test-first patterns in `/epic`, `/plan`, `/implement` (flexible, not required)
@@ -594,7 +654,7 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 - **Comprehensive Testing Integration**: Hybrid TDD/BDD testing strategy with extensive coverage requirements built into the commands and workflow
   - 95%+ test coverage target enforced across all development phases
   - BDD test scenarios generated from acceptance criteria in `/design` phase
-  - Testing architecture decisions documented in `/architect` phase ADRs
+  - Testing architecture decisions documented in `/adr` phase ADRs
   - Dedicated testing tasks created during `/plan` phase
   - Test-first development enforced in `/develop` phase with auto-invoked test-engineer agent
   - New testing-specific templates for comprehensive test planning and execution
@@ -607,7 +667,7 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 
 - **Enhanced Command Integration**: All commands updated for epic workflow
   - `/design` creates epic structures, task directories, and BDD test scenarios
-  - `/architect` uses Quick/Deep modes with optimized ADR generation and agent coordination
+  - `/adr` uses Quick/Deep modes with optimized ADR generation and agent coordination
   - `/plan` adds X.Y.Z implementation details, agent coordination, and dedicated testing tasks
   - `/develop` executes with full epic context, dependency management, and test-first enforcement
 
@@ -620,7 +680,7 @@ Missing, issues with Claude Code prematurely publishing NPM versions and burning
 ### Removed
 
 - **Deprecated Commands**: Streamlined command system by removing redundant and obsolete commands
-  - `/feature-development` - Replaced by epic-driven `/design` → `/architect` → `/plan` → `/develop` workflow
+  - `/feature-development` - Replaced by epic-driven `/design` → `/adr` → `/plan` → `/develop` workflow
   - `/health-check` - Functionality consolidated into `/quality assess` command
   - `/progress` - Progress tracking integrated into `/status --detailed` command
   - **Command reduction**: 17 → 14 commands (18% reduction) with improved clarity and no functionality loss

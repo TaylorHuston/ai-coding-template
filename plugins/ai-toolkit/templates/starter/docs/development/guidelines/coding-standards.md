@@ -12,6 +12,8 @@ indent_size: 2
 
 # Coding Standards
 
+**Referenced by Commands:** _None currently_ (available for code quality tools and agent guidance)
+
 ## Quick Reference
 
 This guideline defines our code style, naming conventions, and file organization. Update as you establish project conventions.

@@ -165,13 +165,4 @@ Documentation follows project structure:
 - **Examples**: Code examples tested and accurate
 - **Links**: All references valid and current
 
-## Notes
-
-This command consolidates previous separate documentation commands:
-- Replaces `/docs-generate` (generation)
-- Replaces `/docs-validate` (validation)
-- Replaces `/docs-sync` (synchronization)
-- Replaces `/docs-update` (updating)
-- Replaces `/docs-health` (health analysis)
-
 All functionality preserved - natural language determines the action.

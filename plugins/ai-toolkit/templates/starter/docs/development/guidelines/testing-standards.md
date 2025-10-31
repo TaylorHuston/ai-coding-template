@@ -3,20 +3,24 @@
 testing_framework: "TBD"      # vitest, jest, mocha, etc.
 e2e_framework: "TBD"          # playwright, cypress, etc.
 test_location: "TBD"          # tests/, src/**/*.test.ts, etc.
-coverage_target: 70
 test_priority: "TBD"          # unit-first, integration-first, e2e-first
 run_command: "npm test"
+# Note: Coverage target is configured in development-loop.md (test_coverage_target)
 ---
 
 # Testing Standards
+
+**Referenced by Commands:** `/test-fix`
 
 ## Quick Reference
 
 This guideline defines our testing approach, frameworks, and conventions. Update as you make testing decisions.
 
+**Coverage Target**: See `development-loop.md` for coverage target configuration (default: 95%).
+
 ## Our Testing Philosophy
 
-**Priority**: TBD → Run `/architect "testing strategy"` to decide
+**Priority**: TBD → Run `/adr "testing strategy"` to decide
 
 - Will we focus on unit tests, integration tests, or E2E tests?
 - What's our coverage target?
@@ -27,11 +31,11 @@ This guideline defines our testing approach, frameworks, and conventions. Update
 ### Unit/Integration Testing
 - **Framework**: TBD
 - **Runner**: TBD
-- Run `/architect "unit testing framework"` to decide
+- Run `/adr "unit testing framework"` to decide
 
 ### E2E Testing
 - **Framework**: TBD
-- Run `/architect "E2E testing framework"` to decide
+- Run `/adr "E2E testing framework"` to decide
 
 ### Component Testing (if frontend)
 - **Framework**: TBD
@@ -58,6 +62,15 @@ npm test:coverage     # With coverage report
 ```
 
 Update these commands based on your actual test scripts.
+
+## Quality Gates
+
+**Test-related quality gates** are defined in `development-loop.md`:
+- **Coverage target**: Configured in development-loop.md frontmatter (default: 95%)
+- **Test passage**: All tests must pass before phase completion
+- **Test types**: Unit, integration, and E2E requirements per phase
+
+See `development-loop.md` for complete quality gate configuration.
 
 ## Examples
 

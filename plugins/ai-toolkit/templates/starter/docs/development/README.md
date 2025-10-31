@@ -7,7 +7,7 @@ This directory contains **project-specific development guidelines** that configu
 Guidelines are **configuration files** (like package.json or tsconfig.json) that tell AI agents how your project works. They use YAML frontmatter for machine-readable settings and markdown for human-readable explanations.
 
 Think of them like the ADR template:
-- `/architect` reads `adr-template.md` to know what ADR sections to create
+- `/adr` reads `adr-template.md` to know what ADR sections to create
 - `/implement` reads `testing-standards.md` to know your testing approach
 - All agents read relevant guidelines to adapt to your project's patterns
 
@@ -20,7 +20,7 @@ Each guideline has 3 parts:
 ---
 testing_framework: "vitest"
 test_location: "tests/"
-coverage_target: 80
+# Coverage target configured in development-loop.md
 ---
 ```
 
@@ -63,11 +63,11 @@ testing_framework: "TBD"
 ```
 
 ### Phase 2: Architecture Decisions
-When you run `/architect`, it updates guidelines:
+When you run `/adr`, it updates guidelines:
 ```
-User: "/architect Should we use REST or tRPC?"
+User: "/adr Should we use REST or tRPC?"
 
-/architect:
+/adr:
 1. Analyzes options
 2. Creates ADR-001-use-trpc.md
 3. Updates api-guidelines.md:
@@ -190,9 +190,9 @@ The AI Toolkit itself follows these guidelines:
 
 **Filling in guidelines**:
 ```bash
-/architect "testing strategy"     # Helps decide testing approach
-/architect "API architecture"     # Helps choose API pattern
-/architect "git workflow"         # Helps establish branching strategy
+/adr "testing strategy"     # Helps decide testing approach
+/adr "API architecture"     # Helps choose API pattern
+/adr "git workflow"         # Helps establish branching strategy
 ```
 
 **Understanding patterns**:

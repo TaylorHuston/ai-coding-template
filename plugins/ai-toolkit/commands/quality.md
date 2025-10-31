@@ -10,6 +10,8 @@ description: "Comprehensive quality assessment with multi-agent coordination"
 argument-hint: "[assess|validate|audit|fix] [--scope SCOPE] [--depth DEPTH] [--focus FOCUS]"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
 model: claude-sonnet-4-5
+references_guidelines:
+  - docs/development/guidelines/development-loop.md  # Quality dimensions, quality gates, thresholds
 ---
 
 # /quality Command
@@ -128,48 +130,35 @@ Intelligent issue resolution with agent-guided fixes.
 
 ## Quality Dimensions
 
-The `/quality` command assesses multiple dimensions:
+**Quality dimensions are configured in** `docs/development/guidelines/development-loop.md` (YAML frontmatter). The command reads this configuration to determine which quality aspects to assess and which agents to invoke.
 
-```yaml
-quality_dimensions:
-  code_quality:
-    metrics: [complexity, maintainability, readability, duplication]
-    agent: code-reviewer
-    approach: AI-driven code analysis with integrated linting tools
+**Default Dimensions** (customizable in guideline file):
+- **code_quality** - Complexity, maintainability, readability, duplication (code-reviewer agent)
+- **security** - Vulnerabilities, compliance, secure coding (security-auditor agent)
+- **performance** - Speed, efficiency, resource usage, scalability (performance-optimizer agent)
+- **testing** - Coverage, effectiveness, reliability (test-engineer agent)
+- **documentation** - Completeness, accuracy, clarity (technical-writer agent)
+- **architecture** - Design patterns, separation of concerns (code-architect agent)
 
-  security:
-    metrics: [vulnerabilities, compliance, best practices]
-    agent: security-auditor
-    approach: AI-driven security analysis with dependency scanning
+**Teams can customize which dimensions are enabled** based on their priorities:
+- Startups might drop documentation for speed
+- Regulated industries might add compliance dimensions
+- Performance-critical apps focus on performance dimension
+- See `development-loop.md` for customization examples
 
-  performance:
-    metrics: [bottlenecks, optimization, scalability]
-    agent: performance-optimizer
-    approach: AI-driven performance analysis with profiling integration
-
-  testing:
-    metrics: [coverage, effectiveness, reliability]
-    agent: test-engineer
-    approach: AI-driven test analysis with coverage tool integration
-
-  documentation:
-    metrics: [completeness, accuracy, freshness]
-    agent: technical-writer
-    approach: AI-driven documentation validation and link checking
-
-  architecture:
-    metrics: [design patterns, coupling, cohesion]
-    agent: code-architect
-    approach: AI-driven architectural analysis and pattern recognition
-```
+**Benefits of configurable dimensions:**
+- Focus quality efforts where they matter most
+- Adapt quality focus as project matures
+- Match team priorities and constraints
+- Reduce unnecessary quality overhead for MVPs
 
 ## Integration with Workflow
 
-The `/quality` command integrates seamlessly with the core workflow:
+The `/quality` command integrates seamlessly with the core workflow. Read `docs/development/guidelines/development-loop.md` for current quality gate configuration.
 
 ### During `/implement` Phase
 - Automatic quality validation between phases
-- Progressive quality gate enforcement
+- Progressive quality gate enforcement (configured in development-loop.md)
 - Context-aware quality recommendations
 
 ### Pre-Commit Validation

@@ -9,7 +9,9 @@ tags: ["workflow", "security", "audit", "compliance"]
 description: "OWASP-compliant security assessment with vulnerability remediation"
 argument-hint: "[--scope SCOPE] [--depth DEPTH] [--compliance FRAMEWORK] [--output FORMAT]"
 allowed-tools: ["Read", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
-model: claude-opus-4-0
+model: claude-opus-4-1
+references_guidelines:
+  - docs/development/guidelines/security-guidelines.md  # Security practices and compliance requirements
 ---
 
 # /security-audit Command

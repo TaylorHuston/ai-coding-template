@@ -12,14 +12,18 @@ your-project/
 ├── docs/
 │   ├── project-brief.md    # Your vision (start here!)
 │   ├── project/            # Architecture, ADRs, design assets
-│   └── development/        # Guidelines (6 customizable templates)
+│   └── development/        # Guidelines (7 customizable templates)
 └── pm/
     ├── epics/              # Feature planning
     ├── issues/             # Tasks and bugs
     └── templates/          # Issue templates
 ```
 
-**Why minimal?** The AI Toolkit builds what you need, when you need it. No empty placeholders or stale examples.
+**31 files organized for clarity:**
+- **9 core files**: Project essentials (CLAUDE.md, README.md, etc.)
+- **22 structure files**: Guidelines (7), templates (4), documentation (5), placeholders (6)
+
+**Why this approach?** Guidelines and templates provide structure without overwhelming you. The AI Toolkit builds content as you work - no stale examples, just living documentation.
 
 ## Quick Start
 
@@ -37,7 +41,7 @@ Create an epic to organize related work. The AI helps you break it down into tas
 
 ### 3. Make Architecture Decisions
 ```bash
-/architect
+/adr
 ```
 Explore technical solutions and create ADRs (Architecture Decision Records).
 
@@ -127,19 +131,20 @@ Commands automatically read and enforce these rules.
 Each command is conversational and guides you through its workflow:
 - `/project-brief` asks questions to fill in your vision
 - `/epic` helps structure features with acceptance criteria
-- `/architect` explores options and creates ADRs
+- `/adr` explores options and creates ADRs
 - `/plan` breaks work into testable phases
 - `/implement` executes with domain-specific agents
 
 ### Structure Emerges
 As you work, the AI creates documentation automatically:
-- **ADRs** from `/architect` sessions
+- **ADRs** from `/adr` sessions
 - **Task plans** from `/plan` command
 - **Implementation notes** during `/implement`
 - **Test plans** integrated throughout
 
 ### Guidelines Adapt
-Your project includes 6 customizable guideline templates in `docs/development/guidelines/`:
+Your project includes 7 customizable guideline templates in `docs/development/guidelines/`:
+- `development-loop.md` - AI-assisted workflow and quality gates
 - `api-guidelines.md` - API patterns and structure
 - `testing-standards.md` - Testing approach
 - `git-workflow.md` - Branching and commits
@@ -147,7 +152,7 @@ Your project includes 6 customizable guideline templates in `docs/development/gu
 - `security-guidelines.md` - Security practices
 - `architectural-principles.md` - Design philosophy
 
-Start with TBD placeholders, fill in via `/architect` decisions, customize as needed.
+Start with TBD placeholders, fill in via `/adr` decisions, customize as needed.
 
 ## Next Steps
 
@@ -163,7 +168,7 @@ Start with TBD placeholders, fill in via `/architect` decisions, customize as ne
 | `/toolkit-init` | Initialize project structure |
 | `/project-brief` | Create/update project vision |
 | `/epic` | Plan features and epics |
-| `/architect` | Make technical decisions (ADRs) |
+| `/adr` | Make technical decisions (ADRs) |
 | `/plan TASK-###` | Break down implementation |
 | `/implement TASK-### PHASE` | Execute specific phases |
 | `/branch` | Branch operations (create, merge, delete, switch) |
@@ -175,7 +180,7 @@ Start with TBD placeholders, fill in via `/architect` decisions, customize as ne
 
 ## Specialized Agents
 
-The AI Toolkit includes **20 specialized agents** that automatically activate based on your work:
+The AI Toolkit includes **19 specialized agents** that automatically activate based on your work:
 
 | Agent | Domain | Auto-Activates For |
 |-------|--------|-------------------|
@@ -197,9 +202,83 @@ The AI Toolkit includes **20 specialized agents** that automatically activate ba
 | **refactoring-specialist** | Code cleanup | Technical debt reduction |
 | **migration-specialist** | Upgrades | Framework migrations |
 | **data-analyst** | Data processing | Analytics, reporting |
-| **ai-llm-expert** | AI/ML | LLM architecture, AI integration |
+| **ai-llm-expert** | AI/ML | AI architecture, LLM integration |
 
-**You don't need to invoke agents manually** - they activate automatically when you use commands like `/implement`, `/architect`, or `/quality`.
+**You don't need to invoke agents manually** - they activate automatically when you use commands like `/implement`, `/adr`, or `/quality`.
+
+## Commands vs Agents: When to Use Which?
+
+Understanding the distinction between **slash commands** and **agents** helps you work more effectively:
+
+### Commands = Structured Workflow Actions
+
+**Use commands when you want:**
+- Structured workflows with specific file outputs
+- Files created in standard locations with required sections
+- Process enforcement and consistency
+
+**Examples:**
+```bash
+/epic                      # Creates pm/epics/EPIC-###-name.md
+/plan TASK-001             # Adds Plan section to TASK.md
+/adr                       # Creates docs/project/adrs/ADR-###.md
+/implement TASK-001 1.1    # Executes phase, updates WORKLOG.md
+```
+
+Commands orchestrate agents and enforce project structure.
+
+### Agents = Expert Consultation & Automation
+
+**Use agents (via conversation) when you want:**
+- Expert advice without creating files
+- Quick answers to technical questions
+- Exploration without committing to structure
+
+**Examples:**
+```
+"How should I structure this authentication flow?"
+→ backend-specialist provides guidance
+
+"Review this code for security issues"
+→ security-auditor analyzes and advises
+
+"What's the best way to handle real-time updates?"
+→ backend-specialist + performance-optimizer discuss options
+```
+
+Agents provide expertise without enforcing file structure.
+
+### When Both Exist
+
+Some workflows have both command and agent versions:
+
+**`/quality` command:**
+- Comprehensive quality report across entire codebase
+- Generates quality metrics and analysis
+- Use for: Explicit quality audits, pre-release checks
+
+**`code-reviewer` agent (auto-invoked):**
+- Per-phase code review during `/implement`
+- Provides score (0-100) and iterates until ≥90
+- Use for: Automatic quality gates during development
+
+**`/docs` command:**
+- Documentation management and synchronization
+- Updates docs across entire project
+- Use for: Explicit documentation updates
+
+**`technical-writer` agent (auto-invoked):**
+- Auto-updates docs when code changes
+- Maintains doc-code consistency
+- Use for: Automatic documentation during `/implement`
+
+### Rule of Thumb
+
+- **Want a file created?** → Use a command
+- **Want expert advice?** → Ask directly (agent activates)
+- **Want automated workflow?** → Commands invoke agents automatically
+
+Both approaches work together - commands orchestrate agents to deliver complete workflows.
 
 ## Need More Information?
 
@@ -207,7 +286,7 @@ The AI Toolkit includes **20 specialized agents** that automatically activate ba
 
 - "How does the security-auditor agent work?"
 - "When should I use the code-architect vs api-designer?"
-- "How does the /architect command work?"
+- "How does the /adr command work?"
 - "Show me the full command workflow"
 - "What's the difference between /epic and /plan?"
 

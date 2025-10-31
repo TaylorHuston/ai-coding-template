@@ -9,7 +9,7 @@ tags: ["workflow", "strategy", "project-brief", "vision", "planning", "collabora
 description: "Fill and improve project brief through gap-driven conversation"
 argument-hint: "[--review] [--force]"
 allowed-tools: ["Read", "Write", "Edit", "Task", "TodoWrite"]
-model: claude-opus-4-0
+model: claude-opus-4-1
 ---
 
 # /project-brief Command
@@ -443,7 +443,7 @@ Run /project-brief to address these gaps.
 
 - **`/toolkit-init`**: Creates initial brief with Overview filled, other sections empty
 - **`/epic`**: Create feature epics after brief is clear
-- **`/architect`**: Make technical decisions aligned with brief
+- **`/adr`**: Make technical decisions aligned with brief
 
 ## Tools
 

@@ -236,7 +236,7 @@ The context-analyzer agent provides enhanced insights:
 
 ## Integration with Core Workflow
 
-### During `/architect` Phase
+### During `/adr` Phase
 - Architecture readiness assessment
 - Technical feasibility insights
 - Risk factor identification

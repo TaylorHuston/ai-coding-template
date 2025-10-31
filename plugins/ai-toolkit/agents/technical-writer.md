@@ -6,7 +6,7 @@ script_integration:
   primary_scripts: [docs/docs-tool.js]
   supporting_scripts: [docs/docs-manager.sh, quality/validate.js]
   invocation: "Automatically invoke scripts as needed during task execution"
-model: claude-opus-4-0
+model: claude-sonnet-4-5
 color: teal
 coordination:
   hands_off_to: [code-reviewer, project-manager]
@@ -332,19 +332,19 @@ auto_generation_framework:
   architecture_documentation:
     tech_stack_analysis:
       - Extract technology stack from package.json, requirements.txt, etc.
-      - Generate docs/architecture/tech-stack.md automatically
+      - Generate docs/project/adrs/tech-stack.md automatically
       - Include version information and key dependencies
       - Document rationale for technology choices
 
     system_overview:
       - Analyze project structure and component relationships
-      - Generate docs/architecture/system-overview.md
+      - Generate docs/project/adrs/system-overview.md
       - Create component interaction diagrams
       - Document high-level architecture patterns
 
     dependency_mapping:
       - Extract and visualize dependency relationships
-      - Generate docs/architecture/dependency-graph.md
+      - Generate docs/project/adrs/dependency-graph.md
       - Identify potential coupling issues
       - Document integration patterns
 
@@ -366,7 +366,7 @@ auto_generation_framework:
       - Monitor significant architectural decisions during development
       - Generate .decisions/YYYY-MM-DD-decision-title.md files
       - Link decisions to relevant code changes
-      - Create summary in docs/architecture/technical-decisions.md
+      - Create summary in docs/project/adrs/technical-decisions.md
 ```
 
 **Generation Triggers and Automation**

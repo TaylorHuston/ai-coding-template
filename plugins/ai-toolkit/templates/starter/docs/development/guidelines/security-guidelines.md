@@ -10,6 +10,8 @@ secrets_management: "TBD"      # env vars, vault, etc.
 
 # Security Guidelines
 
+**Referenced by Commands:** `/security-audit`
+
 ## Quick Reference
 
 This guideline defines our security approach, authentication patterns, and compliance requirements. Update as you make security decisions.
@@ -27,7 +29,7 @@ This guideline defines our security approach, authentication patterns, and compl
 
 ### Strategy
 
-**Method**: TBD → Run `/architect "authentication strategy"` to decide
+**Method**: TBD → Run `/adr "authentication strategy"` to decide
 
 - JWT (stateless, scalable)
 - Session-based (server-side state)
@@ -45,7 +47,7 @@ This guideline defines our security approach, authentication patterns, and compl
 
 ### Model
 
-**Approach**: TBD → Run `/architect "authorization model"` to decide
+**Approach**: TBD → Run `/adr "authorization model"` to decide
 
 - **RBAC** (Role-Based Access Control): Users have roles with permissions
 - **ABAC** (Attribute-Based Access Control): Policy-based decisions

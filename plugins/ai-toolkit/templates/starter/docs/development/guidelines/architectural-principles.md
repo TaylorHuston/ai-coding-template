@@ -10,6 +10,8 @@ database_access: "TBD"         # ORM, query builder, raw SQL
 
 # Architectural Principles
 
+**Referenced by Commands:** `/adr`
+
 ## Quick Reference
 
 This guideline defines our design philosophy, architectural patterns, and decision-making principles. Update as you make foundational architecture decisions.
@@ -37,7 +39,7 @@ These principles guide all architectural and code decisions:
 
 ## Architecture Style
 
-**Pattern**: TBD → Run `/architect "system architecture"` to decide
+**Pattern**: TBD → Run `/adr "system architecture"` to decide
 
 - **Monolith**: Single deployable unit, shared database
 - **Modular Monolith**: Monolith with clear module boundaries
@@ -85,7 +87,7 @@ Examples:
 
 ### When to Create an ADR
 
-Run `/architect` and create an ADR for:
+Run `/adr` and create an ADR for:
 - Technology choices (framework, database, language)
 - Architectural patterns (microservices, event-driven, etc.)
 - System boundaries and integration patterns

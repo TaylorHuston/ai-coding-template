@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-Comprehensive AI-assisted development workflow system for Claude Code with 14 commands, 20 specialized agents, and intelligent state management.
+Comprehensive AI-assisted development workflow system for Claude Code with 14 commands, 19 specialized agents, and intelligent state management.
 
 ## Quick Start
 
@@ -24,9 +24,9 @@ cd my-project
 ## What You Get
 
 - **14 Workflow Commands** - Complete `/project-brief` → `/epic` → `/plan` → `/implement` cycle + utilities
-- **20 Specialized Agents** - Domain experts (frontend, backend, security, testing, etc.)
+- **19 Specialized Agents** - Domain experts (frontend, backend, security, testing, etc.)
 - **3 Bundled MCP Servers** - Auto-configured tools (context7, sequential-thinking, playwright)
-- **Starter Template** - 30 essential files for clean project initialization
+- **Starter Template** - 31 files (9 core + 22 structure) for organized project initialization
 - **File-Based State** - Session continuity via EPIC.md, TASK.md, WORKLOG.md, RESEARCH.md
 - **Technology Agnostic** - Works with any tech stack
 
@@ -41,6 +41,75 @@ This plugin automatically configures essential MCP servers:
 No manual MCP configuration required! These tools are ready immediately after plugin installation.
 
 **Optional MCP Servers**: For larger codebases (20+ files), consider adding [Serena](./docs/OPTIONAL-MCP-SERVERS.md) for semantic code analysis.
+
+## Model Selection Philosophy
+
+The AI Toolkit uses different Claude models strategically based on task requirements:
+
+### Sonnet 4.5 - Primary Workhorse (15 agents + 10 commands)
+
+**Performance**: Best coding model in the world (77.2% SWE-bench), strongest for agents (30+ hours autonomous), best computer use (61.4% OSWorld)
+
+**Cost**: $3/$15 per million tokens (5x cheaper than Opus)
+
+**Used For**:
+- **All specialist agents**: frontend, backend, database, devops, api, performance, ui-ux, data, migration, refactoring
+- **Code-focused agents**: code-architect, test-engineer, code-reviewer, technical-writer
+- **Execution commands**: /implement, /plan, /quality, /branch, /commit, /docs, /status, /test-fix, /toolkit-init, /comment
+
+**Why**: Sonnet 4.5 excels at coding, code generation, documentation, and autonomous operation. Its superior performance at lower cost makes it ideal for hands-on development work.
+
+### Opus 4.1 - Strategic Reasoning (4 agents + 4 commands)
+
+**Performance**: 64K extended thinking tokens, 98.76% safety refusal rate, exceptional multi-step reasoning
+
+**Cost**: $15/$75 per million tokens (premium pricing)
+
+**Used For**:
+- **Strategic agents**: project-manager (orchestration), security-auditor (safety-critical), brief-strategist (product strategy), ai-llm-expert (meta-reasoning)
+- **Planning commands**: /project-brief, /epic, /adr, /security-audit
+
+**Why**: Opus 4.1's extended reasoning (64K thinking tokens) and superior safety make it ideal for high-stakes decisions, strategic planning, security analysis, and complex orchestration.
+
+### Haiku - Fast Analysis (1 agent)
+
+**Performance**: Fastest Claude model, optimized for speed
+
+**Used For**:
+- **context-analyzer**: Quick investigation, bug diagnosis, evidence gathering
+
+**Why**: When speed matters more than depth, Haiku provides rapid analysis for initial investigation and context gathering.
+
+### Selection Criteria
+
+**Choose Sonnet 4.5 when:**
+- Writing or analyzing code
+- Generating documentation
+- Building features autonomously
+- Multi-file refactoring
+- Test creation and execution
+
+**Choose Opus 4.1 when:**
+- Strategic planning (epics, briefs, ADRs)
+- Security-critical decisions
+- Complex orchestration across multiple agents
+- High-stakes architecture decisions
+- Extended multi-step reasoning needed
+
+**Choose Haiku when:**
+- Quick context analysis
+- Fast investigation
+- Initial bug triage
+
+### Cost Optimization
+
+Using Sonnet 4.5 for execution work (coding, testing, documentation) while reserving Opus 4.1 for strategic decisions provides optimal cost/performance:
+
+- **90% of work**: Sonnet 4.5 at $3/$15 (coding, implementation, documentation)
+- **10% of work**: Opus 4.1 at $15/$75 (planning, strategy, security)
+- **Result**: ~5x cost savings while maintaining quality where it matters
+
+**Users can override model selection** in command/agent frontmatter if their use case requires different allocation.
 
 ## Installation
 
@@ -87,7 +156,7 @@ my-project/
 
 **Setup & Strategy**: `/toolkit-init`, `/project-brief`
 **Epic Management**: `/epic`
-**Workflow**: `/architect`, `/plan`, `/implement`
+**Workflow**: `/adr`, `/plan`, `/implement`
 **Quality**: `/quality`, `/security-audit`, `/test-fix`
 **Development**: `/branch`, `/commit`, `/comment`
 **Documentation & Status**: `/docs`, `/status`

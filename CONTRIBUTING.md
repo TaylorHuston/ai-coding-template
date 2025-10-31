@@ -42,7 +42,7 @@ cd ai-coding-template
 
 ### 2. Workflow
 - Use feature branches for all changes
-- Follow the `/vision → /feature → /architect → /plan → /develop` workflow for substantial changes
+- Follow the `/vision → /feature → /adr → /plan → /develop` workflow for substantial changes
 - Run quality checks before committing: `./.githooks/pre-commit`
 
 ### 3. Quality Standards

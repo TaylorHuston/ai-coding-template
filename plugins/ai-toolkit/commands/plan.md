@@ -9,7 +9,9 @@ tags: ["workflow", "planning", "implementation"]
 description: "Add implementation plan with phase-based breakdown to individual tasks and bugs"
 argument-hint: "TASK-### | BUG-###"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
-model: claude-opus-4-0
+model: claude-sonnet-4-5
+references_guidelines:
+  - docs/development/guidelines/development-loop.md  # Development workflow configuration, test-first patterns
 ---
 
 # /plan Command
@@ -27,9 +29,8 @@ model: claude-opus-4-0
 - Locates file in `pm/issues/` directory (e.g., `pm/issues/TASK-001-*/TASK.md` or `pm/issues/BUG-003-*/BUG.md`)
 - Reads appropriate template (`pm/templates/task.md` or `pm/templates/bug.md`) for structure requirements
 - Reads epic context from `epic:` field in YAML frontmatter (if present)
-- Loads relevant architecture decisions from `docs/architecture/ADR-*.md`
+- Loads relevant architecture decisions from `docs/project/adrs/ADR-*.md`
 - Adds or updates "Plan" section with phase-based breakdown following template
-- Creates `HANDOFF.yml` for agent coordination if not exists
 - Performs complexity analysis and suggests decomposition if needed
 
 **Re-running**: Run command again on same ID to update/refine existing plan
@@ -49,26 +50,29 @@ model: claude-opus-4-0
 4. **Load epic context** (if applicable):
    - Extract `epic: EPIC-###` from YAML frontmatter
    - Read `pm/epics/EPIC-###-name.md` for feature context
-5. **Load architecture**: Read relevant `docs/architecture/ADR-*.md` files
+5. **Load architecture**: Read relevant `docs/project/adrs/ADR-*.md` files
 6. **Assess complexity**: Analyze issue for complexity indicators
 
 ### **Complexity Analysis**
 
-**Scoring System**:
-- **Multi-domain integration** (+3 points): API + database, frontend + backend, UI + server
-- **Security implementation** (+2 points): Authentication, authorization, encryption, permissions
-- **Database schema changes** (+2 points): Migrations, schema modifications, data transformations
-- **External integrations** (+2 points): Third-party APIs, service connections, webhooks
-- **Performance optimization** (+2 points): Scaling, optimization, performance tuning
-- **UI/UX implementation** (+1 point): Component creation, interface design, responsive work
-- **Testing requirements** (+1 point): Test creation, validation, quality assurance
+**Complexity scoring is configured in** `docs/development/guidelines/development-loop.md` (YAML frontmatter). The command reads this configuration to score tasks and recommend decomposition.
 
-**Decomposition Recommendations**:
-- **High complexity (≥5 points)**: Suggest breaking into subtasks with focused responsibilities
-- **Medium complexity (3-4 points)**: Consider decomposition based on timeline
-- **Low complexity (≤2 points)**: Task appropriately scoped
+**How It Works:**
+1. Analyzes task for complexity indicators (multi-domain integration, security, database changes, etc.)
+2. Assigns points based on configured scoring rules
+3. Compares total score to thresholds (high/medium/low complexity)
+4. Recommends decomposition for high-complexity tasks (≥5 points by default)
+
+**Teams can customize:**
+- Point values for each complexity indicator
+- Decomposition thresholds based on team experience
+- Which indicators matter most for their context
+
+See `docs/development/guidelines/development-loop.md` "Complexity Scoring" section for configuration and customization examples.
 
 ### **Plan Creation**
+
+**Phase structures drive the development loop**: Read `docs/development/guidelines/development-loop.md` for current workflow configuration that agents will follow during implementation.
 
 1. **Suggest phase structure**: Based on task type, suggest logical phases
    - **Default for implementation**: Design → Test-Driven Implementation → Integration → Documentation
@@ -82,11 +86,7 @@ model: claude-opus-4-0
    - Include test-first patterns (Red-Green-Refactor) when appropriate
    - Note: "Phases are suggestions. Modify to fit your workflow!"
 
-3. **Create HANDOFF.yml**: Generate agent coordination file if not exists
-   - Assign appropriate specialists based on complexity analysis
-   - Include handoff state and coordination metadata
-
-4. **Suggest patterns**: Show alternative test-first patterns as options:
+3. **Suggest patterns**: Show alternative test-first patterns as options:
    - **Strict TDD** (Red-Green-Refactor cycle visible)
    - **BDD Scenarios** (Given/When/Then → implementation)
    - **Test Pyramid** (heavy unit, moderate integration, light E2E)
@@ -100,17 +100,12 @@ model: claude-opus-4-0
   - Test-first patterns embedded
   - Human-AI collaboration friendly (check off manually or via /implement)
 
-- **pm/issues/TASK-###-name/HANDOFF.yml** or **pm/issues/BUG-###-name/HANDOFF.yml**: Agent coordination file (if created)
-  - Current agent assignments
-  - Handoff state tracking
-  - Domain specialist recommendations
-
 ## Integration with Workflow
 
 **Position**: After task creation (via /epic or other means), before /implement
 
 - **After task creation**: Takes requirements and acceptance criteria as input
-- **After /architect**: Incorporates technical decisions from ADRs
+- **After /adr**: Incorporates technical decisions from ADRs
 - **Before /implement**: Provides detailed implementation roadmap with agent coordination
 - **Complexity-aware**: Suggests decomposition when tasks are too complex
 
@@ -189,6 +184,8 @@ As a new user, I want to create an account with email and password, So that I ca
 
 ## Testing Best Practices (Recommendations)
 
+**Test-first development cycle** is configured in `docs/development/guidelines/development-loop.md`. Read the guideline for current workflow settings, code review thresholds, coverage targets, and quality gate requirements.
+
 **Focus testing effort on:**
 - ✅ Business logic and algorithms
 - ✅ Complex conditional flows
@@ -232,7 +229,6 @@ When implementing `/plan TASK-###` or `/plan BUG-###`:
 5. **Analyze complexity**: Calculate score and suggest decomposition if ≥5 points
 6. **Generate phases**: Create contextually appropriate phase breakdown
 7. **Add/update Plan**: Insert Plan section or update if already exists
-8. **Create HANDOFF.yml**: Generate coordination file if not present
-9. **Confirm with user**: Present plan and ask for modifications
+8. **Confirm with user**: Present plan and ask for modifications
 
 **Key principle**: Transform requirements into executable implementation steps with clear test-first guidance.

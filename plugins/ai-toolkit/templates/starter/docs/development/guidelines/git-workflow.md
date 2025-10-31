@@ -10,9 +10,50 @@ squash_merge: false
 merge_rules:
   to_develop: "tests_pass"             # All tests must pass
   to_main: "staging_validated"         # Staging deployment validated
+
+# Commit Type Inference (for branch-aware commits)
+commit_type_inference:
+  # File pattern-based type detection
+  patterns:
+    test_files:
+      pattern: ["**/*.test.*", "**/*.spec.*", "tests/**", "test/**", "__tests__/**"]
+      type: "test"
+
+    doc_files:
+      pattern: ["**/*.md", "docs/**", "documentation/**", "README*"]
+      type: "docs"
+
+    config_files:
+      pattern: ["**/*.config.*", "**/*.json", "**/*.yaml", "**/*.yml", ".*rc", ".*ignore"]
+      type: "chore"
+
+    style_files:
+      pattern: ["**/*.css", "**/*.scss", "**/*.sass", "**/*.less"]
+      type: "style"
+
+    build_files:
+      pattern: ["**/package*.json", "**/Makefile", "**/Dockerfile", "**/*.build.*"]
+      type: "build"
+
+  # Keyword-based type detection (from commit message or file content)
+  keywords:
+    fix: ["fix", "bug", "issue", "error", "crash", "patch"]
+    feat: ["feature", "add", "new", "implement"]
+    refactor: ["refactor", "restructure", "cleanup", "improve"]
+    perf: ["performance", "optimize", "faster", "speed"]
+    docs: ["document", "readme", "guide", "tutorial"]
+    test: ["test", "spec", "coverage"]
+    style: ["style", "format", "lint", "prettier"]
+    chore: ["chore", "deps", "dependency", "version", "release"]
+    ci: ["ci", "cd", "workflow", "pipeline", "github"]
+
+  # Default type when no pattern matches
+  default_type: "feat"  # New files default to feat (new feature)
 ---
 
 # Git Workflow Guidelines
+
+**Referenced by Commands:** `/branch`, `/commit`, `/implement`
 
 ## Quick Reference
 
@@ -63,22 +104,44 @@ bugfix/BUG-003      # Bug fix
 
 ### Creating Work Branches
 
-Work branches are created automatically by `/implement` when you start working on an issue:
+**Two methods are supported** - choose based on your workflow preference:
+
+#### Method 1: Automatic Creation (Faster Workflow)
+
+Start implementing and `/implement` creates the branch automatically:
 
 ```bash
 /implement TASK-001 1.1
-# → Creates feature/TASK-001 from develop
+# → Prompts: "Create and switch to feature/TASK-001? (y/n)"
+# → Creates feature/TASK-001 from develop (if you confirm)
 # → Switches to new branch
 # → Executes phase 1.1
 ```
 
-Or manually with `/branch`:
+**When to use:**
+- Quick iteration - start coding immediately
+- Default workflow - let the system manage branches
+- Non-blocking prompts - you can decline if needed
+
+#### Method 2: Explicit Creation (Full Control)
+
+Create the branch explicitly before starting work:
 
 ```bash
 /branch create TASK-001
 # → Creates feature/TASK-001 from develop
 # → Switches to new branch
+
+/implement TASK-001 1.1
+# → Executes phase 1.1 on your existing branch
 ```
+
+**When to use:**
+- Manual control - you want explicit branch management
+- Setup work - create branch before planning implementation
+- Multiple issues - create several branches at once
+
+**Both approaches are equivalent** - they create the same branch from the same base. The only difference is timing and control preference.
 
 ### Merging Work Branches
 
@@ -142,6 +205,66 @@ The `/commit` command automatically includes issue references from your branch n
 # → Generates: feat(TASK-001): implement user authentication
 ```
 
+### Commit Type Inference
+
+**The `/commit` command automatically determines commit type** based on file patterns and keywords, configured in the YAML frontmatter above.
+
+**How It Works:**
+1. Analyzes staged files to detect patterns (test files, docs, config, etc.)
+2. Checks commit message for type keywords (fix, feature, refactor, etc.)
+3. Applies the most specific type match found
+4. Falls back to default_type (feat) if no pattern matches
+
+**File Pattern Examples:**
+
+```bash
+# Test files → type: test
+git add src/**/*.test.js
+/commit "add login tests"
+# → test(TASK-001): add login tests
+
+# Documentation → type: docs
+git add README.md docs/api.md
+/commit "update API documentation"
+# → docs(TASK-001): update API documentation
+
+# Config files → type: chore
+git add package.json .eslintrc
+/commit "update dependencies"
+# → chore(TASK-001): update dependencies
+
+# Source code → type: feat (default)
+git add src/auth.js
+/commit "add authentication"
+# → feat(TASK-001): add authentication
+```
+
+**Keyword Detection** (from commit message):
+
+```bash
+/commit "fix login timeout issue"
+# → fix(TASK-001): fix login timeout issue
+
+/commit "refactor database connection"
+# → refactor(TASK-001): refactor database connection
+
+/commit "optimize query performance"
+# → perf(TASK-001): optimize query performance
+```
+
+**Customization:**
+Edit the `commit_type_inference` section in the YAML frontmatter to:
+- Add new file patterns (e.g., infrastructure files → `infra` type)
+- Modify existing patterns (e.g., treat JSON as `feat` instead of `chore`)
+- Add custom keywords for your team's conventions
+- Change default_type for your workflow
+
+**Mixed Changes:**
+When staging multiple file types, the command picks the most specific match:
+- Tests + source code → `test` (tests are more specific)
+- Docs + config → `docs` (documentation changes are notable)
+- Multiple source files → Uses keyword detection or defaults to `feat`
+
 ### Commit Message Rules
 
 - **Length**: 50 chars for subject, 72 chars for body
@@ -151,14 +274,28 @@ The `/commit` command automatically includes issue references from your branch n
 
 ## Merge Validation Rules
 
-The `/branch merge` command enforces quality gates based on target branch:
+The `/branch merge` command enforces quality gates based on target branch.
+
+**Note**: These merge gates are a **subset of the quality gates** defined in `development-loop.md`. The full development loop ensures quality at the phase level; these merge rules enforce quality at the branch integration level.
+
+- **Per-Phase Gates** (development-loop.md) → Enforced during `/implement`
+- **Per-Task Gates** (development-loop.md) → Enforced by `/branch merge develop` (below)
+- **Merge to Production** → Additional staging validation rules (below)
 
 ### Merging to `develop` (Staging)
+
+**Implements Per-Task Gates** from `development-loop.md`:
 
 **Required validations:**
 1. ✅ All tests pass (unit, integration, E2E)
 2. ✅ No uncommitted changes
 3. ✅ Branch is up to date with remote
+
+**Implicitly validated** (from development loop):
+- All phases complete (each passed per-phase gates)
+- Code review scores ≥90 per phase
+- Test coverage ≥95% (configurable in development-loop.md)
+- WORKLOG documented
 
 **Process:**
 ```bash

@@ -1,6 +1,6 @@
 # Architecture Decision Records - Best Practices Guide
 
-**Purpose**: This guide defines principles and best practices for creating high-quality Architecture Decision Records (ADRs). The `/architect` command reads this before creating ADRs to ensure consistency and quality.
+**Purpose**: This guide defines principles and best practices for creating high-quality Architecture Decision Records (ADRs). The `/adr` command reads this before creating ADRs to ensure consistency and quality.
 
 ## What Are ADRs?
 
@@ -202,16 +202,16 @@ The ADR template (`adr-template.md`) uses YAML frontmatter to define sections. C
 - Adjust prompts to match your team's terminology
 - Add hints to guide better content
 
-The `/architect` command reads the template at runtime, so changes apply immediately to new ADRs.
+The `/adr` command reads the template at runtime, so changes apply immediately to new ADRs.
 
 ## Quick Reference
 
 **File Location**: `docs/project/adrs/ADR-###-<kebab-case-title>.md`
 **Numbering**: Sequential across all ADRs (ADR-001, ADR-002, ...)
 **Template**: `docs/project/adrs/adr-template.md`
-**Creation**: Use `/architect` command (reads this guide automatically)
+**Creation**: Use `/adr` command (reads this guide automatically)
 
 ---
 
-**For Detailed Instructions**: See `/architect` command documentation
+**For Detailed Instructions**: See `/adr` command documentation
 **For Template Format**: See `adr-template.md`

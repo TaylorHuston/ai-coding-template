@@ -10,13 +10,15 @@ documentation: "TBD"          # OpenAPI, GraphQL schema, tRPC types
 
 # API Guidelines
 
+**Referenced by Commands:** _None currently_ (available for future `/api-design` command or custom commands)
+
 ## Quick Reference
 
 This guideline defines our API design patterns, structure, and conventions. Update as you make API architecture decisions.
 
 ## Our API Approach
 
-**Pattern**: TBD → Run `/architect "API architecture"` to decide
+**Pattern**: TBD → Run `/adr "API architecture"` to decide
 
 - REST (traditional, widely supported)
 - GraphQL (flexible querying, single endpoint)
@@ -43,7 +45,7 @@ Examples:
 
 ## Authentication & Authorization
 
-- **Strategy**: TBD → Run `/architect "authentication strategy"` to decide
+- **Strategy**: TBD → Run `/adr "authentication strategy"` to decide
 - **Implementation**: TBD
 - **Session Management**: TBD
 

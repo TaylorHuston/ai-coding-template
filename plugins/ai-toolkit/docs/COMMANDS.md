@@ -21,7 +21,7 @@ The AI Toolkit provides a flexible workflow that adapts to your needs:
 
 1. **Brief/One Pager**: `/project-brief` - Define what you're building and why
 2. **Planning**: `/epic` - Break features into organized work
-3. **Architecture**: `/architect` - Make technical decisions and create ADRs
+3. **Architecture**: `/adr` - Make technical decisions and create ADRs
 4. **Tasks**: `/plan TASK-###` - Break down implementation into phases
 5. **Build**: `/implement TASK-### PHASE` - Execute with specialized agents
 6. **Quality**: `/quality`, `/test-fix`, `/security-audit` - Ensure excellence
@@ -31,19 +31,106 @@ The AI Toolkit provides a flexible workflow that adapts to your needs:
 Each command guides you through its workflow:
 - `/project-brief` asks questions to complete your proejct brief
 - `/epic` helps structure features with acceptance criteria
-- `/architect` explores options before creating ADRs
+- `/adr` explores options before creating ADRs
 - `/plan` breaks work into testable, reviewable phases
 - `/implement` executes with the right domain experts (agents)
 
 ### Use Commands Flexibly
 
 You don't have to follow a strict sequence:
-- Jump straight to `/architect` for technical decisions
+- Jump straight to `/adr` for technical decisions
 - Use `/implement` to quickly build a spike
 - Run `/quality` whenever you want a comprehensive review
 - Invoke `/docs` to generate or validate documentation
 
 The workflow is a guide, not a rigid process.
+
+## Command Parameter Patterns
+
+Commands use different parameter paradigms because **different workflows need different interfaces**. This is intentional design, not inconsistency.
+
+### 1️⃣ No Parameters (Conversational)
+
+**When**: Workflow requires Q&A to gather information or explore options
+
+**Commands**: `/toolkit-init`, `/project-brief`, `/adr`
+
+**Why**: These commands guide you through multi-step processes where the AI asks questions to understand your needs before taking action. Parameters would be too rigid.
+
+**Example**:
+```bash
+/project-brief          # Asks questions to build your project vision
+/adr                    # Explores architecture options through conversation
+```
+
+### 2️⃣ Required Positional Arguments
+
+**When**: Operating on specific artifacts with clear, predictable inputs
+
+**Commands**: `/plan TASK-###`, `/implement TASK-### PHASE`
+
+**Why**: These commands perform precise operations on identified entities. Required parameters prevent ambiguity and enable validation.
+
+**Example**:
+```bash
+/plan TASK-001              # Plan section for TASK-001 (clear, unambiguous)
+/implement TASK-001 1.2     # Execute phase 1.2 of TASK-001 (specific action)
+```
+
+### 3️⃣ Optional Arguments
+
+**When**: Command can operate contextually OR on specific target
+
+**Commands**: `/epic [EPIC-###]`
+
+**Why**: Enables both "create new" and "refine existing" workflows with one command. Parameter is optional because context can determine behavior.
+
+**Example**:
+```bash
+/epic                   # Create new epic (conversational)
+/epic EPIC-001          # Refine existing epic (targeted)
+```
+
+### 4️⃣ Subcommand Pattern
+
+**When**: Command provides multiple related operations with distinct behaviors
+
+**Commands**: `/branch {create|merge|delete|switch|status}`, `/quality {assess|validate|audit|fix}`
+
+**Why**: Groups related operations under one command namespace. Each subcommand has its own parameters and workflow.
+
+**Example**:
+```bash
+/branch create TASK-001     # Create work branch
+/branch merge develop       # Merge to staging with validation
+/branch status              # Show branch status
+```
+
+### 5️⃣ Natural Language Instructions
+
+**When**: Complex operations requiring context, interpretation, or flexibility
+
+**Commands**: `/commit`, `/docs`
+
+**Why**: Some operations benefit from AI understanding intent rather than rigid parameters. Natural language enables nuance.
+
+**Example**:
+```bash
+/commit "add user authentication with tests"
+/docs "sync API documentation with latest endpoint changes"
+```
+
+### Pattern Selection Guidelines
+
+**Choose parameter pattern based on workflow needs:**
+
+- **Q&A needed?** → No parameters (conversational)
+- **Operating on specific artifact?** → Required positional arguments
+- **Context-aware behavior?** → Optional arguments
+- **Multiple operations?** → Subcommand pattern
+- **Complex intent?** → Natural language
+
+**Not a bug, it's a feature**: Different interfaces optimize for different tasks. Consistency in pattern *selection* (matching interface to workflow) is more valuable than forcing all commands to use the same paradigm.
 
 ## 🚀 Setup & Initialization
 
@@ -51,7 +138,7 @@ The workflow is a guide, not a rigid process.
 
 - _Purpose_: Initialize new or existing projects with ai-toolkit structure and templates
 - _Usage_: `/toolkit-init`
-- _Features_: Interactive customization (2 questions), smart conflict resolution, minimal templates (9 files)
+- _Features_: Interactive customization (2 questions), smart conflict resolution, organized templates (31 files)
 
 ### 💡 **/project-brief** - Interactive Project Vision
 
@@ -71,10 +158,10 @@ The workflow is a guide, not a rigid process.
 
 **3-Phase Development Workflow**: From architecture to validated execution
 
-### 🏗️ **/architect** - Technical Architecture
+### 🏗️ **/adr** - Technical Architecture
 
 - _Purpose_: Design technical solutions through Quick Mode (5-10 min) or Deep Mode (20+ min) exploration
-- _Usage_: `/architect [--epic EPIC-###] | [--foundation] | [--infrastructure] | [--deep] | [--question "text"]`
+- _Usage_: `/adr [--epic EPIC-###] | [--foundation] | [--infrastructure] | [--deep] | [--question "text"]`
 - _Workflow Phase_: **1. Architecture** - Technical decisions, ADRs, Fast Track vs comprehensive analysis
 
 ### 📋 **/plan** - Task Implementation Planning
@@ -118,7 +205,7 @@ The workflow is a guide, not a rigid process.
 | `/toolkit-init` | Project scaffolding | Interactive (2 questions) |
 | `/project-brief` | Interactive project vision | `[--force] [--review]` |
 | `/epic` | Unified epic management | `[EPIC-###]` (optional) |
-| `/architect` | Technical architecture | Various flags for modes |
+| `/adr` | Technical architecture | Various flags for modes |
 | `/plan` | Task implementation planning | `TASK-###` or `BUG-###` |
 | `/implement` | Phase-based execution | `TASK-### PHASE` or `BUG-### PHASE` |
 | `/quality` | Quality assessment | Subcommands (assess/validate/audit/fix) |
@@ -215,7 +302,7 @@ model: claude-sonnet-4-5                 # Versioned alias (claude-sonnet-4-5, c
 
 - **Use For**: Architecture, planning, security analysis, strategic decisions
 - **Model ID**: `claude-opus-4-0` (versioned alias)
-- **Commands**: `/architect`, `/plan`, `/security-audit`
+- **Commands**: `/adr`, `/plan`, `/security-audit`
 - **When**: Complex multi-step reasoning, architectural decisions, strategic planning
 
 #### **Claude Sonnet 4.5** - Execution & Development

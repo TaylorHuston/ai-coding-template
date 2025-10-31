@@ -10,6 +10,8 @@ description: "Add timestamped work log entries to track manual changes and commu
 argument-hint: "\"your comment text\""
 allowed-tools: ["Read", "Write", "Edit", "Grep", "Glob"]
 model: claude-sonnet-4-5
+references_guidelines:
+  - docs/development/guidelines/development-loop.md  # WORKLOG format and work documentation standards
 ---
 
 # /comment Command

@@ -46,7 +46,7 @@ This project uses the AI Toolkit plugin for structured development with three-br
 /epic                       # Create epics aligned with your brief
 
 # 3. Make architecture decisions
-/architect                  # Create ADRs for technical decisions
+/adr                  # Create ADRs for technical decisions
 
 # 4. Plan implementation
 /plan TASK-001              # Add implementation details to tasks
@@ -112,8 +112,9 @@ main (production) ← develop (staging) ← feature/TASK-### (your work)
 
 ## Development Guidelines
 
-Your project includes **6 customizable guideline templates** in `docs/development/guidelines/`:
+Your project includes **7 customizable guideline templates** in `docs/development/guidelines/`:
 
+- `development-loop.md` - AI-assisted development workflow and quality gates
 - `api-guidelines.md` - API patterns and structure
 - `testing-standards.md` - Testing approach
 - `git-workflow.md` - Branching and commits
@@ -134,7 +135,7 @@ See `docs/development/README.md` for details on how guidelines work.
 **Ask Claude** - Claude has access to complete plugin documentation:
 
 - "What agents are available and what do they do?"
-- "How does the /architect command work?"
+- "How does the /adr command work?"
 - "Show me the full command workflow"
 - "What's the difference between /epic and /plan?"
 - "How do I customize guidelines?"

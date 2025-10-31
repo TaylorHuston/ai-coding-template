@@ -10,6 +10,9 @@ description: "Automatic test failure detection and resolution"
 argument-hint: "[test-pattern] [--files FILES] [--type TYPE] [--failed-only] [--watch]"
 allowed-tools: ["Bash", "Read", "Edit", "MultiEdit", "Grep", "Glob", "TodoWrite", "Task"]
 model: claude-sonnet-4-5
+references_guidelines:
+  - docs/development/guidelines/development-loop.md  # Test coverage targets, testing approach
+  - docs/development/guidelines/testing-standards.md  # Testing methodology and standards
 ---
 
 # /test-fix Command

@@ -22,7 +22,7 @@ Your project begins with just `project-brief.md` and guideline templates with TB
 
 ### Grows Organically
 As you work, documentation is created automatically:
-- **ADRs**: Created via `/architect` when making technical decisions
+- **ADRs**: Created via `/adr` when making technical decisions
 - **Architecture docs**: Filled in as you make technology choices
 - **Design assets**: Added as you work on UI/UX
 - **Guidelines**: Updated from TBD to actual decisions
@@ -42,10 +42,10 @@ Comprehensive technical specifications:
 - APIs and data models
 - Security and deployment
 
-Update as you make architectural decisions via `/architect`.
+Update as you make architectural decisions via `/adr`.
 
 ### `project/adrs/` - Decision History
-Architecture Decision Records document important technical choices. Create via `/architect`.
+Architecture Decision Records document important technical choices. Create via `/adr`.
 
 ### `development/guidelines/` - Project Configuration
 6 customizable templates that configure how AI agents work in your project. See `development/README.md` for details.
@@ -54,7 +54,7 @@ Architecture Decision Records document important technical choices. Create via `
 
 Create and manage documentation using AI commands:
 - `/project-brief` - Create/update project vision
-- `/architect` - Make technical decisions and create ADRs
+- `/adr` - Make technical decisions and create ADRs
 - `/docs` - Generate, validate, or sync documentation
 
 See `GETTING-STARTED.md` for complete workflow.

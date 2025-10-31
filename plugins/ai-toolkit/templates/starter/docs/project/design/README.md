@@ -51,7 +51,7 @@ Design assets and resources
 
 For foundational design decisions (design system choice, accessibility standards, etc.), use:
 ```bash
-/architect --foundation
+/adr --foundation
 ```
 
 These architectural design decisions are stored as ADRs in `docs/project/adrs/`.

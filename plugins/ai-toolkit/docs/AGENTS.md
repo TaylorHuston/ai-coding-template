@@ -1,6 +1,6 @@
 # AI Agent Index and Directory
 
-**Created**: 2025-08-21 **Last Updated**: 2025-10-22 **Status**: Active - Updated for Epic-Driven Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 20 | **Coverage**: Complete development workflow
+**Created**: 2025-08-21 **Last Updated**: 2025-10-23 **Status**: Active - Updated for Epic-Driven Workflow **Target Audience**: AI Assistants, Development Teams **Total Agents**: 19 | **Coverage**: Complete development workflow
 
 Comprehensive catalog of specialized AI agents optimized for modern development workflows.
 
@@ -10,11 +10,13 @@ AI agents are specialized experts that automatically activate based on your work
 
 ### How Agents Work
 
-**Automatic Activation**: When you use commands like `/implement` or `/architect`, the appropriate agents activate based on the task. For example, `/implement TASK-001 1.1` might activate the frontend-specialist and test-engineer agents.
+**Automatic Activation**: When you use commands like `/implement` or `/adr`, the appropriate agents activate based on the task. For example, `/implement TASK-001 1.1` might activate the frontend-specialist and test-engineer agents.
 
 **Direct Invocation**: You can also invoke specific agents directly when you need specialized guidance: "Use the security-auditor agent to review this authentication flow."
 
-**Agent Coordination**: Agents work together on complex tasks. The project-manager agent orchestrates multi-agent workflows, and agents use HANDOFF.yml files to transfer context between specialists. For example, the code-architect might hand off to the database-specialist for schema design, who then hands off to the security-auditor for access control review.
+**Agent Coordination**: Commands orchestrate agents, and agents communicate through WORKLOG.md entries. The `/implement` command selects specialists based on phase domain, invokes them with context, and manages the quality feedback loop. Each agent reads WORKLOG.md before starting work to understand what's been accomplished, then writes a WORKLOG.md entry after completing their phase. For example, during `/implement TASK-001 1.2`, the backend-specialist reads WORKLOG.md to see what the database-specialist accomplished in phase 1.1, implements the current phase, then documents their work for the next phase/agent.
+
+**Coordination metadata** in agent files (`hands_off_to`, `receives_from`, `parallel_with`) is **documentation only** - it helps humans understand typical agent relationships but is not read programmatically. Commands make orchestration decisions based on task requirements.
 
 ### The Value
 
@@ -136,10 +138,6 @@ AI agents are specialized experts that automatically activate based on your work
   - _Best For_: Framework upgrades, dependency updates, legacy modernization
   - _Model_: sonnet | _Color_: purple | _Auto-Invoked_: On-demand
 
-- **[template-maintainer](./template-maintainer.md)** - Template lifecycle management and automated publishing
-  - _Capabilities_: Feedback monitoring, template enhancement, NPM publishing, version management
-  - _Best For_: Template improvements, automated releases, user feedback analysis, publishing workflow
-  - _Model_: opus | _Color_: green | _Auto-Invoked_: Template enhancement and publishing tasks
 
 #### **Documentation & Communication**
 
@@ -245,7 +243,7 @@ These are invoked for specific domains or specialized work:
 ```yaml
 task_type_mapping:
   design_decisions:
-    strategic_design: [ui-ux-designer → /architect for ADRs]
+    strategic_design: [ui-ux-designer → /adr for ADRs]
     mockups_wireframes: [ui-ux-designer]
     color_schemes: [ui-ux-designer]
     design_systems: [ui-ux-designer, code-architect]
@@ -508,7 +506,7 @@ performance_metrics:
 
 | Domain | Primary Agents | Supporting Agents | Typical Workflow |
 |--------|----------------|-------------------|------------------|
-| **UI/UX Design** | ui-ux-designer | code-architect, frontend-specialist, technical-writer | ui-ux-designer → /architect (strategic) → frontend (implementation) → technical-writer (docs) |
+| **UI/UX Design** | ui-ux-designer | code-architect, frontend-specialist, technical-writer | ui-ux-designer → /adr (strategic) → frontend (implementation) → technical-writer (docs) |
 | **Frontend Development** | frontend-specialist | ui-ux-designer, api-designer, test-engineer, code-reviewer | ui-ux-designer → frontend → api-designer → test-engineer → code-reviewer |
 | **Backend Development** | backend-specialist | database-specialist, api-designer, security-auditor | backend → database → api-designer → security-auditor |
 | **Database Management** | database-specialist | backend-specialist, performance-optimizer, migration-specialist | database → backend → performance → migration |
@@ -536,8 +534,9 @@ performance_metrics:
 
 | Model | Agents | Justification |
 |-------|--------|---------------|
-| **Opus** | code-architect, brief-strategist, project-manager, security-auditor, technical-writer, template-maintainer, ai-llm-expert | Complex reasoning, strategic decisions, security analysis, content creation, AI architecture |
-| **Sonnet** | ui-ux-designer, frontend-specialist, backend-specialist, database-specialist, api-designer, test-engineer, code-reviewer, context-analyzer, devops-engineer, performance-optimizer, refactoring-specialist, migration-specialist, data-analyst | Balanced performance for design work and technical implementation tasks |
+| **Opus 4.1** | project-manager, security-auditor, brief-strategist, ai-llm-expert | Extended reasoning (64K thinking tokens), strategic orchestration, safety-critical decisions, meta-reasoning |
+| **Sonnet 4.5** | code-architect, technical-writer, ui-ux-designer, frontend-specialist, backend-specialist, database-specialist, api-designer, test-engineer, code-reviewer, devops-engineer, performance-optimizer, refactoring-specialist, migration-specialist, data-analyst | Best coding model (77.2% SWE-bench), superior documentation, cost-effective execution |
+| **Haiku** | context-analyzer | Fast analysis and investigation, optimized for speed |
 
 ## Best Practices for Agent Management
 
