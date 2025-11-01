@@ -158,6 +158,8 @@ See `pm/templates/README.md` for customization guide.
 
 The AI Toolkit integrates with Atlassian Jira for teams using Jira as their project management system.
 
+This integration is currently minimal. It has only been tested with one Jira project, and currently doesn't involve things like actually transitioning Jira issues through a workflow or anything. More functionality coming soon.
+
 #### Requirements
 
 - **Atlassian Remote MCP Server** configured in Claude Code
@@ -342,6 +344,6 @@ MIT License - see `LICENSE` for details.
 
 ## Version
 
-Current version: 0.10.5
+Current version: 0.11.0
 
 See `CHANGELOG.md` for release history and `STATUS.md` for current development status.
