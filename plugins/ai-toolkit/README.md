@@ -180,8 +180,8 @@ All commands/agents update automatically. Your project files unchanged.
 
 ## Support
 
-- [Issues](https://github.com/TaylorHuston/ai-coding-template/issues)
-- [Discussions](https://github.com/TaylorHuston/ai-coding-template/discussions)
+- [Issues](https://github.com/TaylorHuston/ai-toolkit/issues)
+- [Discussions](https://github.com/TaylorHuston/ai-toolkit/discussions)
 
 ## License
 

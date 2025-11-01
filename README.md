@@ -19,7 +19,7 @@ This marketplace contains:
 
 ```bash
 # 1. Add this marketplace
-/plugin marketplace add TaylorHuston/ai-coding-template
+/plugin marketplace add TaylorHuston/ai-toolkit
 
 # 2. Install the AI Toolkit plugin
 /plugin install ai-toolkit
@@ -270,7 +270,7 @@ For plugin development and testing:
 
 ```bash
 # Add this directory as a local marketplace
-cd /path/to/ai-coding-template
+cd /path/to/ai-toolkit
 /plugin marketplace add ./
 
 # Install the plugin locally
@@ -302,7 +302,7 @@ The starter template includes comprehensive documentation:
 ## Repository Structure
 
 ```
-ai-coding-template/
+ai-toolkit/
 ├── .claude-plugin/
 │   └── marketplace.json          # Marketplace configuration
 └── plugins/

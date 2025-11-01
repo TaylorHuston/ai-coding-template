@@ -8,7 +8,7 @@
 
 1. **Install AI Toolkit Plugin**:
    ```bash
-   /plugin marketplace add TaylorHuston/ai-coding-template
+   /plugin marketplace add TaylorHuston/ai-toolkit
    /plugin install ai-toolkit
    ```
 

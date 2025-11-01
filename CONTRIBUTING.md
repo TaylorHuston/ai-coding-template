@@ -36,7 +36,7 @@ Thank you for your interest in contributing to the AI Coding Template project! T
 ```bash
 # Clone and setup the repository
 git clone <repository-url>
-cd ai-coding-template
+cd ai-toolkit
 ./.claude/resources/scripts/setup/setup-manager.sh
 ```
 

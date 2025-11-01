@@ -6,8 +6,8 @@
     "url": "https://github.com/TaylorHuston"
   },
   "description": "AI-assisted development workflow tools and templates for Claude Code",
-  "homepage": "https://github.com/TaylorHuston/ai-coding-template",
-  "repository": "https://github.com/TaylorHuston/ai-coding-template",
+  "homepage": "https://github.com/TaylorHuston/ai-toolkit",
+  "repository": "https://github.com/TaylorHuston/ai-toolkit",
   "plugins": [
     {
       "name": "ai-toolkit",

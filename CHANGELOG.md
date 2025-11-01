@@ -652,7 +652,7 @@ This represents a substantial rewrite to this project, with a heavy emphasis on 
   - **One-Click Setup**: Users click "Use this template" → instant repository creation
   - **Git Isolation**: Each project gets clean git history, no template repo inheritance
   - **Simpler Workflow**: No NPM package management, no complex CLI tools
-  - **Alternative: degit**: `npx degit TaylorHuston/ai-coding-template` for CLI users
+  - **Alternative: degit**: `npx degit TaylorHuston/ai-toolkit` for CLI users
   - **Archived NPM**: Moved CLI tools to `.archived-npm/` with detailed README
   - **Future Updater Tool**: NPM package repurposed for future template updater utility
   - **Result**: GitHub Template standard for scaffolds, simpler user experience

@@ -51,7 +51,7 @@ You are working on the AI Toolkit plugin repository for Claude Code. This CLAUDE
 
 ```bash
 # Install this marketplace locally
-/plugin marketplace add /path/to/ai-coding-template
+/plugin marketplace add /path/to/ai-toolkit
 
 # Install the plugin
 /plugin install ai-toolkit
