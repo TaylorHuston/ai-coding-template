@@ -1,10 +1,4 @@
 ---
-version: "1.0.0"
-created: "2025-09-17"
-last_updated: "2025-10-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "architecture", "decisions", "adr"]
 description: "Create Architecture Decision Records through interactive conversation"
 argument-hint: "[\"optional context or topic\"]"

@@ -1,10 +1,4 @@
 ---
-version: "1.0.0"
-created: "2025-10-22"
-last_updated: "2025-10-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["documentation", "generation", "validation", "synchronization", "health"]
 description: "Unified documentation management - generate, validate, sync, update, and analyze documentation"
 argument-hint: "[\"natural language instruction\"]"

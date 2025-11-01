@@ -1,10 +1,4 @@
 ---
-version: "0.3.0"
-created: "2025-09-17"
-last_updated: "2025-09-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "quality", "assessment", "validation"]
 description: "Comprehensive quality assessment with multi-agent coordination"
 argument-hint: "[assess|validate|audit|fix] [--scope SCOPE] [--depth DEPTH] [--focus FOCUS]"

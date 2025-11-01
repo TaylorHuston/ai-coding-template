@@ -1,10 +1,4 @@
 ---
-version: "1.0.0"
-created: "2025-10-22"
-last_updated: "2025-10-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "git", "branching"]
 description: "Unified branch operations with git-workflow enforcement"
 argument-hint: "create ISSUE-ID | merge [target] | delete branch-name | switch branch-name | status | \"natural language\""

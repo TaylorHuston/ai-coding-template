@@ -6,7 +6,101 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.11.0] - 2025-10-31
+
+### Added
+
+- **Jira Integration Support**: Optional Jira integration for teams using Atlassian Jira
+  - **Hybrid workflow**: Local exploration (TASK-###, BUG-###) + Jira issues (PROJ-###) coexist
+  - **Epics in Jira**: When Jira enabled, epics only created in Jira (no local epic files)
+  - **Field discovery**: Automatic Jira field schema discovery with conversational collection
+  - **Field caching**: `.ai-toolkit/jira-field-cache.json` caches field requirements
+  - **Atlassian Remote MCP**: Integration via official Atlassian Remote MCP Server
+  - **Read-only status**: Display Jira status in project-status (manual updates in UI)
+  - **On-demand fetch**: Fresh fetch from Jira for requirements (no local TASK.md for Jira issues)
+
+- **`/import-issue` command**: Pull Jira issues into local project structure for AI-assisted work
+  - Import with `/import-issue PROJ-123`
+  - Creates `pm/issues/PROJ-123-{name}/` directory
+  - Displays issue details from Jira
+  - Optional - `/plan` auto-imports if needed
+  - Useful for previewing issue before planning
+
+- **`/promote` command**: Promote local exploration issues to Jira for team collaboration
+  - Promote with `/promote TASK-001`
+  - Reads local TASK.md or BUG.md
+  - Discovers Jira fields with conversational prompts
+  - Creates issue in Jira via Atlassian MCP
+  - Migrates PLAN.md, WORKLOG.md, RESEARCH.md to Jira issue directory
+  - Optional cleanup of original directory
+  - Updates git branch (feature/TASK-001 → feature/PROJ-123)
+
+- **`/refresh-schema` command**: Refresh Jira field schema cache when requirements change
+  - Clears `.ai-toolkit/jira-field-cache.json`
+  - Fetches fresh field metadata from Jira
+  - Updates cache with new schema
+  - Use when Jira administrators add new required fields
+  - Validates all issue types (Epic, Story, Task, Bug)
+
 ### Changed
+
+- **Command Simplification (KISS Philosophy Restored)**: Major refactoring of `/plan` and `/implement` commands
+  - **Problem**: Commands had grown to 363 and 473 lines, duplicating content from guidelines, violating DRY and Single Source of Truth principles
+  - **Solution**: Moved prescriptive workflow details to `development-loop.md` guideline where teams can customize
+  - **`/plan` command**: 363 → 209 lines (42% reduction)
+  - **`/implement` command**: 473 → 237 lines (50% reduction)
+  - **`development-loop.md` guideline**: Added 6 new sections with moved content:
+    - Implementation Plan Structure (phase templates by task type)
+    - Plan Review Requirements (code-architect mandatory review details)
+    - Progress Tracking Protocol (checkbox management for PLAN.md and TASK.md)
+    - Task Completion Validation (comprehensive completion checklist)
+    - Test-First Guidance Protocol (pragmatic test-first prompting logic)
+    - Agent Context Briefing (domain-specific context filtering patterns)
+  - **Benefits**: Single Source of Truth (edit guideline once, affects all commands), easier team customization, faster AI processing, better maintainability
+  - **Philosophy**: Commands orchestrate (invariant), guidelines configure (customizable)
+
+- **`/plan` command**: Dual-mode support for local and Jira issues with mandatory architectural review
+  - ID detection: TASK-###/BUG-### (local) vs PROJ-### (Jira)
+  - Local workflow: Read from TASK.md/BUG.md (unchanged)
+  - Jira workflow: Fetch from Jira, no local TASK.md, auto-import if needed
+  - Creates PLAN.md for implementation phases in both modes
+  - **Mandatory code-architect signoff**: code-architect agent reviews architectural soundness, consistency with ADRs, phase structure, and cross-cutting concerns before plan presented to user
+  - Ensures architectural oversight on every implementation plan
+
+- **`/epic` command**: Jira epic creation with field discovery
+  - Local mode: Creates `pm/epics/EPIC-###-name.md` (when Jira disabled)
+  - Jira mode: Creates epic in Jira with conversational field collection (when Jira enabled)
+  - Field caching: Stores discovered schema in `.ai-toolkit/jira-field-cache.json`
+  - No local epic files when Jira enabled
+
+- **`/implement` command**: Enhanced progress tracking with checkbox management and Jira support
+  - ID detection: TASK-###/BUG-### (local) vs PROJ-### (Jira)
+  - Local workflow: Read from TASK.md/BUG.md (unchanged)
+  - Jira workflow: Fresh fetch from Jira, read PLAN.md locally
+  - Branch naming: feature/PROJ-123, bugfix/PROJ-456
+  - **Mandatory progress tracking**: Checks off PLAN.md phases and TASK.md acceptance criteria as work completes
+  - **Verification before checkoff**: Only marks items complete after tests pass and requirements verified
+  - **Immediate updates**: Updates checkboxes after each phase completion, not in batches
+  - **Acceptance criteria tracking**: Marks off criteria in TASK.md as phases satisfy them
+  - **Task completion validation**: Ensures ALL phases and criteria checked before marking task complete
+  - Clear separation: PLAN.md tracks implementation phases, TASK.md tracks acceptance criteria satisfaction
+
+- **`/project-status` command**: Hybrid status display for Jira and local issues
+  - Jira disabled: Show local epics and issues only (unchanged)
+  - Jira enabled: Show Jira epics, Jira issues with local status, local exploration
+  - Status correlation: Match Jira issues with local PLAN.md/WORKLOG.md
+  - Divergence detection: Warn when local complete but Jira shows in progress
+
+- **README.md**: Added comprehensive Jira integration documentation
+  - "Local Project Management" section explaining local-only workflow
+  - "Working With Jira" section with setup, workflows, limitations, troubleshooting
+  - Requirements, common workflows, and integration patterns
+
+- **CLAUDE.md template**: Added Jira configuration section
+  - Configuration: jira.enabled (true/false), project key, MCP server
+  - How it works: Epics only in Jira, issues Jira or local, local storage strategy
+  - Commands: /epic, /plan, /import-issue, /promote, /refresh-schema
+  - Field discovery: Automatic schema discovery with conversational prompts
 
 - **Standardized YAML frontmatter across all template files**: Consistent metadata structure for AI agents
   - Added `# === Metadata ===` section to all 16 template files

@@ -1,10 +1,4 @@
 ---
-version: "0.4.0"
-created: "2025-09-17"
-last_updated: "2025-10-30"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "project-status", "analysis", "context", "dashboard"]
 description: "Enhanced project status dashboard with intelligent context analysis"
 argument-hint: "[--format FORMAT] [--scope SCOPE] [--ai-format] [--detailed]"
@@ -115,6 +109,163 @@ status_dimensions:
 - Integration with CI/CD pipelines
 - API-ready data structure
 - Historical data preservation
+
+## Jira Integration
+
+**Hybrid Status Display**: When Jira is enabled, show both Jira and local issues side-by-side.
+
+### Configuration Check
+
+**Read CLAUDE.md at start:**
+```yaml
+## Jira Integration
+- **Enabled**: true/false
+- **Project Key**: PROJ
+```
+
+### Status Display Modes
+
+**Local-Only Mode (jira.enabled: false):**
+```
+## Epics
+- EPIC-001: User Authentication (3/5 tasks complete)
+- EPIC-002: Data Management (1/3 tasks complete)
+
+## Issues
+- TASK-001: Login form [COMPLETED]
+- TASK-002: Password reset [IN PROGRESS]
+- BUG-001: Session timeout [PLANNED]
+```
+
+**Jira-Enabled Mode (jira.enabled: true):**
+```
+## Epics (from Jira)
+- PROJ-100: User Authentication (Jira: In Progress)
+  - 3/5 issues complete locally
+
+## Issues
+
+Jira Issues:
+- PROJ-123: User registration [PLANNED] (Jira: To Do)
+- PROJ-124: Password reset [IN PROGRESS] (Jira: In Progress)
+- PROJ-125: OAuth integration [COMPLETED] (Jira: Done)
+
+Local Exploration:
+- TASK-001: Auth spike [COMPLETED]
+- TASK-002: Session experiments [IN PROGRESS]
+
+Legend:
+- [PLANNED] = PLAN.md exists
+- [IN PROGRESS] = WORKLOG.md exists
+- [COMPLETED] = All PLAN.md phases checked
+- (Jira: X) = Current status in Jira (read-only display)
+```
+
+### Jira Data Collection
+
+**When Jira is enabled:**
+
+1. **Query Jira for project issues**:
+   - Use Atlassian MCP to list issues in project
+   - Filter: Issues linked to configured project key
+   - Get: Issue key, summary, status, epic link
+
+2. **Match with local artifacts**:
+   - Check for `pm/issues/PROJ-123-*/` directory
+   - Check for PLAN.md (planned)
+   - Check for WORKLOG.md (in progress)
+   - Check phase completion in PLAN.md (completed)
+
+3. **Show both sources**:
+   - Jira issues with local implementation status
+   - Local issues (TASK-###) for exploration/spikes
+   - Clear visual separation
+
+4. **Highlight divergence**:
+   - ⚠️ Local shows COMPLETED but Jira shows "In Progress"
+   - Suggests: "Update Jira status manually"
+
+### Example Output (Hybrid Mode)
+
+```
+/project-status
+
+## 📋 Epics
+
+From Jira:
+✓ PROJ-100: User Authentication (Jira: In Progress)
+  - 4/6 issues complete (66%)
+  - View: https://company.atlassian.net/browse/PROJ-100
+
+## 🎯 Issues
+
+Jira Issues (6 total):
+✅ PROJ-121: Database schema [COMPLETED] (Jira: Done)
+🔨 PROJ-122: Login endpoint [IN PROGRESS] (Jira: In Progress)
+📝 PROJ-123: Registration form [PLANNED] (Jira: To Do)
+📝 PROJ-124: Password reset [PLANNED] (Jira: To Do)
+⚠️ PROJ-125: OAuth flow [COMPLETED] (Jira: In Progress)
+   → Local work complete, update Jira status
+❌ PROJ-126: Session management [NOT STARTED] (Jira: To Do)
+
+Local Exploration (2 total):
+✅ TASK-001: Auth spike [COMPLETED]
+🔨 TASK-002: Session experiments [IN PROGRESS]
+
+Summary:
+- Jira: 1 done, 2 in progress, 3 todo
+- Local: 4 with PLAN.md, 2 in active development
+- Action: Update PROJ-125 status in Jira
+```
+
+### Error Handling
+
+**MCP unavailable:**
+```
+Warning: Jira integration enabled but MCP unavailable.
+Showing local issues only.
+
+Configure Atlassian Remote MCP to see Jira status.
+```
+
+**Jira query fails:**
+```
+Warning: Could not fetch Jira issues.
+Reason: Network timeout
+
+Showing local issues only.
+```
+
+### Implementation Notes
+
+**When generating status:**
+
+1. **Check Jira mode**:
+   - Read CLAUDE.md jira.enabled
+   - If false: Show local only (current behavior)
+   - If true: Query Jira + local (hybrid display)
+
+2. **Query Jira (if enabled)**:
+   - Use Atlassian MCP: Search issues in project
+   - Get issue list with keys, summaries, statuses
+   - Handle MCP unavailable gracefully
+
+3. **Scan local directories**:
+   - Glob: `pm/issues/*/`
+   - Detect: PROJ-### (Jira) vs TASK-### (local)
+   - Check: PLAN.md, WORKLOG.md existence
+   - Parse: Phase completion in PLAN.md
+
+4. **Match and correlate**:
+   - For each Jira issue: Check if local directory exists
+   - Determine local status: [NOT STARTED], [PLANNED], [IN PROGRESS], [COMPLETED]
+   - Compare: Local vs Jira status
+
+5. **Display hybrid view**:
+   - Epics from Jira (if any)
+   - Jira issues with local status
+   - Local exploration issues
+   - Highlight divergence (local done, Jira in progress)
 
 ## AI-Driven Status Analysis
 

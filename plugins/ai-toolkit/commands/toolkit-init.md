@@ -1,10 +1,4 @@
 ---
-version: "0.2.0"
-created: "2025-10-22"
-last_updated: "2025-10-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "initialization", "setup", "scaffolding", "update", "sync"]
 description: "Initialize project with ai-toolkit structure - minimal questions, fast setup"
 argument-hint: "[--force | --dry-run]"

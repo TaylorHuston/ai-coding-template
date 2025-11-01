@@ -1,10 +1,4 @@
 ---
-version: "0.2.0"
-created: "2025-10-21"
-last_updated: "2025-10-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "strategy", "project-brief", "vision", "planning", "collaboration"]
 description: "Fill and improve project brief through gap-driven conversation"
 argument-hint: "[--review] [--force]"

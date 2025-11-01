@@ -25,6 +25,76 @@ Welcome to your AI-assisted project! This file provides essential context to Cla
 - **CI/CD**: [GitHub Actions/Jenkins/CircleCI]
 - **Monitoring**: [Datadog/New Relic/Sentry]
 
+## Jira Integration
+
+**Optional**: Enable Jira integration for teams using Jira as their project management system.
+
+### Configuration
+
+When Jira integration is enabled, epics and issues can be created and managed in Jira through AI commands.
+
+```yaml
+## Jira Integration
+- **Enabled**: false  # Set to true to enable Jira integration
+- **MCP Server**: Atlassian Remote MCP
+- **Project Key**: PROJ  # Your Jira project key (e.g., PROJ, ENG, PRODUCT)
+```
+
+### Requirements
+
+- **Atlassian Remote MCP Server** configured in Claude Code (see [setup guide](https://www.atlassian.com/blog/announcements/remote-mcp-server))
+- Jira Cloud account with appropriate permissions
+- Project Key for your Jira project
+
+### How It Works
+
+**When Jira is DISABLED (default):**
+- Epics: `pm/epics/EPIC-001-name.md` (local files)
+- Issues: `pm/issues/TASK-001/`, `pm/issues/BUG-001/` (local directories)
+- Fully local, works offline
+
+**When Jira is ENABLED:**
+- Epics: Only in Jira (PROJ-100, PROJ-200) - no local epic files
+- Issues:
+  - Jira issues: `PROJ-123`, `PROJ-124` (fetched from Jira on-demand)
+  - Local exploration: `TASK-001`, `BUG-001` (for quick spikes, can be promoted to Jira)
+- Local storage: Only `PLAN.md`, `WORKLOG.md`, `RESEARCH.md` (no TASK.md for Jira issues)
+
+### Commands
+
+**Creating Epics:**
+```bash
+/epic  # Creates PROJ-100 in Jira (if enabled) or EPIC-001 locally (if disabled)
+```
+
+**Working with Issues:**
+```bash
+/import-issue PROJ-123    # Import Jira issue for local work
+/plan PROJ-123            # Create implementation plan (fetches from Jira)
+/implement PROJ-123 1.1   # Execute phase
+```
+
+**Exploration Workflow:**
+```bash
+/plan TASK-001            # Quick local spike
+/implement TASK-001 1.1   # Prototype
+/promote TASK-001         # Promote to Jira when validated
+```
+
+### What Syncs
+
+- ✅ **Read from Jira**: Description, acceptance criteria, status (display only)
+- ✅ **Create in Jira**: Epics, stories, tasks via AI conversation
+- ❌ **Not synced**: Status updates, comments, field changes
+
+**Note**: Update Jira status manually in the Jira UI. The toolkit reads from Jira but doesn't write status updates back.
+
+### Field Discovery
+
+The AI automatically discovers which fields are required in your Jira instance (including custom fields) and prompts for them conversationally during epic/issue creation. Field schemas are cached locally in `.ai-toolkit/jira-field-cache.json` for performance.
+
+Run `/refresh-schema` if Jira administrators change required fields.
+
 ## Product Vision
 
 See `docs/project-brief.md` for:

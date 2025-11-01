@@ -1,10 +1,4 @@
 ---
-version: "0.3.0"
-created: "2025-09-17"
-last_updated: "2025-09-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "security", "audit", "compliance"]
 description: "OWASP-compliant security assessment with vulnerability remediation"
 argument-hint: "[--scope SCOPE] [--depth DEPTH] [--compliance FRAMEWORK] [--output FORMAT]"

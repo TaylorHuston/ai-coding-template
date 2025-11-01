@@ -1,10 +1,4 @@
 ---
-version: "0.4.0"
-created: "2025-09-17"
-last_updated: "2025-10-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "git", "commit", "quality"]
 description: "Create a proper git commit with quality checks and conventional message"
 argument-hint: "[message] [--files FILES] [--amend] [--no-verify] [--interactive]"

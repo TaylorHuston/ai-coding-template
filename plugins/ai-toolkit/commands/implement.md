@@ -1,17 +1,11 @@
 ---
-version: "0.10.0"
-created: "2025-10-22"
-last_updated: "2025-10-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "development", "execution"]
 description: "Execute specific implementation phases from task plans with test-first enforcement"
-argument-hint: "TASK-### PHASE | BUG-### PHASE"
+argument-hint: "TASK-### PHASE | BUG-### PHASE | PROJ-### PHASE"
 allowed-tools: ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "TodoWrite", "Task"]
 model: claude-sonnet-4-5
 references_guidelines:
-  - docs/development/guidelines/development-loop.md  # Test-first approach, quality gates, WORKLOG format
+  - docs/development/guidelines/development-loop.md  # Test-first, quality gates, WORKLOG, progress tracking, context briefing
   - docs/development/guidelines/git-workflow.md  # Branch creation and verification
 ---
 
@@ -21,304 +15,161 @@ Execute specific phases of implementation plans with full context awareness and 
 
 ## Usage
 
-**Required Parameters**: Issue ID and Phase
-
 ```bash
 /implement TASK-001 1.1    # Execute phase 1.1 of TASK-001
 /implement BUG-003 2.2     # Execute phase 2.2 of BUG-003
+/implement PROJ-123 1.1    # Execute phase 1.1 of Jira issue
 ```
 
-**IMPORTANT**: Both parameters are mandatory:
-- **Issue ID**: Must be a valid TASK-### or BUG-### identifier
-- **Phase**: Must match a phase item from the Plan section (e.g., 1.1, 2.3, 3.1)
-
-If parameters are missing or invalid, the command will:
-1. Check if TASK.md or BUG.md exists in `pm/issues/`
-2. If Plan section exists, show available phases
-3. Ask user to provide valid issue ID and phase number
+**IMPORTANT**: Both parameters are mandatory (Issue ID + Phase). Command will show available phases if parameters are missing or invalid.
 
 ## Agent Coordination
 
-**Primary**: Domain specialists (frontend-specialist, backend-specialist, database-specialist) based on task type
+**Primary**: Domain specialists (backend-specialist, frontend-specialist, database-specialist, etc.) based on phase type
 **Supporting**: test-engineer (test-first approach), code-reviewer (quality validation), security-auditor (security-sensitive tasks)
 **Coordination**: WORKLOG.md for narrative work history and context preservation
 
-## Core Principles
+## How It Works
 
-- **Test-First**: Auto-invoke test-engineer for all implementation
-- **Phase-Focused**: Execute specific plan phases, not entire tasks
-- **Context-Aware**: Full epic goals, ADRs, dependencies, and task coordination
-- **Quality-Gated**: Validate against acceptance criteria and architectural decisions
+### All Workflow Rules are in Guidelines
 
-**Development Workflow**: Read `docs/development/guidelines/development-loop.md` for:
-- Test-first development cycle configuration
-- Code review thresholds and quality gates
-- Test coverage targets
-- Agent handoff protocol through WORKLOG entries
+**This command orchestrates the development loop defined in** `docs/development/guidelines/development-loop.md`:
+- **Test-First Guidance**: Pragmatic test-first prompting protocol
+- **Progress Tracking**: Checkbox management for PLAN.md and TASK.md
+- **WORKLOG Format**: Entry structure, timestamp requirements, completeness criteria
+- **Quality Gates**: Per-phase validation requirements
+- **Task Completion**: Comprehensive completion checklist
+- **Agent Context Briefing**: Domain-specific context filtering patterns
 
-## Execution Flow
+**The command reads these configurations and enforces the workflow your team has defined.**
 
-### 1. Parameter Validation & Context Loading
+### Execution Flow
 
-**Validate Parameters:**
-- Check if issue ID format is valid (TASK-### or BUG-###)
-- Locate issue file in `pm/issues/ISSUE-ID-*/TASK.md` or `BUG.md`
-- If issue not found: **ERROR** and list available issues
-- Parse Plan section from issue file
-- If phase parameter doesn't match any plan item: **ERROR** and list available phases
-- If no Plan section exists: **ERROR** with message "Run `/plan TASK-###` first to create implementation plan"
+**1. Parameter Validation**
+- Detect ID type: TASK-###/BUG-### (local) vs PROJ-### (Jira)
+- Find issue directory or fetch from Jira
+- Locate PLAN.md and validate phase exists
+- If invalid: Show available phases
 
-**Branch Verification & Management:**
-- Read `docs/development/guidelines/git-workflow.md` for branching configuration
-- Get current branch: `git branch --show-current`
-- Calculate expected branch from issue ID:
-  - TASK-### → feature/TASK-###
-  - BUG-### → bugfix/BUG-###
-- Compare current branch with expected branch
+**2. Branch Verification**
+- Read `git-workflow.md` for branch configuration
+- Check current branch matches expected (feature/TASK-001, bugfix/BUG-003, etc.)
+- Offer to create/switch if mismatch (non-blocking warning)
 
-**If branch doesn't match:**
-1. Show warning: "⚠️ You're on `{current}` but implementing {ISSUE-ID}"
-2. Show expected: "Expected branch: {expected}"
-3. Check if expected branch exists:
-   - If exists: Offer to switch: "Switch to {expected}? (y/n)"
-   - If not exists: Offer to create: "Create and switch to {expected}? (y/n)"
-4. If user accepts:
-   - Execute: `/branch create {ISSUE-ID}` or `/branch switch {expected}`
-   - Continue with implementation
-5. If user declines:
-   - Show reminder: "Reminder: Work branch naming helps track work to issues"
-   - Continue with implementation (don't block)
+**3. Load Context**
+- **Local issues**: Read TASK.md/BUG.md, epic context, ADRs
+- **Jira issues**: Fresh fetch from Jira (description, criteria, status), read ADRs
+- Read WORKLOG.md for previous work and lessons learned
+- Read RESEARCH.md for technical decisions
 
-**Load Task Context:**
-- Read issue file (TASK.md or BUG.md)
-- Load epic context from `epic:` field in frontmatter (if present)
-- Read relevant ADRs from `docs/project/adrs/`
-- Read WORKLOG.md for work history and lessons learned (if exists)
-- Read RESEARCH.md for technical decisions and rationale (if exists)
+**4. Test-First Check**
+- **Following** `development-loop.md` **test-first guidance protocol**
+- Check for preceding test phases
+- Prompt user if tests should come first (never blocking)
+- Offer auto-generation of comprehensive test suites
 
-**Pragmatic Test-First Check** (gentle guidance, never blocking):
+**5. Agent Selection and Context Briefing**
+- Select specialist based on phase domain
+- **Following** `development-loop.md` **agent context briefing patterns**
+- Provide filtered, domain-specific context (not full epic dump)
+- Include relevant WORKLOG insights and ADR decisions
 
-Following `development-loop.md` philosophy: test-first is preferred when you know what to build, but code-first is acceptable when discovering unknowns.
+**6. Phase Execution**
+- Agent follows development loop: test → code → review iteration
+- **Following** `development-loop.md` **quality gates**
+- Iterate until code review score ≥ 90 (or configured threshold)
 
-- Look for test files related to this phase
-- If phase is implementation (e.g., "2.2 Implement X"):
-  - Check if corresponding test phase exists before it (e.g., "2.1 Write tests for X")
-  - If test phase exists but unchecked:
-    - **PROMPT**: "Pragmatic test-first: Phase '2.1 Write tests' should typically come first.
+**7. Post-Phase Updates**
+- **Following** `development-loop.md` **progress tracking protocol**
+- Verify completion thoroughly (tests pass, code works, requirements met)
+- Update PLAN.md checkbox: `- [ ] 1.1` → `- [x] 1.1`
+- Update TASK.md acceptance criteria if satisfied
+- Write WORKLOG entry with timestamp
+- Consider RESEARCH.md for complex decisions
 
-      Execute 2.1 first? (yes/skip): _"
-  - **NEVER BLOCK**: Always allow skip - you may be in discovery mode
-- If no tests found AND about to implement code:
-  - **PROMPT**: "⚠️ No tests found for this implementation.
+**8. Task Completion Check**
+- If all PLAN.md phases complete:
+- **Following** `development-loop.md` **task completion validation**
+- Verify ALL acceptance criteria checked off
+- Run full test suite
+- Write final WORKLOG entry
+- Update epic if applicable
 
-    Pragmatic test-first: Write tests first when you know what to build.
+## Jira Integration
 
-    Options:
-    1. Auto-generate comprehensive test suite from acceptance criteria (RECOMMENDED if requirements are clear)
-    2. I'll write tests manually first (good for learning/experimentation)
-    3. Skip tests for now - I'm in discovery mode (must add tests before phase completion)
+**Hybrid Mode**: Works with both local (TASK-###, BUG-###) and Jira (PROJ-###) issues.
 
-    Choose (1/2/3): _"
-  - **DEFAULT** to option 1 if no user input
-  - Track choice in WORKLOG.md entry
+### ID Detection
+- Local: `TASK-###`, `BUG-###` (e.g., TASK-001, BUG-042)
+- Jira: `[A-Z]+-###` (e.g., PROJ-123, ENG-456)
 
-### 2. Pre-Phase Context Loading
+### Context Loading Strategy
 
-**REQUIRED before starting phase execution:**
-- **Read WORKLOG.md**: Review previous work entries for context and lessons learned
-- **Understand what's been done**: Identify completed work and any gotchas from previous phases
-- **Load agent context**: Review domain-specific entries from previous agents
-- **Note human contributions**: Check for `/comment` entries from human developers
+**For Local Issues**:
+- Read requirements from TASK.md/BUG.md
+- Read PLAN.md for phase details
+- Standard workflow (unchanged)
 
-### 3. Agent Phase Execution
+**For Jira Issues**:
+- **Fresh fetch from Jira** (latest description, acceptance criteria, status)
+- Read PLAN.md from local directory
+- No local TASK.md (Jira is source of truth)
+- Ensures requirements always current
 
-**Agents follow the development loop**: Read `docs/development/guidelines/development-loop.md` for current workflow configuration including test-first cycle, code review thresholds, quality gates, and agent coordination protocols.
+### Branch Naming
+- Local: `feature/TASK-001`, `bugfix/BUG-042`
+- Jira: `feature/PROJ-123`, `bugfix/PROJ-456`
 
-- **Agent selection**: Choose specialist based on phase domain and task requirements
-- **Intelligent context distillation**: Filter and prepare domain-specific context for the selected agent, including WORKLOG insights
-  - **Backend specialists**: Technical stack, API contracts, security requirements, database patterns
-  - **Frontend specialists**: Component architecture, state patterns, UI/UX requirements, responsive design
-  - **Test engineers**: Coverage requirements, validation patterns, quality gates, testing methodologies
-  - **Security auditors**: Threat models, authentication patterns, authorization requirements, compliance
-  - **Database specialists**: Schema patterns, migration strategies, performance constraints, data validation
-  - **Performance optimizers**: Scaling requirements, performance targets, bottleneck patterns, optimization opportunities
-- **Context provision**: Distilled domain-specific context from epic goals, ADRs, acceptance criteria, and coordination state
-- **Phase execution**: Execute the specific plan phase with test-first approach
-  - Parse phase description from Plan section
-  - Execute work described in phase item (e.g., "Write tests", "Implement feature X", "Refactor module Y")
-  - Mark phase complete by checking box in TASK.md
-- **AI-Powered Test Generation** (superpower, not chore):
-  - When generating tests from acceptance criteria:
-    - Create comprehensive test suites (unit, integration, edge cases) in seconds
-    - Add explanatory comments: WHY this test matters, WHAT it verifies
-    - Use appropriate testing patterns for tech stack (auto-detected)
-    - Frame tests as living documentation for team knowledge sharing
-  - **Messaging to user**: "✅ Generated comprehensive test suite with X unit tests, Y integration tests, Z edge cases. All tests documented for team reference."
-  - Makes TDD/BDD easier than skipping tests!
+### Jira Workflow Example
+```
+User: /implement PROJ-123 1.1
 
-### 4. Post-Phase WORKLOG Entry
+AI: Fetching PROJ-123 from Jira...
+    Issue: User Registration Form
+    Status: In Progress
 
-**REQUIRED after phase completion:**
-- **Get current timestamp**: Run `date '+%Y-%m-%d %H:%M'` (never estimate)
-- **Write WORKLOG entry**: Document what was done following format in `development-loop.md`
-- **Prepend to top**: Add new entry at the beginning (reverse chronological order)
-- **Mark phase complete**: Check off phase in PLAN.md
-- **Consider RESEARCH.md**: If complex technical decisions were made, create RESEARCH.md section (see criteria in `development-loop.md`)
+    Loading PLAN.md...
+    Phase 1.1: Design database schema
 
-**See `docs/development/guidelines/development-loop.md` Work Documentation section for:**
-- Complete WORKLOG entry format and structure
-- When to create RESEARCH.md vs keep in WORKLOG
-- WORKLOG best practices and examples
-- RESEARCH.md structure and anchoring
+    Checking branch...
+    ✓ On feature/PROJ-123
 
-### 5. Task Completion Check
+    Following test-first protocol...
+    [Executes phase per development-loop.md]
 
-**If all phases complete:**
-- **Final WORKLOG entry**: Document task completion with overall summary
-- **Update task status**: Mark task as complete in TASK.md frontmatter
-- **Update epic file**: Mark task complete in epic task list (if epic exists)
-- **Verify completeness**: Confirm all acceptance criteria met and documented
+    ✓ Phase 1.1 complete
+    ✓ Updated PLAN.md checkbox
+    ✓ Updated WORKLOG.md
 
-## Intelligent Context Distillation
-
-The `/implement` command uses domain-aware context filtering to optimize agent performance:
-
-### **Context Filtering Patterns**
-- **Technical Stack Extraction**: Framework choices, database patterns, library usage from ADRs
-- **API Contract Focus**: Endpoint specifications, request/response formats, integration requirements
-- **Security Context**: Authentication patterns, authorization models, threat considerations
-- **Performance Context**: Scaling requirements, optimization targets, bottleneck patterns
-- **Testing Context**: Coverage expectations, validation strategies, quality gate requirements
-
-### **Agent-Specific Context Briefings**
-Instead of overwhelming agents with full epic context, provide filtered, relevant information:
-
-- **Backend Specialists** receive: API contracts, database schemas, security requirements, performance targets
-- **Frontend Specialists** receive: Component specifications, state management patterns, UI/UX requirements
-- **Test Engineers** receive: Coverage targets, validation patterns, quality gates, existing test structure
-- **Security Auditors** receive: Threat models, authentication flows, authorization requirements, compliance needs
-- **Database Specialists** receive: Schema requirements, migration patterns, performance constraints, data validation
-- **Performance Optimizers** receive: Performance targets, current bottlenecks, scaling requirements, optimization opportunities
-
-### **Dynamic Context Loading**
-- Parse WORKLOG.md, RESEARCH.md, and ADR files in real-time
-- Extract only domain-relevant sections for the selected agent
-- Combine with phase-specific requirements from PLAN.md
-- Present concise, actionable context that eliminates noise
-- Include lessons learned from previous phases to avoid repeating mistakes
-
-**Benefit**: Agents focus on relevant information without context overload, improving decision quality and execution speed.
-
-## Quality Gates
-
-**Quality gates are configured in** `docs/development/guidelines/development-loop.md`. Read the guideline for current:
-- Per-phase quality gate requirements
-- Code review score thresholds
-- Test coverage targets
-- Security and performance validation rules
-
-**Always validate:**
-- Acceptance criteria from task definition
-- ADR compliance from `docs/project/adrs/`
-- Comprehensive test suite coverage
-- Security and performance requirements
-
-## Branch Management Integration
-
-The `/implement` command integrates with `/branch` for seamless work branch management:
-
-**Automatic branch creation:**
-- When implementing TASK-001, automatically creates `feature/TASK-001` if needed
-- When implementing BUG-003, automatically creates `bugfix/BUG-003` if needed
-- Creates from configured base branch (typically `develop`)
-- Reads branch configuration from `docs/development/guidelines/git-workflow.md`
-
-**Branch verification (non-blocking):**
-- Warns if you're on wrong branch (e.g., on `develop` but implementing TASK-001)
-- Offers to switch/create correct branch
-- Allows proceeding if user declines (trusts user judgment)
-
-**Why non-blocking:**
-- Sometimes you want to spike/explore on any branch
-- Advanced users may have custom workflows
-- Warnings provide guidance without restrictions
-
-**Workflow integration:**
-```bash
-/implement TASK-001 1.1
-# 1. Checks current branch (e.g., develop)
-# 2. Warns: "You're on develop but implementing TASK-001"
-# 3. Offers: "Create and switch to feature/TASK-001? (y/n)"
-# 4. If yes: Creates branch and continues
-# 5. If no: Proceeds with implementation on current branch
+    Next: /implement PROJ-123 1.2
 ```
 
-## Dependencies & Coordination
+### Error Handling
 
-- **Blocking**: Identify alternatives or resolution steps when dependencies block
-- **Parallel**: Coordinate independent phase streams across multiple developers
-- **WORKLOG tracking**: Document coordination and discoveries in narrative entries
-- **Context sharing**: Agents read WORKLOG to understand previous work and avoid conflicts
-
-## Outputs
-
-### **MANDATORY Output Requirements**
-
-**pm/issues/ISSUE-ID-*/TASK.md or BUG.md Updates:**
-- ✓ Mark completed phase with checkbox (e.g., `- [x] 1.1 Write tests`)
-- Document any discovered requirements or scope changes
-- Update acceptance criteria status
-
-**pm/issues/ISSUE-ID-*/WORKLOG.md Updates (REQUIRED):**
-- **Timestamped narrative entries**: What was done, how it was done, lessons learned
-- **Gotchas and discoveries**: Unexpected issues, edge cases, important findings
-- **Files changed**: List key files modified for easy reference
-- **Context for future work**: Insights that help AI and developers understand the implementation
-
-**pm/issues/ISSUE-ID-*/RESEARCH.md Documentation:**
-- Technical decisions and rationale from each agent
-- Discoveries and insights that impact future work
-- Integration challenges and solutions
-- Deep dives on complex technical choices
-
-**pm/epics/EPIC-###-name.md Status Updates (if epic exists):**
-- Mark completed tasks in task list when all phases complete
-- Update overall epic progress and next priorities
-
-### **Validation Before Completion**
-
-**REQUIRED before marking any task complete:**
-
-1. **All phases checked**: Verify all Plan checkboxes marked complete
-2. **Acceptance criteria met**: Confirm all user stories and requirements satisfied
-3. **WORKLOG documented**: Final entry summarizing overall task completion (see `development-loop.md` for completeness criteria)
-4. **Tests passing**: All test suites pass with 95%+ coverage
-5. **Epic consistency**: Task completion properly reflected in epic status (if epic exists)
-
-## Error Handling
-
-### **Missing Parameters**
+**Issue not found in Jira**:
 ```
-Error: Missing required parameters
-
-Usage: /implement TASK-### PHASE
-
-Example: /implement TASK-001 1.1
+Error: PROJ-123 not found in Jira.
+Check: https://company.atlassian.net/browse/PROJ-123
 ```
 
-### **Invalid Issue ID**
+**MCP unavailable**:
 ```
-Error: Issue 'TASK-999' not found in pm/issues/
+Error: Atlassian MCP not available.
+Options:
+1. Configure Atlassian Remote MCP Server
+2. Disable Jira in CLAUDE.md
+3. Use local issue: /implement TASK-001 1.1
+```
 
-Available issues:
-  - TASK-001-user-authentication
-  - TASK-002-database-schema
-  - BUG-001-login-error
+**No PLAN.md**:
+```
+Error: No PLAN.md found.
+Run: /plan PROJ-123
 ```
 
-### **Invalid Phase**
+**Invalid phase**:
 ```
-Error: Phase '5.5' not found in TASK-001 plan
+Error: Phase '5.5' not found in TASK-001 plan.
 
 Available phases:
   - [ ] 1.1 Write tests for authentication
@@ -327,33 +178,80 @@ Available phases:
   - [ ] 2.2 Add migration scripts
 ```
 
-### **No Plan Section**
-```
-Error: TASK-001 does not have a Plan section
+## Outputs
 
-Run `/plan TASK-001` first to create an implementation plan with phases.
-```
+### MANDATORY Updates
 
-## Migration from /develop
+**Following** `development-loop.md` **progress tracking protocol**, after each phase:
 
-The `/implement` command replaces `/develop` with a more focused, phase-based approach:
+**pm/issues/ISSUE-ID-*/PLAN.md**:
+- ✓ Mark completed phase: `- [ ] 1.1` → `- [x] 1.1`
+- ✓ ONLY after verification (tests pass, code works)
+- ✓ Update IMMEDIATELY after completion
 
-**Old `/develop` command:**
-```bash
-/develop --epic "name"                    # Continue next task
-/develop --task "###" --epic "name"       # Work on specific task
-```
+**pm/issues/ISSUE-ID-*/TASK.md or BUG.md**:
+- ✓ Mark completed acceptance criteria: `- [ ] criterion` → `- [x] criterion`
+- ✓ For Jira issues: Note satisfied criteria in WORKLOG (Jira is source of truth)
+- ✓ Update task status when ALL criteria complete
 
-**New `/implement` command:**
-```bash
-/implement TASK-001 1.1                   # Execute specific phase
-/implement TASK-001 1.2                   # Execute next phase
-```
+**pm/issues/ISSUE-ID-*/WORKLOG.md** (REQUIRED):
+- ✓ Timestamped narrative entry (get timestamp via `date` command)
+- ✓ What was done, lessons learned, gotchas, files changed
+- ✓ See `development-loop.md` for complete format
+- ✓ Prepend to top (reverse chronological)
 
-**Benefits:**
-- **Clearer scope**: Execute one phase at a time, not entire tasks
-- **Better tracking**: Each phase maps to a checkbox in the Plan
-- **Simplified parameters**: Two required parameters instead of multiple flags
-- **Progressive work**: Work through plan phases sequentially
-- **Integrated branching**: Automatic branch creation and verification
-- **Git workflow enforcement**: Reads project git-workflow.md configuration
+**pm/issues/ISSUE-ID-*/RESEARCH.md** (if needed):
+- ✓ Complex technical decisions requiring detailed rationale
+- ✓ See `development-loop.md` for when to create
+
+**pm/epics/EPIC-###-name.md** (if epic exists):
+- ✓ Mark task complete when all phases done: `- [x] TASK-001`
+
+### Validation Before Completion
+
+**Following** `development-loop.md` **task completion validation checklist**:
+- All PLAN.md phases checked off: `- [x] All phases`
+- All acceptance criteria verified and checked off
+- All tests pass with 95%+ coverage (or configured target)
+- WORKLOG documents complete story
+- Epic updated if applicable
+
+**Critical**: Only mark complete when 100% done. Partial completion is not completion.
+
+## Branch Management Integration
+
+**Automatic branch creation:**
+- Creates `feature/TASK-001` or `bugfix/BUG-003` if needed
+- Reads configuration from `git-workflow.md`
+
+**Branch verification (non-blocking):**
+- Warns if on wrong branch
+- Offers to switch/create correct branch
+- Allows proceeding if user declines
+
+**Why non-blocking:**
+- Supports spike/exploration workflows
+- Trusts user judgment for custom workflows
+
+## Integration with Workflow
+
+**Position**: After `/plan`, executing phases one at a time
+
+- **After `/plan`**: Reads PLAN.md phases
+- **During development**: Executes phases following development loop
+- **Before merge**: All phases complete, all tests pass
+
+## Implementation Notes
+
+When implementing `/implement ISSUE-ID PHASE`:
+
+1. **Validate parameters**: Issue exists, phase exists in PLAN.md
+2. **Verify branch**: Warn if mismatch, offer to fix (non-blocking)
+3. **Load context**: TASK.md/BUG.md or Jira, ADRs, WORKLOG, RESEARCH
+4. **Check test-first**: Follow `development-loop.md` guidance protocol
+5. **Brief agent**: Provide domain-filtered context per `development-loop.md`
+6. **Execute phase**: Agent follows development loop with quality gates
+7. **Update progress**: Follow `development-loop.md` progress tracking protocol
+8. **Check completion**: If all phases done, follow `development-loop.md` task completion validation
+
+**Key Principle**: Commands orchestrate, guidelines configure. All workflow rules live in `development-loop.md` for team customization.

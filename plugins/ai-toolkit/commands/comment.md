@@ -1,10 +1,4 @@
 ---
-version: "0.10.0"
-created: "2025-10-22"
-last_updated: "2025-10-22"
-status: "active"
-target_audience: ["ai-assistants", "developers"]
-document_type: "command"
 tags: ["workflow", "collaboration", "documentation"]
 description: "Add timestamped work log entries to track manual changes and communicate with AI"
 argument-hint: "\"your comment text\""

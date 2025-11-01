@@ -1,10 +1,4 @@
 ---
-version: "0.3.0"
-created: "2025-09-17"
-last_updated: "2025-09-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "testing", "debugging", "automation"]
 description: "Automatic test failure detection and resolution"
 argument-hint: "[test-pattern] [--files FILES] [--type TYPE] [--failed-only] [--watch]"

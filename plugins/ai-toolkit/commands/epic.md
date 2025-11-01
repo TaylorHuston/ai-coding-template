@@ -1,10 +1,4 @@
 ---
-version: "1.0.0"
-created: "2025-10-22"
-last_updated: "2025-10-22"
-status: "active"
-target_audience: ["ai-assistants"]
-document_type: "command"
 tags: ["workflow", "epic", "project-management", "conversational"]
 description: "Create new epics or refine existing ones through natural language conversation"
 argument-hint: "[EPIC-###]"
@@ -210,6 +204,225 @@ updated: YYYY-MM-DD
 - Sequential numbering per type across entire project (not per-epic)
 
 See pm/README.md for complete patterns and best practices."
+```
+
+## Jira Integration
+
+**Dual Mode Support**: This command adapts based on Jira configuration.
+
+### Configuration Check
+
+**Read CLAUDE.md at start:**
+```yaml
+## Jira Integration
+- **Enabled**: true/false
+- **Project Key**: PROJ
+```
+
+### Local Mode (Jira Disabled - Default)
+
+**Current behavior unchanged**:
+- Creates `pm/epics/EPIC-001-name.md` files
+- Issues: TASK-001, BUG-001 directories
+- Fully offline, no external dependencies
+
+### Jira Mode (Jira Enabled)
+
+**When `jira.enabled: true`:**
+- **Epics**: Created in Jira ONLY (PROJ-100, PROJ-200)
+- **No local epic files**: `pm/epics/` remains empty (or just .gitkeep)
+- **Issues**: Can be Jira (PROJ-123) or local exploration (TASK-001)
+- **Resources**: Create `pm/issues/PROJ-100/` if epic needs local resources
+
+### Jira Epic Creation Flow
+
+**When creating epic with Jira enabled:**
+
+1. **Check MCP availability**:
+   - Look for Atlassian MCP tools (`mcp__atlassian__*`)
+   - If unavailable: Error with setup instructions
+
+2. **Discover required fields** (first time):
+   - Check for cache: `.ai-toolkit/jira-field-cache.json`
+   - If no cache: Fetch field metadata from Jira
+   - Parse required fields + allowed values
+   - Cache for future use (7 day TTL)
+
+3. **Conversational field collection**:
+   - Standard fields: Summary, Description
+   - Custom required fields: Prompt with field name + allowed values
+   - Example: "Your Jira requires 'Team' field. Which team? (Frontend/Backend/DevOps)"
+
+4. **Create epic in Jira**:
+   - Use Atlassian MCP to create epic
+   - Get returned epic ID: PROJ-100
+   - Display success with Jira URL
+
+5. **Optional issue creation**:
+   - Ask: "Create initial issues?"
+   - If yes: Create issues in Jira (PROJ-101, PROJ-102, ...)
+   - Use same field discovery for issues
+
+6. **Local directory** (optional):
+   - Create `pm/issues/PROJ-100/` if user needs resources directory
+   - No epic file created
+
+### Field Discovery & Caching
+
+**Cache structure** (`.ai-toolkit/jira-field-cache.json`):
+```json
+{
+  "last_updated": "2025-10-31T14:30:00Z",
+  "project_key": "PROJ",
+  "issue_types": {
+    "epic": {
+      "fields": {
+        "summary": {"required": true, "type": "string"},
+        "description": {"required": false, "type": "string"},
+        "customfield_10011": {
+          "required": true,
+          "type": "string",
+          "name": "Epic Name"
+        },
+        "customfield_10020": {
+          "required": true,
+          "type": "option",
+          "name": "Team",
+          "allowedValues": ["Frontend", "Backend", "DevOps"]
+        }
+      }
+    }
+  }
+}
+```
+
+**Cache management**:
+- Auto-created on first epic/issue creation
+- 7 day TTL (configurable)
+- Refresh on creation failure
+- Manual refresh: `/refresh-schema`
+
+### Jira Example Flow
+
+```
+User: /epic
+
+AI: [Checks CLAUDE.md → jira.enabled: true]
+    [Checks cache → not found, discovers fields]
+
+    Discovering Jira field requirements...
+    ✓ Cached field schema
+
+    Let's create an epic. What's the main goal?
+
+User: User authentication system
+
+AI: Great! I'll call this "User Authentication System".
+
+    Your Jira requires these fields:
+    - Summary: "User Authentication System" ✓
+    - Description: Tell me about the scope...
+
+User: Login, registration, password reset, OAuth
+
+AI: Perfect. Your Jira also requires:
+    - Epic Name: What short name? (shows in Jira UI)
+
+User: user-auth
+
+AI: Got it. And which team owns this?
+    Options: Frontend, Backend, DevOps
+
+User: Backend
+
+AI: Creating epic in Jira...
+    ✓ Created PROJ-100: User Authentication System
+    🔗 https://company.atlassian.net/browse/PROJ-100
+
+    Create initial issues? (yes/no)
+
+User: yes
+
+AI: Suggesting initial issues:
+    1. User Registration (Story)
+    2. Login Flow (Story)
+    3. Password Reset (Story)
+
+    Create these? (yes/all/custom/no)
+
+User: all
+
+AI: Creating issues in Jira...
+    ✓ PROJ-101: User Registration
+    ✓ PROJ-102: Login Flow
+    ✓ PROJ-103: Password Reset
+
+    Epic complete! Next steps:
+    - View in Jira: https://company.atlassian.net/browse/PROJ-100
+    - Plan implementation: /plan PROJ-101
+```
+
+### Error Handling
+
+**MCP unavailable**:
+```
+Error: Jira integration enabled but Atlassian MCP not configured.
+
+Setup steps:
+1. Install Atlassian Remote MCP Server
+2. Configure in Claude Code MCP settings
+3. Restart Claude Code
+
+Or: Set jira.enabled: false in CLAUDE.md to work locally
+```
+
+**Field discovery fails**:
+```
+Warning: Could not discover Jira fields. Using standard fields only.
+
+If epic creation fails, run: /refresh-schema
+```
+
+**Epic creation fails**:
+```
+Error: Failed to create epic in Jira.
+Reason: Field 'customfield_12345' is required
+
+This usually means:
+1. Jira admin added new required fields
+2. Field cache is stale
+
+Fix: Run /refresh-schema and try again
+```
+
+### Updated Command Instructions
+
+**Add to CREATION FLOW** (step 0 before current step 1):
+
+```
+0. **Check Jira mode**:
+   - Read CLAUDE.md jira.enabled
+   - IF false: Follow local flow (current behavior)
+   - IF true: Follow Jira flow (below)
+
+**JIRA CREATION FLOW** (when jira.enabled: true):
+1. Validate MCP: Check for Atlassian MCP tools
+2. Load/discover fields:
+   - Check cache: .ai-toolkit/jira-field-cache.json
+   - If missing: Fetch from Jira, cache locally
+3. Conversational collection:
+   - Standard: Summary, Description
+   - Custom required: Prompt with field name + options
+4. Create in Jira:
+   - Use MCP to create epic
+   - Get epic ID (PROJ-100)
+   - Display Jira URL
+5. Ask: "Create initial issues?"
+6. IF yes:
+   - Suggest issues based on epic scope
+   - Create in Jira (PROJ-101, PROJ-102, ...)
+   - Display URLs
+7. Optional: Create pm/issues/PROJ-100/ for resources
 ```
 
 ## Integration with Workflow
